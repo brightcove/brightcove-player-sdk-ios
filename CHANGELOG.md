@@ -1,3 +1,18 @@
+# 4.0.2
+
+### Breaking Changes
+* BCOVPlaybackSession objects are released shortly after a new playback session is dequeued. Prior to 4.0.2, playback session objects would leak until the last session for any given collection of videos was dequeued (at which time the previous sessions would be released).
+* Event signals on BCOVPlaybackSession objects send complete when a new playback session is dequeued.
+
+### Additions and Improvements
+* Fixed a bug in which cue point events could be sent (erroneously) for playback sessions that are no longer active.
+* Corrections to reporting `video_engagement` metrics for Brightcove Analytics.
+* Throttle the check for cue points down to only once per second, to avoid unnecessary calculations.
+* Fixed a bug in which BCOVPlaybackFacadeDelegate event methods were called at inappropriate times, such as when new playback session were dequeued.
+* Fixed a race condition that could occur if two threads concurrently attempted to access `-[BCOVPlaybackController view]`. (This race could result in creating two UIView objects.)
+* Corrected the header documentation of the `-[AVPlayer+BCOVSignalSupport bcov_periodicTimeObserverSignalForInterval:]` and `-[AVPlayer+BCOVSignalSupport bcov_periodicTimeObserverSignalForInterval:queue:]` category methods, which misleadingly stated that the signals returned by these methods would complete if the AVPlayer deallocates. The implementation of `-[AVPlayer addPeriodicTimeObserverForInterval:queue:usingBlock:]`, used internally by these signals, prevents its AVPlayer from being released while these signals have active subscriptions. Furthermore, these signals never send complete; subscriptions to these signals live until explicitly disposed.
+
+
 # 4.0.1
 
 ### Breaking Changes
