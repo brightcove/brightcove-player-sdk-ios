@@ -36,7 +36,7 @@
  * @param frame The initial frame of the returned playback controller's view.
  * @return A new playback controller with the specified playback sessions.
  */
-- (id<BCOVPlaybackController>)newPlaybackControllerWithSessions:(RACSignal *)playbackSessions frame:(CGRect)frame;
+- (id<BCOVPlaybackController>)createPlaybackControllerWithSessions:(RACSignal *)playbackSessions frame:(CGRect)frame;
 
 /**
  * Creates and returns a new fully-configured playback facade object, whose
@@ -45,14 +45,14 @@
  * @param frame The frame desired for the facade's video view.
  * @return A new playback facade instance whose view has the specified frame.
  */
-- (id<BCOVPlaybackFacade>)newPlaybackFacadeWithFrame:(CGRect)frame;
+- (id<BCOVPlaybackFacade>)createPlaybackFacadeWithFrame:(CGRect)frame;
 
 /**
  * Creates and returns a new playback queue.
  *
  * Return A new playback queue.
  */
-- (id<BCOVPlaybackQueue>)newPlaybackQueue;
+- (id<BCOVPlaybackQueue>)createPlaybackQueue;
 
 /**
  * Returns the Player SDK Manager singleton.

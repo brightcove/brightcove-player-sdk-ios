@@ -1,3 +1,20 @@
+# 4.0.3
+
+### Breaking Changes
+* `-[BCOVPlayerSDKManager newPlaybackQueue]` is an [invalid method name for code built with ARC][arcnotes]. In 4.0.3, we renamed that method to `-createPlaybackQueue`, and for consistency, we renamed the other methods in BCOVPlayerSDKManager that begin with the word `new`. The following table illustrates the changes:
+
+|              Removed Method                 |                  Replaced By                   |
+| --------------------------------------------| ---------------------------------------------- |
+| `-newPlaybackQueue`                         | `-createPlaybackQueue`                         |
+| `-newPlaybackFacadeWithFrame:`              | `-createPlaybackFacadeWithFrame:`              |
+| `-newPlaybackControllerWithSessions:frame:` | `-createPlaybackControllerWithSessions:frame:` |
+
+[arcnotes]: https://developer.apple.com/library/mac/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html
+
+### Additions and Improvements
+* Fixes for memory leaks that could occur when destroying and recreating BCOVPlaybackFacade, BCOVPlaybackQueue, and BCOVPlaybackController instances.
+
+
 # 4.0.2
 
 ### Breaking Changes
