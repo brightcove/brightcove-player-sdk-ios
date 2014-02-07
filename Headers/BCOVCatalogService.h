@@ -2,7 +2,7 @@
 // BCOVCatalogService.h
 // BCOVPlayerSDK
 //
-// Copyright (c) 2013 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2014 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -33,12 +33,13 @@
 
 /**
  * Designated initializer, returns an instance initialized with the
- * specified token.  The request factory is created using the token provided.
+ * specified token. The request factory is created using the token provided.
  *
  * To prevent unauthorized access to the metadata in your account, Video Cloud
  * protects access to the API with tokens that you pass as parameters when
  * making API calls. Like other web-based APIs, tokens are generated for you by
  * Video Cloud and must be protected by you.
+ *
  * @param token string containing your Video Cloud Media API token.
  * @return an initialized BCOVCatalogService
  */
@@ -51,7 +52,8 @@
  * protects access to the API with tokens that you pass as parameters when
  * making API calls. Like other web-based APIs, tokens are generated for you by
  * Video Cloud and must be protected by you.
- * @param token string containing your Video Cloud Media API token.
+ *
+ * @param requestFactory Request factory used to create requests
  * @return an initialized BCOVCatalogService
  */
 - (id)initWithMediaRequestFactory:(BCOVMediaRequestFactory *)requestFactory;
@@ -222,6 +224,88 @@
  * then completes.
  */
 - (RACSignal *)findVideoDictionaryWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters;
+
+@end
+
+
+/**
+ * The functionality of the finder methods added in these category methods is
+ * similar to the core finder methods in BCOVCatalogService, except that rather
+ * than return a signal that delivers the results (or an error), these methods
+ * return void but take a block which is called with the results (or an error).
+ * If you are comfortable using ReactiveCocoa's signal API, the signal methods
+ * offered by BCOVCatalogService offer better flexibility. These category
+ * methods are intended for clients who do not wish to use signals directly.
+ */
+@interface BCOVCatalogService (BCOVImperativeCallbacks)
+
+/**
+ * Retrieves a BCOVPlaylist from the Media API service by its playlist ID.
+ *
+ * If the Media API returns a standard JSON-formatted error response, the
+ * deserialized response will be the callback's error's `userInfo`.
+ *
+ * If a JSON parse error occurs, the raw NSData response will be included in the
+ * callback's error's `userInfo`, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.
+ *
+ * @param playlistID The ID of the playlist to find.
+ * @param parameters Additional NSString query parameters to add to the Media
+ * API requests. These values will override the default values if they conflict.
+ * @param completionHandler block which will be invoked when the request
+ * finishes. Execution of the completionHandler will occur on the main thread.
+ */
+- (void)findPlaylistWithPlaylistID:(NSString *)playlistID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+/**
+ * Retrieves a BCOVPlaylist from the Media API service by its reference ID.
+ *
+ * If the Media API returns a standard JSON-formatted error response, the
+ * deserialized response will be the callback's error's `userInfo`.
+ *
+ * If a JSON parse error occurs, the raw NSData response will be included in the
+ * callback's error's `userInfo`, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.
+ *
+ * @param referenceID The reference ID of the playlist to find.
+ * @param parameters Additional NSString query parameters to add to the Media
+ * API requests. These values will override the default values if they conflict.
+ * @param completionHandler block which will be invoked when the request
+ * finishes. Execution of the completionHandler will occur on the main thread.
+ */
+- (void)findPlaylistWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+/**
+ * Retrieves a BCOVVideo from the Media API service by its video ID.
+ *
+ * If the Media API returns a standard JSON-formatted error response, the
+ * deserialized response will be the callback's error's `userInfo`.
+ *
+ * If a JSON parse error occurs, the raw NSData response will be included in the
+ * callback's error's `userInfo`, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.
+ *
+ * @param videoID The ID of the video to find.
+ * @param parameters Additional NSString query parameters to add to the Media
+ * API requests. These values will override the default values if they conflict.
+ * @param completionHandler block which will be invoked when the request
+ * finishes. Execution of the completionHandler will occur on the main thread.
+ */
+- (void)findVideoWithVideoID:(NSString *)videoID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+/**
+ * Retrieves a BCOVVideo from the Media API service by its reference ID.
+ *
+ * If the Media API returns a standard JSON-formatted error response, the
+ * deserialized response will be the callback's error's `userInfo`.
+ *
+ * If a JSON parse error occurs, the raw NSData response will be included in the
+ * callback's error's `userInfo`, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.
+ *
+ * @param referenceID The reference ID of the video to find.
+ * @param parameters Additional NSString query parameters to add to the Media
+ * API requests. These values will override the default values if they conflict.
+ * @param completionHandler block which will be invoked when the request
+ * finishes. Execution of the completionHandler will occur on the main thread.
+ */
+- (void)findVideoWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
 
 @end
 
