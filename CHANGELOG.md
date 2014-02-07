@@ -1,3 +1,30 @@
+# 4.1.4
+
+### Breaking Changes
+* When `-[BCOVPlaybackController setVideos:]` is called, the current playback session is removed. Previously, calling `-setVideos:` would add the new videos to the playback controller, but would not affect the current session.
+* BCOVPlaybackFacade and BCOVPlaybackQueue protocols are deprecated in this release, as we have consolidated their functionality within the BCOVPlaybackController protocol. We apologize for any inconvenience this may cause, but the migration path to update code that uses these protocols is straightforward:
+    1. There is no longer any reason to create a BCOVPlaybackQueue object. Remove code that calls `-[BCOVPlayerSDKManager createPlaybackQueue]` altogether, as it will no longer compile.
+    1. Replace calls to `-[BCOVPlayerSDKManager createPlaybackFacadeWithFrame:]` with `-[BCOVPlayerSDKManager createPlaybackControllerWithViewStrategy:]`. You can pass `nil` to this method. Then you can set your frame directly on the returned playback controller's `view`.
+    1. If you implemented BCOVPlaybackFacadeDelegate, modify your delegate to implement BCOVPlaybackControllerDelegate instead. Replace each delegate method with the corresponding method from the BCOVPlaybackControllerDelegate protocol. For example, `-playbackFacade:playbackSession:didProgressTo:` would become `-playbackController:playbackSession:didProgressTo:`. There is no need to change the behavior of your delegate methods, it is just a renaming.
+    1. Remaining references to `id<BCOVPlaybackFacade>` can be changed to `id<BCOVPlaybackController>`. In other words, wherever you previously used a facade, you should now use a playback controller.
+    1. Remove any calls to `BCOVPlaybackFacade.controlsEnabled`. This property will no longer have any effect. If you are still developing your app and do not yet have your own controls implemented, you can re-enable the default playback controls by passing `-[BCOVPlayerSDKManager defaultControlsViewStrategy]` when you create the playback controller, instead of passing a `nil` strategy.
+* Methods that create BCOVPlaybackController objects with a frame have been deprecated. If you used `-[BCOVPlayerSDKManager createPlaybackControllerWithFrame:]` or `-[BCOVPlayerSDKManager createPlaybackControllerWithSessions:frame:]`, the migration path is also straightforward:
+    1. Use `-[BCOVPlayerSDKManager createPlaybackControllerWithViewStrategy:]`. You can pass `nil` to this method. Then you can set your frame directly on the returned playback controller's `view`.
+    1. That's it.
+* `-[BCOVPlaybackController seekToTime:]` has been deprecated. It should be replaced with a call to `-[AVPlayer seekToTime:completionHandler:]` on the given playback session's AVPlayer object.
+
+### Additions and Improvements
+* This release introduces support for loading plugin components into the BCOVPlayerSDKManager. With this 4.1.4 release, we are simultaneously releasing our first plugins: BCOVIMA, a plugin that offers built-in integration with Interactive Media Ads, and BCOVWidevine, a plugin that allows you to use Widevine-encrypted content with the Player SDK for iOS.
+* Playback controllers obtain their playback sessions from a BCOVPlaybackSessionProvider object. Session providers provide a mechanism for plugins to affect content playback by stepping into the session construction process. The Player SDK for iOS ships with a basic session provider (aptly named BCOVBasicSessionProvider), which provides the default playback functionality.
+* Playback controllers send their playback sessions to a list of BCOVPlaybackSessionConsumer objects. Session consumers provide a mechanism for plugins to respond to playback events without affecting the app developer's ability to specify a BCOVPlaybackControllerDelegate.
+* Playback sessions now send a "terminate" event on their lifecycle signal when the playback controller is finished with them. Clients can listen for this event to know when to discard a reference to a playback session. A playback session should not be used after it has terminated.
+* App developers can specify a view strategy that specifies how the playback controller should construct its `view`. For further information, refer to the README.
+* Apps no longer have to wait for a playback session to be advanced before calling `-[BCOVPlaybackController play]`. If this method is called before advancing to a playback session, playback will begin as soon as the first session is advanced to.
+* Detection of cue points during video playback has been significantly optimized to pose less of a burden on CPU and battery.
+* Methods to pause and resume ads have been added to BCOVPlaybackController. However, these are merely stubs when used without an advertising plugin that supports them.
+* API documentation is generated from header comments, and is available in the `html/` directory of the Player SDK for iOS.
+* Corrected the documentation of the behavior of the `-[BCOVPlaybackSession lifecycle]` signal. Previously, this signal was described as sending its entire history of events to each subscriber, when in fact it is a hot signal and sends only events that occur *after* subscription. Note that this does not represent a change in functionality, but rather a fix to incorrect documentation about that functionality.
+
 # 4.0.3
 
 ### Breaking Changes

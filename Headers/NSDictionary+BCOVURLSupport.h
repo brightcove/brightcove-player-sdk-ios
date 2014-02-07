@@ -2,13 +2,16 @@
 // NSDictionary+BCOVURLSupport.h
 // BCOVPlayerSDK
 //
-// Copyright (c) 2013 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2014 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
 #import <Foundation/Foundation.h>
 
 
+/**
+ * Adds convience methods to NSDictionary when working with URL requests.
+ */
 @interface NSDictionary (BCOVURLSupport)
 
 /**

@@ -2,7 +2,7 @@
 // BCOVCuePointCollection.h
 // BCOVPlayerSDK
 //
-// Copyright (c) 2013 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2014 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -26,7 +26,7 @@
  * the same position is not guaranteed.
  *
  * @param cuePoints The new cue point collection's cue points.
- * @param The new cue point collection with the specified cue points.
+ * @return The new cue point collection with the specified cue points.
  */
 - (id)initWithArray:(NSArray *)cuePoints;
 
@@ -34,7 +34,7 @@
  * Constructs and returns a BCOVCuePointCollection with a single cue point.
  *
  * @param cuePoint The new cue point collection's cue point.
- * @param The new cue point collection with the specified cue point.
+ * @return The new cue point collection with the specified cue point.
  */
 - (id)initWithCuePoint:(BCOVCuePoint *)cuePoint;
 
@@ -58,7 +58,7 @@
  * Returns all cue points in this collection after the specified time.
  *
  * @param time The time after which corresponding cue points should be returned.
- * @return all cue points in this collection after the specified time.
+ * @return All cue points in this collection after the specified time.
  */
 - (instancetype)cuePointsAfterTime:(CMTime)time;
 
@@ -66,15 +66,15 @@
  * Returns all cue points in this collection before the specified time.
  *
  * @param time The time before which corresponding cue points should be returned.
- * @return all cue points in this collection before the specified time.
+ * @return All cue points in this collection before the specified time.
  */
 - (instancetype)cuePointsBeforeTime:(CMTime)time;
 
 /**
  * Returns all cue points in this collection at exactly the specified time.
  *
- * @param The time at which corresponding cue points should be returned.
- * @return all cue points in this collection at exactly the specified time.
+ * @param time The time at which corresponding cue points should be returned.
+ * @return All cue points in this collection at exactly the specified time.
  */
 - (instancetype)cuePointsAtTime:(CMTime)time;
 
@@ -83,7 +83,7 @@
  *
  * @param time The time at or after which corresponding cue points should be
  * returned.
- * @return all cue points in this collection at or after the specified time.
+ * @return All cue points in this collection at or after the specified time.
  */
 - (instancetype)cuePointsAtOrAfterTime:(CMTime)time;
 
@@ -92,7 +92,7 @@
  *
  * @param time The time at or before which corresponding cue points should be
  * returned.
- * @return all cue points in this collection at or before the specified time.
+ * @return All cue points in this collection at or before the specified time.
  */
 - (instancetype)cuePointsAtOrBeforeTime:(CMTime)time;
 

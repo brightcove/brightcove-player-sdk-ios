@@ -2,7 +2,7 @@
 // BCOVPlayerSDK.h
 // BCOVPlayerSDK
 //
-// Copyright (c) 2013 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2014 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -14,10 +14,11 @@
 
 // Playback
 #import "AVPlayer+BCOVSignalSupport.h"
+#import "BCOVBasicSessionProvider.h"
+#import "BCOVDelegatingSessionConsumer.h"
 #import "BCOVPlaybackController.h"
-#import "BCOVPlaybackFacade.h"
-#import "BCOVPlaybackQueue.h"
 #import "BCOVPlaybackSession.h"
+#import "BCOVPlaybackSessionProvider.h"
 
 // Management
 #import "BCOVPlayerSDKManager.h"

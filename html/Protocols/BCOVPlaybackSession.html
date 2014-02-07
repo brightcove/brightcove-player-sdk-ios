@@ -1,0 +1,893 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>BCOVPlaybackSession Protocol Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">BCOVPlayerSDK </a></h1>
+				<a id="developerHome" href="../index.html">Brightcove</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">BCOVPlaybackSession Protocol Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/player">&nbsp;&nbsp;&nbsp;&nbsp;player</option>
+	
+	<option value="//api/name/playerLayer">&nbsp;&nbsp;&nbsp;&nbsp;playerLayer</option>
+	
+	<option value="//api/name/source">&nbsp;&nbsp;&nbsp;&nbsp;source</option>
+	
+	<option value="//api/name/video">&nbsp;&nbsp;&nbsp;&nbsp;video</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/cuePoints">&nbsp;&nbsp;&nbsp;&nbsp;- cuePoints</option>
+	
+	<option value="//api/name/durationChanges">&nbsp;&nbsp;&nbsp;&nbsp;- durationChanges</option>
+	
+	<option value="//api/name/isExternalPlaybackActive">&nbsp;&nbsp;&nbsp;&nbsp;- isExternalPlaybackActive</option>
+	
+	<option value="//api/name/lifecycle">&nbsp;&nbsp;&nbsp;&nbsp;- lifecycle</option>
+	
+	<option value="//api/name/progress">&nbsp;&nbsp;&nbsp;&nbsp;- progress</option>
+	
+	<option value="//api/name/terminate">&nbsp;&nbsp;&nbsp;&nbsp;- terminate</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/player">player</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/playerLayer">playerLayer</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/source">source</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/video">video</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cuePoints">cuePoints</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/durationChanges">durationChanges</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isExternalPlaybackActive">isExternalPlaybackActive</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/lifecycle">lifecycle</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/progress">progress</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/terminate">terminate</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="BCOVPlaybackSession Protocol Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">BCOVPlaybackSession Protocol Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">BCOVPlaybackSession.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>A playback session represents the playback of a single <a href="#//api/name/video">video</a>. The session
+provides a single point of access for everything related to the playback
+experience for that video: the <a href="#//api/name/video">video</a> and <a href="#//api/name/source">source</a> selected for playback, the
+<a href="#//api/name/player">player</a> within which the playback occurs, and events that occur during the
+playback session. Playback sessions are never reused for multiple videos
+(even separate enqueueings of the same <a href="#//api/name/video">video</a>).</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/video">&nbsp;&nbsp;video</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/source">&nbsp;&nbsp;source</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/player">&nbsp;&nbsp;player</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/playerLayer">&nbsp;&nbsp;playerLayer</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cuePoints">&ndash;&nbsp;cuePoints</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/durationChanges">&ndash;&nbsp;durationChanges</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isExternalPlaybackActive">&ndash;&nbsp;isExternalPlaybackActive</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/lifecycle">&ndash;&nbsp;lifecycle</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/progress">&ndash;&nbsp;progress</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/terminate">&ndash;&nbsp;terminate</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/player" title="player"></a>
+	<h3 class="subsubtitle method-title">player</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The player this session uses to present content.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, strong) AVPlayer *player</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The player this session uses to present content.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/playerLayer" title="playerLayer"></a>
+	<h3 class="subsubtitle method-title">playerLayer</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The layer that hosts the visible <a href="#//api/name/video">video</a> output.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, strong) AVPlayerLayer *playerLayer</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The layer that hosts the visible <a href="#//api/name/video">video</a> output.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/source" title="source"></a>
+	<h3 class="subsubtitle method-title">source</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The source in <code>self.</code>video<code></code> this session uses to load content.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) BCOVSource *source</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The source in <code>self.</code>video<code></code> this session uses to load content.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/video" title="video"></a>
+	<h3 class="subsubtitle method-title">video</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The video whose playback this session represents.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) BCOVVideo *video</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The video whose playback this session represents.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/cuePoints" title="cuePoints"></a>
+	<h3 class="subsubtitle method-title">cuePoints</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends a dictionary for each cue point event that is sent after subscription.
+Events will occur regardless of whether the playhead passes the cue point
+time for standard <a href="#//api/name/progress">progress</a> (playback), or seeking (forward or backward)
+through the media. When a delegate is set on a playback controller, this
+method will only be called for future cue point events (any events that have
+already occurred will not be reported).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (RACSignal *)cuePoints</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A signal sending the cue point events in this session.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sends a dictionary for each cue point event that is sent after subscription.
+Events will occur regardless of whether the playhead passes the cue point
+time for standard <a href="#//api/name/progress">progress</a> (playback), or seeking (forward or backward)
+through the media. When a delegate is set on a playback controller, this
+method will only be called for future cue point events (any events that have
+already occurred will not be reported).</p>
+
+<p>If multiple cue points are registered to a time or times that fall between
+the &ldquo;previous time&rdquo; and &ldquo;current time&rdquo; for a cue point event, all cue points
+after the &ldquo;previous time&rdquo; and before or on &ldquo;current time&rdquo; will be included
+in the cue point collection. Put differently, multiple cue points at the
+same time are aggregated into a single cue point event whose collection will
+contain all of those cue points. The most likely scenario in which this
+would happen is when seeking across a time range that includes multiple cue
+points (potentially at different times) &ndash; this will result in a single cue
+point event whose previous time is the point at which seek began, whose
+current time is the destination of the seek, and whose cue points are all of
+the cue points whose time fell within that range.</p>
+
+<p>The dictionary contains the following keys and values:</p>
+
+<p>kBCOVPlaybackSessionEventKeyCuePoints: the cue point collection of all
+cue point objects whose time is after the previous <a href="#//api/name/progress">progress</a> time interval,
+but before or on the current <a href="#//api/name/progress">progress</a> time interval.
+kBCOVPlaybackSessionEventKeyPreviousTime: the <a href="#//api/name/progress">progress</a> interval immediately
+preceding the cue point event.
+kBCOVPlaybackSessionEventKeyCurrentTime: the current <a href="#//api/name/progress">progress</a> interval (at
+which the cue point event is sent).</p>
+
+<p>This signal does not make guarantees about the scheduler on which it sends
+its values. Clients must explicitly deliver its events to the main thread
+scheduler (or another scheduler) if requirements dictate.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/durationChanges" title="durationChanges"></a>
+	<h3 class="subsubtitle method-title">durationChanges</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends a CMTime (wrapped in an NSValue) representing the new duration of
+this session&rsquo;s player&rsquo;s item. Sends the most recently-set duration on
+subscription.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (RACSignal *)durationChanges</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A signal sending the duration changes for this session&rsquo;s <a href="#//api/name/player">player</a>
+item.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sends a CMTime (wrapped in an NSValue) representing the new duration of
+this session&rsquo;s player&rsquo;s item. Sends the most recently-set duration on
+subscription.</p>
+
+<p>This signal does not make guarantees about the scheduler on which it sends
+its values. Clients must explicitly deliver its events to the main thread
+scheduler (or another scheduler) if requirements dictate.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isExternalPlaybackActive" title="isExternalPlaybackActive"></a>
+	<h3 class="subsubtitle method-title">isExternalPlaybackActive</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends a Boolean (wrapped in an NSNumber) representing whether external
+playback was enabled for this session. Sends the most recently-set external
+playback configuration on subscription.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (RACSignal *)isExternalPlaybackActive</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A signal sending the external playback status changes for this
+session.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sends a Boolean (wrapped in an NSNumber) representing whether external
+playback was enabled for this session. Sends the most recently-set external
+playback configuration on subscription.</p>
+
+<p>This signal does not make guarantees about the scheduler on which it sends
+its values. Clients must explicitly deliver its events to the main thread
+scheduler (or another scheduler) if requirements dictate.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/lifecycle" title="lifecycle"></a>
+	<h3 class="subsubtitle method-title">lifecycle</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends a <a href="../Classes/BCOVPlaybackSessionLifecycleEvent.html">BCOVPlaybackSessionLifecycleEvent</a> representing a lifecycle change
+event for this session. This is a hot signal, meaning that events that have
+already been sent will not be re-sent for new subscribers.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (RACSignal *)lifecycle</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A signal sending the lifecycle change events for this session, or
+an error if this session encounters a lifecycle error.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sends a <a href="../Classes/BCOVPlaybackSessionLifecycleEvent.html">BCOVPlaybackSessionLifecycleEvent</a> representing a lifecycle change
+event for this session. This is a hot signal, meaning that events that have
+already been sent will not be re-sent for new subscribers.</p>
+
+<p>Sends an error if the session enters an unrecoverable error state.</p>
+
+<p>This signal does not make guarantees about the scheduler on which it sends
+its values. Clients must explicitly deliver its events to the main thread
+scheduler (or another scheduler) if requirements dictate.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/progress" title="progress"></a>
+	<h3 class="subsubtitle method-title">progress</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sends a CMTime (wrapped in an NSValue) representing the current playhead
+position for each progress event after subscription.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (RACSignal *)progress</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A signal sending the session progress.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sends a CMTime (wrapped in an NSValue) representing the current playhead
+position for each progress event after subscription.</p>
+
+<p>This signal does not make guarantees about the scheduler on which it sends
+its values. Clients must explicitly deliver its events to the main thread
+scheduler (or another scheduler) if requirements dictate.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/terminate" title="terminate"></a>
+	<h3 class="subsubtitle method-title">terminate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Terminates this playback session, completing all of its playback event
+signals and indicating readiness for a new session to be dequeued. A
+terminated playback session should be discarded immediately.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)terminate</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Terminates this playback session, completing all of its playback event
+signals and indicating readiness for a new session to be dequeued. A
+terminated playback session should be discarded immediately.</p>
+
+<p>In a typical configuration using a <a href="../Protocols/BCOVPlaybackController.html">BCOVPlaybackController</a>, there is no need
+to call this method directly. Methods on the controller are the preferred
+mechanism for advancing to the next playback session. However, playback
+session provider configurations which do not use a <a href="../Protocols/BCOVPlaybackController.html">BCOVPlaybackController</a>
+may need to invoke this method to advance the queue.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-02-07)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

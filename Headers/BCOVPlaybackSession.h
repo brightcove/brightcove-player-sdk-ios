@@ -2,13 +2,14 @@
 // BCOVPlaybackSession.h
 // BCOVPlayerSDK
 //
-// Copyright (c) 2013 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2014 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
+
+#import "ReactiveCocoa.h"
 
 
 @class BCOVSource;
@@ -19,6 +20,7 @@ extern NSString * const kBCOVPlaybackSessionLifecycleEventReady;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventPlay;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventPause;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventEnd;
+extern NSString * const kBCOVPlaybackSessionLifecycleEventTerminate;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventFail;
 
 extern NSString * const kBCOVPlaybackSessionEventKeyPreviousTime;
@@ -26,7 +28,7 @@ extern NSString * const kBCOVPlaybackSessionEventKeyCurrentTime;
 extern NSString * const kBCOVPlaybackSessionEventKeyCuePoints;
 
 extern NSString * const kBCOVPlaybackSessionErrorDomain;
-const NSInteger kBCOVPlaybackSessionErrorCodeLoadFailed;
+extern const NSInteger kBCOVPlaybackSessionErrorCodeLoadFailed;
 
 
 /**
@@ -63,9 +65,9 @@ const NSInteger kBCOVPlaybackSessionErrorCodeLoadFailed;
  * Sends a dictionary for each cue point event that is sent after subscription.
  * Events will occur regardless of whether the playhead passes the cue point
  * time for standard progress (playback), or seeking (forward or backward)
- * through the media. When a delegate is set on a playback facade, this method
- * will only be called for future cue point events (any events that have already
- * occurred will not be reported).
+ * through the media. When a delegate is set on a playback controller, this
+ * method will only be called for future cue point events (any events that have
+ * already occurred will not be reported).
  *
  * If multiple cue points are registered to a time or times that fall between
  * the "previous time" and "current time" for a cue point event, all cue points
@@ -127,9 +129,8 @@ const NSInteger kBCOVPlaybackSessionErrorCodeLoadFailed;
 
 /**
  * Sends a BCOVPlaybackSessionLifecycleEvent representing a lifecycle change
- * event for this session.
- * Replays the entire history of lifecycle events for this session (as separate
- * value sends) upon subscription.
+ * event for this session. This is a hot signal, meaning that events that have
+ * already been sent will not be re-sent for new subscribers.
  *
  * Sends an error if the session enters an unrecoverable error state.
  *
@@ -154,6 +155,19 @@ const NSInteger kBCOVPlaybackSessionErrorCodeLoadFailed;
  */
 - (RACSignal *)progress;
 
+/**
+ * Terminates this playback session, completing all of its playback event
+ * signals and indicating readiness for a new session to be dequeued. A
+ * terminated playback session should be discarded immediately.
+ *
+ * In a typical configuration using a BCOVPlaybackController, there is no need
+ * to call this method directly. Methods on the controller are the preferred
+ * mechanism for advancing to the next playback session. However, playback
+ * session provider configurations which do not use a BCOVPlaybackController
+ * may need to invoke this method to advance the queue.
+ */
+- (void)terminate;
+
 @end
 
 
@@ -172,7 +186,21 @@ const NSInteger kBCOVPlaybackSessionErrorCodeLoadFailed;
  */
 @property (nonatomic, readonly) NSDictionary *properties;
 
+/**
+ * Designated initializer. Returns an event with the specified type and properties.
+ *
+ * @param eventType Type of the event.
+ * @param properties Properties of the event
+ * @return Initialized event.
+ */
 - (id)initWithEventType:(NSString *)eventType properties:(NSDictionary *)properties;
+
+/**
+ * Determines the equality of the events.
+ *
+ * @param event Event to check against.
+ * @return Returns YES if the events are equal and NO if the events are no equal.
+ */
 - (BOOL)isEqualToPlaybackSessionLifecycleEvent:(BCOVPlaybackSessionLifecycleEvent *)event;
 
 /**

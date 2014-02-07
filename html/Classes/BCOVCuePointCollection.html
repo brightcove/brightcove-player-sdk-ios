@@ -1,0 +1,1417 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>BCOVCuePointCollection Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 961)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">BCOVPlayerSDK </a></h1>
+				<a id="developerHome" href="../index.html">Brightcove</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">BCOVCuePointCollection Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/collectionWithArray:">&nbsp;&nbsp;&nbsp;&nbsp;+ collectionWithArray:</option>
+	
+	<option value="//api/name/emptyCollection">&nbsp;&nbsp;&nbsp;&nbsp;+ emptyCollection</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/array">&nbsp;&nbsp;&nbsp;&nbsp;- array</option>
+	
+	<option value="//api/name/count">&nbsp;&nbsp;&nbsp;&nbsp;- count</option>
+	
+	<option value="//api/name/cuePointsAfterTime:">&nbsp;&nbsp;&nbsp;&nbsp;- cuePointsAfterTime:</option>
+	
+	<option value="//api/name/cuePointsAfterTime:atOrBeforeTime:">&nbsp;&nbsp;&nbsp;&nbsp;- cuePointsAfterTime:atOrBeforeTime:</option>
+	
+	<option value="//api/name/cuePointsAfterTime:beforeTime:">&nbsp;&nbsp;&nbsp;&nbsp;- cuePointsAfterTime:beforeTime:</option>
+	
+	<option value="//api/name/cuePointsAtOrAfterTime:">&nbsp;&nbsp;&nbsp;&nbsp;- cuePointsAtOrAfterTime:</option>
+	
+	<option value="//api/name/cuePointsAtOrAfterTime:atOrBeforeTime:">&nbsp;&nbsp;&nbsp;&nbsp;- cuePointsAtOrAfterTime:atOrBeforeTime:</option>
+	
+	<option value="//api/name/cuePointsAtOrAfterTime:beforeTime:">&nbsp;&nbsp;&nbsp;&nbsp;- cuePointsAtOrAfterTime:beforeTime:</option>
+	
+	<option value="//api/name/cuePointsAtOrBeforeTime:">&nbsp;&nbsp;&nbsp;&nbsp;- cuePointsAtOrBeforeTime:</option>
+	
+	<option value="//api/name/cuePointsAtTime:">&nbsp;&nbsp;&nbsp;&nbsp;- cuePointsAtTime:</option>
+	
+	<option value="//api/name/cuePointsBeforeTime:">&nbsp;&nbsp;&nbsp;&nbsp;- cuePointsBeforeTime:</option>
+	
+	<option value="//api/name/initWithArray:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithArray:</option>
+	
+	<option value="//api/name/initWithCuePoint:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithCuePoint:</option>
+	
+	<option value="//api/name/isEqualToCollection:">&nbsp;&nbsp;&nbsp;&nbsp;- isEqualToCollection:</option>
+	
+	<option value="//api/name/objectAtIndexedSubscript:">&nbsp;&nbsp;&nbsp;&nbsp;- objectAtIndexedSubscript:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/collectionWithArray:">collectionWithArray:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/emptyCollection">emptyCollection</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/array">array</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/count">count</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cuePointsAfterTime:">cuePointsAfterTime:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cuePointsAfterTime:atOrBeforeTime:">cuePointsAfterTime:atOrBeforeTime:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cuePointsAfterTime:beforeTime:">cuePointsAfterTime:beforeTime:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cuePointsAtOrAfterTime:">cuePointsAtOrAfterTime:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cuePointsAtOrAfterTime:atOrBeforeTime:">cuePointsAtOrAfterTime:atOrBeforeTime:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cuePointsAtOrAfterTime:beforeTime:">cuePointsAtOrAfterTime:beforeTime:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cuePointsAtOrBeforeTime:">cuePointsAtOrBeforeTime:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cuePointsAtTime:">cuePointsAtTime:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cuePointsBeforeTime:">cuePointsBeforeTime:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithArray:">initWithArray:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithCuePoint:">initWithCuePoint:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isEqualToCollection:">isEqualToCollection:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/objectAtIndexedSubscript:">objectAtIndexedSubscript:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="BCOVCuePointCollection Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">BCOVCuePointCollection Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value">NSCopying<br />NSFastEnumeration</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">BCOVCuePointCollection.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>A collection of cue points, each element ordered by its position according
+to the natural ordering of CMTime values.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithArray:">&ndash;&nbsp;initWithArray:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithCuePoint:">&ndash;&nbsp;initWithCuePoint:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/array">&ndash;&nbsp;array</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/count">&ndash;&nbsp;count</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cuePointsAfterTime:">&ndash;&nbsp;cuePointsAfterTime:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cuePointsBeforeTime:">&ndash;&nbsp;cuePointsBeforeTime:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cuePointsAtTime:">&ndash;&nbsp;cuePointsAtTime:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cuePointsAtOrAfterTime:">&ndash;&nbsp;cuePointsAtOrAfterTime:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cuePointsAtOrBeforeTime:">&ndash;&nbsp;cuePointsAtOrBeforeTime:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cuePointsAfterTime:beforeTime:">&ndash;&nbsp;cuePointsAfterTime:beforeTime:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cuePointsAfterTime:atOrBeforeTime:">&ndash;&nbsp;cuePointsAfterTime:atOrBeforeTime:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cuePointsAtOrAfterTime:beforeTime:">&ndash;&nbsp;cuePointsAtOrAfterTime:beforeTime:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cuePointsAtOrAfterTime:atOrBeforeTime:">&ndash;&nbsp;cuePointsAtOrAfterTime:atOrBeforeTime:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isEqualToCollection:">&ndash;&nbsp;isEqualToCollection:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/objectAtIndexedSubscript:">&ndash;&nbsp;objectAtIndexedSubscript:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/collectionWithArray:">+&nbsp;collectionWithArray:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/emptyCollection">+&nbsp;emptyCollection</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/collectionWithArray:" title="collectionWithArray:"></a>
+	<h3 class="subsubtitle method-title">collectionWithArray:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a new cue point collection containing the specified cue points.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (instancetype)collectionWithArray:(NSArray *)<em>cuePoints</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>cuePoints</em></dt>
+			<dd><p>An <a href="#//api/name/array">array</a> of cue point objects to include in the collection.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new cue point collection containing the specified cue points.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a new cue point collection containing the specified cue points.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCuePointCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/emptyCollection" title="emptyCollection"></a>
+	<h3 class="subsubtitle method-title">emptyCollection</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a singleton cue point collection containing no cue points.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (instancetype)emptyCollection</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A singleton cue point collection containing no cue points.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a singleton cue point collection containing no cue points.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCuePointCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/array" title="array"></a>
+	<h3 class="subsubtitle method-title">array</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns this collection&rsquo;s cue point objects in an array. The elements of the
+array will have the same order as the ordering of cue points in this
+collection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)array</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>This collection&rsquo;s cue points in an array.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns this collection&rsquo;s cue point objects in an array. The elements of the
+array will have the same order as the ordering of cue points in this
+collection.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCuePointCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/count" title="count"></a>
+	<h3 class="subsubtitle method-title">count</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the number of cue points in this collection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSUInteger)count</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The number of cue points in this collection.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the number of cue points in this collection.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCuePointCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cuePointsAfterTime:" title="cuePointsAfterTime:"></a>
+	<h3 class="subsubtitle method-title">cuePointsAfterTime:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns all cue points in this collection after the specified time.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)cuePointsAfterTime:(CMTime)<em>time</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>time</em></dt>
+			<dd><p>The time after which corresponding cue points should be returned.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>All cue points in this collection after the specified time.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns all cue points in this collection after the specified time.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCuePointCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cuePointsAfterTime:atOrBeforeTime:" title="cuePointsAfterTime:atOrBeforeTime:"></a>
+	<h3 class="subsubtitle method-title">cuePointsAfterTime:atOrBeforeTime:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns all cue points in this collection between the specified times,
+inclusive of the upper bound.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)cuePointsAfterTime:(CMTime)<em>lowerBound</em> atOrBeforeTime:(CMTime)<em>upperBound</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>lowerBound</em></dt>
+			<dd><p>The lower boundary, at or below which cue points should
+not be returned.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>upperBound</em></dt>
+			<dd><p>The upper boundary, above which cue points should
+not be returned.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>All cue points in this collection between the specified times.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns all cue points in this collection between the specified times,
+inclusive of the upper bound.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCuePointCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cuePointsAfterTime:beforeTime:" title="cuePointsAfterTime:beforeTime:"></a>
+	<h3 class="subsubtitle method-title">cuePointsAfterTime:beforeTime:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns all cue points in this collection between the specified times.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)cuePointsAfterTime:(CMTime)<em>lowerBound</em> beforeTime:(CMTime)<em>upperBound</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>lowerBound</em></dt>
+			<dd><p>The lower boundary, at or below which cue points should
+not be returned.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>upperBound</em></dt>
+			<dd><p>The upper boundary, at or above which cue points should
+not be returned.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>All cue points in this collection between the specified times.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns all cue points in this collection between the specified times.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCuePointCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cuePointsAtOrAfterTime:" title="cuePointsAtOrAfterTime:"></a>
+	<h3 class="subsubtitle method-title">cuePointsAtOrAfterTime:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns all cue points in this collection at or after the specified time.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)cuePointsAtOrAfterTime:(CMTime)<em>time</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>time</em></dt>
+			<dd><p>The time at or after which corresponding cue points should be
+returned.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>All cue points in this collection at or after the specified time.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns all cue points in this collection at or after the specified time.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCuePointCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cuePointsAtOrAfterTime:atOrBeforeTime:" title="cuePointsAtOrAfterTime:atOrBeforeTime:"></a>
+	<h3 class="subsubtitle method-title">cuePointsAtOrAfterTime:atOrBeforeTime:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns all cue points in this collection, at or between the specified times.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)cuePointsAtOrAfterTime:(CMTime)<em>lowerBound</em> atOrBeforeTime:(CMTime)<em>upperBound</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>lowerBound</em></dt>
+			<dd><p>The lower boundary, below which cue points should not be
+returned.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>upperBound</em></dt>
+			<dd><p>The upper boundary, above which cue points should not be
+returned.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>All cue points in this collection, at or between the specified times.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns all cue points in this collection, at or between the specified times.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCuePointCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cuePointsAtOrAfterTime:beforeTime:" title="cuePointsAtOrAfterTime:beforeTime:"></a>
+	<h3 class="subsubtitle method-title">cuePointsAtOrAfterTime:beforeTime:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns all cue points in this collection between the specified times,
+inclusive of the lower bound.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)cuePointsAtOrAfterTime:(CMTime)<em>lowerBound</em> beforeTime:(CMTime)<em>upperBound</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>lowerBound</em></dt>
+			<dd><p>The lower boundary, below which cue points should
+not be returned.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>upperBound</em></dt>
+			<dd><p>The upper boundary, at or above which cue points should
+not be returned.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>All cue points in this collection between the specified times.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns all cue points in this collection between the specified times,
+inclusive of the lower bound.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCuePointCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cuePointsAtOrBeforeTime:" title="cuePointsAtOrBeforeTime:"></a>
+	<h3 class="subsubtitle method-title">cuePointsAtOrBeforeTime:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns all cue points in this collection at or before the specified time.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)cuePointsAtOrBeforeTime:(CMTime)<em>time</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>time</em></dt>
+			<dd><p>The time at or before which corresponding cue points should be
+returned.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>All cue points in this collection at or before the specified time.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns all cue points in this collection at or before the specified time.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCuePointCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cuePointsAtTime:" title="cuePointsAtTime:"></a>
+	<h3 class="subsubtitle method-title">cuePointsAtTime:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns all cue points in this collection at exactly the specified time.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)cuePointsAtTime:(CMTime)<em>time</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>time</em></dt>
+			<dd><p>The time at which corresponding cue points should be returned.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>All cue points in this collection at exactly the specified time.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns all cue points in this collection at exactly the specified time.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCuePointCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cuePointsBeforeTime:" title="cuePointsBeforeTime:"></a>
+	<h3 class="subsubtitle method-title">cuePointsBeforeTime:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns all cue points in this collection before the specified time.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (instancetype)cuePointsBeforeTime:(CMTime)<em>time</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>time</em></dt>
+			<dd><p>The time before which corresponding cue points should be returned.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>All cue points in this collection before the specified time.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns all cue points in this collection before the specified time.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCuePointCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithArray:" title="initWithArray:"></a>
+	<h3 class="subsubtitle method-title">initWithArray:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Constructs and returns a BCOVCuePointCollection from the cue points in the
+specified <a href="#//api/name/array">array</a>. The returned collection will be ordered according to the
+positions of the cue points. The ordering of multiple cue points with
+the same position is not guaranteed.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithArray:(NSArray *)<em>cuePoints</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>cuePoints</em></dt>
+			<dd><p>The new cue point collection&rsquo;s cue points.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The new cue point collection with the specified cue points.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Constructs and returns a BCOVCuePointCollection from the cue points in the
+specified <a href="#//api/name/array">array</a>. The returned collection will be ordered according to the
+positions of the cue points. The ordering of multiple cue points with
+the same position is not guaranteed.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCuePointCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithCuePoint:" title="initWithCuePoint:"></a>
+	<h3 class="subsubtitle method-title">initWithCuePoint:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Constructs and returns a BCOVCuePointCollection with a single cue point.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithCuePoint:(BCOVCuePoint *)<em>cuePoint</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>cuePoint</em></dt>
+			<dd><p>The new cue point collection&rsquo;s cue point.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The new cue point collection with the specified cue point.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Constructs and returns a BCOVCuePointCollection with a single cue point.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCuePointCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isEqualToCollection:" title="isEqualToCollection:"></a>
+	<h3 class="subsubtitle method-title">isEqualToCollection:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns YES if this instance has the same cue points in the same order as
+<code>collection</code>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isEqualToCollection:(BCOVCuePointCollection *)<em>collection</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>collection</em></dt>
+			<dd><p>The collection with which to compare this instance.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Whether this instance is equivalent to <code>collection</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns YES if this instance has the same cue points in the same order as
+<code>collection</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCuePointCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/objectAtIndexedSubscript:" title="objectAtIndexedSubscript:"></a>
+	<h3 class="subsubtitle method-title">objectAtIndexedSubscript:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the cue point at the specified index, or nil if the specified index
+is greater than the highest index into the collection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BCOVCuePoint *)objectAtIndexedSubscript:(NSUInteger)<em>index</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>index</em></dt>
+			<dd><p>The index into this collection of the desired cue point.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The cue point at the specified index, or nil if this collection
+does not have a cue point at that index.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns the cue point at the specified index, or nil if the specified index
+is greater than the highest index into the collection.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCuePointCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-02-07)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

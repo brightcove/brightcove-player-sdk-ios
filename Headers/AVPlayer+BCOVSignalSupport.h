@@ -2,14 +2,17 @@
 // AVPlayer+BCOVSignalSupport.h
 // BCOVPlayerSDK
 //
-// Copyright (c) 2013 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2014 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
 #import <AVFoundation/AVFoundation.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
 
+#import "ReactiveCocoa.h"
 
+/**
+ * Adds RACSignal support to AVPlayer methods. 
+ */
 @interface AVPlayer (BCOVSignalSupport)
 
 /**

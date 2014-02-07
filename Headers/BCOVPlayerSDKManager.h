@@ -2,19 +2,21 @@
 // BCOVPlayerSDKManager.h
 // BCOVPlayerSDK
 //
-// Copyright (c) 2013 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2014 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "BCOVPlaybackController.h"
 
-@protocol BCOVPlaybackController;
-@protocol BCOVPlaybackFacade;
-@protocol BCOVPlaybackQueue;
+
+@protocol BCOVComponent;
+@protocol BCOVPlaybackSessionProvider;
 
 @class RACSignal;
+@class BCOVBasicSessionProviderOptions;
 
 
 /**
@@ -26,33 +28,52 @@
 @interface BCOVPlayerSDKManager : NSObject
 
 /**
- * Creates and returns a new playback controller with the specified playback
- * sessions and view frame. When the signal delivers a new playback session,
- * it becomes the controller's "active playback session". The frame parameter is
- * used to set the initial frame of the playback controller's view.
+ * Creates and returns a playback controller configured with a basic session
+ * provider and the specified view strategy.
  *
- * @param playbackSessions A signal of playback sessions which is used to
- * update the playback controller's current session.
- * @param frame The initial frame of the returned playback controller's view.
- * @return A new playback controller with the specified playback sessions.
+ * @param viewStrategy A view strategy that determines the view for the returned
+ * playback controller.
+ * @return A playback controller configured with the specified strategy.
  */
-- (id<BCOVPlaybackController>)createPlaybackControllerWithSessions:(RACSignal *)playbackSessions frame:(CGRect)frame;
+- (id<BCOVPlaybackController>)createPlaybackControllerWithViewStrategy:(BCOVPlaybackControllerViewStrategy)viewStrategy;
 
 /**
- * Creates and returns a new fully-configured playback facade object, whose
- * view has the specified frame.
+ * Creates and returns a playback controller configured with the specified
+ * session provider and view strategy.
  *
- * @param frame The frame desired for the facade's video view.
- * @return A new playback facade instance whose view has the specified frame.
+ * @param provider A session provider that vends playback sessions to the
+ * returned playback controller.
+ * @param viewStrategy A view strategy that determines the view for the
+ * returned playback controller.
+ * @return A playback controller configured with the specified parameters.
  */
-- (id<BCOVPlaybackFacade>)createPlaybackFacadeWithFrame:(CGRect)frame;
+- (id<BCOVPlaybackController>)createPlaybackControllerWithSessionProvider:(id<BCOVPlaybackSessionProvider>)provider viewStrategy:(BCOVPlaybackControllerViewStrategy)viewStrategy;
 
 /**
- * Creates and returns a new playback queue.
+ * Returns a basic playback session provider with the specified options.
  *
- * Return A new playback queue.
+ * @param options The options for the session provider to return.
+ * @return A basic playback session provider configured with the specified
+ * options.
  */
-- (id<BCOVPlaybackQueue>)createPlaybackQueue;
+- (id<BCOVPlaybackSessionProvider>)createBasicSessionProviderWithOptions:(BCOVBasicSessionProviderOptions *)options;
+
+/**
+ * Returns a view strategy that wraps the video view it is given with the
+ * default playback controls.
+ *
+ * @return A view strategy block that wraps the video view with controls.
+ */
+- (BCOVPlaybackControllerViewStrategy)defaultControlsViewStrategy;
+
+/**
+ * Registers the specified component object with the BCOVPlayerSDKManager. The
+ * component should implement the methods in the `BCOVComponent` protocol.
+ * Registering a component "activates it" for use, enabling its functionality.
+ *
+ * @param component The object to be registered with the BCOVPlayerSDKManager.
+ */
+- (void)registerComponent:(id<BCOVComponent>)component;
 
 /**
  * Returns the Player SDK Manager singleton.
@@ -63,3 +84,70 @@
 
 @end
 
+
+
+/**
+ * Identifies a BCOVComponent to the BCOVPlayerSDKManager.
+ */
+@protocol BCOVComponentIdentity <NSObject>
+
+/**
+ * A concrete class which uniquely identifies an object that conforms to the
+ * BCOVComponent protocol.
+ */
+@property (nonatomic, readonly) Class componentClass;
+
+/**
+ * An identifier which uniquely identifies a specific version of an object that
+ * conforms to the BCOVComponent protocol. This identifier should be updated
+ * whenever a new version of the component is released, to help in identifying
+ * which specific components have been registered with the BCOVPlayerSDKManager.
+ */
+@property (nonatomic, readonly) NSString *versionIdentifier;
+
+@end
+
+
+
+/**
+ * Objects which must be registered with the BCOVPlayerSDKManager in order to
+ * activate their functionality should conform to the BCOVComponent protocol.
+ */
+@protocol BCOVComponent <NSObject>
+
+/**
+ * Uniquely identifies this component with the returned component identity.
+ */
+@property (nonatomic, readonly) id<BCOVComponentIdentity> bcov_componentIdentity;
+
+
+@optional
+
+/**
+ * This method allows the BCOVPlayerSDKManager to supply contextual information
+ * to this component when it is registered.
+ *
+ * @param componentContext The contextual information to be communicated to this component.
+ */
+- (void)bcov_setComponentContext:(NSDictionary *)componentContext;
+
+@end
+
+
+
+
+@protocol BCOVPlaybackFacade;
+
+@interface BCOVPlayerSDKManager (Deprecated)
+
+- (id<BCOVPlaybackController>)createPlaybackControllerWithFrame:(CGRect)frame __attribute((deprecated("Use -[BCOVPlayerSDKManager createPlaybackControllerWithViewStrategy:] instead")));
+- (id<BCOVPlaybackFacade>)createPlaybackFacadeWithFrame:(CGRect)frame __attribute((deprecated("Use -[BCOVPlayerSDKManager createPlaybackControllerWithViewStrategy:] instead")));
+- (id<BCOVPlaybackController>)createPlaybackControllerWithSessions:(RACSignal *)playbackSessions frame:(CGRect)frame __attribute((deprecated("Use -[BCOVPlayerSDKManager createPlaybackControllerWithSessionProvider:viewStrategy:] instead")));
+
+@end
+
+@interface BCOVPlayerSDKManager (Unavailable)
+
+- (id)createPlaybackQueue __attribute((unavailable("Create a BCOVPlaybackController instead")));
+
+@end

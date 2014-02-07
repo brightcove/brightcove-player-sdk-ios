@@ -2,7 +2,7 @@
 // BCOVPlaylist.h
 // BCOVPlayerSDK
 //
-// Copyright (c) 2013 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2014 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -74,7 +74,7 @@
  *
  * @param videos The video contents of this playlist.
  * @param properties The metadata or other properties related to this playlist.
- * @return
+ * @return A new playlist with the specified videos.
  */
 - (id)initWithVideos:(NSArray *)videos properties:(NSDictionary *)properties;
 
@@ -89,7 +89,7 @@
 /**
  * Constructs a new playlist with the specified video and properties.
  *
- * @param videos The video contents of this playlist.
+ * @param video The video contents of this playlist.
  * @param properties The metadata or other properties related to this playlist.
  * @return A new playlist with the specified video and properties.
  */
@@ -98,7 +98,7 @@
 /**
  * Constructs a new playlist with the specified video.
  *
- * @param videos The video contents of this playlist.
+ * @param video The video contents of this playlist.
  * @return A new playlist with the specified video.
  */
 - (id)initWithVideo:(BCOVVideo *)video;

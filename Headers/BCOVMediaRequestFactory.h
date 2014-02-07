@@ -2,7 +2,7 @@
 // BCOVMediaRequestFactory.h
 // BCOVPlayerSDK
 //
-// Copyright (c) 2013 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2014 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -53,7 +53,7 @@
 - (id)initWithToken:(NSString *)token baseURLString:(NSString *)baseURLString;
 
 /**
- * Constructs a request for a playlist by the playlist id.  This request will include
+ * Constructs a request for a playlist by the playlist id. This request will include
  * the video_fields specified by defaultVideoFields.
  *
  * @param playlistId id of the playlist to request
@@ -62,7 +62,7 @@
 - (NSURLRequest *)requestPlaylistWithPlaylistID:(NSString *)playlistId;
 
 /**
- * Constructs a request for a playlist by the playlist id.  This request will include
+ * Constructs a request for a playlist by the playlist id. This request will include
  * the video_fields specified by defaultVideoFields.
  *
  * @param playlistId id of the playlist to request
@@ -73,7 +73,7 @@
 - (NSURLRequest *)requestPlaylistWithPlaylistID:(NSString *)playlistId parameters:(NSDictionary *)parameters;
 
 /**
- * Constructs a request for a playlist by the reference id.  This request will include
+ * Constructs a request for a playlist by the reference id. This request will include
  * the video_fields specified by defaultVideoFields.
  *
  * @param referenceId reference id of the playlist to request
@@ -82,7 +82,7 @@
 - (NSURLRequest *)requestPlaylistWithReferenceID:(NSString *)referenceId;
 
 /**
- * Constructs a request for a playlist by the reference id.  This request will include
+ * Constructs a request for a playlist by the reference id. This request will include
  * the video_fields specified by defaultVideoFields.
  *
  * @param referenceId reference id of the playlist to request
@@ -93,7 +93,7 @@
 - (NSURLRequest *)requestPlaylistWithReferenceID:(NSString *)referenceId parameters:(NSDictionary *)parameters;
 
 /**
- * Constructs a request for a video by the video id.  This request will include
+ * Constructs a request for a video by the video id. This request will include
  * the video_fields specified by defaultVideoFields.
  *
  * @param videoId id of the video to request
@@ -102,7 +102,7 @@
 - (NSURLRequest *)requestVideoWithVideoID:(NSString *)videoId;
 
 /**
- * Constructs a request for a video by the video id.  This request will include
+ * Constructs a request for a video by the video id. This request will include
  * the video_fields specified by defaultVideoFields.
  *
  * @param videoId id of the video to request
@@ -113,7 +113,7 @@
 - (NSURLRequest *)requestVideoWithVideoID:(NSString *)videoId parameters:(NSDictionary *)parameters;
 
 /**
- * Constructs a request for a video by the video id.  This request will include
+ * Constructs a request for a video by the video id. This request will include
  * the video_fields specified by defaultVideoFields.
  *
  * @param referenceId reference id of the video to request
@@ -122,7 +122,7 @@
 - (NSURLRequest *)requestVideoWithReferenceID:(NSString *)referenceId;
 
 /**
- * Constructs a request for a video by the reference id.  This request will include
+ * Constructs a request for a video by the reference id. This request will include
  * the video_fields specified by defaultVideoFields.
  *
  * @param referenceId reference id of the video to request
