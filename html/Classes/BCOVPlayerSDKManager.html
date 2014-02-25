@@ -50,6 +50,8 @@
 	
 	<option value="//api/name/createBasicSessionProviderWithOptions:">&nbsp;&nbsp;&nbsp;&nbsp;- createBasicSessionProviderWithOptions:</option>
 	
+	<option value="//api/name/createPlaybackController">&nbsp;&nbsp;&nbsp;&nbsp;- createPlaybackController</option>
+	
 	<option value="//api/name/createPlaybackControllerWithFrame:">&nbsp;&nbsp;&nbsp;&nbsp;- createPlaybackControllerWithFrame:</option>
 	
 	<option value="//api/name/createPlaybackControllerWithSessionProvider:viewStrategy:">&nbsp;&nbsp;&nbsp;&nbsp;- createPlaybackControllerWithSessionProvider:viewStrategy:</option>
@@ -105,6 +107,8 @@
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createBasicSessionProviderWithOptions:">createBasicSessionProviderWithOptions:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createPlaybackController">createPlaybackController</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createPlaybackControllerWithFrame:">createPlaybackControllerWithFrame:</a></span></li>
 	
@@ -179,6 +183,12 @@ of other objects from the Player SDK ecosystem.</p>
 
 						<ul class="task-list">
 							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/createPlaybackController">&ndash;&nbsp;createPlaybackController</a></code>
+	</span>
+	
+	
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/createPlaybackControllerWithViewStrategy:">&ndash;&nbsp;createPlaybackControllerWithViewStrategy:</a></code>
 	</span>
@@ -381,6 +391,56 @@ options.</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/createPlaybackController" title="createPlaybackController"></a>
+	<h3 class="subsubtitle method-title">createPlaybackController</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates and returns a playback controller configured with a basic session
+provider and a default view strategy (equivalent to calling
+<code>[BCOVPlayerSDKManager createPlaybackControllerWithViewStrategy:nil]</code>).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt;)createPlaybackController</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A playback controller.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates and returns a playback controller configured with a basic session
+provider and a default view strategy (equivalent to calling
+<code>[BCOVPlayerSDKManager createPlaybackControllerWithViewStrategy:nil]</code>).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVPlayerSDKManager.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/createPlaybackControllerWithFrame:" title="createPlaybackControllerWithFrame:"></a>
 	<h3 class="subsubtitle method-title">createPlaybackControllerWithFrame:</h3>
 	
@@ -475,7 +535,9 @@ session provider and view strategy.</p>
 	
 	<div class="method-subsection brief-description">
 		<p>Creates and returns a playback controller configured with a basic session
-provider and the specified view strategy.</p>
+provider and the specified view strategy. Passing <code>nil</code> as the view strategy
+will configure the returned playback controller&rsquo;s <code>view</code> property as a basic
+unadorned video view.</p>
 	</div>		
 	
     
@@ -509,7 +571,9 @@ playback controller.</p></dd>
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Creates and returns a playback controller configured with a basic session
-provider and the specified view strategy.</p>
+provider and the specified view strategy. Passing <code>nil</code> as the view strategy
+will configure the returned playback controller&rsquo;s <code>view</code> property as a basic
+unadorned video view.</p>
 	</div>
 	
 	
@@ -569,7 +633,7 @@ default playback controls.</p>
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>A view strategy block that wraps the video view with controls.</p>
+		<p>A view strategy block that wraps the video view with stock controls.</p>
 	</div>
 	
 	
@@ -580,6 +644,9 @@ default playback controls.</p>
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Returns a view strategy that wraps the video view it is given with the
 default playback controls.</p>
+
+<p>This view strategy is intended to provide a &ldquo;stock&rdquo; set of controls to aide
+development, testing, and Brightcove code samples.</p>
 	</div>
 	
 	
@@ -666,7 +733,7 @@ Registering a component &ldquo;activates it&rdquo; for use, enabling its functio
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-02-07)</span><br />
+						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-02-25)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 961)</a>.</span></p>
 						

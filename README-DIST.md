@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 4.1.4.355
+# Brightcove Player SDK for iOS, version 4.1.5.398
 
 Quick Start
 ===========
@@ -195,6 +195,10 @@ The `BCOVPlayerSDKManager` provides a view strategy that creates rudimentary con
 **How do I retrieve data from the Brightcove Media API for which there is no `BCOVCatalogService` method?**
 
 The catalog service offers methods for the most common Brightcove Media API operations, but there are [other operations][media] available. To leverage them, you will need to issue an HTTP request and then process the response. You can use a standard NSURLRequest to do this, or you can leverage a [3rd-party HTTP API][afnet] if you find that easier. In either case, when you receive the response, you can use a standard JSON parser (like NSJSONSerialization) to convert the response into a NSDictionary, and then construct the appropriate value classes from the data in the NSDictionary.
+
+**Why do I see a message in the log indicating that no source has been found?**
+
+This message indicates that the default source selection policy can't figure which source to pick. The default policy selects the first source whose `deliveryMethod` is `kBCOVSourceDeliveryHLS` ("HLS"). If no HLS source is found, its fallback behavior will select the first source whose `deliveryMethod` is `kBCOVSourceDeliveryMP4` ("MP4"). If no source with a `deliveryMethod` of "HLS" or "MP4" exists on the video, the playback controller will advance to the next playback session. When retrieving videos from the catalog service, most of the time the correct source will be chosen. If you aren't happy with it's selection, you can use `-[BCOVPlayerSDKManager createBasicSessionProviderWithOptions:]` and pass in a instance of `BCOVBasicSessionProviderOptions` with the appropriate `sourceSelectionPolicy` property set. If you are creating videos and sources manually, ensure that the sources are created with the appropriate `deliveryMethod`.
 
 [media]: http://docs.brightcove.com/en/video-cloud/media/
 [afnet]: http://afnetworking.com

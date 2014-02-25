@@ -24,6 +24,7 @@ extern NSString * const kBCOVCatalogJSONKeyReferenceId;
 extern NSString * const kBCOVCatalogJSONKeyRenditions;
 extern NSString * const kBCOVCatalogJSONKeyRenditionContainer;
 extern NSString * const kBCOVCatalogJSONKeyRenditionURL;
+extern NSString * const kBCOVCatalogJSONKeyRenditionRemoteURL;
 extern NSString * const kBCOVCatalogJSONKeyShortDescription;
 extern NSString * const kBCOVCatalogJSONKeyTime;
 extern NSString * const kBCOVCatalogJSONKeyTypeEnum;

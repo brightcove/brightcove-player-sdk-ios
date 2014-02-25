@@ -29,7 +29,18 @@
 
 /**
  * Creates and returns a playback controller configured with a basic session
- * provider and the specified view strategy.
+ * provider and a default view strategy (equivalent to calling
+ * `-[BCOVPlayerSDKManager createPlaybackControllerWithViewStrategy:nil]`).
+ *
+ * @return A playback controller.
+ */
+- (id<BCOVPlaybackController>)createPlaybackController;
+
+/**
+ * Creates and returns a playback controller configured with a basic session
+ * provider and the specified view strategy. Passing `nil` as the view strategy
+ * will configure the returned playback controller's `view` property as a basic
+ * unadorned video view.
  *
  * @param viewStrategy A view strategy that determines the view for the returned
  * playback controller.
@@ -62,7 +73,10 @@
  * Returns a view strategy that wraps the video view it is given with the
  * default playback controls.
  *
- * @return A view strategy block that wraps the video view with controls.
+ * This view strategy is intended to provide a "stock" set of controls to aide
+ * development, testing, and Brightcove code samples.
+ *
+ * @return A view strategy block that wraps the video view with stock controls.
  */
 - (BCOVPlaybackControllerViewStrategy)defaultControlsViewStrategy;
 

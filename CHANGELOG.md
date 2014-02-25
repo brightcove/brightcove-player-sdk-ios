@@ -1,3 +1,16 @@
+# 4.1.5
+
+### Breaking Changes
+* This release introduces an improved default source selection policy, and a mechanism to override the default source selection. Prior to 4.1.5, the default policy would select the first source on each video, regardless of the source's `url` or `deliveryMethod` properties. In 4.1.5, the default policy now selects the first source whose `deliveryMethod` is `kBCOVSourceDeliveryHLS` ("HLS"). If no HLS source is found, its fallback behavior will select the first source whose `deliveryMethod` is `kBCOVSourceDeliveryMP4` ("MP4"). If no source with a `deliveryMethod` of "HLS" or "MP4" exists on the video, the playback controller will advance to the next playback session. Most videos retrieved via BCOVCatalogService will have the expected sources.
+* UIViews are prohibited from being added as children of the playback controller's video view.
+	
+### Additions and Improvements
+* Added the `-[BCOVPlayerSDKManager createPlaybackController]` convenience overload for when a view strategy isn't needed.
+* Fixed a bug to ensure the elapsed time label on the default controls is reset when advancing to a new session.
+* Fixed video engagement reporting for Brightcove Analytics.
+* Fixed a bug that prevented listeners for BCOVCuePoints of type `kBCOVCuePointPositionTypeAfter` from firing when advancing to a new session.
+* Fixed a harmless bug where BCOVPlayerSDKManager could redundantly register components.
+
 # 4.1.4
 
 ### Breaking Changes

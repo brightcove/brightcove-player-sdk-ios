@@ -26,7 +26,7 @@
 
 /**
  * Typedef for a view strategy given to a playback controller to construct its
- * `view` property
+ * `view` property.
  *
  * A view strategy is simply a block that takes two parameters, a UIView and a
  * BCOVPlaybackController, and returns a UIView. It is used to
