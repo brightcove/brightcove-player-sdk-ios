@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 4.1.5.398
+# Brightcove Player SDK for iOS, version 4.1.6.415
 
 Quick Start
 ===========
@@ -198,7 +198,7 @@ The catalog service offers methods for the most common Brightcove Media API oper
 
 **Why do I see a message in the log indicating that no source has been found?**
 
-This message indicates that the default source selection policy can't figure which source to pick. The default policy selects the first source whose `deliveryMethod` is `kBCOVSourceDeliveryHLS` ("HLS"). If no HLS source is found, its fallback behavior will select the first source whose `deliveryMethod` is `kBCOVSourceDeliveryMP4` ("MP4"). If no source with a `deliveryMethod` of "HLS" or "MP4" exists on the video, the playback controller will advance to the next playback session. When retrieving videos from the catalog service, most of the time the correct source will be chosen. If you aren't happy with it's selection, you can use `-[BCOVPlayerSDKManager createBasicSessionProviderWithOptions:]` and pass in a instance of `BCOVBasicSessionProviderOptions` with the appropriate `sourceSelectionPolicy` property set. If you are creating videos and sources manually, ensure that the sources are created with the appropriate `deliveryMethod`.
+This message indicates that the default source selection policy can't figure which source to pick. The default policy selects the first source whose `deliveryMethod` is `kBCOVSourceDeliveryHLS` ("HLS"). If no HLS source is found, its fallback behavior will select the first source whose `deliveryMethod` is `kBCOVSourceDeliveryMP4` ("MP4"). If no source with a `deliveryMethod` of "HLS" or "MP4" exists on the video, the policy will select the video's first source (regardless of `deliveryMethod`). If you aren't happy with its selection, you can use `-[BCOVPlayerSDKManager createBasicSessionProviderWithOptions:]` and pass in an instance of `BCOVBasicSessionProviderOptions` with a custom `sourceSelectionPolicy` property set. When creating videos and sources manually, ensure that the sources are created with the appropriate `deliveryMethod`.
 
 [media]: http://docs.brightcove.com/en/video-cloud/media/
 [afnet]: http://afnetworking.com

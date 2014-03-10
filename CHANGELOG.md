@@ -1,3 +1,12 @@
+# 4.1.6
+
+### Breaking Changes
+* We reversed one change introduced in 4.1.5: if no BCOVSource with a HLS or MP4 `deliveryMethod` is found in a given playback session's BCOVVideo, the default source selection policy will select the first of the video's sources. We made this reversal due to the number of customers who reported that their videos  failed to play (because none of the sources in those videos had the expected `deliveryMethod`). This means that, as of 4.1.6, if you are not using a custom source selection policy, the playback controller will *not* advance to the next video if it cannot find an HLS or MP4 source in the current video; it will attempt to use the first source regardless of its delivery method.
+
+### Additions and Improvements
+* Automatically advance to the next playback session if the current playback session has no video, or if its video has no sources.
+* Fixed a bug in which a video with a single cue point could cause a crash.
+
 # 4.1.5
 
 ### Breaking Changes
