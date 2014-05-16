@@ -126,6 +126,6 @@
  *
  * @return The number of videos in this instance.
  */
-- (int)count;
+- (NSUInteger)count;
 
 @end

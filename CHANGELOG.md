@@ -1,3 +1,16 @@
+# 4.1.7
+
+### Breaking Changes
+* The return type of `-[BCOVPlaylist count]` has been corrected to return a value of type `NSUInteger` (previously it returned a value of type `int`).
+
+### Additions and Improvements
+* Added an `arm-64` architecture slice to the static library, for applications that wish to target the 64-bit architecture.
+* Introduced a new class, BCOVCuePointProgressPolicy. This class isn't used directly by the Brightcove Player SDK for iOS at this time, but may be used in plugins.
+* Fixed a bug in the firing of cue point events of type `kBCOVCuePointPositionTypeAfter`.
+* The SDK now correctly reports the `video_name` and `device_type` parameters to Brightcove Video Cloud Analytics.
+* NSOperationQueues used internally within the SDK are now given more useful logical names, to help with debugging code that executes in the queue.
+* Fixed a bug in which the `kBCOVPlaybackSessionLifecycleEventPlay` lifecycle event would fire multiple times in response to the AVPlayer/s `rate` being set to a nonzero value more than once.
+
 # 4.1.6
 
 ### Breaking Changes

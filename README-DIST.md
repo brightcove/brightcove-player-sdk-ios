@@ -1,10 +1,9 @@
-# Brightcove Player SDK for iOS, version 4.1.6.415
+# Brightcove Player SDK for iOS, version 4.1.7.520
 
 Quick Start
 ===========
-Playing video with the Brightcove Player SDK for iOS, in 20 lines of code:
+Playing video with the Brightcove Player SDK for iOS, in less than 20 lines of code:
 
-    CGRect frame;         // (desired frame of video player view)
     NSString *token;      // (Brightcove Media API token with URL access)
     NSString *playlistID; // (ID of the playlist you wish to use)
     
@@ -168,37 +167,27 @@ Again, for most use cases it should suffice to not use a view strategy at all. J
 
 There is one caveat to using a view strategy: you must not access the playback controller's `view` property from within the view strategy block. Since the block is being called *because* the playback controller's `view` property was accessed for the first time, accessing the `view` property again *within* the view strategy block could cause a rip in the fabric of space and time, and your program will crash.
 
-ReactiveCocoa
------
-The Player SDK for iOS is built on top of the [ReactiveCocoa framework][RAC], abbreviated as "RAC". ReactiveCocoa is an incredibly powerful tool for managing complexity in heavily event-driven Objective-C code. Although competency with ReactiveCocoa is not required to use the Player SDK for iOS, it may be helpful to be aware that it is being used internally, and some of the more powerful APIs in the SDK are exposed with ReactiveCocoa concepts. 
-
-[RAC]: https://github.com/ReactiveCocoa/ReactiveCocoa
-
 Frequently Asked Questions
 ==========================
-**Why build the Player SDK for iOS on ReactiveCocoa?**
-
-ReactiveCocoa brings enormous powers to  Objective-C developers. The problem domain of video playback involves a highly stateful and complex environment with numerous asynchronous events. ReactiveCocoa helps us tame this complexity, minimize shared mutable state, and maintain clean isolation between different areas of our codebase. A thorough understanding of ReactiveCocoa is not necessary to make use of the basic functionality of the Player SDK for iOS, but we do encourage developers to explore what the framework has to offer, and we will continue to develop more sophisticated functionality with its signals-based API and conceptual approach.
-
 **My content won't load. Is there an easy way to test whether the URL points to a valid video?**
 
 If the content is packaged as MP4, you can paste the URL directly into most web browsers, and the video should play (or download to your filesystem, where you can play it locally). If the content is packaged as HLS, you can use QuickTime Player to test it: select `File -> Open Location…` and paste in the `.m3u8` playlist URL, and the video should play.
 
 **I can hear the audio track playing, but the video freezes for a few seconds sporadically. What's happening?**
 
-This is a common symptom of having called a main thread-only UIKit or AVFoundation method from a non-main thread. Remember that most signals (including all `BCOVPlaybackSession` and `BCOVCatalogService` signals) deliver their values on a background scheduler by default, so you must explicitly deliver them onto the main thread scheduler (using `-[RACSignal deliverOn:]`) before calling those APIs if you are using signal subscriptions instead of a `BCOVPlaybackControllerDelegate` (whose delegate methods are always called on the main thread).
+This is a common symptom of having called a main thread-only UIKit or AVFoundation method from a non-main thread. If you are using a playback session method that returns a RACSignal, realize that most signals (including all `BCOVPlaybackSession` and `BCOVCatalogService` signals) deliver their values on a background scheduler by default, so you must explicitly deliver them onto the main thread scheduler (using `-[RACSignal deliverOn:]`). The corresponding delegate methods on `BCOVPlaybackControllerDelegate` are always called on the main thread.
 
 **How do I customize the controls?**
 
-The `BCOVPlayerSDKManager` provides a view strategy that creates rudimentary controls for development purposes, but they are not designed for extension or modification. To differentiate your app and ensure a unique user experience, we recommend that you create your own custom controls from scratch. If your needs are simple enough, you can add the `BCOVPlaybackController.view` to a UIView behind your custom controls and implement the `BCOVPlaybackControllerDelegate` methods to update the controls in response to various playback events. Or, you can implement a `BCOVPlaybackSessionConsumer` and add it to the playback controller's list of session consumers, and subscribe to signals on the sessions to do the same thing. If your needs are more complex (such as if you are integrating with an advertising plugin) then you can implement a view strategy as described in the section on view strategies, above.
+The `BCOVPlayerSDKManager` provides a view strategy that creates rudimentary controls for development purposes, but they are not designed for extension or modification. To differentiate your app and ensure a unique user experience, we recommend that you create your own custom controls from scratch. For most cases, you can add the `BCOVPlaybackController.view` to a UIView behind your own custom controls, and implement the `BCOVPlaybackControllerDelegate` methods to update the controls in response to various playback events. If your needs are more complex (such as if you are integrating with an advertising plugin) then you can implement a view strategy as described in the section on view strategies, above.
 
 **How do I retrieve data from the Brightcove Media API for which there is no `BCOVCatalogService` method?**
 
 The catalog service offers methods for the most common Brightcove Media API operations, but there are [other operations][media] available. To leverage them, you will need to issue an HTTP request and then process the response. You can use a standard NSURLRequest to do this, or you can leverage a [3rd-party HTTP API][afnet] if you find that easier. In either case, when you receive the response, you can use a standard JSON parser (like NSJSONSerialization) to convert the response into a NSDictionary, and then construct the appropriate value classes from the data in the NSDictionary.
 
+[media]: http://docs.brightcove.com/en/video-cloud/media/
+[afnet]: http://afnetworking.com
+
 **Why do I see a message in the log indicating that no source has been found?**
 
 This message indicates that the default source selection policy can't figure which source to pick. The default policy selects the first source whose `deliveryMethod` is `kBCOVSourceDeliveryHLS` ("HLS"). If no HLS source is found, its fallback behavior will select the first source whose `deliveryMethod` is `kBCOVSourceDeliveryMP4` ("MP4"). If no source with a `deliveryMethod` of "HLS" or "MP4" exists on the video, the policy will select the video's first source (regardless of `deliveryMethod`). If you aren't happy with its selection, you can use `-[BCOVPlayerSDKManager createBasicSessionProviderWithOptions:]` and pass in an instance of `BCOVBasicSessionProviderOptions` with a custom `sourceSelectionPolicy` property set. When creating videos and sources manually, ensure that the sources are created with the appropriate `deliveryMethod`.
-
-[media]: http://docs.brightcove.com/en/video-cloud/media/
-[afnet]: http://afnetworking.com

@@ -143,6 +143,14 @@
 - (instancetype)cuePointsAtOrAfterTime:(CMTime)lowerBound atOrBeforeTime:(CMTime)upperBound;
 
 /**
+ * Returns all cue points in this collection of the specified type.
+ *
+ * @param type The type of cue points to be returned.
+ * @return All cue points in this collection, of the specified type.
+ */
+- (instancetype)cuePointsOfType:(NSString *)type;
+
+/**
  * Returns YES if this instance has the same cue points in the same order as
  * `collection`.
  *

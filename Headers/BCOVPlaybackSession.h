@@ -213,4 +213,3 @@ extern const NSInteger kBCOVPlaybackSessionErrorCodeLoadFailed;
 + (instancetype)eventWithType:(NSString *)eventType;
 
 @end
-

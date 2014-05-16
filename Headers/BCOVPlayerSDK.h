@@ -15,6 +15,7 @@
 // Playback
 #import "AVPlayer+BCOVSignalSupport.h"
 #import "BCOVBasicSessionProvider.h"
+#import "BCOVCuePointProgressPolicy.h"
 #import "BCOVDelegatingSessionConsumer.h"
 #import "BCOVPlaybackController.h"
 #import "BCOVPlaybackSession.h"
