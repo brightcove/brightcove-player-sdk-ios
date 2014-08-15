@@ -4,6 +4,9 @@ This is the Brightcove Player SDK for iOS distribution repository. Each release 
 
 There is also a [Google group][group] for questions and discussion of Brightcove's Native Player SDKs.
 
+The [`README-DIST.md`][dist] describes the architecture of the Player SDK, and provides a Quick Start and FAQ.
+
 [releasezips]: https://github.com/brightcove/brightcove-player-sdk-ios/releases
-[podspec]: https://github.com/CocoaPods/Specs/tree/master/Brightcove-Player-SDK
+[podspec]: https://github.com/CocoaPods/Specs/tree/master/Specs/Brightcove-Player-SDK
 [group]: https://groups.google.com/forum/#!forum/brightcove-native-player-sdks
+[dist]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/README-DIST.md
