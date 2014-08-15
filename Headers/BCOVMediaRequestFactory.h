@@ -33,7 +33,7 @@
  * @param token A Video Cloud Media API token.
  * @return The initialized BCOVMediaRequestFactory.
  */
-- (id)initWithToken:(NSString *)token;
+- (instancetype)initWithToken:(NSString *)token;
 
 /**
  * Returns an initialized instance with the specified token and base URL string.
@@ -50,7 +50,7 @@
  * parameters should be appended in URLs returned by this instance.
  * @return The initialized BCOVMediaRequestFactory.
  */
-- (id)initWithToken:(NSString *)token baseURLString:(NSString *)baseURLString;
+- (instancetype)initWithToken:(NSString *)token baseURLString:(NSString *)baseURLString;
 
 /**
  * Constructs a request for a playlist by the playlist id. This request will include

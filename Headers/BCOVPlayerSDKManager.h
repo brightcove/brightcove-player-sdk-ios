@@ -162,6 +162,6 @@
 
 @interface BCOVPlayerSDKManager (Unavailable)
 
-- (id)createPlaybackQueue __attribute((unavailable("Create a BCOVPlaybackController instead")));
+- (instancetype)createPlaybackQueue __attribute((unavailable("Create a BCOVPlaybackController instead")));
 
 @end

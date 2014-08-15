@@ -104,7 +104,7 @@
  * @param position The position of the new cue point.
  * @return A new cue point with the specified type and position.
  */
-- (id)initWithType:(NSString *)type position:(CMTime)position;
+- (instancetype)initWithType:(NSString *)type position:(CMTime)position;
 
 /**
  * Constructs a new cue point with the specified type, position, and properties.
@@ -114,7 +114,7 @@
  * @param properties The properties of the new cue point.
  * @return A new cue point with the specified type, position, and properties.
  */
-- (id)initWithType:(NSString *)type position:(CMTime)position properties:(NSDictionary *)properties;
+- (instancetype)initWithType:(NSString *)type position:(CMTime)position properties:(NSDictionary *)properties;
 
 /**
  * Returns an NSComparisionResult indicating whether this cue point's position

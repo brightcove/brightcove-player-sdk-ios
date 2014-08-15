@@ -202,6 +202,12 @@ playback session. Playback sessions are never reused for multiple videos
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/terminate">&ndash;&nbsp;terminate</a></code>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/cuePoints">&ndash;&nbsp;cuePoints</a></code>
 	</span>
 	
@@ -227,12 +233,6 @@ playback session. Playback sessions are never reused for multiple videos
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/progress">&ndash;&nbsp;progress</a></code>
-	</span>
-	
-	<span class="task-item-suffix">required method</span>
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/terminate">&ndash;&nbsp;terminate</a></code>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
@@ -428,81 +428,10 @@ playback session. Playback sessions are never reused for multiple videos
 	<h3 class="subsubtitle method-title">cuePoints</h3>
 	
 	
-	
-	<div class="method-subsection brief-description">
-		<p>Sends a dictionary for each cue point event that is sent after subscription.
-Events will occur regardless of whether the playhead passes the cue point
-time for standard <a href="#//api/name/progress">progress</a> (playback), or seeking (forward or backward)
-through the media. When a delegate is set on a playback controller, this
-method will only be called for future cue point events (any events that have
-already occurred will not be reported).</p>
-	</div>		
-	
-    
 
 	<div class="method-subsection method-declaration"><code>- (RACSignal *)cuePoints</code></div>
 
     
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>A signal sending the cue point events in this session.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Sends a dictionary for each cue point event that is sent after subscription.
-Events will occur regardless of whether the playhead passes the cue point
-time for standard <a href="#//api/name/progress">progress</a> (playback), or seeking (forward or backward)
-through the media. When a delegate is set on a playback controller, this
-method will only be called for future cue point events (any events that have
-already occurred will not be reported).</p>
-
-<p>If multiple cue points are registered to a time or times that fall between
-the &ldquo;previous time&rdquo; and &ldquo;current time&rdquo; for a cue point event, all cue points
-after the &ldquo;previous time&rdquo; and before or on &ldquo;current time&rdquo; will be included
-in the cue point collection. Put differently, multiple cue points at the
-same time are aggregated into a single cue point event whose collection will
-contain all of those cue points. The most likely scenario in which this
-would happen is when seeking across a time range that includes multiple cue
-points (potentially at different times) &ndash; this will result in a single cue
-point event whose previous time is the point at which seek began, whose
-current time is the destination of the seek, and whose cue points are all of
-the cue points whose time fell within that range.</p>
-
-<p>The dictionary contains the following keys and values:</p>
-
-<p>kBCOVPlaybackSessionEventKeyCuePoints: the cue point collection of all
-cue point objects whose time is after the previous <a href="#//api/name/progress">progress</a> time interval,
-but before or on the current <a href="#//api/name/progress">progress</a> time interval.
-kBCOVPlaybackSessionEventKeyPreviousTime: the <a href="#//api/name/progress">progress</a> interval immediately
-preceding the cue point event.
-kBCOVPlaybackSessionEventKeyCurrentTime: the current <a href="#//api/name/progress">progress</a> interval (at
-which the cue point event is sent).</p>
-
-<p>This signal does not make guarantees about the scheduler on which it sends
-its values. Clients must explicitly deliver its events to the main thread
-scheduler (or another scheduler) if requirements dictate.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
-	</div>				
-	
-	
 </div>
 						
 						<div class="section-method">
@@ -510,54 +439,10 @@ scheduler (or another scheduler) if requirements dictate.</p>
 	<h3 class="subsubtitle method-title">durationChanges</h3>
 	
 	
-	
-	<div class="method-subsection brief-description">
-		<p>Sends a CMTime (wrapped in an NSValue) representing the new duration of
-this session&rsquo;s player&rsquo;s item. Sends the most recently-set duration on
-subscription.</p>
-	</div>		
-	
-    
 
 	<div class="method-subsection method-declaration"><code>- (RACSignal *)durationChanges</code></div>
 
     
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>A signal sending the duration changes for this session&rsquo;s <a href="#//api/name/player">player</a>
-item.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Sends a CMTime (wrapped in an NSValue) representing the new duration of
-this session&rsquo;s player&rsquo;s item. Sends the most recently-set duration on
-subscription.</p>
-
-<p>This signal does not make guarantees about the scheduler on which it sends
-its values. Clients must explicitly deliver its events to the main thread
-scheduler (or another scheduler) if requirements dictate.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
-	</div>				
-	
-	
 </div>
 						
 						<div class="section-method">
@@ -565,54 +450,10 @@ scheduler (or another scheduler) if requirements dictate.</p>
 	<h3 class="subsubtitle method-title">isExternalPlaybackActive</h3>
 	
 	
-	
-	<div class="method-subsection brief-description">
-		<p>Sends a Boolean (wrapped in an NSNumber) representing whether external
-playback was enabled for this session. Sends the most recently-set external
-playback configuration on subscription.</p>
-	</div>		
-	
-    
 
 	<div class="method-subsection method-declaration"><code>- (RACSignal *)isExternalPlaybackActive</code></div>
 
     
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>A signal sending the external playback status changes for this
-session.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Sends a Boolean (wrapped in an NSNumber) representing whether external
-playback was enabled for this session. Sends the most recently-set external
-playback configuration on subscription.</p>
-
-<p>This signal does not make guarantees about the scheduler on which it sends
-its values. Clients must explicitly deliver its events to the main thread
-scheduler (or another scheduler) if requirements dictate.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
-	</div>				
-	
-	
 </div>
 						
 						<div class="section-method">
@@ -620,56 +461,10 @@ scheduler (or another scheduler) if requirements dictate.</p>
 	<h3 class="subsubtitle method-title">lifecycle</h3>
 	
 	
-	
-	<div class="method-subsection brief-description">
-		<p>Sends a <a href="../Classes/BCOVPlaybackSessionLifecycleEvent.html">BCOVPlaybackSessionLifecycleEvent</a> representing a lifecycle change
-event for this session. This is a hot signal, meaning that events that have
-already been sent will not be re-sent for new subscribers.</p>
-	</div>		
-	
-    
 
 	<div class="method-subsection method-declaration"><code>- (RACSignal *)lifecycle</code></div>
 
     
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>A signal sending the lifecycle change events for this session, or
-an error if this session encounters a lifecycle error.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Sends a <a href="../Classes/BCOVPlaybackSessionLifecycleEvent.html">BCOVPlaybackSessionLifecycleEvent</a> representing a lifecycle change
-event for this session. This is a hot signal, meaning that events that have
-already been sent will not be re-sent for new subscribers.</p>
-
-<p>Sends an error if the session enters an unrecoverable error state.</p>
-
-<p>This signal does not make guarantees about the scheduler on which it sends
-its values. Clients must explicitly deliver its events to the main thread
-scheduler (or another scheduler) if requirements dictate.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
-	</div>				
-	
-	
 </div>
 						
 						<div class="section-method">
@@ -677,51 +472,10 @@ scheduler (or another scheduler) if requirements dictate.</p>
 	<h3 class="subsubtitle method-title">progress</h3>
 	
 	
-	
-	<div class="method-subsection brief-description">
-		<p>Sends a CMTime (wrapped in an NSValue) representing the current playhead
-position for each progress event after subscription.</p>
-	</div>		
-	
-    
 
 	<div class="method-subsection method-declaration"><code>- (RACSignal *)progress</code></div>
 
     
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>A signal sending the session progress.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Sends a CMTime (wrapped in an NSValue) representing the current playhead
-position for each progress event after subscription.</p>
-
-<p>This signal does not make guarantees about the scheduler on which it sends
-its values. Clients must explicitly deliver its events to the main thread
-scheduler (or another scheduler) if requirements dictate.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
-	</div>				
-	
-	
 </div>
 						
 						<div class="section-method">
@@ -731,9 +485,8 @@ scheduler (or another scheduler) if requirements dictate.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Terminates this playback session, completing all of its playback event
-signals and indicating readiness for a new session to be dequeued. A
-terminated playback session should be discarded immediately.</p>
+		<p>Terminates this playback session, indicating readiness for a new session to
+be dequeued. A terminated playback session should be discarded immediately.</p>
 	</div>		
 	
     
@@ -750,9 +503,8 @@ terminated playback session should be discarded immediately.</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Terminates this playback session, completing all of its playback event
-signals and indicating readiness for a new session to be dequeued. A
-terminated playback session should be discarded immediately.</p>
+		<p>Terminates this playback session, indicating readiness for a new session to
+be dequeued. A terminated playback session should be discarded immediately.</p>
 
 <p>In a typical configuration using a <a href="../Protocols/BCOVPlaybackController.html">BCOVPlaybackController</a>, there is no need
 to call this method directly. Methods on the controller are the preferred
@@ -790,7 +542,7 @@ may need to invoke this method to advance the queue.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-05-16)</span><br />
+						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-08-15)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

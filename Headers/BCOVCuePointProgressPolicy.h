@@ -94,10 +94,10 @@ typedef NS_ENUM(NSInteger, BCOVProgressPolicyResumePosition) {
 @interface BCOVCuePointProgressPolicy : NSObject
 
 /**
- * Returns a signal which sends a single BCOVCuePointProgressPolicyResult and
- * then completes. The sent result should specify which cue points are to be
- * processed by the code consulting this policy, as well as the position at
- * which playback should resume once all cue points have been processed.
+ * Returns a BCOVCuePointProgressPolicyResult that specifies which cue points
+ * are to be processed by the code consulting this policy, as well as the
+ * position at which playback should resume once all cue points ahve been
+ * processed.
  *
  * This method is called by the consumer of the cue point progress policy. In
  * most cases, that consumer is an advertising plugin to the Brightcove Player
@@ -107,9 +107,9 @@ typedef NS_ENUM(NSInteger, BCOVProgressPolicyResumePosition) {
  *
  * @param cuePointEvent A dictionary containing cue point event information, as
  * specified in `-[BCOVPlaybackSession cuePoints]`.
- * @return A signal which sends a single policy result and then completes.
+ * @return A policy result for the specified cue point event.
  */
-- (RACSignal *)signalWithValue:(NSDictionary *)cuePointEvent;
+- (BCOVCuePointProgressPolicyResult *)applyToEvent:(NSDictionary *)cuePointEvent;
 
 /**
  * Convenience factory method that returns a cue point progress policy configured according to the specified parameters.
@@ -148,7 +148,7 @@ typedef NS_ENUM(NSInteger, BCOVProgressPolicyResumePosition) {
  * continue from the current playhead position.
  * @return A newly initialized cue point progress policy result.
  */
-- (id)initWithCuePoints:(BCOVCuePointCollection *)cuePoints resumeCuePoint:(BCOVCuePoint *)resumeCuePoint;
+- (instancetype)initWithCuePoints:(BCOVCuePointCollection *)cuePoints resumeCuePoint:(BCOVCuePoint *)resumeCuePoint;
 
 /**
  * Indicates the cue point at which playback should resume, once the code
@@ -163,5 +163,12 @@ typedef NS_ENUM(NSInteger, BCOVProgressPolicyResumePosition) {
  * specified by a BCOVCuePointProgressPolicy.
  */
 @property (nonatomic, copy, readonly) BCOVCuePointCollection *cuePoints;
+
+@end
+
+
+@interface BCOVCuePointProgressPolicy (Deprecated)
+
+- (RACSignal *)signalWithValue:(NSDictionary *)cuePointEvent __attribute((deprecated("Use -[BCOVCuePointProgressPolicy applyToEvent:] instead")));
 
 @end

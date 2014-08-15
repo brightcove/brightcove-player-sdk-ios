@@ -48,6 +48,8 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/applyToEvent:">&nbsp;&nbsp;&nbsp;&nbsp;- applyToEvent:</option>
+	
 	<option value="//api/name/signalWithValue:">&nbsp;&nbsp;&nbsp;&nbsp;- signalWithValue:</option>
 	
 	
@@ -66,6 +68,8 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Deprecated Methods">Deprecated Methods</a></span></li>
+	
 </ul></li>
 
 
@@ -83,6 +87,8 @@
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/applyToEvent:">applyToEvent:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/signalWithValue:">signalWithValue:</a></span></li>
 	
@@ -151,18 +157,32 @@ content should resume from its current playhead position).</li>
 						
 						
 						
-						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/signalWithValue:">&ndash;&nbsp;signalWithValue:</a></code>
+		<code><a href="#//api/name/applyToEvent:">&ndash;&nbsp;applyToEvent:</a></code>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/progressPolicyProcessingCuePoints:resumingPlaybackFrom:ignoringPreviouslyProcessedCuePoints:">+&nbsp;progressPolicyProcessingCuePoints:resumingPlaybackFrom:ignoringPreviouslyProcessedCuePoints:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Deprecated Methods" name="task_Deprecated Methods"></a>
+						<h3 class="subsubtitle task-title">Deprecated Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/signalWithValue:">&ndash;&nbsp;signalWithValue:</a></code>
 	</span>
 	
 	
@@ -261,21 +281,21 @@ ignore cue points that it has already been instructed to process.</p></dd>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/signalWithValue:" title="signalWithValue:"></a>
-	<h3 class="subsubtitle method-title">signalWithValue:</h3>
+	<a name="//api/name/applyToEvent:" title="applyToEvent:"></a>
+	<h3 class="subsubtitle method-title">applyToEvent:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Returns a signal which sends a single <a href="../Classes/BCOVCuePointProgressPolicyResult.html">BCOVCuePointProgressPolicyResult</a> and
-then completes. The sent result should specify which cue points are to be
-processed by the code consulting this policy, as well as the position at
-which playback should resume once all cue points have been processed.</p>
+		<p>Returns a <a href="../Classes/BCOVCuePointProgressPolicyResult.html">BCOVCuePointProgressPolicyResult</a> that specifies which cue points
+are to be processed by the code consulting this policy, as well as the
+position at which playback should resume once all cue points ahve been
+processed.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (RACSignal *)signalWithValue:(NSDictionary *)<em>cuePointEvent</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (BCOVCuePointProgressPolicyResult *)applyToEvent:(NSDictionary *)<em>cuePointEvent</em></code></div>
 
     
 	
@@ -294,7 +314,7 @@ specified in <a href="../Protocols/BCOVPlaybackSession.html#//api/name/cuePoints
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>A signal which sends a single policy result and then completes.</p>
+		<p>A policy result for the specified cue point event.</p>
 	</div>
 	
 	
@@ -303,10 +323,10 @@ specified in <a href="../Protocols/BCOVPlaybackSession.html#//api/name/cuePoints
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns a signal which sends a single <a href="../Classes/BCOVCuePointProgressPolicyResult.html">BCOVCuePointProgressPolicyResult</a> and
-then completes. The sent result should specify which cue points are to be
-processed by the code consulting this policy, as well as the position at
-which playback should resume once all cue points have been processed.</p>
+		<p>Returns a <a href="../Classes/BCOVCuePointProgressPolicyResult.html">BCOVCuePointProgressPolicyResult</a> that specifies which cue points
+are to be processed by the code consulting this policy, as well as the
+position at which playback should resume once all cue points ahve been
+processed.</p>
 
 <p>This method is called by the consumer of the cue point progress policy. In
 most cases, that consumer is an advertising plugin to the Brightcove Player
@@ -329,6 +349,17 @@ convenience factory class method.</p>
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/signalWithValue:" title="signalWithValue:"></a>
+	<h3 class="subsubtitle method-title">signalWithValue:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (RACSignal *)signalWithValue:(NSDictionary *)<em>cuePointEvent</em></code></div>
+
+    
+</div>
+						
 					</div>
 					
 					
@@ -344,7 +375,7 @@ convenience factory class method.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-05-16)</span><br />
+						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-08-15)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

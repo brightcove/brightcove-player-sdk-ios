@@ -41,7 +41,7 @@ typedef BCOVSource *(^BCOVBasicSessionProviderSourceSelectionPolicy)(BCOVVideo *
  * @return A basic playback session provider configured with the specified
  * options.
  */
-- (id)initWithOptions:(BCOVBasicSessionProviderOptions *)options;
+- (instancetype)initWithOptions:(BCOVBasicSessionProviderOptions *)options;
 
 @end
 

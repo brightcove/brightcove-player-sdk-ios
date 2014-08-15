@@ -34,7 +34,7 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 4.1.7.520</h1>
+						<h1>Brightcove Player SDK for iOS, version 4.1.8.677</h1>
 
 <h1>Quick Start</h1>
 
@@ -213,7 +213,11 @@ video2.properties = otherDictionary; // causes compiler error
 
 <p>The catalog service offers methods for the most common Brightcove Media API operations, but there are <a href="[http://docs.brightcove.com/en/video-cloud/media/](http://docs.brightcove.com/en/video-cloud/media/)">other operations</a> available. To leverage them, you will need to issue an HTTP request and then process the response. You can use a standard NSURLRequest to do this, or you can leverage a <a href="http://afnetworking.com**Why">3rd-party HTTP API</a> if you find that easier. In either case, when you receive the response, you can use a standard JSON parser (like NSJSONSerialization) to convert the response into a NSDictionary, and then construct the appropriate value classes from the data in the NSDictionary.</p>
 
-<p>This message indicates that the default source selection policy can&rsquo;t figure which source to pick. The default policy selects the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryHLS</code> (&ldquo;HLS&rdquo;). If no HLS source is found, its fallback behavior will select the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryMP4</code> (&ldquo;MP4&rdquo;). If no source with a <code>deliveryMethod</code> of &ldquo;HLS&rdquo; or &ldquo;MP4&rdquo; exists on the video, the policy will select the video&rsquo;s first source (regardless of <code>deliveryMethod</code>). If you aren&rsquo;t happy with its selection, you can use <a href="Classes/BCOVPlayerSDKManager.html#//api/name/createBasicSessionProviderWithOptions:"><code>[BCOVPlayerSDKManager createBasicSessionProviderWithOptions:]</code></a> and pass in an instance of <a href="Classes/BCOVBasicSessionProviderOptions.html"><code>BCOVBasicSessionProviderOptions</code></a> with a custom <code>sourceSelectionPolicy</code> property set. When creating videos and sources manually, ensure that the sources are created with the appropriate <code>deliveryMethod</code>.</p>
+<p>This message indicates that the default source selection policy can&rsquo;t figure which source to pick. The default policy selects the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryHLS</code> (&ldquo;HLS&rdquo;). If no HLS source is found, its fallback behavior will select the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryMP4</code> (&ldquo;MP4&rdquo;). If no source with a <code>deliveryMethod</code> of &ldquo;HLS&rdquo; or &ldquo;MP4&rdquo; exists on the video, the policy will select the video&rsquo;s first source (regardless of <code>deliveryMethod</code>). If you aren&rsquo;t happy with its selection, you can use <code>[BCOVPlayerSDKManager createBasicSessionProviderWithOptions:]</code> and pass in an instance of <code>BCOVBasicSessionProviderOptions</code> with a custom <code>sourceSelectionPolicy</code> property set. When creating videos and sources manually, ensure that the sources are created with the appropriate <code>deliveryMethod</code>.</p>
+
+<p><strong><a href="[https://developer.apple.com/Library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioGuidelinesByAppType/AudioGuidelinesByAppType.html](https://developer.apple.com/Library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioGuidelinesByAppType/AudioGuidelinesByAppType.html)">Apple recommends</a> that apps which play video should still play audio even when the device is muted. Why doesn&rsquo;t the Brightcove Player SDK for iOS respect these guidelines?</strong></p>
+
+<p>The API which controls whether an app emits audio in iOS apps is the <a href="https://developer.apple.com/Library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007875-CH1-SW1">AVAudioSession API</a>. An audio session is global to an app, which means that its configuration affects both the sounds that are emitted by the AVPlayers created by the Player SDK, as well as other sounds that an app may produce. Since the Player SDK cannot know how the app wants the audio session configured for those other sounds, it doesn&rsquo;t affect the audio session at all. This means that unless you explicitly configure your app&rsquo;s audio session otherwise, you inherit the default behavior of suppressing any and all audio when the device is muted, including audio emitted by AVPlayers. To conform to Apple&rsquo;s recommendations regarding audio playback, you (the app developer) must configure the audio session according to your app&rsquo;s specific needs.</p>
 						
 						
 					</div>
@@ -229,6 +233,8 @@ video2.properties = otherDictionary; // causes compiler error
 							<li><a href="Classes/BCOVBasicSessionProvider.html">BCOVBasicSessionProvider</a></li>
 							
 							<li><a href="Classes/BCOVBasicSessionProviderOptions.html">BCOVBasicSessionProviderOptions</a></li>
+							
+							<li><a href="Classes/BCOVCatalogOperation.html">BCOVCatalogOperation</a></li>
 							
 							<li><a href="Classes/BCOVCatalogService.html">BCOVCatalogService</a></li>
 							
@@ -271,6 +277,8 @@ video2.properties = otherDictionary; // causes compiler error
 							<li><a href="Protocols/BCOVCuePoint.html">BCOVCuePoint</a></li>
 							
 							<li><a href="Protocols/BCOVDelegatingSessionConsumerDelegate.html">BCOVDelegatingSessionConsumerDelegate</a></li>
+							
+							<li><a href="Protocols/BCOVMutableAnalytics.html">BCOVMutableAnalytics</a></li>
 							
 							<li><a href="Protocols/BCOVMutableCuePoint.html">BCOVMutableCuePoint</a></li>
 							
@@ -318,7 +326,7 @@ video2.properties = otherDictionary; // causes compiler error
 						<h2 class="index-title">Category References</h2>
 						<ul>
 							
-							<li><a href="Categories/AVPlayer+BCOVSignalSupport.html">AVPlayer(BCOVSignalSupport)</a></li>
+							<li><a href="Categories/AVPlayer+Deprecated.html">AVPlayer(Deprecated)</a></li>
 							
 							<li><a href="Categories/NSDictionary+BCOVURLSupport.html">NSDictionary(BCOVURLSupport)</a></li>
 							
@@ -333,7 +341,7 @@ video2.properties = otherDictionary; // causes compiler error
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-05-16)</span><br />
+						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-08-15)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

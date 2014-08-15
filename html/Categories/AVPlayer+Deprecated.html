@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>BCOVProgressPolicyCuePointsToProcess Constants Reference</title>
+		<title>AVPlayer(Deprecated) Category Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">BCOVProgressPolicyCuePointsToProcess Constants Reference</h1>
+				<h1 class="hideInXcode">AVPlayer(Deprecated) Category Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -27,6 +27,23 @@
 	<option value="top">Jump To&#133;</option>
 	
 	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/bcov_periodicTimeObserverSignalForInterval:">&nbsp;&nbsp;&nbsp;&nbsp;- bcov_periodicTimeObserverSignalForInterval:</option>
+	
+	<option value="//api/name/bcov_periodicTimeObserverSignalForInterval:queue:">&nbsp;&nbsp;&nbsp;&nbsp;- bcov_periodicTimeObserverSignalForInterval:queue:</option>
 	
 	
 	
@@ -40,12 +57,32 @@
 
 
 
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/bcov_periodicTimeObserverSignalForInterval:">bcov_periodicTimeObserverSignalForInterval:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/bcov_periodicTimeObserverSignalForInterval:queue:">bcov_periodicTimeObserverSignalForInterval:queue:</a></span></li>
+	
+</ul></li>
+
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="BCOVProgressPolicyCuePointsToProcess Constants Reference" name="top"></a>
+				<a title="AVPlayer(Deprecated) Category Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -54,7 +91,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">BCOVProgressPolicyCuePointsToProcess Constants Reference</h1>
+						<h1 class="title title-header">AVPlayer(Deprecated) Category Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -62,7 +99,7 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">BCOVCuePointProgressPolicy.h</td>
+	<td class="specification-value">AVPlayer+BCOVSignalSupport.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -71,116 +108,69 @@
 					
 					
 					
-					
-                    
-                    
-                    <h3 class="subsubtitle method-title">BCOVProgressPolicyCuePointsToProcess</h3>
-                    
-					
-					<div class="section section-overview">
-                        <p>Enumeration to specify which cue points should be processed by a consumer of
-a cue point progress policy.</p>
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/bcov_periodicTimeObserverSignalForInterval:">&ndash;&nbsp;bcov_periodicTimeObserverSignalForInterval:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/bcov_periodicTimeObserverSignalForInterval:queue:">&ndash;&nbsp;bcov_periodicTimeObserverSignalForInterval:queue:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
 					</div>
 					
 					
-                    <div class="section">
-                        <!-- display enum values -->
-                        
-                        <h4 class="method-subtitle">Definition</h4>
-                        <code>typedef NS_ENUM(NSInteger, BCOVProgressPolicyCuePointsToProcess ) {<br/>
-                            
-                            &nbsp;&nbsp; <a href="">BCOVProgressPolicyProcessAllCuePoints</a>,<br/>
-                            
-                            &nbsp;&nbsp; <a href="">BCOVProgressPolicyProcessFinalCuePoint</a>,<br/>
-                            
-                            &nbsp;&nbsp; <a href="">BCOVProgressPolicyProcessFirstCuePoint</a>,<br/>
-                            
-                            };</code>
-                    
-                    </div>
-                    
-                    <div class="section section-methods">
-                        <h4 class="method-subtitle">Constants</h4>
-                        <dl class="termdef">
-                            
-                            <dt><a name="" title="BCOVProgressPolicyProcessAllCuePoints"></a><code>BCOVProgressPolicyProcessAllCuePoints</code></dt>
-<dd>
-
-
-<p>Configures the cue point progress policy to process all cue points in
-the range traversed by the progress event.
-For example, if a seek occurs from 0:00 to 2:00, and there are three
-cue points with positions at 0:30, 1:00, and 1:30, the policy will
-instruct its caller to process all three cue points.</p>
-
-    
-
-    
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">BCOVCuePointProgressPolicy.h</code>.
-	</p>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/bcov_periodicTimeObserverSignalForInterval:" title="bcov_periodicTimeObserverSignalForInterval:"></a>
+	<h3 class="subsubtitle method-title">bcov_periodicTimeObserverSignalForInterval:</h3>
 	
-</dd>
-                            
-                            <dt><a name="" title="BCOVProgressPolicyProcessFinalCuePoint"></a><code>BCOVProgressPolicyProcessFinalCuePoint</code></dt>
-<dd>
-
-
-<p>Configures the cue point progress policy to process only the final cue
-point in the range traversed by the progress event.
-For example, if a seek occurs from 0:00 to 2:00, and there are three cue
-points with positions at 0:30, 1:00, and 1:30, the policy will instruct
-its caller to process only the cue point at 1:30.</p>
-
-    
-
-    
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">BCOVCuePointProgressPolicy.h</code>.
-	</p>
 	
-</dd>
-                            
-                            <dt><a name="" title="BCOVProgressPolicyProcessFirstCuePoint"></a><code>BCOVProgressPolicyProcessFirstCuePoint</code></dt>
-<dd>
 
-
-<p>Configures the cue point progress policy to process only the first cue
-point in the range traversed by the progress event.
-For example, if a seek occurs from 0:00 to 2:00, and there are three cue
-points with positions at 0:30, 1:00, and 1:30, the policy will instruct
-its caller to process only the cue point at 0:30.</p>
+	<div class="method-subsection method-declaration"><code>- (RACSignal *)bcov_periodicTimeObserverSignalForInterval:(CMTime)<em>interval</em></code></div>
 
     
-
-    
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">BCOVCuePointProgressPolicy.h</code>.
-	</p>
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/bcov_periodicTimeObserverSignalForInterval:queue:" title="bcov_periodicTimeObserverSignalForInterval:queue:"></a>
+	<h3 class="subsubtitle method-title">bcov_periodicTimeObserverSignalForInterval:queue:</h3>
 	
-</dd>
-                            
-                        </dl>
-                    </div>
-                    
-                    
-                    
-                    
+	
 
-                    
-                    
-                    
-                    <div class="method-subsection declared-in-section">
-                        <h4 class="method-subtitle">Declared In</h4>
-                        <code class="declared-in-ref">BCOVCuePointProgressPolicy.h</code><br />
-                    </div>				
-                    
+	<div class="method-subsection method-declaration"><code>- (RACSignal *)bcov_periodicTimeObserverSignalForInterval:(CMTime)<em>interval</em> queue:(dispatch_queue_t)<em>serialQueue</em></code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
                     
                     
 				</div>

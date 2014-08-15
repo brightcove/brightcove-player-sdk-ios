@@ -89,7 +89,7 @@
  * @param properties The metadata or properties associated to this video.
  * @return A new video with the specified sources, cue points, and properties.
  */
-- (id)initWithSources:(NSArray *)sources cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
+- (instancetype)initWithSources:(NSArray *)sources cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
 
 /**
  * Constructs a new video with a single specified source, the specified cue
@@ -101,7 +101,7 @@
  * @return A new video with a single source, as well as the specified cue points
  * and properties.
  */
-- (id)initWithSource:(BCOVSource *)source cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
+- (instancetype)initWithSource:(BCOVSource *)source cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
 
 /**
  * Returns YES if `video` is equivalent to this instance.

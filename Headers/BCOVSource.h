@@ -96,7 +96,7 @@ extern NSString * const kBCOVSourceDeliveryMP4;
  * @param url The URL at which the new source's media can be accessed.
  * @return A new source with the specified URL.
  */
-- (id)initWithURL:(NSURL *)url;
+- (instancetype)initWithURL:(NSURL *)url;
 
 /**
  * Constructs a new source with the specified URL, delivery method, and
@@ -107,7 +107,7 @@ extern NSString * const kBCOVSourceDeliveryMP4;
  * @param properties The metadata or properties related to the new source.
  * @return A new source with the specified URL, delivery method, and properties.
  */
-- (id)initWithURL:(NSURL *)url deliveryMethod:(NSString *)deliveryMethod properties:(NSDictionary *)properties;
+- (instancetype)initWithURL:(NSURL *)url deliveryMethod:(NSString *)deliveryMethod properties:(NSDictionary *)properties;
 
 /**
  * Returns YES if `source` is equivalent to this instance.

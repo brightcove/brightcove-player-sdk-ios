@@ -15,9 +15,32 @@
 #import "BCOVVideo.h"
 
 
-@class RACSignal;
-
 @class BCOVMediaRequestFactory;
+
+
+/**
+ * NSOperation subclass for BCOVCatalogService requests. This operation may
+ * only be started once (subsequent attempts to start the operation will have
+ * no effect), and will populate either the `result` or `error` property when
+ * it completes (but not both).
+ */
+@interface BCOVCatalogOperation : NSOperation
+
+/**
+ * The result of the request this operation performs.
+ * This property's value is `nil` until the operation succeeds, at which point
+ * it is set to the result of the operation.
+ */
+@property (nonatomic, readonly, copy) id result;
+
+/**
+ * The error that occurred when this operation executed.
+ * This property's value is `nil` until the operation fails, at which point it
+ * is set to the error that occurred.
+ */
+@property (nonatomic, readonly, copy) NSError *error;
+
+@end
 
 
 /**
@@ -43,7 +66,7 @@
  * @param token string containing your Video Cloud Media API token.
  * @return an initialized BCOVCatalogService
  */
-- (id)initWithToken:(NSString *)token;
+- (instancetype)initWithToken:(NSString *)token;
 
 /**
  * Returns an initialized instance using the reqest factory provided.
@@ -56,187 +79,120 @@
  * @param requestFactory Request factory used to create requests
  * @return an initialized BCOVCatalogService
  */
-- (id)initWithMediaRequestFactory:(BCOVMediaRequestFactory *)requestFactory;
-
-/**
- * Retrieves a playlist from the Media API service by its playlist ID.
- *
- * If the Media API returns a standard JSON-formatted error response, the
- * deserialized response will be the delivered error's `userInfo`.
- *
- * If a JSON parse error occurs, the raw NSData response will be included in the
- * delivered error's `userInfo`, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.
- *
- * The returned signal does not guarantee that it will deliver its values on
- * the main thread scheduler, so if this is a requirement then use -[RACSignal deliverOn:]
- * to deliver the values on the main thread.
- *
- * @param playlistID string containing the ID of the playlist to find.
- * @param parameters Additional NSString query parameters to add to the Media API
- * requests. These values will override the default values if they conflict.
- * @return  Returns a signal that sends a BCOVPlaylist as its only value, then
- * completes.
- */
-- (RACSignal *)findPlaylistWithPlaylistID:(NSString *)playlistID parameters:(NSDictionary *)parameters;
-
-/**
- * Retrieves playlist data from the Media API service by its playlist ID.
- *
- * If the Media API returns a standard JSON-formatted error response, the
- * deserialized response will be the delivered error's `userInfo`.
- *
- * If a JSON parse error occurs, the raw NSData response will be included in the
- * delivered error's `userInfo`, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.
- *
- * The returned signal does not guarantee that it will deliver its values on
- * the main thread scheduler, so if this is a requirement then use -[RACSignal deliverOn:]
- * to deliver the values on the main thread.
- *
- * @param playlistID string containing the ID of the playlist to find.
- * @param parameters Additional NSString query parameters to add to the Media API
- * requests. These values will override the default values if they conflict.
- * @return  Returns a signal that sends a JSON dictionary as its only value,
- * then completes. */
-- (RACSignal *)findPlaylistDictionaryWithPlaylistID:(NSString *)playlistID parameters:(NSDictionary *)parameters;
-
-/**
- * Retrieves a playlist from the Media API service by its reference ID.
- *
- * If the Media API returns a standard JSON-formatted error response, the
- * deserialized response will be the delivered error's `userInfo`.
- *
- * If a JSON parse error occurs, the raw NSData response will be included in the
- * delivered error's `userInfo`, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.
- *
- * The returned signal does not guarantee that it will deliver its values on
- * the main thread scheduler, so if this is a requirement then use -[RACSignal deliverOn:]
- * to deliver the values on the main thread.
- *
- * @param referenceID string containing the reference ID of the playlist to find.
- * @param parameters Additional NSString query parameters to add to the Media API
- * requests. These values will override the default values if they conflict.
- * @return  Returns a signal that sends a BCOVPlaylist as its only value, then
- * completes.
- */
-- (RACSignal *)findPlaylistWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters;
-
-/**
- * Retrieves playlist data from the Media API service by its reference ID.
- *
- * If the Media API returns a standard JSON-formatted error response, the
- * deserialized response will be the delivered error's `userInfo`.
- *
- * If a JSON parse error occurs, the raw NSData response will be included in the
- * delivered error's `userInfo`, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.
- *
- * The returned signal does not guarantee that it will deliver its values on
- * the main thread scheduler, so if this is a requirement then use -[RACSignal deliverOn:]
- * to deliver the values on the main thread.
- *
- * @param referenceID string containing the reference ID of the playlist to find.
- * @param parameters Additional NSString query parameters to add to the Media API
- * requests. These values will override the default values if they conflict.
- * @return  Returns a signal that sends a JSON dictionary as its only value,
- * then completes.
- */
-- (RACSignal *)findPlaylistDictionaryWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters;
-
-/**
- * Retrieves a video from the Media API service by its video ID.
- *
- * If the Media API returns a standard JSON-formatted error response, the
- * deserialized response will be the delivered error's `userInfo`.
- *
- * If a JSON parse error occurs, the raw NSData response will be included in the
- * delivered error's `userInfo`, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.
- *
- * The returned signal does not guarantee that it will deliver its values on
- * the main thread scheduler, so if this is a requirement then use -[RACSignal deliverOn:]
- * to deliver the values on the main thread.
- *
- * @param videoID string containing the ID of the video to find.
- * @param parameters Additional NSString query parameters to add to the Media API
- * requests. These values will override the default values if they conflict.
- * @return  Returns a signal that sends a BCOVVideo as its only value, then
- * completes.
- */
-- (RACSignal *)findVideoWithVideoID:(NSString *)videoID parameters:(NSDictionary *)parameters;
-
-/**
- * Retrieves video data from the Media API service by its video ID.
- *
- * If the Media API returns a standard JSON-formatted error response, the
- * deserialized response will be the delivered error's `userInfo`.
- *
- * If a JSON parse error occurs, the raw NSData response will be included in the
- * delivered error's `userInfo`, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.
- *
- * The returned signal does not guarantee that it will deliver its values on
- * the main thread scheduler, so if this is a requirement then use -[RACSignal deliverOn:]
- * to deliver the values on the main thread.
- *
- * @param videoID string containing the ID of the video to find.
- * @param parameters Additional NSString query parameters to add to the Media API
- * requests. These values will override the default values if they conflict.
- * @return  Returns a signal that sends a JSON dictionary as its only value,
- * then completes.
- */
-- (RACSignal *)findVideoDictionaryWithVideoID:(NSString *)videoID parameters:(NSDictionary *)parameters;
-
-/**
- * Retrieves a video from the Media API service by its reference ID.
- *
- * If the Media API returns a standard JSON-formatted error response, the
- * deserialized response will be the delivered error's `userInfo`.
- *
- * If a JSON parse error occurs, the raw NSData response will be included in the
- * delivered error's `userInfo`, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.
- *
- * The returned signal does not guarantee that it will deliver its values on
- * the main thread scheduler, so if this is a requirement then use -[RACSignal deliverOn:]
- * to deliver the values on the main thread.
- *
- * @param referenceID string containing the reference ID of the video to find.
- * @param parameters Additional NSString query parameters to add to the Media API
- * requests. These values will override the default values if they conflict.
- * @return  Returns a signal that sends a BCOVVideo as its only value, then
- * completes.
- */
-- (RACSignal *)findVideoWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters;
-
-/**
- * Retrieves video data from the Media API service by its reference ID.
- *
- * If the Media API returns a standard JSON-formatted error response, the
- * deserialized response will be the delivered error's `userInfo`.
- *
- * If a JSON parse error occurs, the raw NSData response will be included in the
- * delivered error's `userInfo`, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.
- *
- * The returned signal does not guarantee that it will deliver its values on
- * the main thread scheduler, so if this is a requirement then use -[RACSignal deliverOn:]
- * to deliver the values on the main thread.
- *
- * @param referenceID string containing the reference ID of the video to find.
- * @param parameters Additional NSString query parameters to add to the Media API
- * requests. These values will override the default values if they conflict.
- * @return  Returns a signal that sends a JSON dictionary as its only value,
- * then completes.
- */
-- (RACSignal *)findVideoDictionaryWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters;
+- (instancetype)initWithMediaRequestFactory:(BCOVMediaRequestFactory *)requestFactory;
 
 @end
 
 
+@interface BCOVCatalogService (BCOVCatalogOperations)
+
 /**
- * The functionality of the finder methods added in these category methods is
- * similar to the core finder methods in BCOVCatalogService, except that rather
- * than return a signal that delivers the results (or an error), these methods
- * return void but take a block which is called with the results (or an error).
- * If you are comfortable using ReactiveCocoa's signal API, the signal methods
- * offered by BCOVCatalogService offer better flexibility. These category
- * methods are intended for clients who do not wish to use signals directly.
+ * Returns an operation that retrieves a BCOVVideo corresponding to the
+ * specified parameters.  Cast this operation's `result` property to a
+ * `BCOVVideo *` if the operation succeeds.
+ *
+ * @param videoID The video ID of the video to find.
+ * @param parameters Additional NSString query parameters to add to catalog
+ * service requests. These values will override the default values if they
+ * conflict.
+ * @return An operation that retrieves the specified BCOVVideo.
  */
+- (BCOVCatalogOperation *)videoOperationWithVideoID:(NSString *)videoID parameters:(NSDictionary *)parameters;
+
+/**
+ * Returns an operation that retrieves a BCOVVideo corresponding to the
+ * specified parameters.  Cast this operation's `result` property to a
+ * `BCOVVideo *` if the operation succeeds.
+ *
+ * @param referenceID The video reference ID of the video to find.
+ * @param parameters Additional NSString query parameters to add to catalog
+ * service requests. These values will override the default values if they
+ * conflict.
+ * @return An operation that retrieves the specified BCOVVideo.
+ */
+- (BCOVCatalogOperation *)videoOperationWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters;
+
+/**
+ * Returns an operation that retrieves a BCOVPlaylist corresponding to the
+ * specified parameters.  Cast this operation's `result` property to a
+ * `BCOVPlaylist *` if the operation succeeds.
+ *
+ * @param playlistID The playlist ID of the playlist to find.
+ * @param parameters Additional NSString query parameters to add to catalog
+ * service requests. These values will override the default values if they
+ * conflict.
+ * @return An operation that retrieves the specified BCOVPlaylist.
+ */
+- (BCOVCatalogOperation *)playlistOperationWithPlaylistID:(NSString *)playlistID parameters:(NSDictionary *)parameters;
+
+/**
+ * Returns an operation that retrieves a BCOVPlaylist corresponding to the
+ * specified parameters.  Cast this operation's `result` property to a
+ * `BCOVPlaylist *` if the operation succeeds.
+ *
+ * @param referenceID The playlist reference ID of the playlist to find.
+ * @param parameters Additional NSString query parameters to add to catalog
+ * service requests. These values will override the default values if they
+ * conflict.
+ * @return An operation that retrieves the specified BCOVPlaylist.
+ */
+- (BCOVCatalogOperation *)playlistOperationWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters;
+
+/**
+ * Returns an operation that retrieves JSON for a video corresponding to the
+ * specified parameters.  Cast this operation's `result` property to a
+ * `NSDictionary *` if the operation succeeds.
+ *
+ * @param videoID The video ID of the video to find.
+ * @param parameters Additional NSString query parameters to add to catalog
+ * service requests. These values will override the default values if they
+ * conflict.
+ * @return An operation that retrieves the specified video as JSON.
+ */
+- (BCOVCatalogOperation *)videoDictionaryOperationWithVideoID:(NSString *)videoID parameters:(NSDictionary *)parameters;
+
+/**
+ * Returns an operation that retrieves JSON for a video corresponding to the
+ * specified parameters.  Cast this operation's `result` property to a
+ * `NSDictionary *` if the operation succeeds.
+ *
+ * @param referenceID The video reference ID of the video to find.
+ * @param parameters Additional NSString query parameters to add to catalog
+ * service requests. These values will override the default values if they
+ * conflict.
+ * @return An operation that retrieves the specified video as JSON.
+ */
+- (BCOVCatalogOperation *)videoDictionaryOperationWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters;
+
+/**
+ * Returns an operation that retrieves JSON for a playlist corresponding to the
+ * specified parameters.  Cast this operation's `result` property to a
+ * `NSDictionary *` if the operation succeeds.
+ *
+ * @param playlistID The playlist ID of the playlist to find.
+ * @param parameters Additional NSString query parameters to add to catalog
+ * service requests. These values will override the default values if they
+ * conflict.
+ * @return An operation that retrieves the specified playlist as JSON.
+ */
+- (BCOVCatalogOperation *)playlistDictionaryOperationWithPlaylistID:(NSString *)playlistID parameters:(NSDictionary *)parameters;
+
+/**
+ * Returns an operation that retrieves JSON for a playlist corresponding to the
+ * specified parameters.  Cast this operation's `result` property to a
+ * `NSDictionary *` if the operation succeeds.
+ *
+ * @param referenceID The playlist reference ID of the playlist to find.
+ * @param parameters Additional NSString query parameters to add to catalog
+ * service requests. These values will override the default values if they
+ * conflict.
+ * @return An operation that retrieves the specified playlist as JSON.
+ */
+- (BCOVCatalogOperation *)playlistDictionaryOperationWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters;
+
+@end
+
+
 @interface BCOVCatalogService (BCOVImperativeCallbacks)
 
 /**
@@ -368,3 +324,18 @@
 
 @end
 
+
+@class RACSignal;
+
+@interface BCOVCatalogService (Deprecated)
+
+- (RACSignal *)findPlaylistWithPlaylistID:(NSString *)playlistID parameters:(NSDictionary *)parameters __attribute((deprecated("Use -[BCOVCatalogService playlistOperationWithPlaylistID:parameters:] instead")));
+- (RACSignal *)findPlaylistDictionaryWithPlaylistID:(NSString *)playlistID parameters:(NSDictionary *)parameters __attribute((deprecated("Use -[BCOVCatalogService playlistDictionaryOperationWithPlaylistID:parameters:] instead")));
+- (RACSignal *)findPlaylistWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters __attribute((deprecated("Use -[BCOVCatalogService playlistOperationWithReferenceID:parameters:] instead")));
+- (RACSignal *)findPlaylistDictionaryWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters __attribute((deprecated("Use -[BCOVCatalogService playlistDictionaryOperationWithReferenceID:parameters:] instead")));
+- (RACSignal *)findVideoWithVideoID:(NSString *)videoID parameters:(NSDictionary *)parameters __attribute((deprecated("Use -[BCOVCatalogService videoOperationWithVideoID:parameters:] instead")));
+- (RACSignal *)findVideoDictionaryWithVideoID:(NSString *)videoID parameters:(NSDictionary *)parameters __attribute((deprecated("Use -[BCOVCatalogService videoDictionaryOperationWithVideoID:parameters:] instead")));
+- (RACSignal *)findVideoWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters __attribute((deprecated("Use -[BCOVCatalogService videoOperationWithReferenceID:parameters:] instead")));
+- (RACSignal *)findVideoDictionaryWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters __attribute((deprecated("Use -[BCOVCatalogService videoDictionaryOperationWithReferenceID:parameters:] instead")));
+
+@end

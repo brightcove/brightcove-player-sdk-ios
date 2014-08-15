@@ -26,7 +26,7 @@
  * @param delegate Delegate for this consumer.
  * @return Initialized instance.
  */
--(id)initWithDelegate:(id<BCOVDelegatingSessionConsumerDelegate>)delegate;
+-(instancetype)initWithDelegate:(id<BCOVDelegatingSessionConsumerDelegate>)delegate;
 
 @end
 

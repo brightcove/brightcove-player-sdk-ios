@@ -1,3 +1,39 @@
+# 4.1.8
+
+### Breaking Changes
+* iOS 6 is deprecated in this release. Version 4.2 of the Brightcove Player SDK for iOS is not supported on versions of iOS below 7.1 .
+* Use of ReactiveCocoa in public APIs within the Player SDK for iOS is deprecated in this release. Version 4.2 of the Brightcove Player SDK for iOS will not require clients to install any version of ReactiveCocoa, and properties or methods that return or expect RACSignal objects will be removed. See the header files for guidance on how to update deprecated functionality for compatibility with 4.2. The deprecations include the following:
+  * `-[AVPlayer bcov_periodicTimeObserverSignalForInterval:]`
+  * `-[AVPlayer bcov_periodicTimeObserverSignalForInterval:queue:]`
+  * `-[BCOVCatalogService findPlaylistWithPlaylistID:parameters:]`
+  * `-[BCOVCatalogService findPlaylistDictionaryWithPlaylistID:parameters:]`
+  * `-[BCOVCatalogService findPlaylistWithReferenceID:parameters:]`
+  * `-[BCOVCatalogService findPlaylistDictionaryWithReferenceID:parameters:]`
+  * `-[BCOVCatalogService findVideoWithVideoID:parameters:]`
+  * `-[BCOVCatalogService findVideoDictionaryWithVideoID:parameters:]`
+  * `-[BCOVCatalogService findVideoWithReferenceID:parameters:]`
+  * `-[BCOVCatalogService findVideoDictionaryWithReferenceID:parameters:]`
+  * `-[BCOVCuePointProgressPolicy signalWithValue:]`
+  * `-[BCOVPlaybackSession cuePoints]`
+  * `-[BCOVPlaybackSession durationChanges]`
+  * `-[BCOVPlaybackSession isExternalPlaybackActive]`
+  * `-[BCOVPlaybackSession lifecycle]`
+  * `-[BCOVPlaybackSession progress]`
+* Duration changes reported by a BCOVPlaybackSession will no longer include the initial value of `kCMTimeNegativeInfinity`.
+* A lifecycle event of type `kBCOVPlaybackSessionLifecycleEventProgress` will now be reported during a seek, even if the AVPlayer's rate is 0.0 (paused).
+
+### Additions and Improvements
+* Fixed a bug in which the AirPlay button could randomly appear in the default video playback controls.
+* Added methods that return NSOperation objects to BCOVCatalogService. The operations replace similar (deprecated) RACSignal-returning methods.
+* Fixed a bug that could cause repeated, immediate calls to `-[BCOVPlaybackController pause]` and `-[BCOVPlaybackController play]` to execute out of order.
+* Return `instancetype` instead of `id` from methods that return instances of the current class type, in preparation for compatibility with Swift.
+* Made refinements and enhancements to the information sent to Brightcove analytics, including the ability to programmatically specify the account ID, destination, and source properties to be included in all analytics reporting.
+* Fixed an analytics bug that could prevent the sending of a video impression.
+* Fixed an analytics bug in which video engagement was not being reported for live streams.
+* Fixed an analytics bug in which video engagement could be reported when the seeking in reverse.
+* Fixed an analytics bug in which one second of video engagement reporting could be dropped periodically.
+* The underlying error is included in the event payload when a lifecycle event of type `kBCOVPlaybackSessionLifecycleEventFail` occurs.
+
 # 4.1.7
 
 ### Breaking Changes
@@ -25,7 +61,7 @@
 ### Breaking Changes
 * This release introduces an improved default source selection policy, and a mechanism to override the default source selection. Prior to 4.1.5, the default policy would select the first source on each video, regardless of the source's `url` or `deliveryMethod` properties. In 4.1.5, the default policy now selects the first source whose `deliveryMethod` is `kBCOVSourceDeliveryHLS` ("HLS"). If no HLS source is found, its fallback behavior will select the first source whose `deliveryMethod` is `kBCOVSourceDeliveryMP4` ("MP4"). If no source with a `deliveryMethod` of "HLS" or "MP4" exists on the video, the playback controller will advance to the next playback session. Most videos retrieved via BCOVCatalogService will have the expected sources.
 * UIViews are prohibited from being added as children of the playback controller's video view.
-	
+
 ### Additions and Improvements
 * Added the `-[BCOVPlayerSDKManager createPlaybackController]` convenience overload for when a view strategy isn't needed.
 * Fixed a bug to ensure the elapsed time label on the default controls is reset when advancing to a new session.

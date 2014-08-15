@@ -76,7 +76,7 @@
  * @param properties The metadata or other properties related to this playlist.
  * @return A new playlist with the specified videos.
  */
-- (id)initWithVideos:(NSArray *)videos properties:(NSDictionary *)properties;
+- (instancetype)initWithVideos:(NSArray *)videos properties:(NSDictionary *)properties;
 
 /**
  * Constructs a new playlist with the specified videos.
@@ -84,7 +84,7 @@
  * @param videos The video contents of this playlist.
  * @return A new playlist with the specified videos.
  */
-- (id)initWithVideos:(NSArray *)videos;
+- (instancetype)initWithVideos:(NSArray *)videos;
 
 /**
  * Constructs a new playlist with the specified video and properties.
@@ -93,7 +93,7 @@
  * @param properties The metadata or other properties related to this playlist.
  * @return A new playlist with the specified video and properties.
  */
-- (id)initWithVideo:(BCOVVideo *)video properties:(NSDictionary *)properties;
+- (instancetype)initWithVideo:(BCOVVideo *)video properties:(NSDictionary *)properties;
 
 /**
  * Constructs a new playlist with the specified video.
@@ -101,7 +101,7 @@
  * @param video The video contents of this playlist.
  * @return A new playlist with the specified video.
  */
-- (id)initWithVideo:(BCOVVideo *)video;
+- (instancetype)initWithVideo:(BCOVVideo *)video;
 
 /**
  * Returns the video at the specified index, or nil if the specified index

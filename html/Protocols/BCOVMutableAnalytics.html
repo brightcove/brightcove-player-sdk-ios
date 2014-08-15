@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>BCOVPlaybackSessionLifecycleEvent Class Reference</title>
+		<title>BCOVMutableAnalytics Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">BCOVPlaybackSessionLifecycleEvent Class Reference</h1>
+				<h1 class="hideInXcode">BCOVMutableAnalytics Protocol Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -39,25 +39,17 @@
 	
 	<option value="properties">Properties</option>
 	
-	<option value="//api/name/eventType">&nbsp;&nbsp;&nbsp;&nbsp;eventType</option>
+	<option value="//api/name/account">&nbsp;&nbsp;&nbsp;&nbsp;account</option>
 	
-	<option value="//api/name/properties">&nbsp;&nbsp;&nbsp;&nbsp;properties</option>
+	<option value="//api/name/destination">&nbsp;&nbsp;&nbsp;&nbsp;destination</option>
 	
+	<option value="//api/name/source">&nbsp;&nbsp;&nbsp;&nbsp;source</option>
 	
-	
-	
-	<option value="class_methods">Class Methods</option>
-	
-	<option value="//api/name/eventWithType:">&nbsp;&nbsp;&nbsp;&nbsp;+ eventWithType:</option>
+	<option value="//api/name/uniqueIdentifierEnabled">&nbsp;&nbsp;&nbsp;&nbsp;uniqueIdentifierEnabled</option>
 	
 	
 	
 	
-	<option value="instance_methods">Instance Methods</option>
-	
-	<option value="//api/name/initWithEventType:properties:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithEventType:properties:</option>
-	
-	<option value="//api/name/isEqualToPlaybackSessionLifecycleEvent:">&nbsp;&nbsp;&nbsp;&nbsp;- isEqualToPlaybackSessionLifecycleEvent:</option>
 	
 	
 	
@@ -83,36 +75,26 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/eventType">eventType</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/account">account</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/properties">properties</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/destination">destination</a></span></li>
 	
-</ul></li>
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/source">source</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/eventWithType:">eventWithType:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/uniqueIdentifierEnabled">uniqueIdentifierEnabled</a></span></li>
 	
 </ul></li>
 
 
 
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithEventType:properties:">initWithEventType:properties:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isEqualToPlaybackSessionLifecycleEvent:">isEqualToPlaybackSessionLifecycleEvent:</a></span></li>
-	
-</ul></li>
+
 
 
 			</ul>
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="BCOVPlaybackSessionLifecycleEvent Class Reference" name="top"></a>
+				<a title="BCOVMutableAnalytics Protocol Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -121,21 +103,18 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">BCOVPlaybackSessionLifecycleEvent Class Reference</h1>
+						<h1 class="title title-header">BCOVMutableAnalytics Protocol Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Inherits from</td>
+	<td class="specification-title">Conforms to</td>
 	<td class="specification-value">NSObject</td>
 </tr><tr>
-	<td class="specification-title">Conforms to</td>
-	<td class="specification-value">NSCopying</td>
-</tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">BCOVPlaybackSession.h</td>
+	<td class="specification-value">BCOVPlaybackController.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -145,7 +124,9 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>A lifecycle event for a playback session.</p>
+						<p>When these properties are modified, the changes will take effect on the next
+delivered session. To apply these properties to all sessions, modify them before
+the call to <a href="../Protocols/BCOVPlaybackController.html#//api/name/setVideos:">[BCOVPlaybackController setVideos:]</a>.</p>
 					</div>
 					
 					
@@ -163,34 +144,28 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/eventType">&nbsp;&nbsp;eventType</a></code>
+		<code><a href="#//api/name/account">&nbsp;&nbsp;account</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
-	
+	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/properties">&nbsp;&nbsp;properties</a></code>
+		<code><a href="#//api/name/destination">&nbsp;&nbsp;destination</a></code>
 	</span>
 	<span class="task-item-suffix">property</span>
-	
+	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithEventType:properties:">&ndash;&nbsp;initWithEventType:properties:</a></code>
+		<code><a href="#//api/name/source">&nbsp;&nbsp;source</a></code>
 	</span>
-	
-	
+	<span class="task-item-suffix">property</span>
+	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/isEqualToPlaybackSessionLifecycleEvent:">&ndash;&nbsp;isEqualToPlaybackSessionLifecycleEvent:</a></code>
+		<code><a href="#//api/name/uniqueIdentifierEnabled">&nbsp;&nbsp;uniqueIdentifierEnabled</a></code>
 	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/eventWithType:">+&nbsp;eventWithType:</a></code>
-	</span>
-	
-	
+	<span class="task-item-suffix">property</span>
+	<span class="task-item-suffix">required method</span>
 </li>
 						</ul>
 						
@@ -205,18 +180,20 @@
 						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/eventType" title="eventType"></a>
-	<h3 class="subsubtitle method-title">eventType</h3>
+	<a name="//api/name/account" title="account"></a>
+	<h3 class="subsubtitle method-title">account</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>This lifecycle event&rsquo;s type.</p>
+		<p>This property will set the Account ID value for Brightcove Analytics.
+Setting this property will also replace the accountId value on any video that is
+retrieved through a Brightcove Media API request.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *eventType</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *account</code></div>
 
     
 	
@@ -228,7 +205,9 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>This lifecycle event&rsquo;s type.</p>
+		<p>This property will set the Account ID value for Brightcove Analytics.
+Setting this property will also replace the accountId value on any video that is
+retrieved through a Brightcove Media API request.</p>
 	</div>
 	
 	
@@ -239,25 +218,27 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
+		<code class="declared-in-ref">BCOVPlaybackController.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/properties" title="properties"></a>
-	<h3 class="subsubtitle method-title">properties</h3>
+	<a name="//api/name/destination" title="destination"></a>
+	<h3 class="subsubtitle method-title">destination</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Contextual information related to this event instance.</p>
+		<p>This property must be a URI with a valid structure.
+The default value for this property, if it is not overridden, will be
+&ldquo;bcsdk:/&rdquo; followed by the bundle identifier.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSDictionary *properties</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *destination</code></div>
 
     
 	
@@ -269,7 +250,15 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Contextual information related to this event instance.</p>
+		<p>This property must be a URI with a valid structure.
+The default value for this property, if it is not overridden, will be
+&ldquo;bcsdk:/&rdquo; followed by the bundle identifier.</p>
+
+<p>Please refer to <a href="http://en.wikipedia.org/wiki/URI">http://en.wikipedia.org/wiki/URI</a>_scheme#Generic_syntax
+for more information on and examples of URI syntax.</p>
+
+<p>In particular, a destination without a hierarchical part (e.g. just a scheme)
+is considered invalid, as is any value without a scheme.</p>
 	</div>
 	
 	
@@ -280,7 +269,105 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
+		<code class="declared-in-ref">BCOVPlaybackController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/source" title="source"></a>
+	<h3 class="subsubtitle method-title">source</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This property must be a URI with a valid structure.
+The default value is nil.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *source</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This property must be a URI with a valid structure.
+The default value is nil.</p>
+
+<p>Please refer to <a href="http://en.wikipedia.org/wiki/URI">http://en.wikipedia.org/wiki/URI</a>_scheme#Generic_syntax
+for more information on and examples of URI syntax.</p>
+
+<p>In particular, a source without a hierarchical part (e.g. just a scheme)
+is considered invalid, as is any value without a scheme.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVPlaybackController.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/uniqueIdentifierEnabled" title="uniqueIdentifierEnabled"></a>
+	<h3 class="subsubtitle method-title">uniqueIdentifierEnabled</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This property toggles client side unique identifier generation. If enabled,
+the sdk will identify uniques using the device&rsquo;s vendor identifier. If
+disabled, the sdk will provide no uniques value and analytics will rely on
+server-side driven heuristics to determine uniques.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, getter=isUniqueIdentifierEnabled) BOOL uniqueIdentifierEnabled</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This property toggles client side unique identifier generation. If enabled,
+the sdk will identify uniques using the device&rsquo;s vendor identifier. If
+disabled, the sdk will provide no uniques value and analytics will rely on
+server-side driven heuristics to determine uniques.</p>
+
+<p>The default value is YES.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVPlaybackController.h</code><br />
 	</div>				
 	
 	
@@ -290,194 +377,7 @@
 					
 					
 					
-					<div class="section section-methods">
-						<a title="Class Methods" name="class_methods"></a>
-						<h2 class="subtitle subtitle-methods">Class Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/eventWithType:" title="eventWithType:"></a>
-	<h3 class="subsubtitle method-title">eventWithType:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns a playback session lifecycle event of the specified type with no
-<a href="#//api/name/properties">properties</a>.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (instancetype)eventWithType:(NSString *)<em>eventType</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>eventType</em></dt>
-			<dd><p>The event type of the lifecycle event to return.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The playback session lifecycle event of the specified type.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns a playback session lifecycle event of the specified type with no
-<a href="#//api/name/properties">properties</a>.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
 					
-					
-					
-					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithEventType:properties:" title="initWithEventType:properties:"></a>
-	<h3 class="subsubtitle method-title">initWithEventType:properties:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Designated initializer. Returns an event with the specified type and <a href="#//api/name/properties">properties</a>.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithEventType:(NSString *)<em>eventType</em> properties:(NSDictionary *)<em>properties</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>eventType</em></dt>
-			<dd><p>Type of the event.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>properties</em></dt>
-			<dd><p>Properties of the event</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>Initialized event.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Designated initializer. Returns an event with the specified type and <a href="#//api/name/properties">properties</a>.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/isEqualToPlaybackSessionLifecycleEvent:" title="isEqualToPlaybackSessionLifecycleEvent:"></a>
-	<h3 class="subsubtitle method-title">isEqualToPlaybackSessionLifecycleEvent:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Determines the equality of the events.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (BOOL)isEqualToPlaybackSessionLifecycleEvent:(BCOVPlaybackSessionLifecycleEvent *)<em>event</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>event</em></dt>
-			<dd><p>Event to check against.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>Returns YES if the events are equal and NO if the events are no equal.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Determines the equality of the events.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlaybackSession.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
 					
 					
                     

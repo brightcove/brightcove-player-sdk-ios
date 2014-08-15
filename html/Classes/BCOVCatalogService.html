@@ -76,6 +76,22 @@
 	
 	<option value="//api/name/initWithToken:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithToken:</option>
 	
+	<option value="//api/name/playlistDictionaryOperationWithPlaylistID:parameters:">&nbsp;&nbsp;&nbsp;&nbsp;- playlistDictionaryOperationWithPlaylistID:parameters:</option>
+	
+	<option value="//api/name/playlistDictionaryOperationWithReferenceID:parameters:">&nbsp;&nbsp;&nbsp;&nbsp;- playlistDictionaryOperationWithReferenceID:parameters:</option>
+	
+	<option value="//api/name/playlistOperationWithPlaylistID:parameters:">&nbsp;&nbsp;&nbsp;&nbsp;- playlistOperationWithPlaylistID:parameters:</option>
+	
+	<option value="//api/name/playlistOperationWithReferenceID:parameters:">&nbsp;&nbsp;&nbsp;&nbsp;- playlistOperationWithReferenceID:parameters:</option>
+	
+	<option value="//api/name/videoDictionaryOperationWithReferenceID:parameters:">&nbsp;&nbsp;&nbsp;&nbsp;- videoDictionaryOperationWithReferenceID:parameters:</option>
+	
+	<option value="//api/name/videoDictionaryOperationWithVideoID:parameters:">&nbsp;&nbsp;&nbsp;&nbsp;- videoDictionaryOperationWithVideoID:parameters:</option>
+	
+	<option value="//api/name/videoOperationWithReferenceID:parameters:">&nbsp;&nbsp;&nbsp;&nbsp;- videoOperationWithReferenceID:parameters:</option>
+	
+	<option value="//api/name/videoOperationWithVideoID:parameters:">&nbsp;&nbsp;&nbsp;&nbsp;- videoOperationWithVideoID:parameters:</option>
+	
 	
 	
 </select>
@@ -92,7 +108,11 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_BCOVCatalogOperations Methods">BCOVCatalogOperations Methods</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_BCOVImperativeCallbacks Methods">BCOVImperativeCallbacks Methods</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Deprecated Methods">Deprecated Methods</a></span></li>
 	
 </ul></li>
 
@@ -140,6 +160,22 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithToken:">initWithToken:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/playlistDictionaryOperationWithPlaylistID:parameters:">playlistDictionaryOperationWithPlaylistID:parameters:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/playlistDictionaryOperationWithReferenceID:parameters:">playlistDictionaryOperationWithReferenceID:parameters:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/playlistOperationWithPlaylistID:parameters:">playlistOperationWithPlaylistID:parameters:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/playlistOperationWithReferenceID:parameters:">playlistOperationWithReferenceID:parameters:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/videoDictionaryOperationWithReferenceID:parameters:">videoDictionaryOperationWithReferenceID:parameters:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/videoDictionaryOperationWithVideoID:parameters:">videoDictionaryOperationWithVideoID:parameters:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/videoOperationWithReferenceID:parameters:">videoOperationWithReferenceID:parameters:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/videoOperationWithVideoID:parameters:">videoOperationWithVideoID:parameters:</a></span></li>
+	
 </ul></li>
 
 
@@ -179,14 +215,6 @@
 						<h2 class="subtitle subtitle-overview">Overview</h2>
 						<p>The BCCatalog class provides asynchronous methods for retrieving information
 about videos and playlists from Brightcove’s Media API services.</p>
-
-<p>The functionality of the finder methods added in these category methods is
-similar to the core finder methods in BCOVCatalogService, except that rather
-than return a signal that delivers the results (or an error), these methods
-return void but take a block which is called with the results (or an error).
-If you are comfortable using ReactiveCocoa&rsquo;s signal API, the signal methods
-offered by BCOVCatalogService offer better flexibility. These category
-methods are intended for clients who do not wish to use signals directly.</p>
 					</div>
 					
 					
@@ -220,7 +248,103 @@ methods are intended for clients who do not wish to use signals directly.</p>
 	</span>
 	
 	
+</li>
+						</ul>
+						
+						
+						<a title="BCOVCatalogOperations Methods" name="task_BCOVCatalogOperations Methods"></a>
+						<h3 class="subsubtitle task-title">BCOVCatalogOperations Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/videoOperationWithVideoID:parameters:">&ndash;&nbsp;videoOperationWithVideoID:parameters:</a></code>
+	</span>
+	
+	
 </li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/videoOperationWithReferenceID:parameters:">&ndash;&nbsp;videoOperationWithReferenceID:parameters:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/playlistOperationWithPlaylistID:parameters:">&ndash;&nbsp;playlistOperationWithPlaylistID:parameters:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/playlistOperationWithReferenceID:parameters:">&ndash;&nbsp;playlistOperationWithReferenceID:parameters:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/videoDictionaryOperationWithVideoID:parameters:">&ndash;&nbsp;videoDictionaryOperationWithVideoID:parameters:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/videoDictionaryOperationWithReferenceID:parameters:">&ndash;&nbsp;videoDictionaryOperationWithReferenceID:parameters:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/playlistDictionaryOperationWithPlaylistID:parameters:">&ndash;&nbsp;playlistDictionaryOperationWithPlaylistID:parameters:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/playlistDictionaryOperationWithReferenceID:parameters:">&ndash;&nbsp;playlistDictionaryOperationWithReferenceID:parameters:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="BCOVImperativeCallbacks Methods" name="task_BCOVImperativeCallbacks Methods"></a>
+						<h3 class="subsubtitle task-title">BCOVImperativeCallbacks Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/findPlaylistWithPlaylistID:parameters:completion:">&ndash;&nbsp;findPlaylistWithPlaylistID:parameters:completion:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/findPlaylistWithReferenceID:parameters:completion:">&ndash;&nbsp;findPlaylistWithReferenceID:parameters:completion:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/findVideoWithVideoID:parameters:completion:">&ndash;&nbsp;findVideoWithVideoID:parameters:completion:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/findVideoWithReferenceID:parameters:completion:">&ndash;&nbsp;findVideoWithReferenceID:parameters:completion:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Deprecated Methods" name="task_Deprecated Methods"></a>
+						<h3 class="subsubtitle task-title">Deprecated Methods</h3>
+
+						<ul class="task-list">
+							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/findPlaylistWithPlaylistID:parameters:">&ndash;&nbsp;findPlaylistWithPlaylistID:parameters:</a></code>
 	</span>
@@ -265,38 +389,6 @@ methods are intended for clients who do not wish to use signals directly.</p>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/findVideoDictionaryWithReferenceID:parameters:">&ndash;&nbsp;findVideoDictionaryWithReferenceID:parameters:</a></code>
-	</span>
-	
-	
-</li>
-						</ul>
-						
-						
-						<a title="BCOVImperativeCallbacks Methods" name="task_BCOVImperativeCallbacks Methods"></a>
-						<h3 class="subsubtitle task-title">BCOVImperativeCallbacks Methods</h3>
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/findPlaylistWithPlaylistID:parameters:completion:">&ndash;&nbsp;findPlaylistWithPlaylistID:parameters:completion:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/findPlaylistWithReferenceID:parameters:completion:">&ndash;&nbsp;findPlaylistWithReferenceID:parameters:completion:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/findVideoWithVideoID:parameters:completion:">&ndash;&nbsp;findVideoWithVideoID:parameters:completion:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/findVideoWithReferenceID:parameters:completion:">&ndash;&nbsp;findVideoWithReferenceID:parameters:completion:</a></code>
 	</span>
 	
 	
@@ -369,72 +461,10 @@ methods are intended for clients who do not wish to use signals directly.</p>
 	<h3 class="subsubtitle method-title">findPlaylistDictionaryWithPlaylistID:parameters:</h3>
 	
 	
-	
-	<div class="method-subsection brief-description">
-		<p>Retrieves playlist data from the Media API service by its playlist ID.</p>
-	</div>		
-	
-    
 
 	<div class="method-subsection method-declaration"><code>- (RACSignal *)findPlaylistDictionaryWithPlaylistID:(NSString *)<em>playlistID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>playlistID</em></dt>
-			<dd><p>string containing the ID of the playlist to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to the Media API
-requests. These values will override the default values if they conflict.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>Returns a signal that sends a JSON dictionary as its only value,
-then completes.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Retrieves playlist data from the Media API service by its playlist ID.</p>
-
-<p>If the Media API returns a standard JSON-formatted error response, the
-deserialized response will be the delivered error&rsquo;s <code>userInfo</code>.</p>
-
-<p>If a JSON parse error occurs, the raw NSData response will be included in the
-delivered error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
-
-<p>The returned signal does not guarantee that it will deliver its values on
-the main thread scheduler, so if this is a requirement then use [RACSignal deliverOn:]
-to deliver the values on the main thread.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
 </div>
 						
 						<div class="section-method">
@@ -442,72 +472,10 @@ to deliver the values on the main thread.</p>
 	<h3 class="subsubtitle method-title">findPlaylistDictionaryWithReferenceID:parameters:</h3>
 	
 	
-	
-	<div class="method-subsection brief-description">
-		<p>Retrieves playlist data from the Media API service by its reference ID.</p>
-	</div>		
-	
-    
 
 	<div class="method-subsection method-declaration"><code>- (RACSignal *)findPlaylistDictionaryWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>referenceID</em></dt>
-			<dd><p>string containing the reference ID of the playlist to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to the Media API
-requests. These values will override the default values if they conflict.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>Returns a signal that sends a JSON dictionary as its only value,
-then completes.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Retrieves playlist data from the Media API service by its reference ID.</p>
-
-<p>If the Media API returns a standard JSON-formatted error response, the
-deserialized response will be the delivered error&rsquo;s <code>userInfo</code>.</p>
-
-<p>If a JSON parse error occurs, the raw NSData response will be included in the
-delivered error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
-
-<p>The returned signal does not guarantee that it will deliver its values on
-the main thread scheduler, so if this is a requirement then use [RACSignal deliverOn:]
-to deliver the values on the main thread.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
 </div>
 						
 						<div class="section-method">
@@ -515,72 +483,10 @@ to deliver the values on the main thread.</p>
 	<h3 class="subsubtitle method-title">findPlaylistWithPlaylistID:parameters:</h3>
 	
 	
-	
-	<div class="method-subsection brief-description">
-		<p>Retrieves a playlist from the Media API service by its playlist ID.</p>
-	</div>		
-	
-    
 
 	<div class="method-subsection method-declaration"><code>- (RACSignal *)findPlaylistWithPlaylistID:(NSString *)<em>playlistID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>playlistID</em></dt>
-			<dd><p>string containing the ID of the playlist to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to the Media API
-requests. These values will override the default values if they conflict.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>Returns a signal that sends a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> as its only value, then
-completes.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Retrieves a playlist from the Media API service by its playlist ID.</p>
-
-<p>If the Media API returns a standard JSON-formatted error response, the
-deserialized response will be the delivered error&rsquo;s <code>userInfo</code>.</p>
-
-<p>If a JSON parse error occurs, the raw NSData response will be included in the
-delivered error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
-
-<p>The returned signal does not guarantee that it will deliver its values on
-the main thread scheduler, so if this is a requirement then use [RACSignal deliverOn:]
-to deliver the values on the main thread.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
 </div>
 						
 						<div class="section-method">
@@ -657,72 +563,10 @@ callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSOND
 	<h3 class="subsubtitle method-title">findPlaylistWithReferenceID:parameters:</h3>
 	
 	
-	
-	<div class="method-subsection brief-description">
-		<p>Retrieves a playlist from the Media API service by its reference ID.</p>
-	</div>		
-	
-    
 
 	<div class="method-subsection method-declaration"><code>- (RACSignal *)findPlaylistWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>referenceID</em></dt>
-			<dd><p>string containing the reference ID of the playlist to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to the Media API
-requests. These values will override the default values if they conflict.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>Returns a signal that sends a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> as its only value, then
-completes.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Retrieves a playlist from the Media API service by its reference ID.</p>
-
-<p>If the Media API returns a standard JSON-formatted error response, the
-deserialized response will be the delivered error&rsquo;s <code>userInfo</code>.</p>
-
-<p>If a JSON parse error occurs, the raw NSData response will be included in the
-delivered error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
-
-<p>The returned signal does not guarantee that it will deliver its values on
-the main thread scheduler, so if this is a requirement then use [RACSignal deliverOn:]
-to deliver the values on the main thread.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
 </div>
 						
 						<div class="section-method">
@@ -799,72 +643,10 @@ callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSOND
 	<h3 class="subsubtitle method-title">findVideoDictionaryWithReferenceID:parameters:</h3>
 	
 	
-	
-	<div class="method-subsection brief-description">
-		<p>Retrieves video data from the Media API service by its reference ID.</p>
-	</div>		
-	
-    
 
 	<div class="method-subsection method-declaration"><code>- (RACSignal *)findVideoDictionaryWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>referenceID</em></dt>
-			<dd><p>string containing the reference ID of the video to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to the Media API
-requests. These values will override the default values if they conflict.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>Returns a signal that sends a JSON dictionary as its only value,
-then completes.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Retrieves video data from the Media API service by its reference ID.</p>
-
-<p>If the Media API returns a standard JSON-formatted error response, the
-deserialized response will be the delivered error&rsquo;s <code>userInfo</code>.</p>
-
-<p>If a JSON parse error occurs, the raw NSData response will be included in the
-delivered error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
-
-<p>The returned signal does not guarantee that it will deliver its values on
-the main thread scheduler, so if this is a requirement then use [RACSignal deliverOn:]
-to deliver the values on the main thread.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
 </div>
 						
 						<div class="section-method">
@@ -872,72 +654,10 @@ to deliver the values on the main thread.</p>
 	<h3 class="subsubtitle method-title">findVideoDictionaryWithVideoID:parameters:</h3>
 	
 	
-	
-	<div class="method-subsection brief-description">
-		<p>Retrieves video data from the Media API service by its video ID.</p>
-	</div>		
-	
-    
 
 	<div class="method-subsection method-declaration"><code>- (RACSignal *)findVideoDictionaryWithVideoID:(NSString *)<em>videoID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>videoID</em></dt>
-			<dd><p>string containing the ID of the video to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to the Media API
-requests. These values will override the default values if they conflict.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>Returns a signal that sends a JSON dictionary as its only value,
-then completes.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Retrieves video data from the Media API service by its video ID.</p>
-
-<p>If the Media API returns a standard JSON-formatted error response, the
-deserialized response will be the delivered error&rsquo;s <code>userInfo</code>.</p>
-
-<p>If a JSON parse error occurs, the raw NSData response will be included in the
-delivered error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
-
-<p>The returned signal does not guarantee that it will deliver its values on
-the main thread scheduler, so if this is a requirement then use [RACSignal deliverOn:]
-to deliver the values on the main thread.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
 </div>
 						
 						<div class="section-method">
@@ -945,72 +665,10 @@ to deliver the values on the main thread.</p>
 	<h3 class="subsubtitle method-title">findVideoWithReferenceID:parameters:</h3>
 	
 	
-	
-	<div class="method-subsection brief-description">
-		<p>Retrieves a video from the Media API service by its reference ID.</p>
-	</div>		
-	
-    
 
 	<div class="method-subsection method-declaration"><code>- (RACSignal *)findVideoWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>referenceID</em></dt>
-			<dd><p>string containing the reference ID of the video to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to the Media API
-requests. These values will override the default values if they conflict.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>Returns a signal that sends a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> as its only value, then
-completes.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Retrieves a video from the Media API service by its reference ID.</p>
-
-<p>If the Media API returns a standard JSON-formatted error response, the
-deserialized response will be the delivered error&rsquo;s <code>userInfo</code>.</p>
-
-<p>If a JSON parse error occurs, the raw NSData response will be included in the
-delivered error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
-
-<p>The returned signal does not guarantee that it will deliver its values on
-the main thread scheduler, so if this is a requirement then use [RACSignal deliverOn:]
-to deliver the values on the main thread.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
 </div>
 						
 						<div class="section-method">
@@ -1087,72 +745,10 @@ callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSOND
 	<h3 class="subsubtitle method-title">findVideoWithVideoID:parameters:</h3>
 	
 	
-	
-	<div class="method-subsection brief-description">
-		<p>Retrieves a video from the Media API service by its video ID.</p>
-	</div>		
-	
-    
 
 	<div class="method-subsection method-declaration"><code>- (RACSignal *)findVideoWithVideoID:(NSString *)<em>videoID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>videoID</em></dt>
-			<dd><p>string containing the ID of the video to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to the Media API
-requests. These values will override the default values if they conflict.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>Returns a signal that sends a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> as its only value, then
-completes.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Retrieves a video from the Media API service by its video ID.</p>
-
-<p>If the Media API returns a standard JSON-formatted error response, the
-deserialized response will be the delivered error&rsquo;s <code>userInfo</code>.</p>
-
-<p>If a JSON parse error occurs, the raw NSData response will be included in the
-delivered error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
-
-<p>The returned signal does not guarantee that it will deliver its values on
-the main thread scheduler, so if this is a requirement then use [RACSignal deliverOn:]
-to deliver the values on the main thread.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
 </div>
 						
 						<div class="section-method">
@@ -1236,7 +832,7 @@ callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSOND
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithMediaRequestFactory:(BCOVMediaRequestFactory *)<em>requestFactory</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (instancetype)initWithMediaRequestFactory:(BCOVMediaRequestFactory *)<em>requestFactory</em></code></div>
 
     
 	
@@ -1298,7 +894,7 @@ specified token. The request factory is created using the token provided.</p>
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (id)initWithToken:(NSString *)<em>token</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (instancetype)initWithToken:(NSString *)<em>token</em></code></div>
 
     
 	
@@ -1348,6 +944,542 @@ Video Cloud and must be protected by you.</p>
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/playlistDictionaryOperationWithPlaylistID:parameters:" title="playlistDictionaryOperationWithPlaylistID:parameters:"></a>
+	<h3 class="subsubtitle method-title">playlistDictionaryOperationWithPlaylistID:parameters:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns an operation that retrieves JSON for a playlist corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code>NSDictionary *</code> if the operation succeeds.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)playlistDictionaryOperationWithPlaylistID:(NSString *)<em>playlistID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>playlistID</em></dt>
+			<dd><p>The playlist ID of the playlist to find.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>parameters</em></dt>
+			<dd><p>Additional NSString query parameters to add to catalog
+service requests. These values will override the default values if they
+conflict.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An operation that retrieves the specified playlist as JSON.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns an operation that retrieves JSON for a playlist corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code>NSDictionary *</code> if the operation succeeds.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/playlistDictionaryOperationWithReferenceID:parameters:" title="playlistDictionaryOperationWithReferenceID:parameters:"></a>
+	<h3 class="subsubtitle method-title">playlistDictionaryOperationWithReferenceID:parameters:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns an operation that retrieves JSON for a playlist corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code>NSDictionary *</code> if the operation succeeds.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)playlistDictionaryOperationWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>referenceID</em></dt>
+			<dd><p>The playlist reference ID of the playlist to find.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>parameters</em></dt>
+			<dd><p>Additional NSString query parameters to add to catalog
+service requests. These values will override the default values if they
+conflict.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An operation that retrieves the specified playlist as JSON.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns an operation that retrieves JSON for a playlist corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code>NSDictionary *</code> if the operation succeeds.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/playlistOperationWithPlaylistID:parameters:" title="playlistOperationWithPlaylistID:parameters:"></a>
+	<h3 class="subsubtitle method-title">playlistOperationWithPlaylistID:parameters:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns an operation that retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code></code>BCOVPlaylist<code> *</code> if the operation succeeds.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)playlistOperationWithPlaylistID:(NSString *)<em>playlistID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>playlistID</em></dt>
+			<dd><p>The playlist ID of the playlist to find.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>parameters</em></dt>
+			<dd><p>Additional NSString query parameters to add to catalog
+service requests. These values will override the default values if they
+conflict.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An operation that retrieves the specified <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns an operation that retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code></code>BCOVPlaylist<code> *</code> if the operation succeeds.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/playlistOperationWithReferenceID:parameters:" title="playlistOperationWithReferenceID:parameters:"></a>
+	<h3 class="subsubtitle method-title">playlistOperationWithReferenceID:parameters:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns an operation that retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code></code>BCOVPlaylist<code> *</code> if the operation succeeds.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)playlistOperationWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>referenceID</em></dt>
+			<dd><p>The playlist reference ID of the playlist to find.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>parameters</em></dt>
+			<dd><p>Additional NSString query parameters to add to catalog
+service requests. These values will override the default values if they
+conflict.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An operation that retrieves the specified <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns an operation that retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code></code>BCOVPlaylist<code> *</code> if the operation succeeds.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/videoDictionaryOperationWithReferenceID:parameters:" title="videoDictionaryOperationWithReferenceID:parameters:"></a>
+	<h3 class="subsubtitle method-title">videoDictionaryOperationWithReferenceID:parameters:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns an operation that retrieves JSON for a video corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code>NSDictionary *</code> if the operation succeeds.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)videoDictionaryOperationWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>referenceID</em></dt>
+			<dd><p>The video reference ID of the video to find.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>parameters</em></dt>
+			<dd><p>Additional NSString query parameters to add to catalog
+service requests. These values will override the default values if they
+conflict.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An operation that retrieves the specified video as JSON.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns an operation that retrieves JSON for a video corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code>NSDictionary *</code> if the operation succeeds.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/videoDictionaryOperationWithVideoID:parameters:" title="videoDictionaryOperationWithVideoID:parameters:"></a>
+	<h3 class="subsubtitle method-title">videoDictionaryOperationWithVideoID:parameters:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns an operation that retrieves JSON for a video corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code>NSDictionary *</code> if the operation succeeds.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)videoDictionaryOperationWithVideoID:(NSString *)<em>videoID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>videoID</em></dt>
+			<dd><p>The video ID of the video to find.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>parameters</em></dt>
+			<dd><p>Additional NSString query parameters to add to catalog
+service requests. These values will override the default values if they
+conflict.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An operation that retrieves the specified video as JSON.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns an operation that retrieves JSON for a video corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code>NSDictionary *</code> if the operation succeeds.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/videoOperationWithReferenceID:parameters:" title="videoOperationWithReferenceID:parameters:"></a>
+	<h3 class="subsubtitle method-title">videoOperationWithReferenceID:parameters:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns an operation that retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code></code>BCOVVideo<code> *</code> if the operation succeeds.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)videoOperationWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>referenceID</em></dt>
+			<dd><p>The video reference ID of the video to find.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>parameters</em></dt>
+			<dd><p>Additional NSString query parameters to add to catalog
+service requests. These values will override the default values if they
+conflict.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An operation that retrieves the specified <a href="../Classes/BCOVVideo.html">BCOVVideo</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns an operation that retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code></code>BCOVVideo<code> *</code> if the operation succeeds.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/videoOperationWithVideoID:parameters:" title="videoOperationWithVideoID:parameters:"></a>
+	<h3 class="subsubtitle method-title">videoOperationWithVideoID:parameters:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns an operation that retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code></code>BCOVVideo<code> *</code> if the operation succeeds.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)videoOperationWithVideoID:(NSString *)<em>videoID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>videoID</em></dt>
+			<dd><p>The video ID of the video to find.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>parameters</em></dt>
+			<dd><p>Additional NSString query parameters to add to catalog
+service requests. These values will override the default values if they
+conflict.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An operation that retrieves the specified <a href="../Classes/BCOVVideo.html">BCOVVideo</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns an operation that retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code></code>BCOVVideo<code> *</code> if the operation succeeds.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
@@ -1363,7 +1495,7 @@ Video Cloud and must be protected by you.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-05-16)</span><br />
+						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-08-15)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

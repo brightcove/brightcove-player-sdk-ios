@@ -28,7 +28,7 @@
  * @param cuePoints The new cue point collection's cue points.
  * @return The new cue point collection with the specified cue points.
  */
-- (id)initWithArray:(NSArray *)cuePoints;
+- (instancetype)initWithArray:(NSArray *)cuePoints;
 
 /**
  * Constructs and returns a BCOVCuePointCollection with a single cue point.
@@ -36,7 +36,7 @@
  * @param cuePoint The new cue point collection's cue point.
  * @return The new cue point collection with the specified cue point.
  */
-- (id)initWithCuePoint:(BCOVCuePoint *)cuePoint;
+- (instancetype)initWithCuePoint:(BCOVCuePoint *)cuePoint;
 
 /**
  * Returns this collection's cue point objects in an array. The elements of the
