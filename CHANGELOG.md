@@ -1,3 +1,8 @@
+# 4.1.9
+
+### Additions and Improvements
+* Internal bug fixes.
+
 # 4.1.8
 
 ### Breaking Changes
