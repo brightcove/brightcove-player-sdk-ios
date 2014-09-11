@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 4.1.9.687
+# Brightcove Player SDK for iOS, version 4.1.10.715
 
 Quick Start
 ===========

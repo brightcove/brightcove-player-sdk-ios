@@ -1,3 +1,9 @@
+# 4.1.10
+
+### Additions and Improvements
+* Fixed a bug that prevented the app bundle from showing up in the Videocloud Analytics UI.
+* Internal improvements
+
 # 4.1.9
 
 ### Additions and Improvements

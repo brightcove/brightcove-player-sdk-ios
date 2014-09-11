@@ -338,9 +338,10 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 @property (nonatomic, copy) NSString *account;
 
 /**
- * This property must be a URI with a valid structure.
+ * This property must be a URI with a valid structure and must contain
+ * an authority.
  * The default value for this property, if it is not overridden, will be
- * "bcsdk:/" followed by the bundle identifier.
+ * "bcsdk://" followed by the bundle identifier.
  *
  * Please refer to http://en.wikipedia.org/wiki/URI_scheme#Generic_syntax
  * for more information on and examples of URI syntax.
@@ -351,7 +352,8 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 @property (nonatomic, copy) NSString *destination;
 
 /**
- * This property must be a URI with a valid structure.
+ * This property must be a URI with a valid structure and must contain an
+ * authority.
  * The default value is nil.
  *
  * Please refer to http://en.wikipedia.org/wiki/URI_scheme#Generic_syntax
