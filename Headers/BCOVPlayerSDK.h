@@ -13,7 +13,6 @@
 #import "NSDictionary+BCOVURLSupport.h"
 
 // Playback
-#import "AVPlayer+BCOVSignalSupport.h"
 #import "BCOVBasicSessionProvider.h"
 #import "BCOVCuePointProgressPolicy.h"
 #import "BCOVDelegatingSessionConsumer.h"

@@ -19,7 +19,7 @@
  * A playlist is an ordered collection of videos, as well as additional optional
  * metadata about the collection in the form of properties. Note that because
  * BCOVPlaylist implements NSFastEnumeration, it can be used in methods that
- * take NSFastEnumeration parameters (such as `-[BCOVPlaybackQueue setVideos:]`).
+ * take NSFastEnumeration parameters (such as `-[BCOVPlaybackController setVideos:]`).
  */
 @protocol BCOVPlaylist <NSObject, NSFastEnumeration>
 

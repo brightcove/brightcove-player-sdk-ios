@@ -50,8 +50,6 @@
 	
 	<option value="//api/name/applyToEvent:">&nbsp;&nbsp;&nbsp;&nbsp;- applyToEvent:</option>
 	
-	<option value="//api/name/signalWithValue:">&nbsp;&nbsp;&nbsp;&nbsp;- signalWithValue:</option>
-	
 	
 	
 </select>
@@ -67,8 +65,6 @@
 
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Deprecated Methods">Deprecated Methods</a></span></li>
 	
 </ul></li>
 
@@ -89,8 +85,6 @@
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/applyToEvent:">applyToEvent:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/signalWithValue:">signalWithValue:</a></span></li>
 	
 </ul></li>
 
@@ -157,7 +151,7 @@ content should resume from its current playhead position).</li>
 						
 						
 						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
+						
 
 						<ul class="task-list">
 							<li>
@@ -169,20 +163,6 @@ content should resume from its current playhead position).</li>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/progressPolicyProcessingCuePoints:resumingPlaybackFrom:ignoringPreviouslyProcessedCuePoints:">+&nbsp;progressPolicyProcessingCuePoints:resumingPlaybackFrom:ignoringPreviouslyProcessedCuePoints:</a></code>
-	</span>
-	
-	
-</li>
-						</ul>
-						
-						
-						<a title="Deprecated Methods" name="task_Deprecated Methods"></a>
-						<h3 class="subsubtitle task-title">Deprecated Methods</h3>
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/signalWithValue:">&ndash;&nbsp;signalWithValue:</a></code>
 	</span>
 	
 	
@@ -208,7 +188,8 @@ content should resume from its current playhead position).</li>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Convenience factory method that returns a cue point progress policy configured according to the specified parameters.</p>
+		<p>Convenience factory method that returns a cue point progress policy
+configured according to the specified parameters.</p>
 	</div>		
 	
     
@@ -255,7 +236,8 @@ ignore cue points that it has already been instructed to process.</p></dd>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Convenience factory method that returns a cue point progress policy configured according to the specified parameters.</p>
+		<p>Convenience factory method that returns a cue point progress policy
+configured according to the specified parameters.</p>
 	</div>
 	
 	
@@ -289,7 +271,7 @@ ignore cue points that it has already been instructed to process.</p></dd>
 	<div class="method-subsection brief-description">
 		<p>Returns a <a href="../Classes/BCOVCuePointProgressPolicyResult.html">BCOVCuePointProgressPolicyResult</a> that specifies which cue points
 are to be processed by the code consulting this policy, as well as the
-position at which playback should resume once all cue points ahve been
+position at which playback should resume once all cue points have been
 processed.</p>
 	</div>		
 	
@@ -305,7 +287,7 @@ processed.</p>
 		<dl class="argument-def parameter-def">
 			<dt><em>cuePointEvent</em></dt>
 			<dd><p>A dictionary containing cue point event information, as
-specified in <a href="../Protocols/BCOVPlaybackSession.html#//api/name/cuePoints"><code>[BCOVPlaybackSession cuePoints]</code></a>.</p></dd>
+specified in <code>[BCOVPlaybackSession cuePoints]</code>.</p></dd>
 		</dl>
 		
 	</div>
@@ -325,7 +307,7 @@ specified in <a href="../Protocols/BCOVPlaybackSession.html#//api/name/cuePoints
 		<h4 class="method-subtitle">Discussion</h4>
 		<p>Returns a <a href="../Classes/BCOVCuePointProgressPolicyResult.html">BCOVCuePointProgressPolicyResult</a> that specifies which cue points
 are to be processed by the code consulting this policy, as well as the
-position at which playback should resume once all cue points ahve been
+position at which playback should resume once all cue points have been
 processed.</p>
 
 <p>This method is called by the consumer of the cue point progress policy. In
@@ -349,17 +331,6 @@ convenience factory class method.</p>
 	
 </div>
 						
-						<div class="section-method">
-	<a name="//api/name/signalWithValue:" title="signalWithValue:"></a>
-	<h3 class="subsubtitle method-title">signalWithValue:</h3>
-	
-	
-
-	<div class="method-subsection method-declaration"><code>- (RACSignal *)signalWithValue:(NSDictionary *)<em>cuePointEvent</em></code></div>
-
-    
-</div>
-						
 					</div>
 					
 					
@@ -375,7 +346,7 @@ convenience factory class method.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-09-11)</span><br />
+						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-10-07)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

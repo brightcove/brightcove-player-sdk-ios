@@ -34,7 +34,40 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 4.1.10.715</h1>
+						<h1>Brightcove Player SDK for iOS, version 4.2.0.807</h1>
+
+<h1>Installation</h1>
+
+<p>You can use <a href="[http://cocoapods.org](http://cocoapods.org)">Cocoapods</a> to add the Brightcove Player SDK to your project.  You can find the latest <code>Brightcove-Player-SDK</code> podspec <a href="[https://github.com/CocoaPods/Specs/tree/master/Specs/Brightcove-Player-SDK](https://github.com/CocoaPods/Specs/tree/master/Specs/Brightcove-Player-SDK)">here</a>.</p>
+
+<p>To add the Brightcove Player SDK to your project manually:</p>
+
+<ol>
+<li>Download the latest zip'ed release from our <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/releases](https://github.com/brightcove/brightcove-player-sdk-ios/releases)">release page</a>.</li>
+<li>Add the contents of Library and Headers to the project.</li>
+<li>On the &ldquo;Build Phases&rdquo; tab of your application target, add the following to the &ldquo;Link
+ Binary With Libraries&rdquo; phase:
+
+<ul>
+<li><code>AVFoundation</code></li>
+<li><code>CoreMedia</code></li>
+<li><code>MediaPlayer</code></li>
+<li><code>libBCOVPlayerSDK.a</code></li>
+</ul>
+</li>
+<li>On the &ldquo;Build Settings&rdquo; tab of your application target:
+
+<ul>
+<li>Ensure that Brightcove Player SDK headers are in your application&rsquo;s &ldquo;Header Search Path&rdquo;.</li>
+<li>Add <code>-ObjC</code> to the &ldquo;Other Linker Flags&rdquo; build setting.</li>
+</ul>
+</li>
+</ol>
+
+
+<h1>System Requirements</h1>
+
+<p>iOS 6.1 and above is supported. Support for iOS 6.x will be removed at the end of 2014.</p>
 
 <h1>Quick Start</h1>
 
@@ -62,7 +95,7 @@ BCOVCatalogService *catalog = [[BCOVCatalogService alloc] initWithToken:token];
 
 <p>If you&rsquo;re using ARC, you need to keep the controller from being automatically released at the end of the method. A common way to do this is to store a pointer to the controller in an instance variable.</p>
 
-<h1>Architectural Overview for v4.1</h1>
+<h1>Architectural Overview</h1>
 
 <p>!<a href="architecture01.png">Architectural Overview 1</a></p>
 
@@ -73,14 +106,6 @@ BCOVCatalogService *catalog = [[BCOVCatalogService alloc] initWithToken:token];
 <p>There are two other elements of the playback controller: a <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSessionProvider.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSessionProvider.h)">[<code>BCOVPlaybackSessionProvider</code>](Protocols/BCOVPlaybackSessionProvider.html)</a>, and a list of <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h)#L194-L198">[<code>BCOVPlaybackSessionConsumer</code>](Protocols/BCOVPlaybackSessionConsumer.html)</a>s. As the name would suggest, the playback session provider is responsible for creating playback sessions and delivering them to the playback controller. The playback controller then delivers the session to each of the playback session consumers in the list. Both the session provider and session consumer APIs are designed for use by plugin developers, and are not detailed in this document.</p>
 
 <p>In addition to the playback functionality provided by the classes described above, there are a handful of value classes. These are used to hold data specific to the Player SDK for iOS. There are also <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVCatalogService.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVCatalogService.h)">[<code>BCOVCatalogService</code>](Classes/BCOVCatalogService.html)</a> and <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVMediaRequestFactory.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVMediaRequestFactory.h)">[<code>BCOVMediaRequestFactory</code>](Classes/BCOVMediaRequestFactory.html)</a>, which offer functionality for querying content remotely stored in your Brightcove Video Cloud account. Each of these is described in more detail in its own section below.</p>
-
-<h2>What happened to <a href="Protocols/BCOVPlaybackFacade.html">BCOVPlaybackFacade</a>?</h2>
-
-<p>Thanks to helpful feedback from our users, we made some changes to streamline the API in the Player SDK. The most obvious change is the deprecation of the <a href="Protocols/BCOVPlaybackFacade.html"><code>BCOVPlaybackFacade</code></a> and <a href="Protocols/BCOVPlaybackQueue.html"><code>BCOVPlaybackQueue</code></a> protocols.</p>
-
-<p>In our original design, we wanted to offer a high-level interface for basic playback functionality without requiring users to have to learn a lot of minutiae about the interaction between components such as <a href="Protocols/BCOVPlaybackQueue.html">BCOVPlaybackQueue</a>. To address this, in v4.0 we had a <a href="Protocols/BCOVPlaybackFacade.html">BCOVPlaybackFacade</a> class. But in developing v4.1, we decided to consolidate methods and state affecting playback sessions to a single point of access, <a href="Protocols/BCOVPlaybackController.html"><code>BCOVPlaybackController</code></a>. The playback controller now does everything that was handled by the playback facade in the previous version of the SDK.</p>
-
-<p>The <a href="Protocols/BCOVPlaybackFacade.html">BCOVPlaybackFacade</a> protocol still exists, so most existing code should continue to function as before. However, that protocol has been deprecated, and Xcode will warn you of this (depending on your project&rsquo;s settings). We&rsquo;ve moved the methods from <a href="Protocols/BCOVPlaybackQueue.html">BCOVPlaybackQueue</a> to <a href="Protocols/BCOVPlaybackController.html">BCOVPlaybackController</a>, so the controller is both for performing operations on the current playback state as well as advancing to the next video in the queue. We recommend updating your code to use playback controllers instead of playback facades, and for the most part you only have to change references from type <code>id&lt;BCOVPLaybackFacade&gt;</code> to <code>id</code>BCOVPlaybackController<code></code> to make your code fully v4.1-compliant. A search and replace should do the trick. See <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/CHANGELOG.md](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/CHANGELOG.md)">CHANGELOG.md</a> for further details about the changes in v4.1, and don&rsquo;t hesitate to raise questions or ask us for help on the <a href="[https://groups.google.com/forum/](https://groups.google.com/forum/)#!forum/brightcove-native-player-sdks">Brightcove Native Player SDK mailing list</a>.</p>
 
 <h2>A Word on Subclassing</h2>
 
@@ -203,7 +228,7 @@ video2.properties = otherDictionary; // causes compiler error
 
 <p><strong>I can hear the audio track playing, but the video freezes for a few seconds sporadically. What&rsquo;s happening?</strong></p>
 
-<p>This is a common symptom of having called a main thread-only UIKit or AVFoundation method from a non-main thread. If you are using a playback session method that returns a RACSignal, realize that most signals (including all <code>BCOVPlaybackSession</code> and <code>BCOVCatalogService</code> signals) deliver their values on a background scheduler by default, so you must explicitly deliver them onto the main thread scheduler (using <code>[RACSignal deliverOn:]</code>). The corresponding delegate methods on <code>BCOVPlaybackControllerDelegate</code> are always called on the main thread.</p>
+<p>This is a common symptom of having called a main thread-only UIKit or AVFoundation method from a non-main thread. The delegate methods on <code>BCOVPlaybackControllerDelegate</code> are always called on the main thread.</p>
 
 <p><strong>How do I customize the controls?</strong></p>
 
@@ -292,12 +317,6 @@ video2.properties = otherDictionary; // causes compiler error
 							
 							<li><a href="Protocols/BCOVPlaybackControllerDelegate.html">BCOVPlaybackControllerDelegate</a></li>
 							
-							<li><a href="Protocols/BCOVPlaybackFacade.html">BCOVPlaybackFacade</a></li>
-							
-							<li><a href="Protocols/BCOVPlaybackFacadeDelegate.html">BCOVPlaybackFacadeDelegate</a></li>
-							
-							<li><a href="Protocols/BCOVPlaybackQueue.html">BCOVPlaybackQueue</a></li>
-							
 							<li><a href="Protocols/BCOVPlaybackSession.html">BCOVPlaybackSession</a></li>
 							
 							<li><a href="Protocols/BCOVPlaybackSessionConsumer.html">BCOVPlaybackSessionConsumer</a></li>
@@ -326,8 +345,6 @@ video2.properties = otherDictionary; // causes compiler error
 						<h2 class="index-title">Category References</h2>
 						<ul>
 							
-							<li><a href="Categories/AVPlayer+Deprecated.html">AVPlayer(Deprecated)</a></li>
-							
 							<li><a href="Categories/NSDictionary+BCOVURLSupport.html">NSDictionary(BCOVURLSupport)</a></li>
 							
 						</ul>
@@ -341,7 +358,7 @@ video2.properties = otherDictionary; // causes compiler error
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-09-11)</span><br />
+						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-10-07)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

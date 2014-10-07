@@ -323,19 +323,3 @@
 + (instancetype)videoFromJSONDictionary:(NSDictionary *)json;
 
 @end
-
-
-@class RACSignal;
-
-@interface BCOVCatalogService (Deprecated)
-
-- (RACSignal *)findPlaylistWithPlaylistID:(NSString *)playlistID parameters:(NSDictionary *)parameters __attribute((deprecated("Use -[BCOVCatalogService playlistOperationWithPlaylistID:parameters:] instead")));
-- (RACSignal *)findPlaylistDictionaryWithPlaylistID:(NSString *)playlistID parameters:(NSDictionary *)parameters __attribute((deprecated("Use -[BCOVCatalogService playlistDictionaryOperationWithPlaylistID:parameters:] instead")));
-- (RACSignal *)findPlaylistWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters __attribute((deprecated("Use -[BCOVCatalogService playlistOperationWithReferenceID:parameters:] instead")));
-- (RACSignal *)findPlaylistDictionaryWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters __attribute((deprecated("Use -[BCOVCatalogService playlistDictionaryOperationWithReferenceID:parameters:] instead")));
-- (RACSignal *)findVideoWithVideoID:(NSString *)videoID parameters:(NSDictionary *)parameters __attribute((deprecated("Use -[BCOVCatalogService videoOperationWithVideoID:parameters:] instead")));
-- (RACSignal *)findVideoDictionaryWithVideoID:(NSString *)videoID parameters:(NSDictionary *)parameters __attribute((deprecated("Use -[BCOVCatalogService videoDictionaryOperationWithVideoID:parameters:] instead")));
-- (RACSignal *)findVideoWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters __attribute((deprecated("Use -[BCOVCatalogService videoOperationWithReferenceID:parameters:] instead")));
-- (RACSignal *)findVideoDictionaryWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters __attribute((deprecated("Use -[BCOVCatalogService videoDictionaryOperationWithReferenceID:parameters:] instead")));
-
-@end

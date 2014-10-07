@@ -146,22 +146,3 @@
 - (void)bcov_setComponentContext:(NSDictionary *)componentContext;
 
 @end
-
-
-
-
-@protocol BCOVPlaybackFacade;
-
-@interface BCOVPlayerSDKManager (Deprecated)
-
-- (id<BCOVPlaybackController>)createPlaybackControllerWithFrame:(CGRect)frame __attribute((deprecated("Use -[BCOVPlayerSDKManager createPlaybackControllerWithViewStrategy:] instead")));
-- (id<BCOVPlaybackFacade>)createPlaybackFacadeWithFrame:(CGRect)frame __attribute((deprecated("Use -[BCOVPlayerSDKManager createPlaybackControllerWithViewStrategy:] instead")));
-- (id<BCOVPlaybackController>)createPlaybackControllerWithSessions:(RACSignal *)playbackSessions frame:(CGRect)frame __attribute((deprecated("Use -[BCOVPlayerSDKManager createPlaybackControllerWithSessionProvider:viewStrategy:] instead")));
-
-@end
-
-@interface BCOVPlayerSDKManager (Unavailable)
-
-- (instancetype)createPlaybackQueue __attribute((unavailable("Create a BCOVPlaybackController instead")));
-
-@end

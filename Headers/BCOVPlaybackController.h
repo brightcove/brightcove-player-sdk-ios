@@ -316,10 +316,6 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  */
 - (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didReceiveLifecycleEvent:(BCOVPlaybackSessionLifecycleEvent *)lifecycleEvent;
 
-
-// Deprecated methods in BCOVPlaybackController
-- (RACSignal *)seekToTime:(CMTime)time __attribute((deprecated("Use -[AVPlayer seekToTime:completionHandler:] instead")));
-
 @end
 
 
@@ -374,47 +370,4 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  */
 @property (nonatomic, assign, getter=isUniqueIdentifierEnabled) BOOL uniqueIdentifierEnabled;
 
-@end
-
-
-@protocol BCOVPlaybackFacadeDelegate;
-@protocol BCOVPlaybackQueue;
-
-__attribute((deprecated("Use BCOVPlaybackController instead")))
-@protocol BCOVPlaybackFacade <NSObject>
-@property (nonatomic, assign) id<BCOVPlaybackFacadeDelegate> delegate __attribute((deprecated("Use -[BCOVPlaybackController delegate] instead")));
-@property (nonatomic, assign, getter = isControlsEnabled) BOOL controlsEnabled __attribute((unavailable("Create custom controls in a BCOVPlaybackController view strategy instead")));
-@property (nonatomic, readonly, strong) UIView *view __attribute((deprecated("Use -[BCOVPlaybackController view] instead")));
-- (void)advanceToNext __attribute((deprecated("Use -[BCOVPlaybackController advanceToNext] instead")));
-- (void)advanceToNextAndPlay __attribute((deprecated("Use -[BCOVPlaybackController advanceToNext] instead")));
-- (void)play __attribute((deprecated("Use -[BCOVPlaybackController play] instead")));
-- (void)pause __attribute((deprecated("Use -[BCOVPlaybackController pause] instead")));
-- (void)setVideos:(id<NSFastEnumeration>)videos __attribute((deprecated("Use -[BCOVPlaybackController setVideos:] instead")));
-@property (nonatomic, readonly, strong) id<BCOVPlaybackController> controller __attribute((deprecated("Use BCOVPlaybackController directly instead")));
-@property (nonatomic, readonly, strong) id<BCOVPlaybackQueue> queue __attribute((deprecated("Use BCOVPlaybackController directly instead")));
-@end
-
-
-
-
-__attribute((deprecated("Conform to BCOVPlaybackControllerDelegate instead")))
-@protocol BCOVPlaybackFacadeDelegate <NSObject, BCOVPlaybackControllerDelegate>
-@optional
-- (void)playbackFacade:(id<BCOVPlaybackFacade>)facade didAdvanceToPlaybackSession:(id<BCOVPlaybackSession>)session __attribute((deprecated("Use -[BCOVPlaybackControllerDelegate playbackController:didAdvanceToPlaybackSession:] instead")));
-- (void)playbackFacade:(id<BCOVPlaybackFacade>)facade playbackSession:(id<BCOVPlaybackSession>)session didChangeDuration:(NSTimeInterval)duration __attribute((deprecated("Use -[BCOVPlaybackControllerDelegate playbackController:playbackSession:didChangeDuration:] instead")));
-- (void)playbackFacade:(id<BCOVPlaybackFacade>)facade playbackSession:(id<BCOVPlaybackSession>)session didChangeExternalPlaybackActive:(BOOL)externalPlaybackActive __attribute((deprecated("Use -[BCOVPlaybackControllerDelegate playbackController:playbackSession:didChangeExternalPlaybackActive:] instead")));
-- (void)playbackFacade:(id<BCOVPlaybackFacade>)facade playbackSession:(id<BCOVPlaybackSession>)session didPassCuePoints:(NSDictionary *)cuePointInfo __attribute((deprecated("Use -[BCOVPlaybackControllerDelegate playbackController:playbackSession:didPassCuePoints:] instead")));
-- (void)playbackFacade:(id<BCOVPlaybackFacade>)facade playbackSession:(id<BCOVPlaybackSession>)session didProgressTo:(NSTimeInterval)progress __attribute((deprecated("Use -[BCOVPlaybackControllerDelegate playbackController:playbackSession:didProgressTo:] instead")));
-- (void)playbackFacade:(id<BCOVPlaybackFacade>)facade playbackSession:(id<BCOVPlaybackSession>)session didReceiveLifecycleEvent:(BCOVPlaybackSessionLifecycleEvent *)lifecycleEvent __attribute((deprecated("Use -[BCOVPlaybackControllerDelegate playbackController:playbackSession:didReceiveLifecycleEvent:] instead")));
-@end
-
-
-
-
-__attribute((deprecated("Use BCOVPlaybackController instead")))
-@protocol BCOVPlaybackQueue <NSObject>
-@property (nonatomic, assign, getter = isAutoAdvance) BOOL autoAdvance __attribute((deprecated("Use -[BCOVPlaybackController autoAdvance] instead")));
-- (void)advanceToNext __attribute((deprecated("Use -[BCOVPlaybackController advanceToNext] instead")));
-- (void)setVideos:(id<NSFastEnumeration>)videos __attribute((deprecated("Use -[BCOVPlaybackController setVideos:] instead")));
-- (RACSignal *)playbackSessions __attribute((deprecated("Use -[BCOVPlaybackSessionProvider playbackSessionsForVideos:] instead")));
 @end

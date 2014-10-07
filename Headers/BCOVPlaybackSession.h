@@ -10,8 +10,6 @@
 #import <AVFoundation/AVFoundation.h>
 
 
-@class RACSignal;
-
 @class BCOVSource;
 @class BCOVVideo;
 
@@ -72,14 +70,6 @@ extern const NSInteger kBCOVPlaybackSessionErrorCodeLoadFailed;
  * may need to invoke this method to advance the queue.
  */
 - (void)terminate;
-
-
-// Deprecated methods in BCOVPlaybackSession
-- (RACSignal *)cuePoints __attribute((deprecated("Implement -[BCOVPlaybackControllerDelegate playbackController:playbackSession:didPassCuePoints:] instead")));
-- (RACSignal *)durationChanges __attribute((deprecated("Use -[AVPlayerItem duration] instead")));
-- (RACSignal *)isExternalPlaybackActive __attribute((deprecated("Use -[AVPlayer externalPlaybackActive] instead")));
-- (RACSignal *)lifecycle __attribute((deprecated("Implement -[BCOVPlaybackControllerDelegate playbackController:playbackSession:didReceiveLifecycleEvent:] instead")));
-- (RACSignal *)progress __attribute((deprecated("Implement -[BCOVPlaybackControllerDelegate playbackController:playbackSession:didProgressTo:] instead")));
 
 @end
 
