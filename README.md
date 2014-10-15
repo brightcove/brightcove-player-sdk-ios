@@ -67,12 +67,61 @@ In addition to the playback functionality provided by the classes described abov
 
 [manager]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlayerSDKManager.h
 [controller]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h
-[delegate]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L210-L220
 [session]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h
 [provider]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSessionProvider.h
-[consumer]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L194-L198
 [catalog]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVCatalogService.h
 [requestfactory]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVMediaRequestFactory.h
+
+Obtaining Playback Information
+--------------------------------------
+The Brightcove Player SDK for iOS provides two mechanisms for broadcasting playback information. The playback controller provides a delegate property that implements [`BCOVPlaybackControllerDelegate`][delegate]. A delegate can implement these optional methods to get notified of playback metadata like progress, duration changes, and other events. The [lifecycle event][lifecycle] delegate method provides events to signal changes in playback state. For example, when a player goes from the paused state to the playing state, the lifecycle event delegate method will be called with the `kBCOVPlaybackSessionLifecycleEventPlay` event. The default Lifecycle events are declared in [`BCOVPlaybackSession`][lifecycleevents]. Plugins provided by Brightcove add additional lifecycle events which are defined in each plugin.
+
+[lifecycle]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L305-L317
+[lifecycleevents]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h
+
+The playback controller allows for a single delegate. In many cases, this will be enough to retrieve information; the delegate implementations can disseminate values and events to different parts of the app as necessary. In cases where multiple delegates would be required, as is the case when developing a plugin, the [`BCOVPlaybackSessionConsumer`][consumer] and [`BCOVDelegatingSessionConsumerDelegate`][delegatingconsumerdelegate] delegates provide equivalent functionality to the [`BCOVPlaybackControllerDelegate`][delegate] methods.
+
+[consumer]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L200-L213
+[delegatingconsumerdelegate]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVDelegatingSessionConsumer.h#L34-L133
+[delegate]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L216-L319
+
+Here is an example of how one might use these delegates to create an analytics plugin:
+
+    @interface XYZAnalytics : NSObject <BCOVDelegatingSessionConsumerDelegate>
+
+    @property (nonatomic, strong, readonly) BCOVDelegatingSessionConsumer *sessionConsumer;
+
+    @end
+
+    @implementation XYZAnalytics
+
+    - (instancetype)init
+    {
+        self = [super init];
+        if (self)
+        {
+            _sessionConsumer = [[BCOVDelegatingSessionConsumer alloc] initWithDelegate:self];
+        }
+        return self;
+    }
+
+    - (void)playbackConsumer:(id<BCOVPlaybackSessionConsumer>)consumer playbackSession:(id<BCOVPlaybackSession>)session didProgressTo:(NSTimeInterval)progress
+    {
+        //react to progress event
+    }
+
+    @end
+
+To use the plugin:
+
+    BCOVPlayerSDKManager *sdkManager = [BCOVPlayerSDKManager sharedManager];
+    id<BCOVPlaybackController> controller = [sdkManager createPlaybackController];
+    XYZAnalytics *analytics = [[XYZAnalytics alloc] init];
+    [controller addSessionConsumer:analytics.sessionConsumer];
+    
+Another example can be found in the [Custom Controls sample][customcontrols].
+
+[customcontrols]: https://github.com/BrightcoveOS/SampleiOSCustomControls/blob/master/SampleCustomControls/ViewController.m
 
 A Word on Subclassing
 ---------------------
@@ -183,6 +232,7 @@ Let's review what this view strategy does in detail: first, it creates a custom 
 Again, for most use cases it should suffice to not use a view strategy at all. Just add the playback controller's view to a view hierarchy, and compose custom controls on top of it. But for more nuanced cases such as when using certain plugins, it helps to have an opportunity to take control of the composition of the playback controller's view, and that's exactly why you can pass a view strategy to the `BCOVPlayerSDKManager` when creating a new playback controller.
 
 There is one caveat to using a view strategy: you must not access the playback controller's `view` property from within the view strategy block. Since the block is being called *because* the playback controller's `view` property was accessed for the first time, accessing the `view` property again *within* the view strategy block could cause a rip in the fabric of space and time, and your program will crash.
+
 
 Frequently Asked Questions
 ==========================
