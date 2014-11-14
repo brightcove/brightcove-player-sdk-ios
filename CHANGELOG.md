@@ -1,3 +1,25 @@
+# 4.2.1
+### Breaking Changes
+* iOS 6 is still deprecated in this release. We have not removed support yet.  iOS 6.x currently accounts for ~2% of global SDK traffic.
+* This release has been built with Xcode 6. In Xcode 6, Apple removed armv7s from the list of standard architectures. This release no longer includes an armv7s architecture slice.
+* Use of `BCOVDelegatingSessionConsumer` and `BCOVDelegatingSessionConsumerDelegate` has been deprecated. Delegate methods equivilent to those provided by `BCOVDelegatingSessionConsumerDelegate` have been added to the `BCOVPlaybackSessionConsumer` protocol. Objects should now implement `BCOVPlaybackSessionConsumer` protocol and its methods.
+
+| Deprecated Method (BCOVDelegatingSessionConsumerDelegate)           | Replaced By (BCOVPlaybackSessionConsumer)          |
+| ------------------------------------------------------------------- | -------------------------------------------------- |
+| `playbackConsumer:didAdvanceToPlaybackSession:`                     | `didAdvanceToPlaybackSession:`                     |
+| `playbackConsumer:playbackSession:didChangeDuration:`               | `playbackSession:didChangeDuration:`               |
+| `playbackConsumer:playbackSession:didChangeExternalPlaybackActive:` | `playbackSession:didChangeExternalPlaybackActive:` |
+| `playbackConsumer:playbackSession:didPassCuePoints:`                | `playbackSession:didPassCuePoints:`                |
+| `playbackConsumer:playbackSession:didProgressTo:`                   | `playbackSession:didProgressTo:`                   |
+| `playbackConsumer:playbackSession:didReceiveLifecycleEvent:`        | `playbackSession:didReceiveLifecycleEvent:`        |
+
+* `[<BCOVPlaybackSessionConsumer> consumeSession:]` method has been deprecated.  Use `[<BCOVPlaybackSessionConsumer> didAdvanceToSession:]` instead.
+
+### Additions and Improvements
+* Fixed a bug that prevented plugins from cleaning up correctly.
+* Fixed a bug where didProgressTo delegate methods weren't called after a seek if the player is paused.
+* Performance and object allocation improvements.
+
 # 4.2.0
 
 ### Breaking Changes

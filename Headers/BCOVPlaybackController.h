@@ -24,7 +24,6 @@
 @protocol BCOVPlaybackSessionConsumer;
 @protocol BCOVMutableAnalytics;
 
-
 /**
  * Typedef for a view strategy given to a playback controller to construct its
  * `view` property.
@@ -202,13 +201,104 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * controller starts to process a new playback session.
  */
 @protocol BCOVPlaybackSessionConsumer <NSObject>
+@optional
+/**
+ * Called when the controller advances to a new playback session,
+ * which happens when `-advanceToNext` is called. When added as a session 
+ * consume on a playback controller, this method is called with the most 
+ * recently advanced-to playback session (where applicable).
+ *
+ * @param session The playback session that was advanced.
+ */
+- (void)didAdvanceToPlaybackSession:(id<BCOVPlaybackSession>)session;
+
+/**
+ * Called when a playback session's duration is updated. When added as a session
+ * consume on a playback controller, this method is called with the most 
+ * recently updated duration for the session. A session duration can change as 
+ * the media playback continues to load, as it is refined with more precise 
+ * information.
+ *
+ * @param session The playback session whose duration changed.
+ * @param duration The most recently updated session duration.
+ */
+- (void)playbackSession:(id<BCOVPlaybackSession>)session didChangeDuration:(NSTimeInterval)duration;
+
+/**
+ * Called when a playback session's external playback active status is updated.
+ * When a delegate is set on a playback controller, this method is called with the
+ * current external playback active status for the session.
+ *
+ * @param session The playback session whose external playback status changed.
+ * @param externalPlaybackActive Whether external playback is active.
+ */
+- (void)playbackSession:(id<BCOVPlaybackSession>)session didChangeExternalPlaybackActive:(BOOL)externalPlaybackActive;
+
+/**
+ * Called when a session's playhead passes cue points registered with its video.
+ * This will occur regardless of whether the playhead passes the cue point time
+ * for standard progress (playback), or seeking (forward or backward) through
+ * the media. When a delegate is set on a playback controller, this method will
+ * only be called for future cue point events (any events that have already
+ * occurred will not be reported).
+ *
+ * If multiple cue points are registered to a time or times that fall between
+ * the "previous time" and "current time" for a cue point event, all cue points
+ * after the "previous time" and before or on "current time" will be included
+ * in the cue point collection. Put differently, multiple cue points at the
+ * same time are aggregated into a single cue point event whose collection will
+ * contain all of those cue points. The most likely scenario in which this
+ * would happen is when seeking across a time range that includes multiple cue
+ * points (potentially at different times) -- this will result in a single cue
+ * point event whose previous time is the point at which seek began, whose
+ * current time is the destination of the seek, and whose cue points are all of
+ * the cue points whose time fell within that range.
+ *
+ * The cuePointInfo dictionary will contain the following keys and values for
+ * each cue point event:
+ *
+ *   kBCOVPlaybackSessionEventKeyPreviousTime: the progress interval immediately
+ *     preceding the cue points for which this event was received.
+ *   kBCOVPlaybackSessionEventKeyCurrentTime: the progress interval on or
+ *     immediately after the cue points for which this event was received.
+ *   kBCOVPlaybackSessionEventKeyCuePoints: the BCOVCuePointCollection of cue
+ *     points for which this event was received.
+ *
+ * @param session The playback session whose cue points were passed.
+ * @param cuePointInfo A dictionary of information about the cue point event.
+ */
+- (void)playbackSession:(id<BCOVPlaybackSession>)session didPassCuePoints:(NSDictionary *)cuePointInfo;
+
+/**
+ * Called with the playback session's playback progress. As the session's
+ * media plays, this method is called periodically with the latest progress
+ * interval. When a delegate is set on a playback controller, this method will
+ * only be called with progress information that has not yet occurred.
+ *
+ * @param session The playback session making progress.
+ * @param progress The time interval of the session's current playback progress.
+ */
+- (void)playbackSession:(id<BCOVPlaybackSession>)session didProgressTo:(NSTimeInterval)progress;
+
+/**
+ * Called when a playback session receives a lifecycle event. This method is
+ * called only for lifecycle events that occur after the delegate is set
+ * (previous lifecycle events will not be buffered/delivered to the delegate).
+ *
+ * The lifecycle event types are listed along with the
+ * BCOVPlaybackSessionLifecycleEvent class.
+ *
+ * @param session The playback session whose lifecycle events were received.
+ * @param lifecycleEvent The lifecycle event received by the session.
+ */
+- (void)playbackSession:(id<BCOVPlaybackSession>)session didReceiveLifecycleEvent:(BCOVPlaybackSessionLifecycleEvent *)lifecycleEvent;
 
 /**
  * Called when a playback controller starts processing a new playback session.
  *
  * @param session New session
  */
-- (void)consumeSession:(id<BCOVPlaybackSession>)session;
+- (void)consumeSession:(id<BCOVPlaybackSession>)session __attribute__((deprecated("Use -[<BCOVPlaybackSessionConsumer> didAdvanceToPlaybackSession:] instead.")));
 
 @end
 

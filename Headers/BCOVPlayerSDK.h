@@ -12,6 +12,9 @@
 #import "BCOVMediaRequestFactory.h"
 #import "NSDictionary+BCOVURLSupport.h"
 
+// Management
+#import "BCOVPlayerSDKManager.h"
+
 // Playback
 #import "BCOVBasicSessionProvider.h"
 #import "BCOVCuePointProgressPolicy.h"
@@ -19,9 +22,6 @@
 #import "BCOVPlaybackController.h"
 #import "BCOVPlaybackSession.h"
 #import "BCOVPlaybackSessionProvider.h"
-
-// Management
-#import "BCOVPlayerSDKManager.h"
 
 // Values
 #import "BCOVCuePoint.h"

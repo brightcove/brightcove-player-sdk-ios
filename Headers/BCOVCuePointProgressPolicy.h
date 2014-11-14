@@ -69,7 +69,7 @@ typedef NS_ENUM(NSInteger, BCOVProgressPolicyResumePosition) {
      * Configures the cue point progress policy to resume from the last
      * processed cue point position, once all cue points have been processed.
      * For example, if a seek occurs from 0:00 to 2:00, and there are three cue
-     * poinmts with positions at 0:30, 1:00, and 1:30, the policy will instruct
+     * points with positions at 0:30, 1:00, and 1:30, the policy will instruct
      * its caller to resume content playback at 1:31.
      */
     BCOVProgressPolicyResumeFromLastProcessedCuePoint

@@ -34,7 +34,11 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 4.2.0.807</h1>
+						<h1>Brightcove Player SDK for iOS, version 4.2.1.856</h1>
+
+<h1>Requirements</h1>
+
+<p>This library supports iOS 6.1+.</p>
 
 <h1>Installation</h1>
 
@@ -99,13 +103,42 @@ BCOVCatalogService *catalog = [[BCOVCatalogService alloc] initWithToken:token];
 
 <p>!<a href="architecture01.png">Architectural Overview 1</a></p>
 
-<p>The entry point to the Brightcove Player SDK for iOS is the <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlayerSDKManager.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlayerSDKManager.h)">[<code>BCOVPlayerSDKManager</code>](Classes/BCOVPlayerSDKManager.html)</a> singleton object. This Manager handles registration of plugin components and some other housekeeping tasks, but it primarily serves as an object factory. Your app&rsquo;s view controller obtains a reference to the Manager, and uses it to create a <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h)">[<code>BCOVPlaybackController</code>](Protocols/BCOVPlaybackController.html)</a>. The playback controller&rsquo;s <code>view</code> property exposes a UIView containing the AVPlayerLayer object that ultimately presents your video content on the screen. The playback controller also accepts a <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h)#L210-L220">[<code>BCOVPlaybackControllerDelegate</code>](Protocols/BCOVPlaybackControllerDelegate.html)</a>, which you can implement to respond to various video playback events.</p>
+<p>The entry point to the Brightcove Player SDK for iOS is the <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlayerSDKManager.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlayerSDKManager.h)">[<code>BCOVPlayerSDKManager</code>](Classes/BCOVPlayerSDKManager.html)</a> singleton object. This Manager handles registration of plugin components and some other housekeeping tasks, but it primarily serves as an object factory. Your app&rsquo;s view controller obtains a reference to the Manager, and uses it to create a <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h)">[<code>BCOVPlaybackController</code>](Protocols/BCOVPlaybackController.html)</a>. The playback controller&rsquo;s <code>view</code> property exposes a UIView containing the AVPlayerLayer object that ultimately presents your video content on the screen. The playback controller also accepts a <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h)#L306-L409">[<code>BCOVPlaybackControllerDelegate</code>](Protocols/BCOVPlaybackControllerDelegate.html)</a>, which you can implement to respond to various video playback events.</p>
 
 <p>The playback controller offers methods and properties to affect playback of the current video. However, internally, the playback controller delegates to a <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h)">[<code>BCOVPlaybackSession</code>](Protocols/BCOVPlaybackSession.html)</a> object. Playback sessions do the actual work of preparing and playing video content, and contain the video&rsquo;s metadata and AVPlayer. The playback controller has mechanisms to advance from the current playback session to the next playback session, either automatically at the end of a video, or manually with a method call. Once the playback controller has advanced to a new session, the previous session is discarded and cannot be used again.</p>
 
-<p>There are two other elements of the playback controller: a <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSessionProvider.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSessionProvider.h)">[<code>BCOVPlaybackSessionProvider</code>](Protocols/BCOVPlaybackSessionProvider.html)</a>, and a list of <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h)#L194-L198">[<code>BCOVPlaybackSessionConsumer</code>](Protocols/BCOVPlaybackSessionConsumer.html)</a>s. As the name would suggest, the playback session provider is responsible for creating playback sessions and delivering them to the playback controller. The playback controller then delivers the session to each of the playback session consumers in the list. Both the session provider and session consumer APIs are designed for use by plugin developers, and are not detailed in this document.</p>
+<p>There are two other elements of the playback controller: a <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSessionProvider.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSessionProvider.h)">[<code>BCOVPlaybackSessionProvider</code>](Protocols/BCOVPlaybackSessionProvider.html)</a>, and a list of <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h)#L199-L303">[<code>BCOVPlaybackSessionConsumer</code>](Protocols/BCOVPlaybackSessionConsumer.html)</a>s. As the name would suggest, the playback session provider is responsible for creating playback sessions and delivering them to the playback controller. The playback controller then delivers the session to each of the playback session consumers in the list. Both the session provider and session consumer APIs are designed for use by plugin developers, and are not detailed in this document.</p>
 
 <p>In addition to the playback functionality provided by the classes described above, there are a handful of value classes. These are used to hold data specific to the Player SDK for iOS. There are also <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVCatalogService.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVCatalogService.h)">[<code>BCOVCatalogService</code>](Classes/BCOVCatalogService.html)</a> and <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVMediaRequestFactory.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVMediaRequestFactory.h)">[<code>BCOVMediaRequestFactory</code>](Classes/BCOVMediaRequestFactory.html)</a>, which offer functionality for querying content remotely stored in your Brightcove Video Cloud account. Each of these is described in more detail in its own section below.</p>
+
+<h2>Obtaining Playback Information</h2>
+
+<p>The Brightcove Player SDK for iOS provides two mechanisms for obtaining playback information. The playback controller provides a delegate property that implements <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h)#L306-L409">[<code>BCOVPlaybackControllerDelegate</code>](Protocols/BCOVPlaybackControllerDelegate.html)</a>. A delegate can implement these optional methods to get notified of playback metadata like progress, duration changes, and other events. The <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h)#L395-L407">lifecycle event</a> delegate method provides events to signal changes in playback state. For example, when a player goes from the paused state to the playing state, the lifecycle event delegate method will be called with the <code>kBCOVPlaybackSessionLifecycleEventPlay</code> event. The default Lifecycle events are declared in <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h)">[<code>BCOVPlaybackSession</code>](Protocols/BCOVPlaybackSession.html)</a>. Plugins provided by Brightcove add additional lifecycle events which are defined in each plugin.</p>
+
+<p>The playback controller allows for a single delegate. In many cases, this will be enough to retrieve information; the delegate implementations can disseminate values and events to different parts of the app as necessary. In cases where multiple delegates would be required, as is the case when developing a plugin, the <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h)#L199-L303">[<code>BCOVPlaybackSessionConsumer</code>](Protocols/BCOVPlaybackSessionConsumer.html)</a> delegates provide equivalent functionality to the <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h)#L306-L409">[<code>BCOVPlaybackControllerDelegate</code>](Protocols/BCOVPlaybackControllerDelegate.html)</a> methods.</p>
+
+<p>Here is an example of how one might use <a href="Protocols/BCOVPlaybackSessionConsumer.html"><code>BCOVPlaybackSessionConsumer</code></a> to create an analytics plugin:</p>
+
+<pre><code>@interface XYZAnalytics : NSObject BCOVPlaybackSessionConsumer
+@end
+
+@implementation XYZAnalytics
+
+- (void)playbackSession:(idBCOVPlaybackSession)session didProgressTo:(NSTimeInterval)progress
+{
+    //react to progress event
+}
+
+@end
+</code></pre>
+
+<p>To use the plugin:</p>
+
+<pre><code>BCOVPlayerSDKManager *sdkManager = [BCOVPlayerSDKManager sharedManager];
+id&lt;BCOVPlaybackController&gt; controller = [sdkManager createPlaybackController];
+XYZAnalytics *analytics = [[XYZAnalytics alloc] init];
+[controller addSessionConsumer:analytics];
+</code></pre>
 
 <h2>A Word on Subclassing</h2>
 
@@ -358,7 +391,7 @@ video2.properties = otherDictionary; // causes compiler error
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-10-07)</span><br />
+						<p><span class="copyright">&copy; 2014 Brightcove. All rights reserved. (Last updated: 2014-11-13)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

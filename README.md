@@ -1,4 +1,9 @@
-# Brightcove Player SDK for iOS, version 4.2.0.807
+# Brightcove Player SDK for iOS, version 4.2.1.856
+
+Requirements
+============
+
+This library supports iOS 6.1+.
 
 Installation
 ============
@@ -74,38 +79,25 @@ In addition to the playback functionality provided by the classes described abov
 
 Obtaining Playback Information
 --------------------------------------
-The Brightcove Player SDK for iOS provides two mechanisms for broadcasting playback information. The playback controller provides a delegate property that implements [`BCOVPlaybackControllerDelegate`][delegate]. A delegate can implement these optional methods to get notified of playback metadata like progress, duration changes, and other events. The [lifecycle event][lifecycle] delegate method provides events to signal changes in playback state. For example, when a player goes from the paused state to the playing state, the lifecycle event delegate method will be called with the `kBCOVPlaybackSessionLifecycleEventPlay` event. The default Lifecycle events are declared in [`BCOVPlaybackSession`][lifecycleevents]. Plugins provided by Brightcove add additional lifecycle events which are defined in each plugin.
+The Brightcove Player SDK for iOS provides two mechanisms for obtaining playback information. The playback controller provides a delegate property that implements [`BCOVPlaybackControllerDelegate`][delegate]. A delegate can implement these optional methods to get notified of playback metadata like progress, duration changes, and other events. The [lifecycle event][lifecycle] delegate method provides events to signal changes in playback state. For example, when a player goes from the paused state to the playing state, the lifecycle event delegate method will be called with the `kBCOVPlaybackSessionLifecycleEventPlay` event. The default Lifecycle events are declared in [`BCOVPlaybackSession`][lifecycleevents]. Plugins provided by Brightcove add additional lifecycle events which are defined in each plugin.
 
-[lifecycle]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L305-L317
+[lifecycle]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L395-L407
 [lifecycleevents]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h
 
-The playback controller allows for a single delegate. In many cases, this will be enough to retrieve information; the delegate implementations can disseminate values and events to different parts of the app as necessary. In cases where multiple delegates would be required, as is the case when developing a plugin, the [`BCOVPlaybackSessionConsumer`][consumer] and [`BCOVDelegatingSessionConsumerDelegate`][delegatingconsumerdelegate] delegates provide equivalent functionality to the [`BCOVPlaybackControllerDelegate`][delegate] methods.
+The playback controller allows for a single delegate. In many cases, this will be enough to retrieve information; the delegate implementations can disseminate values and events to different parts of the app as necessary. In cases where multiple delegates would be required, as is the case when developing a plugin, the [`BCOVPlaybackSessionConsumer`][consumer] delegates provide equivalent functionality to the [`BCOVPlaybackControllerDelegate`][delegate] methods.
 
-[consumer]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L200-L213
+[consumer]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L199-L303
 [delegatingconsumerdelegate]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVDelegatingSessionConsumer.h#L34-L133
-[delegate]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L216-L319
+[delegate]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L306-L409
 
-Here is an example of how one might use these delegates to create an analytics plugin:
+Here is an example of how one might use `BCOVPlaybackSessionConsumer` to create an analytics plugin:
 
-    @interface XYZAnalytics : NSObject <BCOVDelegatingSessionConsumerDelegate>
-
-    @property (nonatomic, strong, readonly) BCOVDelegatingSessionConsumer *sessionConsumer;
-
+    @interface XYZAnalytics : NSObject <BCOVPlaybackSessionConsumer>
     @end
 
     @implementation XYZAnalytics
 
-    - (instancetype)init
-    {
-        self = [super init];
-        if (self)
-        {
-            _sessionConsumer = [[BCOVDelegatingSessionConsumer alloc] initWithDelegate:self];
-        }
-        return self;
-    }
-
-    - (void)playbackConsumer:(id<BCOVPlaybackSessionConsumer>)consumer playbackSession:(id<BCOVPlaybackSession>)session didProgressTo:(NSTimeInterval)progress
+    - (void)playbackSession:(id<BCOVPlaybackSession>)session didProgressTo:(NSTimeInterval)progress
     {
         //react to progress event
     }
@@ -117,11 +109,7 @@ To use the plugin:
     BCOVPlayerSDKManager *sdkManager = [BCOVPlayerSDKManager sharedManager];
     id<BCOVPlaybackController> controller = [sdkManager createPlaybackController];
     XYZAnalytics *analytics = [[XYZAnalytics alloc] init];
-    [controller addSessionConsumer:analytics.sessionConsumer];
-    
-Another example can be found in the [Custom Controls sample][customcontrols].
-
-[customcontrols]: https://github.com/BrightcoveOS/SampleiOSCustomControls/blob/master/SampleCustomControls/ViewController.m
+    [controller addSessionConsumer:analytics];
 
 A Word on Subclassing
 ---------------------
