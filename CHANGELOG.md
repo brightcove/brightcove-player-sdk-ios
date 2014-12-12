@@ -1,3 +1,8 @@
+# 4.2.2
+### Additions and Improvements
+* Fixes a bug where the default controls playhead label will show a the incorrect playhead at the end of a video when running on device.
+* Fixes a bug where the default controls slider isn't reset to 0 after calling advanceToNext or using AutoAdvance.
+
 # 4.2.1
 ### Breaking Changes
 * iOS 6 is still deprecated in this release. We have not removed support yet.  iOS 6.x currently accounts for ~2% of global SDK traffic.
