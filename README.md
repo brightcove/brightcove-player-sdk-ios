@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 4.2.2.59
+# Brightcove Player SDK for iOS, version 4.2.3.83
 
 Requirements
 ============

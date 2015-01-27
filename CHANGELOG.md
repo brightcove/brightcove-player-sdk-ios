@@ -1,3 +1,7 @@
+# 4.2.3
+### Additions and Improvements
+* Switch analytics to https.
+
 # 4.2.2
 ### Additions and Improvements
 * Fixes a bug where the default controls playhead label will show a the incorrect playhead at the end of a video when running on device.
