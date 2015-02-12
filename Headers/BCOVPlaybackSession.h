@@ -2,7 +2,7 @@
 // BCOVPlaybackSession.h
 // BCOVPlayerSDK
 //
-// Copyright (c) 2014 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2015 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -12,6 +12,7 @@
 
 @class BCOVSource;
 @class BCOVVideo;
+@class BCOVSessionProviderExtension;
 
 
 extern NSString * const kBCOVPlaybackSessionLifecycleEventReady;
@@ -58,6 +59,14 @@ extern const NSInteger kBCOVPlaybackSessionErrorCodeLoadFailed;
  * The layer that hosts the visible video output.
  */
 @property (nonatomic, readonly, strong) AVPlayerLayer *playerLayer;
+
+/**
+ * The session provider extension for this session. The default value is nil.
+ *
+ * If a BCOVPlaybackSessionProvider is used that needs to expose plugin specific functionality,
+ * this property will return a BCOVSessionProviderExtension.
+ */
+@property (nonatomic, readonly, strong) BCOVSessionProviderExtension *providerExtension;
 
 /**
  * Terminates this playback session, indicating readiness for a new session to
@@ -114,5 +123,14 @@ extern const NSInteger kBCOVPlaybackSessionErrorCodeLoadFailed;
  * @return The playback session lifecycle event of the specified type.
  */
 + (instancetype)eventWithType:(NSString *)eventType;
+
+@end
+
+
+/**
+ * A BCOVPlaybackSessionProvider will provide plugin specific functionality by
+ * adding methods to this object via categories.
+ */
+@interface BCOVSessionProviderExtension : NSObject
 
 @end

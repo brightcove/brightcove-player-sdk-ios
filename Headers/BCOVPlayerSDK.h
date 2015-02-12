@@ -2,7 +2,7 @@
 // BCOVPlayerSDK.h
 // BCOVPlayerSDK
 //
-// Copyright (c) 2014 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2015 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -18,7 +18,6 @@
 // Playback
 #import "BCOVBasicSessionProvider.h"
 #import "BCOVCuePointProgressPolicy.h"
-#import "BCOVDelegatingSessionConsumer.h"
 #import "BCOVPlaybackController.h"
 #import "BCOVPlaybackSession.h"
 #import "BCOVPlaybackSessionProvider.h"
@@ -29,3 +28,6 @@
 #import "BCOVPlaylist.h"
 #import "BCOVSource.h"
 #import "BCOVVideo.h"
+
+// Ads
+#import "BCOVAdvertising.h"

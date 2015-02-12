@@ -1,3 +1,10 @@
+# 4.3.0
+### Additions and Improvements
+* Added `BCOVAdvertising` APIs. These APIs introduce the concept of Ads to our core SDK. Playback controller delegate and session consumer apis have also been added to provide ad information. In the future, our advertising plugins will be updated to provide ad events through these apis.  For more information, please see the README.md.
+* `BCOVPlaybackSession` protocol now includes a providerExtention property. In the future, some of our plugins will be updated to provide plugin specific functionality through this property.
+* The default controls now include a closed caption button for testing.
+* Internal bug fixes.
+
 # 4.2.3
 ### Additions and Improvements
 * Switch analytics to https.

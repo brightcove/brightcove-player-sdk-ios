@@ -2,7 +2,7 @@
 // BCOVPlaybackController.h
 // BCOVPlayerSDK
 //
-// Copyright (c) 2014 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2015 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMedia/CoreMedia.h>
 
+#import "BCOVAdvertising.h"
 
 @class RACSignal;
 
@@ -20,9 +21,12 @@
 
 @protocol BCOVPlaybackController;
 @protocol BCOVPlaybackControllerDelegate;
+@protocol BCOVPlaybackControllerBasicDelegate;
 @protocol BCOVPlaybackSession;
 @protocol BCOVPlaybackSessionConsumer;
+@protocol BCOVPlaybackSessionBasicConsumer;
 @protocol BCOVMutableAnalytics;
+
 
 /**
  * Typedef for a view strategy given to a playback controller to construct its
@@ -121,7 +125,7 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * Registers a session consumer with a container, to be notified of new
  * sessions. Added consumers will be retained by this container. If a session
  * already existed in the container at the time of subscription, the specified
- * consumer will be sent the `-consumeSession:` message.
+ * consumer will be sent the `-didAdvanceToPlaybackSession:` message.
  *
  * @param consumer The session consumer being added to the container.
  */
@@ -194,13 +198,19 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 @end
 
 
+/**
+ * Conform to this protocol to receive basic playback information for each video in
+ * addition to advertising.
+ */
+@protocol BCOVPlaybackSessionConsumer <BCOVPlaybackSessionBasicConsumer, BCOVPlaybackSessionAdsConsumer>
+
+@end
 
 
 /**
- * This protocol defines how an object will be notified when the playback 
- * controller starts to process a new playback session.
+ * Conform to this protocol to receive basic playback information for each session.
  */
-@protocol BCOVPlaybackSessionConsumer <NSObject>
+@protocol BCOVPlaybackSessionBasicConsumer<NSObject>
 @optional
 /**
  * Called when the controller advances to a new playback session,
@@ -293,20 +303,22 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  */
 - (void)playbackSession:(id<BCOVPlaybackSession>)session didReceiveLifecycleEvent:(BCOVPlaybackSessionLifecycleEvent *)lifecycleEvent;
 
+@end
+
+
 /**
- * Called when a playback controller starts processing a new playback session.
- *
- * @param session New session
+ * Conform to this protocol to receive basic playback information for each video in
+ * addition to advertising.
  */
-- (void)consumeSession:(id<BCOVPlaybackSession>)session __attribute__((deprecated("Use -[<BCOVPlaybackSessionConsumer> didAdvanceToPlaybackSession:] instead.")));
+@protocol BCOVPlaybackControllerDelegate <BCOVPlaybackControllerBasicDelegate, BCOVPlaybackControllerAdsDelegate>
 
 @end
 
 
 /**
- * Methods which may be implemented by delegates of a playback controller.
+ * Conform to this protocol to receive basic playback information for each session.
  */
-@protocol BCOVPlaybackControllerDelegate <NSObject>
+@protocol BCOVPlaybackControllerBasicDelegate <NSObject>
 
 @optional
 
