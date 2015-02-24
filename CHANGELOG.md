@@ -1,3 +1,7 @@
+# 4.3.1
+### Additions and Improvements
+* The seek bar on the default controls is now disabled until the AVPlayer is capable of seeking.
+
 # 4.3.0
 ### Additions and Improvements
 * Added `BCOVAdvertising` APIs. These APIs introduce the concept of Ads to our core SDK. Playback controller delegate and session consumer apis have also been added to provide ad information. In the future, our advertising plugins will be updated to provide ad events through these apis.  For more information, please see the README.md.
