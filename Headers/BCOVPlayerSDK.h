@@ -12,6 +12,10 @@
 #import "BCOVMediaRequestFactory.h"
 #import "NSDictionary+BCOVURLSupport.h"
 
+// Playback API
+#import "BCOVPlaybackService.h"
+#import "BCOVPlaybackServiceRequestFactory.h"
+
 // Management
 #import "BCOVPlayerSDKManager.h"
 

@@ -81,6 +81,45 @@
  */
 - (instancetype)initWithMediaRequestFactory:(BCOVMediaRequestFactory *)requestFactory;
 
+/**
+ * Initializes a source from the JSON dictionary. Properties that don't map to
+ * first class properties on the source are added to the properties dictionary.
+ *
+ * @param json Dictionary representing the deserialized source.
+ * @return The initialized source.
+ */
++ (BCOVSource *)sourceFromJSONDictionary:(NSDictionary *)json;
+
+/**
+ * Initializes a cue point from the JSON dictionary. Properties that don't
+ * map to first class properties on cue point are added to the properties
+ * dictionary.
+ *
+ * @param json Dictionary representing the deserialized cuepoint.
+ * @return The initialized cue point.
+ */
++ (BCOVCuePoint *)cuePointFromJSONDictionary:(NSDictionary *)json;
+
+/**
+ * Initializes a playlist from the JSON dictionary. Properties that don't
+ * map to first class properties on playlist are added to the properties
+ * dictionary.
+ *
+ * @param json Dictionary representing the deserialized playlist.
+ * @return The initialized playlist.
+ */
++ (BCOVPlaylist *)playlistFromJSONDictionary:(NSDictionary *)json;
+
+/**
+ * Initializes a video from the JSON dictionary. Properties that don't
+ * map to first class properties on video are added to the properties
+ * dictionary.
+ *
+ * @param json Dictionary representing the deserialized video.
+ * @return The initialized video.
+ */
++ (BCOVVideo *)videoFromJSONDictionary:(NSDictionary *)json;
+
 @end
 
 
@@ -266,60 +305,29 @@
 @end
 
 
-@interface BCOVCuePoint (BCOVCatalogService)
+@interface BCOVCuePoint (BCOVCatalogServiceDepricated)
 
-/**
- * Initializes a cue point from the JSON dictionary. Properties that don't
- * map to first class properties on cue point are added to the properties
- * dictionary.
- *
- * @param json Dictionary representing the deserialized cuepoint.
- * @return The initialized cue point.
- */
-+ (instancetype)cuePointFromJSONDictionary:(NSDictionary *)json;
++ (instancetype)cuePointFromJSONDictionary:(NSDictionary *)json __attribute__((deprecated("Use +BCOVCatalogService cuePointFromJSONDictionary: instead")));
 
 @end
 
 
-@interface BCOVPlaylist (BCOVCatalogService)
+@interface BCOVPlaylist (BCOVCatalogServiceDepricated)
 
-/**
- * Initializes a playlist from the JSON dictionary. Properties that don't
- * map to first class properties on playlist are added to the properties
- * dictionary.
- *
- * @param json Dictionary representing the deserialized playlist.
- * @return The initialized playlist.
- */
-+ (instancetype)playlistFromJSONDictionary:(NSDictionary *)json;
++ (instancetype)playlistFromJSONDictionary:(NSDictionary *)json __attribute__((deprecated("Use +BCOVCatalogService playlistFromJSONDictionary: instead")));
 
 @end
 
 
-@interface BCOVSource (BCOVCatalogService)
+@interface BCOVSource (BCOVCatalogServiceDepricated)
 
-/**
- * Initializes a source from the JSON dictionary. Properties that don't map to
- * first class properties on the source are added to the properties dictionary.
- *
- * @param json Dictionary representing the deserialized source.
- * @return The initialized source.
- */
-+ (instancetype)sourceFromJSONDictionary:(NSDictionary *)json;
++ (instancetype)sourceFromJSONDictionary:(NSDictionary *)json __attribute__((deprecated("Use +BCOVCatalogService sourceFromJSONDictionary: instead")));
 
 @end
 
 
-@interface BCOVVideo (BCOVCatalogService)
+@interface BCOVVideo (BCOVCatalogServiceDepricated)
 
-/**
- * Initializes a video from the JSON dictionary. Properties that don't
- * map to first class properties on video are added to the properties
- * dictionary.
- *
- * @param json Dictionary representing the deserialized video.
- * @return The initialized video.
- */
-+ (instancetype)videoFromJSONDictionary:(NSDictionary *)json;
++ (instancetype)videoFromJSONDictionary:(NSDictionary *)json __attribute__((deprecated("Use +BCOVCatalogService videoFromJSONDictionary: instead")));
 
 @end

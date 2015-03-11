@@ -1,3 +1,7 @@
+# 4.3.2
+### Additions and Improvements
+* Added Playback Service classes: `BCOVPlaybackService` and `BCOVPlaybackServiceRequestFactory`. These APIs provide an alternative way to retrieve Brightcove video assets via the Brightcove CMS API with more rich meta information such as text tracks.
+
 # 4.3.1
 ### Additions and Improvements
 * The seek bar on the default controls is now disabled until the AVPlayer is capable of seeking.

@@ -34,7 +34,7 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 4.3.1.97</h1>
+						<h1>Brightcove Player SDK for iOS, version 4.3.2.101</h1>
 
 <h1>Supported Platforms</h1>
 
@@ -42,7 +42,7 @@
 
 <h1>Installation</h1>
 
-<p>You can use <a href="http://cocoapods.org">Cocoapods</a> to add the Brightcove Player SDK to your project.  You can find the latest <code>Brightcove-Player-SDK</code> podspec <a href=https://github.com/CocoaPods/Specs/tree/master/Specs/Brightcove-Player-SDK">here</a>.</p>
+<p>You can use <a href="http://cocoapods.org">Cocoapods</a> to add the Brightcove Player SDK to your project.  You can find the latest <code>Brightcove-Player-SDK</code> podspec <a href="https://github.com/CocoaPods/Specs/tree/master/Specs/Brightcove-Player-SDK">here</a>.</p>
 
 <p>To add the Brightcove Player SDK to your project manually:</p>
 
@@ -82,36 +82,36 @@ id&lt;BCOVPlaybackController&gt; controller = [manager createPlaybackControllerW
 
 BCOVCatalogService *catalog = [[BCOVCatalogService alloc] initWithToken:token];
 [catalog findPlaylistWithPlaylistID:playlistID
-                         parameters:nil
-                         completion:^(BCOVPlaylist *playlist,
-                                      NSDictionary *jsonResponse,
-                                      NSError      *error) {
+                     parameters:nil
+                     completion:^(BCOVPlaylist *playlist,
+                                  NSDictionary *jsonResponse,
+                                  NSError      *error) {
 
-    [controller setVideos:playlist];
-    [controller play];
+                         [controller setVideos:playlist];
+                         [controller play];
 
-}];
+                     }];
 </code></pre>
 
 <p>If you&rsquo;re using ARC, you need to keep the controller from being automatically released at the end of the method. A common way to do this is to store a pointer to the controller in an instance variable.</p>
 
 <h1>Architectural Overview</h1>
+	
+<img src="architecture01.png">
 
-<p>!<a href="architecture01.png">Architectural Overview 1</a></p>
+<p>The entry point to the Brightcove Player SDK for iOS is the <a href="Classes/BCOVPlayerSDKManager.html"><code>BCOVPlayerSDKManager</code></a> singleton object. This Manager handles registration of plugin components and some other housekeeping tasks, but it primarily serves as an object factory. Your app&rsquo;s view controller obtains a reference to the Manager, and uses it to create a <a href="Protocols/BCOVPlaybackController.html"><code>BCOVPlaybackController</code></a>. The playback controller&rsquo;s <code>view</code> property exposes a UIView containing the AVPlayerLayer object that ultimately presents your video content on the screen. The playback controller also accepts a <a href="Protocols/BCOVPlaybackControllerDelegate.html"><code>BCOVPlaybackControllerDelegate</code></a>, which you can implement to respond to various video playback events.</p>
 
-<p>The entry point to the Brightcove Player SDK for iOS is the <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlayerSDKManager.h">[<code>BCOVPlayerSDKManager</code>](Classes/BCOVPlayerSDKManager.html)</a> singleton object. This Manager handles registration of plugin components and some other housekeeping tasks, but it primarily serves as an object factory. Your app&rsquo;s view controller obtains a reference to the Manager, and uses it to create a <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h">[<code>BCOVPlaybackController</code>](Protocols/BCOVPlaybackController.html)</a>. The playback controller&rsquo;s <code>view</code> property exposes a UIView containing the AVPlayerLayer object that ultimately presents your video content on the screen. The playback controller also accepts a <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L309-L421">[<code>BCOVPlaybackControllerDelegate</code>](Protocols/BCOVPlaybackControllerDelegate.html)</a>, which you can implement to respond to various video playback events.</p>
+<p>The playback controller offers methods and properties to affect playback of the current video. However, internally, the playback controller delegates to a <a href="Protocols/BCOVPlaybackSession.html"><code>BCOVPlaybackSession</code></a> object. Playback sessions do the actual work of preparing and playing video content, and contain the video&rsquo;s metadata and AVPlayer. The playback controller has mechanisms to advance from the current playback session to the next playback session, either automatically at the end of a video, or manually with a method call. Once the playback controller has advanced to a new session, the previous session is discarded and cannot be used again.</p>
 
-<p>The playback controller offers methods and properties to affect playback of the current video. However, internally, the playback controller delegates to a <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h">[<code>BCOVPlaybackSession</code>](Protocols/BCOVPlaybackSession.html)</a> object. Playback sessions do the actual work of preparing and playing video content, and contain the video&rsquo;s metadata and AVPlayer. The playback controller has mechanisms to advance from the current playback session to the next playback session, either automatically at the end of a video, or manually with a method call. Once the playback controller has advanced to a new session, the previous session is discarded and cannot be used again.</p>
+<p>There are two other elements of the playback controller: a <a href="Protocols/BCOVPlaybackSessionProvider.html"><code>BCOVPlaybackSessionProvider</code></a>, and a list of <a href="Protocols/BCOVPlaybackSessionConsumer.html"><code>BCOVPlaybackSessionConsumer</code></a>s. As the name would suggest, the playback session provider is responsible for creating playback sessions and delivering them to the playback controller. The playback controller then delivers the session to each of the playback session consumers in the list. Both the session provider and session consumer APIs are designed for use by plugin developers, and are not detailed in this document.</p>
 
-<p>There are two other elements of the playback controller: a <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSessionProvider.">[<code>BCOVPlaybackSessionProvider</code>](Protocols/BCOVPlaybackSessionProvider.html)</a>, and a list of <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L201-L306">[<code>BCOVPlaybackSessionConsumer</code>](Protocols/BCOVPlaybackSessionConsumer.html)</a>s. As the name would suggest, the playback session provider is responsible for creating playback sessions and delivering them to the playback controller. The playback controller then delivers the session to each of the playback session consumers in the list. Both the session provider and session consumer APIs are designed for use by plugin developers, and are not detailed in this document.</p>
-
-<p>In addition to the playback functionality provided by the classes described above, there are a handful of value classes. These are used to hold data specific to the Player SDK for iOS. There are also <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVCatalogService.h">[<code>BCOVCatalogService</code>](Classes/BCOVCatalogService.html)</a> and <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVMediaRequestFactory.h">[<code>BCOVMediaRequestFactory</code>](Classes/BCOVMediaRequestFactory.html)</a>, which offer functionality for querying content remotely stored in your Brightcove Video Cloud account. Each of these is described in more detail in its own section below.</p>
+<p>In addition to the playback functionality provided by the classes described above, there are a handful of value classes. These are used to hold data specific to the Player SDK for iOS. There are also <a href="Classes/BCOVCatalogService.html"><code>BCOVCatalogService</code></a> and <a href="Classes/BCOVMediaRequestFactory.html"><code>BCOVMediaRequestFactory</code></a>, which offer functionality for querying content remotely stored in your Brightcove Video Cloud account. Each of these is described in more detail in its own section below.</p>
 
 <h2>Obtaining Content and Ad playback Information</h2>
 
-<p>The Brightcove Player SDK for iOS provides two mechanisms for obtaining playback information. The playback controller provides a delegate property that implements <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L309-L421">[<code>BCOVPlaybackControllerDelegate</code>](Protocols/BCOVPlaybackControllerDelegate.html)</a>. A delegate can implement these optional methods to get notified of playback metadata like progress, duration changes, and other events. If an ad plugin is installed, it may also use this delegate to provide information about <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVAdvertising.h#L102-L155">ad playback</a>. The <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L407-L419">lifecycle event</a> delegate method provides events to signal changes in playback state. For example, when a player goes from the paused state to the playing state, the lifecycle event delegate method will be called with the <code>kBCOVPlaybackSessionLifecycleEventPlay</code> event. The default Lifecycle events are declared in <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h">[<code>BCOVPlaybackSession</code>](Protocols/BCOVPlaybackSession.html)</a>. Plugins provided by Brightcove add additional lifecycle events which are defined in each plugin.</p>
+<p>The Brightcove Player SDK for iOS provides two mechanisms for obtaining playback information. The playback controller provides a delegate property that implements <a href="Protocols/BCOVPlaybackControllerDelegate.html"><code>BCOVPlaybackControllerDelegate</code></a>. A delegate can implement these optional methods to get notified of playback metadata like progress, duration changes, and other events. If an ad plugin is installed, it may also use this delegate to provide information about <a href="Protocols/BCOVPlaybackControllerAdsDelegate.html">ad playback</a>. The <a href="Protocols/BCOVPlaybackControllerBasicDelegate.html#//api/name/playbackController:playbackSession:didReceiveLifecycleEvent:">lifecycle event</a> delegate method provides events to signal changes in playback state. For example, when a player goes from the paused state to the playing state, the lifecycle event delegate method will be called with the <code>kBCOVPlaybackSessionLifecycleEventPlay</code> event. The default Lifecycle events are declared in <a href="Protocols/BCOVPlaybackSession.html"><code>BCOVPlaybackSession</code></a>. Plugins provided by Brightcove add additional lifecycle events which are defined in each plugin.</p>
 
-<p>The playback controller allows for a single delegate. In many cases, this will be enough to retrieve information; the delegate implementations can disseminate values and events to different parts of the app as necessary. In cases where multiple delegates would be required, as is the case when developing a plugin, the <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L201-L306">[<code>BCOVPlaybackSessionConsumer</code>](Protocols/BCOVPlaybackSessionConsumer.html)</a> delegates provide equivalent functionality to the <a href=https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L309-L421">[<code>BCOVPlaybackControllerDelegate</code>](Protocols/BCOVPlaybackControllerDelegate.html)</a> methods, including <a href=https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVAdvertising.h#L158-L206">ad data</a>.</p>
+<p>The playback controller allows for a single delegate. In many cases, this will be enough to retrieve information; the delegate implementations can disseminate values and events to different parts of the app as necessary. In cases where multiple delegates would be required, as is the case when developing a plugin, the <a href="Protocols/BCOVPlaybackSessionConsumer.html"><code>BCOVPlaybackSessionConsumer</code></a> delegates provide equivalent functionality to the <a href="Protocols/BCOVPlaybackControllerDelegate.html"><code>BCOVPlaybackControllerDelegate</code></a> methods, including <a href="Protocols/BCOVPlaybackSessionAdsConsumer.html">ad data</a>.</p>
 
 <p>Here is an example of how one might use <a href="Protocols/BCOVPlaybackSessionConsumer.html"><code>BCOVPlaybackSessionConsumer</code></a> to create an analytics plugin:</p>
 
@@ -180,9 +180,45 @@ video2.properties = otherDictionary; // causes compiler error
 
 <p>(Thanks to <a href="http://www.jonmsterling.com/posts/2012-12-27-a-pattern-for-immutability.html">Jon Sterling</a> for publishing the Objective-C implementation of this pattern.)</p>
 
-<h2>Catalog</h2>
+<h2>Retrieving Brightcove Assets</h2>
 
-<p>The catalog classes provide functionality for retrieving information about your Brightcove assets via the Brightcove Media API. For most purposes, <a href="Classes/BCOVCatalogService.html"><code>BCOVCatalogService</code></a> provides sufficient functionality to obtain value class instances from input data such as playlist or video IDs, or reference IDs.</p>
+<p>To retrieve Brightcove assets you can rely on either playback service classes or catalog classes. The functionality of these two classes are similar but not completely equal. You will need to choose one depending on your needs.</p>
+
+<h3>Playback Service</h3>
+
+<p>The playback service classes provide functionality for retrieving information about your Brightcove video assets via the <a href="http://docs.brightcove.com/en/video-cloud/cms-api/index.html">Brightcove CMS API</a>. For most purposes, <a href="Classes/BCOVPlaybackService.html"><code>BCOVPlaybackService</code></a> provides sufficient functionality to obtain <strong>single video instances</strong> with more rich meta information than catalog classes such as text tracks. The following is an example shows how to retrieve a video with a video ID. Note that there is also a method that can retrieve a video with that video&rsquo;s reference ID. The playback service classes do not currently support retrieving information about playlists.</p>
+
+<pre><code>[1] NSString *policyKey;  // (Brightcove Playback API policy Key)
+    NSString *videoID;    // (ID of the video you wish to use)
+    NSString *accountId;  // (account id)
+
+    BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
+    id&lt;BCOVPlaybackController&gt; controller = [manager createPlaybackControllerWithViewStrategy:nil];
+    [self.view addSubview:controller.view];  
+
+    BCOVPlaybackService *playbackService = [[BCOVPlaybackService alloc] initWithAccountId:accoundId policyKey:policyKey];
+    [playbackService findVideoWithVideoID:videoID
+                               parameters:nil
+                               completion:^(BCOVVideo *video,
+                                            NSDictionary *jsonResponse,
+                                            NSError      *error) {
+
+                                   [controller setVideos:@[ video ]];
+                                   [controller play];
+
+                               }];
+</code></pre>
+
+<ol>
+<li>The playback service requests <strong>policy key</strong> for authentication. To learn more about policy key and how to obtain one, please check <a href="http://docs.brightcove.com/en/video-cloud/player-management/guides/policy-key.html">policy key documentation</a>.</li>
+</ol>
+
+
+<p>If for some reason you need to customize the request that the playback service sends to the Brightcove CMS API, you may find <a href="Classes/BCOVPlaybackServiceRequestFactory.html"><code>BCOVPlaybackServiceRequestFactory</code></a> helpful. This utility, which is used by the playabck service, generates parameterized Brightcove CMS API NSURLRequest objects, which you can use in your own HTTP communication.</p>
+
+<h3>Catalog</h3>
+
+<p>The catalog classes provide functionality for retrieving information about your Brightcove assets via the <a href="http://docs.brightcove.com/en/video-cloud/media/index.html">Brightcove Media API</a>. For most purposes, <a href="Classes/BCOVCatalogService.html"><code>BCOVCatalogService</code></a> provides sufficient functionality to obtain value class instances from input data such as playlist or video IDs, or reference IDs.</p>
 
 <p>If for some reason you need to customize the request that the catalog sends to the Brightcove Media API, you may find <a href="Classes/BCOVMediaRequestFactory.html"><code>BCOVMediaRequestFactory</code></a> helpful. This utility, which is used by the catalog service, generates parameterized Brightcove Media API NSURLRequest objects, which you can use in your own HTTP communication.</p>
 
@@ -265,7 +301,7 @@ video2.properties = otherDictionary; // causes compiler error
 
 <p><strong>How do I retrieve data from the Brightcove Media API for which there is no <code>BCOVCatalogService</code> method?</strong></p>
 
-<p>The catalog service offers methods for the most common Brightcove Media API operations, but there are <a href="http://docs.brightcove.com/en/video-cloud/media/">other operations</a> available. To leverage them, you will need to issue an HTTP request and then process the response. You can use a standard NSURLRequest to do this, or you can leverage a <a href="http://afnetworking.com**Why">3rd-party HTTP API</a> if you find that easier. In either case, when you receive the response, you can use a standard JSON parser (like NSJSONSerialization) to convert the response into a NSDictionary, and then construct the appropriate value classes from the data in the NSDictionary.</p>
+<p>The catalog service offers methods for the most common Brightcove Media API operations, but there are <a href="http://docs.brightcove.com/en/video-cloud/media/">other operations</a> available. To leverage them, you will need to issue an HTTP request and then process the response. You can use a standard NSURLRequest to do this, or you can leverage a <a href="http://afnetworking.com">3rd-party HTTP API</a> if you find that easier. In either case, when you receive the response, you can use a standard JSON parser (like NSJSONSerialization) to convert the response into a NSDictionary, and then construct the appropriate value classes from the data in the NSDictionary.</p>
 
 <p>This message indicates that the default source selection policy can&rsquo;t figure which source to pick. The default policy selects the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryHLS</code> (&ldquo;HLS&rdquo;). If no HLS source is found, its fallback behavior will select the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryMP4</code> (&ldquo;MP4&rdquo;). If no source with a <code>deliveryMethod</code> of &ldquo;HLS&rdquo; or &ldquo;MP4&rdquo; exists on the video, the policy will select the video&rsquo;s first source (regardless of <code>deliveryMethod</code>). If you aren&rsquo;t happy with its selection, you can use <code>[BCOVPlayerSDKManager createBasicSessionProviderWithOptions:]</code> and pass in an instance of <code>BCOVBasicSessionProviderOptions</code> with a custom <code>sourceSelectionPolicy</code> property set. When creating videos and sources manually, ensure that the sources are created with the appropriate <code>deliveryMethod</code>.</p>
 
@@ -305,6 +341,10 @@ video2.properties = otherDictionary; // causes compiler error
 							<li><a href="Classes/BCOVCuePointProgressPolicyResult.html">BCOVCuePointProgressPolicyResult</a></li>
 							
 							<li><a href="Classes/BCOVMediaRequestFactory.html">BCOVMediaRequestFactory</a></li>
+							
+							<li><a href="Classes/BCOVPlaybackService.html">BCOVPlaybackService</a></li>
+							
+							<li><a href="Classes/BCOVPlaybackServiceRequestFactory.html">BCOVPlaybackServiceRequestFactory</a></li>
 							
 							<li><a href="Classes/BCOVPlaybackSessionLifecycleEvent.html">BCOVPlaybackSessionLifecycleEvent</a></li>
 							
@@ -374,6 +414,8 @@ video2.properties = otherDictionary; // causes compiler error
 						<h2 class="index-title">Constant References</h2>
 						<ul>
                         
+                        <li><a href="Constants/BCOVPlaybackServiceErrorCode.html">BCOVPlaybackServiceErrorCode</a></li>
+                        
                         <li><a href="Constants/BCOVProgressPolicyCuePointsToProcess.html">BCOVProgressPolicyCuePointsToProcess</a></li>
                         
                         <li><a href="Constants/BCOVProgressPolicyResumePosition.html">BCOVProgressPolicyResumePosition</a></li>
@@ -397,7 +439,7 @@ video2.properties = otherDictionary; // causes compiler error
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 Brightcove. All rights reserved. (Last updated: 2015-02-24)</span><br />
+						<p><span class="copyright">&copy; 2015 Brightcove. All rights reserved. (Last updated: 2015-03-11)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						

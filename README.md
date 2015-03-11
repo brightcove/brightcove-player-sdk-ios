@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 4.3.1.97
+# Brightcove Player SDK for iOS, version 4.3.2.101
 
 Supported Platforms
 ===================
@@ -41,15 +41,15 @@ Playing video with the Brightcove Player SDK for iOS, in less than 20 lines of c
      
     BCOVCatalogService *catalog = [[BCOVCatalogService alloc] initWithToken:token];
     [catalog findPlaylistWithPlaylistID:playlistID
-                             parameters:nil
-                             completion:^(BCOVPlaylist *playlist,
-                                          NSDictionary *jsonResponse,
-                                          NSError      *error) {
-     
-        [controller setVideos:playlist];
-        [controller play];
-     
-    }];
+                         parameters:nil
+                         completion:^(BCOVPlaylist *playlist,
+                                      NSDictionary *jsonResponse,
+                                      NSError      *error) {
+                                      
+                             [controller setVideos:playlist];
+                             [controller play];
+                             
+                         }];
 
 If you're using ARC, you need to keep the controller from being automatically released at the end of the method. A common way to do this is to store a pointer to the controller in an instance variable.
 
@@ -151,12 +151,47 @@ As you can see in the example, `video1` has not been changed by the `-update` me
 
 [js]: http://www.jonmsterling.com/posts/2012-12-27-a-pattern-for-immutability.html
 
-Catalog
--------
-The catalog classes provide functionality for retrieving information about your Brightcove assets via the Brightcove Media API. For most purposes, `BCOVCatalogService` provides sufficient functionality to obtain value class instances from input data such as playlist or video IDs, or reference IDs.
+Retrieving Brightcove Assets
+------------------------
+To retrieve Brightcove assets you can rely on either playback service classes or catalog classes. The functionality of these two classes are similar but not completely equal. You will need to choose one depending on your needs. 
+
+###Playback Service
+
+The playback service classes provide functionality for retrieving information about your Brightcove video assets via the [Brightcove CMS API][CMSAPI]. For most purposes, `BCOVPlaybackService` provides sufficient functionality to obtain **single video instances** with more rich meta information than catalog classes such as text tracks. The following is an example shows how to retrieve a video with a video ID. Note that there is also a method that can retrieve a video with that video's reference ID. The playback service classes do not currently support retrieving information about playlists.
+
+    [1] NSString *policyKey;  // (Brightcove Playback API policy Key)
+        NSString *videoID;    // (ID of the video you wish to use)
+        NSString *accountId;  // (account id)
+
+        BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
+        id<BCOVPlaybackController> controller = [manager createPlaybackControllerWithViewStrategy:nil];
+        [self.view addSubview:controller.view];  
+     
+        BCOVPlaybackService *playbackService = [[BCOVPlaybackService alloc] initWithAccountId:accoundId policyKey:policyKey];
+        [playbackService findVideoWithVideoID:videoID
+                                   parameters:nil
+                                   completion:^(BCOVVideo *video,
+                                                NSDictionary *jsonResponse,
+                                                NSError      *error) {
+
+                                       [controller setVideos:@[ video ]];
+                                       [controller play];
+
+                                   }];
+
+1. The playback service requests **policy key** for authentication. To learn more about policy key and how to obtain one, please check [policy key documentation][PolicyKey].
+
+If for some reason you need to customize the request that the playback service sends to the Brightcove CMS API, you may find `BCOVPlaybackServiceRequestFactory` helpful. This utility, which is used by the playabck service, generates parameterized Brightcove CMS API NSURLRequest objects, which you can use in your own HTTP communication.
+
+[CMSAPI]: http://docs.brightcove.com/en/video-cloud/cms-api/index.html
+[PolicyKey]: http://docs.brightcove.com/en/video-cloud/player-management/guides/policy-key.html
+###Catalog
+
+The catalog classes provide functionality for retrieving information about your Brightcove assets via the [Brightcove Media API][MediaAPI]. For most purposes, `BCOVCatalogService` provides sufficient functionality to obtain value class instances from input data such as playlist or video IDs, or reference IDs.
 
 If for some reason you need to customize the request that the catalog sends to the Brightcove Media API, you may find `BCOVMediaRequestFactory` helpful. This utility, which is used by the catalog service, generates parameterized Brightcove Media API NSURLRequest objects, which you can use in your own HTTP communication.
 
+[MediaAPI]: http://docs.brightcove.com/en/video-cloud/media/index.html
 View Strategy
 -------------
 `BCOVPlaybackController` objects are constructed with a **view strategy**, which allows you, as the client of the SDK, to define the exact UIView object that is returned from the playback controller's `view` property. This is important when using plugins that affect the playback controller's view, such as an advertising plugin that overlays the video view with an ad view. Imagine trying to integrate custom controls with such a plugin: normally, custom controls are just regular UIView objects in the view hierarchy that float above the playback controller's video view. But with an advertising plugin, you generally want the ads to float over your custom controls. How to accomplish this without having in-depth knowledge of the structure of the playback controller's view hierarchy? The solution is to construct a view strategy that composes the video view, your custom controls, and the advertising view in a hierarchy of your choosing. The playback controller will call this view strategy the first time you access its `view` property. The final UIView object returned from the strategy will serve as its view permanently (until the controller is destroyed).

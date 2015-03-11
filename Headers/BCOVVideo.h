@@ -12,6 +12,22 @@
 @class BCOVCuePointCollection;
 @class BCOVSource;
 
+/**
+ * Account Id for video to be used for billing/analytics.
+ */
+extern NSString * const kBCOVVideoPropertyKeyAccountId;
+
+/**
+ * Name for video to be used for billing/analytics.
+ */
+extern NSString * const kBCOVVideoPropertyKeyName;
+
+/**
+ * Name for video to be used for billing/analytics.
+ */
+extern NSString * const kBCOVVideoPropertyKeyId;
+
+
 @protocol BCOVMutableVideo;
 
 
