@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 4.3.2.101
+# Brightcove Player SDK for iOS, version 4.3.3.107
 
 Supported Platforms
 ===================
@@ -71,6 +71,28 @@ In addition to the playback functionality provided by the classes described abov
 [provider]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSessionProvider.h
 [catalog]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVCatalogService.h
 [requestfactory]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVMediaRequestFactory.h
+
+Preloading videos
+-------------------------------
+The Brightcove Player SDK for iOS provides the ability to preload upcoming videos in a playlist. By default, this functionality is disabled because of the large amount of memory preloading may use. You can turn on preloading to help ensure futures videos load quickly, however you might want to take into account the amount of memory available on the client's device and speed of their connection. If they are not on Wifi, preloading a video may affect the current video's network resources.
+
+[`BCOVBasicSessionProviderOptions`][options] and [`BCOVBasicSessionLoadingPolicy`][loadingpolicy] provide two factory methods to modify preloading behavior that are described below:
+
+* `+sessionPreloadingNever` This method returns a session preloading policy that never preloading videos. This is the default setting. 
+* `+sessionPreloadingWithProgressPercentage:` This method returns a session preloading policy that preloads the next video in a playlist after the provided percentage of the current video has been reached. If a value below 0 or greater than 100 is used, then `sessionPreloadingNever` is used. Some plugins may ignore this setting.
+
+An example:
+
+         BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
+     [1] BCOVBasicSessionLoadingPolicy *policy = [BCOVBasicSessionLoadingPolicy sessionPreloadingWithProgressPercentage:50];     
+          BCOVBasicSessionProviderOptions *options = [[BCOVBasicSessionProviderOptions alloc] init];
+          options.sessionPreloadingPolicy = policy;
+          id<BCOVPlaybackSessionProvider> provider = [manager createBasicSessionProviderWithOptions:options];
+
+1. Create a session preloading policy which starts preloading of an upcoming session when the current session reaches 50% of progress. 
+
+[options]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVBasicSessionProvider.h#L79-97
+[loadingpolicy]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVBasicSessionProvider.h#L49-76
 
 Obtaining Content and Ad playback Information
 --------------------------------------

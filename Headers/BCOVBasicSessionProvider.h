@@ -47,6 +47,36 @@ typedef BCOVSource *(^BCOVBasicSessionProviderSourceSelectionPolicy)(BCOVVideo *
 
 
 /**
+ * The basic session loading policy decides when to load sessions.
+ */
+@interface BCOVBasicSessionLoadingPolicy : NSObject <NSCopying>
+
+/**
+ * Returns a session loading policy that doesn't preload upcoming sessions.
+ */
++ (instancetype)sessionPreloadingNever;
+
+/**
+ * Returns a session loading policy that preloads an upcoming session when the
+ * previous session reaches certain percentage of progress.
+ * 
+ * @param progressPercentage A NSUInteger between 0 and 100.
+ * @return A session loading policy that preloads an upcoming session when the
+ * previous session reaches certain percentage of progress. If progressPercentage
+ * is not between 0 and 100, a `+[sessionPreloadingNever]` will be returned.
+ */
++ (instancetype)sessionPreloadingWithProgressPercentage:(NSUInteger)progressPercentage;
+
+@end
+
+@interface BCOVBasicSessionLoadingPolicy (Unavailable)
+
+- (instancetype)init __attribute__((unavailable("Use `+[BCOVBasicSessionLoadingPolicy sessionPreloadingNever] or +[BCOVBasicSessionLoadingPolicy sessionPreloadingWithProgressPercentage:]` instead.")));
+
+@end
+
+
+/**
  * Optional configuration for basic session providers.
  */
 @interface BCOVBasicSessionProviderOptions : NSObject
@@ -57,5 +87,11 @@ typedef BCOVSource *(^BCOVBasicSessionProviderSourceSelectionPolicy)(BCOVVideo *
  * "MP4". If neither are found, it returns nil.
  */
 @property (nonatomic, copy) BCOVSource *(^sourceSelectionPolicy)(BCOVVideo *video);
+
+/**
+ * The session loading policy that preloads an upcoming session when the
+ * previous session reaches certain percentage of progress.
+ */
+@property (nonatomic, copy) BCOVBasicSessionLoadingPolicy *sessionPreloadingPolicy;
 
 @end

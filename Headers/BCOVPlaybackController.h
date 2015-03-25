@@ -12,7 +12,6 @@
 
 #import "BCOVAdvertising.h"
 
-@class RACSignal;
 
 @class BCOVPlaybackSessionLifecycleEvent;
 @class BCOVPlaylist;

@@ -1,3 +1,11 @@
+# 4.3.3
+### Breaking Changes
+* Preloading of videos is now disabled by default. If you wish to turn preloading back on, please consult the README.md for more information about `BCOVBasicSessionLoadingPolicy`.
+
+### Additions and Improvements
+* Added new APIs for enabling preloading of videos called `BCOVBasicSessionLoadingPolicy`. Please see the README.md for more information.
+* Fixed a bug in the default controls that could prevent seeks to the end of the video from completing.
+
 # 4.3.2
 ### Additions and Improvements
 * Added Playback Service classes: `BCOVPlaybackService` and `BCOVPlaybackServiceRequestFactory`. These APIs provide an alternative way to retrieve Brightcove video assets via the Brightcove CMS API with more rich meta information such as text tracks.
@@ -50,7 +58,7 @@
 * iOS 6 is still deprecated in this release. We have not removed support yet.
 * All deprecated symbols within the Player SDK for iOS have been removed from this release.
 * Use of ReactiveCocoa in public APIs within the Player SDK for iOS has been removed from this release.
-* If using Cocoapods, ReactiveCocoa will no longer be installed by including our library. Running `pod update` to update to 4.2 will remove it. If you wish to continue using ReactiveCocoa for your own use, you will need to declare ReacticeCocoa in your podfile.
+* If using Cocoapods, ReactiveCocoa will no longer be installed by including our library. Running `pod update` to update to 4.2 will remove it. If you wish to continue using ReactiveCocoa for your own use, you will need to declare ReactiveCocoa in your podfile.
 * If you installed ReactiveCocoa manually in your project, it can be removed. To remove it, you will need to at least perform the following:
     * Remove any "Target Dependencies" on ReactiveCocoa.
     * Remove any ReactiveCocoa references from the "Header Search Paths".
