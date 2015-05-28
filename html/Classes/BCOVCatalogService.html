@@ -1,202 +1,140 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>BCOVCatalogService Class Reference</title>
-		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
-		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.2 (build 963)" />
-	</head>
-	<body>
-		<header id="top_header">
-			<div id="library" class="hideInXcode">
-				<h1><a id="libraryTitle" href="../index.html">BCOVPlayerSDK </a></h1>
-				<a id="developerHome" href="../index.html">Brightcove</a>
-			</div>
+<head>
+	<meta charset="utf-8">
+
+	<title>BCOVCatalogService Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
 			
-			<div id="title" role="banner">
-				<h1 class="hideInXcode">BCOVCatalogService Class Reference</h1>
-			</div>
-			<ul id="headerButtons" role="toolbar">
-				<li id="toc_button">
-					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
-				</li>
-				<li id="jumpto_button" role="navigation">
-					<select id="jumpTo">
+			<h1 id="library-title">
+				<a href="../index.html">BCOVPlayerSDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Brightcove</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
 	
 	<option value="overview">Overview</option>
 	
-	
+
 	
 	
 	<option value="tasks">Tasks</option>
 	
 	
+
 	
 	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/requestFactory">requestFactory</option>
+		
+	</optgroup>
 	
-	<option value="properties">Properties</option>
+
 	
-	<option value="//api/name/requestFactory">&nbsp;&nbsp;&nbsp;&nbsp;requestFactory</option>
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/cuePointFromJSONDictionary:">+ cuePointFromJSONDictionary:</option>
+		
+		<option value="//api/name/playlistFromJSONDictionary:">+ playlistFromJSONDictionary:</option>
+		
+		<option value="//api/name/sourceFromJSONDictionary:">+ sourceFromJSONDictionary:</option>
+		
+		<option value="//api/name/videoFromJSONDictionary:">+ videoFromJSONDictionary:</option>
+		
+	</optgroup>
 	
+
 	
-	
-	
-	<option value="class_methods">Class Methods</option>
-	
-	<option value="//api/name/cuePointFromJSONDictionary:">&nbsp;&nbsp;&nbsp;&nbsp;+ cuePointFromJSONDictionary:</option>
-	
-	<option value="//api/name/playlistFromJSONDictionary:">&nbsp;&nbsp;&nbsp;&nbsp;+ playlistFromJSONDictionary:</option>
-	
-	<option value="//api/name/sourceFromJSONDictionary:">&nbsp;&nbsp;&nbsp;&nbsp;+ sourceFromJSONDictionary:</option>
-	
-	<option value="//api/name/videoFromJSONDictionary:">&nbsp;&nbsp;&nbsp;&nbsp;+ videoFromJSONDictionary:</option>
-	
-	
-	
-	
-	<option value="instance_methods">Instance Methods</option>
-	
-	<option value="//api/name/findPlaylistWithPlaylistID:parameters:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- findPlaylistWithPlaylistID:parameters:completion:</option>
-	
-	<option value="//api/name/findPlaylistWithReferenceID:parameters:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- findPlaylistWithReferenceID:parameters:completion:</option>
-	
-	<option value="//api/name/findVideoWithReferenceID:parameters:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- findVideoWithReferenceID:parameters:completion:</option>
-	
-	<option value="//api/name/findVideoWithVideoID:parameters:completion:">&nbsp;&nbsp;&nbsp;&nbsp;- findVideoWithVideoID:parameters:completion:</option>
-	
-	<option value="//api/name/initWithMediaRequestFactory:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithMediaRequestFactory:</option>
-	
-	<option value="//api/name/initWithToken:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithToken:</option>
-	
-	<option value="//api/name/playlistDictionaryOperationWithPlaylistID:parameters:">&nbsp;&nbsp;&nbsp;&nbsp;- playlistDictionaryOperationWithPlaylistID:parameters:</option>
-	
-	<option value="//api/name/playlistDictionaryOperationWithReferenceID:parameters:">&nbsp;&nbsp;&nbsp;&nbsp;- playlistDictionaryOperationWithReferenceID:parameters:</option>
-	
-	<option value="//api/name/playlistOperationWithPlaylistID:parameters:">&nbsp;&nbsp;&nbsp;&nbsp;- playlistOperationWithPlaylistID:parameters:</option>
-	
-	<option value="//api/name/playlistOperationWithReferenceID:parameters:">&nbsp;&nbsp;&nbsp;&nbsp;- playlistOperationWithReferenceID:parameters:</option>
-	
-	<option value="//api/name/videoDictionaryOperationWithReferenceID:parameters:">&nbsp;&nbsp;&nbsp;&nbsp;- videoDictionaryOperationWithReferenceID:parameters:</option>
-	
-	<option value="//api/name/videoDictionaryOperationWithVideoID:parameters:">&nbsp;&nbsp;&nbsp;&nbsp;- videoDictionaryOperationWithVideoID:parameters:</option>
-	
-	<option value="//api/name/videoOperationWithReferenceID:parameters:">&nbsp;&nbsp;&nbsp;&nbsp;- videoOperationWithReferenceID:parameters:</option>
-	
-	<option value="//api/name/videoOperationWithVideoID:parameters:">&nbsp;&nbsp;&nbsp;&nbsp;- videoOperationWithVideoID:parameters:</option>
-	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/findPlaylistWithPlaylistID:parameters:completion:">- findPlaylistWithPlaylistID:parameters:completion:</option>
+		
+		<option value="//api/name/findPlaylistWithReferenceID:parameters:completion:">- findPlaylistWithReferenceID:parameters:completion:</option>
+		
+		<option value="//api/name/findVideoWithReferenceID:parameters:completion:">- findVideoWithReferenceID:parameters:completion:</option>
+		
+		<option value="//api/name/findVideoWithVideoID:parameters:completion:">- findVideoWithVideoID:parameters:completion:</option>
+		
+		<option value="//api/name/initWithMediaRequestFactory:">- initWithMediaRequestFactory:</option>
+		
+		<option value="//api/name/initWithToken:">- initWithToken:</option>
+		
+		<option value="//api/name/playlistDictionaryOperationWithPlaylistID:parameters:">- playlistDictionaryOperationWithPlaylistID:parameters:</option>
+		
+		<option value="//api/name/playlistDictionaryOperationWithReferenceID:parameters:">- playlistDictionaryOperationWithReferenceID:parameters:</option>
+		
+		<option value="//api/name/playlistOperationWithPlaylistID:parameters:">- playlistOperationWithPlaylistID:parameters:</option>
+		
+		<option value="//api/name/playlistOperationWithReferenceID:parameters:">- playlistOperationWithReferenceID:parameters:</option>
+		
+		<option value="//api/name/videoDictionaryOperationWithReferenceID:parameters:">- videoDictionaryOperationWithReferenceID:parameters:</option>
+		
+		<option value="//api/name/videoDictionaryOperationWithVideoID:parameters:">- videoDictionaryOperationWithVideoID:parameters:</option>
+		
+		<option value="//api/name/videoOperationWithReferenceID:parameters:">- videoOperationWithReferenceID:parameters:</option>
+		
+		<option value="//api/name/videoOperationWithVideoID:parameters:">- videoOperationWithVideoID:parameters:</option>
+		
+	</optgroup>
 	
 	
 </select>
-				</li>
-			</ul>
-		</header>
-		<nav id="tocContainer" class="isShowingTOC">
-			<ul id="toc" role="tree">
-				
-<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
 
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BCOVCatalogService Class Reference</h1>
 
-
-
-<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_BCOVImperativeCallbacks Methods">BCOVImperativeCallbacks Methods</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_BCOVCatalogOperations Methods">BCOVCatalogOperations Methods</a></span></li>
-	
-</ul></li>
-
-
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/requestFactory">requestFactory</a></span></li>
-	
-</ul></li>
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cuePointFromJSONDictionary:">cuePointFromJSONDictionary:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/playlistFromJSONDictionary:">playlistFromJSONDictionary:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sourceFromJSONDictionary:">sourceFromJSONDictionary:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/videoFromJSONDictionary:">videoFromJSONDictionary:</a></span></li>
-	
-</ul></li>
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/findPlaylistWithPlaylistID:parameters:completion:">findPlaylistWithPlaylistID:parameters:completion:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/findPlaylistWithReferenceID:parameters:completion:">findPlaylistWithReferenceID:parameters:completion:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/findVideoWithReferenceID:parameters:completion:">findVideoWithReferenceID:parameters:completion:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/findVideoWithVideoID:parameters:completion:">findVideoWithVideoID:parameters:completion:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithMediaRequestFactory:">initWithMediaRequestFactory:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithToken:">initWithToken:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/playlistDictionaryOperationWithPlaylistID:parameters:">playlistDictionaryOperationWithPlaylistID:parameters:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/playlistDictionaryOperationWithReferenceID:parameters:">playlistDictionaryOperationWithReferenceID:parameters:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/playlistOperationWithPlaylistID:parameters:">playlistOperationWithPlaylistID:parameters:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/playlistOperationWithReferenceID:parameters:">playlistOperationWithReferenceID:parameters:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/videoDictionaryOperationWithReferenceID:parameters:">videoDictionaryOperationWithReferenceID:parameters:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/videoDictionaryOperationWithVideoID:parameters:">videoDictionaryOperationWithVideoID:parameters:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/videoOperationWithReferenceID:parameters:">videoOperationWithReferenceID:parameters:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/videoOperationWithVideoID:parameters:">videoOperationWithVideoID:parameters:</a></span></li>
-	
-</ul></li>
-
-
-			</ul>
-		</nav>
-		<article>
-			<div id="contents" class="isShowingTOC" role="main">
-				<a title="BCOVCatalogService Class Reference" name="top"></a>
-				<div class="main-navigation navigation-top">
-					<ul>
-	<li><a href="../index.html">Index</a></li>
-	<li><a href="../hierarchy.html">Hierarchy</a></li>
-</ul>
-				</div>
-				<div id="header">
-					<div class="section-header">
-						<h1 class="title title-header">BCOVCatalogService Class Reference</h1>
-					</div>		
-				</div>
-				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">NSObject</td>
+	<th>Inherits from</th>
+	<td>NSObject</td>
 </tr><tr>
-	<td class="specification-title">Declared in</td>
-	<td class="specification-value">BCOVCatalogService.h</td>
+	<th>Declared in</th>
+	<td>BCOVCatalogService.h</td>
 </tr>
 						</tbody></table></div>
 					
-                    
+
                     
 					
 					<div class="section section-overview">
@@ -207,1505 +145,1403 @@ about videos and playlists from Brightcove’s Media API services.</p>
 					</div>
 					
 					
-					
+
 					
 					
 					<div class="section section-tasks">
 						<a title="Tasks" name="tasks"></a>
-						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
-						
-						
-						<h3 class="subsubtitle task-title">Other Methods</h3>
 
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/requestFactory">&nbsp;&nbsp;requestFactory</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithToken:">&ndash;&nbsp;initWithToken:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/initWithMediaRequestFactory:">&ndash;&nbsp;initWithMediaRequestFactory:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/sourceFromJSONDictionary:">+&nbsp;sourceFromJSONDictionary:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/cuePointFromJSONDictionary:">+&nbsp;cuePointFromJSONDictionary:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/playlistFromJSONDictionary:">+&nbsp;playlistFromJSONDictionary:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/videoFromJSONDictionary:">+&nbsp;videoFromJSONDictionary:</a></code>
-	</span>
-	
-	
-</li>
-						</ul>
 						
-						
-						<a title="BCOVImperativeCallbacks Methods" name="task_BCOVImperativeCallbacks Methods"></a>
-						<h3 class="subsubtitle task-title">BCOVImperativeCallbacks Methods</h3>
+						<h2 class="task-title">Other Methods</h2>
 
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/findPlaylistWithPlaylistID:parameters:completion:">&ndash;&nbsp;findPlaylistWithPlaylistID:parameters:completion:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/findPlaylistWithReferenceID:parameters:completion:">&ndash;&nbsp;findPlaylistWithReferenceID:parameters:completion:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/findVideoWithVideoID:parameters:completion:">&ndash;&nbsp;findVideoWithVideoID:parameters:completion:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/findVideoWithReferenceID:parameters:completion:">&ndash;&nbsp;findVideoWithReferenceID:parameters:completion:</a></code>
-	</span>
-	
-	
-</li>
-						</ul>
-						
-						
-						<a title="BCOVCatalogOperations Methods" name="task_BCOVCatalogOperations Methods"></a>
-						<h3 class="subsubtitle task-title">BCOVCatalogOperations Methods</h3>
-
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/videoOperationWithVideoID:parameters:">&ndash;&nbsp;videoOperationWithVideoID:parameters:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/videoOperationWithReferenceID:parameters:">&ndash;&nbsp;videoOperationWithReferenceID:parameters:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/playlistOperationWithPlaylistID:parameters:">&ndash;&nbsp;playlistOperationWithPlaylistID:parameters:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/playlistOperationWithReferenceID:parameters:">&ndash;&nbsp;playlistOperationWithReferenceID:parameters:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/videoDictionaryOperationWithVideoID:parameters:">&ndash;&nbsp;videoDictionaryOperationWithVideoID:parameters:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/videoDictionaryOperationWithReferenceID:parameters:">&ndash;&nbsp;videoDictionaryOperationWithReferenceID:parameters:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/playlistDictionaryOperationWithPlaylistID:parameters:">&ndash;&nbsp;playlistDictionaryOperationWithPlaylistID:parameters:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/playlistDictionaryOperationWithReferenceID:parameters:">&ndash;&nbsp;playlistDictionaryOperationWithReferenceID:parameters:</a></code>
-	</span>
-	
-	
-</li>
-						</ul>
-						
-					</div>
-					
-					
-					
-					
-					
-					<div class="section section-methods">
-						<a title="Properties" name="properties"></a>
-						<h2 class="subtitle subtitle-methods">Properties</h2>
-						
-						<div class="section-method">
+						<div class="task-list">
+							<div class="section-method">
 	<a name="//api/name/requestFactory" title="requestFactory"></a>
-	<h3 class="subsubtitle method-title">requestFactory</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>The factory used to construct media API requests</p>
-	</div>		
-	
-    
+	<h3 class="method-title"><code><a href="#//api/name/requestFactory">&nbsp;&nbsp;requestFactory</a></code>
+</h3>
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) BCOVMediaRequestFactory *requestFactory</code></div>
+	<div class="method-info">
+		<div class="pointy-thing"></div>
 
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>The factory used to construct media API requests</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
-					
-					
-					
-					<div class="section section-methods">
-						<a title="Class Methods" name="class_methods"></a>
-						<h2 class="subtitle subtitle-methods">Class Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/cuePointFromJSONDictionary:" title="cuePointFromJSONDictionary:"></a>
-	<h3 class="subsubtitle method-title">cuePointFromJSONDictionary:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initializes a cue point from the JSON dictionary. Properties that don&rsquo;t
-map to first class properties on cue point are added to the properties
-dictionary.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (BCOVCuePoint *)cuePointFromJSONDictionary:(NSDictionary *)<em>json</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>json</em></dt>
-			<dd><p>Dictionary representing the deserialized cuepoint.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The initialized cue point.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializes a cue point from the JSON dictionary. Properties that don&rsquo;t
-map to first class properties on cue point are added to the properties
-dictionary.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/playlistFromJSONDictionary:" title="playlistFromJSONDictionary:"></a>
-	<h3 class="subsubtitle method-title">playlistFromJSONDictionary:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initializes a playlist from the JSON dictionary. Properties that don&rsquo;t
-map to first class properties on playlist are added to the properties
-dictionary.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (BCOVPlaylist *)playlistFromJSONDictionary:(NSDictionary *)<em>json</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>json</em></dt>
-			<dd><p>Dictionary representing the deserialized playlist.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The initialized playlist.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializes a playlist from the JSON dictionary. Properties that don&rsquo;t
-map to first class properties on playlist are added to the properties
-dictionary.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/sourceFromJSONDictionary:" title="sourceFromJSONDictionary:"></a>
-	<h3 class="subsubtitle method-title">sourceFromJSONDictionary:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initializes a source from the JSON dictionary. Properties that don&rsquo;t map to
-first class properties on the source are added to the properties dictionary.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (BCOVSource *)sourceFromJSONDictionary:(NSDictionary *)<em>json</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>json</em></dt>
-			<dd><p>Dictionary representing the deserialized source.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The initialized source.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializes a source from the JSON dictionary. Properties that don&rsquo;t map to
-first class properties on the source are added to the properties dictionary.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/videoFromJSONDictionary:" title="videoFromJSONDictionary:"></a>
-	<h3 class="subsubtitle method-title">videoFromJSONDictionary:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initializes a video from the JSON dictionary. Properties that don&rsquo;t
-map to first class properties on video are added to the properties
-dictionary.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (BCOVVideo *)videoFromJSONDictionary:(NSDictionary *)<em>json</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>json</em></dt>
-			<dd><p>Dictionary representing the deserialized video.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The initialized video.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Initializes a video from the JSON dictionary. Properties that don&rsquo;t
-map to first class properties on video are added to the properties
-dictionary.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
-					
-					
-					
-					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/findPlaylistWithPlaylistID:parameters:completion:" title="findPlaylistWithPlaylistID:parameters:completion:"></a>
-	<h3 class="subsubtitle method-title">findPlaylistWithPlaylistID:parameters:completion:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Media API service by its playlist ID.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)findPlaylistWithPlaylistID:(NSString *)<em>playlistID</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVPlaylist *playlist , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>playlistID</em></dt>
-			<dd><p>The ID of the playlist to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to the Media
-API requests. These values will override the default values if they conflict.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>completionHandler</em></dt>
-			<dd><p>block which will be invoked when the request
-finishes. Execution of the completionHandler will occur on the main thread.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Media API service by its playlist ID.</p>
-
-<p>If the Media API returns a standard JSON-formatted error response, the
-deserialized response will be the callback&rsquo;s error&rsquo;s <code>userInfo</code>.</p>
-
-<p>If a JSON parse error occurs, the raw NSData response will be included in the
-callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/findPlaylistWithReferenceID:parameters:completion:" title="findPlaylistWithReferenceID:parameters:completion:"></a>
-	<h3 class="subsubtitle method-title">findPlaylistWithReferenceID:parameters:completion:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Media API service by its reference ID.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)findPlaylistWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVPlaylist *playlist , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>referenceID</em></dt>
-			<dd><p>The reference ID of the playlist to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to the Media
-API requests. These values will override the default values if they conflict.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>completionHandler</em></dt>
-			<dd><p>block which will be invoked when the request
-finishes. Execution of the completionHandler will occur on the main thread.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Media API service by its reference ID.</p>
-
-<p>If the Media API returns a standard JSON-formatted error response, the
-deserialized response will be the callback&rsquo;s error&rsquo;s <code>userInfo</code>.</p>
-
-<p>If a JSON parse error occurs, the raw NSData response will be included in the
-callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/findVideoWithReferenceID:parameters:completion:" title="findVideoWithReferenceID:parameters:completion:"></a>
-	<h3 class="subsubtitle method-title">findVideoWithReferenceID:parameters:completion:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Media API service by its reference ID.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)findVideoWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVVideo *video , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>referenceID</em></dt>
-			<dd><p>The reference ID of the video to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to the Media
-API requests. These values will override the default values if they conflict.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>completionHandler</em></dt>
-			<dd><p>block which will be invoked when the request
-finishes. Execution of the completionHandler will occur on the main thread.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Media API service by its reference ID.</p>
-
-<p>If the Media API returns a standard JSON-formatted error response, the
-deserialized response will be the callback&rsquo;s error&rsquo;s <code>userInfo</code>.</p>
-
-<p>If a JSON parse error occurs, the raw NSData response will be included in the
-callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/findVideoWithVideoID:parameters:completion:" title="findVideoWithVideoID:parameters:completion:"></a>
-	<h3 class="subsubtitle method-title">findVideoWithVideoID:parameters:completion:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Media API service by its video ID.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)findVideoWithVideoID:(NSString *)<em>videoID</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVVideo *video , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>videoID</em></dt>
-			<dd><p>The ID of the video to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to the Media
-API requests. These values will override the default values if they conflict.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>completionHandler</em></dt>
-			<dd><p>block which will be invoked when the request
-finishes. Execution of the completionHandler will occur on the main thread.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Media API service by its video ID.</p>
-
-<p>If the Media API returns a standard JSON-formatted error response, the
-deserialized response will be the callback&rsquo;s error&rsquo;s <code>userInfo</code>.</p>
-
-<p>If a JSON parse error occurs, the raw NSData response will be included in the
-callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithMediaRequestFactory:" title="initWithMediaRequestFactory:"></a>
-	<h3 class="subsubtitle method-title">initWithMediaRequestFactory:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns an initialized instance using the reqest factory provided.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithMediaRequestFactory:(BCOVMediaRequestFactory *)<em>requestFactory</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>requestFactory</em></dt>
-			<dd><p>Request factory used to create requests</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>an initialized BCOVCatalogService</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns an initialized instance using the reqest factory provided.</p>
-
-<p>To prevent unauthorized access to the metadata in your account, Video Cloud
-protects access to the API with tokens that you pass as parameters when
-making API calls. Like other web-based APIs, tokens are generated for you by
-Video Cloud and must be protected by you.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithToken:" title="initWithToken:"></a>
-	<h3 class="subsubtitle method-title">initWithToken:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Designated initializer, returns an instance initialized with the
-specified token. The request factory is created using the token provided.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (instancetype)initWithToken:(NSString *)<em>token</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>token</em></dt>
-			<dd><p>string containing your Video Cloud Media API token.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>an initialized BCOVCatalogService</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Designated initializer, returns an instance initialized with the
-specified token. The request factory is created using the token provided.</p>
-
-<p>To prevent unauthorized access to the metadata in your account, Video Cloud
-protects access to the API with tokens that you pass as parameters when
-making API calls. Like other web-based APIs, tokens are generated for you by
-Video Cloud and must be protected by you.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/playlistDictionaryOperationWithPlaylistID:parameters:" title="playlistDictionaryOperationWithPlaylistID:parameters:"></a>
-	<h3 class="subsubtitle method-title">playlistDictionaryOperationWithPlaylistID:parameters:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns an operation that retrieves JSON for a playlist corresponding to the
-specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
-<code>NSDictionary *</code> if the operation succeeds.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)playlistDictionaryOperationWithPlaylistID:(NSString *)<em>playlistID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>playlistID</em></dt>
-			<dd><p>The playlist ID of the playlist to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to catalog
-service requests. These values will override the default values if they
-conflict.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>An operation that retrieves the specified playlist as JSON.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns an operation that retrieves JSON for a playlist corresponding to the
-specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
-<code>NSDictionary *</code> if the operation succeeds.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/playlistDictionaryOperationWithReferenceID:parameters:" title="playlistDictionaryOperationWithReferenceID:parameters:"></a>
-	<h3 class="subsubtitle method-title">playlistDictionaryOperationWithReferenceID:parameters:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns an operation that retrieves JSON for a playlist corresponding to the
-specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
-<code>NSDictionary *</code> if the operation succeeds.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)playlistDictionaryOperationWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>referenceID</em></dt>
-			<dd><p>The playlist reference ID of the playlist to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to catalog
-service requests. These values will override the default values if they
-conflict.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>An operation that retrieves the specified playlist as JSON.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns an operation that retrieves JSON for a playlist corresponding to the
-specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
-<code>NSDictionary *</code> if the operation succeeds.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/playlistOperationWithPlaylistID:parameters:" title="playlistOperationWithPlaylistID:parameters:"></a>
-	<h3 class="subsubtitle method-title">playlistOperationWithPlaylistID:parameters:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns an operation that retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> corresponding to the
-specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
-<code></code>BCOVPlaylist<code> *</code> if the operation succeeds.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)playlistOperationWithPlaylistID:(NSString *)<em>playlistID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>playlistID</em></dt>
-			<dd><p>The playlist ID of the playlist to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to catalog
-service requests. These values will override the default values if they
-conflict.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>An operation that retrieves the specified <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a>.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns an operation that retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> corresponding to the
-specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
-<code></code>BCOVPlaylist<code> *</code> if the operation succeeds.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/playlistOperationWithReferenceID:parameters:" title="playlistOperationWithReferenceID:parameters:"></a>
-	<h3 class="subsubtitle method-title">playlistOperationWithReferenceID:parameters:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns an operation that retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> corresponding to the
-specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
-<code></code>BCOVPlaylist<code> *</code> if the operation succeeds.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)playlistOperationWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>referenceID</em></dt>
-			<dd><p>The playlist reference ID of the playlist to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to catalog
-service requests. These values will override the default values if they
-conflict.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>An operation that retrieves the specified <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a>.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns an operation that retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> corresponding to the
-specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
-<code></code>BCOVPlaylist<code> *</code> if the operation succeeds.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/videoDictionaryOperationWithReferenceID:parameters:" title="videoDictionaryOperationWithReferenceID:parameters:"></a>
-	<h3 class="subsubtitle method-title">videoDictionaryOperationWithReferenceID:parameters:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns an operation that retrieves JSON for a video corresponding to the
-specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
-<code>NSDictionary *</code> if the operation succeeds.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)videoDictionaryOperationWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>referenceID</em></dt>
-			<dd><p>The video reference ID of the video to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to catalog
-service requests. These values will override the default values if they
-conflict.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>An operation that retrieves the specified video as JSON.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns an operation that retrieves JSON for a video corresponding to the
-specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
-<code>NSDictionary *</code> if the operation succeeds.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/videoDictionaryOperationWithVideoID:parameters:" title="videoDictionaryOperationWithVideoID:parameters:"></a>
-	<h3 class="subsubtitle method-title">videoDictionaryOperationWithVideoID:parameters:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns an operation that retrieves JSON for a video corresponding to the
-specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
-<code>NSDictionary *</code> if the operation succeeds.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)videoDictionaryOperationWithVideoID:(NSString *)<em>videoID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>videoID</em></dt>
-			<dd><p>The video ID of the video to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to catalog
-service requests. These values will override the default values if they
-conflict.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>An operation that retrieves the specified video as JSON.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns an operation that retrieves JSON for a video corresponding to the
-specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
-<code>NSDictionary *</code> if the operation succeeds.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/videoOperationWithReferenceID:parameters:" title="videoOperationWithReferenceID:parameters:"></a>
-	<h3 class="subsubtitle method-title">videoOperationWithReferenceID:parameters:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns an operation that retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> corresponding to the
-specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
-<code></code>BCOVVideo<code> *</code> if the operation succeeds.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)videoOperationWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>referenceID</em></dt>
-			<dd><p>The video reference ID of the video to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to catalog
-service requests. These values will override the default values if they
-conflict.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>An operation that retrieves the specified <a href="../Classes/BCOVVideo.html">BCOVVideo</a>.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns an operation that retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> corresponding to the
-specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
-<code></code>BCOVVideo<code> *</code> if the operation succeeds.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/videoOperationWithVideoID:parameters:" title="videoOperationWithVideoID:parameters:"></a>
-	<h3 class="subsubtitle method-title">videoOperationWithVideoID:parameters:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns an operation that retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> corresponding to the
-specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
-<code></code>BCOVVideo<code> *</code> if the operation succeeds.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)videoOperationWithVideoID:(NSString *)<em>videoID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>videoID</em></dt>
-			<dd><p>The video ID of the video to find.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>parameters</em></dt>
-			<dd><p>Additional NSString query parameters to add to catalog
-service requests. These values will override the default values if they
-conflict.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>An operation that retrieves the specified <a href="../Classes/BCOVVideo.html">BCOVVideo</a>.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns an operation that retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> corresponding to the
-specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
-<code></code>BCOVVideo<code> *</code> if the operation succeeds.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVCatalogService.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
-					
-					
-                    
-                    
-				</div>
-				<div class="main-navigation navigation-bottom">
-					<ul>
-	<li><a href="../index.html">Index</a></li>
-	<li><a href="../hierarchy.html">Hierarchy</a></li>
-</ul>
-				</div>
-				<div id="footer">
-					<hr />
-					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 Brightcove. All rights reserved. (Last updated: 2015-03-25)</span><br />
-						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
-						
-					</div>
-				</div>
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The factory used to construct media API requests</p>
 			</div>
-		</article>
-		<script type="text/javascript">
-			function jumpToChange()
-			{
-				window.location.hash = this.options[this.selectedIndex].value;
-			}
 			
-			function toggleTOC()
-			{
-				var contents = document.getElementById('contents');
-				var tocContainer = document.getElementById('tocContainer');
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) BCOVMediaRequestFactory *requestFactory</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The factory used to construct media API requests</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithToken:" title="initWithToken:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithToken:">&ndash;&nbsp;initWithToken:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Designated initializer, returns an instance initialized with the
+specified token. The request factory is created using the token provided.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithToken:(NSString *)<em>token</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
 				
-				if (this.getAttribute('class') == 'open')
-				{
-					this.setAttribute('class', '');
-					contents.setAttribute('class', '');
-					tocContainer.setAttribute('class', '');
+					<tr>
+						<th scope="row" class="argument-name"><code>token</code></th>
+						<td><p>string containing your Video Cloud Media API token.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>an initialized BCOVCatalogService</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Designated initializer, returns an instance initialized with the
+specified token. The request factory is created using the token provided.</p>
+
+<p>To prevent unauthorized access to the metadata in your account, Video Cloud
+protects access to the API with tokens that you pass as parameters when
+making API calls. Like other web-based APIs, tokens are generated for you by
+Video Cloud and must be protected by you.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithMediaRequestFactory:" title="initWithMediaRequestFactory:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithMediaRequestFactory:">&ndash;&nbsp;initWithMediaRequestFactory:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns an initialized instance using the reqest factory provided.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithMediaRequestFactory:(BCOVMediaRequestFactory *)<em>requestFactory</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>requestFactory</code></th>
+						<td><p>Request factory used to create requests</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>an initialized BCOVCatalogService</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns an initialized instance using the reqest factory provided.</p>
+
+<p>To prevent unauthorized access to the metadata in your account, Video Cloud
+protects access to the API with tokens that you pass as parameters when
+making API calls. Like other web-based APIs, tokens are generated for you by
+Video Cloud and must be protected by you.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sourceFromJSONDictionary:" title="sourceFromJSONDictionary:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sourceFromJSONDictionary:">+&nbsp;sourceFromJSONDictionary:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initializes a source from the JSON dictionary. Properties that don&rsquo;t map to
+first class properties on the source are added to the properties dictionary.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BCOVSource *)sourceFromJSONDictionary:(NSDictionary *)<em>json</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>json</code></th>
+						<td><p>Dictionary representing the deserialized source.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>The initialized source.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Initializes a source from the JSON dictionary. Properties that don&rsquo;t map to
+first class properties on the source are added to the properties dictionary.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/cuePointFromJSONDictionary:" title="cuePointFromJSONDictionary:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/cuePointFromJSONDictionary:">+&nbsp;cuePointFromJSONDictionary:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initializes a cue point from the JSON dictionary. Properties that don&rsquo;t
+map to first class properties on cue point are added to the properties
+dictionary.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BCOVCuePoint *)cuePointFromJSONDictionary:(NSDictionary *)<em>json</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>json</code></th>
+						<td><p>Dictionary representing the deserialized cuepoint.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>The initialized cue point.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Initializes a cue point from the JSON dictionary. Properties that don&rsquo;t
+map to first class properties on cue point are added to the properties
+dictionary.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playlistFromJSONDictionary:" title="playlistFromJSONDictionary:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playlistFromJSONDictionary:">+&nbsp;playlistFromJSONDictionary:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initializes a playlist from the JSON dictionary. Properties that don&rsquo;t
+map to first class properties on playlist are added to the properties
+dictionary.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BCOVPlaylist *)playlistFromJSONDictionary:(NSDictionary *)<em>json</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>json</code></th>
+						<td><p>Dictionary representing the deserialized playlist.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>The initialized playlist.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Initializes a playlist from the JSON dictionary. Properties that don&rsquo;t
+map to first class properties on playlist are added to the properties
+dictionary.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoFromJSONDictionary:" title="videoFromJSONDictionary:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoFromJSONDictionary:">+&nbsp;videoFromJSONDictionary:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initializes a video from the JSON dictionary. Properties that don&rsquo;t
+map to first class properties on video are added to the properties
+dictionary.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BCOVVideo *)videoFromJSONDictionary:(NSDictionary *)<em>json</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>json</code></th>
+						<td><p>Dictionary representing the deserialized video.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>The initialized video.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Initializes a video from the JSON dictionary. Properties that don&rsquo;t
+map to first class properties on video are added to the properties
+dictionary.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="BCOVCatalogOperations Methods" name="task_BCOVCatalogOperations Methods"></a>
+						<h2 class="task-title">BCOVCatalogOperations Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/videoOperationWithVideoID:parameters:" title="videoOperationWithVideoID:parameters:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoOperationWithVideoID:parameters:">&ndash;&nbsp;videoOperationWithVideoID:parameters:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns an operation that retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code></code>BCOVVideo<code> *</code> if the operation succeeds.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)videoOperationWithVideoID:(NSString *)<em>videoID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>videoID</code></th>
+						<td><p>The video ID of the video to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to catalog
+service requests. These values will override the default values if they
+conflict.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An operation that retrieves the specified <a href="../Classes/BCOVVideo.html">BCOVVideo</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns an operation that retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code></code>BCOVVideo<code> *</code> if the operation succeeds.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoOperationWithReferenceID:parameters:" title="videoOperationWithReferenceID:parameters:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoOperationWithReferenceID:parameters:">&ndash;&nbsp;videoOperationWithReferenceID:parameters:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns an operation that retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code></code>BCOVVideo<code> *</code> if the operation succeeds.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)videoOperationWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>referenceID</code></th>
+						<td><p>The video reference ID of the video to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to catalog
+service requests. These values will override the default values if they
+conflict.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An operation that retrieves the specified <a href="../Classes/BCOVVideo.html">BCOVVideo</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns an operation that retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code></code>BCOVVideo<code> *</code> if the operation succeeds.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playlistOperationWithPlaylistID:parameters:" title="playlistOperationWithPlaylistID:parameters:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playlistOperationWithPlaylistID:parameters:">&ndash;&nbsp;playlistOperationWithPlaylistID:parameters:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns an operation that retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code></code>BCOVPlaylist<code> *</code> if the operation succeeds.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)playlistOperationWithPlaylistID:(NSString *)<em>playlistID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>playlistID</code></th>
+						<td><p>The playlist ID of the playlist to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to catalog
+service requests. These values will override the default values if they
+conflict.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An operation that retrieves the specified <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns an operation that retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code></code>BCOVPlaylist<code> *</code> if the operation succeeds.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playlistOperationWithReferenceID:parameters:" title="playlistOperationWithReferenceID:parameters:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playlistOperationWithReferenceID:parameters:">&ndash;&nbsp;playlistOperationWithReferenceID:parameters:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns an operation that retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code></code>BCOVPlaylist<code> *</code> if the operation succeeds.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)playlistOperationWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>referenceID</code></th>
+						<td><p>The playlist reference ID of the playlist to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to catalog
+service requests. These values will override the default values if they
+conflict.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An operation that retrieves the specified <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns an operation that retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code></code>BCOVPlaylist<code> *</code> if the operation succeeds.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoDictionaryOperationWithVideoID:parameters:" title="videoDictionaryOperationWithVideoID:parameters:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoDictionaryOperationWithVideoID:parameters:">&ndash;&nbsp;videoDictionaryOperationWithVideoID:parameters:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns an operation that retrieves JSON for a video corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code>NSDictionary *</code> if the operation succeeds.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)videoDictionaryOperationWithVideoID:(NSString *)<em>videoID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>videoID</code></th>
+						<td><p>The video ID of the video to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to catalog
+service requests. These values will override the default values if they
+conflict.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An operation that retrieves the specified video as JSON.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns an operation that retrieves JSON for a video corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code>NSDictionary *</code> if the operation succeeds.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/videoDictionaryOperationWithReferenceID:parameters:" title="videoDictionaryOperationWithReferenceID:parameters:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoDictionaryOperationWithReferenceID:parameters:">&ndash;&nbsp;videoDictionaryOperationWithReferenceID:parameters:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns an operation that retrieves JSON for a video corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code>NSDictionary *</code> if the operation succeeds.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)videoDictionaryOperationWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>referenceID</code></th>
+						<td><p>The video reference ID of the video to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to catalog
+service requests. These values will override the default values if they
+conflict.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An operation that retrieves the specified video as JSON.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns an operation that retrieves JSON for a video corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code>NSDictionary *</code> if the operation succeeds.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playlistDictionaryOperationWithPlaylistID:parameters:" title="playlistDictionaryOperationWithPlaylistID:parameters:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playlistDictionaryOperationWithPlaylistID:parameters:">&ndash;&nbsp;playlistDictionaryOperationWithPlaylistID:parameters:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns an operation that retrieves JSON for a playlist corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code>NSDictionary *</code> if the operation succeeds.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)playlistDictionaryOperationWithPlaylistID:(NSString *)<em>playlistID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>playlistID</code></th>
+						<td><p>The playlist ID of the playlist to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to catalog
+service requests. These values will override the default values if they
+conflict.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An operation that retrieves the specified playlist as JSON.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns an operation that retrieves JSON for a playlist corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code>NSDictionary *</code> if the operation succeeds.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playlistDictionaryOperationWithReferenceID:parameters:" title="playlistDictionaryOperationWithReferenceID:parameters:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playlistDictionaryOperationWithReferenceID:parameters:">&ndash;&nbsp;playlistDictionaryOperationWithReferenceID:parameters:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns an operation that retrieves JSON for a playlist corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code>NSDictionary *</code> if the operation succeeds.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BCOVCatalogOperation *)playlistDictionaryOperationWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>referenceID</code></th>
+						<td><p>The playlist reference ID of the playlist to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to catalog
+service requests. These values will override the default values if they
+conflict.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An operation that retrieves the specified playlist as JSON.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns an operation that retrieves JSON for a playlist corresponding to the
+specified parameters.  Cast this operation&rsquo;s <code>result</code> property to a
+<code>NSDictionary *</code> if the operation succeeds.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="BCOVImperativeCallbacks Methods" name="task_BCOVImperativeCallbacks Methods"></a>
+						<h2 class="task-title">BCOVImperativeCallbacks Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/findPlaylistWithPlaylistID:parameters:completion:" title="findPlaylistWithPlaylistID:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/findPlaylistWithPlaylistID:parameters:completion:">&ndash;&nbsp;findPlaylistWithPlaylistID:parameters:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Media API service by its playlist ID.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)findPlaylistWithPlaylistID:(NSString *)<em>playlistID</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVPlaylist *playlist , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>playlistID</code></th>
+						<td><p>The ID of the playlist to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to the Media
+API requests. These values will override the default values if they conflict.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>block which will be invoked when the request
+finishes. Execution of the completionHandler will occur on the main thread.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Media API service by its playlist ID.</p>
+
+<p>If the Media API returns a standard JSON-formatted error response, the
+deserialized response will be the callback&rsquo;s error&rsquo;s <code>userInfo</code>.</p>
+
+<p>If a JSON parse error occurs, the raw NSData response will be included in the
+callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/findPlaylistWithReferenceID:parameters:completion:" title="findPlaylistWithReferenceID:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/findPlaylistWithReferenceID:parameters:completion:">&ndash;&nbsp;findPlaylistWithReferenceID:parameters:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Media API service by its reference ID.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)findPlaylistWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVPlaylist *playlist , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>referenceID</code></th>
+						<td><p>The reference ID of the playlist to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to the Media
+API requests. These values will override the default values if they conflict.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>block which will be invoked when the request
+finishes. Execution of the completionHandler will occur on the main thread.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Media API service by its reference ID.</p>
+
+<p>If the Media API returns a standard JSON-formatted error response, the
+deserialized response will be the callback&rsquo;s error&rsquo;s <code>userInfo</code>.</p>
+
+<p>If a JSON parse error occurs, the raw NSData response will be included in the
+callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/findVideoWithVideoID:parameters:completion:" title="findVideoWithVideoID:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/findVideoWithVideoID:parameters:completion:">&ndash;&nbsp;findVideoWithVideoID:parameters:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Media API service by its video ID.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)findVideoWithVideoID:(NSString *)<em>videoID</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVVideo *video , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>videoID</code></th>
+						<td><p>The ID of the video to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to the Media
+API requests. These values will override the default values if they conflict.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>block which will be invoked when the request
+finishes. Execution of the completionHandler will occur on the main thread.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Media API service by its video ID.</p>
+
+<p>If the Media API returns a standard JSON-formatted error response, the
+deserialized response will be the callback&rsquo;s error&rsquo;s <code>userInfo</code>.</p>
+
+<p>If a JSON parse error occurs, the raw NSData response will be included in the
+callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/findVideoWithReferenceID:parameters:completion:" title="findVideoWithReferenceID:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/findVideoWithReferenceID:parameters:completion:">&ndash;&nbsp;findVideoWithReferenceID:parameters:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Media API service by its reference ID.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)findVideoWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVVideo *video , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>referenceID</code></th>
+						<td><p>The reference ID of the video to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to the Media
+API requests. These values will override the default values if they conflict.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>block which will be invoked when the request
+finishes. Execution of the completionHandler will occur on the main thread.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Media API service by its reference ID.</p>
+
+<p>If the Media API returns a standard JSON-formatted error response, the
+deserialized response will be the callback&rsquo;s error&rsquo;s <code>userInfo</code>.</p>
+
+<p>If a JSON parse error occurs, the raw NSData response will be included in the
+callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
 					
-					window.name = "hideTOC";
-				}
-				else
-				{
-					this.setAttribute('class', 'open');
-					contents.setAttribute('class', 'isShowingTOC');
-					tocContainer.setAttribute('class', 'isShowingTOC');
 					
-					window.name = "";
-				}
-				return false;
-			}
-			
-			function toggleTOCEntryChildren(e)
-			{
-				e.stopPropagation();
-				var currentClass = this.getAttribute('class');
-				if (currentClass == 'children') {
-					this.setAttribute('class', 'children open');
-				}
-				else if (currentClass == 'children open') {
-					this.setAttribute('class', 'children');
-				}
-				return false;
-			}
-			
-			function tocEntryClick(e)
-			{
-				e.stopPropagation();
-				return true;
-			}
-			
-			function init()
-			{
-				var selectElement = document.getElementById('jumpTo');
-				selectElement.addEventListener('change', jumpToChange, false);
-				
-				var tocButton = document.getElementById('table_of_contents');
-				tocButton.addEventListener('click', toggleTOC, false);
-				
-				var taskTreeItem = document.getElementById('task_treeitem');
-				if (taskTreeItem.getElementsByTagName('li').length > 0)
-				{
-					taskTreeItem.setAttribute('class', 'children');
-					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
-				}
-				
-				var tocList = document.getElementById('toc');
-				
-				var tocEntries = tocList.getElementsByTagName('li');
-				for (var i = 0; i < tocEntries.length; i++) {
-					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
-				}
-				
-				var tocLinks = tocList.getElementsByTagName('a');
-				for (var i = 0; i < tocLinks.length; i++) {
-					tocLinks[i].addEventListener('click', tocEntryClick, false);
-				}
-				
-				if (window.name == "hideTOC") {
-					toggleTOC.call(tocButton);
-				}
-			}
-			
-			window.onload = init;
-			
-			// If showing in Xcode, hide the TOC and Header
-			if (navigator.userAgent.match(/xcode/i)) {
-				document.getElementById("contents").className = "hideInXcode"
-				document.getElementById("tocContainer").className = "hideInXcode"
-				document.getElementById("top_header").className = "hideInXcode"
-			}
-			
-		</script>
-	</body>
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2015 Brightcove. All rights reserved. Updated: 2015-05-28</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
 </html>

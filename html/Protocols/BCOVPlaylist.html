@@ -1,127 +1,104 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>BCOVPlaylist Protocol Reference</title>
-		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
-		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.2 (build 963)" />
-	</head>
-	<body>
-		<header id="top_header">
-			<div id="library" class="hideInXcode">
-				<h1><a id="libraryTitle" href="../index.html">BCOVPlayerSDK </a></h1>
-				<a id="developerHome" href="../index.html">Brightcove</a>
-			</div>
+<head>
+	<meta charset="utf-8">
+
+	<title>BCOVPlaylist Protocol Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
 			
-			<div id="title" role="banner">
-				<h1 class="hideInXcode">BCOVPlaylist Protocol Reference</h1>
-			</div>
-			<ul id="headerButtons" role="toolbar">
-				<li id="toc_button">
-					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
-				</li>
-				<li id="jumpto_button" role="navigation">
-					<select id="jumpTo">
+			<h1 id="library-title">
+				<a href="../index.html">BCOVPlayerSDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Brightcove</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
 	
 	<option value="overview">Overview</option>
 	
-	
+
 	
 	
 	<option value="tasks">Tasks</option>
 	
 	
+
 	
 	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/properties">properties</option>
+		
+		<option value="//api/name/videos">videos</option>
+		
+	</optgroup>
 	
-	<option value="properties">Properties</option>
+
 	
-	<option value="//api/name/properties">&nbsp;&nbsp;&nbsp;&nbsp;properties</option>
+
 	
-	<option value="//api/name/videos">&nbsp;&nbsp;&nbsp;&nbsp;videos</option>
-	
-	
-	
-	
-	
-	
-	<option value="instance_methods">Instance Methods</option>
-	
-	<option value="//api/name/update:">&nbsp;&nbsp;&nbsp;&nbsp;- update:</option>
-	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/update:">- update:</option>
+		
+	</optgroup>
 	
 	
 </select>
-				</li>
-			</ul>
-		</header>
-		<nav id="tocContainer" class="isShowingTOC">
-			<ul id="toc" role="tree">
-				
-<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
 
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BCOVPlaylist Protocol Reference</h1>
 
-
-
-<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
-	
-</ul></li>
-
-
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/properties">properties</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/videos">videos</a></span></li>
-	
-</ul></li>
-
-
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/update:">update:</a></span></li>
-	
-</ul></li>
-
-
-			</ul>
-		</nav>
-		<article>
-			<div id="contents" class="isShowingTOC" role="main">
-				<a title="BCOVPlaylist Protocol Reference" name="top"></a>
-				<div class="main-navigation navigation-top">
-					<ul>
-	<li><a href="../index.html">Index</a></li>
-	<li><a href="../hierarchy.html">Hierarchy</a></li>
-</ul>
-				</div>
-				<div id="header">
-					<div class="section-header">
-						<h1 class="title title-header">BCOVPlaylist Protocol Reference</h1>
-					</div>		
-				</div>
-				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Conforms to</td>
-	<td class="specification-value">NSFastEnumeration<br />NSObject</td>
+	<th>Conforms to</th>
+	<td>NSFastEnumeration<br />NSObject</td>
 </tr><tr>
-	<td class="specification-title">Declared in</td>
-	<td class="specification-value">BCOVPlaylist.h</td>
+	<th>Declared in</th>
+	<td>BCOVPlaylist.h</td>
 </tr>
 						</tbody></table></div>
 					
-                    
+
                     
 					
 					<div class="section section-overview">
@@ -131,189 +108,164 @@
 A playlist is an ordered collection of <a href="#//api/name/videos">videos</a>, as well as additional optional
 metadata about the collection in the form of <a href="#//api/name/properties">properties</a>. Note that because
 BCOVPlaylist implements NSFastEnumeration, it can be used in methods that
-take NSFastEnumeration parameters (such as <a href="../Protocols/BCOVPlaybackController.html#//api/name/setVideos:"><code>[BCOVPlaybackController setVideos:]</code></a>).</p>
+take NSFastEnumeration parameters (such as <code>[BCOVPlaybackController setVideos:]</code>).</p>
 					</div>
 					
 					
-					
+
 					
 					
 					<div class="section section-tasks">
 						<a title="Tasks" name="tasks"></a>
-						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
-						
+
 						
 						
 
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/videos">&nbsp;&nbsp;videos</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	<span class="task-item-suffix">required method</span>
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/properties">&nbsp;&nbsp;properties</a></code>
-	</span>
-	<span class="task-item-suffix">property</span>
-	<span class="task-item-suffix">required method</span>
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/update:">&ndash;&nbsp;update:</a></code>
-	</span>
-	
-	<span class="task-item-suffix">required method</span>
-</li>
-						</ul>
-						
-					</div>
-					
-					
-					
-					
-					
-					<div class="section section-methods">
-						<a title="Properties" name="properties"></a>
-						<h2 class="subtitle subtitle-methods">Properties</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/properties" title="properties"></a>
-	<h3 class="subsubtitle method-title">properties</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Additional properties or metadata related to this playlist.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSDictionary *properties</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Additional properties or metadata related to this playlist.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlaylist.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
+						<div class="task-list">
+							<div class="section-method">
 	<a name="//api/name/videos" title="videos"></a>
-	<h3 class="subsubtitle method-title">videos</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>The <a href="../Classes/BCOVVideo.html">BCOVVideo</a> instances which comprise this playlist.</p>
-	</div>		
-	
-    
+	<h3 class="method-title"><code><a href="#//api/name/videos">&nbsp;&nbsp;videos</a></code>
+<span class="task-item-suffix">required method</span></h3>
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSArray *videos</code></div>
+	<div class="method-info">
+		<div class="pointy-thing"></div>
 
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>The <a href="../Classes/BCOVVideo.html">BCOVVideo</a> instances which comprise this playlist.</p>
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The <a href="../Classes/BCOVVideo.html">BCOVVideo</a> instances which comprise this playlist.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSArray *videos</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The <a href="../Classes/BCOVVideo.html">BCOVVideo</a> instances which comprise this playlist.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaylist.h</code></p>
+			</div>
+			
+			
+		</div>
 	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlaylist.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
-					
-					
-					
-					
-					
-					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
-						
-						<div class="section-method">
+</div><div class="section-method">
+	<a name="//api/name/properties" title="properties"></a>
+	<h3 class="method-title"><code><a href="#//api/name/properties">&nbsp;&nbsp;properties</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Additional properties or metadata related to this playlist.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSDictionary *properties</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Additional properties or metadata related to this playlist.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaylist.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/update:" title="update:"></a>
-	<h3 class="subsubtitle method-title">update:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns a modified version of this playlist. Because BCOVPlaylist objects
+	<h3 class="method-title"><code><a href="#//api/name/update:">&ndash;&nbsp;update:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns a modified version of this playlist. Because BCOVPlaylist objects
 are immutable, an entirely new BCOVPlaylist must be created even if only
 a single change is needed. Therefore, this method provides a convenient way
 to obtain a temporary mutable copy of this instance and modify it (within
 <code>updateBlock</code>).</p>
-	</div>		
-	
-    
+			</div>
+			
+		    
 
-	<div class="method-subsection method-declaration"><code>- (instancetype)update:(void ( ^ ) ( id&lt;BCOVMutablePlaylist&gt; mutablePlaylist ))<em>updateBlock</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (instancetype)update:(void ( ^ ) ( id&lt;BCOVMutablePlaylist&gt; mutablePlaylist ))<em>updateBlock</em></code></div>
 
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>updateBlock</em></dt>
-			<dd><p>A block which is passed a mutable copy of this playlist.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The copy of this cue point modified by <code>updateBlock</code>.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns a modified version of this playlist. Because BCOVPlaylist objects
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>updateBlock</code></th>
+						<td><p>A block which is passed a mutable copy of this playlist.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>The copy of this cue point modified by <code>updateBlock</code>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns a modified version of this playlist. Because BCOVPlaylist objects
 are immutable, an entirely new BCOVPlaylist must be created even if only
 a single change is needed. Therefore, this method provides a convenient way
 to obtain a temporary mutable copy of this instance and modify it (within
@@ -323,135 +275,46 @@ to obtain a temporary mutable copy of this instance and modify it (within
 <code>updateBlock</code>, as the behavior of doing this is undefined. Instead, make
 whatever modifications are necessary in the block and then capture the
 playlist object returned from this method.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlaylist.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
-					
-					
-                    
-                    
-				</div>
-				<div class="main-navigation navigation-bottom">
-					<ul>
-	<li><a href="../index.html">Index</a></li>
-	<li><a href="../hierarchy.html">Hierarchy</a></li>
-</ul>
-				</div>
-				<div id="footer">
-					<hr />
-					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 Brightcove. All rights reserved. (Last updated: 2015-03-25)</span><br />
-						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
-						
-					</div>
-				</div>
 			</div>
-		</article>
-		<script type="text/javascript">
-			function jumpToChange()
-			{
-				window.location.hash = this.options[this.selectedIndex].value;
-			}
 			
-			function toggleTOC()
-			{
-				var contents = document.getElementById('contents');
-				var tocContainer = document.getElementById('tocContainer');
-				
-				if (this.getAttribute('class') == 'open')
-				{
-					this.setAttribute('class', '');
-					contents.setAttribute('class', '');
-					tocContainer.setAttribute('class', '');
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaylist.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
 					
-					window.name = "hideTOC";
-				}
-				else
-				{
-					this.setAttribute('class', 'open');
-					contents.setAttribute('class', 'isShowingTOC');
-					tocContainer.setAttribute('class', 'isShowingTOC');
 					
-					window.name = "";
-				}
-				return false;
-			}
-			
-			function toggleTOCEntryChildren(e)
-			{
-				e.stopPropagation();
-				var currentClass = this.getAttribute('class');
-				if (currentClass == 'children') {
-					this.setAttribute('class', 'children open');
-				}
-				else if (currentClass == 'children open') {
-					this.setAttribute('class', 'children');
-				}
-				return false;
-			}
-			
-			function tocEntryClick(e)
-			{
-				e.stopPropagation();
-				return true;
-			}
-			
-			function init()
-			{
-				var selectElement = document.getElementById('jumpTo');
-				selectElement.addEventListener('change', jumpToChange, false);
-				
-				var tocButton = document.getElementById('table_of_contents');
-				tocButton.addEventListener('click', toggleTOC, false);
-				
-				var taskTreeItem = document.getElementById('task_treeitem');
-				if (taskTreeItem.getElementsByTagName('li').length > 0)
-				{
-					taskTreeItem.setAttribute('class', 'children');
-					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
-				}
-				
-				var tocList = document.getElementById('toc');
-				
-				var tocEntries = tocList.getElementsByTagName('li');
-				for (var i = 0; i < tocEntries.length; i++) {
-					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
-				}
-				
-				var tocLinks = tocList.getElementsByTagName('a');
-				for (var i = 0; i < tocLinks.length; i++) {
-					tocLinks[i].addEventListener('click', tocEntryClick, false);
-				}
-				
-				if (window.name == "hideTOC") {
-					toggleTOC.call(tocButton);
-				}
-			}
-			
-			window.onload = init;
-			
-			// If showing in Xcode, hide the TOC and Header
-			if (navigator.userAgent.match(/xcode/i)) {
-				document.getElementById("contents").className = "hideInXcode"
-				document.getElementById("tocContainer").className = "hideInXcode"
-				document.getElementById("top_header").className = "hideInXcode"
-			}
-			
-		</script>
-	</body>
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2015 Brightcove. All rights reserved. Updated: 2015-05-28</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
 </html>

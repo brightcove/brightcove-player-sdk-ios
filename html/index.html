@@ -1,40 +1,50 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>BCOVPlayerSDK Reference</title>
-		<link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
-		<link rel="stylesheet" type="text/css" media="print" href="css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.2 (build 963)" />
-	</head>
-	<body>
-		<header id="top_header">
-			<div id="library" class="hideInXcode">
-				<h1><a id="libraryTitle" href="index.html">BCOVPlayerSDK </a></h1>
-				<a id="developerHome" href="index.html">Brightcove</a>
-			</div>
+<head>
+	<meta charset="utf-8">
+
+	<title>BCOVPlayerSDK Reference</title>
+
+	<link rel="stylesheet" href="css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
 			
-			<div id="title" role="banner">
-				<h1 class="hideInXcode">BCOVPlayerSDK Reference</h1>
-			</div>
-			<ul id="headerButtons" role="toolbar"></ul>
-		</header>
-		<article>
-			<div id="overview_contents" role="main">
-				<div class="main-navigation navigation-top">
-					<a href="hierarchy.html">Next</a>
-				</div>
-				<div id="header">
-					<div class="section-header">
-						<h1 class="title title-header">BCOVPlayerSDK Reference</h1>
-					</div>		
-				</div>
-				<div id="container">
+			<h1 id="library-title">
+				<a href="index.html">BCOVPlayerSDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="index.html">Brightcove</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="hierarchy.html">Hierarchy</a></li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview-contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BCOVPlayerSDK Reference</h1>
+
 					
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 4.3.3.107</h1>
+						<h1>Brightcove Player SDK for iOS, version 4.4.0-beta1.138</h1>
 
 <h1>Supported Platforms</h1>
 
@@ -97,21 +107,21 @@ BCOVCatalogService *catalog = [[BCOVCatalogService alloc] initWithToken:token];
 
 <h1>Architectural Overview</h1>
 
-<img src="img/architecture01.png">
+<p>!<a href="architecture01.png">Architectural Overview 1</a></p>
 
-<p>The entry point to the Brightcove Player SDK for iOS is the <a href="Classes/BCOVPlayerSDKManager.html"><code>BCOVPlayerSDKManager</code></a> singleton object. This Manager handles registration of plugin components and some other housekeeping tasks, but it primarily serves as an object factory. Your app&rsquo;s view controller obtains a reference to the Manager, and uses it to create a <a href="Protocols/BCOVPlaybackController.html"><code>BCOVPlaybackController</code></a>. The playback controller&rsquo;s <code>view</code> property exposes a UIView containing the AVPlayerLayer object that ultimately presents your video content on the screen. The playback controller also accepts a <a href="Protocols/BCOVPlaybackControllerDelegate.html"><code>BCOVPlaybackControllerDelegate</code></a>, which you can implement to respond to various video playback events.</p>
+<p>The entry point to the Brightcove Player SDK for iOS is the <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlayerSDKManager.h">[<code>BCOVPlayerSDKManager</code>](Classes/BCOVPlayerSDKManager.html)</a> singleton object. This Manager handles registration of plugin components and some other housekeeping tasks, but it primarily serves as an object factory. Your app&rsquo;s view controller obtains a reference to the Manager, and uses it to create a <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h"><code>BCOVPlaybackController</code></a>. The playback controller&rsquo;s <code>view</code> property exposes a UIView containing the AVPlayerLayer object that ultimately presents your video content on the screen. The playback controller also accepts a <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L309-L421"><code>BCOVPlaybackControllerDelegate</code></a>, which you can implement to respond to various video playback events.</p>
 
-<p>The playback controller offers methods and properties to affect playback of the current video. However, internally, the playback controller delegates to a <a href="Protocols/BCOVPlaybackSession.html"><code>BCOVPlaybackSession</code></a> object. Playback sessions do the actual work of preparing and playing video content, and contain the video&rsquo;s metadata and AVPlayer. The playback controller has mechanisms to advance from the current playback session to the next playback session, either automatically at the end of a video, or manually with a method call. Once the playback controller has advanced to a new session, the previous session is discarded and cannot be used again.</p>
+<p>The playback controller offers methods and properties to affect playback of the current video. However, internally, the playback controller delegates to a <a href=https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h">[<code>BCOVPlaybackSession</code>](Protocols/BCOVPlaybackSession.html)</a> object. Playback sessions do the actual work of preparing and playing video content, and contain the video&rsquo;s metadata and AVPlayer. The playback controller has mechanisms to advance from the current playback session to the next playback session, either automatically at the end of a video, or manually with a method call. Once the playback controller has advanced to a new session, the previous session is discarded and cannot be used again.</p>
 
-<p>There are two other elements of the playback controller: a <a href="Protocols/BCOVPlaybackSessionProvider.html"><code>BCOVPlaybackSessionProvider</code></a>, and a list of <a href="Protocols/BCOVPlaybackSessionConsumer.html"><code>BCOVPlaybackSessionConsumer</code></a>s. As the name would suggest, the playback session provider is responsible for creating playback sessions and delivering them to the playback controller. The playback controller then delivers the session to each of the playback session consumers in the list. Both the session provider and session consumer APIs are designed for use by plugin developers, and are not detailed in this document.</p>
+<p>There are two other elements of the playback controller: a <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSessionProvider.h">[<code>BCOVPlaybackSessionProvider</code>](Protocols/BCOVPlaybackSessionProvider.html)</a>, and a list of <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L201-L306"><code>BCOVPlaybackSessionConsumer</code></a>s. As the name would suggest, the playback session provider is responsible for creating playback sessions and delivering them to the playback controller. The playback controller then delivers the session to each of the playback session consumers in the list. Both the session provider and session consumer APIs are designed for use by plugin developers, and are not detailed in this document.</p>
 
-<p>In addition to the playback functionality provided by the classes described above, there are a handful of value classes. These are used to hold data specific to the Player SDK for iOS. There are also <a href="Classes/BCOVCatalogService.html"><code>BCOVCatalogService</code></a> and <a href="Classes/BCOVMediaRequestFactory.html"><code>BCOVMediaRequestFactory</code></a>, which offer functionality for querying content remotely stored in your Brightcove Video Cloud account. Each of these is described in more detail in its own section below.</p>
+<p>In addition to the playback functionality provided by the classes described above, there are a handful of value classes. These are used to hold data specific to the Player SDK for iOS. There are also <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVCatalogService.h">[<code>BCOVCatalogService</code>](Classes/BCOVCatalogService.html)</a> and <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVMediaRequestFactory.h">[<code>BCOVMediaRequestFactory</code>](Classes/BCOVMediaRequestFactory.html)</a>, which offer functionality for querying content remotely stored in your Brightcove Video Cloud account. Each of these is described in more detail in its own section below.</p>
 
 <h2>Preloading videos</h2>
 
 <p>The Brightcove Player SDK for iOS provides the ability to preload upcoming videos in a playlist. By default, this functionality is disabled because of the large amount of memory preloading may use. You can turn on preloading to help ensure futures videos load quickly, however you might want to take into account the amount of memory available on the client&rsquo;s device and speed of their connection. If they are not on Wifi, preloading a video may affect the current video&rsquo;s network resources.</p>
 
-<p><a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVBasicSessionProvider.h#L79-L97"><code>BCOVBasicSessionProviderOptions</code></a> and <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVBasicSessionProvider.h#L49-76"><code>BCOVBasicSessionLoadingPolicy</code></a> provide two factory methods to modify preloading behavior that are described below:</p>
+<p><a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVBasicSessionProvider.h#L79-97">[<code>BCOVBasicSessionProviderOptions</code>](Classes/BCOVBasicSessionProviderOptions.html)</a> and <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVBasicSessionProvider.h#L49-76">[<code>BCOVBasicSessionLoadingPolicy</code>](Classes/BCOVBasicSessionLoadingPolicy.html)</a> provide two factory methods to modify preloading behavior that are described below:</p>
 
 <ul>
 <li><code>+sessionPreloadingNever</code> This method returns a session preloading policy that never preloading videos. This is the default setting.</li>
@@ -135,13 +145,13 @@ BCOVCatalogService *catalog = [[BCOVCatalogService alloc] initWithToken:token];
 
 <h2>Obtaining Content and Ad playback Information</h2>
 
-<p>The Brightcove Player SDK for iOS provides two mechanisms for obtaining playback information. The playback controller provides a delegate property that implements <a href="Protocols/BCOVPlaybackControllerDelegate.html"><code>BCOVPlaybackControllerDelegate</code></a>. A delegate can implement these optional methods to get notified of playback metadata like progress, duration changes, and other events. If an ad plugin is installed, it may also use this delegate to provide information about <a href="Protocols/BCOVPlaybackControllerAdsDelegate.html">ad playback</a>. The <a href="Protocols/BCOVPlaybackControllerBasicDelegate.html#//api/name/playbackController:playbackSession:didReceiveLifecycleEvent:">lifecycle event</a> delegate method provides events to signal changes in playback state. For example, when a player goes from the paused state to the playing state, the lifecycle event delegate method will be called with the <code>kBCOVPlaybackSessionLifecycleEventPlay</code> event. The default Lifecycle events are declared in <a href="Protocols/BCOVPlaybackSession.html"><code>BCOVPlaybackSession</code></a>. Plugins provided by Brightcove add additional lifecycle events which are defined in each plugin.</p>
+<p>The Brightcove Player SDK for iOS provides two mechanisms for obtaining playback information. The playback controller provides a delegate property that implements <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L309-L421"><code>BCOVPlaybackControllerDelegate</code></a>. A delegate can implement these optional methods to get notified of playback metadata like progress, duration changes, and other events. If an ad plugin is installed, it may also use this delegate to provide information about <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVAdvertising.h#L102-L155">ad playback</a>. The <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L407-L419">lifecycle event</a> delegate method provides events to signal changes in playback state. For example, when a player goes from the paused state to the playing state, the lifecycle event delegate method will be called with the <code>kBCOVPlaybackSessionLifecycleEventPlay</code> event. The default Lifecycle events are declared in <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h"><code>BCOVPlaybackSession</code></a>. Plugins provided by Brightcove add additional lifecycle events which are defined in each plugin.</p>
 
-<p>The playback controller allows for a single delegate. In many cases, this will be enough to retrieve information; the delegate implementations can disseminate values and events to different parts of the app as necessary. In cases where multiple delegates would be required, as is the case when developing a plugin, the <a href="Protocols/BCOVPlaybackSessionConsumer.html"><code>BCOVPlaybackSessionConsumer</code></a> delegates provide equivalent functionality to the <a href="Protocols/BCOVPlaybackControllerDelegate.html"><code>BCOVPlaybackControllerDelegate</code></a> methods, including <a href="Protocols/BCOVPlaybackSessionAdsConsumer.html">ad data</a>.</p>
+<p>The playback controller allows for a single delegate. In many cases, this will be enough to retrieve information; the delegate implementations can disseminate values and events to different parts of the app as necessary. In cases where multiple delegates would be required, as is the case when developing a plugin, the <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L201-L306"><code>BCOVPlaybackSessionConsumer</code></a> delegates provide equivalent functionality to the <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L309-L421"><code>BCOVPlaybackControllerDelegate</code></a> methods, including <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVAdvertising.h#L158-L206">ad data</a>.</p>
 
-<p>Here is an example of how one might use <a href="Protocols/BCOVPlaybackSessionConsumer.html"><code>BCOVPlaybackSessionConsumer</code></a> to create an analytics plugin:</p>
+<p>Here is an example of how one might use <code>BCOVPlaybackSessionConsumer</code> to create an analytics plugin:</p>
 
-<pre><code>@interface XYZAnalytics : NSObject BCOVPlaybackSessionConsumer
+<pre><code>@interface XYZAnalytics : NSObject &lt;BCOVPlaybackSessionConsumer&gt;
 @end
 
 @implementation XYZAnalytics
@@ -168,7 +178,7 @@ XYZAnalytics *analytics = [[XYZAnalytics alloc] init];
 
 <h2>Values</h2>
 
-<p>Also known as &ldquo;model objects&rdquo;, these classes (<a href="Classes/BCOVPlaylist.html"><code>BCOVPlaylist</code></a>, <a href="Classes/BCOVVideo.html"><code>BCOVVideo</code></a>, <a href="Classes/BCOVSource.html"><code>BCOVSource</code></a>, <a href="Classes/BCOVCuePoint.html"><code>BCOVCuePoint</code></a>, <a href="Classes/BCOVCuePointCollection.html"><code>BCOVCuePointCollection</code></a>) are used to represent data in the Player SDK for iOS. It is crucial to understand that these data types are treated as <em>values</em>, rather than <em>identities</em>. By this, we mean that if you have two instances of a value class which have the exact same data, they represent the same idea or value, even though they are technically two different objects at separate memory addresses. In other words, neither SDK code nor your client code should ever use identity comparisons (&ldquo;pointer equality&rdquo;) with value objects. Instead, each value class implements <code>-isEqual:</code> and provides a class-specific equality method overload, either of which should be used instead.</p>
+<p>Also known as &ldquo;model objects&rdquo;, these classes (<code>BCOVPlaylist</code>, <code>BCOVVideo</code>, <code>BCOVSource</code>, <code>BCOVCuePoint</code>, <code>BCOVCuePointCollection</code>) are used to represent data in the Player SDK for iOS. It is crucial to understand that these data types are treated as <em>values</em>, rather than <em>identities</em>. By this, we mean that if you have two instances of a value class which have the exact same data, they represent the same idea or value, even though they are technically two different objects at separate memory addresses. In other words, neither SDK code nor your client code should ever use identity comparisons (&ldquo;pointer equality&rdquo;) with value objects. Instead, each value class implements <code>-isEqual:</code> and provides a class-specific equality method overload, either of which should be used instead.</p>
 
 <p>This is bad:</p>
 
@@ -212,7 +222,7 @@ video2.properties = otherDictionary; // causes compiler error
 
 <h3>Playback Service</h3>
 
-<p>The playback service classes provide functionality for retrieving information about your Brightcove video assets via the <a href="http://docs.brightcove.com/en/video-cloud/cms-api/index.html">Brightcove CMS API</a>. For most purposes, <a href="Classes/BCOVPlaybackService.html"><code>BCOVPlaybackService</code></a> provides sufficient functionality to obtain <strong>single video instances</strong> with more rich meta information than catalog classes such as text tracks. The following is an example shows how to retrieve a video with a video ID. Note that there is also a method that can retrieve a video with that video&rsquo;s reference ID. The playback service classes do not currently support retrieving information about playlists.</p>
+<p>The playback service classes provide functionality for retrieving information about your Brightcove video assets via the <a href="http://docs.brightcove.com/en/video-cloud/cms-api/index.html">Brightcove CMS API</a>. For most purposes, <code>BCOVPlaybackService</code> provides sufficient functionality to obtain <strong>single video instances</strong> with more rich meta information than catalog classes such as text tracks. The following is an example shows how to retrieve a video with a video ID. Note that there is also a method that can retrieve a video with that video&rsquo;s reference ID. The playback service classes do not currently support retrieving information about playlists.</p>
 
 <pre><code>[1] NSString *policyKey;  // (Brightcove Playback API policy Key)
     NSString *videoID;    // (ID of the video you wish to use)
@@ -240,23 +250,23 @@ video2.properties = otherDictionary; // causes compiler error
 </ol>
 
 
-<p>If for some reason you need to customize the request that the playback service sends to the Brightcove CMS API, you may find <a href="Classes/BCOVPlaybackServiceRequestFactory.html"><code>BCOVPlaybackServiceRequestFactory</code></a> helpful. This utility, which is used by the playabck service, generates parameterized Brightcove CMS API NSURLRequest objects, which you can use in your own HTTP communication.</p>
+<p>If for some reason you need to customize the request that the playback service sends to the Brightcove CMS API, you may find <code>BCOVPlaybackServiceRequestFactory</code> helpful. This utility, which is used by the playabck service, generates parameterized Brightcove CMS API NSURLRequest objects, which you can use in your own HTTP communication.</p>
 
 <h3>Catalog</h3>
 
-<p>The catalog classes provide functionality for retrieving information about your Brightcove assets via the <a href="http://docs.brightcove.com/en/video-cloud/media/index.html">Brightcove Media API</a>. For most purposes, <a href="Classes/BCOVCatalogService.html"><code>BCOVCatalogService</code></a> provides sufficient functionality to obtain value class instances from input data such as playlist or video IDs, or reference IDs.</p>
+<p>The catalog classes provide functionality for retrieving information about your Brightcove assets via the <a href="http://docs.brightcove.com/en/video-cloud/media/index.html">Brightcove Media API</a>. For most purposes, <code>BCOVCatalogService</code> provides sufficient functionality to obtain value class instances from input data such as playlist or video IDs, or reference IDs.</p>
 
-<p>If for some reason you need to customize the request that the catalog sends to the Brightcove Media API, you may find <a href="Classes/BCOVMediaRequestFactory.html"><code>BCOVMediaRequestFactory</code></a> helpful. This utility, which is used by the catalog service, generates parameterized Brightcove Media API NSURLRequest objects, which you can use in your own HTTP communication.</p>
+<p>If for some reason you need to customize the request that the catalog sends to the Brightcove Media API, you may find <code>BCOVMediaRequestFactory</code> helpful. This utility, which is used by the catalog service, generates parameterized Brightcove Media API NSURLRequest objects, which you can use in your own HTTP communication.</p>
 
 <h2>View Strategy</h2>
 
-<p><a href="Protocols/BCOVPlaybackController.html"><code>BCOVPlaybackController</code></a> objects are constructed with a <strong>view strategy</strong>, which allows you, as the client of the SDK, to define the exact UIView object that is returned from the playback controller&rsquo;s <code>view</code> property. This is important when using plugins that affect the playback controller&rsquo;s view, such as an advertising plugin that overlays the video view with an ad view. Imagine trying to integrate custom controls with such a plugin: normally, custom controls are just regular UIView objects in the view hierarchy that float above the playback controller&rsquo;s video view. But with an advertising plugin, you generally want the ads to float over your custom controls. How to accomplish this without having in-depth knowledge of the structure of the playback controller&rsquo;s view hierarchy? The solution is to construct a view strategy that composes the video view, your custom controls, and the advertising view in a hierarchy of your choosing. The playback controller will call this view strategy the first time you access its <code>view</code> property. The final UIView object returned from the strategy will serve as its view permanently (until the controller is destroyed).</p>
+<p><code>BCOVPlaybackController</code> objects are constructed with a <strong>view strategy</strong>, which allows you, as the client of the SDK, to define the exact UIView object that is returned from the playback controller&rsquo;s <code>view</code> property. This is important when using plugins that affect the playback controller&rsquo;s view, such as an advertising plugin that overlays the video view with an ad view. Imagine trying to integrate custom controls with such a plugin: normally, custom controls are just regular UIView objects in the view hierarchy that float above the playback controller&rsquo;s video view. But with an advertising plugin, you generally want the ads to float over your custom controls. How to accomplish this without having in-depth knowledge of the structure of the playback controller&rsquo;s view hierarchy? The solution is to construct a view strategy that composes the video view, your custom controls, and the advertising view in a hierarchy of your choosing. The playback controller will call this view strategy the first time you access its <code>view</code> property. The final UIView object returned from the strategy will serve as its view permanently (until the controller is destroyed).</p>
 
 <p>Many apps will have no need to create a view strategy, and can simply pass <code>nil</code> when creating a new playback controller. This will create a standard video view in the playback controller. However, for apps that do need the control offered by a view strategy, we provide a more detailed explanation here.</p>
 
 <p>The <code>BCOVPlaybackControllerViewStrategy</code> typedef aliases (and documents) this more complex block signature:</p>
 
-<pre><code>UIView *(^)(UIView *view, idBCOVPlaybackController playbackController);
+<pre><code>UIView *(^)(UIView *view, id&lt;BCOVPlaybackController&gt; playbackController);
 </code></pre>
 
 <p>This signature describes an Objective-C block that returns a UIView and takes two parameters: a UIView and a playback controller. The return value is easy to understand: it is the UIView object that you want the playback controller&rsquo;s <code>view</code> property to point to. But what about the parameters to the block; what is the UIView that is passed as the first parameter? And why is the playback controller passed as the second parameter?</p>
@@ -264,7 +274,7 @@ video2.properties = otherDictionary; // causes compiler error
 <p>The first parameter is a UIView that <em>would</em> have become the playback controller&rsquo;s <code>view</code> property, if your view strategy didn&rsquo;t exist to specify otherwise. To illustrate, you could create a pointless no-op view strategy by implementing the block to return its <code>view</code> parameter directly:</p>
 
 <pre><code>BCOVPlaybackControllerViewStrategy viewStrategy =
-        ^ UIView *(UIView *videoView, idBCOVPlaybackController playbackController) {
+        ^ UIView *(UIView *videoView, id&lt;BCOVPlaybackController&gt; playbackController) {
 
     return videoView;
 
@@ -280,18 +290,18 @@ video2.properties = otherDictionary; // causes compiler error
 <p>Here&rsquo;s an example of a more sensible view strategy implementation:</p>
 
 <pre><code>BCOVPlaybackControllerViewStrategy viewStrategy =
-        ^(UIView *videoView, idBCOVPlaybackController playbackController) {
+        ^(UIView *videoView, id&lt;BCOVPlaybackController&gt; playbackController) {
 
     // Create some custom controls for the video view,
     // and compose both into a container view.
-    UIViewBCOVPlaybackSessionConsumer *myControlsView = [[MyControlsView alloc] init];
+    UIView&lt;BCOVPlaybackSessionConsumer&gt; *myControlsView = [[MyControlsView alloc] init];
     UIView *controlsAndVideo = [[UIView alloc] init];
     [controlsAndVideo addSubview:videoView];
     [controlsAndVideo addSubview:myControls];
 
     // Compose the container with an advertising view
     // into another container view.
-    UIViewBCOVPlaybackSessionConsumer *adView = [[SomeAdPluginView alloc] init];
+    UIView&lt;BCOVPlaybackSessionConsumer&gt; *adView = [[SomeAdPluginView alloc] init];
     UIView *adViewAndVideo = [[UIView alloc] init];
     [adViewAndVideo addSubview:controlsAndVideoContainer];
     [adViewAndVideo addSubview:adView];
@@ -307,7 +317,7 @@ video2.properties = otherDictionary; // causes compiler error
 
 <p>Let&rsquo;s review what this view strategy does in detail: first, it creates a custom controls view that conforms to the <code>BCOVPlaybackSessionConsumer</code> protocol. (Note that custom views are not required to conform to this protocol; some other non-view object could have been added as a session consumer instead. This just makes the example easier to follow.) Notice how the view hierarchy is composed in this view strategy block: a container view is created to hold both the video view and the controls. These views are added in an order such that the controls will appear <em>over</em> the video view. Next, a container view is created to hold the ad view and the first container view. They are added in an order such that the ad view will appear over the container with the custom controls and video view. Finally, the custom controls and the ad view are registered as session consumers, so that when a new playback session is delivered to the playback controller, these views can subscribe to the appropriate events on the session.</p>
 
-<p>Again, for most use cases it should suffice to not use a view strategy at all. Just add the playback controller&rsquo;s view to a view hierarchy, and compose custom controls on top of it. But for more nuanced cases such as when using certain plugins, it helps to have an opportunity to take control of the composition of the playback controller&rsquo;s view, and that&rsquo;s exactly why you can pass a view strategy to the <code>BCOVPlayerSDKManager</code> when creating a new playback controller.</p>
+<p>Again, for most use cases it should suffice to not use a view strategy at all. Just add the playback controller&rsquo;s view to a view hierarchy, and compose custom controls on top of it. But for more nuanced cases such as when using certain plugins, it helps to have an opportunity to take control of the composition of the playback controller&rsquo;s view, and that&rsquo;s exactly why you can pass a view strategy to the <a href="Classes/BCOVPlayerSDKManager.html"><code>BCOVPlayerSDKManager</code></a> when creating a new playback controller.</p>
 
 <p>There is one caveat to using a view strategy: you must not access the playback controller&rsquo;s <code>view</code> property from within the view strategy block. Since the block is being called <em>because</em> the playback controller&rsquo;s <code>view</code> property was accessed for the first time, accessing the <code>view</code> property again <em>within</em> the view strategy block could cause a rip in the fabric of space and time, and your program will crash.</p>
 
@@ -323,13 +333,13 @@ video2.properties = otherDictionary; // causes compiler error
 
 <p><strong>How do I customize the controls?</strong></p>
 
-<p>The <code>BCOVPlayerSDKManager</code> provides a view strategy that creates rudimentary controls for development purposes, but they are not designed for extension or modification. To differentiate your app and ensure a unique user experience, we recommend that you create your own custom controls from scratch. For most cases, you can add the <code>BCOVPlaybackController.view</code> to a UIView behind your own custom controls, and implement the <code>BCOVPlaybackControllerDelegate</code> methods to update the controls in response to various playback events. If your needs are more complex (such as if you are integrating with an advertising plugin) then you can implement a view strategy as described in the section on view strategies, above.</p>
+<p>The <a href="Classes/BCOVPlayerSDKManager.html"><code>BCOVPlayerSDKManager</code></a> provides a view strategy that creates rudimentary controls for development purposes, but they are not designed for extension or modification. To differentiate your app and ensure a unique user experience, we recommend that you create your own custom controls from scratch. For most cases, you can add the <code>BCOVPlaybackController.view</code> to a UIView behind your own custom controls, and implement the <code>BCOVPlaybackControllerDelegate</code> methods to update the controls in response to various playback events. If your needs are more complex (such as if you are integrating with an advertising plugin) then you can implement a view strategy as described in the section on view strategies, above.</p>
 
 <p><strong>How do I retrieve data from the Brightcove Media API for which there is no <code>BCOVCatalogService</code> method?</strong></p>
 
 <p>The catalog service offers methods for the most common Brightcove Media API operations, but there are <a href="http://docs.brightcove.com/en/video-cloud/media/">other operations</a> available. To leverage them, you will need to issue an HTTP request and then process the response. You can use a standard NSURLRequest to do this, or you can leverage a <a href="http://afnetworking.com">3rd-party HTTP API</a> if you find that easier. In either case, when you receive the response, you can use a standard JSON parser (like NSJSONSerialization) to convert the response into a NSDictionary, and then construct the appropriate value classes from the data in the NSDictionary.</p>
 
-<p>This message indicates that the default source selection policy can&rsquo;t figure which source to pick. The default policy selects the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryHLS</code> (&ldquo;HLS&rdquo;). If no HLS source is found, its fallback behavior will select the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryMP4</code> (&ldquo;MP4&rdquo;). If no source with a <code>deliveryMethod</code> of &ldquo;HLS&rdquo; or &ldquo;MP4&rdquo; exists on the video, the policy will select the video&rsquo;s first source (regardless of <code>deliveryMethod</code>). If you aren&rsquo;t happy with its selection, you can use <code>[BCOVPlayerSDKManager createBasicSessionProviderWithOptions:]</code> and pass in an instance of <code>BCOVBasicSessionProviderOptions</code> with a custom <code>sourceSelectionPolicy</code> property set. When creating videos and sources manually, ensure that the sources are created with the appropriate <code>deliveryMethod</code>.</p>
+<p>This message indicates that the default source selection policy can&rsquo;t figure which source to pick. The default policy selects the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryHLS</code> (&ldquo;HLS&rdquo;). If no HLS source is found, its fallback behavior will select the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryMP4</code> (&ldquo;MP4&rdquo;). If no source with a <code>deliveryMethod</code> of &ldquo;HLS&rdquo; or &ldquo;MP4&rdquo; exists on the video, the policy will select the video&rsquo;s first source (regardless of <code>deliveryMethod</code>). If you aren&rsquo;t happy with its selection, you can use <a href="Classes/BCOVPlayerSDKManager.html#//api/name/createBasicSessionProviderWithOptions:"><code>[BCOVPlayerSDKManager createBasicSessionProviderWithOptions:]</code></a> and pass in an instance of <a href="Classes/BCOVBasicSessionProviderOptions.html"><code>BCOVBasicSessionProviderOptions</code></a> with a custom <code>sourceSelectionPolicy</code> property set. When creating videos and sources manually, ensure that the sources are created with the appropriate <code>deliveryMethod</code>.</p>
 
 <p><strong><a href="https://developer.apple.com/Library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioGuidelinesByAppType/AudioGuidelinesByAppType.html">Apple recommends</a> that apps which play video should still play audio even when the device is muted. Why doesn&rsquo;t the Brightcove Player SDK for iOS respect these guidelines?</strong></p>
 
@@ -338,143 +348,136 @@ video2.properties = otherDictionary; // causes compiler error
 						
 					</div>
 					
-                        
-                    
-					
-					
-					<div class="index-column">
-						<h2 class="index-title">Class References</h2>
-						<ul>
-							
-							<li><a href="Classes/BCOVAd.html">BCOVAd</a></li>
-							
-							<li><a href="Classes/BCOVAdSequence.html">BCOVAdSequence</a></li>
-							
-							<li><a href="Classes/BCOVBasicSessionLoadingPolicy.html">BCOVBasicSessionLoadingPolicy</a></li>
-							
-							<li><a href="Classes/BCOVBasicSessionProvider.html">BCOVBasicSessionProvider</a></li>
-							
-							<li><a href="Classes/BCOVBasicSessionProviderOptions.html">BCOVBasicSessionProviderOptions</a></li>
-							
-							<li><a href="Classes/BCOVCatalogOperation.html">BCOVCatalogOperation</a></li>
-							
-							<li><a href="Classes/BCOVCatalogService.html">BCOVCatalogService</a></li>
-							
-							<li><a href="Classes/BCOVCuePoint.html">BCOVCuePoint</a></li>
-							
-							<li><a href="Classes/BCOVCuePointCollection.html">BCOVCuePointCollection</a></li>
-							
-							<li><a href="Classes/BCOVCuePointProgressPolicy.html">BCOVCuePointProgressPolicy</a></li>
-							
-							<li><a href="Classes/BCOVCuePointProgressPolicyResult.html">BCOVCuePointProgressPolicyResult</a></li>
-							
-							<li><a href="Classes/BCOVMediaRequestFactory.html">BCOVMediaRequestFactory</a></li>
-							
-							<li><a href="Classes/BCOVPlaybackService.html">BCOVPlaybackService</a></li>
-							
-							<li><a href="Classes/BCOVPlaybackServiceRequestFactory.html">BCOVPlaybackServiceRequestFactory</a></li>
-							
-							<li><a href="Classes/BCOVPlaybackSessionLifecycleEvent.html">BCOVPlaybackSessionLifecycleEvent</a></li>
-							
-							<li><a href="Classes/BCOVPlayerSDKManager.html">BCOVPlayerSDKManager</a></li>
-							
-							<li><a href="Classes/BCOVPlaylist.html">BCOVPlaylist</a></li>
-							
-							<li><a href="Classes/BCOVSessionProviderExtension.html">BCOVSessionProviderExtension</a></li>
-							
-							<li><a href="Classes/BCOVSource.html">BCOVSource</a></li>
-							
-							<li><a href="Classes/BCOVVideo.html">BCOVVideo</a></li>
-							
-						</ul>
-					</div>
-					
-					
+
+					<div class="index-container">
 						
-					<div class="index-column">
+
 						
-						<h2 class="index-title">Protocol References</h2>
-						<ul>
-							
-							<li><a href="Protocols/BCOVComponent.html">BCOVComponent</a></li>
-							
-							<li><a href="Protocols/BCOVComponentIdentity.html">BCOVComponentIdentity</a></li>
-							
-							<li><a href="Protocols/BCOVCuePoint.html">BCOVCuePoint</a></li>
-							
-							<li><a href="Protocols/BCOVMutableAnalytics.html">BCOVMutableAnalytics</a></li>
-							
-							<li><a href="Protocols/BCOVMutableCuePoint.html">BCOVMutableCuePoint</a></li>
-							
-							<li><a href="Protocols/BCOVMutablePlaylist.html">BCOVMutablePlaylist</a></li>
-							
-							<li><a href="Protocols/BCOVMutableSource.html">BCOVMutableSource</a></li>
-							
-							<li><a href="Protocols/BCOVMutableVideo.html">BCOVMutableVideo</a></li>
-							
-							<li><a href="Protocols/BCOVPlaybackController.html">BCOVPlaybackController</a></li>
-							
-							<li><a href="Protocols/BCOVPlaybackControllerAdsDelegate.html">BCOVPlaybackControllerAdsDelegate</a></li>
-							
-							<li><a href="Protocols/BCOVPlaybackControllerBasicDelegate.html">BCOVPlaybackControllerBasicDelegate</a></li>
-							
-							<li><a href="Protocols/BCOVPlaybackControllerDelegate.html">BCOVPlaybackControllerDelegate</a></li>
-							
-							<li><a href="Protocols/BCOVPlaybackSession.html">BCOVPlaybackSession</a></li>
-							
-							<li><a href="Protocols/BCOVPlaybackSessionAdsConsumer.html">BCOVPlaybackSessionAdsConsumer</a></li>
-							
-							<li><a href="Protocols/BCOVPlaybackSessionBasicConsumer.html">BCOVPlaybackSessionBasicConsumer</a></li>
-							
-							<li><a href="Protocols/BCOVPlaybackSessionConsumer.html">BCOVPlaybackSessionConsumer</a></li>
-							
-							<li><a href="Protocols/BCOVPlaybackSessionProvider.html">BCOVPlaybackSessionProvider</a></li>
-							
-							<li><a href="Protocols/BCOVPlaylist.html">BCOVPlaylist</a></li>
-							
-							<li><a href="Protocols/BCOVSource.html">BCOVSource</a></li>
-							
-							<li><a href="Protocols/BCOVVideo.html">BCOVVideo</a></li>
-							
-						</ul>
+						<div class="index-column">
+							<h2 class="index-title">Class References</h2>
+							<ul>
+								
+								<li><a href="Classes/BCOVAd.html">BCOVAd</a></li>
+								
+								<li><a href="Classes/BCOVAdSequence.html">BCOVAdSequence</a></li>
+								
+								<li><a href="Classes/BCOVBasicSessionLoadingPolicy.html">BCOVBasicSessionLoadingPolicy</a></li>
+								
+								<li><a href="Classes/BCOVBasicSessionProvider.html">BCOVBasicSessionProvider</a></li>
+								
+								<li><a href="Classes/BCOVBasicSessionProviderOptions.html">BCOVBasicSessionProviderOptions</a></li>
+								
+								<li><a href="Classes/BCOVCatalogOperation.html">BCOVCatalogOperation</a></li>
+								
+								<li><a href="Classes/BCOVCatalogService.html">BCOVCatalogService</a></li>
+								
+								<li><a href="Classes/BCOVCuePoint.html">BCOVCuePoint</a></li>
+								
+								<li><a href="Classes/BCOVCuePointCollection.html">BCOVCuePointCollection</a></li>
+								
+								<li><a href="Classes/BCOVCuePointProgressPolicy.html">BCOVCuePointProgressPolicy</a></li>
+								
+								<li><a href="Classes/BCOVCuePointProgressPolicyResult.html">BCOVCuePointProgressPolicyResult</a></li>
+								
+								<li><a href="Classes/BCOVMediaRequestFactory.html">BCOVMediaRequestFactory</a></li>
+								
+								<li><a href="Classes/BCOVPlaybackService.html">BCOVPlaybackService</a></li>
+								
+								<li><a href="Classes/BCOVPlaybackServiceRequestFactory.html">BCOVPlaybackServiceRequestFactory</a></li>
+								
+								<li><a href="Classes/BCOVPlaybackSessionLifecycleEvent.html">BCOVPlaybackSessionLifecycleEvent</a></li>
+								
+								<li><a href="Classes/BCOVPlayerSDKManager.html">BCOVPlayerSDKManager</a></li>
+								
+								<li><a href="Classes/BCOVPlaylist.html">BCOVPlaylist</a></li>
+								
+								<li><a href="Classes/BCOVSessionProviderExtension.html">BCOVSessionProviderExtension</a></li>
+								
+								<li><a href="Classes/BCOVSource.html">BCOVSource</a></li>
+								
+								<li><a href="Classes/BCOVVideo.html">BCOVVideo</a></li>
+								
+							</ul>
+						</div>
 						
-                        
-						<h2 class="index-title">Constant References</h2>
-						<ul>
-                        
-                        <li><a href="Constants/BCOVPlaybackServiceErrorCode.html">BCOVPlaybackServiceErrorCode</a></li>
-                        
-                        <li><a href="Constants/BCOVProgressPolicyCuePointsToProcess.html">BCOVProgressPolicyCuePointsToProcess</a></li>
-                        
-                        <li><a href="Constants/BCOVProgressPolicyResumePosition.html">BCOVProgressPolicyResumePosition</a></li>
-                        
-						</ul>
+
 						
-						
-						<h2 class="index-title">Category References</h2>
-						<ul>
+						<div class="index-column">
 							
-							<li><a href="Categories/NSDictionary+BCOVURLSupport.html">NSDictionary(BCOVURLSupport)</a></li>
+							<h2 class="index-title">Protocol References</h2>
+							<ul>
+								
+								<li><a href="Protocols/BCOVComponent.html">BCOVComponent</a></li>
+								
+								<li><a href="Protocols/BCOVComponentIdentity.html">BCOVComponentIdentity</a></li>
+								
+								<li><a href="Protocols/BCOVCuePoint.html">BCOVCuePoint</a></li>
+								
+								<li><a href="Protocols/BCOVMutableCuePoint.html">BCOVMutableCuePoint</a></li>
+								
+								<li><a href="Protocols/BCOVMutablePlaylist.html">BCOVMutablePlaylist</a></li>
+								
+								<li><a href="Protocols/BCOVMutableSource.html">BCOVMutableSource</a></li>
+								
+								<li><a href="Protocols/BCOVMutableVideo.html">BCOVMutableVideo</a></li>
+								
+								<li><a href="Protocols/BCOVPlaybackControllerAdsDelegate.html">BCOVPlaybackControllerAdsDelegate</a></li>
+								
+								<li><a href="Protocols/BCOVPlaybackSession.html">BCOVPlaybackSession</a></li>
+								
+								<li><a href="Protocols/BCOVPlaybackSessionAdsConsumer.html">BCOVPlaybackSessionAdsConsumer</a></li>
+								
+								<li><a href="Protocols/BCOVPlaybackSessionProvider.html">BCOVPlaybackSessionProvider</a></li>
+								
+								<li><a href="Protocols/BCOVPlaylist.html">BCOVPlaylist</a></li>
+								
+								<li><a href="Protocols/BCOVSource.html">BCOVSource</a></li>
+								
+								<li><a href="Protocols/BCOVVideo.html">BCOVVideo</a></li>
+								
+							</ul>
 							
-						</ul>
+
+							
+							<h2 class="index-title">Constant References</h2>
+							<ul>
+								
+									<li><a href="Constants/BCOVPlaybackServiceErrorCode.html">BCOVPlaybackServiceErrorCode</a></li>
+								
+									<li><a href="Constants/BCOVProgressPolicyCuePointsToProcess.html">BCOVProgressPolicyCuePointsToProcess</a></li>
+								
+									<li><a href="Constants/BCOVProgressPolicyResumePosition.html">BCOVProgressPolicyResumePosition</a></li>
+								
+							</ul>
+							
+
+							
+							<h2 class="index-title">Category References</h2>
+							<ul>
+								
+								<li><a href="Categories/NSDictionary+BCOVURLSupport.html">NSDictionary(BCOVURLSupport)</a></li>
+								
+							</ul>
+							
+						</div>
 						
 					</div>
-					
-				</div>
-				<div class="main-navigation navigation-bottom">
-					<a href="hierarchy.html">Next</a>
-				</div>
-				<div id="footer">
-					<hr />
-					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 Brightcove. All rights reserved. (Last updated: 2015-03-25)</span><br />
-						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
-						
-	
-					</div>
-				</div>
+
+					<footer>
+						<div class="footer-copyright">
+							
+							<p class="copyright">Copyright &copy; 2015 Brightcove. All rights reserved. Updated: 2015-05-28</p>
+							
+							
+							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+							
+						</div>
+					</footer>
+				</main>
 			</div>
-		</article>		
-	</body>
+		</div>
+	</article>
+
+	<script src="js/script.js"></script>
+</body>
 </html>

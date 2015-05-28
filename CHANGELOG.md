@@ -1,3 +1,10 @@
+# 4.4.0-beta1
+### Breaking Changes
+* This version of the Player SDK for iOS is only to be used with the BCOVPlayerUI plugin. Full support will for other plugins will come in a future beta.
+
+### Additions and Improvements
+* Internal improvements to support BCOVPlayerUI.
+
 # 4.3.3
 ### Breaking Changes
 * Preloading of videos is now disabled by default. If you wish to turn preloading back on, please consult the README.md for more information about `BCOVBasicSessionLoadingPolicy`.

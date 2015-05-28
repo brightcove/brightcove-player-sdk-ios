@@ -1,143 +1,112 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>BCOVPlayerSDKManager Class Reference</title>
-		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
-		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.2 (build 963)" />
-	</head>
-	<body>
-		<header id="top_header">
-			<div id="library" class="hideInXcode">
-				<h1><a id="libraryTitle" href="../index.html">BCOVPlayerSDK </a></h1>
-				<a id="developerHome" href="../index.html">Brightcove</a>
-			</div>
+<head>
+	<meta charset="utf-8">
+
+	<title>BCOVPlayerSDKManager Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
 			
-			<div id="title" role="banner">
-				<h1 class="hideInXcode">BCOVPlayerSDKManager Class Reference</h1>
-			</div>
-			<ul id="headerButtons" role="toolbar">
-				<li id="toc_button">
-					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
-				</li>
-				<li id="jumpto_button" role="navigation">
-					<select id="jumpTo">
+			<h1 id="library-title">
+				<a href="../index.html">BCOVPlayerSDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Brightcove</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
 	
 	<option value="overview">Overview</option>
 	
-	
+
 	
 	
 	<option value="tasks">Tasks</option>
 	
 	
+
 	
 	
+
 	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/sharedManager">+ sharedManager</option>
+		
+	</optgroup>
 	
+
 	
-	<option value="class_methods">Class Methods</option>
-	
-	<option value="//api/name/sharedManager">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedManager</option>
-	
-	
-	
-	
-	<option value="instance_methods">Instance Methods</option>
-	
-	<option value="//api/name/createBasicSessionProviderWithOptions:">&nbsp;&nbsp;&nbsp;&nbsp;- createBasicSessionProviderWithOptions:</option>
-	
-	<option value="//api/name/createPlaybackController">&nbsp;&nbsp;&nbsp;&nbsp;- createPlaybackController</option>
-	
-	<option value="//api/name/createPlaybackControllerWithSessionProvider:viewStrategy:">&nbsp;&nbsp;&nbsp;&nbsp;- createPlaybackControllerWithSessionProvider:viewStrategy:</option>
-	
-	<option value="//api/name/createPlaybackControllerWithViewStrategy:">&nbsp;&nbsp;&nbsp;&nbsp;- createPlaybackControllerWithViewStrategy:</option>
-	
-	<option value="//api/name/defaultControlsViewStrategy">&nbsp;&nbsp;&nbsp;&nbsp;- defaultControlsViewStrategy</option>
-	
-	<option value="//api/name/registerComponent:">&nbsp;&nbsp;&nbsp;&nbsp;- registerComponent:</option>
-	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/createBasicSessionProviderWithOptions:">- createBasicSessionProviderWithOptions:</option>
+		
+		<option value="//api/name/createPlaybackController">- createPlaybackController</option>
+		
+		<option value="//api/name/createPlaybackControllerWithSessionProvider:viewStrategy:">- createPlaybackControllerWithSessionProvider:viewStrategy:</option>
+		
+		<option value="//api/name/createPlaybackControllerWithViewStrategy:">- createPlaybackControllerWithViewStrategy:</option>
+		
+		<option value="//api/name/defaultControlsViewStrategy">- defaultControlsViewStrategy</option>
+		
+		<option value="//api/name/registerComponent:">- registerComponent:</option>
+		
+	</optgroup>
 	
 	
 </select>
-				</li>
-			</ul>
-		</header>
-		<nav id="tocContainer" class="isShowingTOC">
-			<ul id="toc" role="tree">
-				
-<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
 
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BCOVPlayerSDKManager Class Reference</h1>
 
-
-
-<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
-	
-</ul></li>
-
-
-
-
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedManager">sharedManager</a></span></li>
-	
-</ul></li>
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createBasicSessionProviderWithOptions:">createBasicSessionProviderWithOptions:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createPlaybackController">createPlaybackController</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createPlaybackControllerWithSessionProvider:viewStrategy:">createPlaybackControllerWithSessionProvider:viewStrategy:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/createPlaybackControllerWithViewStrategy:">createPlaybackControllerWithViewStrategy:</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/defaultControlsViewStrategy">defaultControlsViewStrategy</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/registerComponent:">registerComponent:</a></span></li>
-	
-</ul></li>
-
-
-			</ul>
-		</nav>
-		<article>
-			<div id="contents" class="isShowingTOC" role="main">
-				<a title="BCOVPlayerSDKManager Class Reference" name="top"></a>
-				<div class="main-navigation navigation-top">
-					<ul>
-	<li><a href="../index.html">Index</a></li>
-	<li><a href="../hierarchy.html">Hierarchy</a></li>
-</ul>
-				</div>
-				<div id="header">
-					<div class="section-header">
-						<h1 class="title title-header">BCOVPlayerSDKManager Class Reference</h1>
-					</div>		
-				</div>
-				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">NSObject</td>
+	<th>Inherits from</th>
+	<td>NSObject</td>
 </tr><tr>
-	<td class="specification-title">Declared in</td>
-	<td class="specification-value">BCOVPlayerSDKManager.h</td>
+	<th>Declared in</th>
+	<td>BCOVPlayerSDKManager.h</td>
 </tr>
 						</tbody></table></div>
 					
-                    
+
                     
 					
 					<div class="section section-overview">
@@ -150,583 +119,471 @@ of other objects from the Player SDK ecosystem.</p>
 					</div>
 					
 					
-					
+
 					
 					
 					<div class="section section-tasks">
 						<a title="Tasks" name="tasks"></a>
-						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
-						
+
 						
 						
 
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/createPlaybackController">&ndash;&nbsp;createPlaybackController</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/createPlaybackControllerWithViewStrategy:">&ndash;&nbsp;createPlaybackControllerWithViewStrategy:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/createPlaybackControllerWithSessionProvider:viewStrategy:">&ndash;&nbsp;createPlaybackControllerWithSessionProvider:viewStrategy:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/createBasicSessionProviderWithOptions:">&ndash;&nbsp;createBasicSessionProviderWithOptions:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/defaultControlsViewStrategy">&ndash;&nbsp;defaultControlsViewStrategy</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/registerComponent:">&ndash;&nbsp;registerComponent:</a></code>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/sharedManager">+&nbsp;sharedManager</a></code>
-	</span>
-	
-	
-</li>
-						</ul>
-						
-					</div>
-					
-					
-					
-					
-					
-					
-					
-					<div class="section section-methods">
-						<a title="Class Methods" name="class_methods"></a>
-						<h2 class="subtitle subtitle-methods">Class Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/sharedManager" title="sharedManager"></a>
-	<h3 class="subsubtitle method-title">sharedManager</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns the Player SDK Manager singleton.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (BCOVPlayerSDKManager *)sharedManager</code></div>
-
-    
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The Player SDK Manager singleton.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns the Player SDK Manager singleton.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlayerSDKManager.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
-					
-					
-					
-					<div class="section section-methods">
-						<a title="Instance Methods" name="instance_methods"></a>
-						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/createBasicSessionProviderWithOptions:" title="createBasicSessionProviderWithOptions:"></a>
-	<h3 class="subsubtitle method-title">createBasicSessionProviderWithOptions:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns a basic playback session provider with the specified options.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackSessionProvider&gt;)createBasicSessionProviderWithOptions:(BCOVBasicSessionProviderOptions *)<em>options</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>options</em></dt>
-			<dd><p>The options for the session provider to return.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>A basic playback session provider configured with the specified
-options.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns a basic playback session provider with the specified options.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlayerSDKManager.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
+						<div class="task-list">
+							<div class="section-method">
 	<a name="//api/name/createPlaybackController" title="createPlaybackController"></a>
-	<h3 class="subsubtitle method-title">createPlaybackController</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Creates and returns a playback controller configured with a basic session
+	<h3 class="method-title"><code><a href="#//api/name/createPlaybackController">&ndash;&nbsp;createPlaybackController</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates and returns a playback controller configured with a basic session
 provider and a default view strategy (equivalent to calling
 <code>[BCOVPlayerSDKManager createPlaybackControllerWithViewStrategy:nil]</code>).</p>
-	</div>		
-	
-    
+			</div>
+			
+		    
 
-	<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt;)createPlaybackController</code></div>
+			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt;)createPlaybackController</code></div>
 
-    
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>A playback controller.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Creates and returns a playback controller configured with a basic session
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A playback controller.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Creates and returns a playback controller configured with a basic session
 provider and a default view strategy (equivalent to calling
 <code>[BCOVPlayerSDKManager createPlaybackControllerWithViewStrategy:nil]</code>).</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlayerSDKManager.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/createPlaybackControllerWithSessionProvider:viewStrategy:" title="createPlaybackControllerWithSessionProvider:viewStrategy:"></a>
-	<h3 class="subsubtitle method-title">createPlaybackControllerWithSessionProvider:viewStrategy:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Creates and returns a playback controller configured with the specified
-session provider and view strategy.</p>
-	</div>		
-	
-    
+			</div>
+			
 
-	<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt;)createPlaybackControllerWithSessionProvider:(id&lt;BCOVPlaybackSessionProvider&gt;)<em>provider</em> viewStrategy:(BCOVPlaybackControllerViewStrategy)<em>viewStrategy</em></code></div>
+			
 
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>provider</em></dt>
-			<dd><p>A session provider that vends playback sessions to the
-returned playback controller.</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>viewStrategy</em></dt>
-			<dd><p>A view strategy that determines the view for the
-returned playback controller.</p></dd>
-		</dl>
-		
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
+			</div>
+			
+			
+		</div>
 	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>A playback controller configured with the specified parameters.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Creates and returns a playback controller configured with the specified
-session provider and view strategy.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlayerSDKManager.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
+</div><div class="section-method">
 	<a name="//api/name/createPlaybackControllerWithViewStrategy:" title="createPlaybackControllerWithViewStrategy:"></a>
-	<h3 class="subsubtitle method-title">createPlaybackControllerWithViewStrategy:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Creates and returns a playback controller configured with a basic session
+	<h3 class="method-title"><code><a href="#//api/name/createPlaybackControllerWithViewStrategy:">&ndash;&nbsp;createPlaybackControllerWithViewStrategy:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates and returns a playback controller configured with a basic session
 provider and the specified view strategy. Passing <code>nil</code> as the view strategy
 will configure the returned playback controller&rsquo;s <code>view</code> property as a basic
 unadorned video view.</p>
-	</div>		
-	
-    
+			</div>
+			
+		    
 
-	<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt;)createPlaybackControllerWithViewStrategy:(BCOVPlaybackControllerViewStrategy)<em>viewStrategy</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt;)createPlaybackControllerWithViewStrategy:(BCOVPlaybackControllerViewStrategy)<em>viewStrategy</em></code></div>
 
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>viewStrategy</em></dt>
-			<dd><p>A view strategy that determines the view for the returned
-playback controller.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>A playback controller configured with the specified strategy.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Creates and returns a playback controller configured with a basic session
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>viewStrategy</code></th>
+						<td><p>A view strategy that determines the view for the returned
+playback controller.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A playback controller configured with the specified strategy.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Creates and returns a playback controller configured with a basic session
 provider and the specified view strategy. Passing <code>nil</code> as the view strategy
 will configure the returned playback controller&rsquo;s <code>view</code> property as a basic
 unadorned video view.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
+			</div>
+			
+			
+		</div>
 	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlayerSDKManager.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
+</div><div class="section-method">
+	<a name="//api/name/createPlaybackControllerWithSessionProvider:viewStrategy:" title="createPlaybackControllerWithSessionProvider:viewStrategy:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createPlaybackControllerWithSessionProvider:viewStrategy:">&ndash;&nbsp;createPlaybackControllerWithSessionProvider:viewStrategy:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates and returns a playback controller configured with the specified
+session provider and view strategy.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt;)createPlaybackControllerWithSessionProvider:(id&lt;BCOVPlaybackSessionProvider&gt;)<em>provider</em> viewStrategy:(BCOVPlaybackControllerViewStrategy)<em>viewStrategy</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>provider</code></th>
+						<td><p>A session provider that vends playback sessions to the
+returned playback controller.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>viewStrategy</code></th>
+						<td><p>A view strategy that determines the view for the
+returned playback controller.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A playback controller configured with the specified parameters.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Creates and returns a playback controller configured with the specified
+session provider and view strategy.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/createBasicSessionProviderWithOptions:" title="createBasicSessionProviderWithOptions:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createBasicSessionProviderWithOptions:">&ndash;&nbsp;createBasicSessionProviderWithOptions:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns a basic playback session provider with the specified options.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackSessionProvider&gt;)createBasicSessionProviderWithOptions:(BCOVBasicSessionProviderOptions *)<em>options</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>options</code></th>
+						<td><p>The options for the session provider to return.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A basic playback session provider configured with the specified
+options.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns a basic playback session provider with the specified options.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/defaultControlsViewStrategy" title="defaultControlsViewStrategy"></a>
-	<h3 class="subsubtitle method-title">defaultControlsViewStrategy</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Returns a view strategy that wraps the video view it is given with the
+	<h3 class="method-title"><code><a href="#//api/name/defaultControlsViewStrategy">&ndash;&nbsp;defaultControlsViewStrategy</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns a view strategy that wraps the video view it is given with the
 default playback controls.</p>
-	</div>		
-	
-    
+			</div>
+			
+		    
 
-	<div class="method-subsection method-declaration"><code>- (BCOVPlaybackControllerViewStrategy)defaultControlsViewStrategy</code></div>
+			<div class="method-subsection method-declaration"><code>- (BCOVPlaybackControllerViewStrategy)defaultControlsViewStrategy</code></div>
 
-    
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>A view strategy block that wraps the video view with stock controls.</p>
-	</div>
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Returns a view strategy that wraps the video view it is given with the
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A view strategy block that wraps the video view with stock controls.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns a view strategy that wraps the video view it is given with the
 default playback controls.</p>
 
 <p>This view strategy is intended to provide a &ldquo;stock&rdquo; set of controls to aide
 development, testing, and Brightcove code samples.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlayerSDKManager.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/registerComponent:" title="registerComponent:"></a>
-	<h3 class="subsubtitle method-title">registerComponent:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Registers the specified component object with the BCOVPlayerSDKManager. The
-component should implement the methods in the <a href="../Protocols/BCOVComponent.html"><code>BCOVComponent</code></a> protocol.
-Registering a component &ldquo;activates it&rdquo; for use, enabling its functionality.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)registerComponent:(id&lt;BCOVComponent&gt;)<em>component</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>component</em></dt>
-			<dd><p>The object to be registered with the BCOVPlayerSDKManager.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>Registers the specified component object with the BCOVPlayerSDKManager. The
-component should implement the methods in the <a href="../Protocols/BCOVComponent.html"><code>BCOVComponent</code></a> protocol.
-Registering a component &ldquo;activates it&rdquo; for use, enabling its functionality.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">BCOVPlayerSDKManager.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-					</div>
-					
-					
-                    
-                    
-				</div>
-				<div class="main-navigation navigation-bottom">
-					<ul>
-	<li><a href="../index.html">Index</a></li>
-	<li><a href="../hierarchy.html">Hierarchy</a></li>
-</ul>
-				</div>
-				<div id="footer">
-					<hr />
-					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2015 Brightcove. All rights reserved. (Last updated: 2015-03-25)</span><br />
-						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
-						
-					</div>
-				</div>
 			</div>
-		</article>
-		<script type="text/javascript">
-			function jumpToChange()
-			{
-				window.location.hash = this.options[this.selectedIndex].value;
-			}
 			
-			function toggleTOC()
-			{
-				var contents = document.getElementById('contents');
-				var tocContainer = document.getElementById('tocContainer');
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/registerComponent:" title="registerComponent:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/registerComponent:">&ndash;&nbsp;registerComponent:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Registers the specified component object with the BCOVPlayerSDKManager. The
+component should implement the methods in the <a href="../Protocols/BCOVComponent.html"><code>BCOVComponent</code></a> protocol.
+Registering a component &ldquo;activates it&rdquo; for use, enabling its functionality.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)registerComponent:(id&lt;BCOVComponent&gt;)<em>component</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
 				
-				if (this.getAttribute('class') == 'open')
-				{
-					this.setAttribute('class', '');
-					contents.setAttribute('class', '');
-					tocContainer.setAttribute('class', '');
+					<tr>
+						<th scope="row" class="argument-name"><code>component</code></th>
+						<td><p>The object to be registered with the BCOVPlayerSDKManager.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Registers the specified component object with the BCOVPlayerSDKManager. The
+component should implement the methods in the <a href="../Protocols/BCOVComponent.html"><code>BCOVComponent</code></a> protocol.
+Registering a component &ldquo;activates it&rdquo; for use, enabling its functionality.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sharedManager" title="sharedManager"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sharedManager">+&nbsp;sharedManager</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns the Player SDK Manager singleton.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BCOVPlayerSDKManager *)sharedManager</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>The Player SDK Manager singleton.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns the Player SDK Manager singleton.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
 					
-					window.name = "hideTOC";
-				}
-				else
-				{
-					this.setAttribute('class', 'open');
-					contents.setAttribute('class', 'isShowingTOC');
-					tocContainer.setAttribute('class', 'isShowingTOC');
 					
-					window.name = "";
-				}
-				return false;
-			}
-			
-			function toggleTOCEntryChildren(e)
-			{
-				e.stopPropagation();
-				var currentClass = this.getAttribute('class');
-				if (currentClass == 'children') {
-					this.setAttribute('class', 'children open');
-				}
-				else if (currentClass == 'children open') {
-					this.setAttribute('class', 'children');
-				}
-				return false;
-			}
-			
-			function tocEntryClick(e)
-			{
-				e.stopPropagation();
-				return true;
-			}
-			
-			function init()
-			{
-				var selectElement = document.getElementById('jumpTo');
-				selectElement.addEventListener('change', jumpToChange, false);
-				
-				var tocButton = document.getElementById('table_of_contents');
-				tocButton.addEventListener('click', toggleTOC, false);
-				
-				var taskTreeItem = document.getElementById('task_treeitem');
-				if (taskTreeItem.getElementsByTagName('li').length > 0)
-				{
-					taskTreeItem.setAttribute('class', 'children');
-					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
-				}
-				
-				var tocList = document.getElementById('toc');
-				
-				var tocEntries = tocList.getElementsByTagName('li');
-				for (var i = 0; i < tocEntries.length; i++) {
-					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
-				}
-				
-				var tocLinks = tocList.getElementsByTagName('a');
-				for (var i = 0; i < tocLinks.length; i++) {
-					tocLinks[i].addEventListener('click', tocEntryClick, false);
-				}
-				
-				if (window.name == "hideTOC") {
-					toggleTOC.call(tocButton);
-				}
-			}
-			
-			window.onload = init;
-			
-			// If showing in Xcode, hide the TOC and Header
-			if (navigator.userAgent.match(/xcode/i)) {
-				document.getElementById("contents").className = "hideInXcode"
-				document.getElementById("tocContainer").className = "hideInXcode"
-				document.getElementById("top_header").className = "hideInXcode"
-			}
-			
-		</script>
-	</body>
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2015 Brightcove. All rights reserved. Updated: 2015-05-28</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
 </html>
