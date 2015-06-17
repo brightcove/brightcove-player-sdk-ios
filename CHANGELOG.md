@@ -1,9 +1,7 @@
-# 4.4.0-beta1
-### Breaking Changes
-* This version of the Player SDK for iOS is only to be used with the BCOVPlayerUI plugin. Full support will for other plugins will come in a future beta.
-
+# 4.3.4
 ### Additions and Improvements
-* Internal improvements to support BCOVPlayerUI.
+* Added `- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:`. This API can be used to re-initialize the AVPlayer in case of a network disruption. Progress and lifecycle events will be supressed during this action.  Lifecycle events `kBCOVPlaybackSessionLifecycleEventResumeBegin`, `kBCOVPlaybackSessionLifecycleEventResumeComplete`, and `kBCOVPlaybackSessionLifecycleEventResumeFail` were added to provide updates on this action.
+* Added `kBCOVPlaybackSessionLifecycleEventFailedToPlayToEndTime`. This event will fire when the AVPlayer has given up trying to play content. This even can be used in conjunction with `- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:` to re-initialize the player once network conditions have improved.
 
 # 4.3.3
 ### Breaking Changes

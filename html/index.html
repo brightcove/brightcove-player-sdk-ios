@@ -44,7 +44,7 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 4.4.0-beta1.138</h1>
+						<h1>Brightcove Player SDK for iOS, version 4.3.4.148</h1>
 
 <h1>Supported Platforms</h1>
 
@@ -111,7 +111,7 @@ BCOVCatalogService *catalog = [[BCOVCatalogService alloc] initWithToken:token];
 
 <p>The entry point to the Brightcove Player SDK for iOS is the <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlayerSDKManager.h">[<code>BCOVPlayerSDKManager</code>](Classes/BCOVPlayerSDKManager.html)</a> singleton object. This Manager handles registration of plugin components and some other housekeeping tasks, but it primarily serves as an object factory. Your app&rsquo;s view controller obtains a reference to the Manager, and uses it to create a <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h"><code>BCOVPlaybackController</code></a>. The playback controller&rsquo;s <code>view</code> property exposes a UIView containing the AVPlayerLayer object that ultimately presents your video content on the screen. The playback controller also accepts a <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L309-L421"><code>BCOVPlaybackControllerDelegate</code></a>, which you can implement to respond to various video playback events.</p>
 
-<p>The playback controller offers methods and properties to affect playback of the current video. However, internally, the playback controller delegates to a <a href=https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h">[<code>BCOVPlaybackSession</code>](Protocols/BCOVPlaybackSession.html)</a> object. Playback sessions do the actual work of preparing and playing video content, and contain the video&rsquo;s metadata and AVPlayer. The playback controller has mechanisms to advance from the current playback session to the next playback session, either automatically at the end of a video, or manually with a method call. Once the playback controller has advanced to a new session, the previous session is discarded and cannot be used again.</p>
+<p>The playback controller offers methods and properties to affect playback of the current video. However, internally, the playback controller delegates to a <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h">[<code>BCOVPlaybackSession</code>](Protocols/BCOVPlaybackSession.html)</a> object. Playback sessions do the actual work of preparing and playing video content, and contain the video&rsquo;s metadata and AVPlayer. The playback controller has mechanisms to advance from the current playback session to the next playback session, either automatically at the end of a video, or manually with a method call. Once the playback controller has advanced to a new session, the previous session is discarded and cannot be used again.</p>
 
 <p>There are two other elements of the playback controller: a <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSessionProvider.h">[<code>BCOVPlaybackSessionProvider</code>](Protocols/BCOVPlaybackSessionProvider.html)</a>, and a list of <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L201-L306"><code>BCOVPlaybackSessionConsumer</code></a>s. As the name would suggest, the playback session provider is responsible for creating playback sessions and delivering them to the playback controller. The playback controller then delivers the session to each of the playback session consumers in the list. Both the session provider and session consumer APIs are designed for use by plugin developers, and are not detailed in this document.</p>
 
@@ -171,6 +171,16 @@ id&lt;BCOVPlaybackController&gt; controller = [sdkManager createPlaybackControll
 XYZAnalytics *analytics = [[XYZAnalytics alloc] init];
 [controller addSessionConsumer:analytics];
 </code></pre>
+
+<h2>Handling network interruptions</h2>
+
+<p>When the application experiences network interruptions, the AVPlayer used by the the BCOVPlaybackController may stop attempting to recover if the interruption lasts too long. If this occurs, the lifecycle delegate method will be called with a <code>kBCOVPlaybackSessionLifecycleEventFailedToPlayToEndTime</code> event. When this event occurs, playback <strong>will not</strong> recover automatically. In order to recover from this event, you will need to detect when the network recovers in your client code.</p>
+
+<p>Once you have determined that the network has recovered, you can use <code>- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:</code> to re-initialize the player. You will need to keep track of where you want to resume to. The player will make its best effort to suppress lifecycle events and progress events, in order to prevent ads from replaying or from analytics being interfered with.</p>
+
+<p>Upon calling <code>- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:</code>, the player will send a lifecycle event of type <code>kBCOVPlaybackSessionLifecycleEventResumeBegin</code>. <code>kBCOVPlaybackSessionLifecycleEventResumeComplete</code> will be sent if this action succeeds, otherwise <code>kBCOVPlaybackSessionLifecycleEventResumeFail</code> will be sent.</p>
+
+<p>You must wait before calling <code>- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:</code> a second time until you have received either <code>kBCOVPlaybackSessionLifecycleEventResumeComplete</code> or <code>kBCOVPlaybackSessionLifecycleEventResumeFail</code> from the previous call. You may wish to impose a retry limit, before giving the user a message that their network is too unstable.al</p>
 
 <h2>A Word on Subclassing</h2>
 
@@ -250,7 +260,7 @@ video2.properties = otherDictionary; // causes compiler error
 </ol>
 
 
-<p>If for some reason you need to customize the request that the playback service sends to the Brightcove CMS API, you may find <code>BCOVPlaybackServiceRequestFactory</code> helpful. This utility, which is used by the playabck service, generates parameterized Brightcove CMS API NSURLRequest objects, which you can use in your own HTTP communication.</p>
+<p>If for some reason you need to customize the request that the playback service sends to the Brightcove CMS API, you may find <code>BCOVPlaybackServiceRequestFactory</code> helpful. This utility, which is used by the playback service, generates parameterized Brightcove CMS API NSURLRequest objects, which you can use in your own HTTP communication.</p>
 
 <h3>Catalog</h3>
 
@@ -338,6 +348,8 @@ video2.properties = otherDictionary; // causes compiler error
 <p><strong>How do I retrieve data from the Brightcove Media API for which there is no <code>BCOVCatalogService</code> method?</strong></p>
 
 <p>The catalog service offers methods for the most common Brightcove Media API operations, but there are <a href="http://docs.brightcove.com/en/video-cloud/media/">other operations</a> available. To leverage them, you will need to issue an HTTP request and then process the response. You can use a standard NSURLRequest to do this, or you can leverage a <a href="http://afnetworking.com">3rd-party HTTP API</a> if you find that easier. In either case, when you receive the response, you can use a standard JSON parser (like NSJSONSerialization) to convert the response into a NSDictionary, and then construct the appropriate value classes from the data in the NSDictionary.</p>
+
+<p><strong>Why do I see a message in the log indicating that no source has been found?</strong></p>
 
 <p>This message indicates that the default source selection policy can&rsquo;t figure which source to pick. The default policy selects the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryHLS</code> (&ldquo;HLS&rdquo;). If no HLS source is found, its fallback behavior will select the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryMP4</code> (&ldquo;MP4&rdquo;). If no source with a <code>deliveryMethod</code> of &ldquo;HLS&rdquo; or &ldquo;MP4&rdquo; exists on the video, the policy will select the video&rsquo;s first source (regardless of <code>deliveryMethod</code>). If you aren&rsquo;t happy with its selection, you can use <a href="Classes/BCOVPlayerSDKManager.html#//api/name/createBasicSessionProviderWithOptions:"><code>[BCOVPlayerSDKManager createBasicSessionProviderWithOptions:]</code></a> and pass in an instance of <a href="Classes/BCOVBasicSessionProviderOptions.html"><code>BCOVBasicSessionProviderOptions</code></a> with a custom <code>sourceSelectionPolicy</code> property set. When creating videos and sources manually, ensure that the sources are created with the appropriate <code>deliveryMethod</code>.</p>
 
@@ -466,7 +478,7 @@ video2.properties = otherDictionary; // causes compiler error
 					<footer>
 						<div class="footer-copyright">
 							
-							<p class="copyright">Copyright &copy; 2015 Brightcove. All rights reserved. Updated: 2015-05-28</p>
+							<p class="copyright">Copyright &copy; 2015 Brightcove. All rights reserved. Updated: 2015-06-17</p>
 							
 							
 							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>

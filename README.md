@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 4.4.0-beta1.138
+# Brightcove Player SDK for iOS, version 4.3.4.148
 
 Supported Platforms
 ===================
@@ -128,6 +128,17 @@ To use the plugin:
     id<BCOVPlaybackController> controller = [sdkManager createPlaybackController];
     XYZAnalytics *analytics = [[XYZAnalytics alloc] init];
     [controller addSessionConsumer:analytics];
+    
+Handling network interruptions
+-----------------------------
+
+When the application experiences network interruptions, the AVPlayer used by the the BCOVPlaybackController may stop attempting to recover if the interruption lasts too long. If this occurs, the lifecycle delegate method will be called with a `kBCOVPlaybackSessionLifecycleEventFailedToPlayToEndTime` event. When this event occurs, playback **will not** recover automatically. In order to recover from this event, you will need to detect when the network recovers in your client code.  
+
+Once you have determined that the network has recovered, you can use `- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:` to re-initialize the player. You will need to keep track of where you want to resume to. The player will make its best effort to suppress lifecycle events and progress events, in order to prevent ads from replaying or from analytics being interfered with.
+
+Upon calling `- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:`, the player will send a lifecycle event of type `kBCOVPlaybackSessionLifecycleEventResumeBegin`. `kBCOVPlaybackSessionLifecycleEventResumeComplete` will be sent if this action succeeds, otherwise `kBCOVPlaybackSessionLifecycleEventResumeFail` will be sent.
+
+You must wait before calling `- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:` a second time until you have received either `kBCOVPlaybackSessionLifecycleEventResumeComplete` or `kBCOVPlaybackSessionLifecycleEventResumeFail` from the previous call. You may wish to impose a retry limit, before giving the user a message that their network is too unstable.al
 
 A Word on Subclassing
 ---------------------
@@ -203,7 +214,7 @@ The playback service classes provide functionality for retrieving information ab
 
 1. The playback service requests **policy key** for authentication. To learn more about policy key and how to obtain one, please check [policy key documentation][PolicyKey].
 
-If for some reason you need to customize the request that the playback service sends to the Brightcove CMS API, you may find `BCOVPlaybackServiceRequestFactory` helpful. This utility, which is used by the playabck service, generates parameterized Brightcove CMS API NSURLRequest objects, which you can use in your own HTTP communication.
+If for some reason you need to customize the request that the playback service sends to the Brightcove CMS API, you may find `BCOVPlaybackServiceRequestFactory` helpful. This utility, which is used by the playback service, generates parameterized Brightcove CMS API NSURLRequest objects, which you can use in your own HTTP communication.
 
 [CMSAPI]: http://docs.brightcove.com/en/video-cloud/cms-api/index.html
 [PolicyKey]: http://docs.brightcove.com/en/video-cloud/player-management/guides/policy-key.html

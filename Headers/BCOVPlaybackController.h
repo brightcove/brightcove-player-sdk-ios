@@ -170,6 +170,25 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 - (void)pause;
 
 /**
+ * Instructs this instance to reinitialize the current session. If there is
+ * no current session, this method has no effect. Once this method is called,
+ * it will send the kBCOVPlaybackSessionLifecycleEventResumeBegin event to
+ * indicate reinitializing has begun. If an error occurs anywhere
+ * during the reinitialization, this method will send the 
+ * kBCOVPlaybackSessionLifecycleEventResumeFail event. If the reinitialization
+ * succeeds, the kBCOVPlaybackSessionLifecycleEventResumeComplete will be
+ * sent.
+ *
+ * Do not call this method a second time until you have received either 
+ * kBCOVPlaybackSessionLifecycleEventResumeFail or kBCOVPlaybackSessionLifecycleEventResumeComplete
+ * from the first call.
+ *
+ * @param time Seek time to set after reinitialization.
+ * @param autoPlay Automatically play new session once it is restarted.
+ */
+- (void)resumeVideoAtTime:(CMTime)time withAutoPlay:(BOOL)autoPlay;
+
+/**
  * Specifies the source from which this instance will draw its upcoming videos
  * for playback. The first playback session will be sent as soon as it becomes
  * available, replacing any current playback session. Playback sessions may be

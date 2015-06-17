@@ -18,6 +18,10 @@
 extern NSString * const kBCOVPlaybackSessionLifecycleEventReady;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventPlay;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventPause;
+extern NSString * const kBCOVPlaybackSessionLifecycleEventFailedToPlayToEndTime;
+extern NSString * const kBCOVPlaybackSessionLifecycleEventResumeBegin;
+extern NSString * const kBCOVPlaybackSessionLifecycleEventResumeComplete;
+extern NSString * const kBCOVPlaybackSessionLifecycleEventResumeFail;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventEnd;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventTerminate;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventFail;
