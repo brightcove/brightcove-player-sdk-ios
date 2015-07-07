@@ -1,6 +1,10 @@
+# 4.3.5
+### Additions and Improvements
+* Fixes memory leaks introduced by v4.3.4.
+
 # 4.3.4
 ### Additions and Improvements
-* Added `- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:`. This API can be used to re-initialize the AVPlayer in case of a network disruption. Progress and lifecycle events will be supressed during this action.  Lifecycle events `kBCOVPlaybackSessionLifecycleEventResumeBegin`, `kBCOVPlaybackSessionLifecycleEventResumeComplete`, and `kBCOVPlaybackSessionLifecycleEventResumeFail` were added to provide updates on this action.
+* Added `- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:`. This API can be used to re-initialize the AVPlayer in case of a network disruption. Progress and lifecycle events will be suppressed during this action.  Lifecycle events `kBCOVPlaybackSessionLifecycleEventResumeBegin`, `kBCOVPlaybackSessionLifecycleEventResumeComplete`, and `kBCOVPlaybackSessionLifecycleEventResumeFail` were added to provide updates on this action.
 * Added `kBCOVPlaybackSessionLifecycleEventFailedToPlayToEndTime`. This event will fire when the AVPlayer has given up trying to play content. This even can be used in conjunction with `- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:` to re-initialize the player once network conditions have improved.
 
 # 4.3.3
