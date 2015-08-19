@@ -321,6 +321,18 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  */
 - (void)playbackSession:(id<BCOVPlaybackSession>)session didReceiveLifecycleEvent:(BCOVPlaybackSessionLifecycleEvent *)lifecycleEvent;
 
+/**
+ * Called when a playback session's seekable ranges is updated. When added as a 
+ * session consume on a playback controller, this method is called with the most
+ * recently updated seekable ranges for the session. A session seekable ranges 
+ * can change as the media playback continues to load.
+ *
+ * @param session The playback session whose seekable ranges changed.
+ * @param seekableRanges An array of NSValue about the most recently updated 
+ * session seekableRanges.
+ */
+- (void)playbackSession:(id<BCOVPlaybackSession>)session didChangeSeekableRanges:(NSArray *)seekableRanges;
+
 @end
 
 
@@ -435,6 +447,19 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * @param lifecycleEvent The lifecycle event received by the session.
  */
 - (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didReceiveLifecycleEvent:(BCOVPlaybackSessionLifecycleEvent *)lifecycleEvent;
+
+/**
+ * Called when a playback session's seekable ranges is updated. When a delegate 
+ * is set on a playback controller, this method is called with the most recently
+ * updated seekable ranges for the session. A session seekable ranges can change
+ * as the media playback continues to load.
+ *
+ * @param controller The playback controller to which this instance serves as delegate.
+ * @param session The playback session whose seekable ranges changed.
+ * @param seekableRanges An array of NSValue about the most recently updated
+ * session seekableRanges.
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didChangeSeekableRanges:(NSArray *)seekableRanges;
 
 @end
 

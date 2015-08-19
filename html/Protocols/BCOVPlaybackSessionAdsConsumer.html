@@ -70,6 +70,10 @@
 		
 		<option value="//api/name/playbackSession:didExitAdSequence:">- playbackSession:didExitAdSequence:</option>
 		
+		<option value="//api/name/playbackSession:didPauseAd:">- playbackSession:didPauseAd:</option>
+		
+		<option value="//api/name/playbackSession:didResumeAd:">- playbackSession:didResumeAd:</option>
+		
 	</optgroup>
 	
 	
@@ -257,7 +261,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Called when playback enters a new ad within a playback session.</p>
+				<p>Called when playback exists an ad within a playback session.</p>
 			</div>
 			
 		    
@@ -291,7 +295,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Called when playback enters a new ad within a playback session.</p>
+				<p>Called when playback exists an ad within a playback session.</p>
 			</div>
 			
 
@@ -383,7 +387,7 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Called when playback enters a new ad within a playback session.</p>
+				<p>Called with the playback session&rsquo;s ad playback progress.</p>
 			</div>
 			
 		    
@@ -422,7 +426,133 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Called when playback enters a new ad within a playback session.</p>
+				<p>Called with the playback session&rsquo;s ad playback progress.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVAdvertising.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackSession:didPauseAd:" title="playbackSession:didPauseAd:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackSession:didPauseAd:">&ndash;&nbsp;playbackSession:didPauseAd:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when an ad paused.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em> didPauseAd:(BCOVAd *)<em>ad</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session within which the ad transition occurred.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ad</code></th>
+						<td><p>The ad being paused.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when an ad paused.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVAdvertising.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackSession:didResumeAd:" title="playbackSession:didResumeAd:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackSession:didResumeAd:">&ndash;&nbsp;playbackSession:didResumeAd:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when an ad resumed.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em> didResumeAd:(BCOVAd *)<em>ad</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session within which the ad transition occurred.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ad</code></th>
+						<td><p>The ad being resumed.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when an ad resumed.</p>
 			</div>
 			
 
@@ -452,7 +582,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2015 Brightcove. All rights reserved. Updated: 2015-07-07</p>
+						<p class="copyright">Copyright &copy; 2015 Brightcove. All rights reserved. Updated: 2015-08-19</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>

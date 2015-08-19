@@ -134,7 +134,7 @@
 - (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didEnterAd:(BCOVAd *)ad;
 
 /**
- * Called when playback enters a new ad within a playback session.
+ * Called when playback exits an ad within a playback session.
  *
  * @param controller The playback controller in which this transition occurred.
  * @param session The playback session within which the ad transition occurred.
@@ -143,7 +143,8 @@
 - (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didExitAd:(BCOVAd *)ad;
 
 /**
- * Called when playback enters a new ad within a playback session.
+ * Called with the playback session's ad playback progress.
+ *
  *
  * @param controller The playback controller in which an add is progressing.
  * @param session The playback session within which the ad transition occurred.
@@ -151,6 +152,24 @@
  * @param progress The progress time of the ad.
  */
 - (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session ad:(BCOVAd *)ad didProgressTo:(NSTimeInterval)progress;
+
+/**
+ * Called when an ad paused.
+ *
+ * @param controller The playback controller in which this transition occurred.
+ * @param session The playback session within which the ad transition occurred.
+ * @param ad The ad being paused.
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didPauseAd:(BCOVAd *)ad;
+
+/**
+ * Called when an ad resumed.
+ *
+ * @param controller The playback controller in which this transition occurred.
+ * @param session The playback session within which the ad transition occurred.
+ * @param ad The ad being resumed.
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didResumeAd:(BCOVAd *)ad;
 
 @end
 
@@ -179,7 +198,7 @@
 - (void)playbackSession:(id<BCOVPlaybackSession>)session didExitAdSequence:(BCOVAdSequence *)adSequence;
 
 /**
- * Called when playback enters a new ad within a playback session.
+ * Called when playback exists an ad within a playback session.
  *
  * @param session The playback session within which the ad transition occurred.
  * @param ad The ad being entered.
@@ -195,13 +214,29 @@
 - (void)playbackSession:(id<BCOVPlaybackSession>)session didExitAd:(BCOVAd *)ad;
 
 /**
- * Called when playback enters a new ad within a playback session.
+ * Called with the playback session's ad playback progress.
  *
  * @param session The playback session within which the ad transition occurred.
  * @param ad The ad that is progressing.
  * @param progress The progress time of the ad.
  */
 - (void)playbackSession:(id<BCOVPlaybackSession>)session ad:(BCOVAd *)ad didProgressTo:(NSTimeInterval)progress;
+
+/**
+ * Called when an ad paused.
+ *
+ * @param session The playback session within which the ad transition occurred.
+ * @param ad The ad being paused.
+ */
+- (void)playbackSession:(id<BCOVPlaybackSession>)session didPauseAd:(BCOVAd *)ad;
+
+/**
+ * Called when an ad resumed.
+ *
+ * @param session The playback session within which the ad transition occurred.
+ * @param ad The ad being resumed.
+ */
+- (void)playbackSession:(id<BCOVPlaybackSession>)session didResumeAd:(BCOVAd *)ad;
 
 @end
 

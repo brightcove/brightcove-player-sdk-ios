@@ -1,6 +1,6 @@
 //
-//  BCOVPlaybackServiceRequestFactory.h
-//  BCOVPlayerSDK
+// BCOVPlaybackServiceRequestFactory.h
+// BCOVPlayerSDK
 //
 // Copyright (c) 2015 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
@@ -14,6 +14,8 @@
  * requests for videos from Brightcove’s Playback API.
  */
 @interface BCOVPlaybackServiceRequestFactory : NSObject
+
+@property (nonatomic, copy, readonly) NSString *accountId;
 
 /**
  * Returns an initialized instance with the specified policy. The base URL

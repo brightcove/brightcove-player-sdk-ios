@@ -26,12 +26,15 @@ extern NSString * const kBCOVPlaybackSessionLifecycleEventEnd;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventTerminate;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventFail;
 
+extern NSString * const kBCOVPlaybackSessionEventKeyError;
+
 extern NSString * const kBCOVPlaybackSessionEventKeyPreviousTime;
 extern NSString * const kBCOVPlaybackSessionEventKeyCurrentTime;
 extern NSString * const kBCOVPlaybackSessionEventKeyCuePoints;
 
 extern NSString * const kBCOVPlaybackSessionErrorDomain;
 extern const NSInteger kBCOVPlaybackSessionErrorCodeLoadFailed;
+extern const NSInteger kBCOVPlaybackSessionErrorCodeFailedToPlayToEnd;
 
 
 /**
