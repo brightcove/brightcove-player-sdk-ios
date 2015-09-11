@@ -10,6 +10,16 @@
 
 
 /**
+ * The URL scheme for HTTP.
+ */
+extern NSString * const kBCOVSourceURLSchemeHTTP;
+
+/**
+ * The URL scheme for HTTPS.
+ */
+extern NSString * const kBCOVSourceURLSchemeHTTPS;
+
+/**
  * The delivery method for HLS (HTTP Live Streaming) media.
  */
 extern NSString * const kBCOVSourceDeliveryHLS;

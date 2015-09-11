@@ -11,6 +11,7 @@
 #import "BCOVCuePoint.h"
 #import "BCOVSource.h"
 #import "BCOVVideo.h"
+#import "BCOVPlaylist.h"
 
 @class BCOVPlaybackServiceRequestFactory;
 
@@ -95,6 +96,34 @@ extern NSString * const kBCOVPlaybackServiceErrorKeyAPIHTTPStatusCode;
  * @return An initialized instance.
  */
 - (instancetype)initWithRequestFactory:(BCOVPlaybackServiceRequestFactory *)requestFactory NS_DESIGNATED_INITIALIZER;
+
+/**
+ * Retrieves a BCOVPlaylist from the Playback API service by its playlist ID on a
+ * background queue.
+ *
+ * If the completionHandler provides an NSError, the BCOVPlaylist will be nil.
+ *
+ * @param playlistID The ID of the playlist to find.
+ * @param parameters Additional NSString query parameters to add to the Playback
+ * API requests. These values will override the default values if they conflict.
+ * @param completionHandler block which will be invoked when the request
+ * finishes. Execution of the completionHandler will occur on the main thread.
+ */
+- (void)findPlaylistWithPlaylistID:(NSString *)playlistID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+/**
+ * Retrieves a BCOVPlaylist from the Playback API service by its reference ID on a
+ * background queue.
+ *
+ * If the completionHandler provides an NSError, the BCOVPlaylist will be nil.
+ *
+ * @param referenceID The reference ID of the video to find.
+ * @param parameters Additional NSString query parameters to add to the Playback
+ * API requests. These values will override the default values if they conflict.
+ * @param completionHandler block which will be invoked when the request
+ * finishes. Execution of the completionHandler will occur on the main thread.
+ */
+- (void)findPlaylistWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
 
 /**
  * Retrieves a BCOVVideo from the Playback API service by its video ID on a background

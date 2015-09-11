@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 4.4.0.180
+# Brightcove Player SDK for iOS, version 4.4.1.187
 
 Supported Platforms
 ===================
@@ -93,6 +93,39 @@ An example:
 
 [options]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVBasicSessionProvider.h#L79-97
 [loadingpolicy]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVBasicSessionProvider.h#L49-76
+
+Source Selection (HLS, MP4, HTTP/HTTPs)
+---------------------------------------
+The Brightcove Player SDK for iOS provides clients the ability to attach multiple url and delivery types (`BCOVSource`) to a single video (`BCOVVideo`). For example, if your videos are being retrieved by the catalog or playback service, there may be a mix of HLS or MP4 renditions for a single video, along with HTTP and HTTPs versions.  Which one of these sources that get selected is determined by a source selection block. The default source selection policy will select the first HLS `BCOVSource` on each `BCOVVideo`, regardless of scheme. 
+
+Source selection can be overridden by creating a `BCOVBasicSessionProviderOptions` and using it to create a `BCOVBasicSessionProvider`. For example:
+
+    BCOVPlayerSDKManager *sdkManager = [BCOVPlayerSDKManager sharedManager];
+    
+    BCOVBasicSessionProviderOptions *options = [[BCOVBasicSessionProviderOptions alloc] init];    
+    options.sourceSelectionPolicy = <policy>
+    
+    id<BCOVPlaybackSessionProvider> provider = [sdkManager createBasicSessionProviderWithOptions:options];
+    id<BCOVPlaybackController> playbackController [sdkManager createPlaybackControllerWithSessionProvider:provider viewStrategy:nil];
+
+
+If this default selection policy does not work for you, there are a few alternatives to selecting a source:
+
+* If retrieving videos from Video Cloud via the catalog service or playback service, before calling `-[BCOVPlaybackController setVideos:]`, use the update method on the `BCOVVideo` to only contain the source you want (see the "Values" section for more info).
+
+* If you prefer HTTPs HLS, `[BCOVBasicSourceSelectionPolicy sourceSelectionHLSWithScheme:kBCOVSourceURLSchemeHTTPS]` allows you to prefer a specific scheme. This will not convert non HTTP urls to HTTPs urls. If you choose to select HTTPs, ensure that your CDN is configured for HTTPs. If the CDN is configured for HTTPs, use `BCOVPlaybackService` instead of `BCOVCatalogService` to retrieve video/playlist metadata.
+
+* Similar to updating the video object, you may also implement your own source selection block.
+        
+        options.sourceSelectionPolicy = ^ BCOVSource *(BCOVVideo *video) {
+        
+           <Check video.sources for source>
+           <return source>
+
+        };
+
+Please be aware there are App store limitations regarding the use of MP4 videos.
+
 
 Obtaining Content and Ad playback Information
 --------------------------------------
@@ -190,7 +223,7 @@ To retrieve Brightcove assets you can rely on either playback service classes or
 
 ###Playback Service
 
-The playback service classes provide functionality for retrieving information about your Brightcove video assets via the [Brightcove CMS API][CMSAPI]. For most purposes, `BCOVPlaybackService` provides sufficient functionality to obtain **single video instances** with more rich meta information than catalog classes such as text tracks. The following is an example shows how to retrieve a video with a video ID. Note that there is also a method that can retrieve a video with that video's reference ID. The playback service classes do not currently support retrieving information about playlists.
+The playback service classes provide functionality for retrieving information about your Brightcove video assets via the [Brightcove CMS API][CMSAPI]. For most purposes, `BCOVPlaybackService` provides sufficient functionality to obtain videos and playlists with more rich meta information than catalog classes such as text tracks. The following is an example shows how to retrieve a video with a video ID. Note that there is also a method that can retrieve a video with that video's reference ID.
 
     [1] NSString *policyKey;  // (Brightcove Playback API policy Key)
         NSString *videoID;    // (ID of the video you wish to use)

@@ -1,10 +1,15 @@
+# 4.4.1
+### Additions and Improvements
+* Added `-[BCOVPlaybackService findPlaylistWithPlaylistID:completion:]` and `-[BCOVPlaybackService findPlaylistWithReferenceID:completion:]`.
+* Added `+[BCOVBasicSourceSelectionPolicy sourceSelectionHLSWithScheme:]` to prefer HTTPs sources. Please see README.md for more information on HTTPs and source selection.
+
 # 4.4.0
 ### Breaking Changes
 * Player is now paused when entering the background and therefore no longer resumes automatically when entering the foreground. This was added to work around an AVPlayer play state corruption when becoming active. If you would like to regain the original functionality, you will need to call play on the player when entering the foreground.
 
 ### Additions and Improvements
 * Added `-[BCOVPlaybackControllerAdsDelegate playbackController:didPauseAd:]` and `-[BCOVPlaybackControllerAdsDelegate playbackController:didResumeAd:]` to be implemented by ad session providers.
-* Updated to Data Collection API V2, which includes additional Brightcove Player metrics.
+* Updated to Analytics API v2, including quality of service metrics.
 * Updated internal ReactiveCocoa version from 2.3.1 to 2.5.
 * Internal improvements to support BCOVPlayerUI.
 

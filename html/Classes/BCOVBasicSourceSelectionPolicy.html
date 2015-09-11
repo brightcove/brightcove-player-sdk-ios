@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>BCOVCatalogOperation Class Reference</title>
+	<title>BCOVBasicSourceSelectionPolicy Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -54,15 +54,15 @@
 
 	
 	
-	<optgroup label="Properties">
+
+	
+	<optgroup label="Class Methods">
 		
-		<option value="//api/name/error">error</option>
+		<option value="//api/name/sourceSelectionHLS">+ sourceSelectionHLS</option>
 		
-		<option value="//api/name/result">result</option>
+		<option value="//api/name/sourceSelectionHLSWithScheme:">+ sourceSelectionHLSWithScheme:</option>
 		
 	</optgroup>
-	
-
 	
 
 	
@@ -79,16 +79,19 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">BCOVCatalogOperation Class Reference</h1>
+					<h1 class="title">BCOVBasicSourceSelectionPolicy Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<th>Inherits from</th>
-	<td>NSOperation</td>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Conforms to</th>
+	<td>NSCopying</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>BCOVCatalogService.h</td>
+	<td>BCOVBasicSessionProvider.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -98,10 +101,8 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>NSOperation subclass for <a href="../Classes/BCOVCatalogService.html">BCOVCatalogService</a> requests. This operation may
-only be started once (subsequent attempts to start the operation will have
-no effect), and will populate either the <a href="#//api/name/result"><code>result</code></a> or <a href="#//api/name/error"><code>error</code></a> property when
-it completes (but not both).</p>
+						<p>The basic source selection policy decides
+which source to select from a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object.</p>
 					</div>
 					
 					
@@ -117,8 +118,8 @@ it completes (but not both).</p>
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/result" title="result"></a>
-	<h3 class="method-title"><code><a href="#//api/name/result">&nbsp;&nbsp;result</a></code>
+	<a name="//api/name/sourceSelectionHLSWithScheme:" title="sourceSelectionHLSWithScheme:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sourceSelectionHLSWithScheme:">+&nbsp;sourceSelectionHLSWithScheme:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -128,18 +129,37 @@ it completes (but not both).</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The result of the request this operation performs.
-This property&rsquo;s value is <code>nil</code> until the operation succeeds, at which point
-it is set to the result of the operation.</p>
+				<p>Select the first video in HLS with the specified scheme.
+If no such source is found, the first HLS source with any scheme is returned.
+If no HLS sources are present, the first MP4 is returned.
+If none of the above is found, the first source of any kind is returned.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) id result</code></div>
+			<div class="method-subsection method-declaration"><code>+ (BCOVBasicSessionProviderSourceSelectionPolicy)sourceSelectionHLSWithScheme:(NSString *)<em>scheme</em></code></div>
 
 		    
 			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>scheme</code></th>
+						<td><p>The preferred scheme (kBCOVSourceURLSchemeHTTP or
+kBCOVSourceURLSchemeHTTPS) of the source URL.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
 
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A source selection policy that prefers HLS with the specified scheme.</p>
+			</div>
 			
 
 			
@@ -147,9 +167,10 @@ it is set to the result of the operation.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The result of the request this operation performs.
-This property&rsquo;s value is <code>nil</code> until the operation succeeds, at which point
-it is set to the result of the operation.</p>
+				<p>Select the first video in HLS with the specified scheme.
+If no such source is found, the first HLS source with any scheme is returned.
+If no HLS sources are present, the first MP4 is returned.
+If none of the above is found, the first source of any kind is returned.</p>
 			</div>
 			
 
@@ -160,15 +181,15 @@ it is set to the result of the operation.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+				<p><code class="declared-in-ref">BCOVBasicSessionProvider.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/error" title="error"></a>
-	<h3 class="method-title"><code><a href="#//api/name/error">&nbsp;&nbsp;error</a></code>
+	<a name="//api/name/sourceSelectionHLS" title="sourceSelectionHLS"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sourceSelectionHLS">+&nbsp;sourceSelectionHLS</a></code>
 </h3>
 
 	<div class="method-info">
@@ -178,18 +199,24 @@ it is set to the result of the operation.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The error that occurred when this operation executed.
-This property&rsquo;s value is <code>nil</code> until the operation fails, at which point it
-is set to the error that occurred.</p>
+				<p>Select the first video in HLS, regardless of scheme.
+If no HLS source is found, select the first source with a deliveryType of
+&ldquo;MP4&rdquo;. If neither is found, the first source of any kind is returned.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSError *error</code></div>
+			<div class="method-subsection method-declaration"><code>+ (BCOVBasicSessionProviderSourceSelectionPolicy)sourceSelectionHLS</code></div>
 
 		    
 			
 
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A source selection policy that prefers HLS over MP4.
+This is the default source selection policy.</p>
+			</div>
 			
 
 			
@@ -197,9 +224,9 @@ is set to the error that occurred.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The error that occurred when this operation executed.
-This property&rsquo;s value is <code>nil</code> until the operation fails, at which point it
-is set to the error that occurred.</p>
+				<p>Select the first video in HLS, regardless of scheme.
+If no HLS source is found, select the first source with a deliveryType of
+&ldquo;MP4&rdquo;. If neither is found, the first source of any kind is returned.</p>
 			</div>
 			
 
@@ -210,7 +237,7 @@ is set to the error that occurred.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+				<p><code class="declared-in-ref">BCOVBasicSessionProvider.h</code></p>
 			</div>
 			
 			

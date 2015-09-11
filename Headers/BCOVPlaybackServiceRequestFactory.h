@@ -38,22 +38,41 @@
 - (instancetype)initWithAccountId:(NSString *)accountId policyKey:(NSString *)policyKey  baseURLStr:(NSString *)baseURLStr NS_DESIGNATED_INITIALIZER;
 
 /**
+ * Constructs a request for a playlist by the playlist id.
+ *
+ * @param playlistID Id of the playlist to request.
+ * @param parameters parameters that will be added as URL parameters to the request.
+ * These parameters will override any default parameters that had been set.
+ * @return Built NSURLRequest that can be used to fetch the playlist.
+ */
+- (NSURLRequest *)requestForPlaylistWithPlaylistID:(NSString *)playlistId parameters:(NSDictionary *)parameters;
+
+/**
+ * Constructs a request for a playlist by the reference id.
+ *
+ * @param referenceId Reference id of the playlist to request.
+ * @param parameters parameters that will be added as URL parameters to the request.
+ * These parameters will override any default parameters that had been set.
+ * @return Built NSURLRequest that can be used to fetch the playlist.
+ */
+- (NSURLRequest *)requestForPlaylistWithReferenceID:(NSString *)referenceId parameters:(NSDictionary *)parameters;
+
+/**
  * Constructs a request for a video by the video id.
  *
  * @param videoId Id of the video to request.
  * @param parameters parameters that will be added as URL parameters to the request.
- * These paramters will override any default parameters that had been set.
+ * These parameters will override any default parameters that had been set.
  * @return Built NSURLRequest that can be used to fetch the video.
  */
 - (NSURLRequest *)requestForVideoWithVideoID:(NSString *)videoId parameters:(NSDictionary *)parameters;
 
 /**
- * Constructs a request for a video by the video id. This request will include
- * the video_fields specified by defaultVideoFields.
+ * Constructs a request for a video by the reference id.
  *
  * @param referenceId Reference id of the video to request.
  * @param parameters parameters that will be added as URL parameters to the request.
- * These paramters will override any default parameters that had been set.
+ * These parameters will override any default parameters that had been set.
  * @return Built NSURLRequest that can be used to fetch the video.
  */
 - (NSURLRequest *)requestForVideoWithReferenceID:(NSString *)referenceId parameters:(NSDictionary *)parameters;

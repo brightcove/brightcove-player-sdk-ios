@@ -67,7 +67,7 @@
  *
  * @param playlistId id of the playlist to request
  * @param parameters parameters that will be added as URL parameters to the request.
- * These paramters will override any default parameters that had been set
+ * These parameters will override any default parameters that had been set
  * @return built request that can be used to hit the Brightcove Media API
  */
 - (NSURLRequest *)requestPlaylistWithPlaylistID:(NSString *)playlistId parameters:(NSDictionary *)parameters;
@@ -87,7 +87,7 @@
  *
  * @param referenceId reference id of the playlist to request
  * @param parameters parameters that will be added as URL parameters to the request.
- * These paramters will override any default parameters that had been set
+ * These parameters will override any default parameters that had been set
  * @return built request that can be used to hit the Brightcove Media API
  */
 - (NSURLRequest *)requestPlaylistWithReferenceID:(NSString *)referenceId parameters:(NSDictionary *)parameters;
@@ -107,7 +107,7 @@
  *
  * @param videoId id of the video to request
  * @param parameters parameters that will be added as URL parameters to the request.
- * These paramters will override any default parameters that had been set
+ * These parameters will override any default parameters that had been set
  * @return built request that can be used to hit the Brightcove Media API
  */
 - (NSURLRequest *)requestVideoWithVideoID:(NSString *)videoId parameters:(NSDictionary *)parameters;
@@ -127,7 +127,7 @@
  *
  * @param referenceId reference id of the video to request
  * @param parameters parameters that will be added as URL parameters to the request.
- * These paramters will override any default parameters that had been set
+ * These parameters will override any default parameters that had been set
  * @return built request that can be used to hit the Brightcove Media API
  */
 - (NSURLRequest *)requestVideoWithReferenceID:(NSString *)referenceId parameters:(NSDictionary *)parameters;
