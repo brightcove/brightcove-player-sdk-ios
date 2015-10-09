@@ -79,6 +79,14 @@ extern NSString * const kBCOVPlaybackServiceErrorKeyAPIHTTPStatusCode;
 @interface BCOVPlaybackService : NSObject
 
 /**
+ * NSURLSession shared across all network calls to the BCOVPlaybackService.
+ * This object is created when the Playback Service is initialized.
+ * If you wish to use your own NSURLSession you can set it here.
+ * If set to nil, the default NSURLSession will be re-created.
+ */
+@property (nonatomic, strong) NSURLSession *sharedURLSession;
+
+/**
  * Initializes a BCOVPlaybackService. It uses the accountId and policyKey
  * to create a BCOVPlaybackServiceRequestFactory internally.
  *

@@ -56,11 +56,15 @@
 	
 	<optgroup label="Properties">
 		
+		<option value="//api/name/adId">adId</option>
+		
 		<option value="//api/name/beginTime">beginTime</option>
 		
 		<option value="//api/name/duration">duration</option>
 		
 		<option value="//api/name/properties">properties</option>
+		
+		<option value="//api/name/title">title</option>
 		
 	</optgroup>
 	
@@ -72,7 +76,7 @@
 		
 		<option value="//api/name/init">- init</option>
 		
-		<option value="//api/name/initWithBeginTime:duration:properties:">- initWithBeginTime:duration:properties:</option>
+		<option value="//api/name/initWithTitle:adId:beginTime:duration:properties:">- initWithTitle:adId:beginTime:duration:properties:</option>
 		
 		<option value="//api/name/isEqualToAd:">- isEqualToAd:</option>
 		
@@ -126,6 +130,98 @@
 
 						<div class="task-list">
 							<div class="section-method">
+	<a name="//api/name/title" title="title"></a>
+	<h3 class="method-title"><code><a href="#//api/name/title">&nbsp;&nbsp;title</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The title of the ad.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSString *title</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The title of the ad.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVAdvertising.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/adId" title="adId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/adId">&nbsp;&nbsp;adId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The id of the ad.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSString *adId</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The id of the ad.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVAdvertising.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/beginTime" title="beginTime"></a>
 	<h3 class="method-title"><code><a href="#//api/name/beginTime">&nbsp;&nbsp;beginTime</a></code>
 </h3>
@@ -264,8 +360,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/initWithBeginTime:duration:properties:" title="initWithBeginTime:duration:properties:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/initWithBeginTime:duration:properties:">&ndash;&nbsp;initWithBeginTime:duration:properties:</a></code>
+	<a name="//api/name/initWithTitle:adId:beginTime:duration:properties:" title="initWithTitle:adId:beginTime:duration:properties:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithTitle:adId:beginTime:duration:properties:">&ndash;&nbsp;initWithTitle:adId:beginTime:duration:properties:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -280,13 +376,18 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (instancetype)initWithBeginTime:(CMTime)<em>beginTime</em> duration:(CMTime)<em>duration</em> properties:(NSDictionary *)<em>properties</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithTitle:(NSString *)<em>title</em> adId:(NSString *)<em>adId</em> beginTime:(CMTime)<em>beginTime</em> duration:(CMTime)<em>duration</em> properties:(NSDictionary *)<em>properties</em></code></div>
 
 		    
 			
 			<div class="method-subsection arguments-section parameters">
 				<h4 class="method-subtitle parameter-title">Parameters</h4>
 				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>title</code></th>
+						<td><p>The <a href="#//api/name/title">title</a> of the ad.</p></td>
+					</tr>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>beginTime</code></th>
@@ -301,6 +402,11 @@
 					<tr>
 						<th scope="row" class="argument-name"><code>properties</code></th>
 						<td><p>The <a href="#//api/name/properties">properties</a> of the ad.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>adID</code></th>
+						<td><p>The id of the ad.</p></td>
 					</tr>
 				
 				</table>
@@ -436,7 +542,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2015 Brightcove. All rights reserved. Updated: 2015-09-10</p>
+						<p class="copyright">Copyright &copy; 2015 Brightcove. All rights reserved. Updated: 2015-10-08</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>

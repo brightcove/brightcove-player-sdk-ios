@@ -64,6 +64,16 @@
 @interface BCOVAd : NSObject
 
 /**
+ * The title of the ad.
+ */
+@property (nonatomic, readonly, copy) NSString *title;
+
+/**
+ * The id of the ad.
+ */
+@property (nonatomic, readonly, copy) NSString *adId;
+
+/**
  * The begin time of the ad.
  */
 @property (nonatomic, readonly) CMTime beginTime;
@@ -81,12 +91,14 @@
 /**
  * This is the designated initializer. It creates an ad.
  *
+ * @param title The title of the ad.
+ * @param adID The id of the ad.
  * @param beginTime The time in the video in which the ad will play.
  * @param duration The duration of the ad.
  * @param properties The properties of the ad.
  * @return An initialized ad.
  */
-- (instancetype)initWithBeginTime:(CMTime)beginTime duration:(CMTime)duration properties:(NSDictionary *)properties;
+- (instancetype)initWithTitle:(NSString *)title adId:(NSString *)adId beginTime:(CMTime)beginTime duration:(CMTime)duration properties:(NSDictionary *)properties NS_DESIGNATED_INITIALIZER;
 
 /**
  * Returns YES if `ad` is equivalent to this instance.
@@ -249,6 +261,6 @@
 
 @interface BCOVAd (Unavailable)
 
-- (instancetype)init __attribute__((unavailable("Use `-[BCOVAd initwithBeginTime:duration:properties:]` instead.")));
+- (instancetype)init __attribute__((unavailable("Use `-[BCOVAd initWithTitle:adId:beginTime:duration:properties:]` instead.")));
 
 @end

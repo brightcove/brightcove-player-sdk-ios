@@ -42,12 +42,19 @@
 
 @end
 
-
 /**
  * The BCCatalog class provides asynchronous methods for retrieving information
  * about videos and playlists from Brightcove’s Media API services.
  */
 @interface BCOVCatalogService : NSObject
+
+/**
+ * NSURLSession shared across all network calls to the BCOVCatalogService.
+ * This object is created when the Catalog Service is initialized.
+ * If you wish to use your own NSURLSession you can set it here.
+ * If set to nil, the default NSURLSession will be re-created.
+ */
+@property (nonatomic, strong) NSURLSession *sharedURLSession;
 
 /**
  * The factory used to construct media API requests

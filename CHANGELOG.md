@@ -1,3 +1,10 @@
+# 4.4.2
+### Additions and Improvements
+* Fixed an issue where calling `-[BCOVPlaybackController setVideos:nil]` didn't clear out the player correctly.
+* Fixed a crash in `BCOVAnalyticsSession`.
+* Updated internal network calls to use NSURLSession instead of NSURLConnection.
+* `BCOVPlaybackService` now allows you to override the NSURLSession used for requests, by setting the `sharedURLSession` property.
+
 # 4.4.1
 ### Additions and Improvements
 * Added `-[BCOVPlaybackService findPlaylistWithPlaylistID:completion:]` and `-[BCOVPlaybackService findPlaylistWithReferenceID:completion:]`.
