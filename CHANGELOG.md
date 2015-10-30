@@ -1,3 +1,6 @@
+# 4.4.3
+* Introduce `kBCOVPlaybackSessionLifecycleEventWillPauseForAd` event to be send on the lifecycle delegate by ad plugins.
+
 # 4.4.2
 ### Additions and Improvements
 * Fixed an issue where calling `-[BCOVPlaybackController setVideos:nil]` didn't clear out the player correctly.

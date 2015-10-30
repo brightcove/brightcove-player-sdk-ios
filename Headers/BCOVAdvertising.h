@@ -14,6 +14,12 @@
 
 
 /**
+ *  Sent when the content video will be paused to play back an ad.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventWillPauseForAd;
+
+
+/**
  * This object represents a sequence of ads intended to be viewed in sequence,
  * at the same point in the video.
  */
