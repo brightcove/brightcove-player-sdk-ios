@@ -293,22 +293,22 @@ Here's an example of a more sensible view strategy implementation:
         // Create some custom controls for the video view,
         // and compose both into a container view.
         UIView<BCOVPlaybackSessionConsumer> *myControlsView = [[MyControlsView alloc] init];
-        UIView *controlsAndVideo = [[UIView alloc] init];
-        [controlsAndVideo addSubview:videoView];
-        [controlsAndVideo addSubview:myControls];
+        UIView *controlsAndVideoView = [[UIView alloc] init];
+        [controlsAndVideoView addSubview:videoView];
+        [controlsAndVideoView addSubview:myControlsView];
 
         // Compose the container with an advertising view
         // into another container view.
         UIView<BCOVPlaybackSessionConsumer> *adView = [[SomeAdPluginView alloc] init];
-        UIView *adViewAndVideo = [[UIView alloc] init];
-        [adViewAndVideo addSubview:controlsAndVideoContainer];
-        [adViewAndVideo addSubview:adView];
+        UIView *adAndVideoView = [[UIView alloc] init];
+        [adAndVideoView addSubview:controlsAndVideoView];
+        [adAndVideoView addSubview:adView];
 
-        [playbackController addSessionConsumer:myControls];
+        [playbackController addSessionConsumer:myControlsView];
         [playbackController addSessionConsumer:adView];
 
         // This container view will become `playbackController.view`.
-        return adViewAndVideo;
+        return adAndVideoView;
 
     };
 
