@@ -1,32 +1,58 @@
-# Brightcove Player SDK for iOS, version 4.4.3.220
+# Brightcove Player SDK for iOS, version 5.0.0.242
 
 Supported Platforms
 ===================
 
-Supports iOS 7.0 and above.
+iOS 7.0 and above.  
+tvOS 9.0 and above.
 
 Installation
 ============
+The Brightcove Player SDK provides two installation packages for iOS, a static library framework and a dynamic framework. The static library target supports deployment on iOS 7 while the dynamic framework only supports iOS 8 and above.
 
-You can use [Cocoapods][cocoapods] to add the Brightcove Player SDK to your project.  You can find the latest `Brightcove-Player-SDK` podspec [here][podspecs].
+The Brightcove Player SDK provides a dynamic framework to support tvOS 9.0 and above.
+
+CocoaPods
+--------------
+
+You can use [CocoaPods][cocoapods] to add the Brightcove Player SDK to your project. You can find the latest `Brightcove-Player-SDK` podspec [here][podspecs]. The podspec supports both iOS and tvOS. CocoaPods 0.39 or newer is required.
+
+Specifying the default pod `Brightcove-Player-SDK` will install the static library framework. To install the dynamic framework, declare the pod with the `dynamic` subspec: `Brightcove-Player-SDK/dynamic`
+
+Static Framework example:
+
+    pod 'Brightcove-Player-SDK'
+    
+Dynamic Framework example:
+
+    pod 'Brightcove-Player-SDK/dynamic'    
+
+Manual
+--------------
 
 To add the Brightcove Player SDK to your project manually:
 
-1. Download the latest zip'ed release from our [release page][release].
-2. Add the contents of Library and Headers to the project.
-3. On the "Build Phases" tab of your application target, add the following to the "Link
-    Binary With Libraries" phase:
+1. Download the latest zipped release from our [release page][release].
+2. Add the `BrightcovePlayerSDK.framework` to your project.
+3. On the "Build Settings" tab of your application target, ensure that the "Framework Search Paths" include the path to the framework. This should have been done automatically unless the framework is stored under a different root directory than your project.
+4. On the "General" tab of your application target, add the following to the "Link
+    Binary With Libraries" section:
     * `AVFoundation`
     * `CoreMedia`
     * `MediaPlayer`
-    * `libBCOVPlayerSDK.a`
-4. On the "Build Settings" tab of your application target:
-    * Ensure that Brightcove Player SDK headers are in your application's "Header Search Path".
-    * Add `-ObjC` to the "Other Linker Flags" build setting.
+    * `BrightcovePlayerSDK.framework`  
+5. (Dynamic Framework only) On the "General" tab of your application target, add 'BrightcovePlayerSDK.framework' to the "Embedded Binary" section.
+6. (Dynamic Framework only) On the "Build Phases" tab, add a "Run Script" phase with the command `bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh`. Check "Run script only when installing". This will remove unneeded architectures from the build, which is important for App Store submission. ([rdar://19209161][19209161])
+7. (Static Framework only) On the "Build Settings" tab of your application target, add `-ObjC` to the "Other Linker Flags" build setting.
+
+Imports
+--------------
+The Brightcove Player SDK for iOS can be imported into code a few different ways; `@import BrightcovePlayerSDK;`, `#import <BrightcovePlayerSDK/BrightcovePlayerSDK.h>` or `#import <BrightcovePlayerSDK/[specific class].h>`.
     
 [cocoapods]: http://cocoapods.org
 [podspecs]: https://github.com/CocoaPods/Specs/tree/master/Specs/Brightcove-Player-SDK
 [release]: https://github.com/brightcove/brightcove-player-sdk-ios/releases
+[19209161]: https://openradar.appspot.com/19209161
 
 Quick Start
 ===========
@@ -37,6 +63,7 @@ Playing video with the Brightcove Player SDK for iOS, in less than 20 lines of c
     
     BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
     id<BCOVPlaybackController> controller = [manager createPlaybackControllerWithViewStrategy:nil];
+    self.controller = controller; //store this to a strong property
     [self.view addSubview:controller.view];  
      
     BCOVCatalogService *catalog = [[BCOVCatalogService alloc] initWithToken:token];
@@ -71,6 +98,12 @@ In addition to the playback functionality provided by the classes described abov
 [provider]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSessionProvider.h
 [catalog]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVCatalogService.h
 [requestfactory]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVMediaRequestFactory.h
+
+Play, Pause, and Seek
+-------------------------------
+The Brightcove Player SDK for iOS provides play, pause, and seek methods on the `BCOVPlaybackController`. **It is important to use these methods instead of using the AVPlayer equivalent.** In their default implementations, these objects forward the calls directly to the corresponding method on the AVPlayer. However, if you are using plugins, they may override the default behavior to add functionality. For example, if using an advertising plugin, calling `[BCOVPlaybackController play]` the first time might cause pre-roll to play before starting the content. To find out more about how a plugin may override the default behavior, please refer to each plugin README.md or by checking for a category extension on `BCOVSessionProviderExtension` that the plugin may add.
+
+*Calling play, pause, or seek on the AVPlayer directly may cause undefined behavior.*
 
 Preloading videos
 -------------------------------
@@ -131,15 +164,15 @@ Obtaining Content and Ad playback Information
 --------------------------------------
 The Brightcove Player SDK for iOS provides two mechanisms for obtaining playback information. The playback controller provides a delegate property that implements [`BCOVPlaybackControllerDelegate`][delegate]. A delegate can implement these optional methods to get notified of playback metadata like progress, duration changes, and other events. If an ad plugin is installed, it may also use this delegate to provide information about [ad playback][adplayback]. The [lifecycle event][lifecycle] delegate method provides events to signal changes in playback state. For example, when a player goes from the paused state to the playing state, the lifecycle event delegate method will be called with the `kBCOVPlaybackSessionLifecycleEventPlay` event. The default Lifecycle events are declared in [`BCOVPlaybackSession`][lifecycleevents]. Plugins provided by Brightcove add additional lifecycle events which are defined in each plugin.
 
-[adplayback]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVAdvertising.h#L102-L155
-[lifecycle]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L407-L419
+[adplayback]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVAdvertising.h#L120-L192
+[lifecycle]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L363-L488
 [lifecycleevents]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h
 
 The playback controller allows for a single delegate. In many cases, this will be enough to retrieve information; the delegate implementations can disseminate values and events to different parts of the app as necessary. In cases where multiple delegates would be required, as is the case when developing a plugin, the [`BCOVPlaybackSessionConsumer`][consumer] delegates provide equivalent functionality to the [`BCOVPlaybackControllerDelegate`][delegate] methods, including [ad data][adconsumer].
 
-[consumer]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L201-L306
-[adconsumer]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVAdvertising.h#L158-L206
-[delegate]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L309-L421
+[consumer]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L243-L360
+[adconsumer]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVAdvertising.h#L195-L259
+[delegate]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L339-L464
 
 Here is an example of how one might use `BCOVPlaybackSessionConsumer` to create an analytics plugin:
 
@@ -293,22 +326,22 @@ Here's an example of a more sensible view strategy implementation:
         // Create some custom controls for the video view,
         // and compose both into a container view.
         UIView<BCOVPlaybackSessionConsumer> *myControlsView = [[MyControlsView alloc] init];
-        UIView *controlsAndVideo = [[UIView alloc] init];
-        [controlsAndVideo addSubview:videoView];
-        [controlsAndVideo addSubview:myControls];
+        UIView *controlsAndVideoView = [[UIView alloc] init];
+        [controlsAndVideoView addSubview:videoView];
+        [controlsAndVideoView addSubview:myControlsView];
 
         // Compose the container with an advertising view
         // into another container view.
         UIView<BCOVPlaybackSessionConsumer> *adView = [[SomeAdPluginView alloc] init];
-        UIView *adViewAndVideo = [[UIView alloc] init];
-        [adViewAndVideo addSubview:controlsAndVideoContainer];
-        [adViewAndVideo addSubview:adView];
+        UIView *adAndVideoView = [[UIView alloc] init];
+        [adAndVideoView addSubview:controlsAndVideoView];
+        [adAndVideoView addSubview:adView];
 
-        [playbackController addSessionConsumer:myControls];
+        [playbackController addSessionConsumer:myControlsView];
         [playbackController addSessionConsumer:adView];
 
         // This container view will become `playbackController.view`.
-        return adViewAndVideo;
+        return adAndVideoView;
 
     };
 
@@ -331,11 +364,13 @@ This is a common symptom of having called a main thread-only UIKit or AVFoundati
 
 **How do I customize the controls?**
 
-The `BCOVPlayerSDKManager` provides a view strategy that creates rudimentary controls for development purposes, but they are not designed for extension or modification. To differentiate your app and ensure a unique user experience, we recommend that you create your own custom controls from scratch. For most cases, you can add the `BCOVPlaybackController.view` to a UIView behind your own custom controls, and implement the `BCOVPlaybackControllerDelegate` methods to update the controls in response to various playback events. If your needs are more complex (such as if you are integrating with an advertising plugin) then you can implement a view strategy as described in the section on view strategies, above.
+The `BCOVPlayerSDKManager` provides a view strategy that creates rudimentary controls for development purposes, but they are not designed for extension or modification. To differentiate your app and ensure a unique user experience, we recommend that you use the [BCOVPlayerUI project][playerui] or create your own custom controls from scratch. In custom cases, you can add the `BCOVPlaybackController.view` to a UIView behind your own custom controls, and implement the `BCOVPlaybackControllerDelegate` methods to update the controls in response to various playback events. If your needs are more complex (such as if you are integrating with an advertising plugin) then you can implement a view strategy as described in the section on view strategies, above.
 
-**How do I retrieve data from the Brightcove Media API for which there is no `BCOVCatalogService` method?**
+[playerui]: https://github.com/brightcove/brightcove-player-sdk-ios-player-ui
 
-The catalog service offers methods for the most common Brightcove Media API operations, but there are [other operations][media] available. To leverage them, you will need to issue an HTTP request and then process the response. You can use a standard NSURLRequest to do this, or you can leverage a [3rd-party HTTP API][afnet] if you find that easier. In either case, when you receive the response, you can use a standard JSON parser (like NSJSONSerialization) to convert the response into a NSDictionary, and then construct the appropriate value classes from the data in the NSDictionary.
+**How do I retrieve data from the Brightcove Media API for which there is no `BCOVCatalogService` or `BCOVPlaybackService` method?**
+
+The catalog and playback services offers methods for the most common Brightcove Media API operations, but there are [other operations][media] available. To leverage them, you will need to issue an HTTP request and then process the response. You can use a standard NSURLRequest to do this, or you can leverage a [3rd-party HTTP API][afnet] if you find that easier. In either case, when you receive the response, you can use a standard JSON parser (like NSJSONSerialization) to convert the response into a NSDictionary, and then construct the appropriate value classes from the data in the NSDictionary.
 
 [media]: http://docs.brightcove.com/en/video-cloud/media/
 [afnet]: http://afnetworking.com

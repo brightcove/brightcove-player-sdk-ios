@@ -1,3 +1,16 @@
+# 5.0.0
+### Breaking Changes
+* Calls to `[AVPlayer play]`, `[AVPlayer pause]`, and `[AVPlayer seekToTime:]` must be changed to call the corresponding method on the `BCOVPlaybackController`. Failure to do so will cause undefined behavior.
+* The static library distributable has been removed. If installed manually (not CocoaPods), you will need to remove libBCOVPlayerSDK.a and its headers from the Header Search Path. Please see README.md for new install options (including a static library framework).
+* Header `BCOVPlayerSDK.h` has been removed. Please see README.md for new import options.
+
+### Additions and Improvements
+* tvOS support (including analytics). 
+* Bitcode support.
+* The SDK is now distributed as a static or dynamic framework.
+* `BCOVPlaybackController` now offers play, pause, and seek methods.
+* Internal improvements.
+
 # 4.4.3
 * Introduce `kBCOVPlaybackSessionLifecycleEventWillPauseForAd` event to be send on the lifecycle delegate by ad plugins.
 

@@ -44,40 +44,62 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 4.4.3.220</h1>
+						<h1>Brightcove Player SDK for iOS, version 5.0.0.242</h1>
 
 <h1>Supported Platforms</h1>
 
-<p>Supports iOS 7.0 and above.</p>
+<p>iOS 7.0 and above.<br/>
+tvOS 9.0 and above.</p>
 
 <h1>Installation</h1>
 
-<p>You can use <a href="http://cocoapods.org">Cocoapods</a> to add the Brightcove Player SDK to your project.  You can find the latest <code>Brightcove-Player-SDK</code> podspec <a href="https://github.com/CocoaPods/Specs/tree/master/Specs/Brightcove-Player-SDK">here</a>.</p>
+<p>The Brightcove Player SDK provides two installation packages for iOS, a static library framework and a dynamic framework. The static library target supports deployment on iOS 7 while the dynamic framework only supports iOS 8 and above.</p>
+
+<p>The Brightcove Player SDK provides a dynamic framework to support tvOS 9.0 and above.</p>
+
+<h2>CocoaPods</h2>
+
+<p>You can use <a href="http://cocoapods.org">CocoaPods</a> to add the Brightcove Player SDK to your project. You can find the latest <code>Brightcove-Player-SDK</code> podspec <a href="https://github.com/CocoaPods/Specs/tree/master/Specs/Brightcove-Player-SDK">here</a>. The podspec supports both iOS and tvOS. CocoaPods 0.39 or newer is required.</p>
+
+<p>Specifying the default pod <code>Brightcove-Player-SDK</code> will install the static library framework. To install the dynamic framework, declare the pod with the <code>dynamic</code> subspec: <code>Brightcove-Player-SDK/dynamic</code></p>
+
+<p>Static Framework example:</p>
+
+<pre><code>pod 'Brightcove-Player-SDK'
+</code></pre>
+
+<p>Dynamic Framework example:</p>
+
+<pre><code>pod 'Brightcove-Player-SDK/dynamic'    
+</code></pre>
+
+<h2>Manual</h2>
 
 <p>To add the Brightcove Player SDK to your project manually:</p>
 
 <ol>
-<li>Download the latest zip'ed release from our <a href="https://github.com/brightcove/brightcove-player-sdk-ios/releases">release page</a>.</li>
-<li>Add the contents of Library and Headers to the project.</li>
-<li>On the &ldquo;Build Phases&rdquo; tab of your application target, add the following to the &ldquo;Link
- Binary With Libraries&rdquo; phase:
+<li>Download the latest zipped release from our <a href="https://github.com/brightcove/brightcove-player-sdk-ios/releases">release page</a>.</li>
+<li>Add the <code>BrightcovePlayerSDK.framework</code> to your project.</li>
+<li>On the &ldquo;Build Settings&rdquo; tab of your application target, ensure that the &ldquo;Framework Search Paths&rdquo; include the path to the framework. This should have been done automatically unless the framework is stored under a different root directory than your project.</li>
+<li>On the &ldquo;General&rdquo; tab of your application target, add the following to the &ldquo;Link
+ Binary With Libraries&rdquo; section:
 
 <ul>
 <li><code>AVFoundation</code></li>
 <li><code>CoreMedia</code></li>
 <li><code>MediaPlayer</code></li>
-<li><code>libBCOVPlayerSDK.a</code></li>
+<li><code>BrightcovePlayerSDK.framework</code></li>
 </ul>
 </li>
-<li>On the &ldquo;Build Settings&rdquo; tab of your application target:
-
-<ul>
-<li>Ensure that Brightcove Player SDK headers are in your application&rsquo;s &ldquo;Header Search Path&rdquo;.</li>
-<li>Add <code>-ObjC</code> to the &ldquo;Other Linker Flags&rdquo; build setting.</li>
-</ul>
-</li>
+<li>(Dynamic Framework only) On the &ldquo;General&rdquo; tab of your application target, add &lsquo;BrightcovePlayerSDK.framework&rsquo; to the &ldquo;Embedded Binary&rdquo; section.</li>
+<li>(Dynamic Framework only) On the &ldquo;Build Phases&rdquo; tab, add a &ldquo;Run Script&rdquo; phase with the command <code>bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh</code>. Check &ldquo;Run script only when installing&rdquo;. This will remove unneeded architectures from the build, which is important for App Store submission. (<a href="https://openradar.appspot.com/19209161">rdar://19209161</a>)</li>
+<li>(Static Framework only) On the &ldquo;Build Settings&rdquo; tab of your application target, add <code>-ObjC</code> to the &ldquo;Other Linker Flags&rdquo; build setting.</li>
 </ol>
 
+
+<h2>Imports</h2>
+
+<p>The Brightcove Player SDK for iOS can be imported into code a few different ways; <code>@import BrightcovePlayerSDK;</code>, <code>#import &lt;BrightcovePlayerSDK/BrightcovePlayerSDK.h&gt;</code> or <code>#import &lt;BrightcovePlayerSDK/[specific class].h&gt;</code>.</p>
 
 <h1>Quick Start</h1>
 
@@ -88,6 +110,7 @@ NSString *playlistID; // (ID of the playlist you wish to use)
 
 BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
 id&lt;BCOVPlaybackController&gt; controller = [manager createPlaybackControllerWithViewStrategy:nil];
+self.controller = controller; //store this to a strong property
 [self.view addSubview:controller.view];  
 
 BCOVCatalogService *catalog = [[BCOVCatalogService alloc] initWithToken:token];
@@ -116,6 +139,12 @@ BCOVCatalogService *catalog = [[BCOVCatalogService alloc] initWithToken:token];
 <p>There are two other elements of the playback controller: a <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSessionProvider.h">[<code>BCOVPlaybackSessionProvider</code>](Protocols/BCOVPlaybackSessionProvider.html)</a>, and a list of [<code>BCOVPlaybackSessionConsumer</code>][consumer]s. As the name would suggest, the playback session provider is responsible for creating playback sessions and delivering them to the playback controller. The playback controller then delivers the session to each of the playback session consumers in the list. Both the session provider and session consumer APIs are designed for use by plugin developers, and are not detailed in this document.</p>
 
 <p>In addition to the playback functionality provided by the classes described above, there are a handful of value classes. These are used to hold data specific to the Player SDK for iOS. There are also <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVCatalogService.h">[<code>BCOVCatalogService</code>](Classes/BCOVCatalogService.html)</a> and <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVMediaRequestFactory.h">[<code>BCOVMediaRequestFactory</code>](Classes/BCOVMediaRequestFactory.html)</a>, which offer functionality for querying content remotely stored in your Brightcove Video Cloud account. Each of these is described in more detail in its own section below.</p>
+
+<h2>Play, Pause, and Seek</h2>
+
+<p>The Brightcove Player SDK for iOS provides play, pause, and seek methods on the <code>BCOVPlaybackController</code>. <strong>It is important to use these methods instead of using the AVPlayer equivalent.</strong> In their default implementations, these objects forward the calls directly to the corresponding method on the AVPlayer. However, if you are using plugins, they may override the default behavior to add functionality. For example, if using an advertising plugin, calling <code>[BCOVPlaybackController play]</code> the first time might cause pre-roll to play before starting the content. To find out more about how a plugin may override the default behavior, please refer to each plugin README.md or by checking for a category extension on <a href="Classes/BCOVSessionProviderExtension.html"><code>BCOVSessionProviderExtension</code></a> that the plugin may add.</p>
+
+<p><em>Calling play, pause, or seek on the AVPlayer directly may cause undefined behavior.</em></p>
 
 <h2>Preloading videos</h2>
 
@@ -295,7 +324,7 @@ id&lt;BCOVPlaybackController&gt; playbackController [sdkManager createPlaybackCo
 					<footer>
 						<div class="footer-copyright">
 							
-							<p class="copyright">Copyright &copy; 2015 Brightcove. All rights reserved. Updated: 2015-10-30</p>
+							<p class="copyright">Copyright &copy; 2015 Brightcove. All rights reserved. Updated: 2015-11-19</p>
 							
 							
 							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
