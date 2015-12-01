@@ -24,6 +24,7 @@ extern NSString * const kBCOVPlaybackSessionLifecycleEventResumeFail;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventEnd;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventTerminate;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventFail;
+extern NSString * const kBCOVPlaybackSessionLifecycleEventError;
 
 extern NSString * const kBCOVPlaybackSessionEventKeyError;
 

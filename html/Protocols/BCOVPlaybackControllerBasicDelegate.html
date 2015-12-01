@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>BCOVPlaybackControllerBasicDelegate Protocol Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">BCOVPlayerSDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Brightcove</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/playbackController:didAdvanceToPlaybackSession:">- playbackController:didAdvanceToPlaybackSession:</option>
+		
+		<option value="//api/name/playbackController:playbackSession:didChangeDuration:">- playbackController:playbackSession:didChangeDuration:</option>
+		
+		<option value="//api/name/playbackController:playbackSession:didChangeExternalPlaybackActive:">- playbackController:playbackSession:didChangeExternalPlaybackActive:</option>
+		
+		<option value="//api/name/playbackController:playbackSession:didChangeSeekableRanges:">- playbackController:playbackSession:didChangeSeekableRanges:</option>
+		
+		<option value="//api/name/playbackController:playbackSession:didPassCuePoints:">- playbackController:playbackSession:didPassCuePoints:</option>
+		
+		<option value="//api/name/playbackController:playbackSession:didProgressTo:">- playbackController:playbackSession:didProgressTo:</option>
+		
+		<option value="//api/name/playbackController:playbackSession:didReceiveLifecycleEvent:">- playbackController:playbackSession:didReceiveLifecycleEvent:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BCOVPlaybackControllerBasicDelegate Protocol Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Conforms to</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>BCOVPlaybackController.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Conform to this protocol to receive basic playback information for each session.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/playbackController:didAdvanceToPlaybackSession:" title="playbackController:didAdvanceToPlaybackSession:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:didAdvanceToPlaybackSession:">&ndash;&nbsp;playbackController:didAdvanceToPlaybackSession:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when the controller advances to a new playback session,
+which happens when <code>-advanceToNext</code> is called. When a delegate is set
+on a playback controller, this method is called with the most recently
+advanced-to playback session (where applicable).</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> didAdvanceToPlaybackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller receiving the new session.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session that was advanced.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when the controller advances to a new playback session,
+which happens when <code>-advanceToNext</code> is called. When a delegate is set
+on a playback controller, this method is called with the most recently
+advanced-to playback session (where applicable).</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackController:playbackSession:didChangeDuration:" title="playbackController:playbackSession:didChangeDuration:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:playbackSession:didChangeDuration:">&ndash;&nbsp;playbackController:playbackSession:didChangeDuration:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when a playback session&rsquo;s duration is updated. When a delegate is set
+on a playback controller, this method is called with the most recently updated
+duration for the session. A session duration can change as the media playback
+continues to load, as it is refined with more precise information.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em> didChangeDuration:(NSTimeInterval)<em>duration</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller to which this instance serves as delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session whose duration changed.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>duration</code></th>
+						<td><p>The most recently updated session duration.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when a playback session&rsquo;s duration is updated. When a delegate is set
+on a playback controller, this method is called with the most recently updated
+duration for the session. A session duration can change as the media playback
+continues to load, as it is refined with more precise information.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackController:playbackSession:didChangeExternalPlaybackActive:" title="playbackController:playbackSession:didChangeExternalPlaybackActive:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:playbackSession:didChangeExternalPlaybackActive:">&ndash;&nbsp;playbackController:playbackSession:didChangeExternalPlaybackActive:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when a playback session&rsquo;s external playback active status is updated.
+When a delegate is set on a playback controller, this method is called with the
+current external playback active status for the session.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em> didChangeExternalPlaybackActive:(BOOL)<em>externalPlaybackActive</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller to which this instance serves as delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session whose external playback status changed.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>externalPlaybackActive</code></th>
+						<td><p>Whether external playback is active.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when a playback session&rsquo;s external playback active status is updated.
+When a delegate is set on a playback controller, this method is called with the
+current external playback active status for the session.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackController:playbackSession:didPassCuePoints:" title="playbackController:playbackSession:didPassCuePoints:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:playbackSession:didPassCuePoints:">&ndash;&nbsp;playbackController:playbackSession:didPassCuePoints:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when a session&rsquo;s playhead passes cue points registered with its video.
+This will occur regardless of whether the playhead passes the cue point time
+for standard progress (playback), or seeking (forward or backward) through
+the media. When a delegate is set on a playback controller, this method will
+only be called for future cue point events (any events that have already
+occurred will not be reported).</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em> didPassCuePoints:(NSDictionary *)<em>cuePointInfo</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller to which this instance serves as delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session whose cue points were passed.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>cuePointInfo</code></th>
+						<td><p>A dictionary of information about the cue point event.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when a session&rsquo;s playhead passes cue points registered with its video.
+This will occur regardless of whether the playhead passes the cue point time
+for standard progress (playback), or seeking (forward or backward) through
+the media. When a delegate is set on a playback controller, this method will
+only be called for future cue point events (any events that have already
+occurred will not be reported).</p>
+
+<p>If multiple cue points are registered to a time or times that fall between
+the &ldquo;previous time&rdquo; and &ldquo;current time&rdquo; for a cue point event, all cue points
+after the &ldquo;previous time&rdquo; and before or on &ldquo;current time&rdquo; will be included
+in the cue point collection. Put differently, multiple cue points at the
+same time are aggregated into a single cue point event whose collection will
+contain all of those cue points. The most likely scenario in which this
+would happen is when seeking across a time range that includes multiple cue
+points (potentially at different times) &ndash; this will result in a single cue
+point event whose previous time is the point at which seek began, whose
+current time is the destination of the seek, and whose cue points are all of
+the cue points whose time fell within that range.</p>
+
+<p>The cuePointInfo dictionary will contain the following keys and values for
+each cue point event:</p>
+
+<p>kBCOVPlaybackSessionEventKeyPreviousTime: the progress interval immediately
+preceding the cue points for which this event was received.
+kBCOVPlaybackSessionEventKeyCurrentTime: the progress interval on or
+immediately after the cue points for which this event was received.
+kBCOVPlaybackSessionEventKeyCuePoints: the <a href="../Classes/BCOVCuePointCollection.html">BCOVCuePointCollection</a> of cue
+points for which this event was received.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackController:playbackSession:didProgressTo:" title="playbackController:playbackSession:didProgressTo:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:playbackSession:didProgressTo:">&ndash;&nbsp;playbackController:playbackSession:didProgressTo:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called with the playback session&rsquo;s playback progress. As the session&rsquo;s
+media plays, this method is called periodically with the latest progress
+interval. When a delegate is set on a playback controller, this method will
+only be called with progress information that has not yet occurred.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em> didProgressTo:(NSTimeInterval)<em>progress</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller to which this instance serves as delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session making progress.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>progress</code></th>
+						<td><p>The time interval of the session&rsquo;s current playback progress.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called with the playback session&rsquo;s playback progress. As the session&rsquo;s
+media plays, this method is called periodically with the latest progress
+interval. When a delegate is set on a playback controller, this method will
+only be called with progress information that has not yet occurred.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackController:playbackSession:didReceiveLifecycleEvent:" title="playbackController:playbackSession:didReceiveLifecycleEvent:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:playbackSession:didReceiveLifecycleEvent:">&ndash;&nbsp;playbackController:playbackSession:didReceiveLifecycleEvent:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when a playback session receives a lifecycle event. This method is
+called only for lifecycle events that occur after the delegate is set
+(previous lifecycle events will not be buffered/delivered to the delegate).</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em> didReceiveLifecycleEvent:(BCOVPlaybackSessionLifecycleEvent *)<em>lifecycleEvent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller to which this instance serves as delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session whose lifecycle events were received.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>lifecycleEvent</code></th>
+						<td><p>The lifecycle event received by the session.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when a playback session receives a lifecycle event. This method is
+called only for lifecycle events that occur after the delegate is set
+(previous lifecycle events will not be buffered/delivered to the delegate).</p>
+
+<p>The lifecycle event types are listed along with the
+<a href="../Classes/BCOVPlaybackSessionLifecycleEvent.html">BCOVPlaybackSessionLifecycleEvent</a> class.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackController:playbackSession:didChangeSeekableRanges:" title="playbackController:playbackSession:didChangeSeekableRanges:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:playbackSession:didChangeSeekableRanges:">&ndash;&nbsp;playbackController:playbackSession:didChangeSeekableRanges:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when a playback session&rsquo;s seekable ranges is updated. When a delegate
+is set on a playback controller, this method is called with the most recently
+updated seekable ranges for the session. A session seekable ranges can change
+as the media playback continues to load.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em> didChangeSeekableRanges:(NSArray *)<em>seekableRanges</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller to which this instance serves as delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session whose seekable ranges changed.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>seekableRanges</code></th>
+						<td><p>An array of NSValue about the most recently updated
+session seekableRanges.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when a playback session&rsquo;s seekable ranges is updated. When a delegate
+is set on a playback controller, this method is called with the most recently
+updated seekable ranges for the session. A session seekable ranges can change
+as the media playback continues to load.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2015 Brightcove. All rights reserved. Updated: 2015-12-01</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

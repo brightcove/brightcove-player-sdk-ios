@@ -1,3 +1,9 @@
+# 5.0.1
+### Additions and Improvements
+* Playing video in the background is supported by setting the new `allowsBackgroundAudioPlayback` property of the `BCOVPlaybackController` to `YES`. Please see README.md for usage details. 
+* Internal improvements.
+
+
 # 5.0.0
 ### Breaking Changes
 * Calls to `[AVPlayer play]`, `[AVPlayer pause]`, and `[AVPlayer seekToTime:]` must be changed to call the corresponding method on the `BCOVPlaybackController`. Failure to do so will cause undefined behavior.

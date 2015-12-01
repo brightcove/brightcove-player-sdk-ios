@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 5.0.0.242
+# Brightcove Player SDK for iOS, version 5.0.1.258
 
 Supported Platforms
 ===================
@@ -351,6 +351,15 @@ Again, for most use cases it should suffice to not use a view strategy at all. J
 
 There is one caveat to using a view strategy: you must not access the playback controller's `view` property from within the view strategy block. Since the block is being called *because* the playback controller's `view` property was accessed for the first time, accessing the `view` property again *within* the view strategy block could cause a rip in the fabric of space and time, and your program will crash.
 
+Playing Video In The Background
+-------------
+By default, when an iOS application is sent to the background, or the device is locked, iOS will pause any video that is playing. To change this behavior, set the `allowsBackgroundAudioPlayback` property of the `BCOVPlaybackController` object to `YES`. (The default value is `NO`, indicating playback will pause in the background.)
+
+You should also follow the guidelines set by Apple in [Technical Q&A QA1668](https://developer.apple.com/library/ios/qa/qa1668/_index.html) to set the proper background modes and audio session category for your app.
+
+It's important that the AVPlayerLayer be detached from the AVPlayer before the app is switched to the background (and reattached when the app returns to the foreground). The Brightcove Player SDK will handle this for you when `allowsBackgroundAudioPlayback` is set to `YES`.
+
+Finally, when playing background videos (and particularly when using playlists), you should use the iOS `MPRemoteCommandCenter` API to give the user playback control on the lock screen and in the control center. Note that `MPRemoteCommandCenter` is only available in iOS 7.1 and later; if you need to support iOS 7.0, you should use `UIApplication`'s `beginReceivingRemoteControlEvents` and `endReceivingRemoteControlEvents`.
 
 Frequently Asked Questions
 ==========================

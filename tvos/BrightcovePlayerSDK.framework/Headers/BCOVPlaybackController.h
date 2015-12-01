@@ -119,6 +119,13 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 @property (nonatomic, readonly, copy) id<BCOVMutableAnalytics> analytics;
 
 /**
+ * Allow playback of audio when the app has switched to the background.
+ *
+ * Default value is NO.
+ */
+@property (nonatomic, readwrite, assign) BOOL allowsBackgroundAudioPlayback;
+
+/**
  * Registers a session consumer with a container, to be notified of new
  * sessions. Added consumers will be retained by this container. If a session
  * already existed in the container at the time of subscription, the specified

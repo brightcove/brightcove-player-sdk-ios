@@ -38,7 +38,7 @@
 		</data>
 		<key>Headers/BCOVPlaybackController.h</key>
 		<data>
-		EfO5W7i2GBnXiDzTZO9G0aRTE2U=
+		Q5OpVt8Lt6EH7Gs2/HtKPXg7/IM=
 		</data>
 		<key>Headers/BCOVPlaybackService.h</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Headers/BCOVPlaybackSession.h</key>
 		<data>
-		XHC3aSZe5zTzUBmJ0fru0EZAtz4=
+		bqAF1VAGSjXO5G/qFs1GpCesc+I=
 		</data>
 		<key>Headers/BCOVPlaybackSessionProvider.h</key>
 		<data>
@@ -82,7 +82,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		nu03asNBmEAwXhWOevcMGR0l7RU=
+		hCremSoYwpDw3CKqMjcAB4K31hI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -90,7 +90,7 @@
 		</data>
 		<key>PrivateHeaders/AVPlayer+BCOVSignalSupport.h</key>
 		<data>
-		FkW8c5OXOQtcLxGqeCj8wYKp1TY=
+		5AdNNfhMI+JGNX9BUiqc2ceoMqc=
 		</data>
 		<key>PrivateHeaders/BCOVAnalytics.h</key>
 		<data>
@@ -122,7 +122,7 @@
 		</data>
 		<key>PrivateHeaders/BCOVBasicPlaybackSession.h</key>
 		<data>
-		PxAt10CnY/DJ4WFmCGzG8yG1b28=
+		UCbTc0Ff24yyEWgRZa1cu8ctuSE=
 		</data>
 		<key>PrivateHeaders/BCOVCatalogService+Private.h</key>
 		<data>
@@ -142,7 +142,11 @@
 		</data>
 		<key>PrivateHeaders/BCOVPlaybackSessionPrivate.h</key>
 		<data>
-		BhHHbr3M0i/gB77q3aOagCsL6Ss=
+		ZhlH1n71Amk3VxKcVKO0a8MogEk=
+		</data>
+		<key>PrivateHeaders/BCOVPlaybackSessionProviderPrivate.h</key>
+		<data>
+		2w7BGu3xFDQ4Xdnn5BAifN6BIDI=
 		</data>
 		<key>PrivateHeaders/BCOVVideoContainerView.h</key>
 		<data>
@@ -201,7 +205,7 @@
 		</data>
 		<key>Headers/BCOVPlaybackController.h</key>
 		<data>
-		EfO5W7i2GBnXiDzTZO9G0aRTE2U=
+		Q5OpVt8Lt6EH7Gs2/HtKPXg7/IM=
 		</data>
 		<key>Headers/BCOVPlaybackService.h</key>
 		<data>
@@ -213,7 +217,7 @@
 		</data>
 		<key>Headers/BCOVPlaybackSession.h</key>
 		<data>
-		XHC3aSZe5zTzUBmJ0fru0EZAtz4=
+		bqAF1VAGSjXO5G/qFs1GpCesc+I=
 		</data>
 		<key>Headers/BCOVPlaybackSessionProvider.h</key>
 		<data>
@@ -249,7 +253,7 @@
 		</data>
 		<key>PrivateHeaders/AVPlayer+BCOVSignalSupport.h</key>
 		<data>
-		FkW8c5OXOQtcLxGqeCj8wYKp1TY=
+		5AdNNfhMI+JGNX9BUiqc2ceoMqc=
 		</data>
 		<key>PrivateHeaders/BCOVAnalytics.h</key>
 		<data>
@@ -281,7 +285,7 @@
 		</data>
 		<key>PrivateHeaders/BCOVBasicPlaybackSession.h</key>
 		<data>
-		PxAt10CnY/DJ4WFmCGzG8yG1b28=
+		UCbTc0Ff24yyEWgRZa1cu8ctuSE=
 		</data>
 		<key>PrivateHeaders/BCOVCatalogService+Private.h</key>
 		<data>
@@ -301,7 +305,11 @@
 		</data>
 		<key>PrivateHeaders/BCOVPlaybackSessionPrivate.h</key>
 		<data>
-		BhHHbr3M0i/gB77q3aOagCsL6Ss=
+		ZhlH1n71Amk3VxKcVKO0a8MogEk=
+		</data>
+		<key>PrivateHeaders/BCOVPlaybackSessionProviderPrivate.h</key>
+		<data>
+		2w7BGu3xFDQ4Xdnn5BAifN6BIDI=
 		</data>
 		<key>PrivateHeaders/BCOVVideoContainerView.h</key>
 		<data>
