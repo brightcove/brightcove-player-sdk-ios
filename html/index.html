@@ -44,7 +44,7 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 5.0.1.258</h1>
+						<h1>Brightcove Player SDK for iOS, version 5.0.2.267</h1>
 
 <h1>Supported Platforms</h1>
 
@@ -59,7 +59,7 @@ tvOS 9.0 and above.</p>
 
 <h2>CocoaPods</h2>
 
-<p>You can use <a href="http://cocoapods.org">CocoaPods</a> to add the Brightcove Player SDK to your project. You can find the latest <code>Brightcove-Player-SDK</code> podspec <a href="https://github.com/CocoaPods/Specs/tree/master/Specs/Brightcove-Player-SDK">here</a>. The podspec supports both iOS and tvOS. CocoaPods 0.39 or newer is required.</p>
+<p>You can use <a href="[http://cocoapods.org](http://cocoapods.org)">CocoaPods</a> to add the Brightcove Player SDK to your project. You can find the latest <code>Brightcove-Player-SDK</code> podspec <a href="[https://github.com/CocoaPods/Specs/tree/master/Specs/Brightcove-Player-SDK](https://github.com/CocoaPods/Specs/tree/master/Specs/Brightcove-Player-SDK)">here</a>. The podspec supports both iOS and tvOS. CocoaPods 0.39 or newer is required.</p>
 
 <p>Specifying the default pod <code>Brightcove-Player-SDK</code> will install the static library framework. To install the dynamic framework, declare the pod with the <code>dynamic</code> subspec: <code>Brightcove-Player-SDK/dynamic</code></p>
 
@@ -78,7 +78,7 @@ tvOS 9.0 and above.</p>
 <p>To add the Brightcove Player SDK to your project manually:</p>
 
 <ol>
-<li>Download the latest zipped release from our <a href="https://github.com/brightcove/brightcove-player-sdk-ios/releases">release page</a>.</li>
+<li>Download the latest zipped release from our <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/releases](https://github.com/brightcove/brightcove-player-sdk-ios/releases)">release page</a>.</li>
 <li>Add the <code>BrightcovePlayerSDK.framework</code> to your project.</li>
 <li>On the &ldquo;Build Settings&rdquo; tab of your application target, ensure that the &ldquo;Framework Search Paths&rdquo; include the path to the framework. This should have been done automatically unless the framework is stored under a different root directory than your project.</li>
 <li>On the &ldquo;General&rdquo; tab of your application target, add the following to the &ldquo;Link
@@ -92,7 +92,7 @@ tvOS 9.0 and above.</p>
 </ul>
 </li>
 <li>(Dynamic Framework only) On the &ldquo;General&rdquo; tab of your application target, add &lsquo;BrightcovePlayerSDK.framework&rsquo; to the &ldquo;Embedded Binary&rdquo; section.</li>
-<li>(Dynamic Framework only) On the &ldquo;Build Phases&rdquo; tab, add a &ldquo;Run Script&rdquo; phase with the command <code>bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh</code>. Check &ldquo;Run script only when installing&rdquo;. This will remove unneeded architectures from the build, which is important for App Store submission. (<a href="https://openradar.appspot.com/19209161">rdar://19209161</a>)</li>
+<li>(Dynamic Framework only) On the &ldquo;Build Phases&rdquo; tab, add a &ldquo;Run Script&rdquo; phase with the command <code>bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh</code>. Check &ldquo;Run script only when installing&rdquo;. This will remove unneeded architectures from the build, which is important for App Store submission. (<a href="[https://openradar.appspot.com/19209161](https://openradar.appspot.com/19209161)">rdar://19209161</a>)</li>
 <li>(Static Framework only) On the &ldquo;Build Settings&rdquo; tab of your application target, add <code>-ObjC</code> to the &ldquo;Other Linker Flags&rdquo; build setting.</li>
 </ol>
 
@@ -132,13 +132,13 @@ BCOVCatalogService *catalog = [[BCOVCatalogService alloc] initWithToken:token];
 
 <p>!<a href="architecture01.png">Architectural Overview 1</a></p>
 
-<p>The entry point to the Brightcove Player SDK for iOS is the <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlayerSDKManager.h">[<code>BCOVPlayerSDKManager</code>](Classes/BCOVPlayerSDKManager.html)</a> singleton object. This Manager handles registration of plugin components and some other housekeeping tasks, but it primarily serves as an object factory. Your app&rsquo;s view controller obtains a reference to the Manager, and uses it to create a <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h"><code>BCOVPlaybackController</code></a>. The playback controller&rsquo;s <code>view</code> property exposes a UIView containing the AVPlayerLayer object that ultimately presents your video content on the screen. The playback controller also accepts a [<a href="Protocols/BCOVPlaybackControllerDelegate.html"><code>BCOVPlaybackControllerDelegate</code></a>][delegate], which you can implement to respond to various video playback events.</p>
+<p>The entry point to the Brightcove Player SDK for iOS is the <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlayerSDKManager.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlayerSDKManager.h)">[<code>BCOVPlayerSDKManager</code>](Classes/BCOVPlayerSDKManager.html)</a> singleton object. This Manager handles registration of plugin components and some other housekeeping tasks, but it primarily serves as an object factory. Your app&rsquo;s view controller obtains a reference to the Manager, and uses it to create a <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h)"><code>BCOVPlaybackController</code></a>. The playback controller&rsquo;s <code>view</code> property exposes a UIView containing the AVPlayerLayer object that ultimately presents your video content on the screen. The playback controller also accepts a [<a href="Protocols/BCOVPlaybackControllerDelegate.html"><code>BCOVPlaybackControllerDelegate</code></a>][delegate], which you can implement to respond to various video playback events.</p>
 
-<p>The playback controller offers methods and properties to affect playback of the current video. However, internally, the playback controller delegates to a <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h">[<code>BCOVPlaybackSession</code>](Protocols/BCOVPlaybackSession.html)</a> object. Playback sessions do the actual work of preparing and playing video content, and contain the video&rsquo;s metadata and AVPlayer. The playback controller has mechanisms to advance from the current playback session to the next playback session, either automatically at the end of a video, or manually with a method call. Once the playback controller has advanced to a new session, the previous session is discarded and cannot be used again.</p>
+<p>The playback controller offers methods and properties to affect playback of the current video. However, internally, the playback controller delegates to a <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h)">[<code>BCOVPlaybackSession</code>](Protocols/BCOVPlaybackSession.html)</a> object. Playback sessions do the actual work of preparing and playing video content, and contain the video&rsquo;s metadata and AVPlayer. The playback controller has mechanisms to advance from the current playback session to the next playback session, either automatically at the end of a video, or manually with a method call. Once the playback controller has advanced to a new session, the previous session is discarded and cannot be used again.</p>
 
-<p>There are two other elements of the playback controller: a <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSessionProvider.h">[<code>BCOVPlaybackSessionProvider</code>](Protocols/BCOVPlaybackSessionProvider.html)</a>, and a list of [<code>BCOVPlaybackSessionConsumer</code>][consumer]s. As the name would suggest, the playback session provider is responsible for creating playback sessions and delivering them to the playback controller. The playback controller then delivers the session to each of the playback session consumers in the list. Both the session provider and session consumer APIs are designed for use by plugin developers, and are not detailed in this document.</p>
+<p>There are two other elements of the playback controller: a <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSessionProvider.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSessionProvider.h)">[<code>BCOVPlaybackSessionProvider</code>](Protocols/BCOVPlaybackSessionProvider.html)</a>, and a list of [<code>BCOVPlaybackSessionConsumer</code>][consumer]s. As the name would suggest, the playback session provider is responsible for creating playback sessions and delivering them to the playback controller. The playback controller then delivers the session to each of the playback session consumers in the list. Both the session provider and session consumer APIs are designed for use by plugin developers, and are not detailed in this document.</p>
 
-<p>In addition to the playback functionality provided by the classes described above, there are a handful of value classes. These are used to hold data specific to the Player SDK for iOS. There are also <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVCatalogService.h">[<code>BCOVCatalogService</code>](Classes/BCOVCatalogService.html)</a> and <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVMediaRequestFactory.h">[<code>BCOVMediaRequestFactory</code>](Classes/BCOVMediaRequestFactory.html)</a>, which offer functionality for querying content remotely stored in your Brightcove Video Cloud account. Each of these is described in more detail in its own section below.</p>
+<p>In addition to the playback functionality provided by the classes described above, there are a handful of value classes. These are used to hold data specific to the Player SDK for iOS. There are also <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVCatalogService.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVCatalogService.h)">[<code>BCOVCatalogService</code>](Classes/BCOVCatalogService.html)</a> and <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVMediaRequestFactory.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVMediaRequestFactory.h)">[<code>BCOVMediaRequestFactory</code>](Classes/BCOVMediaRequestFactory.html)</a>, which offer functionality for querying content remotely stored in your Brightcove Video Cloud account. Each of these is described in more detail in its own section below.</p>
 
 <h2>Play, Pause, and Seek</h2>
 
@@ -150,7 +150,7 @@ BCOVCatalogService *catalog = [[BCOVCatalogService alloc] initWithToken:token];
 
 <p>The Brightcove Player SDK for iOS provides the ability to preload upcoming videos in a playlist. By default, this functionality is disabled because of the large amount of memory preloading may use. You can turn on preloading to help ensure futures videos load quickly, however you might want to take into account the amount of memory available on the client&rsquo;s device and speed of their connection. If they are not on Wifi, preloading a video may affect the current video&rsquo;s network resources.</p>
 
-<p><a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVBasicSessionProvider.h#L79-97">[<code>BCOVBasicSessionProviderOptions</code>](Classes/BCOVBasicSessionProviderOptions.html)</a> and <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVBasicSessionProvider.h#L49-76">[<code>BCOVBasicSessionLoadingPolicy</code>](Classes/BCOVBasicSessionLoadingPolicy.html)</a> provide two factory methods to modify preloading behavior that are described below:</p>
+<p><a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVBasicSessionProvider.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVBasicSessionProvider.h)#L79-97">[<code>BCOVBasicSessionProviderOptions</code>](Classes/BCOVBasicSessionProviderOptions.html)</a> and <a href="[https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVBasicSessionProvider.h](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVBasicSessionProvider.h)#L49-76">[<code>BCOVBasicSessionLoadingPolicy</code>](Classes/BCOVBasicSessionLoadingPolicy.html)</a> provide two factory methods to modify preloading behavior that are described below:</p>
 
 <ul>
 <li><code>+sessionPreloadingNever</code> This method returns a session preloading policy that never preloading videos. This is the default setting.</li>
@@ -330,7 +330,7 @@ id&lt;BCOVPlaybackController&gt; playbackController [sdkManager createPlaybackCo
 					<footer>
 						<div class="footer-copyright">
 							
-							<p class="copyright">Copyright &copy; 2015 Brightcove. All rights reserved. Updated: 2015-12-01</p>
+							<p class="copyright">Copyright &copy; 2015 Brightcove. All rights reserved. Updated: 2015-12-11</p>
 							
 							
 							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>

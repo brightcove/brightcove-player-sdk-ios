@@ -1,8 +1,11 @@
+# 5.0.2
+### Additions and Improvements
+* Reformatted the framework's short version string to comply with App Store submission requirements.
+
 # 5.0.1
 ### Additions and Improvements
 * Playing video in the background is supported by setting the new `allowsBackgroundAudioPlayback` property of the `BCOVPlaybackController` to `YES`. Please see README.md for usage details. 
 * Internal improvements.
-
 
 # 5.0.0
 ### Breaking Changes
