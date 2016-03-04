@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 5.0.2.267
+# Brightcove Player SDK for iOS, version 5.0.3.289
 
 Supported Platforms
 ===================
@@ -49,7 +49,7 @@ Imports
 --------------
 The Brightcove Player SDK for iOS can be imported into code a few different ways; `@import BrightcovePlayerSDK;`, `#import <BrightcovePlayerSDK/BrightcovePlayerSDK.h>` or `#import <BrightcovePlayerSDK/[specific class].h>`.
     
-[cocoapods]: http://cocoapods.org
+[cocoapods]: https://cocoapods.org
 [podspecs]: https://github.com/CocoaPods/Specs/tree/master/Specs/Brightcove-Player-SDK
 [release]: https://github.com/brightcove/brightcove-player-sdk-ios/releases
 [19209161]: https://openradar.appspot.com/19209161
@@ -92,12 +92,12 @@ There are two other elements of the playback controller: a [`BCOVPlaybackSession
 
 In addition to the playback functionality provided by the classes described above, there are a handful of value classes. These are used to hold data specific to the Player SDK for iOS. There are also [`BCOVCatalogService`][catalog] and [`BCOVMediaRequestFactory`][requestfactory], which offer functionality for querying content remotely stored in your Brightcove Video Cloud account. Each of these is described in more detail in its own section below.
 
-[manager]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlayerSDKManager.h
-[controller]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h
-[session]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h
-[provider]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSessionProvider.h
-[catalog]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVCatalogService.h
-[requestfactory]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVMediaRequestFactory.h
+[manager]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlayerSDKManager.h
+[controller]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h
+[session]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackSession.h
+[provider]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackSessionProvider.h
+[catalog]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVCatalogService.h
+[requestfactory]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVMediaRequestFactory.h
 
 Play, Pause, and Seek
 -------------------------------
@@ -124,8 +124,9 @@ An example:
 
 1. Create a session preloading policy which starts preloading of an upcoming session when the current session reaches 50% of progress. 
 
-[options]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVBasicSessionProvider.h#L79-97
-[loadingpolicy]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVBasicSessionProvider.h#L49-76
+[options]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVBasicSessionProvider.h#L108-L126
+
+[loadingpolicy]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVBasicSessionProvider.h#L78-L99
 
 Source Selection (HLS, MP4, HTTP/HTTPs)
 ---------------------------------------
@@ -164,15 +165,15 @@ Obtaining Content and Ad playback Information
 --------------------------------------
 The Brightcove Player SDK for iOS provides two mechanisms for obtaining playback information. The playback controller provides a delegate property that implements [`BCOVPlaybackControllerDelegate`][delegate]. A delegate can implement these optional methods to get notified of playback metadata like progress, duration changes, and other events. If an ad plugin is installed, it may also use this delegate to provide information about [ad playback][adplayback]. The [lifecycle event][lifecycle] delegate method provides events to signal changes in playback state. For example, when a player goes from the paused state to the playing state, the lifecycle event delegate method will be called with the `kBCOVPlaybackSessionLifecycleEventPlay` event. The default Lifecycle events are declared in [`BCOVPlaybackSession`][lifecycleevents]. Plugins provided by Brightcove add additional lifecycle events which are defined in each plugin.
 
-[adplayback]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVAdvertising.h#L120-L192
-[lifecycle]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L363-L488
-[lifecycleevents]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackSession.h
+[adplayback]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVAdvertising.h#L120-L192
+[lifecycle]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L342-L353
+[lifecycleevents]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackSession.h
 
 The playback controller allows for a single delegate. In many cases, this will be enough to retrieve information; the delegate implementations can disseminate values and events to different parts of the app as necessary. In cases where multiple delegates would be required, as is the case when developing a plugin, the [`BCOVPlaybackSessionConsumer`][consumer] delegates provide equivalent functionality to the [`BCOVPlaybackControllerDelegate`][delegate] methods, including [ad data][adconsumer].
 
-[consumer]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L243-L360
-[adconsumer]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVAdvertising.h#L195-L259
-[delegate]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Headers/BCOVPlaybackController.h#L339-L464
+[consumer]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L259-L367
+[adconsumer]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVAdvertising.h#L195-L259
+[delegate]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L379-L495
 
 Here is an example of how one might use `BCOVPlaybackSessionConsumer` to create an analytics plugin:
 
@@ -256,7 +257,7 @@ To retrieve Brightcove assets you can rely on either playback service classes or
 
 ###Playback Service
 
-The playback service classes provide functionality for retrieving information about your Brightcove video assets via the [Brightcove CMS API][CMSAPI]. For most purposes, `BCOVPlaybackService` provides sufficient functionality to obtain videos and playlists with more rich meta information than catalog classes such as text tracks. The following is an example shows how to retrieve a video with a video ID. Note that there is also a method that can retrieve a video with that video's reference ID.
+The playback service classes provide functionality for retrieving information about your Brightcove video assets via the [Brightcove Playback API][PlaybackAPI]. For most purposes, `BCOVPlaybackService` provides sufficient functionality to obtain videos and playlists with more rich meta information than catalog classes such as text tracks. The following is an example shows how to retrieve a video with a video ID. Note that there is also a method that can retrieve a video with that video's reference ID.
 
     [1] NSString *policyKey;  // (Brightcove Playback API policy Key)
         NSString *videoID;    // (ID of the video you wish to use)
@@ -282,7 +283,7 @@ The playback service classes provide functionality for retrieving information ab
 
 If for some reason you need to customize the request that the playback service sends to the Brightcove CMS API, you may find `BCOVPlaybackServiceRequestFactory` helpful. This utility, which is used by the playback service, generates parameterized Brightcove CMS API NSURLRequest objects, which you can use in your own HTTP communication.
 
-[CMSAPI]: http://docs.brightcove.com/en/video-cloud/cms-api/index.html
+[PlaybackAPI]: http://docs.brightcove.com/en/video-cloud/playback-api/index.html
 [PolicyKey]: http://docs.brightcove.com/en/video-cloud/player-management/guides/policy-key.html
 ###Catalog
 
@@ -351,15 +352,21 @@ Again, for most use cases it should suffice to not use a view strategy at all. J
 
 There is one caveat to using a view strategy: you must not access the playback controller's `view` property from within the view strategy block. Since the block is being called *because* the playback controller's `view` property was accessed for the first time, accessing the `view` property again *within* the view strategy block could cause a rip in the fabric of space and time, and your program will crash.
 
-Playing Video In The Background
+Playing Video In The Background (and a special note about PiP)
 -------------
 By default, when an iOS application is sent to the background, or the device is locked, iOS will pause any video that is playing. To change this behavior, set the `allowsBackgroundAudioPlayback` property of the `BCOVPlaybackController` object to `YES`. (The default value is `NO`, indicating playback will pause in the background.)
 
-You should also follow the guidelines set by Apple in [Technical Q&A QA1668](https://developer.apple.com/library/ios/qa/qa1668/_index.html) to set the proper background modes and audio session category for your app.
+You should also follow the guidelines set by Apple in [Technical Q&A QA1668][tqa1668] to set the proper background modes and audio session category for your app.
 
 It's important that the AVPlayerLayer be detached from the AVPlayer before the app is switched to the background (and reattached when the app returns to the foreground). The Brightcove Player SDK will handle this for you when `allowsBackgroundAudioPlayback` is set to `YES`.
 
 Finally, when playing background videos (and particularly when using playlists), you should use the iOS `MPRemoteCommandCenter` API to give the user playback control on the lock screen and in the control center. Note that `MPRemoteCommandCenter` is only available in iOS 7.1 and later; if you need to support iOS 7.0, you should use `UIApplication`'s `beginReceivingRemoteControlEvents` and `endReceivingRemoteControlEvents`.
+
+**Important PiP Note:** When you want to support background audio and Picture in Picture on the same player, you must update the `pictureInPictureActive` property on `BCOVPlaybackController` with the Picture in Picture status. If you are using `AVPlayerViewController`, you can use the `playerViewControllerDidStartPictureInPicture:` and `playerViewControllerDidStopPictureInPicture:` delegate methods to update this property. If you are using the `AVPictureInPictureController`, you can use the `pictureInPictureControllerDidStartPictureInPicture:` and `pictureInPictureControllerDidStopPictureInPicture:` delegate methods to update this property.
+
+**Important AVPlayerViewController Note:** When using AVPlayerViewController, you must set `allowsBackgroundAudioPlayback` to `YES` on the `BCOVPlaybackController` and must also separate the `AVPlayerViewController` from the `AVPlayer` when entering the background and reattach it when the app becomes active.
+
+[tqa1668]: https://developer.apple.com/library/ios/qa/qa1668
 
 Frequently Asked Questions
 ==========================

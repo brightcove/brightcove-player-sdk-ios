@@ -2,7 +2,7 @@
 // BCOVPlaybackController.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2015 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2016 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -124,6 +124,17 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * Default value is NO.
  */
 @property (nonatomic, readwrite, assign) BOOL allowsBackgroundAudioPlayback;
+
+/**
+ * Set this to YES if picture-in-picture becomes active, and NO when it deactivates.
+ *
+ * This only needs to be toggled if allowsBackgroundAudioPlayback is set to
+ * YES. If allowsBackgroundAudioPlayback is set to NO, this property
+ * can be ignored.
+ *
+ * Default value is NO.
+ */
+@property (nonatomic, readwrite, assign, getter=isPictureInPictureActive) BOOL pictureInPictureActive;
 
 /**
  * Registers a session consumer with a container, to be notified of new

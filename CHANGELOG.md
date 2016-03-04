@@ -1,3 +1,10 @@
+# 5.0.3
+### Additions and Improvements
+* Added support for using Picture in Picture and background audio at the same time by setting the new `pictureInPictureActive` property of the `BCOVPlaybackController` to `YES`. Please see README.md for usage details.
+* When the `BCOVPlaybackController` delivers a new `BCOVPlaybackSession` for a video, it calls the delegate method `-[BCOVPlaybackControllerDelegate playbackController:didAdvanceToPlaybackSession:]` method as usual. Now, however, the delegate method will not be called until the `currentItem` on the `AVPlayer` inside the `BCOVPlaybackSession` has been loaded. Previously the delegate method was called immediately while the `AVPlayer` was still loading the `AVPlayerItem`, and thus `currentItem` could still be `nil`. This makes it easier to work with the `AVPlayer` when each session is delivered.
+* Internal improvements.
+
+
 # 5.0.2
 ### Additions and Improvements
 * Reformatted the framework's short version string to comply with App Store submission requirements.

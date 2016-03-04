@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>BCOVPlaybackController Protocol Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">BCOVPlayerSDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Brightcove</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/allowsBackgroundAudioPlayback">allowsBackgroundAudioPlayback</option>
+		
+		<option value="//api/name/analytics">analytics</option>
+		
+		<option value="//api/name/autoAdvance">autoAdvance</option>
+		
+		<option value="//api/name/autoPlay">autoPlay</option>
+		
+		<option value="//api/name/delegate">delegate</option>
+		
+		<option value="//api/name/pictureInPictureActive">pictureInPictureActive</option>
+		
+		<option value="//api/name/view">view</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/addSessionConsumer:">- addSessionConsumer:</option>
+		
+		<option value="//api/name/advanceToNext">- advanceToNext</option>
+		
+		<option value="//api/name/pause">- pause</option>
+		
+		<option value="//api/name/pauseAd">- pauseAd</option>
+		
+		<option value="//api/name/play">- play</option>
+		
+		<option value="//api/name/removeSessionConsumer:">- removeSessionConsumer:</option>
+		
+		<option value="//api/name/resumeAd">- resumeAd</option>
+		
+		<option value="//api/name/resumeVideoAtTime:withAutoPlay:">- resumeVideoAtTime:withAutoPlay:</option>
+		
+		<option value="//api/name/seekToTime:completionHandler:">- seekToTime:completionHandler:</option>
+		
+		<option value="//api/name/setAllowsExternalPlayback:">- setAllowsExternalPlayback:</option>
+		
+		<option value="//api/name/setVideos:">- setVideos:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BCOVPlaybackController Protocol Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Conforms to</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>BCOVPlaybackController.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Protocol adopted by objects that provide playback functionality.</p>
+
+<p>Implementations of this formal protocol must support its standard playback
+operations, but may extend the API to perform additional functions specific
+to their feature set.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/delegate" title="delegate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/delegate">&nbsp;&nbsp;delegate</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Delegate for this BCOVPlaybackController.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) id&lt;BCOVPlaybackControllerDelegate&gt; delegate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Delegate for this BCOVPlaybackController.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/autoAdvance" title="autoAdvance"></a>
+	<h3 class="method-title"><code><a href="#//api/name/autoAdvance">&nbsp;&nbsp;autoAdvance</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Whether to advance to the next playback session when its previous playback
+session sends kBCOVPlaybackSessionLifecycleEventEnd. If this event is sent
+more than once by a playback session, the subsequent sends are ignored.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, getter=isAutoAdvance) BOOL autoAdvance</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>True if this queue should send the next session when the previous
+session sends kBCOVPlaybackSessionLifecycleEventEnd.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Whether to advance to the next playback session when its previous playback
+session sends kBCOVPlaybackSessionLifecycleEventEnd. If this event is sent
+more than once by a playback session, the subsequent sends are ignored.</p>
+
+<p>Defaults to NO.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/autoPlay" title="autoPlay"></a>
+	<h3 class="method-title"><code><a href="#//api/name/autoPlay">&nbsp;&nbsp;autoPlay</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Whether to begin playing a new playback session as soon as it is received.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, getter=isAutoPlay) BOOL autoPlay</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Whether to begin playback as soon as a new session is received.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Whether to begin playing a new playback session as soon as it is received.</p>
+
+<p>Defaults to NO.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/view" title="view"></a>
+	<h3 class="method-title"><code><a href="#//api/name/view">&nbsp;&nbsp;view</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns a UIView to present playback in a view hierarchy. The view is reused
+across all playback sessions sent to this controller.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, strong) UIView *view</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A UIView to present playback in a view hierarchy.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns a UIView to present playback in a view hierarchy. The view is reused
+across all playback sessions sent to this controller.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/analytics" title="analytics"></a>
+	<h3 class="method-title"><code><a href="#//api/name/analytics">&nbsp;&nbsp;analytics</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns the playback controller&rsquo;s analytics object.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) id&lt;BCOVMutableAnalytics&gt; analytics</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns the playback controller&rsquo;s analytics object.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/allowsBackgroundAudioPlayback" title="allowsBackgroundAudioPlayback"></a>
+	<h3 class="method-title"><code><a href="#//api/name/allowsBackgroundAudioPlayback">&nbsp;&nbsp;allowsBackgroundAudioPlayback</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Allow playback of audio when the app has switched to the background.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite, assign) BOOL allowsBackgroundAudioPlayback</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Allow playback of audio when the app has switched to the background.</p>
+
+<p>Default value is NO.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pictureInPictureActive" title="pictureInPictureActive"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pictureInPictureActive">&nbsp;&nbsp;pictureInPictureActive</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set this to YES if picture-in-picture becomes active, and NO when it deactivates.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite, assign, getter=isPictureInPictureActive) BOOL pictureInPictureActive</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Set this to YES if picture-in-picture becomes active, and NO when it deactivates.</p>
+
+<p>This only needs to be toggled if <a href="#//api/name/allowsBackgroundAudioPlayback">allowsBackgroundAudioPlayback</a> is set to
+YES. If <a href="#//api/name/allowsBackgroundAudioPlayback">allowsBackgroundAudioPlayback</a> is set to NO, this property
+can be ignored.</p>
+
+<p>Default value is NO.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addSessionConsumer:" title="addSessionConsumer:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addSessionConsumer:">&ndash;&nbsp;addSessionConsumer:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Registers a session consumer with a container, to be notified of new
+sessions. Added consumers will be retained by this container. If a session
+already existed in the container at the time of subscription, the specified
+consumer will be sent the <code>-didAdvanceToPlaybackSession:</code> message.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)addSessionConsumer:(id&lt;BCOVPlaybackSessionConsumer&gt;)<em>consumer</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>consumer</code></th>
+						<td><p>The session consumer being added to the container.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Registers a session consumer with a container, to be notified of new
+sessions. Added consumers will be retained by this container. If a session
+already existed in the container at the time of subscription, the specified
+consumer will be sent the <code>-didAdvanceToPlaybackSession:</code> message.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeSessionConsumer:" title="removeSessionConsumer:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeSessionConsumer:">&ndash;&nbsp;removeSessionConsumer:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Removes a session consumer from the container. The effect of this is that
+the container releases its ownership of the consumer, and the consumer will
+no longer be given new sessions to consume.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeSessionConsumer:(id&lt;BCOVPlaybackSessionConsumer&gt;)<em>consumer</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>consumer</code></th>
+						<td><p>The session consumer being removed from the container.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Removes a session consumer from the container. The effect of this is that
+the container releases its ownership of the consumer, and the consumer will
+no longer be given new sessions to consume.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setAllowsExternalPlayback:" title="setAllowsExternalPlayback:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setAllowsExternalPlayback:">&ndash;&nbsp;setAllowsExternalPlayback:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Specifies that the current playback session&rsquo;s player, as well the player of
+any subsequent sessions (until this property is set to a different value),
+should have external playback enabled.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setAllowsExternalPlayback:(BOOL)<em>allowsExternalPlayback</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>allowsExternalPlayback</code></th>
+						<td><p>Whether players should have external playback
+enabled.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Specifies that the current playback session&rsquo;s player, as well the player of
+any subsequent sessions (until this property is set to a different value),
+should have external playback enabled.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/advanceToNext" title="advanceToNext"></a>
+	<h3 class="method-title"><code><a href="#//api/name/advanceToNext">&ndash;&nbsp;advanceToNext</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Instructs this instance to advance to the next playback session. This has no
+effect if there are no further playback sessions. Note that the next
+playback session may be delivered asynchronously.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)advanceToNext</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Instructs this instance to advance to the next playback session. This has no
+effect if there are no further playback sessions. Note that the next
+playback session may be delivered asynchronously.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/play" title="play"></a>
+	<h3 class="method-title"><code><a href="#//api/name/play">&ndash;&nbsp;play</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Plays the content video. On first play, cue points at position kBCOVCuePointPositionTypeBefore
+will be fired, and the video will play using [AVPlayer play].</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)play</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Plays the content video. On first play, cue points at position kBCOVCuePointPositionTypeBefore
+will be fired, and the video will play using [AVPlayer play].</p>
+
+<p>This default behaviour may be overridden when using plugins. For more information on
+plugin overrides, refer to BCOVSessionProviderExtension category methods in the plugin for
+a method like abc_play:.</p>
+
+<p>This will result in the same behaviour as calling [BCOVPlaybackSession play].</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pause" title="pause"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pause">&ndash;&nbsp;pause</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Pauses the content video. This is a proxy call to [AVPlayer pause].</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)pause</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Pauses the content video. This is a proxy call to [AVPlayer pause].</p>
+
+<p>This default behaviour may be overridden when using plugins. For more information on
+plugin overrides, refer to BCOVSessionProviderExtension category methods in the plugin for
+a method like abc_pause:.</p>
+
+<p>This will result in the same behaviour as calling [BCOVPlaybackSession pause].</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/seekToTime:completionHandler:" title="seekToTime:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/seekToTime:completionHandler:">&ndash;&nbsp;seekToTime:completionHandler:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Proxy call to [AVPlayer seekToTime:toleranceBefore:toleranceAfter:completionHandler:]
+with a tolerance of .1 seconds. Do not call this method until after receiving
+kBCOVPlaybackSessionLifecycleEventReady event.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)seekToTime:(CMTime)<em>time</em> completionHandler:(void ( ^ ) ( BOOL finished ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>time</code></th>
+						<td><p>Time to move to.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>The block to invoke when the seek operation has either been completed or been interrupted.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Proxy call to [AVPlayer seekToTime:toleranceBefore:toleranceAfter:completionHandler:]
+with a tolerance of .1 seconds. Do not call this method until after receiving
+kBCOVPlaybackSessionLifecycleEventReady event.</p>
+
+<p>This default behaviour may be overridden when using plugins. For more information on
+plugin overrides, refer to BCOVSessionProviderExtension category methods in the plugin for
+a method like abc_seekToTime:completionHandler:.</p>
+
+<p>This will result in the same behaviour as calling [BCOVPlaybackSession seekToTime:completionHandler:].</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/resumeVideoAtTime:withAutoPlay:" title="resumeVideoAtTime:withAutoPlay:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/resumeVideoAtTime:withAutoPlay:">&ndash;&nbsp;resumeVideoAtTime:withAutoPlay:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Instructs this instance to reinitialize the current session. If there is
+no current session, this method has no effect. Once this method is called,
+it will send the kBCOVPlaybackSessionLifecycleEventResumeBegin event to
+indicate reinitializing has begun. If an error occurs anywhere
+during the reinitialization, this method will send the
+kBCOVPlaybackSessionLifecycleEventResumeFail event. If the reinitialization
+succeeds, the kBCOVPlaybackSessionLifecycleEventResumeComplete will be
+sent.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)resumeVideoAtTime:(CMTime)<em>time</em> withAutoPlay:(BOOL)<em>autoPlay</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>time</code></th>
+						<td><p>Seek time to set after reinitialization.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>autoPlay</code></th>
+						<td><p>Automatically <a href="#//api/name/play">play</a> new session once it is restarted.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Instructs this instance to reinitialize the current session. If there is
+no current session, this method has no effect. Once this method is called,
+it will send the kBCOVPlaybackSessionLifecycleEventResumeBegin event to
+indicate reinitializing has begun. If an error occurs anywhere
+during the reinitialization, this method will send the
+kBCOVPlaybackSessionLifecycleEventResumeFail event. If the reinitialization
+succeeds, the kBCOVPlaybackSessionLifecycleEventResumeComplete will be
+sent.</p>
+
+<p>Do not call this method a second time until you have received either
+kBCOVPlaybackSessionLifecycleEventResumeFail or kBCOVPlaybackSessionLifecycleEventResumeComplete
+from the first call.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setVideos:" title="setVideos:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setVideos:">&ndash;&nbsp;setVideos:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Specifies the source from which this instance will draw its upcoming videos
+for playback. The first playback session will be sent as soon as it becomes
+available, replacing any current playback session. Playback sessions may be
+delivered asynchronously.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setVideos:(id&lt;NSFastEnumeration&gt;)<em>videos</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>videos</code></th>
+						<td><p>The source of <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects from which this instance
+should construct playback sessions.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Specifies the source from which this instance will draw its upcoming videos
+for playback. The first playback session will be sent as soon as it becomes
+available, replacing any current playback session. Playback sessions may be
+delivered asynchronously.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/resumeAd" title="resumeAd"></a>
+	<h3 class="method-title"><code><a href="#//api/name/resumeAd">&ndash;&nbsp;resumeAd</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Instructs this instance to resume ad playback. This method has no effect when
+an ad is already playing, or if no advertising component has been integrated
+with this playback controller.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)resumeAd</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Instructs this instance to resume ad playback. This method has no effect when
+an ad is already playing, or if no advertising component has been integrated
+with this playback controller.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pauseAd" title="pauseAd"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pauseAd">&ndash;&nbsp;pauseAd</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Instructs this instance to <a href="#//api/name/pause">pause</a> ad playback. This method has no effect when
+an ad is already paused, or if no advertising component has been integrated
+with this playback controller.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)pauseAd</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Instructs this instance to <a href="#//api/name/pause">pause</a> ad playback. This method has no effect when
+an ad is already paused, or if no advertising component has been integrated
+with this playback controller.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Brightcove. All rights reserved. Updated: 2016-03-04</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

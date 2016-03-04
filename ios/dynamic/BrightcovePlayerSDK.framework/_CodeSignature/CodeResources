@@ -6,83 +6,83 @@
 	<dict>
 		<key>Headers/BCOVAdvertising.h</key>
 		<data>
-		FSsHLhetpABLvnE8mxksTxQm7R8=
+		B+vQ9X1hbI2bQMHx/ZQmDluO0ps=
 		</data>
 		<key>Headers/BCOVBasicSessionProvider.h</key>
 		<data>
-		o+4ggrb6X2Ga4aUPzQK0a7Rrdrw=
+		SoKIAUgNfWshzOBMIolsTKlvU8g=
 		</data>
 		<key>Headers/BCOVCatalogConstants.h</key>
 		<data>
-		VLFAHGBu1GAMCXL7VGr5rTbKDBk=
+		8JF57beHR3kveqORquZpF+9P79I=
 		</data>
 		<key>Headers/BCOVCatalogService.h</key>
 		<data>
-		4y3PEtCFGv4Wg85NAqQJdJJYUHQ=
+		WKqdBJj8ioIgVKzCuqLInEb2DRs=
 		</data>
 		<key>Headers/BCOVCuePoint.h</key>
 		<data>
-		c5g1SvuRQVtU6uZdv0PRGLXK5js=
+		ZHRWeL7fUSyQUbkiYVM72i0+g4s=
 		</data>
 		<key>Headers/BCOVCuePointCollection.h</key>
 		<data>
-		ShjqmVHX+kzSb7hZUgdt//MTgZE=
+		j4SRhcv+z6notbA6WGgdNv0Qn3g=
 		</data>
 		<key>Headers/BCOVCuePointProgressPolicy.h</key>
 		<data>
-		sbXEj+TAIv46Qu5EXmM25o28J2Y=
+		g+u5U1/w53DgSUUyLdd2yFo6ktk=
 		</data>
 		<key>Headers/BCOVMediaRequestFactory.h</key>
 		<data>
-		IX9K5uKi8oRZB0JHV6Zv/bynIU8=
+		UavNvBZGVBRKPIDF1ztw7rdEv/k=
 		</data>
 		<key>Headers/BCOVPlaybackController.h</key>
 		<data>
-		Q5OpVt8Lt6EH7Gs2/HtKPXg7/IM=
+		57I5FH9Zl6lmOFVw9JvNjACjP/g=
 		</data>
 		<key>Headers/BCOVPlaybackService.h</key>
 		<data>
-		VV6Ps4KI+alQwPysKwBtmVQvZsE=
+		+kmatzEsrD9l95ac0XNF0ItFEiY=
 		</data>
 		<key>Headers/BCOVPlaybackServiceRequestFactory.h</key>
 		<data>
-		J6dNM62NN16kqcb0yErVEjwAvkU=
+		nse5MQ+aC+GZb1G9r6i8xb+6Fcc=
 		</data>
 		<key>Headers/BCOVPlaybackSession.h</key>
 		<data>
-		bqAF1VAGSjXO5G/qFs1GpCesc+I=
+		wglkIr8RYT8NHN/ZiFGQj1+NVAQ=
 		</data>
 		<key>Headers/BCOVPlaybackSessionProvider.h</key>
 		<data>
-		fJI5zDzOvUNOYndBUEndanRTxuE=
+		K/fpZz7OgZMxRRfoWAEFOudLE30=
 		</data>
 		<key>Headers/BCOVPlayerSDKManager.h</key>
 		<data>
-		g4WEA9lPpDe5cKLN9isznMaxelU=
+		DOLiQx+gzhi0dB4kb3SeatUYUEE=
 		</data>
 		<key>Headers/BCOVPlaylist.h</key>
 		<data>
-		7i01zfy1FpR//+hen3KMH8s1h6w=
+		60e4OkkPxPHprnivLc/mR5Oftq4=
 		</data>
 		<key>Headers/BCOVSource.h</key>
 		<data>
-		W0kGoTk3Hgn6Oj6SHZKcdpEqoU8=
+		rdRAJTgaXZ8L8iVwB+3pe9TtgfY=
 		</data>
 		<key>Headers/BCOVVideo.h</key>
 		<data>
-		Pjrk/V+eb4wjWdIRhxC6aM32C8w=
+		vx6XJ0k8L8mcIhcnayvfx0cTctM=
 		</data>
 		<key>Headers/BrightcovePlayerSDK.h</key>
 		<data>
-		/H+6f+CVJSmHfgjhXKZU+pHQDu8=
+		J2nKgHJlUofZEsd95McNig+jj7g=
 		</data>
 		<key>Headers/NSDictionary+BCOVURLSupport.h</key>
 		<data>
-		qYCzTBCG22/ndJcN2lKX6Lwsq6Q=
+		BcOIH96+cCeNofyCAYnsWxfNhWk=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		FnRj9La8gXU70PjCk21n0vI/Sms=
+		KCQoSC5ligLB1uZmvgz70W1fJnw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -90,162 +90,166 @@
 		</data>
 		<key>PrivateHeaders/AVPlayer+BCOVSignalSupport.h</key>
 		<data>
-		5AdNNfhMI+JGNX9BUiqc2ceoMqc=
+		L/OB5HYBSRQPEsc4VIpRZgctmQI=
+		</data>
+		<key>PrivateHeaders/BCOVAdvertisingPrivate.h</key>
+		<data>
+		j4U5p1l0o+5llFis6SS+D5yViHM=
 		</data>
 		<key>PrivateHeaders/BCOVAnalytics.h</key>
 		<data>
-		gjS+uZAnMFsA+dpJplzQfqBGc0E=
+		1WaCRh0ItEoC7yiSqU1fddinN00=
 		</data>
 		<key>PrivateHeaders/BCOVAnalyticsEngagementTimer.h</key>
 		<data>
-		0N6lxgy7aJ3Cu0ruLTsd9EKLy6A=
+		NJ3DO8r7OKfx7jtYUepk3a7QPUQ=
 		</data>
 		<key>PrivateHeaders/BCOVAnalyticsRebufferingTracker.h</key>
 		<data>
-		AElamRFmNwtNm8mlcGhq7hW+srI=
+		RgQuu/dbAb3Ps2O7VNNT2vukyj0=
 		</data>
 		<key>PrivateHeaders/BCOVAnalyticsSession.h</key>
 		<data>
-		/u6PWCiA66zKZEsWZPw3Ehwo1Lc=
+		LLGjRKAoEs04Yp8VBXY6S6mYH18=
 		</data>
 		<key>PrivateHeaders/BCOVAnalyticsSessionDigester.h</key>
 		<data>
-		FWXnvrBWpCi3OuAPHBJhjqh8ZeM=
+		7ACzvOl2BB+k/HHAhJ3oxUYC+Ws=
 		</data>
 		<key>PrivateHeaders/BCOVBasicControlsView.h</key>
 		<data>
-		3V6mkbq8STEC0Hel3uxCtBKC6bI=
+		+3i9QkxsQtG1kztjQRygQSgH99Q=
 		</data>
 		<key>PrivateHeaders/BCOVBasicPlaybackController.h</key>
 		<data>
-		A3OBlfizbYfSbjduK/cCi/vZexU=
+		YaoFaTLiqDDzqeONbjsAczhOXz0=
 		</data>
 		<key>PrivateHeaders/BCOVBasicPlaybackSession.h</key>
 		<data>
-		UCbTc0Ff24yyEWgRZa1cu8ctuSE=
+		XJ8QQgAfaa/OPkG0mgR8hcAOJGQ=
 		</data>
 		<key>PrivateHeaders/BCOVCatalogService+Private.h</key>
 		<data>
-		fJcZJSIoIiZhweoTN2LpQ7K9JVQ=
+		FkWYsxZpTnqEw4D+k8KDHRGCmm4=
 		</data>
 		<key>PrivateHeaders/BCOVErrorSession.h</key>
 		<data>
-		AfC2H4RFtN6g69+dtGXtqxIv1bo=
+		GAF62ltV9SQvc01O7g0+WMqvng8=
 		</data>
 		<key>PrivateHeaders/BCOVPlaybackControllerCallbackDispatchCenter.h</key>
 		<data>
-		84iV9TU8+oPgm3Ozo4aMnGo3az4=
+		j2it3cU34fieUL0x0hrqHDrHQAY=
 		</data>
 		<key>PrivateHeaders/BCOVPlaybackControllerDelegatePrivate.h</key>
 		<data>
-		aawWb2t4YuiKA05JNPBaxqGP7Fg=
+		EMS5vzGCsxbiV5xmmbJZPZHs/UA=
 		</data>
 		<key>PrivateHeaders/BCOVPlaybackSessionPrivate.h</key>
 		<data>
-		ZhlH1n71Amk3VxKcVKO0a8MogEk=
+		1IG/he6y8Wz83LqAK3YPJBQF1VM=
 		</data>
 		<key>PrivateHeaders/BCOVPlaybackSessionProviderPrivate.h</key>
 		<data>
-		dG9ENvGt5JveA6xifzq/FFtZx/s=
+		X42iKs/x/egVwy9P3ZjtSoPVW4M=
 		</data>
 		<key>PrivateHeaders/BCOVVideoContainerView.h</key>
 		<data>
-		7pcrj8DWUVP3Tv1S3yNx6YSXclQ=
+		BVARH7TiHv9zeBDfg4FUdsh77bk=
 		</data>
 		<key>PrivateHeaders/NSArray+BCOVCollectionTransforms.h</key>
 		<data>
-		3xFqjzh0HhY0T/4E1aB1+DzeYYk=
+		7My6GTtB4xwWM3iE+LjwsYRsbj8=
 		</data>
 		<key>PrivateHeaders/NSInvocation+BCOVRACTypeParsing.h</key>
 		<data>
-		WHqL0x3PaDO8leyM5MhzlCk1OhQ=
+		SXkNo61GJ3gQYU0NNbFC1mjBfQU=
 		</data>
 		<key>PrivateHeaders/NSObject+BCOVCommon.h</key>
 		<data>
-		PklFtLgYDNzmHjhpZPUHVk8GY5A=
+		/I50XAIv4i/Sa3wM8BUTna+vQCc=
 		</data>
 		<key>PrivateHeaders/NSObject+bcov_invocation.h</key>
 		<data>
-		muDzB8af6VnhpUzCcSrgteoJyLM=
+		DeVaypWmOucAZ736lvhhjVlHBY0=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
 		<key>Headers/BCOVAdvertising.h</key>
 		<data>
-		FSsHLhetpABLvnE8mxksTxQm7R8=
+		B+vQ9X1hbI2bQMHx/ZQmDluO0ps=
 		</data>
 		<key>Headers/BCOVBasicSessionProvider.h</key>
 		<data>
-		o+4ggrb6X2Ga4aUPzQK0a7Rrdrw=
+		SoKIAUgNfWshzOBMIolsTKlvU8g=
 		</data>
 		<key>Headers/BCOVCatalogConstants.h</key>
 		<data>
-		VLFAHGBu1GAMCXL7VGr5rTbKDBk=
+		8JF57beHR3kveqORquZpF+9P79I=
 		</data>
 		<key>Headers/BCOVCatalogService.h</key>
 		<data>
-		4y3PEtCFGv4Wg85NAqQJdJJYUHQ=
+		WKqdBJj8ioIgVKzCuqLInEb2DRs=
 		</data>
 		<key>Headers/BCOVCuePoint.h</key>
 		<data>
-		c5g1SvuRQVtU6uZdv0PRGLXK5js=
+		ZHRWeL7fUSyQUbkiYVM72i0+g4s=
 		</data>
 		<key>Headers/BCOVCuePointCollection.h</key>
 		<data>
-		ShjqmVHX+kzSb7hZUgdt//MTgZE=
+		j4SRhcv+z6notbA6WGgdNv0Qn3g=
 		</data>
 		<key>Headers/BCOVCuePointProgressPolicy.h</key>
 		<data>
-		sbXEj+TAIv46Qu5EXmM25o28J2Y=
+		g+u5U1/w53DgSUUyLdd2yFo6ktk=
 		</data>
 		<key>Headers/BCOVMediaRequestFactory.h</key>
 		<data>
-		IX9K5uKi8oRZB0JHV6Zv/bynIU8=
+		UavNvBZGVBRKPIDF1ztw7rdEv/k=
 		</data>
 		<key>Headers/BCOVPlaybackController.h</key>
 		<data>
-		Q5OpVt8Lt6EH7Gs2/HtKPXg7/IM=
+		57I5FH9Zl6lmOFVw9JvNjACjP/g=
 		</data>
 		<key>Headers/BCOVPlaybackService.h</key>
 		<data>
-		VV6Ps4KI+alQwPysKwBtmVQvZsE=
+		+kmatzEsrD9l95ac0XNF0ItFEiY=
 		</data>
 		<key>Headers/BCOVPlaybackServiceRequestFactory.h</key>
 		<data>
-		J6dNM62NN16kqcb0yErVEjwAvkU=
+		nse5MQ+aC+GZb1G9r6i8xb+6Fcc=
 		</data>
 		<key>Headers/BCOVPlaybackSession.h</key>
 		<data>
-		bqAF1VAGSjXO5G/qFs1GpCesc+I=
+		wglkIr8RYT8NHN/ZiFGQj1+NVAQ=
 		</data>
 		<key>Headers/BCOVPlaybackSessionProvider.h</key>
 		<data>
-		fJI5zDzOvUNOYndBUEndanRTxuE=
+		K/fpZz7OgZMxRRfoWAEFOudLE30=
 		</data>
 		<key>Headers/BCOVPlayerSDKManager.h</key>
 		<data>
-		g4WEA9lPpDe5cKLN9isznMaxelU=
+		DOLiQx+gzhi0dB4kb3SeatUYUEE=
 		</data>
 		<key>Headers/BCOVPlaylist.h</key>
 		<data>
-		7i01zfy1FpR//+hen3KMH8s1h6w=
+		60e4OkkPxPHprnivLc/mR5Oftq4=
 		</data>
 		<key>Headers/BCOVSource.h</key>
 		<data>
-		W0kGoTk3Hgn6Oj6SHZKcdpEqoU8=
+		rdRAJTgaXZ8L8iVwB+3pe9TtgfY=
 		</data>
 		<key>Headers/BCOVVideo.h</key>
 		<data>
-		Pjrk/V+eb4wjWdIRhxC6aM32C8w=
+		vx6XJ0k8L8mcIhcnayvfx0cTctM=
 		</data>
 		<key>Headers/BrightcovePlayerSDK.h</key>
 		<data>
-		/H+6f+CVJSmHfgjhXKZU+pHQDu8=
+		J2nKgHJlUofZEsd95McNig+jj7g=
 		</data>
 		<key>Headers/NSDictionary+BCOVURLSupport.h</key>
 		<data>
-		qYCzTBCG22/ndJcN2lKX6Lwsq6Q=
+		BcOIH96+cCeNofyCAYnsWxfNhWk=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -253,83 +257,87 @@
 		</data>
 		<key>PrivateHeaders/AVPlayer+BCOVSignalSupport.h</key>
 		<data>
-		5AdNNfhMI+JGNX9BUiqc2ceoMqc=
+		L/OB5HYBSRQPEsc4VIpRZgctmQI=
+		</data>
+		<key>PrivateHeaders/BCOVAdvertisingPrivate.h</key>
+		<data>
+		j4U5p1l0o+5llFis6SS+D5yViHM=
 		</data>
 		<key>PrivateHeaders/BCOVAnalytics.h</key>
 		<data>
-		gjS+uZAnMFsA+dpJplzQfqBGc0E=
+		1WaCRh0ItEoC7yiSqU1fddinN00=
 		</data>
 		<key>PrivateHeaders/BCOVAnalyticsEngagementTimer.h</key>
 		<data>
-		0N6lxgy7aJ3Cu0ruLTsd9EKLy6A=
+		NJ3DO8r7OKfx7jtYUepk3a7QPUQ=
 		</data>
 		<key>PrivateHeaders/BCOVAnalyticsRebufferingTracker.h</key>
 		<data>
-		AElamRFmNwtNm8mlcGhq7hW+srI=
+		RgQuu/dbAb3Ps2O7VNNT2vukyj0=
 		</data>
 		<key>PrivateHeaders/BCOVAnalyticsSession.h</key>
 		<data>
-		/u6PWCiA66zKZEsWZPw3Ehwo1Lc=
+		LLGjRKAoEs04Yp8VBXY6S6mYH18=
 		</data>
 		<key>PrivateHeaders/BCOVAnalyticsSessionDigester.h</key>
 		<data>
-		FWXnvrBWpCi3OuAPHBJhjqh8ZeM=
+		7ACzvOl2BB+k/HHAhJ3oxUYC+Ws=
 		</data>
 		<key>PrivateHeaders/BCOVBasicControlsView.h</key>
 		<data>
-		3V6mkbq8STEC0Hel3uxCtBKC6bI=
+		+3i9QkxsQtG1kztjQRygQSgH99Q=
 		</data>
 		<key>PrivateHeaders/BCOVBasicPlaybackController.h</key>
 		<data>
-		A3OBlfizbYfSbjduK/cCi/vZexU=
+		YaoFaTLiqDDzqeONbjsAczhOXz0=
 		</data>
 		<key>PrivateHeaders/BCOVBasicPlaybackSession.h</key>
 		<data>
-		UCbTc0Ff24yyEWgRZa1cu8ctuSE=
+		XJ8QQgAfaa/OPkG0mgR8hcAOJGQ=
 		</data>
 		<key>PrivateHeaders/BCOVCatalogService+Private.h</key>
 		<data>
-		fJcZJSIoIiZhweoTN2LpQ7K9JVQ=
+		FkWYsxZpTnqEw4D+k8KDHRGCmm4=
 		</data>
 		<key>PrivateHeaders/BCOVErrorSession.h</key>
 		<data>
-		AfC2H4RFtN6g69+dtGXtqxIv1bo=
+		GAF62ltV9SQvc01O7g0+WMqvng8=
 		</data>
 		<key>PrivateHeaders/BCOVPlaybackControllerCallbackDispatchCenter.h</key>
 		<data>
-		84iV9TU8+oPgm3Ozo4aMnGo3az4=
+		j2it3cU34fieUL0x0hrqHDrHQAY=
 		</data>
 		<key>PrivateHeaders/BCOVPlaybackControllerDelegatePrivate.h</key>
 		<data>
-		aawWb2t4YuiKA05JNPBaxqGP7Fg=
+		EMS5vzGCsxbiV5xmmbJZPZHs/UA=
 		</data>
 		<key>PrivateHeaders/BCOVPlaybackSessionPrivate.h</key>
 		<data>
-		ZhlH1n71Amk3VxKcVKO0a8MogEk=
+		1IG/he6y8Wz83LqAK3YPJBQF1VM=
 		</data>
 		<key>PrivateHeaders/BCOVPlaybackSessionProviderPrivate.h</key>
 		<data>
-		dG9ENvGt5JveA6xifzq/FFtZx/s=
+		X42iKs/x/egVwy9P3ZjtSoPVW4M=
 		</data>
 		<key>PrivateHeaders/BCOVVideoContainerView.h</key>
 		<data>
-		7pcrj8DWUVP3Tv1S3yNx6YSXclQ=
+		BVARH7TiHv9zeBDfg4FUdsh77bk=
 		</data>
 		<key>PrivateHeaders/NSArray+BCOVCollectionTransforms.h</key>
 		<data>
-		3xFqjzh0HhY0T/4E1aB1+DzeYYk=
+		7My6GTtB4xwWM3iE+LjwsYRsbj8=
 		</data>
 		<key>PrivateHeaders/NSInvocation+BCOVRACTypeParsing.h</key>
 		<data>
-		WHqL0x3PaDO8leyM5MhzlCk1OhQ=
+		SXkNo61GJ3gQYU0NNbFC1mjBfQU=
 		</data>
 		<key>PrivateHeaders/NSObject+BCOVCommon.h</key>
 		<data>
-		PklFtLgYDNzmHjhpZPUHVk8GY5A=
+		/I50XAIv4i/Sa3wM8BUTna+vQCc=
 		</data>
 		<key>PrivateHeaders/NSObject+bcov_invocation.h</key>
 		<data>
-		muDzB8af6VnhpUzCcSrgteoJyLM=
+		DeVaypWmOucAZ736lvhhjVlHBY0=
 		</data>
 	</dict>
 	<key>rules</key>
