@@ -179,8 +179,6 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * This default behaviour may be overridden when using plugins. For more information on
  * plugin overrides, refer to BCOVSessionProviderExtension category methods in the plugin for
  * a method like abc_play:.
- *
- * This will result in the same behaviour as calling -[BCOVPlaybackSession play].
  */
 - (void)play;
 
@@ -190,8 +188,6 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * This default behaviour may be overridden when using plugins. For more information on
  * plugin overrides, refer to BCOVSessionProviderExtension category methods in the plugin for
  * a method like abc_pause:.
- *
- * This will result in the same behaviour as calling -[BCOVPlaybackSession pause].
  */
 - (void)pause;
 
@@ -204,12 +200,25 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * plugin overrides, refer to BCOVSessionProviderExtension category methods in the plugin for
  * a method like abc_seekToTime:completionHandler:.
  *
- * This will result in the same behaviour as calling -[BCOVPlaybackSession seekToTime:completionHandler:].
- *
  * @param time              Time to move to.
  * @param completionHandler The block to invoke when the seek operation has either been completed or been interrupted.
  */
 - (void)seekToTime:(CMTime)time completionHandler:(void (^)(BOOL finished))completionHandler;
+
+/**
+ * Proxy call to -[AVPlayer seekToTime:toleranceBefore:toleranceAfter:completionHandler:]
+ * Do not call this method until after receiving kBCOVPlaybackSessionLifecycleEventReady event.
+ *
+ * This default behaviour may be overridden when using plugins. For more information on
+ * plugin overrides, refer to BCOVSessionProviderExtension category methods in the plugin for
+ * a method like abc_seekToTime:completionHandler:.
+ *
+ * @param time              Time to move to.
+ * @param toleranceBefore   Allowable tolerance before the seek target.
+ * @param toleranceAfter    Allowable tolerance before the seek target.
+ * @param completionHandler The block to invoke when the seek operation has either been completed or been interrupted.
+ */
+- (void)seekToTime:(CMTime)time toleranceBefore:(CMTime)toleranceBefore toleranceAfter:(CMTime)toleranceAfter completionHandler:(void (^)(BOOL finished))completionHandler;
 
 /**
  * Instructs this instance to reinitialize the current session. If there is

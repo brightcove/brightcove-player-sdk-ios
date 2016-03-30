@@ -96,6 +96,8 @@
 		
 		<option value="//api/name/seekToTime:completionHandler:">- seekToTime:completionHandler:</option>
 		
+		<option value="//api/name/seekToTime:toleranceBefore:toleranceAfter:completionHandler:">- seekToTime:toleranceBefore:toleranceAfter:completionHandler:</option>
+		
 		<option value="//api/name/setAllowsExternalPlayback:">- setAllowsExternalPlayback:</option>
 		
 		<option value="//api/name/setVideos:">- setVideos:</option>
@@ -782,10 +784,8 @@ will be fired, and the video will play using [AVPlayer play].</p>
 will be fired, and the video will play using [AVPlayer play].</p>
 
 <p>This default behaviour may be overridden when using plugins. For more information on
-plugin overrides, refer to BCOVSessionProviderExtension category methods in the plugin for
+plugin overrides, refer to <a href="../Classes/BCOVSessionProviderExtension.html">BCOVSessionProviderExtension</a> category methods in the plugin for
 a method like abc_play:.</p>
-
-<p>This will result in the same behaviour as calling [BCOVPlaybackSession play].</p>
 			</div>
 			
 
@@ -834,10 +834,8 @@ a method like abc_play:.</p>
 				<p>Pauses the content video. This is a proxy call to [AVPlayer pause].</p>
 
 <p>This default behaviour may be overridden when using plugins. For more information on
-plugin overrides, refer to BCOVSessionProviderExtension category methods in the plugin for
+plugin overrides, refer to <a href="../Classes/BCOVSessionProviderExtension.html">BCOVSessionProviderExtension</a> category methods in the plugin for
 a method like abc_pause:.</p>
-
-<p>This will result in the same behaviour as calling [BCOVPlaybackSession pause].</p>
 			</div>
 			
 
@@ -907,10 +905,87 @@ with a tolerance of .1 seconds. Do not call this method until after receiving
 kBCOVPlaybackSessionLifecycleEventReady event.</p>
 
 <p>This default behaviour may be overridden when using plugins. For more information on
-plugin overrides, refer to BCOVSessionProviderExtension category methods in the plugin for
+plugin overrides, refer to <a href="../Classes/BCOVSessionProviderExtension.html">BCOVSessionProviderExtension</a> category methods in the plugin for
 a method like abc_seekToTime:completionHandler:.</p>
+			</div>
+			
 
-<p>This will result in the same behaviour as calling [BCOVPlaybackSession seekToTime:completionHandler:].</p>
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/seekToTime:toleranceBefore:toleranceAfter:completionHandler:" title="seekToTime:toleranceBefore:toleranceAfter:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/seekToTime:toleranceBefore:toleranceAfter:completionHandler:">&ndash;&nbsp;seekToTime:toleranceBefore:toleranceAfter:completionHandler:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Proxy call to [AVPlayer seekToTime:toleranceBefore:toleranceAfter:completionHandler:]
+Do not call this method until after receiving kBCOVPlaybackSessionLifecycleEventReady event.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)seekToTime:(CMTime)<em>time</em> toleranceBefore:(CMTime)<em>toleranceBefore</em> toleranceAfter:(CMTime)<em>toleranceAfter</em> completionHandler:(void ( ^ ) ( BOOL finished ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>time</code></th>
+						<td><p>Time to move to.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>toleranceBefore</code></th>
+						<td><p>Allowable tolerance before the seek target.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>toleranceAfter</code></th>
+						<td><p>Allowable tolerance before the seek target.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>The block to invoke when the seek operation has either been completed or been interrupted.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Proxy call to [AVPlayer seekToTime:toleranceBefore:toleranceAfter:completionHandler:]
+Do not call this method until after receiving kBCOVPlaybackSessionLifecycleEventReady event.</p>
+
+<p>This default behaviour may be overridden when using plugins. For more information on
+plugin overrides, refer to <a href="../Classes/BCOVSessionProviderExtension.html">BCOVSessionProviderExtension</a> category methods in the plugin for
+a method like abc_<a href="#//api/name/seekToTime:completionHandler:">seekToTime:completionHandler:</a>.</p>
 			</div>
 			
 
@@ -1188,7 +1263,7 @@ with this playback controller.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Brightcove. All rights reserved. Updated: 2016-03-04</p>
+						<p class="copyright">Copyright &copy; 2016 Brightcove. All rights reserved. Updated: 2016-03-30</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

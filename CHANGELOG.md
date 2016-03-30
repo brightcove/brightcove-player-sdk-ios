@@ -1,3 +1,9 @@
+# 5.0.4
+### Additions and Improvements
+* When a OnceUX or FairPlay-encoded stream stalls due to network slowdowns or interruptions, it can now be restarted using ` [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:]`. Previously, only streams without OnceUX or FairPlay could be restarted.
+* New lifecycle events are available for detecting the various states of the playback buffer: `kBCOVPlaybackSessionLifecycleEventPlaybackStalled`, `kBCOVPlaybackSessionLifecycleEventPlaybackRecovered`,  `kBCOVPlaybackSessionLifecycleEventPlaybackBufferEmpty`, and `kBCOVPlaybackSessionLifecycleEventPlaybackLikelyToKeepUp`. See `BCOVPlaybackSession.h` for details on each event.
+
+
 # 5.0.3
 ### Additions and Improvements
 * Added support for using Picture in Picture and background audio at the same time by setting the new `pictureInPictureActive` property of the `BCOVPlaybackController` to `YES`. Please see README.md for usage details.

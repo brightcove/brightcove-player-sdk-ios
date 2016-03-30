@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 5.0.3.289
+# Brightcove Player SDK for iOS, version 5.0.4.338
 
 Supported Platforms
 ===================
@@ -196,8 +196,8 @@ To use the plugin:
     XYZAnalytics *analytics = [[XYZAnalytics alloc] init];
     [controller addSessionConsumer:analytics];
     
-Handling network interruptions
------------------------------
+Handling network interruptions and slowdowns
+--------------------------------------------
 
 When the application experiences network interruptions, the AVPlayer used by the the BCOVPlaybackController may stop attempting to recover if the interruption lasts too long. If this occurs, the lifecycle delegate method will be called with a `kBCOVPlaybackSessionLifecycleEventFailedToPlayToEndTime` event. When this event occurs, playback **will not** recover automatically. In order to recover from this event, you will need to detect when the network recovers in your client code.  
 
@@ -205,7 +205,11 @@ Once you have determined that the network has recovered, you can use `- [BCOVPla
 
 Upon calling `- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:`, the player will send a lifecycle event of type `kBCOVPlaybackSessionLifecycleEventResumeBegin`. `kBCOVPlaybackSessionLifecycleEventResumeComplete` will be sent if this action succeeds, otherwise `kBCOVPlaybackSessionLifecycleEventResumeFail` will be sent.
 
-You must wait before calling `- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:` a second time until you have received either `kBCOVPlaybackSessionLifecycleEventResumeComplete` or `kBCOVPlaybackSessionLifecycleEventResumeFail` from the previous call. You may wish to impose a retry limit, before giving the user a message that their network is too unstable.al
+You must wait before calling `- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:` a second time until you have received either `kBCOVPlaybackSessionLifecycleEventResumeComplete` or `kBCOVPlaybackSessionLifecycleEventResumeFail` from the previous call. You may wish to impose a retry limit, before giving the user a message that their network is too unstable.
+
+When the AVPlayer is still able to access the network, but the video stalls because the network is too slow, the lifecycle delegate method will be called with a `kBCOVPlaybackSessionLifecycleEventPlaybackStalled` event. When playback is able to resume, the lifecycle delegate method will be called with a `kBCOVPlaybackSessionLifecycleEventPlaybackRecovered` event. These events only cover the case where normal playback stopped and does not cover buffering that occurs during a seek or initial load of the video.
+
+When the video is initially loading, when a seek occurs, or when playback stalls due to a slow network, the lifecycle delegate method will be called with a `kBCOVPlaybackSessionLifecycleEventPlaybackBufferEmpty` event.  When playback is able to resume,  the lifecycle delegate method will be called with a `kBCOVPlaybackSessionLifecycleEventPlaybackLikelyToKeepUp` event. You may wish to implement a loading spinner in this case.
 
 A Word on Subclassing
 ---------------------
@@ -281,7 +285,7 @@ The playback service classes provide functionality for retrieving information ab
 
 1. The playback service requests **policy key** for authentication. To learn more about policy key and how to obtain one, please check [policy key documentation][PolicyKey].
 
-If for some reason you need to customize the request that the playback service sends to the Brightcove CMS API, you may find `BCOVPlaybackServiceRequestFactory` helpful. This utility, which is used by the playback service, generates parameterized Brightcove CMS API NSURLRequest objects, which you can use in your own HTTP communication.
+If for some reason you need to customize the request that the playback service sends to the Brightcove Playback API, you may find `BCOVPlaybackServiceRequestFactory` helpful. This utility, which is used by the playback service, generates parameterized Brightcove CMS API NSURLRequest objects, which you can use in your own HTTP communication.
 
 [PlaybackAPI]: http://docs.brightcove.com/en/video-cloud/playback-api/index.html
 [PolicyKey]: http://docs.brightcove.com/en/video-cloud/player-management/guides/policy-key.html
