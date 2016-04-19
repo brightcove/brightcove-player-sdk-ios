@@ -31,6 +31,11 @@ extern NSString * const kBCOVSourceDeliveryHLS;
  */
 extern NSString * const kBCOVSourceDeliveryMP4;
 
+/**
+ * The delivery method for DASH media.
+ */
+extern NSString * const kBCOVSourceDeliveryDASH;
+
 
 /**
  * A specific "source" or rendition within a BCOVVideo object. While Brightcove

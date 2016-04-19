@@ -360,6 +360,14 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 - (void)playbackSession:(id<BCOVPlaybackSession>)session didProgressTo:(NSTimeInterval)progress;
 
 /**
+ * Called when the end of the video playlist has been reached, after the
+ * the last video (including post-rolls) has played to the end.
+ *
+ * @param playlist The list of BCOVVideo objects that were played. Do not assume that this is an NSArray.
+ */
+- (void)didCompletePlaylist:(id<NSFastEnumeration>)playlist;
+
+/**
  * Called when a playback session receives a lifecycle event. This method is
  * called only for lifecycle events that occur after the delegate is set
  * (previous lifecycle events will not be buffered/delivered to the delegate).
@@ -484,6 +492,15 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * @param progress The time interval of the session's current playback progress.
  */
 - (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didProgressTo:(NSTimeInterval)progress;
+
+/**
+ * Called when the end of the video playlist has been reached, after the
+ * the last video (including post-rolls) has played to the end.
+ *
+ * @param controller The playback controller to which this instance serves as delegate.
+ * @param playlist The list of BCOVVideo objects that were played. Do not assume that this is an NSArray.
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller didCompletePlaylist:(id<NSFastEnumeration>)playlist;
 
 /**
  * Called when a playback session receives a lifecycle event. This method is 

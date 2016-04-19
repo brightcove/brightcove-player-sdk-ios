@@ -57,6 +57,7 @@ typedef BCOVSource *(^BCOVBasicSessionProviderSourceSelectionPolicy)(BCOVVideo *
  * If no such source is found, the first HLS source with any scheme is returned.
  * If no HLS sources are present, the first MP4 is returned.
  * If none of the above is found, the first source of any kind is returned.
+ *
  * @param scheme The preferred scheme (kBCOVSourceURLSchemeHTTP or
  * kBCOVSourceURLSchemeHTTPS) of the source URL.
  * @return A source selection policy that prefers HLS with the specified scheme.
@@ -67,6 +68,7 @@ typedef BCOVSource *(^BCOVBasicSessionProviderSourceSelectionPolicy)(BCOVVideo *
  * Select the first video in HLS, regardless of scheme.
  * If no HLS source is found, select the first source with a deliveryType of
  * "MP4". If neither is found, the first source of any kind is returned.
+ *
  * @return A source selection policy that prefers HLS over MP4.
  * This is the default source selection policy.
  */

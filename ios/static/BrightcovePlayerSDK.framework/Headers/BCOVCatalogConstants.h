@@ -32,6 +32,10 @@ extern NSString * const kBCOVCatalogJSONKeyVideoDuration;
 extern NSString * const kBCOVCatalogJSONKeyVideoStillUrl;
 extern NSString * const kBCOVCatalogJSONKeyVideos;
 
+extern NSString * const kBCOVCatalogJSONValueDisplayContainerMP4;
+extern NSString * const kBCOVCatalogJSONValueDisplayContainerHLS;
+extern NSString * const kBCOVCatalogJSONValueDisplayContainerDASH;
+
 extern NSString * const kBCOVCatalogURLParameterCommandKey;
 extern NSString * const kBCOVCatalogURLParameterCommandValueFindPlaylistById;
 extern NSString * const kBCOVCatalogURLParameterCommandValueFindPlaylistByReference;

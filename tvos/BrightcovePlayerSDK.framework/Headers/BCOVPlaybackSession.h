@@ -147,6 +147,10 @@ extern const NSInteger kBCOVPlaybackSessionErrorCodeLoadFailed;
  */
 extern const NSInteger kBCOVPlaybackSessionErrorCodeFailedToPlayToEnd;
 
+/**
+ * No playable Source was available for this Video.
+ */
+extern const NSInteger kBCOVPlaybackSessionErrorCodeNoPlayableSource;
 
 /**
  * A playback session represents the playback of a single video. The session
@@ -179,12 +183,81 @@ extern const NSInteger kBCOVPlaybackSessionErrorCodeFailedToPlayToEnd;
 @property (nonatomic, readonly, strong) AVPlayerLayer *playerLayer;
 
 /**
+ * The AVMediaSelectionGroup of audible media selection options of the AVAsset of
+ * the AVPlayerItem of the AVPlayer of the current BCOVPlaybackSession.
+ *
+ * The AVMediaSelectionGroup is unsorted and can contain un-playable options. Use the
+ * +playableMediaSelectionOptionsFromArray: class method of AVMediaSeledtionGroup
+ * to return the list of playable media options. AVMediaSelectionGroup provides filtering
+ * methods to, for example, order the list of options according to the user’s
+ * language preferences.
+ */
+@property (nonatomic, readonly) AVMediaSelectionGroup *audibleMediaSelectionGroup;
+
+/**
+ * The selected audible media option. When setting this property, if
+ * selectedAudibleMediaOption is not a member of the AVMediaSelectionGroup of the
+ * current BCOVPlaybackSession’s AVPlayer, no change in presentation state will
+ * occur.
+ */
+@property (nonatomic, readwrite) AVMediaSelectionOption *selectedAudibleMediaOption;
+
+/**
+ * The AVMediaSelectionGroup of legible media selection options of the AVAsset of
+ * the AVPlayerItem of the AVPlayer of the current BCOVPlaybackSession.
+ *
+ * The AVMediaSelectionGroup is unsorted and can contain un-playable options. Use the
+ * +playableMediaSelectionOptionsFromArray: class method of AVMediaSelectionGroup
+ * to return the list of playable media options. AVMediaSelectionOption provides filtering
+ * methods to, for example, exclude forced subtitles from the legible options that are
+ * suitable to offer in a selection UI.
+ */
+@property (nonatomic, readonly) AVMediaSelectionGroup *legibleMediaSelectionGroup;
+
+/**
+ * The selected legible media option. When setting this property, if
+ * selectedLegibleMediaOption is not a member of the AVMediaSelectionGroup of the
+ * current BCOVPlaybackSession’s AVPlayer, no change in presentation state will
+ * occur. If selectedLegibleMediaOption is set to nil and the allowsEmptySelecton
+ * property of the AVMediaSelectionGroup of the current BCOVPlaybackSession's
+ * AVPlayer is YES, all media selection options in the group will be deselected.
+ */
+@property (nonatomic, readwrite) AVMediaSelectionOption *selectedLegibleMediaOption;
+
+/**
  * The session provider extension for this session. The default value is nil.
  *
  * If a BCOVPlaybackSessionProvider is used that needs to expose plugin specific functionality,
  * this property will return a BCOVSessionProviderExtension.
  */
 @property (nonatomic, readonly, strong) BCOVSessionProviderExtension *providerExtension;
+
+/**
+ * Selects the audible media option in the audible media selection group that
+ * best matches the current AVPlayerItem's automatic selection criteria.
+ */
+- (void)selectAudibleMediaOptionAutomatically;
+
+/**
+ * Selects the legible media option in the legible media selection group which
+ * best matches the current AVPlayerItem's automatic selection criteria.
+ */
+- (void)selectLegibleMediaOptionAutomatically;
+
+/**
+ * Returns a descriptive display string for the audible selection option. The
+ * display name string is the stringValue of the option appended with the option
+ * locale if the locale differs from the stringValue.
+ */
+- (NSString *)displayNameFromAudibleMediaSelectionOption:(AVMediaSelectionOption *)option;
+
+/**
+ * Returns a descriptive display string for the legible selection option. The
+ * display name string is the stringValue of the option appended with the option
+ * locale if the locale differs from the stringValue. Legible option names are
+ * further appended with "SDH" when accessibility characteristics are present.
+ */
+- (NSString *)displayNameFromLegibleMediaSelectionOption:(AVMediaSelectionOption *)option;
 
 /**
  * Terminates this playback session, indicating readiness for a new session to

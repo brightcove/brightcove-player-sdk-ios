@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 5.0.4.338
+# Brightcove Player SDK for iOS, version 5.0.5.386
 
 Supported Platforms
 ===================
@@ -140,7 +140,7 @@ Source selection can be overridden by creating a `BCOVBasicSessionProviderOption
     options.sourceSelectionPolicy = <policy>
     
     id<BCOVPlaybackSessionProvider> provider = [sdkManager createBasicSessionProviderWithOptions:options];
-    id<BCOVPlaybackController> playbackController [sdkManager createPlaybackControllerWithSessionProvider:provider viewStrategy:nil];
+    id<BCOVPlaybackController> playbackController = [sdkManager createPlaybackControllerWithSessionProvider:provider viewStrategy:nil];
 
 
 If this default selection policy does not work for you, there are a few alternatives to selecting a source:

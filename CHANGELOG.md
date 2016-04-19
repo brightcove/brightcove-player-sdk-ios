@@ -1,7 +1,25 @@
+# 5.0.5
+### Additions and Improvements
+* Introduced convenience methods for accessing optional soundtracks, subtitles and closed captions from the AVPlayerItem of the current `BCOVPlaybackSession`. Apple API documentation refers to soundtracks as
+audible media options, while subtitles and closed captions are referred to as legible media options.
+
+
+  `-[BCOVPlaybackSession audibleMediaSelectionGroup]`,  
+  `-[BCOVPlaybackSession  selectedAudibleMediaOption]`,  
+  `-[BCOVPlaybackSession legibleMediaSelectionGroup]`,  
+  `-[BCOVPlaybackSession  selectedLegibleMediaOption]`,  
+  `-[BCOVPlaybackSession selectAudibleMediaOptionAutomatically]`,  
+  `-[BCOVPlaybackSession selectLegibleMediaOptionAutomatically]`,  
+  `-[BCOVPlaybackSession displayNameFromAudibleMediaSelectionOption:]`, and  
+  `-[BCOVPlaybackSession displayNameFromLegibleMediaSelectionOption:]`.
+
+* DASH sources are ignored.
+
 # 5.0.4
 ### Additions and Improvements
 * When a OnceUX or FairPlay-encoded stream stalls due to network slowdowns or interruptions, it can now be restarted using ` [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:]`. Previously, only streams without OnceUX or FairPlay could be restarted.
-* New lifecycle events are available for detecting the various states of the playback buffer: `kBCOVPlaybackSessionLifecycleEventPlaybackStalled`, `kBCOVPlaybackSessionLifecycleEventPlaybackRecovered`,  `kBCOVPlaybackSessionLifecycleEventPlaybackBufferEmpty`, and `kBCOVPlaybackSessionLifecycleEventPlaybackLikelyToKeepUp`. See `BCOVPlaybackSession.h` for details on each event.
+* New lifecycle events are available for detecting the various states of the playback buffer (see `BCOVPlaybackSession.h` for details on each event): `kBCOVPlaybackSessionLifecycleEventPlaybackStalled`, `kBCOVPlaybackSessionLifecycleEventPlaybackRecovered`,  `kBCOVPlaybackSessionLifecycleEventPlaybackBufferEmpty`, and `kBCOVPlaybackSessionLifecycleEventPlaybackLikelyToKeepUp`.  
+
 
 
 # 5.0.3

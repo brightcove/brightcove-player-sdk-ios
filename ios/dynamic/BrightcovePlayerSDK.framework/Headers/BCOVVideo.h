@@ -134,5 +134,25 @@ extern NSString * const kBCOVVideoPropertyKeyId;
  */
 + (BCOVVideo *)videoWithURL:(NSURL *)url;
 
+/**
+ * Returns a new video with a single source containing the specified URL
+ * and a delivery method as kBCOVSourceDeliveryHLS.
+ *
+ * @param url The URL of the source to be created and associated to the new
+ * video.
+ * @return A new video with a source containing the specified URL.
+ */
++ (BCOVVideo *)videoWithHLSSourceURL:(NSURL *)url;
+
+/**
+ * Returns a new video with a single source containing the specified URL.
+ *
+ * @param url The URL of the source to be created and associated to the new
+ * video.
+ * @param deliveryMethod The delivery method for this source. See BCOVSource for options.
+ * @return A new video with a source containing the specified URL.
+ */
++ (BCOVVideo *)videoWithURL:(NSURL *)url deliveryMethod:(NSString *)deliveryMethod;
+
 @end
 
