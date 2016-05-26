@@ -66,7 +66,7 @@
 		</data>
 		<key>Headers/BCOVSource.h</key>
 		<data>
-		b02OKqhEHoZrKIPs6k1tfK0+HXc=
+		D5QA2Iv2/nx+jtbonMojRk0xooA=
 		</data>
 		<key>Headers/BCOVVideo.h</key>
 		<data>
@@ -82,7 +82,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		i5Fvn49mNrwW87li1wqLK3sCTHo=
+		lqSV2w7tkWFi/6zYzx3TazIR3bc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -344,11 +344,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			b02OKqhEHoZrKIPs6k1tfK0+HXc=
+			D5QA2Iv2/nx+jtbonMojRk0xooA=
 			</data>
 			<key>hash2</key>
 			<data>
-			/KIUbniCeGX3c1TwpVy0mPNg3EqIGYuGUHvG7ysqXCw=
+			HE1Izgocv5UoCvpSnTUnN8Wkqq8y0MdZuVSBLL2xhsI=
 			</data>
 		</dict>
 		<key>Headers/BCOVVideo.h</key>

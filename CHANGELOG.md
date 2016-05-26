@@ -1,3 +1,8 @@
+# 5.0.6
+### Additions and Improvements
+* Internal support for the FairPlay plugin for Brightcove Player SDK for iOS. Please note that if you are using version 1.0.3 of the FairPlay plugin for Brightcove Player SDK for iOS, you must use version 5.0.6 or later of the Brightcove Player SDK.
+
+
 # 5.0.5
 ### Additions and Improvements
 * Introduced convenience methods for accessing optional soundtracks, subtitles and closed captions from the AVPlayerItem of the current `BCOVPlaybackSession`. Apple API documentation refers to soundtracks as

@@ -36,6 +36,11 @@ extern NSString * const kBCOVSourceDeliveryMP4;
  */
 extern NSString * const kBCOVSourceDeliveryDASH;
 
+/**
+ * The key used in the source properties to declare the DRM type of this source.
+ */
+extern NSString * const kBCOVSourceKeySystems;
+
 
 /**
  * A specific "source" or rendition within a BCOVVideo object. While Brightcove
