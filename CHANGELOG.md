@@ -1,7 +1,12 @@
+
+
+# 5.0.7
+### Additions and Improvements
+* Fixed an issue where live streaming assets could not be retrieved or played through the Playback Service.
+
 # 5.0.6
 ### Additions and Improvements
 * Internal support for the FairPlay plugin for Brightcove Player SDK for iOS. Please note that if you are using version 1.0.3 of the FairPlay plugin for Brightcove Player SDK for iOS, you must use version 5.0.6 or later of the Brightcove Player SDK.
-
 
 # 5.0.5
 ### Additions and Improvements
