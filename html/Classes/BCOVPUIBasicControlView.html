@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>BCOVPUIBasicControlView Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">BCOVPlayerSDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Brightcove</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/advertisingMode">advertisingMode</option>
+		
+		<option value="//api/name/backgroundView">backgroundView</option>
+		
+		<option value="//api/name/closedCaptionButton">closedCaptionButton</option>
+		
+		<option value="//api/name/closedCaptionEnabled">closedCaptionEnabled</option>
+		
+		<option value="//api/name/currentTimeLabel">currentTimeLabel</option>
+		
+		<option value="//api/name/durationLabel">durationLabel</option>
+		
+		<option value="//api/name/externalRouteEnabled">externalRouteEnabled</option>
+		
+		<option value="//api/name/externalRouteView">externalRouteView</option>
+		
+		<option value="//api/name/jumpBackButton">jumpBackButton</option>
+		
+		<option value="//api/name/layout">layout</option>
+		
+		<option value="//api/name/liveButton">liveButton</option>
+		
+		<option value="//api/name/playbackButton">playbackButton</option>
+		
+		<option value="//api/name/progressSlider">progressSlider</option>
+		
+		<option value="//api/name/screenModeButton">screenModeButton</option>
+		
+		<option value="//api/name/timeSeparatorLabel">timeSeparatorLabel</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/basicControlViewWithLiveDVRLayout">+ basicControlViewWithLiveDVRLayout</option>
+		
+		<option value="//api/name/basicControlViewWithLiveLayout">+ basicControlViewWithLiveLayout</option>
+		
+		<option value="//api/name/basicControlViewWithVODLayout">+ basicControlViewWithVODLayout</option>
+		
+		<option value="//api/name/createPUIControlItemWithViewTag:">+ createPUIControlItemWithViewTag:</option>
+		
+		<option value="//api/name/layoutViewWithControlFromTag:width:elasticity:">+ layoutViewWithControlFromTag:width:elasticity:</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/enableControls:">- enableControls:</option>
+		
+		<option value="//api/name/setFontSizeForButtons:">- setFontSizeForButtons:</option>
+		
+		<option value="//api/name/setFontSizeForLabels:">- setFontSizeForLabels:</option>
+		
+		<option value="//api/name/setTextColorForLabels:">- setTextColorForLabels:</option>
+		
+		<option value="//api/name/setTitleColorForButtons:forState:">- setTitleColorForButtons:forState:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BCOVPUIBasicControlView Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>UIView</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>BCOVPUIBasicControlView.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Basic controls view.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/backgroundView" title="backgroundView"></a>
+	<h3 class="method-title"><code><a href="#//api/name/backgroundView">&nbsp;&nbsp;backgroundView</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The background view for the controls. On iOS 8+, this a UIVisualEffectView
+with dark blur view.  On iOS 7, this is a black view with slight opacity.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) UIView *backgroundView</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The background view for the controls. On iOS 8+, this a UIVisualEffectView
+with dark blur view.  On iOS 7, this is a black view with slight opacity.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/layout" title="layout"></a>
+	<h3 class="method-title"><code><a href="#//api/name/layout">&nbsp;&nbsp;layout</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The layout used organize the controls.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) BCOVPUIControlLayout *layout</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The layout used organize the controls.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackButton" title="playbackButton"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackButton">&nbsp;&nbsp;playbackButton</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The playback button</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) BCOVPUIButton *playbackButton</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The playback button</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/jumpBackButton" title="jumpBackButton"></a>
+	<h3 class="method-title"><code><a href="#//api/name/jumpBackButton">&nbsp;&nbsp;jumpBackButton</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The jump back button</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) BCOVPUIButton *jumpBackButton</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The jump back button</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/currentTimeLabel" title="currentTimeLabel"></a>
+	<h3 class="method-title"><code><a href="#//api/name/currentTimeLabel">&nbsp;&nbsp;currentTimeLabel</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The current time (elapsed) label</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) UILabel *currentTimeLabel</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The current time (elapsed) label</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/timeSeparatorLabel" title="timeSeparatorLabel"></a>
+	<h3 class="method-title"><code><a href="#//api/name/timeSeparatorLabel">&nbsp;&nbsp;timeSeparatorLabel</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The time separator label</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) UILabel *timeSeparatorLabel</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The time separator label</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/durationLabel" title="durationLabel"></a>
+	<h3 class="method-title"><code><a href="#//api/name/durationLabel">&nbsp;&nbsp;durationLabel</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The duration label</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) UILabel *durationLabel</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The duration label</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/progressSlider" title="progressSlider"></a>
+	<h3 class="method-title"><code><a href="#//api/name/progressSlider">&nbsp;&nbsp;progressSlider</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The progress slider</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) BCOVPUISlider *progressSlider</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The progress slider</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/closedCaptionButton" title="closedCaptionButton"></a>
+	<h3 class="method-title"><code><a href="#//api/name/closedCaptionButton">&nbsp;&nbsp;closedCaptionButton</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The closed caption button</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) UIButton *closedCaptionButton</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The closed caption button</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/screenModeButton" title="screenModeButton"></a>
+	<h3 class="method-title"><code><a href="#//api/name/screenModeButton">&nbsp;&nbsp;screenModeButton</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The screen mode (fullscreen) button</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) BCOVPUIButton *screenModeButton</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The screen mode (fullscreen) button</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/externalRouteView" title="externalRouteView"></a>
+	<h3 class="method-title"><code><a href="#//api/name/externalRouteView">&nbsp;&nbsp;externalRouteView</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The external route (airplay) button</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) MPVolumeView *externalRouteView</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The external route (airplay) button</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/liveButton" title="liveButton"></a>
+	<h3 class="method-title"><code><a href="#//api/name/liveButton">&nbsp;&nbsp;liveButton</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The &ldquo;go to live&rdquo; button</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) BCOVPUIButton *liveButton</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The &ldquo;go to live&rdquo; button</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/closedCaptionEnabled" title="closedCaptionEnabled"></a>
+	<h3 class="method-title"><code><a href="#//api/name/closedCaptionEnabled">&nbsp;&nbsp;closedCaptionEnabled</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Yes if the <a href="#//api/name/closedCaptionButton">closedCaptionButton</a> is visible. No if invisible.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, getter=isClosedCaptionEnabled) BOOL closedCaptionEnabled</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Yes if the <a href="#//api/name/closedCaptionButton">closedCaptionButton</a> is visible. No if invisible.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/externalRouteEnabled" title="externalRouteEnabled"></a>
+	<h3 class="method-title"><code><a href="#//api/name/externalRouteEnabled">&nbsp;&nbsp;externalRouteEnabled</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Yes if the <a href="#//api/name/externalRouteView">externalRouteView</a> is visible. No if invisible.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly, getter=isExternalRouteEnabled) BOOL externalRouteEnabled</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Yes if the <a href="#//api/name/externalRouteView">externalRouteView</a> is visible. No if invisible.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/advertisingMode" title="advertisingMode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/advertisingMode">&nbsp;&nbsp;advertisingMode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set to YES to change the control view&rsquo;s UI to the advertising state.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) BOOL advertisingMode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Set to YES to change the control view&rsquo;s UI to the advertising state.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/layoutViewWithControlFromTag:width:elasticity:" title="layoutViewWithControlFromTag:width:elasticity:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/layoutViewWithControlFromTag:width:elasticity:">+&nbsp;layoutViewWithControlFromTag:width:elasticity:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Convenience factory method for creating a <a href="#//api/name/layout">layout</a> view
+with a subview determined by the specified tag.
+Layout views are bundled into arrays and used to create
+a <a href="../Classes/BCOVPUIControlLayout.html">BCOVPUIControlLayout</a> instance.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BCOVPUILayoutView *)layoutViewWithControlFromTag:(BCOVPUIViewTag)<em>tag</em> width:(CGFloat)<em>width</em> elasticity:(CGFloat)<em>elasticity</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>tag</code></th>
+						<td><p>A tag value indicating the desired control or empty <a href="#//api/name/layout">layout</a> view.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>width</code></th>
+						<td><p>The minimum width of the new <a href="#//api/name/layout">layout</a> view. Pass kBCOVPUILayoutUseDefaultValue to use the default width for the specific control.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>elasticity</code></th>
+						<td><p>The relative amount that a <a href="#//api/name/layout">layout</a> view can expand to fill space. Elasticity is relative to other <a href="#//api/name/layout">layout</a> views.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A <a href="../Classes/BCOVPUILayoutView.html">BCOVPUILayoutView</a> instance initialized with a subview specified by the tag, width, and elasticity.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Convenience factory method for creating a <a href="#//api/name/layout">layout</a> view
+with a subview determined by the specified tag.
+Layout views are bundled into arrays and used to create
+a <a href="../Classes/BCOVPUIControlLayout.html">BCOVPUIControlLayout</a> instance.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/basicControlViewWithVODLayout" title="basicControlViewWithVODLayout"></a>
+	<h3 class="method-title"><code><a href="#//api/name/basicControlViewWithVODLayout">+&nbsp;basicControlViewWithVODLayout</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Convenience factory method to create a control view with
+a control <a href="#//api/name/layout">layout</a> for Video On Demand streams.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)basicControlViewWithVODLayout</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A BCOVPUIBasicControlView instance initialzed with a control <a href="#//api/name/layout">layout</a> for Video On Demand streams.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Convenience factory method to create a control view with
+a control <a href="#//api/name/layout">layout</a> for Video On Demand streams.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/basicControlViewWithLiveLayout" title="basicControlViewWithLiveLayout"></a>
+	<h3 class="method-title"><code><a href="#//api/name/basicControlViewWithLiveLayout">+&nbsp;basicControlViewWithLiveLayout</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Convenience factory method to create a control view with
+a control <a href="#//api/name/layout">layout</a> for live video streams.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)basicControlViewWithLiveLayout</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A BCOVPUIBasicControlView instance initialzed with a control <a href="#//api/name/layout">layout</a> for live video streams.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Convenience factory method to create a control view with
+a control <a href="#//api/name/layout">layout</a> for live video streams.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/basicControlViewWithLiveDVRLayout" title="basicControlViewWithLiveDVRLayout"></a>
+	<h3 class="method-title"><code><a href="#//api/name/basicControlViewWithLiveDVRLayout">+&nbsp;basicControlViewWithLiveDVRLayout</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Convenience factory method to create a control view with
+a control <a href="#//api/name/layout">layout</a> for live DVR video streams.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)basicControlViewWithLiveDVRLayout</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A BCOVPUIBasicControlView instance initialzed with a control <a href="#//api/name/layout">layout</a> for live DVR video streams.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Convenience factory method to create a control view with
+a control <a href="#//api/name/layout">layout</a> for live DVR video streams.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/enableControls:" title="enableControls:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/enableControls:">&ndash;&nbsp;enableControls:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Enable or disable all the standard controls</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)enableControls:(BOOL)<em>enabled</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>enabled</code></th>
+						<td><p>YES to enable; NO to disable.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Enable or disable all the standard controls</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setFontSizeForLabels:" title="setFontSizeForLabels:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setFontSizeForLabels:">&ndash;&nbsp;setFontSizeForLabels:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Updates all label components with the specified font size.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setFontSizeForLabels:(CGFloat)<em>fontSize</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fontSize</code></th>
+						<td><p>The font size to update components with.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Updates all label components with the specified font size.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setFontSizeForButtons:" title="setFontSizeForButtons:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setFontSizeForButtons:">&ndash;&nbsp;setFontSizeForButtons:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Updates all button components with the specified font size.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setFontSizeForButtons:(CGFloat)<em>fontSize</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fontSize</code></th>
+						<td><p>The font size to update components with.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Updates all button components with the specified font size.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setTextColorForLabels:" title="setTextColorForLabels:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setTextColorForLabels:">&ndash;&nbsp;setTextColorForLabels:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Updates all label components with the specified font color.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setTextColorForLabels:(UIColor *)<em>textColor</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>textColor</code></th>
+						<td><p>The font size to update components with.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Updates all label components with the specified font color.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setTitleColorForButtons:forState:" title="setTitleColorForButtons:forState:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setTitleColorForButtons:forState:">&ndash;&nbsp;setTitleColorForButtons:forState:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Updates all button components with the specified color for state.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setTitleColorForButtons:(UIColor *)<em>titleColor</em> forState:(UIControlState)<em>state</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>titleColor</code></th>
+						<td><p>The color of the title to set.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>state</code></th>
+						<td><p>Controls state to set.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Updates all button components with the specified color for state.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/createPUIControlItemWithViewTag:" title="createPUIControlItemWithViewTag:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createPUIControlItemWithViewTag:">+&nbsp;createPUIControlItemWithViewTag:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Constructs the UI control item with the specified tag.
+Returned object may be a <a href="../Classes/BCOVPUIButton.html">BCOVPUIButton</a>, <a href="../Classes/BCOVPUISlider.html">BCOVPUISlider</a>, UILabel,
+or MPVolumeView depending on the specified tag.
+This method is typically only used by <a href="#//api/name/layoutViewWithControlFromTag:width:elasticity:">layoutViewWithControlFromTag:width:elasticity:</a>
+to create the control placed inside a <a href="../Classes/BCOVPUILayoutView.html">BCOVPUILayoutView</a>.
+Default styles will be applied.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (UIView *)createPUIControlItemWithViewTag:(BCOVPUIViewTag)<em>tag</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>tag</code></th>
+						<td><p>The tag to construct.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Initialized UI component.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Constructs the UI control item with the specified tag.
+Returned object may be a <a href="../Classes/BCOVPUIButton.html">BCOVPUIButton</a>, <a href="../Classes/BCOVPUISlider.html">BCOVPUISlider</a>, UILabel,
+or MPVolumeView depending on the specified tag.
+This method is typically only used by <a href="#//api/name/layoutViewWithControlFromTag:width:elasticity:">layoutViewWithControlFromTag:width:elasticity:</a>
+to create the control placed inside a <a href="../Classes/BCOVPUILayoutView.html">BCOVPUILayoutView</a>.
+Default styles will be applied.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Brightcove. All rights reserved. Updated: 2016-06-27</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

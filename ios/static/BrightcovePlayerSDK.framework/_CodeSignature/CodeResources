@@ -36,9 +36,33 @@
 		<data>
 		UavNvBZGVBRKPIDF1ztw7rdEv/k=
 		</data>
+		<key>Headers/BCOVPUIBasicControlView.h</key>
+		<data>
+		3w20y50cJJEz7IPvK7lnOmR/cyI=
+		</data>
+		<key>Headers/BCOVPUIButton.h</key>
+		<data>
+		X/rsFhM73l+MdhmILI+kQbVqkW4=
+		</data>
+		<key>Headers/BCOVPUICommon.h</key>
+		<data>
+		UpArmeuuQOWfN9GQT72B2WbB8cU=
+		</data>
+		<key>Headers/BCOVPUILayoutView.h</key>
+		<data>
+		L9atvvZ6+4m4qFnsr5eyXKXnWHs=
+		</data>
+		<key>Headers/BCOVPUIPlayerView.h</key>
+		<data>
+		Lhev82sK/Wdl7KD34kmS9/cP7PU=
+		</data>
+		<key>Headers/BCOVPUISlider.h</key>
+		<data>
+		B3xap5JaQkxl2Zpz2N89KfCt5QE=
+		</data>
 		<key>Headers/BCOVPlaybackController.h</key>
 		<data>
-		ro69AoqzqwsRa6yKUw/xfnr/ZSE=
+		6Xc/QWtz9mFQe3Y+eJT+EnZwJ70=
 		</data>
 		<key>Headers/BCOVPlaybackService.h</key>
 		<data>
@@ -58,7 +82,7 @@
 		</data>
 		<key>Headers/BCOVPlayerSDKManager.h</key>
 		<data>
-		DOLiQx+gzhi0dB4kb3SeatUYUEE=
+		NIZYBOFNtaceBK89QsiY8pkiCzw=
 		</data>
 		<key>Headers/BCOVPlaylist.h</key>
 		<data>
@@ -74,7 +98,7 @@
 		</data>
 		<key>Headers/BrightcovePlayerSDK.h</key>
 		<data>
-		J2nKgHJlUofZEsd95McNig+jj7g=
+		D9kDnKSLiREKuMVmnvZD1mG2Sgs=
 		</data>
 		<key>Headers/NSDictionary+BCOVURLSupport.h</key>
 		<data>
@@ -82,7 +106,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		p8UHQTTp7sEAU55hZaeCJa52Tnk=
+		vEk8UWH3mQ4Z66buBN+/2o1sEeI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -114,7 +138,7 @@
 		</data>
 		<key>PrivateHeaders/BCOVAnalyticsSessionDigester.h</key>
 		<data>
-		NmTK7QlAIbGpLcAZ2dEtbUAHqaU=
+		TB+P2oX3TfCKhNf4n3Qjt2w1CLU=
 		</data>
 		<key>PrivateHeaders/BCOVBasicControlsView.h</key>
 		<data>
@@ -122,7 +146,7 @@
 		</data>
 		<key>PrivateHeaders/BCOVBasicPlaybackController.h</key>
 		<data>
-		YaoFaTLiqDDzqeONbjsAczhOXz0=
+		namc1bn70uO6LG1fre0wiW8MFL0=
 		</data>
 		<key>PrivateHeaders/BCOVBasicPlaybackSession.h</key>
 		<data>
@@ -136,9 +160,57 @@
 		<data>
 		GAF62ltV9SQvc01O7g0+WMqvng8=
 		</data>
+		<key>PrivateHeaders/BCOVPUIAdControlView.h</key>
+		<data>
+		HMpoboOYCDZUprRWu4HlYYXTCM4=
+		</data>
+		<key>PrivateHeaders/BCOVPUIClosedCaptionHandler.h</key>
+		<data>
+		Ezw7SPRP4JIjYFRps6biQglg0k4=
+		</data>
+		<key>PrivateHeaders/BCOVPUICommonPrivate.h</key>
+		<data>
+		FPnwE2g525KhQ9YY0gfuenbDCwA=
+		</data>
+		<key>PrivateHeaders/BCOVPUIComponent.h</key>
+		<data>
+		JY8GR76iB3Fa8kKaxRQVqznlHlg=
+		</data>
+		<key>PrivateHeaders/BCOVPUIControlsContainerView.h</key>
+		<data>
+		0g3xy8MhYkQyLJBs8Et7//WVohU=
+		</data>
+		<key>PrivateHeaders/BCOVPUIDefaultActionHandler.h</key>
+		<data>
+		BYMLyfsR+naYaMzDlrH0FfS5L/E=
+		</data>
+		<key>PrivateHeaders/BCOVPUIDefaultUpdater.h</key>
+		<data>
+		wvq7ei8o/G5abAXQlr80CLmzycg=
+		</data>
+		<key>PrivateHeaders/BCOVPUIRootContainerView.h</key>
+		<data>
+		65Wuu27Km+0SkH4wyMRsUmHepDU=
+		</data>
+		<key>PrivateHeaders/BCOVPUIScreenModeTransitionHandler.h</key>
+		<data>
+		Icyn33Is233EnJhe58mnzc6v1Og=
+		</data>
+		<key>PrivateHeaders/BCOVPUIShowHideHandler.h</key>
+		<data>
+		QbblERpMhzfBBr/aaKEuZT10IkE=
+		</data>
+		<key>PrivateHeaders/BCOVPUIVideoTypeConsumer.h</key>
+		<data>
+		6JieqReoFvXjno7JyJs3zrxbwtc=
+		</data>
+		<key>PrivateHeaders/BCOVPUIWebViewController.h</key>
+		<data>
+		tXsPQETla9aAwnT8IA61ET1hc1Q=
+		</data>
 		<key>PrivateHeaders/BCOVPlaybackControllerCallbackDispatchCenter.h</key>
 		<data>
-		j2it3cU34fieUL0x0hrqHDrHQAY=
+		NADGG2LC5TUO5q7nwez7PLySAew=
 		</data>
 		<key>PrivateHeaders/BCOVPlaybackControllerDelegatePrivate.h</key>
 		<data>
@@ -146,11 +218,11 @@
 		</data>
 		<key>PrivateHeaders/BCOVPlaybackSessionPrivate.h</key>
 		<data>
-		tErNfRfYT9y/zvMbicE4t3lD6ok=
+		VSMESFb0CdH9QT8u3nxfqjciOS4=
 		</data>
 		<key>PrivateHeaders/BCOVPlaybackSessionProviderPrivate.h</key>
 		<data>
-		X42iKs/x/egVwy9P3ZjtSoPVW4M=
+		eJW8hIbXP/9XX7ghn5yl4HJGVgE=
 		</data>
 		<key>PrivateHeaders/BCOVVideoContainerView.h</key>
 		<data>
@@ -171,6 +243,10 @@
 		<key>PrivateHeaders/NSObject+bcov_invocation.h</key>
 		<data>
 		DeVaypWmOucAZ736lvhhjVlHBY0=
+		</data>
+		<key>bcovpuiiconfont.ttf</key>
+		<data>
+		B7cVny2pouUHXCJ+5JNWyG8Fkvk=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -263,15 +339,81 @@
 			VcRJAQB09K2J9C5U9dHhLSrBw22v+7mdsAxS9vRkI94=
 			</data>
 		</dict>
+		<key>Headers/BCOVPUIBasicControlView.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			3w20y50cJJEz7IPvK7lnOmR/cyI=
+			</data>
+			<key>hash2</key>
+			<data>
+			tbDEzDcH6RXFvNWRdkWMa1W9dAnfT0BgEDe+mrTDZjA=
+			</data>
+		</dict>
+		<key>Headers/BCOVPUIButton.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			X/rsFhM73l+MdhmILI+kQbVqkW4=
+			</data>
+			<key>hash2</key>
+			<data>
+			56ettOBFT7XV96LUk/LJmxgYmG63KsZzj+2L3FW5kS8=
+			</data>
+		</dict>
+		<key>Headers/BCOVPUICommon.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			UpArmeuuQOWfN9GQT72B2WbB8cU=
+			</data>
+			<key>hash2</key>
+			<data>
+			h1/u1kByb/JTGVlLZmhVbaBH+ZB6+Fgdy3p2Vj+93k4=
+			</data>
+		</dict>
+		<key>Headers/BCOVPUILayoutView.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			L9atvvZ6+4m4qFnsr5eyXKXnWHs=
+			</data>
+			<key>hash2</key>
+			<data>
+			XpsIgoYfsYqOS+xqsxZwzKhF4YzS6kleJjOJZKulfFw=
+			</data>
+		</dict>
+		<key>Headers/BCOVPUIPlayerView.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Lhev82sK/Wdl7KD34kmS9/cP7PU=
+			</data>
+			<key>hash2</key>
+			<data>
+			GhxO9xjCji0X/5jBiFc/bqaWmv+a2jJaTY4pFzYJDTQ=
+			</data>
+		</dict>
+		<key>Headers/BCOVPUISlider.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			B3xap5JaQkxl2Zpz2N89KfCt5QE=
+			</data>
+			<key>hash2</key>
+			<data>
+			cL+b0Nyw0vNnBJxtbCWH4+W1w80q6FkOfRgxvAOS4H4=
+			</data>
+		</dict>
 		<key>Headers/BCOVPlaybackController.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ro69AoqzqwsRa6yKUw/xfnr/ZSE=
+			6Xc/QWtz9mFQe3Y+eJT+EnZwJ70=
 			</data>
 			<key>hash2</key>
 			<data>
-			rzWR82pGo6RZbO5Sbu/AmHaqjne/DCSz9IAeCw51+xw=
+			6W11pXaEE6HSI4NhsscB0uuSfl7tMGnSay1VXLp8cW0=
 			</data>
 		</dict>
 		<key>Headers/BCOVPlaybackService.h</key>
@@ -322,11 +464,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			DOLiQx+gzhi0dB4kb3SeatUYUEE=
+			NIZYBOFNtaceBK89QsiY8pkiCzw=
 			</data>
 			<key>hash2</key>
 			<data>
-			ksGhvdNGSppih8g6HhQ1LyBwKEUfFDmw6Qeubw7Tzrc=
+			UN4IJub9jYelOSABbfcpGWBQcc12a8F6hkT7lAMmMPo=
 			</data>
 		</dict>
 		<key>Headers/BCOVPlaylist.h</key>
@@ -366,11 +508,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			J2nKgHJlUofZEsd95McNig+jj7g=
+			D9kDnKSLiREKuMVmnvZD1mG2Sgs=
 			</data>
 			<key>hash2</key>
 			<data>
-			ajKVG1EVoPQVIerIzFaGGTYgtSx4KOJ41LyFzXGWNbg=
+			I4Eo5NMsfTZefmQ3gR53BL6zChIPBOCVaiAnn86NUjk=
 			</data>
 		</dict>
 		<key>Headers/NSDictionary+BCOVURLSupport.h</key>
@@ -465,11 +607,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			NmTK7QlAIbGpLcAZ2dEtbUAHqaU=
+			TB+P2oX3TfCKhNf4n3Qjt2w1CLU=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ni5oZ54eUk482PQXyLRhAgYAx/GuvKWjp4RyhWlKKys=
+			TjhKNHkFRoMIpHaaB+epNdK3COvo1PYB1DrxTFSIPho=
 			</data>
 		</dict>
 		<key>PrivateHeaders/BCOVBasicControlsView.h</key>
@@ -487,11 +629,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			YaoFaTLiqDDzqeONbjsAczhOXz0=
+			namc1bn70uO6LG1fre0wiW8MFL0=
 			</data>
 			<key>hash2</key>
 			<data>
-			9W8KGnyjXE1FdfV27BV691GdKKLR0egl541ndxmN5sU=
+			er45D/ewdxBDnHFdVW9sjWEoJfyLPfdHfzoDm3c6EUE=
 			</data>
 		</dict>
 		<key>PrivateHeaders/BCOVBasicPlaybackSession.h</key>
@@ -527,15 +669,147 @@
 			uOrL2qzMrdvCMrApNH5VvvSfMtOZCM5lvMxO/CpGNQk=
 			</data>
 		</dict>
+		<key>PrivateHeaders/BCOVPUIAdControlView.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			HMpoboOYCDZUprRWu4HlYYXTCM4=
+			</data>
+			<key>hash2</key>
+			<data>
+			Vu51QWjV1CBSoAQgatP7ARyjyIFFsd45ynjJ1Uk1dFk=
+			</data>
+		</dict>
+		<key>PrivateHeaders/BCOVPUIClosedCaptionHandler.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Ezw7SPRP4JIjYFRps6biQglg0k4=
+			</data>
+			<key>hash2</key>
+			<data>
+			ZpCC2pN+T2TsE+fGqk299UCqwgz05jsSa3sUU9SohRI=
+			</data>
+		</dict>
+		<key>PrivateHeaders/BCOVPUICommonPrivate.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			FPnwE2g525KhQ9YY0gfuenbDCwA=
+			</data>
+			<key>hash2</key>
+			<data>
+			yctzKAhPGNEfEWFSDlHtXblWw1Ysn8rd2vheuV5j5Z4=
+			</data>
+		</dict>
+		<key>PrivateHeaders/BCOVPUIComponent.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			JY8GR76iB3Fa8kKaxRQVqznlHlg=
+			</data>
+			<key>hash2</key>
+			<data>
+			SBIQdYq9T+hmJuXU+ZNdeGmVLlxYlMjFDCq5viD8KUI=
+			</data>
+		</dict>
+		<key>PrivateHeaders/BCOVPUIControlsContainerView.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			0g3xy8MhYkQyLJBs8Et7//WVohU=
+			</data>
+			<key>hash2</key>
+			<data>
+			LIsQExJTy2FfQlXzwrMeMD05rhxdKCUUzCJYT3QL0T0=
+			</data>
+		</dict>
+		<key>PrivateHeaders/BCOVPUIDefaultActionHandler.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			BYMLyfsR+naYaMzDlrH0FfS5L/E=
+			</data>
+			<key>hash2</key>
+			<data>
+			8FNpnrbEZMfhtAlq33jy2QzYhNhM9hdKWqR9RN3CkN0=
+			</data>
+		</dict>
+		<key>PrivateHeaders/BCOVPUIDefaultUpdater.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			wvq7ei8o/G5abAXQlr80CLmzycg=
+			</data>
+			<key>hash2</key>
+			<data>
+			TkcMgtsvKjBZ0tfUUFwk5xhqjXb9JMOzZ3Qg2SMfXbg=
+			</data>
+		</dict>
+		<key>PrivateHeaders/BCOVPUIRootContainerView.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			65Wuu27Km+0SkH4wyMRsUmHepDU=
+			</data>
+			<key>hash2</key>
+			<data>
+			M118tJCA80rzvx/KuhH3m+FtHtxLcwV/94dyxzynKoY=
+			</data>
+		</dict>
+		<key>PrivateHeaders/BCOVPUIScreenModeTransitionHandler.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Icyn33Is233EnJhe58mnzc6v1Og=
+			</data>
+			<key>hash2</key>
+			<data>
+			tsK9+y/0GNd4u+GuD3TvFAhNpwzkbg8Gz2ML9GIi12o=
+			</data>
+		</dict>
+		<key>PrivateHeaders/BCOVPUIShowHideHandler.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			QbblERpMhzfBBr/aaKEuZT10IkE=
+			</data>
+			<key>hash2</key>
+			<data>
+			CSxJOroeQHogJBlopDRsfmkP1lLT9pA6U/slkheeIXA=
+			</data>
+		</dict>
+		<key>PrivateHeaders/BCOVPUIVideoTypeConsumer.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			6JieqReoFvXjno7JyJs3zrxbwtc=
+			</data>
+			<key>hash2</key>
+			<data>
+			lVSwtyUxtbsXBFvJGrNHBpNwzZJKcvZOXBH0KoFhzH0=
+			</data>
+		</dict>
+		<key>PrivateHeaders/BCOVPUIWebViewController.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			tXsPQETla9aAwnT8IA61ET1hc1Q=
+			</data>
+			<key>hash2</key>
+			<data>
+			5KI9PDhyhS3NUnejxpCe7KtNs8jA3m6BWMA/lzEsj+0=
+			</data>
+		</dict>
 		<key>PrivateHeaders/BCOVPlaybackControllerCallbackDispatchCenter.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			j2it3cU34fieUL0x0hrqHDrHQAY=
+			NADGG2LC5TUO5q7nwez7PLySAew=
 			</data>
 			<key>hash2</key>
 			<data>
-			4Z3Gc1QOSL8/Jk8rd4Ew2wZnAs2sJfqDicLgvy3zTF0=
+			51OdFxUmF9gudLKMe9YKiJKnY0NSTvsVesmVhHAVi5M=
 			</data>
 		</dict>
 		<key>PrivateHeaders/BCOVPlaybackControllerDelegatePrivate.h</key>
@@ -553,22 +827,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tErNfRfYT9y/zvMbicE4t3lD6ok=
+			VSMESFb0CdH9QT8u3nxfqjciOS4=
 			</data>
 			<key>hash2</key>
 			<data>
-			XFsPNfG4sEMvAnXeU31+Usv1H/rLWdz6E9uQlMML/Zs=
+			bNL5icbZ3nA0PU4RazGhZVZKaPaPmoJdGZ46P89Sgng=
 			</data>
 		</dict>
 		<key>PrivateHeaders/BCOVPlaybackSessionProviderPrivate.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			X42iKs/x/egVwy9P3ZjtSoPVW4M=
+			eJW8hIbXP/9XX7ghn5yl4HJGVgE=
 			</data>
 			<key>hash2</key>
 			<data>
-			QeV4KQW4VKzBSXa2yjP/xplR2CgRPLTLSQLYWPxYFQ0=
+			MEU49KGdkuVurs/7r/WhInJnBBxSa4ZUpJJM30cgO2g=
 			</data>
 		</dict>
 		<key>PrivateHeaders/BCOVVideoContainerView.h</key>
@@ -624,6 +898,17 @@
 			<key>hash2</key>
 			<data>
 			+HSRU4C5c3lT54ncKz44oGIDr9rJ5dU7UFodCaoKQ2E=
+			</data>
+		</dict>
+		<key>bcovpuiiconfont.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			B7cVny2pouUHXCJ+5JNWyG8Fkvk=
+			</data>
+			<key>hash2</key>
+			<data>
+			00QkzZ5inK95cM5zgoULFLT0DOGbL6KAjrlQRAOed2Y=
 			</data>
 		</dict>
 	</dict>

@@ -1,3 +1,77 @@
+# 5.1.0
+### Additions and Improvements
+* If you are using any Brightcove plugins with the Brightcove Player SDK, be sure to use the minimum versions listed here:
+  * Brightcove Sidecar Subtitles plugin: 2.1.0
+  * Brightcove FairPlay plugin: 1.1.0
+  * Brightcove Widevine plugin: 2.1.0
+  * Brightcove OnceUX plugin: 2.1.0
+  * Brightcove FreeWheel plugin: 2.1.0
+  * Brightcove IMA plugin: 2.1.0
+  * Brightcove Omniture plugin: 1.1.0
+  * Brightcove PlayerUI plugin: integrated into the Brightcove Player SDK
+
+* The `BCOVPlaybackController` protocol has an `adsDisabled` property that allows you to disable ad playback in specific situations like restoring an AVPlayer's playback state. To use this feature, follow these steps:
+  1. Set `adsDisabled` to `YES`
+  2. Seek to the desired time position in the current video
+  3. Set `adsDisabled` to `NO` again to resume normal ad behavior
+
+  This feature currently works only with the Brightcove OnceUX plugin, but will be expanded to work with all ad plugins.
+* The `BCOVPlaybackController` protocol has a `shutter` property.
+  * When set to `YES`, an opaque black view is placed in front of the Playback Controller's view. This can be used to hide the AVPlayer's video at any time.
+  * When set to its default value of `NO`, the view becomes transparent.
+* The `BCOVPlaybackController` protocol has a `shutterFadeTime` property that lets you set the duration of the animation when showing or hiding the shutter. The default value is zero.
+* The Brightcove PlayerUI Plugin is now integrated into the core Brightcove Player SDK Framework. This provides a fully-featured and customizable set of controls in your player.
+  * PlayerUI controls are not supported on Apple TV.
+  * PlayerUI controls automatically switch to ad mode during playback. This works with Once and FreeWheel ads. Google IMA ads use their own ad controls.
+* The `BCOVPUIPlayerViewOptions` class has a new property, `learnMoreButtonBrowserStyle` of type `BCOVPUILearnMoreButtonBrowserStyle`.
+   * This property lets you choose whether tapping the "Learn More" button in an ad will launch an external browser (default value), or use an in-app browser. 
+   * The in-app browser uses a SFSafariViewController in iOS 9, a WKWebView in iOS 8, or a UIWebView in iOS 7.
+* There are several new delegate methods in the `BCOVPUIPlayerViewDelegate` protocol to give you information about what's happening after a "Learn More" button is tapped:
+  * `- (void)willOpenInAppBrowserWithAd:(BCOVAd *)ad`
+  * `- (void)didOpenInAppBrowserWithAd:(BCOVAd *)ad`
+  * `- (void)willCloseInAppBrowserWithAd:(BCOVAd *)ad`
+  * `- (void)didCloseInAppBrowserWithAd:(BCOVAd *)ad`
+  * `- (void)willOpenExternalBrowserWithAd:(BCOVAd *)ad`
+  * `- (void)didReturnFromExternalBrowserWithAd:(BCOVAd *)ad`
+* The `BCOVPUIPlayerView` class has the following changes:
+  * The `playbackController` property has been changed from `readonly` to `readwrite`. You can assign a new playbackController to the `BCOVPUIPlayerView` at any time to associate the playbackController's view with the `BCOVPUIPlayerView`.
+  * `controlsContainerView` is a new `UIView` property that contains all of the controls subviews (both static and fading).
+  * The `controlsView` property is now `strong` instead of `weak`.
+  * `adControlsView` is a new property of type `BCOVPUIAdControlView`. This is a `UIView` subclass and does not currently expose any new properties or methods.
+* The `BCOVPUIBasicControlView` class has a new `advertisingMode` property.
+  *  When set to `YES`, controls are set to their advertising mode.
+  This is done automatically when OnceUX or FreeWheel ads begin playing.
+* Four new tags have been added to the `BCOVPUIViewTag` enumeration:
+  * `BCOVPUIViewTagButtonAdPodCountdown`
+  * `BCOVPUIViewTagButtonLearnMore`
+  * `BCOVPUIViewTagButtonSkipAdCountdown`
+  * `BCOVPUIViewTagViewButtonSkip`
+
+  These tags can be used to locate new buttons related to ad controls within the view hierarchy.  
+* The `BCOVPUISlider` class has a new `trackHeight` property that can be used to change the height of the scrubbing slider.
+* The `BCOVPUISlider`'s `bufferProgressTintColor` property now has a `copy` attribute.
+* The `BCOVPUISlider` class has new properties:
+  * `advertisingMinimumTrackTintColor`
+  * `advertisingMaximumTrackTintColor`
+  
+  These properties allow you to change the track tint colors that are used while in advertising mode.
+* The `BCOVPUISlider` class has a new `markerTickColor` property that lets you set the color of generic markers on the slider.
+* The `BCOVPUISlider` class has a new `duration` property that lets you set the length of the video, in seconds, represented by the range of the slider. This is used for positioning markers.
+* The `BCOVPUISlider` class has new methods for managing markers on the slider track. Ad markers are added automatically, but you can add your own markers at any position.
+  * `- (void)addMarkerAt:(double)position duration:(double)duration isAd:(BOOL)isAd image:(UIImage *)image`
+  * `- (void)removeMarkerAtPosition:(double)position`
+  * `- (void)removeAllMarkers`
+  * `- (void)removeGenericMarkers`
+  * `- (void)removeAdMarkers`
+
+* `BCOVPUISlider`'s `setBufferProgress:animated:` method has been removed. You can set the buffer progress using the `bufferProgress` property directly.
+
+* In the `BCOVPUISlider` class, `setContentTrackImage:forState:` and `setBufferTrackImage:forState:` have been replaced by `setCustomMinimumTrackImage:forState:` and `setCustomMaximumTrackImage:forState:`. You can no longer set an image for the progress area, but you can still set a tint.
+
+
+### Deprecations
+* In `BCOVPlayerSDKManager.h`, the method `-[BCOVPlayerSDKManager defaultControlsViewStrategy]` has been deprecated. Use the integrated PlayerUI controls instead. See the README file for full details.
+
 
 
 # 5.0.7

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>BCOVPUILayoutView Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">BCOVPlayerSDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Brightcove</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/elasticity">elasticity</option>
+		
+		<option value="//api/name/minimumWidth">minimumWidth</option>
+		
+		<option value="//api/name/removed">removed</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BCOVPUILayoutView Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>UIView</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>BCOVPUILayoutView.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>BCOVPUILayoutView view objects are used to lay out controls in a
+<a href="../Classes/BCOVPUIBasicControlView.html">BCOVPUIBasicControlView</a>. Layout views are typically created with
+BCOVPUIBasicControlView&rsquo;s +layoutViewWithControlFromTag:width:elasticity:
+method, and contain a standard Player UI element such as a play button,
+time code label, or progress slider.
+You can also create empty layout views in which to add your own subviews.
+The layout view properties determine exactly how the views are positioned
+with respect to each other in variable-width layouts.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/minimumWidth" title="minimumWidth"></a>
+	<h3 class="method-title"><code><a href="#//api/name/minimumWidth">&nbsp;&nbsp;minimumWidth</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The smallest width that will be set for the view when resized for layout.
+If <a href="#//api/name/elasticity">elasticity</a> is set to zero, this will be the exact width of the view.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) float minimumWidth</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The smallest width that will be set for the view when resized for layout.
+If <a href="#//api/name/elasticity">elasticity</a> is set to zero, this will be the exact width of the view.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUILayoutView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/elasticity" title="elasticity"></a>
+	<h3 class="method-title"><code><a href="#//api/name/elasticity">&nbsp;&nbsp;elasticity</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Elasticity determines how much each view is resized to fill the available
+width of the Player UI&rsquo;s control bar relative to all other views.
+If there are two layout views in a control bar, and one has an elasticity
+of 1.0, and the other has an elasticity of 2.0, the latter will grow twice
+as much when the view is resized.
+Each row of a control layout should typically contain at least one layout
+view with an elasticity greater than zero.
+A view with an elasticity of zero will remain at its minimum width.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) float elasticity</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Elasticity determines how much each view is resized to fill the available
+width of the Player UI&rsquo;s control bar relative to all other views.
+If there are two layout views in a control bar, and one has an elasticity
+of 1.0, and the other has an elasticity of 2.0, the latter will grow twice
+as much when the view is resized.
+Each row of a control layout should typically contain at least one layout
+view with an elasticity greater than zero.
+A view with an elasticity of zero will remain at its minimum width.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUILayoutView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removed" title="removed"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removed">&nbsp;&nbsp;removed</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The &ldquo;removed&rdquo; property can be set to YES or NO to quickly hide or show
+a particular layout view. This is more efficient than setting an entirely
+new <a href="../Classes/BCOVPUIControlLayout.html">BCOVPUIControlLayout</a> with a removed or added view.
+Call -setNeedsLayout on the <a href="../Classes/BCOVPUIBasicControlView.html">BCOVPUIBasicControlView</a> after setting
+this property to show the new layout.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite, getter=isRemoved) BOOL removed</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The &ldquo;removed&rdquo; property can be set to YES or NO to quickly hide or show
+a particular layout view. This is more efficient than setting an entirely
+new <a href="../Classes/BCOVPUIControlLayout.html">BCOVPUIControlLayout</a> with a removed or added view.
+Call -setNeedsLayout on the <a href="../Classes/BCOVPUIBasicControlView.html">BCOVPUIBasicControlView</a> after setting
+this property to show the new layout.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUILayoutView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Brightcove. All rights reserved. Updated: 2016-06-27</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

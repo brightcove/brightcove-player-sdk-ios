@@ -41,3 +41,13 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 // Ads
 #import <BrightcovePlayerSDK/BCOVAdvertising.h>
+
+// Player UI
+#if !TARGET_OS_TV
+#import <BrightcovePlayerSDK/BCOVPUIBasicControlView.h>
+#import <BrightcovePlayerSDK/BCOVPUIButton.h>
+#import <BrightcovePlayerSDK/BCOVPUICommon.h>
+#import <BrightcovePlayerSDK/BCOVPUILayoutView.h>
+#import <BrightcovePlayerSDK/BCOVPUIPlayerView.h>
+#import <BrightcovePlayerSDK/BCOVPUISlider.h>
+#endif

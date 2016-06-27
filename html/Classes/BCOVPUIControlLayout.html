@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>BCOVPUIControlLayout Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">BCOVPlayerSDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Brightcove</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/allLayoutItems">allLayoutItems</option>
+		
+		<option value="//api/name/compactLayoutItems">compactLayoutItems</option>
+		
+		<option value="//api/name/compactLayoutMaximumWidth">compactLayoutMaximumWidth</option>
+		
+		<option value="//api/name/controlBarHeight">controlBarHeight</option>
+		
+		<option value="//api/name/horizontalItemSpacing">horizontalItemSpacing</option>
+		
+		<option value="//api/name/standardLayoutItems">standardLayoutItems</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/basicLiveControlLayout">+ basicLiveControlLayout</option>
+		
+		<option value="//api/name/basicLiveDVRControlLayout">+ basicLiveDVRControlLayout</option>
+		
+		<option value="//api/name/basicVODControlLayout">+ basicVODControlLayout</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/initWithStandardControls:compactControls:">- initWithStandardControls:compactControls:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BCOVPUIControlLayout Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Conforms to</th>
+	<td>NSCopying</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>BCOVPUIBasicControlView.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>BCOVPUIControlLayout
+The BCOVPUIControlLayout object is created with a set
+of controls embedded in <a href="../Classes/BCOVPUILayoutView.html">BCOVPUILayoutView</a> objects
+with a few customizing parameters.
+The BCOVPUIControlLayout object is installed in
+a <a href="../Classes/BCOVPUILayoutView.html">BCOVPUILayoutView</a> for display in a player view.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/standardLayoutItems" title="standardLayoutItems"></a>
+	<h3 class="method-title"><code><a href="#//api/name/standardLayoutItems">&nbsp;&nbsp;standardLayoutItems</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>standardLayoutItems is the array containing one or more
+subarrays of controls presented when the player view width
+is greater than <a href="#//api/name/compactLayoutMaximumWidth">compactLayoutMaximumWidth</a>.
+Each subarray contains a list of <a href="../Classes/BCOVPUILayoutView.html">BCOVPUILayoutView</a> objects
+that will be presented in a <a href="../Classes/BCOVPUILayoutView.html">BCOVPUILayoutView</a>.
+Each subarray represents a control bar in the player view.
+standardLayoutItems typically consists of a single subarray
+representing a single row of controls.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSArray *standardLayoutItems</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>standardLayoutItems is the array containing one or more
+subarrays of controls presented when the player view width
+is greater than <a href="#//api/name/compactLayoutMaximumWidth">compactLayoutMaximumWidth</a>.
+Each subarray contains a list of <a href="../Classes/BCOVPUILayoutView.html">BCOVPUILayoutView</a> objects
+that will be presented in a <a href="../Classes/BCOVPUILayoutView.html">BCOVPUILayoutView</a>.
+Each subarray represents a control bar in the player view.
+standardLayoutItems typically consists of a single subarray
+representing a single row of controls.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/compactLayoutItems" title="compactLayoutItems"></a>
+	<h3 class="method-title"><code><a href="#//api/name/compactLayoutItems">&nbsp;&nbsp;compactLayoutItems</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>compactLayoutItems is the array containing one or more
+subarrays of controls presented when the player view width
+is less than <a href="#//api/name/compactLayoutMaximumWidth">compactLayoutMaximumWidth</a>.
+Each subarray contains a list of <a href="../Classes/BCOVPUILayoutView.html">BCOVPUILayoutView</a> objects
+that will be presented in a <a href="../Classes/BCOVPUILayoutView.html">BCOVPUILayoutView</a>.
+Each subarray represents a control bar in the player view.
+compactLayoutItems typically consists of two subarrays
+representing two row of controls, where each row has fewer
+controls to better fit the width of an iPhone screen.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSArray *compactLayoutItems</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>compactLayoutItems is the array containing one or more
+subarrays of controls presented when the player view width
+is less than <a href="#//api/name/compactLayoutMaximumWidth">compactLayoutMaximumWidth</a>.
+Each subarray contains a list of <a href="../Classes/BCOVPUILayoutView.html">BCOVPUILayoutView</a> objects
+that will be presented in a <a href="../Classes/BCOVPUILayoutView.html">BCOVPUILayoutView</a>.
+Each subarray represents a control bar in the player view.
+compactLayoutItems typically consists of two subarrays
+representing two row of controls, where each row has fewer
+controls to better fit the width of an iPhone screen.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/allLayoutItems" title="allLayoutItems"></a>
+	<h3 class="method-title"><code><a href="#//api/name/allLayoutItems">&nbsp;&nbsp;allLayoutItems</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set of all layout objects.
+The same object instances are typically used in both the
+<a href="#//api/name/standardLayoutItems">standardLayoutItems</a> and <a href="#//api/name/compactLayoutItems">compactLayoutItems</a> containers.
+This set contains exactly one of each and every <a href="../Classes/BCOVPUILayoutView.html">BCOVPUILayoutView</a>
+object, and is used as a convenience for iterating through every item.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSSet *allLayoutItems</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Set of all layout objects.
+The same object instances are typically used in both the
+<a href="#//api/name/standardLayoutItems">standardLayoutItems</a> and <a href="#//api/name/compactLayoutItems">compactLayoutItems</a> containers.
+This set contains exactly one of each and every <a href="../Classes/BCOVPUILayoutView.html">BCOVPUILayoutView</a>
+object, and is used as a convenience for iterating through every item.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/controlBarHeight" title="controlBarHeight"></a>
+	<h3 class="method-title"><code><a href="#//api/name/controlBarHeight">&nbsp;&nbsp;controlBarHeight</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The vertical height of each bar of controls
+represented in <a href="#//api/name/standardLayoutItems">standardLayoutItems</a> and <a href="#//api/name/compactLayoutItems">compactLayoutItems</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGFloat controlBarHeight</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The vertical height of each bar of controls
+represented in <a href="#//api/name/standardLayoutItems">standardLayoutItems</a> and <a href="#//api/name/compactLayoutItems">compactLayoutItems</a>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/horizontalItemSpacing" title="horizontalItemSpacing"></a>
+	<h3 class="method-title"><code><a href="#//api/name/horizontalItemSpacing">&nbsp;&nbsp;horizontalItemSpacing</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The horizontal spacing between layout views.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGFloat horizontalItemSpacing</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The horizontal spacing between layout views.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/compactLayoutMaximumWidth" title="compactLayoutMaximumWidth"></a>
+	<h3 class="method-title"><code><a href="#//api/name/compactLayoutMaximumWidth">&nbsp;&nbsp;compactLayoutMaximumWidth</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The maximum width of the compact controls. If the controls view
+is smaller than this value, the <a href="#//api/name/compactLayoutItems">compactLayoutItems</a> will be presented.
+If smaller, the <a href="#//api/name/standardLayoutItems">standardLayoutItems</a> will be used.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGFloat compactLayoutMaximumWidth</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The maximum width of the compact controls. If the controls view
+is smaller than this value, the <a href="#//api/name/compactLayoutItems">compactLayoutItems</a> will be presented.
+If smaller, the <a href="#//api/name/standardLayoutItems">standardLayoutItems</a> will be used.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithStandardControls:compactControls:" title="initWithStandardControls:compactControls:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithStandardControls:compactControls:">&ndash;&nbsp;initWithStandardControls:compactControls:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initializes a BCOVPUIControlLayout layout with default settings.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithStandardControls:(NSArray *)<em>standardLayoutLines</em> compactControls:(NSArray *)<em>compactLayoutLines</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>standardLayoutLines</code></th>
+						<td><p>An array of arrays, where each sub-array
+corresponds to one row of controls in the player control view.
+Each of these sub-arrays is a list of BCOVPUILayoutView objects used in the
+standard width layout. Each layout view typically contains a single
+control element and can be created with
+<a href="../Classes/BCOVPUIBasicControlView.html#//api/name/layoutViewWithControlFromTag:width:elasticity:">[BCOVPUIBasicControlView layoutViewWithControlFromTag:width:elasticity:]</a></p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>compactLayoutLines</code></th>
+						<td><p>An array of arrays, where each sub-array
+corresponds to one row of controls in the player control view.
+Each of these sub-arrays is a list of <a href="../Classes/BCOVPUILayoutView.html">BCOVPUILayoutView</a> objects used in the
+compact width layout (typically, portrait orientation on an iPhone).</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A BCOVPUIControlLayout instance initialized with the specified controls.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Initializes a BCOVPUIControlLayout layout with default settings.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/basicVODControlLayout" title="basicVODControlLayout"></a>
+	<h3 class="method-title"><code><a href="#//api/name/basicVODControlLayout">+&nbsp;basicVODControlLayout</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Convenience factory method to create a control layout
+designed for video on demand.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)basicVODControlLayout</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Convenience factory method to create a control layout
+designed for video on demand.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/basicLiveControlLayout" title="basicLiveControlLayout"></a>
+	<h3 class="method-title"><code><a href="#//api/name/basicLiveControlLayout">+&nbsp;basicLiveControlLayout</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Convenience factory method to create a control layout
+designed for a live video.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)basicLiveControlLayout</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Convenience factory method to create a control layout
+designed for a live video.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/basicLiveDVRControlLayout" title="basicLiveDVRControlLayout"></a>
+	<h3 class="method-title"><code><a href="#//api/name/basicLiveDVRControlLayout">+&nbsp;basicLiveDVRControlLayout</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Convenience factory method to create a control layout
+designed for live DVR playback.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)basicLiveDVRControlLayout</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Convenience factory method to create a control layout
+designed for live DVR playback.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIBasicControlView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Brightcove. All rights reserved. Updated: 2016-06-27</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

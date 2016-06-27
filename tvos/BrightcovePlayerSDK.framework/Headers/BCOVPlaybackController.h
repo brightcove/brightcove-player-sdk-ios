@@ -16,6 +16,7 @@
 @class BCOVPlaylist;
 @class BCOVSource;
 @class BCOVVideo;
+
 @protocol BCOVMutableAnalytics;
 @protocol BCOVPlaybackController;
 @protocol BCOVPlaybackControllerBasicDelegate;
@@ -119,11 +120,29 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 @property (nonatomic, readonly, copy) id<BCOVMutableAnalytics> analytics;
 
 /**
+ * Disables ad playback which otherwise might occur after a forward -seekTo:.
+ * The intended use is, for example, to resume video playback when an app has
+ * quit and relaunched; the app can seek to a saved time and ads which
+ * have been previously viewed will not play again. Set adsDisabled to
+ * YES, then call one of the -seekToTime: methods, and finally set adsDisabled
+ * to NO in the -seekToTime: completion handler. The default value of
+ * adsDisabled is NO.
+ *
+ * Note that unless the BCOVPlaybackSessionLifecycleEvent
+ * kBCOVPlaybackSessionLifecycleEventReady has been received, the -seekTo:
+ * completion handler will never be called. For that reason, it is recommended
+ * that you call -seekTo: from within the
+ * -playbackController:playbackSession:didReceiveLifecycleEvent delegate method
+ * for the kBCOVPlaybackSessionLifecycleEventReady event.
+ */
+@property (nonatomic, readwrite) BOOL adsDisabled;
+
+/**
  * Allow playback of audio when the app has switched to the background.
  *
  * Default value is NO.
  */
-@property (nonatomic, readwrite, assign) BOOL allowsBackgroundAudioPlayback;
+@property (nonatomic, readwrite) BOOL allowsBackgroundAudioPlayback;
 
 /**
  * Set this to YES if picture-in-picture becomes active, and NO when it deactivates.
@@ -135,6 +154,21 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * Default value is NO.
  */
 @property (nonatomic, readwrite, assign, getter=isPictureInPictureActive) BOOL pictureInPictureActive;
+
+/**
+ * Set shutter to YES to hide the current player view behind an opaque
+ * black shutter view. Set shutter active to NO to make the shutter view
+ * transparent to reveal the player view.
+ */
+
+@property (nonatomic, readwrite) BOOL shutter;
+
+/**
+ * Set the shutterFadeTime to the duration, in seconds, of the shutter state
+ * transition animation. The default value is zero.
+ */
+
+@property (nonatomic, readwrite) NSTimeInterval shutterFadeTime;
 
 /**
  * Registers a session consumer with a container, to be notified of new

@@ -56,6 +56,8 @@
 	
 	<optgroup label="Properties">
 		
+		<option value="//api/name/adsDisabled">adsDisabled</option>
+		
 		<option value="//api/name/allowsBackgroundAudioPlayback">allowsBackgroundAudioPlayback</option>
 		
 		<option value="//api/name/analytics">analytics</option>
@@ -67,6 +69,10 @@
 		<option value="//api/name/delegate">delegate</option>
 		
 		<option value="//api/name/pictureInPictureActive">pictureInPictureActive</option>
+		
+		<option value="//api/name/shutter">shutter</option>
+		
+		<option value="//api/name/shutterFadeTime">shutterFadeTime</option>
 		
 		<option value="//api/name/view">view</option>
 		
@@ -412,6 +418,71 @@ across all playback sessions sent to this controller.</p>
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/adsDisabled" title="adsDisabled"></a>
+	<h3 class="method-title"><code><a href="#//api/name/adsDisabled">&nbsp;&nbsp;adsDisabled</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Disables ad playback which otherwise might occur after a forward -seekTo:.
+The intended use is, for example, to resume video playback when an app has
+quit and relaunched; the app can seek to a saved time and ads which
+have been previously viewed will not <a href="#//api/name/play">play</a> again. Set adsDisabled to
+YES, then call one of the -seekToTime: methods, and finally set adsDisabled
+to NO in the -seekToTime: completion handler. The default value of
+adsDisabled is NO.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) BOOL adsDisabled</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Disables ad playback which otherwise might occur after a forward -seekTo:.
+The intended use is, for example, to resume video playback when an app has
+quit and relaunched; the app can seek to a saved time and ads which
+have been previously viewed will not <a href="#//api/name/play">play</a> again. Set adsDisabled to
+YES, then call one of the -seekToTime: methods, and finally set adsDisabled
+to NO in the -seekToTime: completion handler. The default value of
+adsDisabled is NO.</p>
+
+<p>Note that unless the <a href="../Classes/BCOVPlaybackSessionLifecycleEvent.html">BCOVPlaybackSessionLifecycleEvent</a>
+kBCOVPlaybackSessionLifecycleEventReady has been received, the -seekTo:
+completion handler will never be called. For that reason, it is recommended
+that you call -seekTo: from within the
+-playbackController:playbackSession:didReceiveLifecycleEvent <a href="#//api/name/delegate">delegate</a> method
+for the kBCOVPlaybackSessionLifecycleEventReady event.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/allowsBackgroundAudioPlayback" title="allowsBackgroundAudioPlayback"></a>
 	<h3 class="method-title"><code><a href="#//api/name/allowsBackgroundAudioPlayback">&nbsp;&nbsp;allowsBackgroundAudioPlayback</a></code>
 <span class="task-item-suffix">required method</span></h3>
@@ -428,7 +499,7 @@ across all playback sessions sent to this controller.</p>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite, assign) BOOL allowsBackgroundAudioPlayback</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) BOOL allowsBackgroundAudioPlayback</code></div>
 
 		    
 			
@@ -495,6 +566,104 @@ YES. If <a href="#//api/name/allowsBackgroundAudioPlayback">allowsBackgroundAudi
 can be ignored.</p>
 
 <p>Default value is NO.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/shutter" title="shutter"></a>
+	<h3 class="method-title"><code><a href="#//api/name/shutter">&nbsp;&nbsp;shutter</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set shutter to YES to hide the current player <a href="#//api/name/view">view</a> behind an opaque
+black shutter <a href="#//api/name/view">view</a>. Set shutter active to NO to make the shutter <a href="#//api/name/view">view</a>
+transparent to reveal the player <a href="#//api/name/view">view</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) BOOL shutter</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Set shutter to YES to hide the current player <a href="#//api/name/view">view</a> behind an opaque
+black shutter <a href="#//api/name/view">view</a>. Set shutter active to NO to make the shutter <a href="#//api/name/view">view</a>
+transparent to reveal the player <a href="#//api/name/view">view</a>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/shutterFadeTime" title="shutterFadeTime"></a>
+	<h3 class="method-title"><code><a href="#//api/name/shutterFadeTime">&nbsp;&nbsp;shutterFadeTime</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set the shutterFadeTime to the duration, in seconds, of the <a href="#//api/name/shutter">shutter</a> state
+transition animation. The default value is zero.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) NSTimeInterval shutterFadeTime</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Set the shutterFadeTime to the duration, in seconds, of the <a href="#//api/name/shutter">shutter</a> state
+transition animation. The default value is zero.</p>
 			</div>
 			
 
@@ -1263,7 +1432,7 @@ with this playback controller.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Brightcove. All rights reserved. Updated: 2016-06-09</p>
+						<p class="copyright">Copyright &copy; 2016 Brightcove. All rights reserved. Updated: 2016-06-27</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

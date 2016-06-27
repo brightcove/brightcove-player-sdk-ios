@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>BCOVPUIPlayerViewDelegate Protocol Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">BCOVPlayerSDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Brightcove</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/didCloseInAppBrowserWithAd:">- didCloseInAppBrowserWithAd:</option>
+		
+		<option value="//api/name/didOpenInAppBrowserWithAd:">- didOpenInAppBrowserWithAd:</option>
+		
+		<option value="//api/name/didReturnFromExternalBrowserWithAd:">- didReturnFromExternalBrowserWithAd:</option>
+		
+		<option value="//api/name/playerView:controlsFadingViewDidFadeIn:">- playerView:controlsFadingViewDidFadeIn:</option>
+		
+		<option value="//api/name/playerView:controlsFadingViewDidFadeOut:">- playerView:controlsFadingViewDidFadeOut:</option>
+		
+		<option value="//api/name/playerView:didTransitionToScreenMode:">- playerView:didTransitionToScreenMode:</option>
+		
+		<option value="//api/name/willCloseInAppBrowserWithAd:">- willCloseInAppBrowserWithAd:</option>
+		
+		<option value="//api/name/willOpenExternalBrowserWithAd:">- willOpenExternalBrowserWithAd:</option>
+		
+		<option value="//api/name/willOpenInAppBrowserWithAd:">- willOpenInAppBrowserWithAd:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BCOVPUIPlayerViewDelegate Protocol Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Conforms to</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>BCOVPUIPlayerView.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Conform to this protocol to receive information for regarding the <a href="../Classes/BCOVPUIPlayerView.html">BCOVPUIPlayerView</a>.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/playerView:didTransitionToScreenMode:" title="playerView:didTransitionToScreenMode:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playerView:didTransitionToScreenMode:">&ndash;&nbsp;playerView:didTransitionToScreenMode:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when the playerView is finished transitioning to a new screen mode.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playerView:(BCOVPUIPlayerView *)<em>playerView</em> didTransitionToScreenMode:(BCOVPUIScreenMode)<em>screenMode</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>playerView</code></th>
+						<td><p>The player view that is transitioning.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>screenMode</code></th>
+						<td><p>The screen mode that was transitioned to.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when the playerView is finished transitioning to a new screen mode.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playerView:controlsFadingViewDidFadeOut:" title="playerView:controlsFadingViewDidFadeOut:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playerView:controlsFadingViewDidFadeOut:">&ndash;&nbsp;playerView:controlsFadingViewDidFadeOut:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when the playerView controls faded out.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playerView:(BCOVPUIPlayerView *)<em>playerView</em> controlsFadingViewDidFadeOut:(UIView *)<em>controlsFadingView</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>playerView</code></th>
+						<td><p>The player view that manages the controls.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controlsFadingView</code></th>
+						<td><p>The controls fading view that faded out.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when the playerView controls faded out.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playerView:controlsFadingViewDidFadeIn:" title="playerView:controlsFadingViewDidFadeIn:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playerView:controlsFadingViewDidFadeIn:">&ndash;&nbsp;playerView:controlsFadingViewDidFadeIn:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when the playerView controls faded in.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playerView:(BCOVPUIPlayerView *)<em>playerView</em> controlsFadingViewDidFadeIn:(UIView *)<em>controlsFadingView</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>playerView</code></th>
+						<td><p>The player view that manages the controls.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controlsFadingView</code></th>
+						<td><p>The controls fading view that faded in.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when the playerView controls faded in.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/willOpenInAppBrowserWithAd:" title="willOpenInAppBrowserWithAd:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/willOpenInAppBrowserWithAd:">&ndash;&nbsp;willOpenInAppBrowserWithAd:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This delegate method will be called when the learn more button has
+been pressed and the clickthrough URL assosiated with the ad will be opened
+in the in-app browser.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)willOpenInAppBrowserWithAd:(BCOVAd *)<em>ad</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ad</code></th>
+						<td><p>The ad whose clickthrough URL will open in the in-app browser.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This delegate method will be called when the learn more button has
+been pressed and the clickthrough URL assosiated with the ad will be opened
+in the in-app browser.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/didOpenInAppBrowserWithAd:" title="didOpenInAppBrowserWithAd:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/didOpenInAppBrowserWithAd:">&ndash;&nbsp;didOpenInAppBrowserWithAd:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This delegate method will be called when the learn more button has
+been pressed and the clickthrough URL assosiated with the ad opened
+in the in-app browser.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)didOpenInAppBrowserWithAd:(BCOVAd *)<em>ad</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ad</code></th>
+						<td><p>The ad whose clickthrough URL opened in the in-app browser.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This delegate method will be called when the learn more button has
+been pressed and the clickthrough URL assosiated with the ad opened
+in the in-app browser.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/willCloseInAppBrowserWithAd:" title="willCloseInAppBrowserWithAd:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/willCloseInAppBrowserWithAd:">&ndash;&nbsp;willCloseInAppBrowserWithAd:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This delegate method will be called when the in-app browser
+will be closed.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)willCloseInAppBrowserWithAd:(BCOVAd *)<em>ad</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ad</code></th>
+						<td><p>The ad whose clickthrough URL will close in the in-app browser.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This delegate method will be called when the in-app browser
+will be closed.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/didCloseInAppBrowserWithAd:" title="didCloseInAppBrowserWithAd:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/didCloseInAppBrowserWithAd:">&ndash;&nbsp;didCloseInAppBrowserWithAd:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This delegate method will be called when the in-app browser
+has closed.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)didCloseInAppBrowserWithAd:(BCOVAd *)<em>ad</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ad</code></th>
+						<td><p>The ad whose clickthrough URL closed from the in-app browser.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This delegate method will be called when the in-app browser
+has closed.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/willOpenExternalBrowserWithAd:" title="willOpenExternalBrowserWithAd:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/willOpenExternalBrowserWithAd:">&ndash;&nbsp;willOpenExternalBrowserWithAd:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This optional delegate method will be called when the clickthrough url
+will open the in the system browser.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)willOpenExternalBrowserWithAd:(BCOVAd *)<em>ad</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ad</code></th>
+						<td><p>The ad whose clickthrough URL will be opened in the system browser.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This optional delegate method will be called when the clickthrough url
+will open the in the system browser.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/didReturnFromExternalBrowserWithAd:" title="didReturnFromExternalBrowserWithAd:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/didReturnFromExternalBrowserWithAd:">&ndash;&nbsp;didReturnFromExternalBrowserWithAd:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This optional delegate method will be called when the app has returned to
+the foreground after the clickthrough url was opened in the system browser.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)didReturnFromExternalBrowserWithAd:(BCOVAd *)<em>ad</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ad</code></th>
+						<td><p>The ad whose clickthrough URL was opened in the system browser.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This optional delegate method will be called when the app has returned to
+the foreground after the clickthrough url was opened in the system browser.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Brightcove. All rights reserved. Updated: 2016-06-27</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
