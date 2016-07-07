@@ -44,7 +44,7 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 5.1.0.495</h1>
+						<h1>Brightcove Player SDK for iOS, version 5.1.1.516</h1>
 
 <h1>Supported Platforms</h1>
 
@@ -53,6 +53,20 @@
 <p>tvOS 9.0 and above.</p>
 
 <p>ARC is required.</p>
+
+<h1>Please note:</h1>
+
+<ul>
+<li>The Brightcove PlayerUI Plugin is now integrated into the core Brightcove Player SDK Framework. This provides a fully-featured and customizable set of controls in your player.
+
+<ul>
+<li>PlayerUI controls are not supported on Apple TV.</li>
+<li>PlayerUI controls automatically switch to ad mode during playback. This works with Once and FreeWheel ads. Google IMA ads use their own ad controls.</li>
+<li>Please see important information in the Built-In PlayerUI Controls section below regarding this integration, using the Brightcove PlayerUI Controls, and migrating to the integrated PlayerUI Controls.</li>
+</ul>
+</li>
+</ul>
+
 
 <h1>Installation</h1>
 
@@ -76,6 +90,10 @@
 <pre><code>pod 'Brightcove-Player-SDK/dynamic'    
 </code></pre>
 
+<p>On the &ldquo;General&rdquo; tab of your application target, add the following to the &ldquo;Link Binary With Libraries&rdquo; section:
+    * <code>SafariServices</code>
+    * <code>WebKit</code></p>
+
 <h2>Manual</h2>
 
 <p>To add the Brightcove Player SDK to your project manually:</p>
@@ -91,6 +109,8 @@
 <li><code>AVFoundation</code></li>
 <li><code>CoreMedia</code></li>
 <li><code>MediaPlayer</code></li>
+<li><code>SafariServices</code></li>
+<li><code>WebKit</code></li>
 <li><code>BrightcovePlayerSDK.framework</code></li>
 </ul>
 </li>
@@ -131,6 +151,246 @@ BCOVCatalogService *catalog = [[BCOVCatalogService alloc] initWithToken:token];
 </code></pre>
 
 <p>You need to keep the controller from being automatically released at the end of the method. A common way to do this is to store a pointer to the controller in an instance variable.</p>
+
+<h1>Built-In PlayerUI Controls</h1>
+
+<p>The Brightcove Player SDK now has the Brightcove PlayerUI Plugin integrated into its framework, so you can use its fully-featured set of controls for playback and advertising right out of the box.</p>
+
+<p>The PlayerUI is quick to set up, displays ad controls for Once and FreeWheel, and can be customized by creating your own layouts.</p>
+
+<h2>Converting from Native Controls to PlayerUI Controls</h2>
+
+<p>If you were previously using the native controls via the <code>defaultControlsViewStrategy</code> like this:</p>
+
+<pre><code>BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
+id&lt;BCOVPlaybackController&gt; playbackController = [manager createPlaybackControllerWithViewStrategy:[manager defaultControlsViewStrategy]];
+</code></pre>
+
+<p>You should now set the view strategy to nil:</p>
+
+<pre><code>BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
+id&lt;BCOVPlaybackController&gt; playbackController = [manager createPlaybackControllerWithViewStrategy:nil];
+</code></pre>
+
+<p>You also no longer need to add the Playback Controller&rsquo;s view to your heirarchy, so you can remove code like this:</p>
+
+<pre><code>self.playbackController.view.frame = self.videoView.bounds;
+self.playbackController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+[self.videoView addSubview:self.playbackController.view]
+</code></pre>
+
+<p>Instead, you will associate the Playback Controller with a new Player View, and add that to your view heirarchy.</p>
+
+<h2>Migrating from the Brightcove PlayerUI Plugin</h2>
+
+<p>With version 5.1 of the Brightcove Player SDK, the PlayerUI controls are integrated into the core framework, and so it&rsquo;s no longer necessary to use a separate Brightcove PlayerUI plugin. If you were previously using the Brightcove PlayerUI plugin, and had installed it manually, you may need to make a few modifications to your project:</p>
+
+<ul>
+<li>Remove the reference to BrightcovePlayerUI.framework from your project listing</li>
+<li>In your target&rsquo;s Build Settings, remove any reference to the BrightcovePlayerUI.framework from your Framework Search Paths</li>
+<li>In your target&rsquo;s General settings, remove any reference to BrightcovePlayerUI from the Embedded Binaries and Linked Frameworks and Libraries sections</li>
+</ul>
+
+
+<p>If you install Brightcove libraries using CocoaPods, you can remove the BrightcovePlayerUI dependency from your Podfile, and then call <code>pod update</code> in Terminal.</p>
+
+<p>In your project code, any specific <code>#import</code> of a PlayerUI header file can be converted from <code>#import &lt;BrightcovePlayerUI/filename.h&gt;</code> to <code>#import &lt;BrightcovePlayerSDK/filename.h&gt;</code>. Alternately, you can import all the headers at once with <code>@import BrightcovePlayerSDK;</code>.</p>
+
+<h2>Setting up PlayerUI Controls</h2>
+
+<p>Follow the guidelines below for setting up the PlayerUI controls.</p>
+
+<p>Create a property in your UIViewController to keep track of the <a href="Classes/BCOVPUIPlayerView.html">BCOVPUIPlayerView</a>. The <a href="Classes/BCOVPUIPlayerView.html">BCOVPUIPlayerView</a> will contain both the Playback Controller&rsquo;s view, and the controls view.</p>
+
+<pre><code>// PlayerUI's Player View
+@property (nonatomic) BCOVPUIPlayerView *playerView;
+</code></pre>
+
+<p>Create the <a href="Classes/BCOVPUIBasicControlView.html">BCOVPUIBasicControlView</a>, and then the <a href="Classes/BCOVPUIPlayerView.html">BCOVPUIPlayerView</a>. This is where we associate the Playback Controller (and thus all the videos it plays) with the controls.
+Set the player view to match the video container from your layout (<code>videoView</code>) when it resizes.</p>
+
+<pre><code>// Create and configure Control View.
+BCOVPUIBasicControlView *controlView = [BCOVPUIBasicControlView basicControlViewWithVODLayout];
+self.playerView = [[BCOVPUIPlayerView alloc] initWithPlaybackController:self.playbackController options:nil controlsView:controlView];
+self.playerView.frame = self.videoView.bounds;
+self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+</code></pre>
+
+<p>Finally, add the <a href="Classes/BCOVPUIPlayerView.html">BCOVPUIPlayerView</a> to your video container, <code>videoView</code>.</p>
+
+<pre><code>// Add BCOVPUIPlayerView to your video view.
+[self.videoView addSubview:self.playerView];
+</code></pre>
+
+<p><strong>Reminder:</strong> The PlayerUI uses a small font file for various graphics. If you are installing the static framework, and not using CocoaPods, be sure to add the file bcovpuiiconfont.ttf from the BrightcovePlayerSDK.framework bundle directly to your project listing so that the font file is copied into the app bundle</p>
+
+<h2><a href="Classes/BCOVPUIPlayerViewOptions.html">BCOVPUIPlayerViewOptions</a></h2>
+
+<p>The <a href="Classes/BCOVPUIPlayerViewOptions.html"><code>BCOVPUIPlayerViewOptions</code></a> class allows you to customize some BCOVPlayerUI behavior at initialization. You can customize the following:</p>
+
+<ul>
+<li><code>jumpBackInterval</code> The time in seconds the player will jump back when the jump back button is pressed.</li>
+<li><code>hideControlsInterval</code> The time in seconds after the last touch event, before the controls are hidden.</li>
+<li><code>hideControlsAnimationDuration</code> The time in seconds it takes for the controls to animate to hidden.</li>
+<li><code>showControlsAnimationDuration</code> The time in seconds it takes for the controls to animate to visible.</li>
+<li><code>learnMoreButtonBrowserStyle</code> Setting that determines if tapping the &ldquo;Learn More&rdquo; button on an ad will display the clickthrough link in an external browser (default setting) or an internal browser.</li>
+<li><code>presentingViewController</code> The view controller to use for presenting things like modals and fullscreen.</li>
+</ul>
+
+
+<p>Options can be set using the following method:</p>
+
+<pre><code>    BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
+    id&lt;BCOVPlaybackController&gt; controller = [manager createPlaybackController];
+
+    BCOVPUIPlayerViewOptions *options = [[BCOVPUIPlayerViewOptions alloc] init];
+    options.jumpBackInterval = 5;
+
+    BCOVPUIPlayerView *playerView = [[BCOVPUIPlayerView alloc] initWithPlaybackController:playbackController options:options];
+</code></pre>
+
+<h2>Supplied Layouts</h2>
+
+<p>Three layouts are provided to support different types of video:</p>
+
+<ul>
+<li><p><code>BCOVPUIControlLayout basicVODControlLayout</code> is a basic layout for general on-demand video streams.</p></li>
+<li><p><code>BCOVPUIControlLayout basicLiveControlLayout</code> is a layout targeted towards live video.</p></li>
+<li><p><code>BCOVPUIControlLayout basicLiveDVRControlLayout</code> is targeted towards live video streams with DVR controls.</p></li>
+</ul>
+
+
+<p>You typically set a new layout immediatley after your <code>BCOVPUIPlayerView</code> is created, but you can also set a new layout at any time. For example, you can set a new VOD layout like this:</p>
+
+<pre><code>playerView.controlView.layout = [BCOVPUIControlLayout basicVODControlLayout]
+</code></pre>
+
+<h2>Custom Layouts</h2>
+
+<p>In addition to the default layouts, you can create your own highly customized layouts by instantiating a new <code>BCOVPUIControlLayout</code> with your own design.</p>
+
+<ol>
+<li><p>First, create the controls that will go in your layout using <code>BCOVPUIBasicControlView layoutViewWithControlFromTag:width:elasticity:</code>. Each control is packaged in a <code>BCOVPUILayoutView</code> that determines the control spacing.</p></li>
+<li><p>You can set the <code>width</code> of each layout view to the default width (which is based on the type of control), or you can specify your own width.</p></li>
+<li><p>Use the <code>elasticity</code> argument to determine how much the layout view containing the control reizes its width to fill the control bar.</p>
+
+<ol type="a">
+<li>An elasticity of zero means the size of the layout view will be fixed.</li>
+<li>An elasticity value greater than zero determines how much the layout view will grow to fill available space relative to all other elastic views in that control bar. A layout view with an elasticity value of 2.0 will grow twice as fast as a layout view with an elasticity value of 1.0. Typically a row of layout views will have at least one control with an elasticity greater than zero.</li>
+</ol>
+</li>
+</ol>
+
+
+<p>Here are examples of creating a variety of basic controls.</p>
+
+<pre><code>// Create various standard layout views
+// Standard play/pause button
+BCOVPUILayoutView *playbackLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagButtonPlayback width:kBCOVPUILayoutUseDefaultValue elasticity:0.0];
+
+// Standard jump back button
+BCOVPUILayoutView *jumpBackButtonLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagButtonJumpBack width:kBCOVPUILayoutUseDefaultValue elasticity:0.0];
+
+// Current time indicator
+BCOVPUILayoutView *currentTimeLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagLabelCurrentTime width:kBCOVPUILayoutUseDefaultValue elasticity:0.0];
+
+// Time separator - typically the '/' character
+BCOVPUILayoutView *timeSeparatorLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagLabelTimeSeparator width:kBCOVPUILayoutUseDefaultValue elasticity:0.0];
+
+// Video duration label
+BCOVPUILayoutView *durationLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagLabelDuration      width:kBCOVPUILayoutUseDefaultValue elasticity:0.0];
+
+// Slider bar used for scrubbing through the video
+// The elasticity is set to 1 so that it can resize to fill available space
+BCOVPUILayoutView *progressLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagSliderProgress width:kBCOVPUILayoutUseDefaultValue elasticity:1.0];
+
+// Closed caption button
+// This button is initially hidden ('removed'), and will be shown
+// if closed captions or audio tracks are available.
+BCOVPUILayoutView *closedCaptionLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagButtonClosedCaption width:kBCOVPUILayoutUseDefaultValue elasticity:0.0];
+closedCaptionLayoutView.removed = YES;
+
+// The full-screen button
+BCOVPUILayoutView *screenModeLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagButtonScreenMode width:kBCOVPUILayoutUseDefaultValue elasticity:0.0];
+
+// AirPlay button
+// This button is initially hidden ('removed'), and will be shown
+// if AirPlay devices are available.
+BCOVPUILayoutView *externalRouteLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagViewExternalRoute width:kBCOVPUILayoutUseDefaultValue elasticity:0.0];
+externalRouteLayoutView.removed = YES;
+
+// Empty view - used as a spacer
+BCOVPUILayoutView     *spacerLayoutView1 = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagViewEmpty width:1.0 elasticity:1.0];
+
+// Empty view - used as a spacer
+BCOVPUILayoutView *spacerLayoutView2 = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagViewEmpty width:1.0 elasticity:1.0];
+
+// Empty view - will have a custom UIImageView added as a subview
+BCOVPUILayoutView *logoLayoutView1 = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagViewEmpty width:80.0 elasticity:1.0];
+
+// Empty view - will have a custom UIImageView added as a subview
+BCOVPUILayoutView *logoLayoutView2 = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagViewEmpty width:36.0 elasticity:0.0];
+</code></pre>
+
+<p>Note that you can also create an empty layout view, into which you can place your own view (logo, control, nothing, etc.). This code shows how to place a UIImage logo inside the logoLayoutView1 we created above.</p>
+
+<pre><code>// Create logo image inside an image view for display in control bar.
+UIImage *logoImage1 = [UIImage imageNamed:@"myLogo"];
+UIImageView *logoImageView1 = [[UIImageView alloc] initWithImage:logoImage1];
+
+logoImageView1.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+logoImageView1.contentMode = UIViewContentModeScaleAspectFit;
+logoImageView1.frame = logoLayoutView1.frame;
+
+// Add image view to our empty layout view.
+[logoLayoutView1 addSubview:logoImageView1];
+</code></pre>
+
+<p>Now that there are various controls packaged in layout views, they are ordered into arrays, each of wihch represents a single line of controls, i.e. a control bar. Note that you can have different layouts for portrait and landscape orientations, so you will typically set up two different arrays of control bars.</p>
+
+<p>In the standard layout for landscape orientation, controls are arranged in a single array, and then that array is stored in another array representing the entire set of controls.</p>
+
+<pre><code>        NSArray *standardLayoutLine1 = @[ playbackLayoutView, jumpBackButtonLayoutView, currentTimeLayoutView, timeSeparatorLayoutView, durationLayoutView, progressLayoutView, spacerLayoutView1, logoLayoutView1, spacerLayoutView2, closedCaptionLayoutView, screenModeLayoutView, externalRouteLayoutView ];
+        NSArray *standardLayoutLines = @[ standardLayoutLine1 ];
+</code></pre>
+
+<p>In the compact layout for portrait orientation, two arrays of controls are created, one for each line. These arrays are packaged into another array representing the compact layout.</p>
+
+<p>Note that the exact same objects are used for most of the controls in each layout. When this is done, and you switch between portrait and landscape orientations, the object will be moved to its new position using smooth animation.</p>
+
+<pre><code>        NSArray *compactLayoutLine1 = @[ currentTimeLayoutView, progressLayoutView, durationLayoutView ];
+        NSArray *compactLayoutLine2 = @[ playbackLayoutView, jumpBackButtonLayoutView, spacerLayoutView1, closedCaptionLayoutView, screenModeLayoutView, externalRouteLayoutView, logoLayoutView2 ];
+        NSArray *compactLayoutLines = @[ compactLayoutLine1, compactLayoutLine2 ];
+</code></pre>
+
+<p>Finally, now that there are two layout configurations (one for full width, and one for compact width), you can create a new <code>BCOVPUIControlLayout</code> object, and set it in the player&rsquo;s control view.</p>
+
+<pre><code>        BCOVPUIControlLayout *customLayout = [[BCOVPUIControlLayout alloc] initWithStandardControls:standardLayoutLines compactControls:compactLayoutLines];
+        playerView.controlView.layout = customLayout;
+</code></pre>
+
+<p>If you have controls that you need to show or hide frequently, you can set the <code>removed</code> property on that control&rsquo;s layout view. When you have changed your controls, call <code>setNeedsLayout</code> on the playerView&rsquo;s controlView:</p>
+
+<pre><code>    logoLayoutView1.removed = YES;
+    [playerView.controlsView setNeedsLayout];
+</code></pre>
+
+<p>You can also customize several general <a href="Classes/BCOVPUIControlLayout.html"><code>BCOVPUIControlLayout</code></a> properties:</p>
+
+<ul>
+<li><code>controlBarHeight</code> sets the size of each row of controls.</li>
+<li><code>horizontalItemSpacing</code> sets the spacing between each <a href="Classes/BCOVPUILayoutView.html"><code>BCOVPUILayoutView</code></a> in each control bar.</li>
+<li><code>compactLayoutMaximumWidth</code> determines which set of controls is used. If the control view is smaller than <code>compactLayoutMaximumWidth</code>, the compact control set will be used, otherwise the standard controls will be used.</li>
+</ul>
+
+
+<p>To change the set of controls that are displayed, you must create and install a new <a href="Classes/BCOVPUIControlLayout.html"><code>BCOVPUIControlLayout</code></a>. New controls can be installed at any time.</p>
+
+<h2>More Customization Examples</h2>
+
+<p>For more examples of PlayerUI customization, you can look at the sample code in the PlayerUI folder of the BrightcoveOS GitHub repository:</p>
+
+<p><a href="https://github.com/BrightcoveOS/ios-player-samples">[https://github.com/BrightcoveOS/ios-player-samples](https://github.com/BrightcoveOS/ios-player-samples)</a></p>
 
 <h1>Architectural Overview</h1>
 
@@ -368,7 +628,7 @@ idBCOVPlaybackController playbackController = [sdkManager createPlaybackControll
 					<footer>
 						<div class="footer-copyright">
 							
-							<p class="copyright">Copyright &copy; 2016 Brightcove. All rights reserved. Updated: 2016-06-27</p>
+							<p class="copyright">Copyright &copy; 2016 Brightcove. All rights reserved. Updated: 2016-07-07</p>
 							
 							
 							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

@@ -1,3 +1,14 @@
+# Please note:
+* The Brightcove PlayerUI Plugin is integrated into the core Brightcove Player SDK Framework as of Player SDK release 5.1.0. This provides a fully-featured and customizable set of controls in your player.
+  * PlayerUI controls are not supported on Apple TV.
+  * PlayerUI controls automatically switch to ad mode during playback. This works with Once and FreeWheel ads. Google IMA ads use their own ad controls.
+
+# 5.1.1
+### Additions and Improvements
+* Playback controls are now displayed (alpha = 1.0) by default when a Playback Controller is created.
+* The delegate property of the Playback Controller is now fully KVO compliant.
+* Fixed a crash in iOS 8.x which occurred in rare situations when scrubbing with the progress bar. 
+
 # 5.1.0
 ### Additions and Improvements
 * If you are using any Brightcove plugins with the Brightcove Player SDK, be sure to use the minimum versions listed here:
@@ -20,9 +31,6 @@
   * When set to `YES`, an opaque black view is placed in front of the Playback Controller's view. This can be used to hide the AVPlayer's video at any time.
   * When set to its default value of `NO`, the view becomes transparent.
 * The `BCOVPlaybackController` protocol has a `shutterFadeTime` property that lets you set the duration of the animation when showing or hiding the shutter. The default value is zero.
-* The Brightcove PlayerUI Plugin is now integrated into the core Brightcove Player SDK Framework. This provides a fully-featured and customizable set of controls in your player.
-  * PlayerUI controls are not supported on Apple TV.
-  * PlayerUI controls automatically switch to ad mode during playback. This works with Once and FreeWheel ads. Google IMA ads use their own ad controls.
 * The `BCOVPUIPlayerViewOptions` class has a new property, `learnMoreButtonBrowserStyle` of type `BCOVPUILearnMoreButtonBrowserStyle`.
    * This property lets you choose whether tapping the "Learn More" button in an ad will launch an external browser (default value), or use an in-app browser. 
    * The in-app browser uses a SFSafariViewController in iOS 9, a WKWebView in iOS 8, or a UIWebView in iOS 7.
