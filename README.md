@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 5.1.1.516
+# Brightcove Player SDK for iOS, version 5.1.2.528
 
 Supported Platforms
 ===================
@@ -59,7 +59,7 @@ To add the Brightcove Player SDK to your project manually:
 5. (Dynamic Framework only) On the "General" tab of your application target, add 'BrightcovePlayerSDK.framework' to the "Embedded Binary" section.
 6. (Dynamic Framework only) On the "Build Phases" tab, add a "Run Script" phase with the command `bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh`. Check "Run script only when installing". This will remove unneeded architectures from the build, which is important for App Store submission. ([rdar://19209161][19209161])
 7. (Static Framework only) On the "Build Settings" tab of your application target, add `-ObjC` to the "Other Linker Flags" build setting.
-8. (Static Framework only) Add the file bcovpuiiconfont.ttf from the BrightcovePlayerSDK.framework bundle directly to your project listing so that the font file is copied into the app bundle. In the built app's bundle, the font file should end up at the same level as the app's Info.plist file. The font file supplies some of the BrightcovePlayerUI interface elements, but it does not need to be listed in the plist itself.
+8. (Static Framework only) Locate the file bcovpuiiconfont.ttf within the BrightcovePlayerSDK.framework bundle and drag it directly into your project listing so that the font file becomes a part of your app. After dragging the file, be sure to add it to your app's build target when prompted to do so. Once your app is built, the font file should have been copied into the app bundle at the same level as the app's Info.plist file. The font file supplies some of the BrightcovePlayerUI interface elements, but it does not need to be listed in the plist itself.
 
 Imports
 --------------

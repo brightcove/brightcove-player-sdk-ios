@@ -3,9 +3,13 @@
   * PlayerUI controls are not supported on Apple TV.
   * PlayerUI controls automatically switch to ad mode during playback. This works with Once and FreeWheel ads. Google IMA ads use their own ad controls.
 
+# 5.1.2
+### Additions and Improvements
+* Fixes a CocoaPods installation problem that caused the PlayerUI controls to display improperly.
+
 # 5.1.1
 ### Additions and Improvements
-* Playback controls are now displayed (alpha = 1.0) by default when a Playback Controller is created.
+* The PlayerView's view states are now reset properly when a new playback controller is installed.
 * The delegate property of the Playback Controller is now fully KVO compliant.
 * Fixed a crash in iOS 8.x which occurred in rare situations when scrubbing with the progress bar. 
 
