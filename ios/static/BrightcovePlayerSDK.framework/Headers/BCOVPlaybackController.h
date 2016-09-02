@@ -396,6 +396,7 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 /**
  * Called when the end of the video playlist has been reached, after the
  * the last video (including post-rolls) has played to the end.
+ * Only called when `autoAdvance` is set to YES on the playback controller.
  *
  * @param playlist The list of BCOVVideo objects that were played. Do not assume that this is an NSArray.
  */
@@ -530,6 +531,7 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 /**
  * Called when the end of the video playlist has been reached, after the
  * the last video (including post-rolls) has played to the end.
+ * Only called when `autoAdvance` is set to YES on the playback controller.
  *
  * @param controller The playback controller to which this instance serves as delegate.
  * @param playlist The list of BCOVVideo objects that were played. Do not assume that this is an NSArray.

@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 5.1.2.528
+# Brightcove Player SDK for iOS, version 5.1.3.580
 
 Supported Platforms
 ===================
@@ -35,10 +35,6 @@ Static Framework example:
 Dynamic Framework example:
 
     pod 'Brightcove-Player-SDK/dynamic'    
-
-On the "General" tab of your application target, add the following to the "Link Binary With Libraries" section:
-    * `SafariServices`
-    * `WebKit`
 
 Manual
 --------------
@@ -114,13 +110,13 @@ You should now set the view strategy to nil:
     BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
     id<BCOVPlaybackController> playbackController = [manager createPlaybackControllerWithViewStrategy:nil];
 
-You also no longer need to add the Playback Controller's view to your heirarchy, so you can remove code like this:
+You also no longer need to add the Playback Controller's view to your hierarchy, so you can remove code like this:
 
     self.playbackController.view.frame = self.videoView.bounds;
     self.playbackController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 	[self.videoView addSubview:self.playbackController.view]
 
-Instead, you will associate the Playback Controller with a new Player View, and add that to your view heirarchy.
+Instead, you will associate the Playback Controller with a new Player View and add that to your view hierarchy, as described in the **Setting up PlayerUI Controls** section of this document.
 
 Migrating from the Brightcove PlayerUI Plugin
 ----------------------------

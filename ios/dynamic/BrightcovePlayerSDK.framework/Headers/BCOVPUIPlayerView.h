@@ -54,6 +54,14 @@ typedef NS_ENUM(NSUInteger, BCOVPUILearnMoreButtonBrowserStyle) {
 @optional
 
 /**
+ * Called before the playerView is begins transitioning to a new screen mode.
+ *
+ * @param playerView The player view that is transitioning.
+ * @param screenMode The screen mode that will be transitioned to.
+ */
+- (void)playerView:(BCOVPUIPlayerView *)playerView willTransitionToScreenMode:(BCOVPUIScreenMode)screenMode;
+
+/**
  * Called when the playerView is finished transitioning to a new screen mode.
  *
  * @param playerView The player view that is transitioning.
@@ -150,6 +158,7 @@ typedef NS_ENUM(NSUInteger, BCOVPUILearnMoreButtonBrowserStyle) {
 /**
  * The time in seconds since the last touch before fading the controls.
  * Defaults to 3 seconds.
+ * See `-resetHideControlsIntervalTimer` for related usage.
  */
 @property (nonatomic, assign) NSTimeInterval hideControlsInterval;
 
@@ -219,6 +228,12 @@ typedef NS_ENUM(NSUInteger, BCOVPUILearnMoreButtonBrowserStyle) {
 @property (nonatomic, weak, readonly) UIView *controlsFadingView;
 
 /**
+ * The visible state of the controlsFadingView.
+ * Can be set manually to temporarily show or hide the controls.
+ */
+@property (nonatomic) BOOL controlsFadingViewVisible;
+
+/**
  * View intended to contain views that should overlay all other views.
  */
 @property (nonatomic, weak, readonly) UIView *overlayView;
@@ -277,5 +292,12 @@ typedef NS_ENUM(NSUInteger, BCOVPUILearnMoreButtonBrowserStyle) {
  * @param screenMode The screen mode to transition to.
  */
 - (void)performScreenTransitionWithScreenMode:(BCOVPUIScreenMode)screenMode;
+
+/**
+ * Resets the timer used to keep track of when to hide the controls.
+ * If you implement your own controls, you can call this after the user
+ * taps on them to prevent the controls from hiding too soon.
+ */
+- (void)resetHideControlsIntervalTimer;
 
 @end
