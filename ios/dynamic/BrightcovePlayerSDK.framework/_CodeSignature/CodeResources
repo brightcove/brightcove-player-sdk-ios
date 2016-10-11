@@ -106,7 +106,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		uh089MXlWAyLTbKUugeNqugzMVk=
+		xbIHf4JzT0cLzlPAUrWvJ+LG8+M=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -118,7 +118,7 @@
 		</data>
 		<key>PrivateHeaders/BCOVAdvertisingPrivate.h</key>
 		<data>
-		j4U5p1l0o+5llFis6SS+D5yViHM=
+		F+QHzNycTaRiZZkm/nouTXPtSm0=
 		</data>
 		<key>PrivateHeaders/BCOVAnalytics.h</key>
 		<data>
@@ -552,11 +552,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			j4U5p1l0o+5llFis6SS+D5yViHM=
+			F+QHzNycTaRiZZkm/nouTXPtSm0=
 			</data>
 			<key>hash2</key>
 			<data>
-			paK1UJ3FbcdbR5FAePiLbZatlHP7z56nYbr2z1A6eVk=
+			0k7KYRU7/UIZII0Z8huI020qi7ZoC4oNzc237DiWK9Y=
 			</data>
 		</dict>
 		<key>PrivateHeaders/BCOVAnalytics.h</key>
