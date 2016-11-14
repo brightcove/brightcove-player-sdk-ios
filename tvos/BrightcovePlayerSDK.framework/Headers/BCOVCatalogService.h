@@ -313,6 +313,12 @@
 
 @interface BCOVCuePoint (BCOVCatalogServiceDeprecated)
 
+/**
+ * Deprecated method.
+ *
+ * @param json deprecated
+ * @return deprecated.
+ */
 + (instancetype)cuePointFromJSONDictionary:(NSDictionary *)json __attribute__((deprecated("Use +BCOVCatalogService cuePointFromJSONDictionary: instead")));
 
 @end
@@ -320,6 +326,12 @@
 
 @interface BCOVPlaylist (BCOVCatalogServiceDeprecated)
 
+/**
+ * Deprecated method.
+ *
+ * @param json deprecated
+ * @return deprecated.
+ */
 + (instancetype)playlistFromJSONDictionary:(NSDictionary *)json __attribute__((deprecated("Use +BCOVCatalogService playlistFromJSONDictionary: instead")));
 
 @end
@@ -327,6 +339,12 @@
 
 @interface BCOVSource (BCOVCatalogServiceDeprecated)
 
+/**
+ * Deprecated method.
+ *
+ * @param json deprecated
+ * @return deprecated.
+ */
 + (instancetype)sourceFromJSONDictionary:(NSDictionary *)json __attribute__((deprecated("Use +BCOVCatalogService sourceFromJSONDictionary: instead")));
 
 @end
@@ -334,6 +352,12 @@
 
 @interface BCOVVideo (BCOVCatalogServiceDeprecated)
 
+/**
+ * Deprecated method.
+ *
+ * @param json deprecated
+ * @return deprecated.
+ */
 + (instancetype)videoFromJSONDictionary:(NSDictionary *)json __attribute__((deprecated("Use +BCOVCatalogService videoFromJSONDictionary: instead")));
 
 @end

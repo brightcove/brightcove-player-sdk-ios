@@ -27,6 +27,64 @@
 
 
 /**
+ * BCOVPlaybackController's Options Dictionary Keys
+ */
+
+/**
+ * Key in the playback controller's options dictionary for enabling or disabling
+ * buffer optimization in the AVPlayer.
+ * This value is only used on iOS 10 and later.
+ * Valid values:
+ *   0: Buffer optimization is turned off. Set this value if you want to set
+ *      the AVPlayerItem's preferredForwardBufferDuration property yourself.
+ *   1: Buffer optimization is turned on. The AVPlayerItem's
+ *      preferredForwardBufferDuration will be adjusted at 5-second intervals
+ *      such that the forward buffer is approximately equal to the current time
+ *      viewed. The actual value is limited to specific minimum and maximum
+ *      values, currently 30 and 90 seconds.
+ * Buffer optimziation is turned on by default.
+ */
+extern NSString * const kBCOVBufferOptimizerMethodKey;
+
+/**
+ * Key in the playback controller's options dictionary for setting the
+ * minimum duration of the forward playback buffer used by the
+ * buffer optimization method. The minimum allowable value is 1 second, though
+ * it's more realistic to set a minimum value of around 15 to 30 seconds for
+ * optimal playback.
+ * This value may only be set if the kBCOVBufferOptimizerMethodKey is set to 1.
+ * The default value is 30.
+ */
+extern NSString * const kBCOVBufferOptimizerMinimumDurationKey;
+
+/**
+ * Key in the playback controller's options dictionary for setting the
+ * maximum duration of the forward playback buffer used by the
+ * buffer optimization method. There is no maximum allowable value, but keep in
+ * mind that the AVPlayer will only use this setting as a recommendation,
+ * and it can use a larger or smaller value depending on available memory
+ * and other factors.
+ * This value may only be set if the kBCOVBufferOptimizerMethodKey is set to 1.
+ * The default value is 90.
+ */
+extern NSString * const kBCOVBufferOptimizerMaximumDurationKey;
+
+
+/**
+ * Enumeration defining the valid values that may be set for the
+ * kBCOVBufferOptimizerMethodKey key
+ */
+typedef NS_ENUM(NSInteger, BCOVBufferOptimizerMethod) {
+    
+    /** No buffer optimization. */
+    BCOVBufferOptimizerMethodNone       = 0,
+    
+    /** Default buffer optimization. */
+    BCOVBufferOptimizerMethodDefault    = 1
+    
+};
+
+/**
  * Typedef for a view strategy given to a playback controller to construct its
  * `view` property.
  *
@@ -113,6 +171,17 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * @return A UIView to present playback in a view hierarchy.
  */
 @property (nonatomic, readonly, strong) UIView *view;
+
+/**
+ * A dictionary of key-value pairs used to set options in the playback controller.
+ * When setting options, you should preserve the current options in the dictionary
+ * by making a mutable copy of the existing dictionary, setting your value, and
+ * then assigning your new dictionary to this property.
+ * May be nil.
+ *
+ * @return The current options dictionary used by the playback controller.
+ */
+@property (nonatomic, readwrite, copy) NSDictionary *options;
 
 /**
  * Returns the playback controller's analytics object.
@@ -226,7 +295,7 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 - (void)pause;
 
 /**
- * Proxy call to -[AVPlayer seekToTime:toleranceBefore:toleranceAfter:completionHandler:]
+ * Proxy call to `-[AVPlayer seekToTime:toleranceBefore:toleranceAfter:completionHandler:]`
  * with a tolerance of .1 seconds. Do not call this method until after receiving
  * kBCOVPlaybackSessionLifecycleEventReady event.
  *
@@ -240,7 +309,7 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 - (void)seekToTime:(CMTime)time completionHandler:(void (^)(BOOL finished))completionHandler;
 
 /**
- * Proxy call to -[AVPlayer seekToTime:toleranceBefore:toleranceAfter:completionHandler:]
+ * Proxy call to `-[AVPlayer seekToTime:toleranceBefore:toleranceAfter:completionHandler:]`
  * Do not call this method until after receiving kBCOVPlaybackSessionLifecycleEventReady event.
  *
  * This default behaviour may be overridden when using plugins. For more information on
@@ -253,6 +322,27 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * @param completionHandler The block to invoke when the seek operation has either been completed or been interrupted.
  */
 - (void)seekToTime:(CMTime)time toleranceBefore:(CMTime)toleranceBefore toleranceAfter:(CMTime)toleranceAfter completionHandler:(void (^)(BOOL finished))completionHandler;
+
+/**
+ * Proxy call to `-[AVPlayer seekToTime:completionHandler:]` Sets the current
+ * playback time to the specified time and executes the specified block when the
+ * seek operation has either been completed or been interrupted. Ads scheduled
+ * before the seek time will not be played. Ads scheduled before the seek time
+ * are not considered to have been played and any user seeks to an earlier
+ * playback time will cause those ads to play.
+ *
+ * `seekWithoutAds:completionHandler:` is for the purpose of resuming playback
+ * after a client app has been quit and re-launched. It is recommended that
+ * playbackController.autoPlay be set to NO when using seekWithoutAds.
+ *
+ * Do not call this method until after receiving the
+ * kBCOVPlaybackSessionLifecycleEventReady event.
+ *
+ * @param time              Time to move to.
+ * @param completionHandler The block to invoke when the seek operation has either been completed or been interrupted.
+*/
+
+- (void)seekWithoutAds:(CMTime)time completionHandler:(void (^)(BOOL finished))completionHandler;
 
 /**
  * Instructs this instance to reinitialize the current session. If there is

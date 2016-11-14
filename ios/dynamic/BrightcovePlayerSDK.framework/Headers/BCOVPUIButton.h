@@ -11,6 +11,13 @@
 #import "BCOVPUICommon.h"
 
 
+/**
+ * A subsclass of UIButton that contains two titles,
+ * a primary and a secondary title.
+ * This is used for buttons that change titles when they
+ * toggle between two different states, like the play/pause button.
+ */
+
 @interface BCOVPUIButton : UIButton
 
 /**

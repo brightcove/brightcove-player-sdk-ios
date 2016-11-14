@@ -11,6 +11,10 @@
 
 
 /**
+ * Enumerations and values used throughout the PlayerUI.
+ */
+
+/**
  * Tags for buttons used by various BCOV control elements.
  */
 typedef NS_ENUM(NSInteger, BCOVPUIViewTag) {
@@ -121,12 +125,12 @@ typedef NS_ENUM(NSUInteger, BCOVPUIButtonIcon) {
 @interface BCOVPUICommon : NSObject
 
 /**
- * Icon font used by this plugin.
+ * Icon font used by the PlayerUI.
  */
 + (UIFont *)iconFont;
 
 /**
- * Icon font used by this plugin at specified font size.
+ * Icon font used by the PlayerUI at specified font size.
  *
  * @param fontSize Size of font to return.
  *

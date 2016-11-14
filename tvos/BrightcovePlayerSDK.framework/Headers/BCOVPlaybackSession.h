@@ -113,19 +113,19 @@ extern NSString * const kBCOVPlaybackSessionLifecycleEventError;
  */
 extern NSString * const kBCOVPlaybackSessionEventKeyError;
 
-/*
+/**
  * The key for the didPassCuePoints: payload for the progress interval
  * immediately preceding the cue points for which the payload was received.
  */
 extern NSString * const kBCOVPlaybackSessionEventKeyPreviousTime;
 
-/*
+/**
  * The key for the didPassCuePoints: payload for the progress interval on or
  * immediately after the cue points for which the payload was received.
  */
 extern NSString * const kBCOVPlaybackSessionEventKeyCurrentTime;
 
-/*
+/**
  * The key for the didPassCuePoints: payload for the BCOVCuePointCollection of cue
  * points for which the payload was received.
  */
@@ -248,6 +248,8 @@ extern const NSInteger kBCOVPlaybackSessionErrorCodeNoPlayableSource;
  * Returns a descriptive display string for the audible selection option. The
  * display name string is the stringValue of the option appended with the option
  * locale if the locale differs from the stringValue.
+ *
+ * @param option A specific audio media selection option from the AVMediaSelectionGroup
  */
 - (NSString *)displayNameFromAudibleMediaSelectionOption:(AVMediaSelectionOption *)option;
 
@@ -256,6 +258,8 @@ extern const NSInteger kBCOVPlaybackSessionErrorCodeNoPlayableSource;
  * display name string is the stringValue of the option appended with the option
  * locale if the locale differs from the stringValue. Legible option names are
  * further appended with "SDH" when accessibility characteristics are present.
+ *
+ * @param option A specific legible media selection option from the AVMediaSelectionGroup
  */
 - (NSString *)displayNameFromLegibleMediaSelectionOption:(AVMediaSelectionOption *)option;
 

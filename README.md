@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 5.1.4.625
+# Brightcove Player SDK for iOS, version 5.2.0.646
 
 Supported Platforms
 ===================
@@ -600,6 +600,96 @@ Finally, when playing background videos (and particularly when using playlists),
 **Important AVPlayerViewController Note:** When using AVPlayerViewController, you must set `allowsBackgroundAudioPlayback` to `YES` on the `BCOVPlaybackController` and must also separate the `AVPlayerViewController` from the `AVPlayer` when entering the background and reattach it when the app becomes active.
 
 [tqa1668]: https://developer.apple.com/library/ios/qa/qa1668
+
+Buffer Optimization
+============
+
+Overview
+-----
+
+With the release of iOS 10, you now have control over the size of the forward playback buffer used by the `AVPlayer`. This is done by setting the `preferredForwardBufferDuration` property in the `AVPlayerItem` class.
+
+By default, the Brightcove Native Player SDK sets the `preferredForwardBufferDuration` property in a way that optimizes overall bandwidth without sacrificing playback quality. This behavior can be overridden with your own values.
+
+Default Behavior
+-----
+
+Everyone pays for bandwidth, so it's important to reduce bandwidth consumption without affecting playback quality. New with version 5.2.0, the Brightcove Native Player SDK manages the buffer size for you dynamically as the video plays.
+
+Prior to iOS 10, the `AVPlayer` buffered as much video data as it practicably could, up to around 50 Megabytes. This is fine for the video viewing model where a user selects a video and then watches it until the end, but many modern apps now "tease" videos with autoplay, hoping to secure engagement after a few seconds. A lot of users simply move on to different videos. With aggressive buffering you can end up with several minutes of buffered video that are thrown away with each video impression.
+
+The Brightcove Native Player SDK addresses this problem by starting the video with a small baseline buffer, and then increasing it as the user watches more of the video. After a certain point, the buffer size is capped since it is not practical or helpful to make it too large.
+
+Modifying The Default Behavior
+-----
+If you want to keep the default behavior of the Brightcove Native Player SDK, but modify the minimum and maximum values used for the buffer sizes, you can do the following when setting up the `BCOVPlaybackController`:
+
+    // Create mutable dictionary to hold new values
+    NSMutableDictionary *options = self.playbackController.options.mutableCopy;
+    
+    // Set new values in dictionary
+    options[kBCOVBufferOptimizerMethodKey] = @(BCOVBufferOptimizerMethodDefault);
+    options[kBCOVBufferOptimizerMinimumDurationKey] = @(min);
+    options[kBCOVBufferOptimizerMaximumDurationKey] = @(max);
+
+    // Set new dictionary in your playback controller
+    self.playbackController.options = options;
+
+These options should be set before calling `-BCOVPlaybackController setVideos:`.
+
+`min` and `max` values:
+
+- These are floating point values that you can set as the new minimum and maximum buffer durations. 
+- If the values are set too small, playback may stall under erratic network conditions. 
+- If the values are set too large, the `AVPlayer` may buffer data that is never viewed. 
+- Testing based on your expected use cases is important. 
+- Values are specified in seconds of time, and must be greater than or equal to 1.0. (Zero is a special value in the `AVPlayerItem` that tells the `AVPlayer` to determine its own buffer size, as is done with iOS 9 and earlier).
+
+
+Turning Off Buffer Optimization
+-----
+If you do not want any buffer optimization active in your current playback session, you can use the same technique, but set the optimziation method to "None" as follows:
+
+    // Create mutable dictionary to hold new values
+    NSMutableDictionary *options = self.playbackController.options.mutableCopy;
+    
+    // Set new values in dictionary
+    options[kBCOVBufferOptimizerMethodKey] = @(BCOVBufferOptimizerMethodNone);
+
+    // Set new dictionary in your playback controller
+    self.playbackController.options = options;
+
+With the method set to “None”, iOS will maintain full control of the forward buffer size, as is done on iOS 9 and earlier.
+
+Implementing Your Own Buffer Method
+-----
+If you want to set your own buffer size for playback, first turn off buffer optimization as described in the previous section. Then, you can implement the following `BCOVPlaybackController` delegate method:
+
+	- (void)playbackController:(id<BCOVPlaybackController>)controller didAdvanceToPlaybackSession:(id<BCOVPlaybackSession>)session
+	{
+	  // Make sure the property exists on the current AVPlayerItem. This will return false for iOS 9 or earlier.
+      if ([session.player.currentItem respondsToSelector:NSSelectorFromString(@"preferredForwardBufferDuration")])
+      {
+        // Set your preferredForwardBufferDuration value here.
+		 session.player.currentItem.preferredForwardBufferDuration = newPreferredForwardBufferDurationValue;
+      }
+	}
+
+Note: You must compile against the iOS 10 SDK to use the `preferredForwardBufferDuration` property directly.
+
+If you want to change the buffer size dynamically over time, you can set `session.player.currentItem.preferredForwardBufferDuration` in the `BCOVPlaybackController`'s progress delegate method in a similar fashion:
+
+	- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didProgressTo:(NSTimeInterval)progress
+	{
+	  // Make sure the property exists on the current AVPlayerItem. This will return false for iOS 9 or earlier.
+      if ([session.player.currentItem respondsToSelector:NSSelectorFromString(@"preferredForwardBufferDuration")])
+      {
+        // Set preferredForwardBufferDuration based on your own logic here
+		 session.player.currentItem.preferredForwardBufferDuration = newPreferredForwardBufferDurationValue;
+      }
+	}
+
+Note: Apple specifically put "preferred" in `preferredForwardBufferDuration` because you can set any value you want, but generally speaking the `AVPlayer` player will use it only as a guideline. Also keep in mind that setting it to zero returns full control of the buffer size to the `AVPlayer`.
 
 Frequently Asked Questions
 ==========================
