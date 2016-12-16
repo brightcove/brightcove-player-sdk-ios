@@ -1,9 +1,9 @@
-# Brightcove Player SDK for iOS, version 5.2.0.646
+# Brightcove Player SDK for iOS, version 5.3.0.691
 
 Supported Platforms
 ===================
 
-iOS 7.0 and above.
+iOS 8.0 and above.
 
 tvOS 9.0 and above.
 
@@ -17,14 +17,14 @@ ARC is required.
 
 Installation
 ============
-The Brightcove Player SDK provides two installation packages for iOS, a static library framework and a dynamic framework. The static library target supports deployment on iOS 7 and above, while the dynamic framework only supports iOS 8 and above.
+The Brightcove Player SDK provides two installation packages for iOS, a static library framework and a dynamic framework. Deployment is supported on iOS 8 and above.
 
 The Brightcove Player SDK provides a dynamic framework to support tvOS 9.0 and above.
 
 CocoaPods
 --------------
 
-You can use [CocoaPods][cocoapods] to add the Brightcove Player SDK to your project. You can find the latest `Brightcove-Player-SDK` podspec [here][podspecs]. The podspec supports both iOS and tvOS. CocoaPods 0.39 or newer is required.
+You can use [CocoaPods][cocoapods] to add the Brightcove Player SDK to your project. You can find the latest `Brightcove-Player-SDK` podspec [here][podspecs]. The podspec supports both iOS and tvOS. CocoaPods 1.0 or newer is required.
 
 Specifying the default pod `Brightcove-Player-SDK` will install the static library framework. To install the dynamic framework, declare the pod with the `dynamic` subspec: `Brightcove-Player-SDK/dynamic`
 
@@ -35,6 +35,12 @@ Static Framework example:
 Dynamic Framework example:
 
     pod 'Brightcove-Player-SDK/dynamic'    
+
+With the release of CocoaPods 1.0.0, the master Podspec repository is no longer updated automatically. To ensure you are using the latest versions of Brightcove software components, update your Podspec repository by running the following on the command line:
+
+```
+pod repo update
+```
 
 Manual
 --------------
@@ -48,12 +54,14 @@ To add the Brightcove Player SDK to your project manually:
     Binary With Libraries" section:
     * `AVFoundation`
     * `CoreMedia`
+    * `CoreMotion`
+    * `GLKit`
     * `MediaPlayer`
     * `SafariServices`
     * `WebKit`
     * `BrightcovePlayerSDK.framework`  
 5. (Dynamic Framework only) On the "General" tab of your application target, add 'BrightcovePlayerSDK.framework' to the "Embedded Binary" section.
-6. (Dynamic Framework only) On the "Build Phases" tab, add a "Run Script" phase with the command `bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh`. Check "Run script only when installing". This will remove unneeded architectures from the build, which is important for App Store submission. ([rdar://19209161][19209161])
+6. (Dynamic Framework only) On the "Build Phases" tab, add a "Run Script" phase with the command `bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh`. Check "Run script only when installing". This will remove unneeded architectures from the build, which is important for App Store submission.
 7. (Static Framework only) On the "Build Settings" tab of your application target, add `-ObjC` to the "Other Linker Flags" build setting.
 8. (Static Framework only) Locate the file bcovpuiiconfont.ttf within the BrightcovePlayerSDK.framework bundle and drag it directly into your project listing so that the font file becomes a part of your app. After dragging the file, be sure to add it to your app's build target when prompted to do so. Once your app is built, the font file should have been copied into the app bundle at the same level as the app's Info.plist file. The font file supplies some of the BrightcovePlayerUI interface elements, but it does not need to be listed in the plist itself.
 
@@ -62,35 +70,37 @@ Imports
 The Brightcove Player SDK for iOS can be imported into code a few different ways; `@import BrightcovePlayerSDK;`, `#import <BrightcovePlayerSDK/BrightcovePlayerSDK.h>` or `#import <BrightcovePlayerSDK/[specific class].h>`.
     
 [cocoapods]: https://cocoapods.org
-[podspecs]: https://github.com/CocoaPods/Specs/tree/master/Specs/Brightcove-Player-SDK
+[podspecs]: https://github.com/CocoaPods/Specs/tree/master/Specs/2/4/f/Brightcove-Player-SDK
 [release]: https://github.com/brightcove/brightcove-player-sdk-ios/releases
-[19209161]: https://openradar.appspot.com/19209161
 
 Quick Start
 ===========
-Playing video with the Brightcove Player SDK for iOS, in less than 20 lines of code:
+Playing video with the Brightcove Player SDK for iOS:
 
-    NSString *token;      // (Brightcove Media API token with URL access)
-    NSString *playlistID; // (ID of the playlist you wish to use)
+    // ** Customize these values with your own account information **
+    static NSString * const kViewControllerPlaybackServicePolicyKey = @"...";
+    static NSString * const kViewControllerAccountID = @"...";
+    static NSString * const kViewControllerVideoID = @"...";
     
     BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
-    id<BCOVPlaybackController> controller = [manager createPlaybackControllerWithViewStrategy:nil];
-    self.controller = controller; //store this to a strong property
+    id<BCOVPlaybackController> controller = [manager createPlaybackController];
+    self.controller = controller; // store this to a strong property
     [self.view addSubview:controller.view];  
      
-    BCOVCatalogService *catalog = [[BCOVCatalogService alloc] initWithToken:token];
-    [catalog findPlaylistWithPlaylistID:playlistID
-                         parameters:nil
-                         completion:^(BCOVPlaylist *playlist,
-                                      NSDictionary *jsonResponse,
-                                      NSError      *error) {
+    BCOVPlaybackService *service = [[BCOVPlaybackService alloc] initWithAccountId:kAccountId
+                                                                        policyKey:kPlaybackServicePolicyKey];
+    [service findVideoWithVideoID:kViewControllerVideoID
+                       parameters:nil
+                       completion:^(BCOVVideo    *video,
+                                    NSDictionary *jsonResponse,
+                                    NSError      *error) {
                                       
-                             [controller setVideos:playlist];
+                             [controller setVideos:@[ video ]];
                              [controller play];
                              
                          }];
 
-You need to keep the controller from being automatically released at the end of the method. A common way to do this is to store a pointer to the controller in an instance variable.
+You need to keep the controller from being automatically released at the end of the method. A common way to do this is to store a reference to the controller in an instance variable.
 
 Built-In PlayerUI Controls
 ==========================
@@ -309,6 +319,79 @@ For more examples of PlayerUI customization, you can look at the sample code in 
 
 [github]: https://github.com/BrightcoveOS/ios-player-samples
 
+Video 360
+==========
+
+The Native Player SDK includes support for interactively displaying 360 degree spherical videos. 360 videos should be tagged with a "projection" field containing the value "equirectangular". These videos will be loaded and played in the same way as other videos, but they will be displayed in an OpenGL ES layer instead of an AVPlayerLayer.
+
+Note: "equirectangular" is the only projection format supported for 360 source videos at this time.
+
+The PlayerUI also has built-in support for Video 360, providing default panning gestures, gyroscopic motion detection for the view, and a new Video 360 button that appears when a Video 360 asset is playing. This button appears only on iPhones, and lets you toggle betwen the normal view and a "VR Goggles" view, where the screen is split in two, with the same scene rendered for each eye so that the device can be used in a head-mounted configuration. On iPads no Video 360 button is needed because there is only a single mode of operation: motion detection with panning gesture support.
+
+Supporting Video 360 is as simple as playing a video. When the "projection" field is detected, the Native Player SDK will automatically handle setting up and displaying the video in OpenGL ES, and installing the Video 360 button when appropriate.
+
+If you are playing 360 videos outside of Video Cloud, be sure to add a "projection" property to the `BCOVVideo` object with the value "equirectangular".
+
+To provide the best user experience with the VR Goggles mode, you should use a `BCOVPUIPlayerViewDelegate` method to detect when this mode is enabled. This allows you to force the device into landscape orientation (since that is the only orientation that makes sense for a VR Goggles view).
+
+The following code shows how you could handle a forced orientation change when switching back and forth between a normal 360 view, and VR Goggles mode.
+
+```
+	// Set this to YES when displaying a VR goggles video
+	@property (nonatomic) BOOL landscapeOnly;
+
+	// UIViewController override
+   // Lets us control the orientation of the device
+	- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+	{
+	    if (self.landscapeOnly)
+	    {
+	        return UIInterfaceOrientationMaskLandscape;
+	    }
+	
+	    return UIInterfaceOrientationMaskAll;
+	}
+
+	- (void)didSetVideo360NavigationMethod:(BCOVPUIVideo360NavigationMethod)navigationMethod
+	                       projectionStyle:(BCOVVideo360ProjectionStyle)projectionStyle
+	{
+	    switch (projectionStyle)
+	    {
+	        case BCOVVideo360ProjectionStyleNormal:
+	            NSLog(@"BCOVVideo360ProjectionStyleNormal");
+	            self.landscapeOnly = NO;
+	            break;
+	
+	        case BCOVVideo360ProjectionStyleVRGoggles:
+	            NSLog(@"BCOVPUIVideo360NavigationDeviceMotionTracking");
+	            
+	            self.landscapeOnly = YES;
+	            
+	            {
+	                UIDeviceOrientation currentDeviceOrientation = [UIDevice currentDevice].orientation;
+	                switch (currentDeviceOrientation)
+	                {
+	                    case UIDeviceOrientationLandscapeLeft:
+	                    case UIDeviceOrientationLandscapeRight:
+	                        // all good
+	                        break;
+	                    default:
+	                    {
+	                        // switch orientation
+	                        NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
+	                        [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+	                        break;
+	                    }
+	                }
+	            }
+	            break;
+	    }
+	    
+	    [UIViewController attemptRotationToDeviceOrientation];
+	}
+```
+The PlayerUI will install gestures to handle navigation around the 360 video, but if you are using your own controls you can set the view parameters of the virtual camera yourself. The `BCOVPlaybackController` protocol's `viewProjection` property lets you set these parameters. The property is a `BCOVVideo360ViewProjection` class with basic virtual camera settings like `pan`, `tilt`, and `zoom`. To change settings, make a copy of the current instance, change the settings on the new instance, and then assign it back to the `viewProjection` property.
+
 Architectural Overview
 ======================
 ![Architectural Overview 1](architecture01.png)
@@ -319,14 +402,13 @@ The playback controller offers methods and properties to affect playback of the 
 
 There are two other elements of the playback controller: a [`BCOVPlaybackSessionProvider`][provider], and a list of [`BCOVPlaybackSessionConsumer`][consumer]s. As the name would suggest, the playback session provider is responsible for creating playback sessions and delivering them to the playback controller. The playback controller then delivers the session to each of the playback session consumers in the list. Both the session provider and session consumer APIs are designed for use by plugin developers, and are not detailed in this document.
 
-In addition to the playback functionality provided by the classes described above, there are a handful of value classes. These are used to hold data specific to the Player SDK for iOS. There are also [`BCOVCatalogService`][catalog] and [`BCOVMediaRequestFactory`][requestfactory], which offer functionality for querying content remotely stored in your Brightcove Video Cloud account. Each of these is described in more detail in its own section below.
+In addition to the playback functionality provided by the classes described above, there are a handful of value classes. These are used to hold data specific to the Player SDK for iOS. Each of these is described in more detail in its own section below.
 
 [manager]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlayerSDKManager.h
 [controller]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h
 [session]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackSession.h
 [provider]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackSessionProvider.h
-[catalog]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVCatalogService.h
-[requestfactory]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVMediaRequestFactory.h
+[service]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackService.h
 
 Play, Pause, and Seek
 -------------------------------
@@ -357,9 +439,9 @@ An example:
 
 [loadingpolicy]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVBasicSessionProvider.h#L78-L99
 
-Source Selection (HLS, MP4, HTTP/HTTPs)
+Source Selection (HLS, MP4, HTTP/HTTPS)
 ---------------------------------------
-The Brightcove Player SDK for iOS provides clients the ability to attach multiple url and delivery types (`BCOVSource`) to a single video (`BCOVVideo`). For example, if your videos are being retrieved by the catalog or playback service, there may be a mix of HLS or MP4 renditions for a single video, along with HTTP and HTTPs versions.  Which one of these sources that get selected is determined by a source selection block. The default source selection policy will select the first HLS `BCOVSource` on each `BCOVVideo`, regardless of scheme. 
+The Brightcove Player SDK for iOS provides clients the ability to attach multiple url and delivery types (`BCOVSource`) to a single video (`BCOVVideo`). For example, if your videos are being retrieved by the Playback Service, there may be a mix of HLS or MP4 renditions for a single video, along with HTTP and HTTPS versions.  Which one of these sources that get selected is determined by a source selection block. The default source selection policy will select the first HLS `BCOVSource` on each `BCOVVideo`, regardless of scheme. 
 
 Source selection can be overridden by creating a `BCOVBasicSessionProviderOptions` and using it to create a `BCOVBasicSessionProvider`. For example:
 
@@ -374,9 +456,9 @@ Source selection can be overridden by creating a `BCOVBasicSessionProviderOption
 
 If this default selection policy does not work for you, there are a few alternatives to selecting a source:
 
-* If retrieving videos from Video Cloud via the catalog service or playback service, before calling `-[BCOVPlaybackController setVideos:]`, use the update method on the `BCOVVideo` to only contain the source you want (see the "Values" section for more info).
+* If retrieving videos from Video Cloud via the Playback Service, before calling `-[BCOVPlaybackController setVideos:]`, use the update method on the `BCOVVideo` to only contain the source you want (see the "Values" section for more info).
 
-* If you prefer HTTPs HLS, `[BCOVBasicSourceSelectionPolicy sourceSelectionHLSWithScheme:kBCOVSourceURLSchemeHTTPS]` allows you to prefer a specific scheme. This will not convert non HTTP urls to HTTPs urls. If you choose to select HTTPs, ensure that your CDN is configured for HTTPs. If the CDN is configured for HTTPs, use `BCOVPlaybackService` instead of `BCOVCatalogService` to retrieve video/playlist metadata.
+* If you prefer HTTPS HLS, `[BCOVBasicSourceSelectionPolicy sourceSelectionHLSWithScheme:kBCOVSourceURLSchemeHTTPS]` allows you to prefer a specific scheme. This will not convert non HTTP URLs to HTTPS URLs. If you choose to select HTTPS, ensure that your CDN is configured for HTTPS.
 
 * Similar to updating the video object, you may also implement your own source selection block.
         
@@ -440,8 +522,8 @@ When the AVPlayer is still able to access the network, but the video stalls beca
 
 When the video is initially loading, when a seek occurs, or when playback stalls due to a slow network, the lifecycle delegate method will be called with a `kBCOVPlaybackSessionLifecycleEventPlaybackBufferEmpty` event.  When playback is able to resume,  the lifecycle delegate method will be called with a `kBCOVPlaybackSessionLifecycleEventPlaybackLikelyToKeepUp` event. You may wish to implement a loading spinner in this case.
 
-A Word on Subclassing
----------------------
+Subclassing
+-----------
 Except where explicitly documented otherwise, none of the classes in the Player SDK for iOS are designed to be subclassed. Creating a subclass of any SDK class that is not explicitly designed to be subclassed, especially any of the value classes, could result in unpredictable behavior.
 
 Values
@@ -480,27 +562,21 @@ Here is an example of using this method to create a "modified" version of an exi
 
 As you can see in the example, `video1` has not been changed by the `-update` method call. Instead, this method returns a copy of `video1`, except with the modifications made in the body of the block. You should never allow the mutable copy to escape the block (such as by assigning it to a `__block` variable), instead use the immutable object returned by the `-update` method after you have made your modifications.
 
-(Thanks to [Jon Sterling][js] for publishing the Objective-C implementation of this pattern.)
-
-[js]: http://www.jonmsterling.com/posts/2012-12-27-a-pattern-for-immutability.html
-
-Retrieving Brightcove Assets
+Retrieving Brightcove Assets Using the Playback Service
 ------------------------
-To retrieve Brightcove assets you can rely on either playback service classes or catalog classes. The functionality of these two classes are similar but not completely equal. You will need to choose one depending on your needs. 
 
-###Playback Service
+The playback service class, `BCOVPlaybackService`, provides functionality for retrieving your Brightcove video assets and playlists via the [Brightcove Playback API][PlaybackAPI] , including rich metadata such as text tracks, previews, and thumbnails. The following example shows how to retrieve a video with a video ID. Methods for retrieving a video or playlist with that video's reference ID are also available..
 
-The playback service classes provide functionality for retrieving information about your Brightcove video assets via the [Brightcove Playback API][PlaybackAPI]. For most purposes, `BCOVPlaybackService` provides sufficient functionality to obtain videos and playlists with more rich meta information than catalog classes such as text tracks. The following is an example shows how to retrieve a video with a video ID. Note that there is also a method that can retrieve a video with that video's reference ID.
-
-    [1] NSString *policyKey;  // (Brightcove Playback API policy Key)
-        NSString *videoID;    // (ID of the video you wish to use)
-        NSString *accountId;  // (account id)
+    [1] NSString *policyKey = <your-policy-key>;
+        NSString *accountId = <your-account-id>;
+        NSString *videoID = <your-video-id>;
 
         BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
         id<BCOVPlaybackController> controller = [manager createPlaybackControllerWithViewStrategy:nil];
         [self.view addSubview:controller.view];  
      
-        BCOVPlaybackService *playbackService = [[BCOVPlaybackService alloc] initWithAccountId:accoundId policyKey:policyKey];
+        BCOVPlaybackService *playbackService = [[BCOVPlaybackService alloc] initWithAccountId:accoundId
+                                                                                    policyKey:policyKey];
         [playbackService findVideoWithVideoID:videoID
                                    parameters:nil
                                    completion:^(BCOVVideo *video,
@@ -512,19 +588,11 @@ The playback service classes provide functionality for retrieving information ab
 
                                    }];
 
-1. The playback service requests **policy key** for authentication. To learn more about policy key and how to obtain one, please check [policy key documentation][PolicyKey].
-
-If for some reason you need to customize the request that the playback service sends to the Brightcove Playback API, you may find `BCOVPlaybackServiceRequestFactory` helpful. This utility, which is used by the playback service, generates parameterized Brightcove CMS API NSURLRequest objects, which you can use in your own HTTP communication.
+1. The playback service requests **policy key** for authentication. To learn more about policy key and how to obtain one, please refer to the [policy key documentation][PolicyKey].
 
 [PlaybackAPI]: http://docs.brightcove.com/en/video-cloud/playback-api/index.html
 [PolicyKey]: http://docs.brightcove.com/en/video-cloud/player-management/guides/policy-key.html
-###Catalog
 
-The catalog classes provide functionality for retrieving information about your Brightcove assets via the [Brightcove Media API][MediaAPI]. For most purposes, `BCOVCatalogService` provides sufficient functionality to obtain value class instances from input data such as playlist or video IDs, or reference IDs.
-
-If for some reason you need to customize the request that the catalog sends to the Brightcove Media API, you may find `BCOVMediaRequestFactory` helpful. This utility, which is used by the catalog service, generates parameterized Brightcove Media API NSURLRequest objects, which you can use in your own HTTP communication.
-
-[MediaAPI]: http://docs.brightcove.com/en/video-cloud/media/index.html
 View Strategy
 -------------
 `BCOVPlaybackController` objects are constructed with a **view strategy**, which allows you, as the client of the SDK, to define the exact UIView object that is returned from the playback controller's `view` property. This is important when using plugins that affect the playback controller's view, such as an advertising plugin that overlays the video view with an ad view. Imagine trying to integrate custom controls with such a plugin: normally, custom controls are just regular UIView objects in the view hierarchy that float above the playback controller's video view. But with an advertising plugin, you generally want the ads to float over your custom controls. How to accomplish this without having in-depth knowledge of the structure of the playback controller's view hierarchy? The solution is to construct a view strategy that composes the video view, your custom controls, and the advertising view in a hierarchy of your choosing. The playback controller will call this view strategy the first time you access its `view` property. The final UIView object returned from the strategy will serve as its view permanently (until the controller is destroyed).
@@ -585,7 +653,7 @@ Again, for most use cases it should suffice to not use a view strategy at all. J
 
 There is one caveat to using a view strategy: you must not access the playback controller's `view` property from within the view strategy block. Since the block is being called *because* the playback controller's `view` property was accessed for the first time, accessing the `view` property again *within* the view strategy block could cause a rip in the fabric of space and time, and your program will crash.
 
-Playing Video In The Background (and a special note about PiP)
+Playing Video In The Background (and a special note about Picture in Picture)
 -------------
 By default, when an iOS application is sent to the background, or the device is locked, iOS will pause any video that is playing. To change this behavior, set the `allowsBackgroundAudioPlayback` property of the `BCOVPlaybackController` object to `YES`. (The default value is `NO`, indicating playback will pause in the background.)
 
@@ -595,9 +663,7 @@ It's important that the AVPlayerLayer be detached from the AVPlayer before the a
 
 Finally, when playing background videos (and particularly when using playlists), you should use the iOS `MPRemoteCommandCenter` API to give the user playback control on the lock screen and in the control center. Note that `MPRemoteCommandCenter` is only available in iOS 7.1 and later; if you need to support iOS 7.0, you should use `UIApplication`'s `beginReceivingRemoteControlEvents` and `endReceivingRemoteControlEvents`.
 
-**Important PiP Note:** When you want to support background audio and Picture in Picture on the same player, you must update the `pictureInPictureActive` property on `BCOVPlaybackController` with the Picture in Picture status. If you are using `AVPlayerViewController`, you can use the `playerViewControllerDidStartPictureInPicture:` and `playerViewControllerDidStopPictureInPicture:` delegate methods to update this property. If you are using the `AVPictureInPictureController`, you can use the `pictureInPictureControllerDidStartPictureInPicture:` and `pictureInPictureControllerDidStopPictureInPicture:` delegate methods to update this property.
-
-**Important AVPlayerViewController Note:** When using AVPlayerViewController, you must set `allowsBackgroundAudioPlayback` to `YES` on the `BCOVPlaybackController` and must also separate the `AVPlayerViewController` from the `AVPlayer` when entering the background and reattach it when the app becomes active.
+**Important Picture in Picture Note:** When you want to support background audio and Picture in Picture on the same player, you must update the `pictureInPictureActive` property on `BCOVPlaybackController` with the Picture in Picture status. If you are using the `AVPictureInPictureController`, you can use the `pictureInPictureControllerDidStartPictureInPicture:` and `pictureInPictureControllerDidStopPictureInPicture:` delegate methods to update this property.
 
 [tqa1668]: https://developer.apple.com/library/ios/qa/qa1668
 
@@ -700,13 +766,6 @@ If the content is packaged as MP4, you can paste the URL directly into most web 
 **I can hear the audio track playing, but the video freezes for a few seconds sporadically. What's happening?**
 
 This is a common symptom of having called a main thread-only UIKit or AVFoundation method from a non-main thread. The delegate methods on `BCOVPlaybackControllerDelegate` are always called on the main thread.
-
-**How do I retrieve data from the Brightcove Media API for which there is no `BCOVCatalogService` or `BCOVPlaybackService` method?**
-
-The catalog and playback services offers methods for the most common Brightcove Media API operations, but there are [other operations][media] available. To leverage them, you will need to issue an HTTP request and then process the response. You can use a standard NSURLRequest to do this, or you can leverage a [3rd-party HTTP API][afnet] if you find that easier. In either case, when you receive the response, you can use a standard JSON parser (like NSJSONSerialization) to convert the response into a NSDictionary, and then construct the appropriate value classes from the data in the NSDictionary.
-
-[media]: http://docs.brightcove.com/en/video-cloud/media/
-[afnet]: http://afnetworking.com
 
 **Why do I see a message in the log indicating that no source has been found?**
 

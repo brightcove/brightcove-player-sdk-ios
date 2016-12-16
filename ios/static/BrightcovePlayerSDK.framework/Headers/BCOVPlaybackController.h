@@ -25,6 +25,78 @@
 @protocol BCOVPlaybackSessionBasicConsumer;
 @protocol BCOVPlaybackSessionConsumer;
 
+/**
+ * Enumeration defining the valid values that may be set for the
+ * BCOVVideo360ViewProjection's sourceFormat
+ */
+typedef NS_ENUM(NSInteger, BCOVVideo360SourceFormat) {
+    
+    BCOVVideo360SourceFormatNone  = 0,
+    
+    BCOVVideo360SourceFormatEquirectangular  = 1,
+    
+};
+
+/**
+ * Enumeration defining the valid values that may be set for the
+ * BCOVVideo360ProjectionStyle's projectionStyle
+ */
+typedef NS_ENUM(NSInteger, BCOVVideo360ProjectionStyle) {
+    
+    BCOVVideo360ProjectionStyleNormal  = 0,
+    
+    BCOVVideo360ProjectionStyleVRGoggles  = 1,
+    
+};
+
+// The approximate vertical angle of view when the view orientation's zoom is 1.0.
+// Set to 75 degrees
+extern const CGFloat kBCOVVideo360BaseAngleOfView;
+
+
+// Position of virtual camera when viewing Video 360 streams
+@interface BCOVVideo360ViewProjection : NSObject
+
+// Horizontal angle of view in degrees
+@property (nonatomic) CGFloat pan;
+
+// Vertical angle of view in degrees
+@property (nonatomic) CGFloat tilt;
+
+// Magnification of view; 1.0 corresponds to 75 degrees
+// Default value is 1.0
+@property (nonatomic) CGFloat zoom;
+
+// Angle of rotation in degrees about the virtual camera's longitudinal axis.
+// Normally zero; commonly used to correct camera tilt.
+@property (nonatomic) CGFloat roll;
+
+/**
+ * Horizontal offset of the rendered 360 video in the view.
+ * When using a split screen VR goggles view, the x offset is
+ * applied to the left view, and the negative of the offset is
+ * applied to the right view. This can be used to adjust the view to
+ * fit different device sizes.
+ * Defaults to 0.0.
+ */
+@property (nonatomic, assign) CGFloat xOffset;
+
+/**
+ * Vertical offset of the rendered 360 video in the view.
+ * Defaults to 0.0.
+ */
+@property (nonatomic, assign) CGFloat yOffset;
+
+@property (nonatomic) BCOVVideo360SourceFormat sourceFormat;
+
+@property (nonatomic) BCOVVideo360ProjectionStyle projectionStyle;
+
+/**
+ * Convenience method to return a new instance of a BCOVVideo360ViewProjection object
+ */
++ (instancetype)viewProjection;
+
+@end
 
 /**
  * BCOVPlaybackController's Options Dictionary Keys
@@ -238,6 +310,16 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  */
 
 @property (nonatomic, readwrite) NSTimeInterval shutterFadeTime;
+
+/**
+ * Position of virtual camera when viewing Video 360 streams
+ * Default values are:
+ * pan: 0 degrees
+ * tilt: 0 degrees
+ * zoom: 1.0
+ * roll: 0 degrees
+ */
+@property (nonatomic, readwrite, copy) BCOVVideo360ViewProjection *viewProjection;
 
 /**
  * Registers a session consumer with a container, to be notified of new

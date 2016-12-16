@@ -13,6 +13,7 @@
  * BCOVMediaRequestFactory provides convenience methods for creating requests
  * that access the Brightcove Media APIs.
  */
+DEPRECATED_ATTRIBUTE
 @interface BCOVMediaRequestFactory : NSObject
 
 /**

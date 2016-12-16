@@ -1,3 +1,82 @@
+# 5.3.0
+### Breaking Changes
+* The `BCOVCatalogService` (Media API) class has been deprecated. The `BCOVCatalogService` class methods generate compiler deprecation warnings, but are still fully functional. Please update your projects to use the `BCOVPlaybackService` (Playback API) for retrieving video playlists. Code examples are available in the Quick Start section of the README.md and in the [iOS Player Samples](https://github.com/brightcoveos/ios-player-samples) on Github.
+* The `BCOVMediaRequestFactory` is an extension of the Brightcove Media API and has therefore been deprecated.
+
+### Additions and Improvements
+
+####Video 360
+
+This release includes support for 360 degree videos. Videos that are tagged in Video Cloud with a "projection" field with the value "equirectangular" are identified as Video 360. These videos will be loaded and played in the same way as other videos, but they will be displayed in an OpenGL ES layer instead of an AVPlayerLayer.
+
+The PlayerUI also has built-in support for Video 360, providing default panning gestures, gyroscopic motion detection for the view, and a new Video 360 button that appears when a Video 360 asset is playing. This button appears only on iPhones, and lets you toggle betwen the normal view and a "VR Goggles" view, where the screen is split in two, with the same scene rendered for each eye so that the device can be used with head-mounted VR Goggles, such as Google Cardboard.
+
+Additions for each file are as follows.
+
+####BCOVPlaybackController.h
+The `BCOVVideo360SourceFormat` enumeration type has been added to indicate the format of the current video 360 projection. The following values are supported:
+
+* `BCOVVideo360SourceFormatNone`: used for normal (non-360) videos
+* `BCOVVideo360SourceFormatEquirectangular`: indicates a video supplied in equirectangular format. No other 360 formats are supported at this time.
+
+The `BCOVVideo360ProjectionStyle` enumeration type has been added to indicate how the 360 video is projected on to the OpenGL ES layer. The following values are supported:
+
+* `BCOVVideo360ProjectionStyleNormal`: typical projection of a single viewport viewing a rectangular portion of the 360 video mapped onto a sphere.
+* `BCOVVideo360ProjectionStyleVRGoggles`: double projection of a viewport viewing a rectangular portion of the 360 video mapped onto a sphere.
+
+The constant `kBCOVVideo360BaseAngleOfView` has been added to give the approximate vertical angle of a 360 view when the view orientation's zoom is 1.0. It's value is 75 degrees.
+
+The `BCOVVideo360ViewProjection` specifies the position of the virtual camera in Video 360. This class provides the renderer details about how to present the Video 360 view. The following properties are available:
+
+* `CGFloat pan`: Horizontal angle of view in degrees
+* `CGFloat tilt`: Vertical angle of view in degrees
+* `CGFloat zoom`: Magnification of view
+* `CGFloat roll`: Angle of rotation in degrees about the virtual camera's longitudinal axis.
+* `CGFloat xOffset`: Horizontal offset of the rendered 360 video in the view. When using a split screen VR Goggles view, the x offset is applied to the left view, and the negative of the offset is applied to the right view.
+* `CGFloat yOffset`: Vertical offset of the rendered 360 video in the view.
+* `BCOVVideo360SourceFormat sourceFormat`: the format of the source video. Currently only the equirectangular input format, `BCOVVideo360SourceFormatEquirectangular`, is supported.
+* `BCOVVideo360ProjectionStyle projectionStyle`: the method for presenting the 360 video on the OpenGL ES layer.
+
+The class method `+(instancetype)viewProjection` is a convenience method for allocating a `BCOVVideo360ViewProjection` instance.
+
+The `BCOVPlaybackController` protocol has a new `BCOVVideo360ViewProjection viewProjection` property. This allows you to set new parameters for the current projection. To change values, read the current `viewProjection` (this gives you a copy of the current `viewProjection` instance), modify the values you want to change, and then set it again with the new modified instance.
+
+####BCOVPUIBasicControlView.h
+
+The `BCOVPUIBasicControlView` class has a new property for the Video 360 button, `BCOVPUIButton *video360Button`.
+
+
+####BCOVPUICommon.h
+The `BCOVPUIViewTag` enumeration has a new `BCOVPUIViewTagButtonVideo360` value for the Video 360 button.
+
+####BCOVPUIPlayerView.h
+
+The `BCOVPUIVideo360NavigationMethod` enumeration type has been added to indicate how the 360 view is physically controlled. The following values are supported:
+
+* `BCOVPUIVideo360NavigationNone`: the PlayerUI will not control the view orientation. Use this if you want to set your own `viewProjection` values in the `BCOVPlaybackController` class.
+* `BCOVPUIVideo360NavigationFingerTracking`: the PlayerUI will install finger tracking gestures for panning (pan/tilt) and pinching (zoom).
+* `BCOVPUIVideo360NavigationDeviceMotionTracking`: In addition to the finger tracking gestures above, the PlayerUI will use CoreMotion to determine the pan and tilt values for the view.
+
+The `BCOVPUIPlayerViewDelegate` protocol has a new method related to Video 360:
+
+* `- (void)didSetVideo360NavigationMethod:(BCOVPUIVideo360NavigationMethod)navigationMethod projectionStyle:(BCOVVideo360ProjectionStyle)projectionStyle`: This optional delegate method will be called when a new selection has been made with the Video 360 button in the control bar. When this method is called, set the device orientation to landscape if you are using the `BCOVVideo360ProjectionStyleVRGoggles` projection style.
+
+The `BCOVPUIPlayerViewOptions` class has new properties related to Video 360:
+
+* `float panMin`: The minimum allowable value for the pan setting when finger tracking.
+* `float panMax`: The maximum allowable value for the pan setting when finger tracking.
+* `float panInertia`: Determines speed with which a pan gesture fling decays. Defaults to 1.0. Larger values cause the fling to decay more slowly. Smaller values cause the fling to stop quickly. A value of 0.0 stops panning immediately after touch-up.
+* `float tiltMin`: The minimum allowable value for the tilt setting when finger tracking.
+* `float tiltMax`: The maximum allowable value for the tilt setting when finger tracking.
+* `float zoomMin`: The minimum allowable value for the zoom setting when finger tracking.
+* `float zoomMax`: The maximum allowable value for the zoom setting when finger tracking.
+* `float rotateMin`: The minimum allowable value for the rotate setting when finger tracking.
+* `float rotateMin`: The maximum allowable value for the rotate setting when finger tracking.
+
+The `BCOVPUIPlayerView` class has the following new property:
+
+* `BCOVPUIVideo360NavigationMethod video360NavigationMethod`: The method for controlling the view orientation of a 360 video in the player view.
+
 # 5.2.0
 ### Additions and Improvements
 * Adds buffer optimization to the AVPlayer's playback behavior. See the Buffer Optimization section of the README document for more details.

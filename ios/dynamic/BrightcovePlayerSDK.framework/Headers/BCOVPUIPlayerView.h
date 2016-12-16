@@ -8,13 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import <BrightcovePlayerSDK/BCOVPlaybackController.h>
 
 @class BCOVAd;
 @class BCOVPUIPlayerView;
 @class BCOVPUIAdControlView;
 @class BCOVPUIBasicControlView;
-
-@protocol BCOVPlaybackController;
 
 
 /**
@@ -33,17 +32,39 @@ typedef NS_ENUM(NSUInteger, BCOVPUIScreenMode) {
  * Method for launching browser for Learn More button
  */
 typedef NS_ENUM(NSUInteger, BCOVPUILearnMoreButtonBrowserStyle) {
-
+    
     /** Default style launches a URL in the default system browser external to the application **/
     BCOVPUILearnMoreButtonUseExternalBrowser,
-
+    
     /** Launch URLs in an in-app browser.
      In iOS 9 this is a SFSafariViewController.
      In iOS 8 this is a WKWebView inside a UIViewController.
      In iOS 7 this is a UIWebView inside a UIViewController.
      */
     BCOVPUILearnMoreButtonUseInAppBrowser
+    
+};
 
+/**
+ * Method for viewing and controlling the Video 360 experience
+ */
+typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
+    
+    /** View orientation tracking is turned off.
+     Use this if you want to control view orientation
+     in the playback controller yourself.
+     */
+    BCOVPUIVideo360NavigationNone,
+
+    /** Tracking is handled by UI gestures on the player view.
+     */
+    BCOVPUIVideo360NavigationFingerTracking,
+    
+    /** The device's motion will be used to set the
+     view orientation.
+     */
+    BCOVPUIVideo360NavigationDeviceMotionTracking,
+    
 };
 
 
@@ -135,6 +156,20 @@ typedef NS_ENUM(NSUInteger, BCOVPUILearnMoreButtonBrowserStyle) {
  */
 - (void)didReturnFromExternalBrowserWithAd:(BCOVAd *)ad;
 
+/**
+ * Delegate methods related to Video 360
+ */
+
+/**
+ * This optional delegate method will be called when the Video 360 button
+ * in the control bar is tapped. This is used to switch your current UIViewController
+ * orientation to landscape when using the BCOVVideo360ProjectionStyleVRGoggles projection.
+ *
+ * @param navigationMethod The new navigation method of type BCOVPUIVideo360NavigationMethod
+ */
+- (void)didSetVideo360NavigationMethod:(BCOVPUIVideo360NavigationMethod)navigationMethod
+                       projectionStyle:(BCOVVideo360ProjectionStyle)projectionStyle;
+
 @end
 
 
@@ -180,6 +215,66 @@ typedef NS_ENUM(NSUInteger, BCOVPUILearnMoreButtonBrowserStyle) {
  * Defaults to BCOVPUILearnMoreButtonUseExternalBrowser.
  */
 @property (nonatomic, assign) BCOVPUILearnMoreButtonBrowserStyle learnMoreButtonBrowserStyle;
+
+/**
+ * Options related to Video 360
+ */
+
+/**
+ * The minimum allowable value for the pan setting when finger tracking
+ * Defaults to negative infinity.
+ */
+@property (nonatomic, assign) float panMin;
+
+/**
+ * The maximum allowable value for the pan setting when finger tracking
+ * Defaults to positive infinity.
+ */
+@property (nonatomic, assign) float panMax;
+
+/**
+ * Determines speed with which a pan gesture fling decays.
+ * Defaults to 1.0. Larger values cause the fling to decay more slowly.
+ * Smaller values cause the fling to stop quickly.
+ * A value of 0.0 stops panning immediately after touch-up.
+ */
+@property (nonatomic, assign) float panInertia;
+
+/**
+ * The minimum allowable value for the tilt setting when finger tracking
+ * Defaults to negative infinity.
+ */
+@property (nonatomic, assign) float tiltMin;
+
+/**
+ * The maximum allowable value for the tilt setting when finger tracking
+ * Defaults to positive infinity.
+ */
+@property (nonatomic, assign) float tiltMax;
+
+/**
+ * The minimum allowable value for the zoom setting when finger tracking
+ * Defaults to 1.0.
+ */
+@property (nonatomic, assign) float zoomMin;
+
+/**
+ * The maximum allowable value for the zoom setting when finger tracking
+ * Defaults to 1.0.
+ */
+@property (nonatomic, assign) float zoomMax;
+
+/**
+ * The minimum allowable value for the rotate setting when finger tracking
+ * Defaults to 0.0.
+ */
+@property (nonatomic, assign) float rotateMin;
+
+/**
+ * The maximum allowable value for the pan setting when finger tracking
+ * Defaults to 0.0.
+ */
+@property (nonatomic, assign) float rotateMax;
 
 @end
 
@@ -248,6 +343,13 @@ typedef NS_ENUM(NSUInteger, BCOVPUILearnMoreButtonBrowserStyle) {
  * Advertising controls view. This view is a subview of the controlsStaticView.
  */
 @property (nonatomic, readonly) BCOVPUIAdControlView *adControlsView;
+
+/**
+ * Video 360 Settings
+ * The method for controlling the view orientation
+ * of a 360 video in the player view.
+ */
+@property (nonatomic, readwrite) BCOVPUIVideo360NavigationMethod video360NavigationMethod;
 
 /**
  * Initializes a BCOVPUIPlayerView using default options with the given

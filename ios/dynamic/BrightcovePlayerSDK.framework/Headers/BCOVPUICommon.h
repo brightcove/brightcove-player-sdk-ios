@@ -67,6 +67,9 @@ typedef NS_ENUM(NSInteger, BCOVPUIViewTag) {
     /** Tag for the "Skip" button. */
     BCOVPUIViewTagViewButtonSkip        = 15,
     
+    /** Tag for the Video 360 button. */
+    BCOVPUIViewTagButtonVideo360        = 16,
+    
     /** Tag that signifies the end of our reserved range. */
     BCOVPUIViewTagReservedEnd           = 200
 };
@@ -116,7 +119,10 @@ typedef NS_ENUM(NSUInteger, BCOVPUIButtonIcon) {
 
     /** External Route (airplay) icon */
     BCOVPUIButtonIconExternalRoute,
-
+    
+    /** Video 360 Options icon */
+    BCOVPUIButtonIconVideo360,
+    
     /** Reserved icon. */
     BCOVPUIButtonIconReserved,
 };

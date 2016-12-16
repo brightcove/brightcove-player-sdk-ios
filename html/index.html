@@ -44,11 +44,11 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 5.2.0.646</h1>
+						<h1>Brightcove Player SDK for iOS, version 5.3.0.691</h1>
 
 <h1>Supported Platforms</h1>
 
-<p>iOS 7.0 and above.</p>
+<p>iOS 8.0 and above.</p>
 
 <p>tvOS 9.0 and above.</p>
 
@@ -70,13 +70,13 @@
 
 <h1>Installation</h1>
 
-<p>The Brightcove Player SDK provides two installation packages for iOS, a static library framework and a dynamic framework. The static library target supports deployment on iOS 7 and above, while the dynamic framework only supports iOS 8 and above.</p>
+<p>The Brightcove Player SDK provides two installation packages for iOS, a static library framework and a dynamic framework. Deployment is supported on iOS 8 and above.</p>
 
 <p>The Brightcove Player SDK provides a dynamic framework to support tvOS 9.0 and above.</p>
 
 <h2>CocoaPods</h2>
 
-<p>You can use <a href="https://cocoapods.org">CocoaPods</a> to add the Brightcove Player SDK to your project. You can find the latest <code>Brightcove-Player-SDK</code> podspec <a href="https://github.com/CocoaPods/Specs/tree/master/Specs/Brightcove-Player-SDK">here</a>. The podspec supports both iOS and tvOS. CocoaPods 0.39 or newer is required.</p>
+<p>You can use <a href="https://cocoapods.org">CocoaPods</a> to add the Brightcove Player SDK to your project. You can find the latest <code>Brightcove-Player-SDK</code> podspec <a href="https://github.com/CocoaPods/Specs/tree/master/Specs/2/4/f/Brightcove-Player-SDK">here</a>. The podspec supports both iOS and tvOS. CocoaPods 1.0 or newer is required.</p>
 
 <p>Specifying the default pod <code>Brightcove-Player-SDK</code> will install the static library framework. To install the dynamic framework, declare the pod with the <code>dynamic</code> subspec: <code>Brightcove-Player-SDK/dynamic</code></p>
 
@@ -88,6 +88,11 @@
 <p>Dynamic Framework example:</p>
 
 <pre><code>pod 'Brightcove-Player-SDK/dynamic'    
+</code></pre>
+
+<p>With the release of CocoaPods 1.0.0, the master Podspec repository is no longer updated automatically. To ensure you are using the latest versions of Brightcove software components, update your Podspec repository by running the following on the command line:</p>
+
+<pre><code>pod repo update
 </code></pre>
 
 <h2>Manual</h2>
@@ -104,6 +109,8 @@
 <ul>
 <li><code>AVFoundation</code></li>
 <li><code>CoreMedia</code></li>
+<li><code>CoreMotion</code></li>
+<li><code>GLKit</code></li>
 <li><code>MediaPlayer</code></li>
 <li><code>SafariServices</code></li>
 <li><code>WebKit</code></li>
@@ -111,7 +118,7 @@
 </ul>
 </li>
 <li>(Dynamic Framework only) On the &ldquo;General&rdquo; tab of your application target, add &lsquo;BrightcovePlayerSDK.framework&rsquo; to the &ldquo;Embedded Binary&rdquo; section.</li>
-<li>(Dynamic Framework only) On the &ldquo;Build Phases&rdquo; tab, add a &ldquo;Run Script&rdquo; phase with the command <code>bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh</code>. Check &ldquo;Run script only when installing&rdquo;. This will remove unneeded architectures from the build, which is important for App Store submission. (<a href="https://openradar.appspot.com/19209161">rdar://19209161</a>)</li>
+<li>(Dynamic Framework only) On the &ldquo;Build Phases&rdquo; tab, add a &ldquo;Run Script&rdquo; phase with the command <code>bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh</code>. Check &ldquo;Run script only when installing&rdquo;. This will remove unneeded architectures from the build, which is important for App Store submission.</li>
 <li>(Static Framework only) On the &ldquo;Build Settings&rdquo; tab of your application target, add <code>-ObjC</code> to the &ldquo;Other Linker Flags&rdquo; build setting.</li>
 <li>(Static Framework only) Locate the file bcovpuiiconfont.ttf within the BrightcovePlayerSDK.framework bundle and drag it directly into your project listing so that the font file becomes a part of your app. After dragging the file, be sure to add it to your app&rsquo;s build target when prompted to do so. Once your app is built, the font file should have been copied into the app bundle at the same level as the app&rsquo;s Info.plist file. The font file supplies some of the BrightcovePlayerUI interface elements, but it does not need to be listed in the plist itself.</li>
 </ol>
@@ -123,30 +130,33 @@
 
 <h1>Quick Start</h1>
 
-<p>Playing video with the Brightcove Player SDK for iOS, in less than 20 lines of code:</p>
+<p>Playing video with the Brightcove Player SDK for iOS:</p>
 
-<pre><code>NSString *token;      // (Brightcove Media API token with URL access)
-NSString *playlistID; // (ID of the playlist you wish to use)
+<pre><code>// ** Customize these values with your own account information **
+static NSString * const kViewControllerPlaybackServicePolicyKey = @"...";
+static NSString * const kViewControllerAccountID = @"...";
+static NSString * const kViewControllerVideoID = @"...";
 
 BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
-id&lt;BCOVPlaybackController&gt; controller = [manager createPlaybackControllerWithViewStrategy:nil];
-self.controller = controller; //store this to a strong property
+id&lt;BCOVPlaybackController&gt; controller = [manager createPlaybackController];
+self.controller = controller; // store this to a strong property
 [self.view addSubview:controller.view];  
 
-BCOVCatalogService *catalog = [[BCOVCatalogService alloc] initWithToken:token];
-[catalog findPlaylistWithPlaylistID:playlistID
-                     parameters:nil
-                     completion:^(BCOVPlaylist *playlist,
-                                  NSDictionary *jsonResponse,
-                                  NSError      *error) {
+BCOVPlaybackService *service = [[BCOVPlaybackService alloc] initWithAccountId:kAccountId
+                                                                    policyKey:kPlaybackServicePolicyKey];
+[service findVideoWithVideoID:kViewControllerVideoID
+                   parameters:nil
+                   completion:^(BCOVVideo    *video,
+                                NSDictionary *jsonResponse,
+                                NSError      *error) {
 
-                         [controller setVideos:playlist];
+                         [controller setVideos:@[ video ]];
                          [controller play];
 
                      }];
 </code></pre>
 
-<p>You need to keep the controller from being automatically released at the end of the method. A common way to do this is to store a pointer to the controller in an instance variable.</p>
+<p>You need to keep the controller from being automatically released at the end of the method. A common way to do this is to store a reference to the controller in an instance variable.</p>
 
 <h1>Built-In PlayerUI Controls</h1>
 
@@ -212,7 +222,7 @@ self.playerView.frame = self.videoView.bounds;
 self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 </code></pre>
 
-<p>Finally, add the <a href="Classes/BCOVPUIPlayerView.html">BCOVPUIPlayerView</a> to your video container, <code>videoView</code>.</p>
+<p>Finally, add the BCOVPUIPlayerView to your video container, <code>videoView</code>.</p>
 
 <pre><code>// Add BCOVPUIPlayerView to your video view.
 [self.videoView addSubview:self.playerView];
@@ -222,7 +232,7 @@ self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAuto
 
 <h2><a href="Classes/BCOVPUIPlayerViewOptions.html">BCOVPUIPlayerViewOptions</a></h2>
 
-<p>The <a href="Classes/BCOVPUIPlayerViewOptions.html"><code>BCOVPUIPlayerViewOptions</code></a> class allows you to customize some BCOVPlayerUI behavior at initialization. You can customize the following:</p>
+<p>The <code>BCOVPUIPlayerViewOptions</code> class allows you to customize some BCOVPlayerUI behavior at initialization. You can customize the following:</p>
 
 <ul>
 <li><code>jumpBackInterval</code> The time in seconds the player will jump back when the jump back button is pressed.</li>
@@ -250,23 +260,23 @@ self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAuto
 <p>Three layouts are provided to support different types of video:</p>
 
 <ul>
-<li><p><code>BCOVPUIControlLayout basicVODControlLayout</code> is a basic layout for general on-demand video streams.</p></li>
-<li><p><code>BCOVPUIControlLayout basicLiveControlLayout</code> is a layout targeted towards live video.</p></li>
-<li><p><code>BCOVPUIControlLayout basicLiveDVRControlLayout</code> is targeted towards live video streams with DVR controls.</p></li>
+<li><p><code></code>BCOVPUIControlLayout<code> basicVODControlLayout</code> is a basic layout for general on-demand video streams.</p></li>
+<li><p><code></code>BCOVPUIControlLayout<code> basicLiveControlLayout</code> is a layout targeted towards live video.</p></li>
+<li><p><code></code>BCOVPUIControlLayout<code> basicLiveDVRControlLayout</code> is targeted towards live video streams with DVR controls.</p></li>
 </ul>
 
 
-<p>You typically set a new layout immediatley after your <code>BCOVPUIPlayerView</code> is created, but you can also set a new layout at any time. For example, you can set a new VOD layout like this:</p>
+<p>You typically set a new layout immediatley after your <a href="Classes/BCOVPUIPlayerView.html"><code>BCOVPUIPlayerView</code></a> is created, but you can also set a new layout at any time. For example, you can set a new VOD layout like this:</p>
 
 <pre><code>playerView.controlView.layout = [BCOVPUIControlLayout basicVODControlLayout]
 </code></pre>
 
 <h2>Custom Layouts</h2>
 
-<p>In addition to the default layouts, you can create your own highly customized layouts by instantiating a new <code>BCOVPUIControlLayout</code> with your own design.</p>
+<p>In addition to the default layouts, you can create your own highly customized layouts by instantiating a new <a href="Classes/BCOVPUIControlLayout.html"><code>BCOVPUIControlLayout</code></a> with your own design.</p>
 
 <ol>
-<li><p>First, create the controls that will go in your layout using <code>BCOVPUIBasicControlView layoutViewWithControlFromTag:width:elasticity:</code>. Each control is packaged in a <code>BCOVPUILayoutView</code> that determines the control spacing.</p></li>
+<li><p>First, create the controls that will go in your layout using <a href="Classes/BCOVPUIBasicControlView.html"><code>BCOVPUIBasicControlView</code></a> layoutViewWithControlFromTag:width:elasticity:<code>. Each control is packaged in a</code><a href="Classes/BCOVPUILayoutView.html"><code>BCOVPUILayoutView</code></a> that determines the control spacing.</p></li>
 <li><p>You can set the <code>width</code> of each layout view to the default width (which is based on the type of control), or you can specify your own width.</p></li>
 <li><p>Use the <code>elasticity</code> argument to determine how much the layout view containing the control reizes its width to fill the control bar.</p>
 
@@ -359,7 +369,7 @@ logoImageView1.frame = logoLayoutView1.frame;
         NSArray *compactLayoutLines = @[ compactLayoutLine1, compactLayoutLine2 ];
 </code></pre>
 
-<p>Finally, now that there are two layout configurations (one for full width, and one for compact width), you can create a new <code>BCOVPUIControlLayout</code> object, and set it in the player&rsquo;s control view.</p>
+<p>Finally, now that there are two layout configurations (one for full width, and one for compact width), you can create a new <a href="Classes/BCOVPUIControlLayout.html"><code>BCOVPUIControlLayout</code></a> object, and set it in the player&rsquo;s control view.</p>
 
 <pre><code>        BCOVPUIControlLayout *customLayout = [[BCOVPUIControlLayout alloc] initWithStandardControls:standardLayoutLines compactControls:compactLayoutLines];
         playerView.controlView.layout = customLayout;
@@ -388,6 +398,78 @@ logoImageView1.frame = logoLayoutView1.frame;
 
 <p><a href="https://github.com/BrightcoveOS/ios-player-samples">[https://github.com/BrightcoveOS/ios-player-samples](https://github.com/BrightcoveOS/ios-player-samples)</a></p>
 
+<h1>Video 360</h1>
+
+<p>The Native Player SDK includes support for interactively displaying 360 degree spherical videos. 360 videos should be tagged with a &ldquo;projection&rdquo; field containing the value &ldquo;equirectangular&rdquo;. These videos will be loaded and played in the same way as other videos, but they will be displayed in an OpenGL ES layer instead of an AVPlayerLayer.</p>
+
+<p>Note: &ldquo;equirectangular&rdquo; is the only projection format supported for 360 source videos at this time.</p>
+
+<p>The PlayerUI also has built-in support for Video 360, providing default panning gestures, gyroscopic motion detection for the view, and a new Video 360 button that appears when a Video 360 asset is playing. This button appears only on iPhones, and lets you toggle betwen the normal view and a &ldquo;VR Goggles&rdquo; view, where the screen is split in two, with the same scene rendered for each eye so that the device can be used in a head-mounted configuration. On iPads no Video 360 button is needed because there is only a single mode of operation: motion detection with panning gesture support.</p>
+
+<p>Supporting Video 360 is as simple as playing a video. When the &ldquo;projection&rdquo; field is detected, the Native Player SDK will automatically handle setting up and displaying the video in OpenGL ES, and installing the Video 360 button when appropriate.</p>
+
+<p>If you are playing 360 videos outside of Video Cloud, be sure to add a &ldquo;projection&rdquo; property to the <a href="Classes/BCOVVideo.html"><code>BCOVVideo</code></a> object with the value &ldquo;equirectangular&rdquo;.</p>
+
+<p>To provide the best user experience with the VR Goggles mode, you should use a <a href="Protocols/BCOVPUIPlayerViewDelegate.html"><code>BCOVPUIPlayerViewDelegate</code></a> method to detect when this mode is enabled. This allows you to force the device into landscape orientation (since that is the only orientation that makes sense for a VR Goggles view).</p>
+
+<p>The following code shows how you could handle a forced orientation change when switching back and forth between a normal 360 view, and VR Goggles mode.</p>
+
+<pre><code>    // Set this to YES when displaying a VR goggles video
+    @property (nonatomic) BOOL landscapeOnly;
+
+    // UIViewController override
+   // Lets us control the orientation of the device
+    - (UIInterfaceOrientationMask)supportedInterfaceOrientations
+    {
+        if (self.landscapeOnly)
+        {
+            return UIInterfaceOrientationMaskLandscape;
+        }
+
+        return UIInterfaceOrientationMaskAll;
+    }
+
+    - (void)didSetVideo360NavigationMethod:(BCOVPUIVideo360NavigationMethod)navigationMethod
+                           projectionStyle:(BCOVVideo360ProjectionStyle)projectionStyle
+    {
+        switch (projectionStyle)
+        {
+            case BCOVVideo360ProjectionStyleNormal:
+                NSLog(@"BCOVVideo360ProjectionStyleNormal");
+                self.landscapeOnly = NO;
+                break;
+
+            case BCOVVideo360ProjectionStyleVRGoggles:
+                NSLog(@"BCOVPUIVideo360NavigationDeviceMotionTracking");
+
+                self.landscapeOnly = YES;
+
+                {
+                    UIDeviceOrientation currentDeviceOrientation = [UIDevice currentDevice].orientation;
+                    switch (currentDeviceOrientation)
+                    {
+                        case UIDeviceOrientationLandscapeLeft:
+                        case UIDeviceOrientationLandscapeRight:
+                            // all good
+                            break;
+                        default:
+                        {
+                            // switch orientation
+                            NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
+                            [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+                            break;
+                        }
+                    }
+                }
+                break;
+        }
+
+        [UIViewController attemptRotationToDeviceOrientation];
+    }
+</code></pre>
+
+<p>The PlayerUI will install gestures to handle navigation around the 360 video, but if you are using your own controls you can set the view parameters of the virtual camera yourself. The <a href="Protocols/BCOVPlaybackController.html"><code>BCOVPlaybackController</code></a> protocol&rsquo;s <code>viewProjection</code> property lets you set these parameters. The property is a <a href="Classes/BCOVVideo360ViewProjection.html"><code>BCOVVideo360ViewProjection</code></a> class with basic virtual camera settings like <code>pan</code>, <code>tilt</code>, and <code>zoom</code>. To change settings, make a copy of the current instance, change the settings on the new instance, and then assign it back to the <code>viewProjection</code> property.</p>
+
 <h1>Architectural Overview</h1>
 
 <p><img src="architecture01.png" alt="Architectural Overview 1" /></p>
@@ -398,7 +480,7 @@ logoImageView1.frame = logoLayoutView1.frame;
 
 <p>There are two other elements of the playback controller: a <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackSessionProvider.h">[<code>BCOVPlaybackSessionProvider</code>](Protocols/BCOVPlaybackSessionProvider.html)</a>, and a list of [<a href="Protocols/BCOVPlaybackSessionConsumer.html"><code>BCOVPlaybackSessionConsumer</code></a>][consumer]s. As the name would suggest, the playback session provider is responsible for creating playback sessions and delivering them to the playback controller. The playback controller then delivers the session to each of the playback session consumers in the list. Both the session provider and session consumer APIs are designed for use by plugin developers, and are not detailed in this document.</p>
 
-<p>In addition to the playback functionality provided by the classes described above, there are a handful of value classes. These are used to hold data specific to the Player SDK for iOS. There are also <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVCatalogService.h">[<code>BCOVCatalogService</code>](Classes/BCOVCatalogService.html)</a> and <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVMediaRequestFactory.h">[<code>BCOVMediaRequestFactory</code>](Classes/BCOVMediaRequestFactory.html)</a>, which offer functionality for querying content remotely stored in your Brightcove Video Cloud account. Each of these is described in more detail in its own section below.</p>
+<p>In addition to the playback functionality provided by the classes described above, there are a handful of value classes. These are used to hold data specific to the Player SDK for iOS. Each of these is described in more detail in its own section below.</p>
 
 <h2>Play, Pause, and Seek</h2>
 
@@ -432,9 +514,9 @@ logoImageView1.frame = logoLayoutView1.frame;
 </ol>
 
 
-<h2>Source Selection (HLS, MP4, HTTP/HTTPs)</h2>
+<h2>Source Selection (HLS, MP4, HTTP/HTTPS)</h2>
 
-<p>The Brightcove Player SDK for iOS provides clients the ability to attach multiple url and delivery types (<code>BCOVSource</code>) to a single video (<code>BCOVVideo</code>). For example, if your videos are being retrieved by the catalog or playback service, there may be a mix of HLS or MP4 renditions for a single video, along with HTTP and HTTPs versions.  Which one of these sources that get selected is determined by a source selection block. The default source selection policy will select the first HLS <code>BCOVSource</code> on each <code>BCOVVideo</code>, regardless of scheme.</p>
+<p>The Brightcove Player SDK for iOS provides clients the ability to attach multiple url and delivery types (<code>BCOVSource</code>) to a single video (<code>BCOVVideo</code>). For example, if your videos are being retrieved by the Playback Service, there may be a mix of HLS or MP4 renditions for a single video, along with HTTP and HTTPS versions.  Which one of these sources that get selected is determined by a source selection block. The default source selection policy will select the first HLS <code>BCOVSource</code> on each <code>BCOVVideo</code>, regardless of scheme.</p>
 
 <p>Source selection can be overridden by creating a <code>BCOVBasicSessionProviderOptions</code> and using it to create a <code>BCOVBasicSessionProvider</code>. For example:</p>
 
@@ -450,8 +532,8 @@ idBCOVPlaybackController playbackController = [sdkManager createPlaybackControll
 <p>If this default selection policy does not work for you, there are a few alternatives to selecting a source:</p>
 
 <ul>
-<li><p>If retrieving videos from Video Cloud via the catalog service or playback service, before calling <a href="Protocols/BCOVPlaybackController.html#//api/name/setVideos:"><code>[BCOVPlaybackController setVideos:]</code></a>, use the update method on the <a href="Classes/BCOVVideo.html"><code>BCOVVideo</code></a> to only contain the source you want (see the &ldquo;Values&rdquo; section for more info).</p></li>
-<li><p>If you prefer HTTPs HLS, <code>[BCOVBasicSourceSelectionPolicy sourceSelectionHLSWithScheme:kBCOVSourceURLSchemeHTTPS]</code> allows you to prefer a specific scheme. This will not convert non HTTP urls to HTTPs urls. If you choose to select HTTPs, ensure that your CDN is configured for HTTPs. If the CDN is configured for HTTPs, use <code>BCOVPlaybackService</code> instead of <code>BCOVCatalogService</code> to retrieve video/playlist metadata.</p></li>
+<li><p>If retrieving videos from Video Cloud via the Playback Service, before calling <a href="Protocols/BCOVPlaybackController.html#//api/name/setVideos:"><code>[BCOVPlaybackController setVideos:]</code></a>, use the update method on the <a href="Classes/BCOVVideo.html"><code>BCOVVideo</code></a> to only contain the source you want (see the &ldquo;Values&rdquo; section for more info).</p></li>
+<li><p>If you prefer HTTPS HLS, <code>[BCOVBasicSourceSelectionPolicy sourceSelectionHLSWithScheme:kBCOVSourceURLSchemeHTTPS]</code> allows you to prefer a specific scheme. This will not convert non HTTP URLs to HTTPS URLs. If you choose to select HTTPS, ensure that your CDN is configured for HTTPS.</p></li>
 <li><p>Similar to updating the video object, you may also implement your own source selection block.</p>
 
 <pre><code>  options.sourceSelectionPolicy = ^ BCOVSource *(BCOVVideo *video) {
@@ -531,6 +613,8 @@ idBCOVPlaybackController playbackController = [sdkManager createPlaybackControll
 								
 								<li><a href="Classes/BCOVVideo.html">BCOVVideo</a></li>
 								
+								<li><a href="Classes/BCOVVideo360ViewProjection.html">BCOVVideo360ViewProjection</a></li>
+								
 							</ul>
 						</div>
 						
@@ -598,6 +682,8 @@ idBCOVPlaybackController playbackController = [sdkManager createPlaybackControll
 								
 									<li><a href="Constants/BCOVPUIScreenMode.html">BCOVPUIScreenMode</a></li>
 								
+									<li><a href="Constants/BCOVPUIVideo360NavigationMethod.html">BCOVPUIVideo360NavigationMethod</a></li>
+								
 									<li><a href="Constants/BCOVPUIVideoType.html">BCOVPUIVideoType</a></li>
 								
 									<li><a href="Constants/BCOVPUIViewTag.html">BCOVPUIViewTag</a></li>
@@ -607,6 +693,10 @@ idBCOVPlaybackController playbackController = [sdkManager createPlaybackControll
 									<li><a href="Constants/BCOVProgressPolicyCuePointsToProcess.html">BCOVProgressPolicyCuePointsToProcess</a></li>
 								
 									<li><a href="Constants/BCOVProgressPolicyResumePosition.html">BCOVProgressPolicyResumePosition</a></li>
+								
+									<li><a href="Constants/BCOVVideo360ProjectionStyle.html">BCOVVideo360ProjectionStyle</a></li>
+								
+									<li><a href="Constants/BCOVVideo360SourceFormat.html">BCOVVideo360SourceFormat</a></li>
 								
 							</ul>
 							
@@ -626,7 +716,7 @@ idBCOVPlaybackController playbackController = [sdkManager createPlaybackControll
 					<footer>
 						<div class="footer-copyright">
 							
-							<p class="copyright">Copyright &copy; 2016 Brightcove. All rights reserved. Updated: 2016-11-14</p>
+							<p class="copyright">Copyright &copy; 2016 Brightcove. All rights reserved. Updated: 2016-12-16</p>
 							
 							
 							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

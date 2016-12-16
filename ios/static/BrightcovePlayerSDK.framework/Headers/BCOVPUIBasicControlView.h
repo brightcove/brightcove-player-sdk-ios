@@ -160,6 +160,10 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
 /** The screen mode (fullscreen) button */
 @property (nonatomic, weak, readonly) BCOVPUIButton *screenModeButton;
 
+/** The Video 360 options button */
+/** Only appears on iPhone devices */
+@property (nonatomic, weak, readonly) BCOVPUIButton *video360Button;
+
 /** The external route (airplay) button */
 @property (nonatomic, weak, readonly) MPVolumeView *externalRouteView;
 
