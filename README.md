@@ -198,7 +198,7 @@ Three layouts are provided to support different types of video:
 
 You typically set a new layout immediatley after your `BCOVPUIPlayerView` is created, but you can also set a new layout at any time. For example, you can set a new VOD layout like this:
 
-	playerView.controlView.layout = [BCOVPUIControlLayout basicVODControlLayout]
+	playerView.controlsView.layout = [BCOVPUIControlLayout basicVODControlLayout]
 
 Custom Layouts
 ----------------------
@@ -295,7 +295,7 @@ Note that the exact same objects are used for most of the controls in each layou
 Finally, now that there are two layout configurations (one for full width, and one for compact width), you can create a new `BCOVPUIControlLayout` object, and set it in the player's control view.
 
             BCOVPUIControlLayout *customLayout = [[BCOVPUIControlLayout alloc] initWithStandardControls:standardLayoutLines compactControls:compactLayoutLines];
-			playerView.controlView.layout = customLayout;
+			playerView.controlsView.layout = customLayout;
 
 If you have controls that you need to show or hide frequently, you can set the `removed` property on that control's layout view. When you have changed your controls, call `setNeedsLayout` on the playerView's controlView:
 
