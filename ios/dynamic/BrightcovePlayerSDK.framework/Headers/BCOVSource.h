@@ -2,7 +2,7 @@
 // BCOVSource.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2016 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2017 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 

@@ -1,3 +1,10 @@
+# 5.3.1
+### Additions and Improvements
+* Fixes an issue where panning a 360 video did not work properly at the bottom of the video view.
+
+* Fixes an issue where an unused reference to UIImagePickerController unnecessarily requires the app developer to declare reasons for its usage in the app submission process (the NSPhotoLibraryUsageDescription privacy desciption). The reference to UIImagePickerController has been removed.
+
+
 # 5.3.0
 ### Breaking Changes
 * The `BCOVCatalogService` (Media API) class has been deprecated. The `BCOVCatalogService` class methods generate compiler deprecation warnings, but are still fully functional. Please update your projects to use the `BCOVPlaybackService` (Playback API) for retrieving video playlists. Code examples are available in the Quick Start section of the README.md and in the [iOS Player Samples](https://github.com/brightcoveos/ios-player-samples) on Github.
@@ -9,7 +16,7 @@
 
 This release includes support for 360 degree videos. Videos that are tagged in Video Cloud with a "projection" field with the value "equirectangular" are identified as Video 360. These videos will be loaded and played in the same way as other videos, but they will be displayed in an OpenGL ES layer instead of an AVPlayerLayer.
 
-The PlayerUI also has built-in support for Video 360, providing default panning gestures, gyroscopic motion detection for the view, and a new Video 360 button that appears when a Video 360 asset is playing. This button appears only on iPhones, and lets you toggle betwen the normal view and a "VR Goggles" view, where the screen is split in two, with the same scene rendered for each eye so that the device can be used with head-mounted VR Goggles, such as Google Cardboard.
+The PlayerUI also has built-in support for Video 360, providing default panning gestures, gyroscopic motion detection for the view, and a new Video 360 button that appears when a Video 360 asset is playing. This button appears only on iPhones, and lets you toggle between the normal view and a "VR Goggles" view, where the screen is split in two, with the same scene rendered for each eye so that the device can be used with head-mounted VR Goggles, such as Google Cardboard.
 
 Additions for each file are as follows.
 
@@ -24,7 +31,7 @@ The `BCOVVideo360ProjectionStyle` enumeration type has been added to indicate ho
 * `BCOVVideo360ProjectionStyleNormal`: typical projection of a single viewport viewing a rectangular portion of the 360 video mapped onto a sphere.
 * `BCOVVideo360ProjectionStyleVRGoggles`: double projection of a viewport viewing a rectangular portion of the 360 video mapped onto a sphere.
 
-The constant `kBCOVVideo360BaseAngleOfView` has been added to give the approximate vertical angle of a 360 view when the view orientation's zoom is 1.0. It's value is 75 degrees.
+The constant `kBCOVVideo360BaseAngleOfView` has been added to give the approximate vertical angle of a 360 view when the view orientation's zoom is 1.0. Its value is 75 degrees.
 
 The `BCOVVideo360ViewProjection` specifies the position of the virtual camera in Video 360. This class provides the renderer details about how to present the Video 360 view. The following properties are available:
 
