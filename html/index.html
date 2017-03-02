@@ -44,7 +44,7 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 5.3.1.732</h1>
+						<h1>Brightcove Player SDK for iOS, version 5.3.2.748</h1>
 
 <h1>Supported Platforms</h1>
 
@@ -885,6 +885,43 @@ self.playbackController.options = options;
 
 <p>Note: Apple specifically put &ldquo;preferred&rdquo; in <code>preferredForwardBufferDuration</code> because you can set any value you want, but generally speaking the <code>AVPlayer</code> player will use it only as a guideline. Also keep in mind that setting it to zero returns full control of the buffer size to the <code>AVPlayer</code>.</p>
 
+<h1>Using an AVPlayerViewController with a <a href="Protocols/BCOVPlaybackController.html">BCOVPlaybackController</a></h1>
+
+<h2>Overview</h2>
+
+<p>You can use the AVPlayerViewController instead of the AVPlayerLayer used by the <a href="Protocols/BCOVPlaybackSession.html">BCOVPlaybackSession</a> class. Using the AVPlayerViewController allows the player to use the native iOS and tvOS player controls, but there are limitations to this approach (see below).</p>
+
+<p>To use the AVPlayerViewController, you can set a <a href="Protocols/BCOVPlaybackController.html">BCOVPlaybackController</a> dictionary property called <code>kBCOVAVPlayerViewControllerCompatibilityKey</code>:</p>
+
+<pre><code>BCOVPlayerSDKManager *sdkManager = [BCOVPlayerSDKManager sharedManager];
+
+idBCOVPlaybackController playbackController;
+
+NSMutableDictionary *mutableOptions = self.playbackController.options.mutableCopy;
+// To use the AVPlayerViewController
+mutableOptions[kBCOVAVPlayerViewControllerCompatibilityKey] = @YES;
+
+// To use the BCOVPlaybackSession's AVPlayerLayer
+// mutableOptions[kBCOVAVPlayerViewControllerCompatibilityKey] = @NO;
+
+self.playbackController.options = mutableOptions;
+</code></pre>
+
+<p>The default value of kBCOVAVPlayerViewControllerCompatibilityKey is @NO, which means that a <a href="Protocols/BCOVPlaybackController.html">BCOVPlaybackController</a> created without this dictionary property explicitly set will use the BCOVPlaybackSession&rsquo;s AVPlayerLayer by default.</p>
+
+<h2>Limitations to Using the AVPlayerViewController</h2>
+
+<p>Advertising:
+Using the AVPlayerViewController&rsquo;s AVPlayerLayer will not work with the iOS SDK advertising plugins:
+IMA Plugin
+FreeWheel Plugin
+OnceUX Plugin</p>
+
+<p>due to the use by those plugins of a separate instance of the AVPlayer.</p>
+
+<p>Analytics:
+When using the AVPlayerViewController, the video_engagement events sent to the Brightcove Analytics server will report 0 for player_width and player_height.</p>
+
 <h1>Frequently Asked Questions</h1>
 
 <p><strong>My content won&rsquo;t load. Is there an easy way to test whether the URL points to a valid video?</strong></p>
@@ -893,11 +930,11 @@ self.playbackController.options = options;
 
 <p><strong>I can hear the audio track playing, but the video freezes for a few seconds sporadically. What&rsquo;s happening?</strong></p>
 
-<p>This is a common symptom of having called a main thread-only UIKit or AVFoundation method from a non-main thread. The delegate methods on <a href="Protocols/BCOVPlaybackControllerDelegate.html"><code>BCOVPlaybackControllerDelegate</code></a> are always called on the main thread.</p>
+<p>This is a common symptom of having called a main thread-only UIKit or AVFoundation method from a non-main thread. The delegate methods on <code>BCOVPlaybackControllerDelegate</code> are always called on the main thread.</p>
 
 <p><strong>Why do I see a message in the log indicating that no source has been found?</strong></p>
 
-<p>This message indicates that the default source selection policy can&rsquo;t figure which source to pick. The default policy selects the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryHLS</code> (&ldquo;HLS&rdquo;). If no HLS source is found, its fallback behavior will select the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryMP4</code> (&ldquo;MP4&rdquo;). If no source with a <code>deliveryMethod</code> of &ldquo;HLS&rdquo; or &ldquo;MP4&rdquo; exists on the video, the policy will select the video&rsquo;s first source (regardless of <code>deliveryMethod</code>). If you aren&rsquo;t happy with its selection, you can use <a href="Classes/BCOVPlayerSDKManager.html#//api/name/createBasicSessionProviderWithOptions:"><code>[BCOVPlayerSDKManager createBasicSessionProviderWithOptions:]</code></a> and pass in an instance of <a href="Classes/BCOVBasicSessionProviderOptions.html"><code>BCOVBasicSessionProviderOptions</code></a> with a custom <code>sourceSelectionPolicy</code> property set. When creating videos and sources manually, ensure that the sources are created with the appropriate <code>deliveryMethod</code>.</p>
+<p>This message indicates that the default source selection policy can&rsquo;t figure which source to pick. The default policy selects the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryHLS</code> (&ldquo;HLS&rdquo;). If no HLS source is found, its fallback behavior will select the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryMP4</code> (&ldquo;MP4&rdquo;). If no source with a <code>deliveryMethod</code> of &ldquo;HLS&rdquo; or &ldquo;MP4&rdquo; exists on the video, the policy will select the video&rsquo;s first source (regardless of <code>deliveryMethod</code>). If you aren&rsquo;t happy with its selection, you can use <code>[BCOVPlayerSDKManager createBasicSessionProviderWithOptions:]</code> and pass in an instance of <code>BCOVBasicSessionProviderOptions</code> with a custom <code>sourceSelectionPolicy</code> property set. When creating videos and sources manually, ensure that the sources are created with the appropriate <code>deliveryMethod</code>.</p>
 
 <p><strong><a href="https://developer.apple.com/Library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioGuidelinesByAppType/AudioGuidelinesByAppType.html">Apple recommends</a> that apps which play video should still play audio even when the device is muted. Why doesn&rsquo;t the Brightcove Player SDK for iOS respect these guidelines?</strong></p>
 
@@ -1076,7 +1113,7 @@ self.playbackController.options = options;
 					<footer>
 						<div class="footer-copyright">
 							
-							<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-02-08</p>
+							<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-03-02</p>
 							
 							
 							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 5.3.1.732
+# Brightcove Player SDK for iOS, version 5.3.2.748
 
 Supported Platforms
 ===================
@@ -748,7 +748,7 @@ If you want to keep the default behavior of the Brightcove Native Player SDK, bu
 
     // Create mutable dictionary to hold new values
     NSMutableDictionary *options = self.playbackController.options.mutableCopy;
-    
+
     // Set new values in dictionary
     options[kBCOVBufferOptimizerMethodKey] = @(BCOVBufferOptimizerMethodDefault);
     options[kBCOVBufferOptimizerMinimumDurationKey] = @(min);
@@ -812,6 +812,43 @@ If you want to change the buffer size dynamically over time, you can set `sessio
 	}
 
 Note: Apple specifically put "preferred" in `preferredForwardBufferDuration` because you can set any value you want, but generally speaking the `AVPlayer` player will use it only as a guideline. Also keep in mind that setting it to zero returns full control of the buffer size to the `AVPlayer`.
+
+Using an AVPlayerViewController with a BCOVPlaybackController
+=============================================================
+
+Overview
+--------
+You can use the AVPlayerViewController instead of the AVPlayerLayer used by the BCOVPlaybackSession class. Using the AVPlayerViewController allows the player to use the native iOS and tvOS player controls, but there are limitations to this approach (see below).
+
+To use the AVPlayerViewController, you can set a BCOVPlaybackController dictionary property called `kBCOVAVPlayerViewControllerCompatibilityKey`:
+
+    BCOVPlayerSDKManager *sdkManager = [BCOVPlayerSDKManager sharedManager];
+
+    id<BCOVPlaybackController> playbackController;
+
+    NSMutableDictionary *mutableOptions = self.playbackController.options.mutableCopy;
+    // To use the AVPlayerViewController
+    mutableOptions[kBCOVAVPlayerViewControllerCompatibilityKey] = @YES;
+
+    // To use the BCOVPlaybackSession's AVPlayerLayer
+    // mutableOptions[kBCOVAVPlayerViewControllerCompatibilityKey] = @NO;
+
+    self.playbackController.options = mutableOptions;
+
+The default value of kBCOVAVPlayerViewControllerCompatibilityKey is @NO, which means that a BCOVPlaybackController created without this dictionary property explicitly set will use the BCOVPlaybackSession's AVPlayerLayer by default.
+
+Limitations to Using the AVPlayerViewController
+-----------------------------------------------
+Advertising:
+Using the AVPlayerViewController's AVPlayerLayer will not work with the iOS SDK advertising plugins:
+IMA Plugin
+FreeWheel Plugin
+OnceUX Plugin
+
+due to the use by those plugins of a separate instance of the AVPlayer.
+
+Analytics:
+When using the AVPlayerViewController, the video_engagement events sent to the Brightcove Analytics server will report 0 for player_width and player_height.
 
 Frequently Asked Questions
 ==========================
