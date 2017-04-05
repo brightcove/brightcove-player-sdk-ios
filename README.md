@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 5.3.2.748
+# Brightcove Player SDK for iOS, version 5.3.3.762
 
 Supported Platforms
 ===================
@@ -454,7 +454,7 @@ An example:
 
 Source Selection (HLS, MP4, HTTP/HTTPS)
 ---------------------------------------
-The Brightcove Player SDK for iOS provides clients the ability to attach multiple url and delivery types (`BCOVSource`) to a single video (`BCOVVideo`). For example, if your videos are being retrieved by the Playback Service, there may be a mix of HLS or MP4 renditions for a single video, along with HTTP and HTTPS versions.  Which one of these sources that get selected is determined by a source selection policy block. The default source selection policy will select the first HLS `BCOVSource` on each `BCOVVideo`, regardless of scheme. 
+The Brightcove Player SDK for iOS provides clients the ability to attach multiple url and delivery types (`BCOVSource`) to a single video (`BCOVVideo`). For example, if your videos are being retrieved by the Playback Service, there may be a mix of HLS or MP4 renditions for a single video, along with HTTP and HTTPS versions.  Which one of these sources that get selected is determined by a source selection policy block. The default source selection policy will select the first HLS `BCOVSource` on each `BCOVVideo`, with HTTPS sources preferred over HTTP. 
 
 Source selection can be overridden by creating a `BCOVBasicSessionProviderOptions` and using it to create a `BCOVBasicSessionProvider`. For example:
 
@@ -471,7 +471,7 @@ If this default selection policy does not work for you, there are a few alternat
 
 * If retrieving videos from Video Cloud via the Playback Service, before calling `-[BCOVPlaybackController setVideos:]`, use the update method on the `BCOVVideo` to only contain the source you want (see the "Values" section for more info).
 
-* If you prefer HTTPS HLS, `[BCOVBasicSourceSelectionPolicy sourceSelectionHLSWithScheme:kBCOVSourceURLSchemeHTTPS]` allows you to prefer a specific scheme. This will not convert non HTTP URLs to HTTPS URLs. If you choose to select HTTPS, ensure that your CDN is configured for HTTPS.
+* You can use the helper method `[BCOVBasicSourceSelectionPolicy sourceSelectionHLSWithScheme:scheme]` to create a policy that prefers a specific scheme. This is the method used to create the default source selection policy that prefers HTTPS.
 
 * Similar to updating the video object, you may also implement your own source selection block.
         

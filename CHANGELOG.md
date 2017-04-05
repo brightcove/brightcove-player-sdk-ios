@@ -1,3 +1,7 @@
+# 5.3.3
+* The default source selection policy has been changed to prefer HTTPS sources over HTTP.
+* Fixes an issue where switching AirPlay between an AppleTV and an iOS device could cause the iOS device to stall.
+
 # 5.3.2
 ### Additions and Improvements
 * Adds a dictionary key to BCOVPlaybackController for an AVPlayerViewController compatibility mode. Setting this dictionary key to @YES allows apps (particularly on tvOS) to use the AVPlayerViewController's playerLayerView. Setting this key to @NO uses the BCOVSessionProvider's internal AVPlayerLayer. Please note that the use of Advertising plugins with this key set to @YES is not supported.
@@ -5,12 +9,9 @@
 # 5.3.1
 ### Additions and Improvements
 * Fixes an issue where panning a 360 video did not work properly at the bottom of the video view when controls were hidden.
-* Fixes an issue where an unsued reference to UIImagePickerController unnecessarily requires the app developer to declare reasons for its usage in the app submission process (the NSPhotoLibraryUsageDescription privacy desciption). The reference to UIImagePickerController has been removed.
+* Fixes an issue where an unused reference to UIImagePickerController unnecessarily requires the app developer to declare reasons for its usage in the app submission process (the NSPhotoLibraryUsageDescription privacy desciption). The reference to UIImagePickerController has been removed.
 * The constant `NSString` `kBCOVDefaultFairPlayApplicationCertificateIdentifier` was created to pass as an identifier for default application certificates passed to `-addFairPlayApplicationCertificate:identifier:`.
 * The `BCOVPlaybackController` method `-addFairPlayApplicationCertificate:identifier:` was created to let you add FairPlay application certificates to a playback controller after it has been created. This is used in conjunction with the Brightcove FairPlay plugin. See the Brightcove FairPlay plugin's README.md for full details.
-
-* Fixes an issue where an unused reference to UIImagePickerController unnecessarily requires the app developer to declare reasons for its usage in the app submission process (the NSPhotoLibraryUsageDescription privacy desciption). The reference to UIImagePickerController has been removed.
-
 
 # 5.3.0
 ### Breaking Changes
