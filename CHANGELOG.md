@@ -1,3 +1,22 @@
+#6.0.0
+### Additions and Improvements
+* Supports downloading FairPlay-encrypted HLS videos, and playing them back from storage while online or offline.
+* New classes and types to support offline playback: `BCOVOfflineVideoManager`, `BCOVOfflineVideoStatus`, `BCOVOfflineVideoToken`, `BCOVOfflineVideoDownloadState`.
+* Please see our app developer's guide for full details: [iOS App Developer's Guide to Video Downloading and Offline Playback with FairPlay](OfflinePlayback.md)
+* The `BCOVVideo` class has three new properties:
+	* `BOOL canBeDownloaded`: Returns YES if this video object can be downloaded for offline playback
+	* `BOOL offline`: Returns YES if this instance refers to an offline video.
+	* `BOOL playableOffline`: Returns YES if this instance refers to an offline video playable from the device's local storage. Returns NO if the video has not completed downloading, or if the video has been purged and needs to be re-downloaded.
+* The publisher ID can be nil when calling `-[BCOVFPSBrightcoveAuthProxy initWithPublisherId:applicationId:]`. Neither value is needed for Dynamic Delivery accounts.
+
+
+### Breaking Changes
+* The `BrightcoveFairPlay` module is now integrated into the core `BrightcovePlayerSDK` module and framework. No functional code changes are required, but you should make these changes for your build:
+	* Remove BrightcoveFairPlay.framework from your project.
+	* If using CocoaPods, remove all references to `BrightcoveFairPlay` from your Podfiles, and then update.
+	* In your source code, change any #includes from `<BrightcoveFairPlay/header_name.h>` to `<BrightcovePlayerSDK/header_name.h>`.
+	* Remove any imports that refer to the `BrightcoveFairPlay` module.
+
 # 5.3.3
 * The default source selection policy has been changed to prefer HTTPS sources over HTTP.
 * Fixes an issue where switching AirPlay between an AppleTV and an iOS device could cause the iOS device to stall.

@@ -32,6 +32,11 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 #import <BrightcovePlayerSDK/BCOVPlaybackSession.h>
 #import <BrightcovePlayerSDK/BCOVPlaybackSessionProvider.h>
 
+// FairPlay
+#import <BrightcovePlayerSDK/BCOVFPSAuthorizationProxy.h>
+#import <BrightcovePlayerSDK/BCOVFPSBrightcoveAuthProxy.h>
+#import <BrightcovePlayerSDK/BCOVFPSComponent.h>
+
 // Values
 #import <BrightcovePlayerSDK/BCOVCuePoint.h>
 #import <BrightcovePlayerSDK/BCOVCuePointCollection.h>
@@ -50,4 +55,7 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 #import <BrightcovePlayerSDK/BCOVPUILayoutView.h>
 #import <BrightcovePlayerSDK/BCOVPUIPlayerView.h>
 #import <BrightcovePlayerSDK/BCOVPUISlider.h>
+
+// Offline Video Management
+#import <BrightcovePlayerSDK/BCOVOfflineVideoManager.h>
 #endif

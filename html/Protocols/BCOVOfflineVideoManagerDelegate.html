@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>BCOVOfflineVideoManagerDelegate Protocol Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Agave </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Brightcove</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/didDownloadStaticImagesWithOfflineVideoToken:">- didDownloadStaticImagesWithOfflineVideoToken:</option>
+		
+		<option value="//api/name/offlineVideoToken:didFinishDownloadWithError:">- offlineVideoToken:didFinishDownloadWithError:</option>
+		
+		<option value="//api/name/offlineVideoToken:downloadTask:didProgressTo:">- offlineVideoToken:downloadTask:didProgressTo:</option>
+		
+		<option value="//api/name/shouldDeleteVideoPackage:">- shouldDeleteVideoPackage:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BCOVOfflineVideoManagerDelegate Protocol Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Conforms to</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>BCOVOfflineVideoManager.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Conform to this protocol to receive information about each video download.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/offlineVideoToken:downloadTask:didProgressTo:" title="offlineVideoToken:downloadTask:didProgressTo:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/offlineVideoToken:downloadTask:didProgressTo:">&ndash;&nbsp;offlineVideoToken:downloadTask:didProgressTo:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Receive progress notification about a download in progress.
+You can use the AVAssetDownloadTask to retrieve more information about the download,
+like the specific segments that are loaded.
+If you want to pause/resume/cancel the task, you should use the methods available
+in the <a href="../Classes/BCOVOfflineVideoManager.html">BCOVOfflineVideoManager</a> to perform those actions.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)offlineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em> downloadTask:(AVAssetDownloadTask *)<em>downloadtask</em> didProgressTo:(NSTimeInterval)<em>progressPercent</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Receive progress notification about a download in progress.
+You can use the AVAssetDownloadTask to retrieve more information about the download,
+like the specific segments that are loaded.
+If you want to pause/resume/cancel the task, you should use the methods available
+in the <a href="../Classes/BCOVOfflineVideoManager.html">BCOVOfflineVideoManager</a> to perform those actions.</p>
+
+<p>@param offlineVideoToken
+Offline video token used to identify the downloaded video.
+@param downloadtask
+The AVAssetDownloadTask for this video
+@param progressPercent
+How far along the download has progressed, expressed as a percentage.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/offlineVideoToken:didFinishDownloadWithError:" title="offlineVideoToken:didFinishDownloadWithError:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/offlineVideoToken:didFinishDownloadWithError:">&ndash;&nbsp;offlineVideoToken:didFinishDownloadWithError:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This method is called when a download is complete.
+If any errors occurred during the download, error will be non-nil.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)offlineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em> didFinishDownloadWithError:(NSError *)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>NSError encountered during the download process.
+nil if no error.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This method is called when a download is complete.
+If any errors occurred during the download, error will be non-nil.</p>
+
+<p>@param offlineVideoToken
+Offline video token used to identify the downloaded video.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/didDownloadStaticImagesWithOfflineVideoToken:" title="didDownloadStaticImagesWithOfflineVideoToken:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/didDownloadStaticImagesWithOfflineVideoToken:">&ndash;&nbsp;didDownloadStaticImagesWithOfflineVideoToken:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This method is called when the static images (thumbnail and poster) associated
+with a video are downloaded to storage.
+File URLs for the downloaded images are stored as properties on a <a href="../Classes/BCOVVideo.html">BCOVVideo</a>
+created from the offline video token using -[videoObjectFromOfflineVideoToken:]
+The properties are retrieved using the kBCOVOfflineVideoThumbnailFilePath and
+kBCOVOfflineVideoPosterFilePath keys.
+This method will be called even if no images could be retrieved, so be sure to
+check the UIImage you create from the poster and thumbnail paths. The file
+paths will be present, but there may be no images stored at those locations.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)didDownloadStaticImagesWithOfflineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This method is called when the static images (thumbnail and poster) associated
+with a video are downloaded to storage.
+File URLs for the downloaded images are stored as properties on a <a href="../Classes/BCOVVideo.html">BCOVVideo</a>
+created from the offline video token using -[videoObjectFromOfflineVideoToken:]
+The properties are retrieved using the kBCOVOfflineVideoThumbnailFilePath and
+kBCOVOfflineVideoPosterFilePath keys.
+This method will be called even if no images could be retrieved, so be sure to
+check the UIImage you create from the poster and thumbnail paths. The file
+paths will be present, but there may be no images stored at those locations.</p>
+
+<p>@param offlineVideoToken
+Offline video token used to identify the downloaded video.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/shouldDeleteVideoPackage:" title="shouldDeleteVideoPackage:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/shouldDeleteVideoPackage:">&ndash;&nbsp;shouldDeleteVideoPackage:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This method is called when cleaning up stranded downloads.
+Downloads can be stranded if you force-quit an app during a download,
+or reboot while the app is suspended.
+You do not need to implement this method unless you are starting your own
+video downloads outside the Brightcove SDK and don&rsquo;t want your videos deleted.
+This method is called when a video package is flagged for deletion, meaning
+this is no record of it in the Brightcove SDK.
+If this is a file you recognize, you should return NO.
+Otherwise, returning YES will cause the video package to be deleted.
+If you do not implement this method, stranded downloads will
+be deleted by default.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)shouldDeleteVideoPackage:(NSString *)<em>videoPackagePath</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This method is called when cleaning up stranded downloads.
+Downloads can be stranded if you force-quit an app during a download,
+or reboot while the app is suspended.
+You do not need to implement this method unless you are starting your own
+video downloads outside the Brightcove SDK and don&rsquo;t want your videos deleted.
+This method is called when a video package is flagged for deletion, meaning
+this is no record of it in the Brightcove SDK.
+If this is a file you recognize, you should return NO.
+Otherwise, returning YES will cause the video package to be deleted.
+If you do not implement this method, stranded downloads will
+be deleted by default.</p>
+
+<p>@param videoPackagePath
+Path to video package directory that is flagged as stranded.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-05-07</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
