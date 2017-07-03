@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>BCOVPlayerSDK Reference</title>
+	<title>Brightcove Native Player for iOS Reference</title>
 
 	<link rel="stylesheet" href="css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -14,7 +14,7 @@
 		<div class="container" class="hide-in-xcode">
 			
 			<h1 id="library-title">
-				<a href="index.html">BCOVPlayerSDK </a>
+				<a href="index.html">Brightcove Native Player for iOS </a>
 			</h1>
 
 			<p id="developer-home">
@@ -38,15 +38,48 @@
 		<div id="overview-contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">BCOVPlayerSDK Reference</h1>
+					<h1 class="title">Brightcove Native Player for iOS Reference</h1>
 
 					
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 5.3.3.762</h1>
+						<h1>Brightcove Player SDK for iOS, version 6.0.1.72</h1>
 
-<h1>Supported Platforms</h1>
+<h1>Table of Contents</h1>
+
+<ol>
+<li><a href="#SupportedPlatforms">Supported Platforms</a></li>
+<li><a href="#New">What&rsquo;s New</a></li>
+<li><a href="#Notes">Notes</a></li>
+<li><a href="#Installation">Installation</a></li>
+<li><a href="#CocoaPods">CocoaPods</a></li>
+<li><a href="#ManualInstallation">Manual Installaion</a></li>
+<li><a href="#Imports">Imports</a></li>
+<li><a href="#QuickStart">Quick Start</a></li>
+<li><a href="#PlayerUI">Built-In PlayerUI Controls</a></li>
+<li><a href="#FairPlay">FairPlay</a></li>
+<li><a href="#SidecarSubtitles">Sidecar Subtitles</a></li>
+<li><a href="#Video360">Video 360</a></li>
+<li><a href="#ArchitecturalOverview">Architectural Overview</a></li>
+<li><a href="#PlayPauseSeek">Play, Pause, and Seek</a></li>
+<li><a href="#PreloadingVideos">Preloading Videos</a></li>
+<li><a href="#SourceSelection">Source Selection (HLS, MP4, HTTP/HTTPS)</a></li>
+<li><a href="#PlaybackInformation">Obtaining Content And Ad Playback Information</a></li>
+<li><a href="#HandlingNetworkInterruptionsAndSlowdowns">Handling Network Interruptions and Slowdowns</a></li>
+<li><a href="#Subclassing">Subclassing</a></li>
+<li><a href="#Values">Values</a></li>
+<li><a href="#PlaybackService">Retrieving Brightcove Assets Using the Playback Service</a></li>
+<li><a href="#ViewStrategy">View Strategy</a></li>
+<li><a href="#BackgroundPIP">Playing Video In The Background and Picture In Picture</a></li>
+<li><a href="#CombiningPlugins">Combining Plugins</a></li>
+<li><a href="#BufferOptimization">Buffer Optimization</a></li>
+<li><a href="#AVPlayerViewController">Using an AVPlayerViewController with a BCOVPlaybackController</a></li>
+<li><a href="#FAQ">Frequently Asked Questions</a></li>
+</ol>
+
+
+<h1>Supported Platforms <a name="SupportedPlatforms"></a></h1>
 
 <p>iOS 8.0 and above.</p>
 
@@ -54,7 +87,29 @@
 
 <p>ARC is required.</p>
 
-<h1>Please note:</h1>
+<h1>What&rsquo;s New <a name="New"></a></h1>
+
+<h2>FairPlay</h2>
+
+<p>The <code>BrightcoveFairPlay</code> plugin framework and module is now integrated into the core <code>BrightcovePlayerSDK</code> framework. If you are currently using the Brightcove FairPlay plugin, no functional code changes are required, but you will need to make some changes for your build. See the <a href="#FairPlay">FairPlay</a> section below for details.</p>
+
+<p>For full details about using FairPlay with the Brightcove Native Player SDK, see our <a href="FairPlay.md">FairPlay guide</a>.</p>
+
+<h2>Sidecar Subtitles</h2>
+
+<p>The <code>BrightcoveSidecarSubtitles</code> plugin framework and module is now integrated into the core <code>BrightcovePlayerSDK</code> framework. If you are currently using the Brightcove Sidecar Subtitles plugin, no functional code changes are required, but you will need to make some changes for your build. See the <a href="#SidecarSubtitles">SidecarSubtitles</a> section below for details.</p>
+
+<p>Note also that Sidecar Subtitles is generally not needed when working with Video Cloud Dynamic Delivery, as Dynamic Delivery ensures that your captions are added in-manifest before they are delivery to your app.</p>
+
+<p>For full details about using Sidecar Subtitles with the Brightcove Native Player SDK, see our <a href="SidecarSubtitles.md">Sidecar Subtitles guide</a>.</p>
+
+<h2>Video Downloads and Offline Playback</h2>
+
+<p>As of version 6.0.0, the Brightcove Native Player SDK allows you to download HLS videos encrypted with FairPlay, and play them back while online or offline. Please see our app developer&rsquo;s guide for full details:</p>
+
+<p><a href="OfflinePlayback.md">iOS App Developer&rsquo;s Guide to Video Downloading and Offline Playback with FairPlay</a></p>
+
+<h1>Notes <a name="Notes"></a></h1>
 
 <ul>
 <li>The Brightcove PlayerUI Plugin is now integrated into the core Brightcove Player SDK Framework. This provides a fully-featured and customizable set of controls in your player.
@@ -68,26 +123,32 @@
 </ul>
 
 
-<h1>Installation</h1>
+<h1>Installation <a name="Installation"></a></h1>
 
 <p>The Brightcove Player SDK provides two installation packages for iOS, a static library framework and a dynamic framework. Deployment is supported on iOS 8 and above.</p>
 
 <p>The Brightcove Player SDK provides a dynamic framework to support tvOS 9.0 and above.</p>
 
-<h2>CocoaPods</h2>
+<h2>CocoaPods <a name="CocoaPods"></a></h2>
 
-<p>You can use <a href="https://cocoapods.org">CocoaPods</a> to add the Brightcove Player SDK to your project. You can find the latest <code>Brightcove-Player-SDK</code> podspec <a href="https://github.com/CocoaPods/Specs/tree/master/Specs/2/4/f/Brightcove-Player-SDK">here</a>. The podspec supports both iOS and tvOS. CocoaPods 1.0 or newer is required.</p>
+<p>You can use <a href="https://cocoapods.org">CocoaPods</a> to add the Brightcove Player SDK to your project. You can find the latest <code>Brightcove-Player-Core</code> podspec <a href="https://github.com/brightcove/BrightcoveSpecs/tree/master/Brightcove-Player-Core">here</a>. The podspec supports both iOS and tvOS. CocoaPods 1.0 or newer is required.</p>
 
-<p>Specifying the default pod <code>Brightcove-Player-SDK</code> will install the static library framework. To install the dynamic framework, declare the pod with the <code>dynamic</code> subspec: <code>Brightcove-Player-SDK/dynamic</code></p>
+<p>When using Brightcove CocoaPods in your project, add source &lsquo;<a href="https://github.com/brightcove/BrightcoveSpecs.git" title="">https://github.com/brightcove/BrightcoveSpecs.git'</a> to the start of your Podfile.</p>
+
+<p>Specifying the default pod <code>Brightcove-Player-Core</code> will install the static library framework. To install the dynamic framework, declare the pod with the <code>dynamic</code> subspec: <code>Brightcove-Player-Core/dynamic</code></p>
 
 <p>Static Framework example:</p>
 
-<pre><code>pod 'Brightcove-Player-SDK'
+<pre><code>source 'https://github.com/brightcove/BrightcoveSpecs.git'
+
+pod 'Brightcove-Player-Core'
 </code></pre>
 
 <p>Dynamic Framework example:</p>
 
-<pre><code>pod 'Brightcove-Player-SDK/dynamic'    
+<pre><code>source 'https://github.com/brightcove/BrightcoveSpecs.git'
+
+pod 'Brightcove-Player-Core/dynamic'
 </code></pre>
 
 <p>To ensure you are using the latest versions of the Brightcove software components, update your local CocoaPods master repository by running the following on the command line:</p>
@@ -95,7 +156,7 @@
 <pre><code>pod repo update
 </code></pre>
 
-<h2>Manual</h2>
+<h2>Manual Installaion <a name="ManualInstallation"></a></h2>
 
 <p>To add the Brightcove Player SDK to your project manually:</p>
 
@@ -103,8 +164,7 @@
 <li>Download the latest zipped release from our <a href="https://github.com/brightcove/brightcove-player-sdk-ios/releases">release page</a>.</li>
 <li>Add <code>BrightcovePlayerSDK.framework</code> to your project. Be sure to use the version corresponding to your target, iOS or tvOS.</li>
 <li>On the &ldquo;Build Settings&rdquo; tab of your application target, ensure that the &ldquo;Framework Search Paths&rdquo; include the path to the framework. This should have been done automatically unless the framework is stored under a different root directory than your project.</li>
-<li>On the &ldquo;General&rdquo; tab of your application target, add the following to the &ldquo;Link
- Binary With Libraries&rdquo; section:
+<li>On the &ldquo;General&rdquo; tab of your application target, add the following to the &ldquo;Linked Frameworks and Libraries&rdquo; section:
 
 <ul>
 <li><code>AVFoundation</code></li>
@@ -117,14 +177,14 @@
 <li><code>BrightcovePlayerSDK.framework</code></li>
 </ul>
 </li>
-<li>(<strong>Dynamic Framework</strong> only) On the &ldquo;General&rdquo; tab of your application target, add &lsquo;BrightcovePlayerSDK.framework&rsquo; to the &ldquo;Embedded Binary&rdquo; section.</li>
+<li>(<strong>Dynamic Framework</strong> only) On the &ldquo;General&rdquo; tab of your application target, add &lsquo;BrightcovePlayerSDK.framework&rsquo; to the &ldquo;Embedded Binaries&rdquo; section.</li>
 <li>(<strong>Dynamic Framework</strong> only) On the &ldquo;Build Phases&rdquo; tab, add a &ldquo;Run Script&rdquo; phase with the command <code>bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh</code>. Check &ldquo;Run script only when installing&rdquo;. This will remove unneeded architectures from the build, which is important for App Store submission.</li>
 <li>(<strong>Static Framework</strong> only) On the &ldquo;Build Settings&rdquo; tab of your application target, add <code>-ObjC</code> to the &ldquo;Other Linker Flags&rdquo; build setting.</li>
 <li>(<strong>Static Framework</strong> only) Locate the file <code>bcovpuiiconfont.ttf</code> within the <code>BrightcovePlayerSDK.framework</code> bundle and drag it directly into your project listing so that the font file becomes a part of your app. After dragging the file, be sure to add it to your app&rsquo;s build target when prompted to do so. Once your app is built, the font file should reside in the app bundle at the same level as the app&rsquo;s Info.plist file. The font file supplies some of the <code>BrightcovePlayerUI</code> interface elements, but it does not need to be listed in the plist itself.</li>
 </ol>
 
 
-<h2>Imports</h2>
+<h2>Imports <a name="Imports"></a></h2>
 
 <p>The Brightcove Player SDK for iOS can be imported into code a few different ways:</p>
 
@@ -137,7 +197,7 @@
 <pre><code>#import &lt;BrightcovePlayerSDK/[specific-class].h&gt;
 </code></pre>
 
-<h1>Quick Start</h1>
+<h1>Quick Start <a name="QuickStart"></a></h1>
 
 <p>Playing video with the Brightcove Player SDK for iOS:</p>
 
@@ -153,21 +213,21 @@ self.controller = controller; // store this to a strong property
 
 BCOVPlaybackService *service = [[BCOVPlaybackService alloc] initWithAccountId:kAccountId
                                                                     policyKey:kPlaybackServicePolicyKey];
-                                [service findVideoWithVideoID:kViewControllerVideoID
-                                                   parameters:nil
-                                                   completion:^(BCOVVideo    *video,
-                                                                NSDictionary *jsonResponse,
-                                                                NSError      *error) {
+[service findVideoWithVideoID:kViewControllerVideoID
+                   parameters:nil
+                   completion:^(BCOVVideo    *video,
+                                NSDictionary *jsonResponse,
+                                NSError      *error) {
 
-                                        [controller setVideos:@[ video ]];
-                                        [controller play];
+                                    [controller setVideos:@[ video ]];
+                                    [controller play];
 
                                 }];
 </code></pre>
 
 <p>You need to keep the controller from being automatically released at the end of the method. A common way to do this is to store a reference to the controller in a strong instance variable.</p>
 
-<h1>Built-In PlayerUI Controls</h1>
+<h1>Built-In PlayerUI Controls <a name="PlayerUI"></a></h1>
 
 <p>As of version 5.1.0, the Brightcove Player SDK has the Brightcove PlayerUI Plugin integrated into its framework, so you can use its fully-featured set of controls for playback and advertising right out of the box.</p>
 
@@ -407,7 +467,45 @@ logoImageView1.frame = logoLayoutView1.frame;
 
 <p><a href="https://github.com/BrightcoveOS/ios-player-samples">[https://github.com/BrightcoveOS/ios-player-samples](https://github.com/BrightcoveOS/ios-player-samples)</a></p>
 
-<h1>Video 360</h1>
+<h1>FairPlay <a name="FairPlay"></a></h1>
+
+<p>The Brightcove Native Player SDK includes support for playing FairPlay-protected videos. For full details about using FairPlay with the Brightcove Native Player SDK, see our <a href="FairPlay.md">FairPlay guide</a>.</p>
+
+<h2>Migrating From the Brightcove FairPlay Plugin</h2>
+
+<p>If you were using the Brightcove FairPlay Plugin with the Brightcove Native Player SDK prior to verison 6.0, be aware that the <code>BrightcoveFairPlay</code> module is now integrated into the core <code>BrightcovePlayerSDK</code> framework. No functional code changes are required, but you should make these changes for your build:</p>
+
+<ul>
+<li>If using CocoaPods, remove all references to <code>BrightcoveFairPlay</code> from your Podfiles, and then update.</li>
+<li>For manual installations, remove the BrightcoveFairPlay.framework from your project.</li>
+<li>In your source code, change any #includes from <code>&lt;BrightcoveFairPlay/header_name.h&gt;</code> to <code>&lt;BrightcovePlayerSDK/header_name.h&gt;</code>.</li>
+<li>Remove any imports that refer to the <code>BrightcoveFairPlay</code> module.</li>
+<li>In your target&rsquo;s Build Settings, remove any reference to the BrightcoveFairPlay.framework from your Framework Search Paths.</li>
+<li>In your target&rsquo;s General settings, remove any reference to BrightcoveFairPlay from the Embedded Binaries and Linked Frameworks and Libraries sections</li>
+</ul>
+
+
+<h1>Sidecar Subtitles <a name="SidecarSubtitles"></a></h1>
+
+<p>The Brightcove Native Player SDK includes support for playing external subtitle files, also know as Sidecar Subtitles. For full details about using Sidecar Subtitles with the Brightcove Native Player SDK, see our <a href="SidecarSubtitles.md">Sidecar Subtitles guide</a>.</p>
+
+<p>Please note that if you are a Brightcove Video Cloud customer using Dynamic Delivery, <strong>you will most likely not need to use Sidecar Subtitles</strong>. Please read the <a href="SidecarSubtitles.md">Sidecar Subtitles guide</a> to confirm your specific use case.</p>
+
+<h2>Migrating From the Brightcove Sidecar Subtitles Plugin</h2>
+
+<p>If you were using the Brightcove Sidecar Subtitles Plugin with the Brightcove Native Player SDK prior to verison 6.0, be aware that the <code>BrightcoveSidecarSubtitles</code> module is now integrated into the core <code>BrightcovePlayerSDK</code> framework. No functional code changes are required, but you should make these changes for your build:</p>
+
+<ul>
+<li>If using CocoaPods, remove all references to <code>BrightcoveSidecarSubtitles</code> from your Podfiles, and then update.</li>
+<li>For manual installations, remove the BrightcoveSidecarSubtitles.framework from your project.</li>
+<li>In your source code, change any #includes from <code>&lt;BrightcoveSidecarSubtitles/header_name.h&gt;</code> to <code>&lt;BrightcovePlayerSDK/header_name.h&gt;</code>.</li>
+<li>Remove any imports that refer to the <code>BrightcoveSidecarSubtitles</code> module.</li>
+<li>In your target&rsquo;s Build Settings, remove any reference to the BrightcoveSidecarSubtitles.framework from your Framework Search Paths.</li>
+<li>In your target&rsquo;s General settings, remove any reference to BrightcoveSidecarSubtitles from the Embedded Binaries and Linked Frameworks and Libraries sections</li>
+</ul>
+
+
+<h1>Video 360 <a name="Video360"></a></h1>
 
 <p>The Native Player SDK includes support for interactively displaying 360 degree spherical videos. 360 videos should be tagged with a &ldquo;projection&rdquo; field property containing the value &ldquo;equirectangular&rdquo;. These videos will be loaded and played in the same way as other videos, but they will be displayed in an OpenGL ES layer instead of an AVPlayerLayer.</p>
 
@@ -480,7 +578,7 @@ logoImageView1.frame = logoLayoutView1.frame;
 
 <p>The PlayerUI will install gestures to handle navigation around the 360 video, but if you are using your own controls you can set the view parameters of the virtual camera yourself. The <a href="Protocols/BCOVPlaybackController.html"><code>BCOVPlaybackController</code></a> protocol&rsquo;s <code>viewProjection</code> property lets you set these parameters. The property is a <a href="Classes/BCOVVideo360ViewProjection.html"><code>BCOVVideo360ViewProjection</code></a> class with basic virtual camera settings like <code>pan</code>, <code>tilt</code>, and <code>zoom</code>. To change settings, make a copy of the current instance, change the settings on the new instance, and then assign it back to the <code>viewProjection</code> property.</p>
 
-<h1>Architectural Overview</h1>
+<h2>Architectural Overview <a name="ArchitecturalOverview"></a></h2>
 
 <p><img src="architecture01.png" alt="Architectural Overview 1" /></p>
 
@@ -492,13 +590,13 @@ logoImageView1.frame = logoLayoutView1.frame;
 
 <p>In addition to the playback functionality provided by the classes described above, there are a handful of value classes. These are used to hold data specific to the Player SDK for iOS. Each of these is described in more detail in its own section below.</p>
 
-<h2>Play, Pause, and Seek</h2>
+<h2>Play, Pause, and Seek <a name="PlayPauseSeek"></a></h2>
 
 <p>The Brightcove Player SDK for iOS provides play, pause, and seek methods on the <a href="Protocols/BCOVPlaybackController.html"><code>BCOVPlaybackController</code></a>. <strong>It is important to use these methods instead of using the AVPlayer equivalent.</strong> In their default implementations, these objects forward the calls directly to the corresponding method on the AVPlayer. However, if you are using plugins, they may override the default behavior to add functionality. For example, if using an advertising plugin, calling <a href="Protocols/BCOVPlaybackController.html#//api/name/play"><code>[BCOVPlaybackController play]</code></a> the first time might cause pre-roll to play before starting the content. To find out more about how a plugin may override the default behavior, please refer to each plugin README.md or by checking for a category extension on <a href="Classes/BCOVSessionProviderExtension.html"><code>BCOVSessionProviderExtension</code></a> that the plugin may add.</p>
 
 <p><em>Calling play, pause, or seek on the AVPlayer directly may cause undefined behavior.</em></p>
 
-<h2>Preloading videos</h2>
+<h2>Preloading Videos <a name="PreloadingVideos"></a></h2>
 
 <p><strong>NOTE:</strong> <em>Preloading videos is no longer recommended, and this functionality may be removed in a future release.</em></p>
 
@@ -526,7 +624,7 @@ logoImageView1.frame = logoLayoutView1.frame;
 </ol>
 
 
-<h2>Source Selection (HLS, MP4, HTTP/HTTPS)</h2>
+<h2>Source Selection (HLS, MP4, HTTP/HTTPS) <a name="SourceSelection"></a></h2>
 
 <p>The Brightcove Player SDK for iOS provides clients the ability to attach multiple url and delivery types (<code>BCOVSource</code>) to a single video (<code>BCOVVideo</code>). For example, if your videos are being retrieved by the Playback Service, there may be a mix of HLS or MP4 renditions for a single video, along with HTTP and HTTPS versions.  Which one of these sources that get selected is determined by a source selection policy block. The default source selection policy will select the first HLS <code>BCOVSource</code> on each <code>BCOVVideo</code>, with HTTPS sources preferred over HTTP.</p>
 
@@ -560,7 +658,7 @@ idBCOVPlaybackController playbackController = [sdkManager createPlaybackControll
 
 <p>Please be aware there are App Store limitations regarding the use of MP4 videos. Check the latest Apple Developer information for details.</p>
 
-<h2>Obtaining Content and Ad playback Information</h2>
+<h2>Obtaining Content And Ad Playback Information <a name="PlaybackInformation"></a></h2>
 
 <p>The Brightcove Player SDK for iOS provides two mechanisms for obtaining playback information. The playback controller provides a delegate property that implements <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L379-L495">[<code>BCOVPlaybackControllerDelegate</code>](Protocols/BCOVPlaybackControllerDelegate.html)</a>. A delegate can implement these optional methods to get notified of playback metadata like progress, duration changes, and other events. If an ad plugin is installed, it may also use this delegate to provide information about <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVAdvertising.h#L120-L192">ad playback</a>. The <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L577-L588">lifecycle event</a> delegate method provides events to signal changes in playback state. For example, when a player goes from the paused state to the playing state, the lifecycle event delegate method will be called with the <code>kBCOVPlaybackSessionLifecycleEventPlay</code> event. The default Lifecycle events are declared in <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackSession.h">[<code>BCOVPlaybackSession</code>](Protocols/BCOVPlaybackSession.html)</a>. Plugins provided by Brightcove add additional lifecycle events which are defined in each plugin.</p>
 
@@ -589,7 +687,7 @@ XYZAnalytics *analytics = [[XYZAnalytics alloc] init];
 [controller addSessionConsumer:analytics];
 </code></pre>
 
-<h2>Handling network interruptions and slowdowns</h2>
+<h2>Handling Network Interruptions and Slowdowns <a name="HandlingNetworkInterruptionsAndSlowdowns"></a></h2>
 
 <p>When the application experiences network interruptions, the <code>AVPlayer</code> used by the <a href="Protocols/BCOVPlaybackController.html"><code>BCOVPlaybackController</code></a> may stop attempting to recover if the interruption lasts too long. If this occurs, the lifecycle delegate method will be called with a <code>kBCOVPlaybackSessionLifecycleEventFailedToPlayToEndTime</code> event. When this event occurs, playback <strong>will not</strong> recover automatically. In order to recover from this event, you will need to detect when the network recovers in your client code.</p>
 
@@ -603,11 +701,11 @@ XYZAnalytics *analytics = [[XYZAnalytics alloc] init];
 
 <p>When the video is initially loading, when a seek occurs, or when playback stalls due to a slow network, the lifecycle delegate method will be called with a <code>kBCOVPlaybackSessionLifecycleEventPlaybackBufferEmpty</code> event.  When playback is able to resume,  the lifecycle delegate method will be called with a <code>kBCOVPlaybackSessionLifecycleEventPlaybackLikelyToKeepUp</code> event. You may wish to implement a loading spinner in this case.</p>
 
-<h2>Subclassing</h2>
+<h2>Subclassing <a name="Subclassing"></a></h2>
 
 <p>Except where explicitly documented otherwise, none of the classes in the Player SDK for iOS are designed to be subclassed. Creating a subclass of any SDK class that is not explicitly designed to be subclassed, especially any of the value classes, could result in unpredictable behavior.</p>
 
-<h2>Values</h2>
+<h2>Values <a name="Values"></a></h2>
 
 <p>Also known as &ldquo;model objects&rdquo;, these classes (<a href="Classes/BCOVPlaylist.html"><code>BCOVPlaylist</code></a>, <a href="Classes/BCOVVideo.html"><code>BCOVVideo</code></a>, <a href="Classes/BCOVSource.html"><code>BCOVSource</code></a>, <a href="Classes/BCOVCuePoint.html"><code>BCOVCuePoint</code></a>, <a href="Classes/BCOVCuePointCollection.html"><code>BCOVCuePointCollection</code></a>) are used to represent data in the Player SDK for iOS. It is crucial to understand that these data types are treated as <em>values</em>, rather than <em>identities</em>. By this, we mean that if you have two instances of a value class which have the exact same data, they represent the same idea or value, even though they are technically two different objects at separate memory addresses. In other words, neither SDK code nor your client code should ever use identity comparisons (&ldquo;pointer equality&rdquo;) with value objects. Instead, each value class implements <code>-isEqual:</code> and provides a class-specific equality method overload, either of which should be used instead.</p>
 
@@ -645,9 +743,9 @@ video2.properties = otherDictionary; // causes compiler error
 
 <p>As you can see in the example, <code>video1</code> has not been changed by the <code>-update</code> method call. Instead, this method returns a copy of <code>video1</code>, except with the modifications made in the body of the block. You should never allow the mutable copy to escape the block (such as by assigning it to a <code>__block</code> variable), instead use the immutable object returned by the <code>-update</code> method after you have made your modifications.</p>
 
-<h2>Retrieving Brightcove Assets Using the Playback Service</h2>
+<h2>Retrieving Brightcove Assets Using the Playback Service <a name="PlaybackService"></a></h2>
 
-<p>The playback service class, <a href="Classes/BCOVPlaybackService.html"><code>BCOVPlaybackService</code></a>, provides functionality for retrieving your Brightcove video assets and playlists via the <a href="http://docs.brightcove.com/en/video-cloud/playback-api/index.html">Brightcove Playback API</a> , including rich metadata such as text tracks, previews, and thumbnails. The following example shows how to retrieve a video with a video ID. Methods for retrieving a video or playlist with that video&rsquo;s reference ID are also available..</p>
+<p>The playback service class, <a href="Classes/BCOVPlaybackService.html"><code>BCOVPlaybackService</code></a>, provides functionality for retrieving your Brightcove video assets and playlists via the <a href="https://support.brightcove.com/overview-playback-api">Brightcove Playback API</a> , including rich metadata such as text tracks, previews, and thumbnails. The following example shows how to retrieve a video with a video ID. Methods for retrieving a video or playlist with that video&rsquo;s reference ID are also available..</p>
 
 <pre><code>[1] NSString *policyKey = &lt;your-policy-key&gt;;
     NSString *accountId = &lt;your-account-id&gt;;
@@ -672,11 +770,35 @@ video2.properties = otherDictionary; // causes compiler error
 </code></pre>
 
 <ol>
-<li>The playback service requests <strong>policy key</strong> for authentication. To learn more about policy key and how to obtain one, please refer to the <a href="http://docs.brightcove.com/en/video-cloud/player-management/guides/policy-key.html">policy key documentation</a>.</li>
+<li>The playback service requests <strong>policy key</strong> for authentication. To learn more about policy key and how to obtain one, please refer to the <a href="https://support.brightcove.com/policy-keys">policy key documentation</a>.</li>
 </ol>
 
 
-<h2>View Strategy</h2>
+<p><strong>Playlist Paging</strong></p>
+
+<p>For <code></code>BCOVPlaybackService` methods that return a playlist, you can request a partial playlist, or &ldquo;pages&rdquo; from the playlist by specifying a limit and offset parameter in the parameters dictionary. The limit specifies the maximum number of videos that will be returned, and the offset specifies the index into the playlist at which videos will be returned.</p>
+
+<p>For example, if you have a playlist with 100 videos, you can request only 6 videos starting at video number 10 as follows:</p>
+
+<pre><code>    NSDictionary *parameters =
+    @{
+        @"limit": @6,
+        @"offset": @10
+    };
+
+    [playbackService findPlaylistWithPlaylistID:playlistID
+                                     parameters: parameters
+                                     completion:^(BCOVPlaylist *playlist,
+                                                  NSDictionary *jsonResponse,
+                                                  NSError      *error) {
+
+        [controller setVideos: playlist];
+        [controller play];
+
+    }];
+</code></pre>
+
+<h2>View Strategy <a name="ViewStrategy"></a></h2>
 
 <p><strong>NOTE:</strong> <em>Using a view strategy block is no longer recommended, as this functionality may be removed in a future release.</em></p>
 
@@ -741,7 +863,7 @@ video2.properties = otherDictionary; // causes compiler error
 
 <p>There is one caveat to using a view strategy: you must not access the playback controller&rsquo;s <code>view</code> property from within the view strategy block. Since the block is being called <em>because</em> the playback controller&rsquo;s <code>view</code> property was accessed for the first time, accessing the <code>view</code> property again <em>within</em> the view strategy block will cause your program to crash.</p>
 
-<h2>Playing Video In The Background and Picture In Picture</h2>
+<h2>Playing Video In The Background and Picture In Picture <a name="BackgroundPIP"></a></h2>
 
 <p>By default, when an iOS application is sent to the background, or the device is locked, iOS will pause any video that is playing. To change this behavior, set the <code>allowsBackgroundAudioPlayback</code> property of the <code>BCOVPlaybackController</code> object to <code>YES</code>. (The default value is <code>NO</code>, indicating playback will pause in the background.)</p>
 
@@ -753,7 +875,7 @@ video2.properties = otherDictionary; // causes compiler error
 
 <p><strong>Important Picture in Picture Note:</strong> When you want to support background audio and Picture in Picture on the same player, you must update the <code>pictureInPictureActive</code> property on <a href="Protocols/BCOVPlaybackController.html"><code>BCOVPlaybackController</code></a> with the Picture in Picture status. If you are using the <code>AVPictureInPictureController</code>, you can use the <code>pictureInPictureControllerDidStartPictureInPicture:</code> and <code>pictureInPictureControllerDidStopPictureInPicture:</code> delegate methods to update this property.</p>
 
-<h2>Combining Plugins</h2>
+<h2>Combining Plugins <a name="CombiningPlugins"></a></h2>
 
 <p>If you need to combine Player SDK plugins, for example to add subtitles to a DRM-protected video which plays ads managed by Google IMA. To achieve this, <code>BCOVSessionProviders</code> from each plugin are created and chained together, and the chain is used to construct the <a href="Protocols/BCOVPlaybackController.html"><code>BCOVPlaybackController</code></a>.</p>
 
@@ -792,7 +914,7 @@ id&lt;BCOVPlaybackController&gt; *playbackController =
 
 <p>The chaining of session providers creates a linked list of objects whose order is important to the proper function of the Player SDK. In the example above, the Sidecar Subtitles session provider is placed upstream from the IMA session provider. When combined with the FairPlay plugin, Fairplay is placed upstream from the Sidecar Subtitles session provider.</p>
 
-<h1>Buffer Optimization</h1>
+<h1>Buffer Optimization <a name="BufferOptimization"></a></h1>
 
 <h2>Overview</h2>
 
@@ -885,7 +1007,7 @@ self.playbackController.options = options;
 
 <p>Note: Apple specifically put &ldquo;preferred&rdquo; in <code>preferredForwardBufferDuration</code> because you can set any value you want, but generally speaking the <code>AVPlayer</code> player will use it only as a guideline. Also keep in mind that setting it to zero returns full control of the buffer size to the <code>AVPlayer</code>.</p>
 
-<h1>Using an AVPlayerViewController with a <a href="Protocols/BCOVPlaybackController.html">BCOVPlaybackController</a></h1>
+<h1>Using an AVPlayerViewController with a <a href="Protocols/BCOVPlaybackController.html">BCOVPlaybackController</a> <a name="AVPlayerViewController"></a></h1>
 
 <h2>Overview</h2>
 
@@ -922,7 +1044,7 @@ OnceUX Plugin</p>
 <p>Analytics:
 When using the AVPlayerViewController, the video_engagement events sent to the Brightcove Analytics server will report 0 for player_width and player_height.</p>
 
-<h1>Frequently Asked Questions</h1>
+<h1>Frequently Asked Questions <a name="FAQ"></a></h1>
 
 <p><strong>My content won&rsquo;t load. Is there an easy way to test whether the URL points to a valid video?</strong></p>
 
@@ -976,7 +1098,13 @@ When using the AVPlayerViewController, the video_engagement events sent to the B
 								
 								<li><a href="Classes/BCOVCuePointProgressPolicyResult.html">BCOVCuePointProgressPolicyResult</a></li>
 								
+								<li><a href="Classes/BCOVFPSBrightcoveAuthProxy.html">BCOVFPSBrightcoveAuthProxy</a></li>
+								
 								<li><a href="Classes/BCOVMediaRequestFactory.html">BCOVMediaRequestFactory</a></li>
+								
+								<li><a href="Classes/BCOVOfflineVideoManager.html">BCOVOfflineVideoManager</a></li>
+								
+								<li><a href="Classes/BCOVOfflineVideoStatus.html">BCOVOfflineVideoStatus</a></li>
 								
 								<li><a href="Classes/BCOVPUIBasicControlView.html">BCOVPUIBasicControlView</a></li>
 								
@@ -1028,6 +1156,8 @@ When using the AVPlayerViewController, the video_engagement events sent to the B
 								
 								<li><a href="Protocols/BCOVCuePoint.html">BCOVCuePoint</a></li>
 								
+								<li><a href="Protocols/BCOVFPSAuthorizationProxy.html">BCOVFPSAuthorizationProxy</a></li>
+								
 								<li><a href="Protocols/BCOVMutableAnalytics.html">BCOVMutableAnalytics</a></li>
 								
 								<li><a href="Protocols/BCOVMutableCuePoint.html">BCOVMutableCuePoint</a></li>
@@ -1037,6 +1167,8 @@ When using the AVPlayerViewController, the video_engagement events sent to the B
 								<li><a href="Protocols/BCOVMutableSource.html">BCOVMutableSource</a></li>
 								
 								<li><a href="Protocols/BCOVMutableVideo.html">BCOVMutableVideo</a></li>
+								
+								<li><a href="Protocols/BCOVOfflineVideoManagerDelegate.html">BCOVOfflineVideoManagerDelegate</a></li>
 								
 								<li><a href="Protocols/BCOVPUIPlayerViewDelegate.html">BCOVPUIPlayerViewDelegate</a></li>
 								
@@ -1072,6 +1204,8 @@ When using the AVPlayerViewController, the video_engagement events sent to the B
 							<ul>
 								
 									<li><a href="Constants/BCOVBufferOptimizerMethod.html">BCOVBufferOptimizerMethod</a></li>
+								
+									<li><a href="Constants/BCOVOfflineVideoDownloadState.html">BCOVOfflineVideoDownloadState</a></li>
 								
 									<li><a href="Constants/BCOVPUIButtonIcon.html">BCOVPUIButtonIcon</a></li>
 								
@@ -1113,7 +1247,7 @@ When using the AVPlayerViewController, the video_engagement events sent to the B
 					<footer>
 						<div class="footer-copyright">
 							
-							<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-04-05</p>
+							<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-07-03</p>
 							
 							
 							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

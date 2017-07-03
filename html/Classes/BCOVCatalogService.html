@@ -14,7 +14,7 @@
 		<div class="container" class="hide-in-xcode">
 			
 			<h1 id="library-title">
-				<a href="../index.html">BCOVPlayerSDK </a>
+				<a href="../index.html">Brightcove Native Player for iOS </a>
 			</h1>
 
 			<p id="developer-home">
@@ -666,318 +666,6 @@ dictionary.</p>
 						</div>
 						
 
-						<a title="BCOVImperativeCallbacks Methods" name="task_BCOVImperativeCallbacks Methods"></a>
-						<h2 class="task-title">BCOVImperativeCallbacks Methods</h2>
-
-						<div class="task-list">
-							<div class="section-method">
-	<a name="//api/name/findPlaylistWithPlaylistID:parameters:completion:" title="findPlaylistWithPlaylistID:parameters:completion:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/findPlaylistWithPlaylistID:parameters:completion:">&ndash;&nbsp;findPlaylistWithPlaylistID:parameters:completion:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Media API service by its playlist ID.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)findPlaylistWithPlaylistID:(NSString *)<em>playlistID</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVPlaylist *playlist , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>playlistID</code></th>
-						<td><p>The ID of the playlist to find.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>Additional NSString query parameters to add to the Media
-API requests. These values will override the default values if they conflict.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>completionHandler</code></th>
-						<td><p>block which will be invoked when the request
-finishes. Execution of the completionHandler will occur on the main thread.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Media API service by its playlist ID.</p>
-
-<p>If the Media API returns a standard JSON-formatted error response, the
-deserialized response will be the callback&rsquo;s error&rsquo;s <code>userInfo</code>.</p>
-
-<p>If a JSON parse error occurs, the raw NSData response will be included in the
-callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/findPlaylistWithReferenceID:parameters:completion:" title="findPlaylistWithReferenceID:parameters:completion:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/findPlaylistWithReferenceID:parameters:completion:">&ndash;&nbsp;findPlaylistWithReferenceID:parameters:completion:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Media API service by its reference ID.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)findPlaylistWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVPlaylist *playlist , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>referenceID</code></th>
-						<td><p>The reference ID of the playlist to find.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>Additional NSString query parameters to add to the Media
-API requests. These values will override the default values if they conflict.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>completionHandler</code></th>
-						<td><p>block which will be invoked when the request
-finishes. Execution of the completionHandler will occur on the main thread.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Media API service by its reference ID.</p>
-
-<p>If the Media API returns a standard JSON-formatted error response, the
-deserialized response will be the callback&rsquo;s error&rsquo;s <code>userInfo</code>.</p>
-
-<p>If a JSON parse error occurs, the raw NSData response will be included in the
-callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/findVideoWithVideoID:parameters:completion:" title="findVideoWithVideoID:parameters:completion:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/findVideoWithVideoID:parameters:completion:">&ndash;&nbsp;findVideoWithVideoID:parameters:completion:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Media API service by its video ID.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)findVideoWithVideoID:(NSString *)<em>videoID</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVVideo *video , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>videoID</code></th>
-						<td><p>The ID of the video to find.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>Additional NSString query parameters to add to the Media
-API requests. These values will override the default values if they conflict.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>completionHandler</code></th>
-						<td><p>block which will be invoked when the request
-finishes. Execution of the completionHandler will occur on the main thread.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Media API service by its video ID.</p>
-
-<p>If the Media API returns a standard JSON-formatted error response, the
-deserialized response will be the callback&rsquo;s error&rsquo;s <code>userInfo</code>.</p>
-
-<p>If a JSON parse error occurs, the raw NSData response will be included in the
-callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/findVideoWithReferenceID:parameters:completion:" title="findVideoWithReferenceID:parameters:completion:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/findVideoWithReferenceID:parameters:completion:">&ndash;&nbsp;findVideoWithReferenceID:parameters:completion:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Media API service by its reference ID.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)findVideoWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVVideo *video , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>referenceID</code></th>
-						<td><p>The reference ID of the video to find.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>Additional NSString query parameters to add to the Media
-API requests. These values will override the default values if they conflict.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>completionHandler</code></th>
-						<td><p>block which will be invoked when the request
-finishes. Execution of the completionHandler will occur on the main thread.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Media API service by its reference ID.</p>
-
-<p>If the Media API returns a standard JSON-formatted error response, the
-deserialized response will be the callback&rsquo;s error&rsquo;s <code>userInfo</code>.</p>
-
-<p>If a JSON parse error occurs, the raw NSData response will be included in the
-callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div>
-						</div>
-						
-
 						<a title="BCOVCatalogOperations Methods" name="task_BCOVCatalogOperations Methods"></a>
 						<h2 class="task-title">BCOVCatalogOperations Methods</h2>
 
@@ -1577,6 +1265,318 @@ specified parameters.  Cast this operation&rsquo;s <code>result</code> property 
 </div>
 						</div>
 						
+
+						<a title="BCOVImperativeCallbacks Methods" name="task_BCOVImperativeCallbacks Methods"></a>
+						<h2 class="task-title">BCOVImperativeCallbacks Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/findPlaylistWithPlaylistID:parameters:completion:" title="findPlaylistWithPlaylistID:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/findPlaylistWithPlaylistID:parameters:completion:">&ndash;&nbsp;findPlaylistWithPlaylistID:parameters:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Media API service by its playlist ID.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)findPlaylistWithPlaylistID:(NSString *)<em>playlistID</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVPlaylist *playlist , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>playlistID</code></th>
+						<td><p>The ID of the playlist to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to the Media
+API requests. These values will override the default values if they conflict.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>block which will be invoked when the request
+finishes. Execution of the completionHandler will occur on the main thread.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Media API service by its playlist ID.</p>
+
+<p>If the Media API returns a standard JSON-formatted error response, the
+deserialized response will be the callback&rsquo;s error&rsquo;s <code>userInfo</code>.</p>
+
+<p>If a JSON parse error occurs, the raw NSData response will be included in the
+callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/findPlaylistWithReferenceID:parameters:completion:" title="findPlaylistWithReferenceID:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/findPlaylistWithReferenceID:parameters:completion:">&ndash;&nbsp;findPlaylistWithReferenceID:parameters:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Media API service by its reference ID.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)findPlaylistWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVPlaylist *playlist , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>referenceID</code></th>
+						<td><p>The reference ID of the playlist to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to the Media
+API requests. These values will override the default values if they conflict.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>block which will be invoked when the request
+finishes. Execution of the completionHandler will occur on the main thread.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Media API service by its reference ID.</p>
+
+<p>If the Media API returns a standard JSON-formatted error response, the
+deserialized response will be the callback&rsquo;s error&rsquo;s <code>userInfo</code>.</p>
+
+<p>If a JSON parse error occurs, the raw NSData response will be included in the
+callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/findVideoWithVideoID:parameters:completion:" title="findVideoWithVideoID:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/findVideoWithVideoID:parameters:completion:">&ndash;&nbsp;findVideoWithVideoID:parameters:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Media API service by its video ID.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)findVideoWithVideoID:(NSString *)<em>videoID</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVVideo *video , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>videoID</code></th>
+						<td><p>The ID of the video to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to the Media
+API requests. These values will override the default values if they conflict.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>block which will be invoked when the request
+finishes. Execution of the completionHandler will occur on the main thread.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Media API service by its video ID.</p>
+
+<p>If the Media API returns a standard JSON-formatted error response, the
+deserialized response will be the callback&rsquo;s error&rsquo;s <code>userInfo</code>.</p>
+
+<p>If a JSON parse error occurs, the raw NSData response will be included in the
+callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/findVideoWithReferenceID:parameters:completion:" title="findVideoWithReferenceID:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/findVideoWithReferenceID:parameters:completion:">&ndash;&nbsp;findVideoWithReferenceID:parameters:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Media API service by its reference ID.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)findVideoWithReferenceID:(NSString *)<em>referenceID</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVVideo *video , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>referenceID</code></th>
+						<td><p>The reference ID of the video to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to the Media
+API requests. These values will override the default values if they conflict.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>block which will be invoked when the request
+finishes. Execution of the completionHandler will occur on the main thread.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Media API service by its reference ID.</p>
+
+<p>If the Media API returns a standard JSON-formatted error response, the
+deserialized response will be the callback&rsquo;s error&rsquo;s <code>userInfo</code>.</p>
+
+<p>If a JSON parse error occurs, the raw NSData response will be included in the
+callback&rsquo;s error&rsquo;s <code>userInfo</code>, keyed by kBCOVCatalogJSONDeserializationErrorRawDataKey.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVCatalogService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
 					</div>
 					
 					
@@ -1589,7 +1589,7 @@ specified parameters.  Cast this operation&rsquo;s <code>result</code> property 
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-04-05</p>
+						<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-07-03</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

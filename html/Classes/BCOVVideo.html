@@ -14,7 +14,7 @@
 		<div class="container" class="hide-in-xcode">
 			
 			<h1 id="library-title">
-				<a href="../index.html">BCOVPlayerSDK </a>
+				<a href="../index.html">Brightcove Native Player for iOS </a>
 			</h1>
 
 			<p id="developer-home">
@@ -53,6 +53,16 @@
 	
 
 	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/canBeDownloaded">canBeDownloaded</option>
+		
+		<option value="//api/name/offline">offline</option>
+		
+		<option value="//api/name/playableOffline">playableOffline</option>
+		
+	</optgroup>
 	
 
 	
@@ -131,6 +141,158 @@
 
 						<div class="task-list">
 							<div class="section-method">
+	<a name="//api/name/canBeDownloaded" title="canBeDownloaded"></a>
+	<h3 class="method-title"><code><a href="#//api/name/canBeDownloaded">&nbsp;&nbsp;canBeDownloaded</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns YES if this video object can be downloaded for <a href="#//api/name/offline">offline</a> playback</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL canBeDownloaded</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns YES if this video object can be downloaded for <a href="#//api/name/offline">offline</a> playback</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVVideo.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/offline" title="offline"></a>
+	<h3 class="method-title"><code><a href="#//api/name/offline">&nbsp;&nbsp;offline</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns YES if this instance refers to an offline video.
+Use the <a href="#//api/name/playableOffline"><code>playableOffline</code></a> property to determine if the
+video is playable offline.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL offline</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns YES if this instance refers to an offline video.
+Use the <a href="#//api/name/playableOffline"><code>playableOffline</code></a> property to determine if the
+video is playable offline.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVVideo.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playableOffline" title="playableOffline"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playableOffline">&nbsp;&nbsp;playableOffline</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns YES if this instance refers to an <a href="#//api/name/offline">offline</a> video
+playable from the device&rsquo;s local storage.
+Returns NO if the video has not completed downloading,
+or if the video has been purged and needs to be re-downloaded.
+This happens automatically if iOS needs to reclaim storage space
+for proper functioning of the device.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL playableOffline</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns YES if this instance refers to an <a href="#//api/name/offline">offline</a> video
+playable from the device&rsquo;s local storage.
+Returns NO if the video has not completed downloading,
+or if the video has been purged and needs to be re-downloaded.
+This happens automatically if iOS needs to reclaim storage space
+for proper functioning of the device.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVVideo.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/initWithSources:cuePoints:properties:" title="initWithSources:cuePoints:properties:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/initWithSources:cuePoints:properties:">&ndash;&nbsp;initWithSources:cuePoints:properties:</a></code>
 </h3>
@@ -629,7 +791,7 @@ video.</p></td>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-04-05</p>
+						<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-07-03</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

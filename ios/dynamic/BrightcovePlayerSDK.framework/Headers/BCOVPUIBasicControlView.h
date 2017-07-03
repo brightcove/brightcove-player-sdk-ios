@@ -129,8 +129,8 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
  */
 @interface BCOVPUIBasicControlView : UIView
 
-/** The background view for the controls. On iOS 8+, this a UIVisualEffectView
- * with dark blur view.  On iOS 7, this is a black view with slight opacity. */
+/** The background view for the controls. This view has a subview of class
+ * UIVisualEffectView with a dark blur effect. */
 @property (nonatomic, weak, readonly) UIView *backgroundView;
 
 /** The layout used organize the controls. */
