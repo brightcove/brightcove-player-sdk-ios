@@ -1,7 +1,4 @@
-Brightcove Native Player SDK
-============
-
-iOS App Developer's Guide to Video Downloading and Offline Playback with FairPlay
+iOS App Developer's Guide to Video Downloading and Offline Playback with FairPlay in the Brightcove Player SDK for iOS, version 6.0.2.86
 --------------
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -441,7 +438,7 @@ Downloads are restored once during the call to `initializeOfflineVideoManagerWit
 
 When downloading multiple videos, you can download them all at once, or with a download queue.
 
-With either technique, it's a good idee to preload any FairPlay licenses before starting any downloads, because although downloads can run in the background, FairPlay license exchange cannot happen while the app is in the background.
+With either technique, it's a good idea to preload any FairPlay licenses before starting any downloads, because although downloads can run in the background, FairPlay license exchange cannot happen while the app is in the background.
 
 **Concurrent Downloads**
 
