@@ -1,3 +1,19 @@
+## Release 6.0.3
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* When playing offline video, subtitles now render according to the user captioning preferences of the device.
+* Fixed a problem in which the Live button would frequently change state during live streaming.
+* Server-Side Ad Insertion (SSAI) is now supported for non-DRM videos ingested for Dynamic Delivery. This update requires the use of the OnceUX Plugin for Brightcove Player SDK for iOS.
+
+### OnceUX Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+* Server-Side Ad Insertion (SSAI) is now supported for non-DRM videos ingested for Dynamic Delivery.
+
+
 ## Release 6.0.2
 
 ### Brightcove Player SDK for iOS (Core)
