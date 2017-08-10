@@ -1,4 +1,4 @@
-iOS App Developer's Guide to Video Downloading and Offline Playback with FairPlay in the Brightcove Player SDK for iOS, version 6.0.3.97
+iOS App Developer's Guide to Video Downloading and Offline Playback with FairPlay in the Brightcove Player SDK for iOS, version 6.0.4.106
 --------------
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -491,3 +491,13 @@ Unexpected network activity can occur when playing the same offline video two ti
 We believe this happens when two `AVPlayer`s are in memory for a brief time referencing the same video in local storage. It's unknown exactly why the `AVPlayer` switches to playing the online version; we will address this with Apple when we can more precisely narrow down the behavior.
 
 When possible, a better way to play the same video twice is to simply seek the same playback controller to timecode zero and play again.
+
+### Specifying the Download Display Name
+
+In iOS 11+, users can directly examine and optionally delete downloaded videos using the Settings app. The displayed video name is taken from the "name" property of the `BCOVVideo` object. If the "name" property is not present, the offline video token's value will be used instead.
+
+To provide a more customized experience, you can set a display name for the video asset in the options dictionary passed to `-requestVideoDownload:parameters:completion:` (or when preloading the license). Use the `kBCOVOfflineVideoManagerDisplayNameKey` key to set an `NSString` as the new asset display name.
+
+Note that iOS uses the asset name string as part of the downloaded video's file path, so you should avoid characters that would not be valid in a POSIX path, like a "/" character.
+
+Also note that iOS 10 does not handle unicode names properly, so on iOS 10, any unicode strings will instead use the offline video token as the display name. You may choose to replace these with more standardized names using the `kBCOVOfflineVideoManagerDisplayNameKey` option.

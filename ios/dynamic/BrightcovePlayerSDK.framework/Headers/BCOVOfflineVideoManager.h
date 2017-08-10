@@ -58,19 +58,6 @@ typedef NSString *BCOVOfflineVideoToken;
 
 
 /**
- * kBCOVOfflineVideoManagerDisplayNameKey
- * NSDictionary key used to set an option passed to
- * `-[initializeOfflineVideoManagerWithDelegate:options:]`.
- * This is an NSString that determines the name of the video
- * displayed in the "Downloaded Videos" section of the
- * iOS Settings/iPad+iPhone Storage/Downloaded Videos view
- * seen in iOS 11+.
- * If this option is not set, the `name` properties
- * on the video will be used instead.
- */
-extern NSString * const kBCOVOfflineVideoManagerDisplayNameKey;
-
-/**
  * kBCOVOfflineVideoManagerAllowsCellularDownloadKey
  * NSDictionary key used to set an option passed to
  * `-[initializeOfflineVideoManagerWithDelegate:options:]`.
@@ -94,6 +81,15 @@ extern NSString * const kBCOVOfflineVideoManagerAllowsCellularDownloadKey;
 extern NSString * const kBCOVOfflineVideoManagerAllowsCellularPlaybackKey;
 
 /**
+ * When this NSNumber is set, the Offline Video Manager will set the
+ * HTTPMaximumConnectionsPerHost property of the NSURLSessionConfiguration used
+ * to create each AVAssetDownloadTask which performs a video download. When this
+ * option is not provided, the NSURLSessionConfiguration property is left
+ * unmodified. In iOS, the default value is 4.
+ */
+extern NSString * const kBCOVOfflineVideoManagerHTTPMaximumConnectionsPerHostKey;
+
+/**
  * The following keys are used to specify values in the parameters dictionary
  * passed to `-BCOVOfflineVideoManager requestVideoDownload:parameters:completion:`
  */
@@ -107,6 +103,17 @@ extern NSString * const kBCOVOfflineVideoManagerAllowsCellularPlaybackKey;
  * If this value is zero or not specified, the lowest rendition with video will be downloaded.
  */
 extern NSString * const kBCOVOfflineVideoManagerRequestedBitrateKey;
+
+/**
+ * kBCOVOfflineVideoManagerDisplayNameKey
+ * This is an NSString that determines the name of the video
+ * displayed in the "Downloaded Videos" section of the
+ * iOS Settings/iPad+iPhone Storage/Downloaded Videos view
+ * seen in iOS 11+.
+ * If this option is not set, the `name` properties
+ * on the video will be used instead.
+ */
+extern NSString * const kBCOVOfflineVideoManagerDisplayNameKey;
 
 /**
  * kBCOVOfflineVideoManagerSubtitleLanguagesKey
