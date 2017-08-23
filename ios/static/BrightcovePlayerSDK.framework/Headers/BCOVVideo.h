@@ -24,7 +24,7 @@ extern NSString * const kBCOVVideoPropertyKeyAccountId;
 extern NSString * const kBCOVVideoPropertyKeyName;
 
 /**
- * ID for video to be used for billing/analytics.
+ * Name for video to be used for billing/analytics.
  */
 extern NSString * const kBCOVVideoPropertyKeyId;
 
@@ -93,28 +93,6 @@ extern NSString * const kBCOVVideoPropertyKeyId;
  * Implementation of the BCOVVideo protocol.
  */
 @interface BCOVVideo : NSObject <BCOVVideo, NSCopying>
-
-/**
- * Returns YES if this video object can be downloaded for offline playback
- */
-@property (nonatomic, readonly) BOOL canBeDownloaded;
-
-/**
- * Returns YES if this instance refers to an offline video.
- * Use the `playableOffline` property to determine if the
- * video is playable offline.
- */
-@property (nonatomic, readonly) BOOL offline;
-
-/**
- * Returns YES if this instance refers to an offline video
- * playable from the device's local storage.
- * Returns NO if the video has not completed downloading,
- * or if the video has been purged and needs to be re-downloaded.
- * This happens automatically if iOS needs to reclaim storage space
- * for proper functioning of the device.
- */
-@property (nonatomic, readonly) BOOL playableOffline;
 
 /**
  * Constructs a new video with the specified sources, cue points, and

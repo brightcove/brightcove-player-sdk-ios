@@ -93,15 +93,6 @@
  */
 + (BCOVPlayerSDKManager *)sharedManager;
 
-/**
- * Returns the Player SDK Manager singleton.
- *
- * @return The Player SDK Manager singleton.
- *
- * @param options Set to nil. Reserved for future use.
-*/
-+ (BCOVPlayerSDKManager *)sharedManagerWithOptions:(NSDictionary *)options;
-
 @end
 
 

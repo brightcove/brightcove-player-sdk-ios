@@ -37,17 +37,6 @@ extern NSString * const kBCOVSourceDeliveryMP4;
 extern NSString * const kBCOVSourceDeliveryDASH;
 
 /**
- * The delivery method for Once media.
- */
-extern NSString * const kBCOVSourceDeliveryOnce;
-
-/*
- * The delivery method for Bolt + SSAI.
- */
-extern NSString * const kBCOVSourceDeliveryBoltSSAI;
-
-
-/**
  * The key used in the source properties to declare the DRM type of this source.
  */
 extern NSString * const kBCOVSourceKeySystems;
