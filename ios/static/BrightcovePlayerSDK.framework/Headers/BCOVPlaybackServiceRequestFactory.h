@@ -21,6 +21,15 @@
 @property (nonatomic, copy, readonly) NSString *accountId;
 
 /**
+ * NSDictionary of additional HTTP request headers set on each NSURLRequest.
+ * The dictionary key defines the header field name.
+ * Header field names are case-insensitive.
+ * Both keys and values should be NSStrings.
+ * Defaults to nil.
+ */
+@property (nonatomic, copy, readwrite) NSDictionary *additionalHTTPRequestHeaders;
+
+/**
  * Returns an initialized instance with the specified policy. The base URL
  * string used by the returned instance is https://edge.api.brightcove.com/playback/v1 .
  *

@@ -77,6 +77,36 @@ extern NSString * const kBCOVPlaybackServiceErrorKeyAPIErrors;
 extern NSString * const kBCOVPlaybackServiceErrorKeyAPIHTTPStatusCode;
 
 
+/**
+ * Playlist Paging dictionary keys
+ *
+ * For BCOVPlaybackService methods that return a playlist, you can request a
+ * partial playlist, or "pages" from the playlist by specifying a limit and offset.
+ *
+ * For example, if you have a playlist with 100 videos, you can request
+ * only 6 videos starting at video number 10 with the following parameters
+ * dictionary:
+ *
+ *     NSDictionary *parameters =
+ *     @{
+ *         @"limit": @6,
+ *         @"offset": @10
+ *     };
+ */
+
+/**
+ * Parameter dictionary key for BCOVPlaybackService methods that return a playlist.
+ * This key sets the maximum number of videos returned in a playlist.
+ * This constant can be used in place of the string value "limit".
+ */
+extern NSString * const kBCOVPlaybackServiceParameterKeyLimit;
+
+/**
+ * Parameter dictionary key for BCOVPlaybackService methods that return a playlist.
+ * This key sets the starting index into the playlist at which videos will be returned.
+ * This constant can be used in place of the string value "offset".
+ */
+extern NSString * const kBCOVPlaybackServiceParameterKeyOffset;
 
 
 /**
@@ -121,6 +151,7 @@ extern NSString * const kBCOVPlaybackServiceErrorKeyAPIHTTPStatusCode;
  * @param playlistID The ID of the playlist to find.
  * @param parameters Additional NSString query parameters to add to the Playback
  * API requests. These values will override the default values if they conflict.
+ * Can use the "offset" and "limit" parameters. See "Playlist Paging" above.
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
@@ -134,6 +165,7 @@ extern NSString * const kBCOVPlaybackServiceErrorKeyAPIHTTPStatusCode;
  *
  * @param referenceID The reference ID of the video to find.
  * @param parameters Additional NSString query parameters to add to the Playback
+ * Can use the "offset" and "limit" parameters. See "Playlist Paging" above.
  * API requests. These values will override the default values if they conflict.
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.

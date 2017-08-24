@@ -144,8 +144,8 @@ extern NSString * const kBCOVBufferOptimizerMaximumDurationKey;
 /**
  * Key in the playback controller's options dictionary for setting the
  * AVPlayerViewController compatibility mode. Setting this dictionary value
- * will prevent the BCOVPlaybackSession from automatically associating its 
- * internal AVPlayerLayer with an external AVPlayerLayer.
+ * to YES will prevent the BCOVPlaybackSession from using its own AVPlayerLayer
+ * so that you can use the AVPlayerViewController class for presentation.
  */
 extern NSString * const kBCOVAVPlayerViewControllerCompatibilityKey;
 

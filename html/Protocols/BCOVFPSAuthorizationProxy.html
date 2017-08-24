@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>BCOVFPSAuthorizationProxy Protocol Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Brightcove Native Player for iOS </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Brightcove</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/contentIdentifierFromLoadingRequest:">- contentIdentifierFromLoadingRequest:</option>
+		
+		<option value="//api/name/encryptedContentKeyForContentKeyIdentifier:contentKeyRequest:source:options:completionHandler:">- encryptedContentKeyForContentKeyIdentifier:contentKeyRequest:source:options:completionHandler:</option>
+		
+		<option value="//api/name/encryptedContentKeyForLoadingRequest:contentKeyRequest:source:completionHandler:">- encryptedContentKeyForLoadingRequest:contentKeyRequest:source:completionHandler:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BCOVFPSAuthorizationProxy Protocol Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Conforms to</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>BCOVFPSAuthorizationProxy.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Implement this protocol when interacting with a custom FPS license server.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/contentIdentifierFromLoadingRequest:" title="contentIdentifierFromLoadingRequest:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/contentIdentifierFromLoadingRequest:">&ndash;&nbsp;contentIdentifierFromLoadingRequest:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Optional method.
+Implement this method to handle retrieving the content identifier from the loading request.
+This is called for each asset.
+No guarantee is made as to the thread that this is called on.
+You should return the content identifier corresponding to this loading request.
+This is typically extracted from the &ldquo;sdk://&hellip;&rdquo; URL in loadingRequest.request.URL.
+The content identifier will be passed to [AVAssetResourceLoadingRequest streamingContentKeyRequestDataForApp:contentIdentifier:options:error:]
+to retrieve the SPC.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nullable NSData *)contentIdentifierFromLoadingRequest:(nonnull AVAssetResourceLoadingRequest *)<em>loadingRequest</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>loadingRequest</code></th>
+						<td><p>The skd:// loading request made for the asset.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Optional method.
+Implement this method to handle retrieving the content identifier from the loading request.
+This is called for each asset.
+No guarantee is made as to the thread that this is called on.
+You should return the content identifier corresponding to this loading request.
+This is typically extracted from the &ldquo;sdk://&hellip;&rdquo; URL in loadingRequest.request.URL.
+The content identifier will be passed to [AVAssetResourceLoadingRequest streamingContentKeyRequestDataForApp:contentIdentifier:options:error:]
+to retrieve the SPC.</p>
+
+<p>If this method is not provided, the default method will be used. The default method
+removes &ldquo;skd://&rdquo; from loadingRequest.request.URL to generate the content identifier.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVFPSAuthorizationProxy.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/encryptedContentKeyForLoadingRequest:contentKeyRequest:source:completionHandler:" title="encryptedContentKeyForLoadingRequest:contentKeyRequest:source:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/encryptedContentKeyForLoadingRequest:contentKeyRequest:source:completionHandler:">&ndash;&nbsp;encryptedContentKeyForLoadingRequest:contentKeyRequest:source:completionHandler:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Implement this method to handle retrieving the content key. This is called for each asset.
+No guarantee is made as to the thread that this is called on.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)encryptedContentKeyForLoadingRequest:(nonnull AVAssetResourceLoadingRequest *)<em>loadingRequest</em> contentKeyRequest:(nonnull NSData *)<em>keyRequest</em> source:(nonnull BCOVSource *)<em>source</em> completionHandler:(nonnull void ( ^ ) ( NSURLResponse *__nullable response , NSData *__nullable contentKey , NSError *__nullable error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>loadingRequest</code></th>
+						<td><p>The &ldquo;skd://&hellip;&rdquo; loading request made for the asset.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>keyRequest</code></th>
+						<td><p>The key request data returned by [AVAssetResourceLoadingRequest streamingContentKeyRequestDataForApp:contentIdentifier:options:error:].</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>source</code></th>
+						<td><p>The <a href="../Classes/BCOVSource.html">BCOVSource</a> used to make this request</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>The completion handler to return the content key. If returning an error, you must leave the contentkey and response parameters nil.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Implement this method to handle retrieving the content key. This is called for each asset.
+No guarantee is made as to the thread that this is called on.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVFPSAuthorizationProxy.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/encryptedContentKeyForContentKeyIdentifier:contentKeyRequest:source:options:completionHandler:" title="encryptedContentKeyForContentKeyIdentifier:contentKeyRequest:source:options:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/encryptedContentKeyForContentKeyIdentifier:contentKeyRequest:source:options:completionHandler:">&ndash;&nbsp;encryptedContentKeyForContentKeyIdentifier:contentKeyRequest:source:options:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Implement this method to handle retrieving the content key for a video that
+is being downloaded for offline playback. This is called for each asset.
+No guarantee is made as to the thread that this is called on.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)encryptedContentKeyForContentKeyIdentifier:(nonnull NSString *)<em>contentKeyIdentifier</em> contentKeyRequest:(nonnull NSData *)<em>keyRequest</em> source:(nonnull BCOVSource *)<em>source</em> options:(nullable NSDictionary *)<em>options</em> completionHandler:(nonnull void ( ^ ) ( NSURLResponse *__nullable response , NSData *__nullable contentKey , NSError *__nullable error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>contentKeyIdentifier</code></th>
+						<td><p>The &ldquo;skd://&hellip;&rdquo; loading request URL string made for the asset.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>keyRequest</code></th>
+						<td><p>The key request data returned by [AVAssetResourceLoadingRequest streamingContentKeyRequestDataForApp:contentIdentifier:options:error:].</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>source</code></th>
+						<td><p>The <a href="../Classes/BCOVSource.html">BCOVSource</a> used to make this request</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>options</code></th>
+						<td><p>The parameters originally passed to <code>-</code>BCOVOfflineVideoManager<code> requestVideoDownload:parameters:completion:</code></p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>The completion handler to return the content key. If returning an error, you must leave the contentkey and response parameters nil.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Implement this method to handle retrieving the content key for a video that
+is being downloaded for offline playback. This is called for each asset.
+No guarantee is made as to the thread that this is called on.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVFPSAuthorizationProxy.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-08-24</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
