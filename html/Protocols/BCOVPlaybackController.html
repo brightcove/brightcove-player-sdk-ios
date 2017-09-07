@@ -60,6 +60,8 @@
 		
 		<option value="//api/name/allowsBackgroundAudioPlayback">allowsBackgroundAudioPlayback</option>
 		
+		<option value="//api/name/allowsExternalPlayback">allowsExternalPlayback</option>
+		
 		<option value="//api/name/analytics">analytics</option>
 		
 		<option value="//api/name/autoAdvance">autoAdvance</option>
@@ -75,6 +77,8 @@
 		<option value="//api/name/shutter">shutter</option>
 		
 		<option value="//api/name/shutterFadeTime">shutterFadeTime</option>
+		
+		<option value="//api/name/usesExternalPlaybackWhileExternalScreenIsActive">usesExternalPlaybackWhileExternalScreenIsActive</option>
 		
 		<option value="//api/name/view">view</option>
 		
@@ -111,8 +115,6 @@
 		<option value="//api/name/seekToTime:toleranceBefore:toleranceAfter:completionHandler:">- seekToTime:toleranceBefore:toleranceAfter:completionHandler:</option>
 		
 		<option value="//api/name/seekWithoutAds:completionHandler:">- seekWithoutAds:completionHandler:</option>
-		
-		<option value="//api/name/setAllowsExternalPlayback:">- setAllowsExternalPlayback:</option>
 		
 		<option value="//api/name/setVideos:">- setVideos:</option>
 		
@@ -598,6 +600,104 @@ for the kBCOVPlaybackSessionLifecycleEventReady event.</p>
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/allowsExternalPlayback" title="allowsExternalPlayback"></a>
+	<h3 class="method-title"><code><a href="#//api/name/allowsExternalPlayback">&nbsp;&nbsp;allowsExternalPlayback</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The allowsExternalPlayback property of the current playback session&rsquo;s AVPlayer,
+as well as that of any subsequent sessions, is set to this value.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) BOOL allowsExternalPlayback</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The allowsExternalPlayback property of the current playback session&rsquo;s AVPlayer,
+as well as that of any subsequent sessions, is set to this value.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/usesExternalPlaybackWhileExternalScreenIsActive" title="usesExternalPlaybackWhileExternalScreenIsActive"></a>
+	<h3 class="method-title"><code><a href="#//api/name/usesExternalPlaybackWhileExternalScreenIsActive">&nbsp;&nbsp;usesExternalPlaybackWhileExternalScreenIsActive</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The usesExternalPlaybackWhileExternalScreenIsActive property of the current
+playback session&rsquo;s AVPlayer, as well as that of any subsequent sessions, is set to
+this value. This property has no effect if <a href="#//api/name/allowsExternalPlayback">allowsExternalPlayback</a> is false.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) BOOL usesExternalPlaybackWhileExternalScreenIsActive</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The usesExternalPlaybackWhileExternalScreenIsActive property of the current
+playback session&rsquo;s AVPlayer, as well as that of any subsequent sessions, is set to
+this value. This property has no effect if <a href="#//api/name/allowsExternalPlayback">allowsExternalPlayback</a> is false.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/pictureInPictureActive" title="pictureInPictureActive"></a>
 	<h3 class="method-title"><code><a href="#//api/name/pictureInPictureActive">&nbsp;&nbsp;pictureInPictureActive</a></code>
 <span class="task-item-suffix">required method</span></h3>
@@ -913,69 +1013,6 @@ no longer be given new sessions to consume.</p>
 				<p>Removes a session consumer from the container. The effect of this is that
 the container releases its ownership of the consumer, and the consumer will
 no longer be given new sessions to consume.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/setAllowsExternalPlayback:" title="setAllowsExternalPlayback:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/setAllowsExternalPlayback:">&ndash;&nbsp;setAllowsExternalPlayback:</a></code>
-<span class="task-item-suffix">required method</span></h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Specifies that the current playback session&rsquo;s player, as well the player of
-any subsequent sessions (until this property is set to a different value),
-should have external playback enabled.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)setAllowsExternalPlayback:(BOOL)<em>allowsExternalPlayback</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>allowsExternalPlayback</code></th>
-						<td><p>Whether players should have external playback
-enabled.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Specifies that the current playback session&rsquo;s player, as well the player of
-any subsequent sessions (until this property is set to a different value),
-should have external playback enabled.</p>
 			</div>
 			
 
@@ -1706,7 +1743,7 @@ set this param to the acount ID.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-08-24</p>
+						<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-09-07</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

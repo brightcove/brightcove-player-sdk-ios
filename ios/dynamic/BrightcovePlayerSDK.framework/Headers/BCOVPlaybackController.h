@@ -302,6 +302,19 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 @property (nonatomic, readwrite) BOOL allowsBackgroundAudioPlayback;
 
 /**
+ * The allowsExternalPlayback property of the current playback session's AVPlayer,
+ * as well as that of any subsequent sessions, is set to this value.
+ */
+@property (nonatomic, readwrite) BOOL allowsExternalPlayback;
+
+/**
+ * The usesExternalPlaybackWhileExternalScreenIsActive property of the current
+ * playback session's AVPlayer, as well as that of any subsequent sessions, is set to
+ * this value. This property has no effect if allowsExternalPlayback is false.
+ */
+@property (nonatomic, readwrite) BOOL usesExternalPlaybackWhileExternalScreenIsActive;
+
+/**
  * Set this to YES if picture-in-picture becomes active, and NO when it deactivates.
  *
  * This only needs to be toggled if allowsBackgroundAudioPlayback is set to
@@ -355,16 +368,6 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * @param consumer The session consumer being removed from the container.
  */
 - (void)removeSessionConsumer:(id<BCOVPlaybackSessionConsumer>)consumer;
-
-/**
- * Specifies that the current playback session's player, as well the player of
- * any subsequent sessions (until this property is set to a different value),
- * should have external playback enabled.
- *
- * @param allowsExternalPlayback Whether players should have external playback
- * enabled.
- */
-- (void)setAllowsExternalPlayback:(BOOL)allowsExternalPlayback;
 
 /**
  * Instructs this instance to advance to the next playback session. This has no

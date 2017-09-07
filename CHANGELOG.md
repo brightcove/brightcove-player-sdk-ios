@@ -1,8 +1,24 @@
+## Release 6.0.6
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* The `BCOVPlaybackController` protocol has a new `usesExternalPlaybackWhileExternalScreenIsActive` property. Setting this `BOOL` property sets the similarly named `usesExternalPlaybackWhileExternalScreenIsActive` property of the current playback session's AVPlayer, as well as that of any subsequent sessions. This property has no effect if `allowsExternalPlayback` is false.
+* The `BCOVPlaybackController` protocol's `-setAllowsExternalPlayback:` method has been turned into the `BOOL allowsExternalPlayback` property.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports version 3.6.0 of the Google IMA iOS SDK Framework.
+
 ## Release 6.0.5
 
 #### Additions and Improvements
 
 * Fixes an issue where dynamic frameworks were missing bitcode.
+
 
 ### Brightcove Player SDK for iOS (Core)
 
