@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.0.6.129
+# Brightcove Player SDK for iOS, version 6.1.0.156
 
 
 # Table of Contents
@@ -25,6 +25,7 @@
 1. [Retrieving Brightcove Assets Using the Playback Service](#PlaybackService)
 1. [View Strategy](#ViewStrategy)
 1. [Playing Video In The Background and Picture In Picture](#BackgroundPIP)
+1. [Tracking Errors](#TrackingErrors)
 1. [Combining Plugins](#CombiningPlugins)
 1. [Buffer Optimization](#BufferOptimization)
 1. [Using an AVPlayerViewController with a BCOVPlaybackController](#AVPlayerViewController)
@@ -88,7 +89,7 @@ For full details about using Sidecar Subtitles with the Brightcove Native Player
 Video Downloads and Offline Playback
 --------------
 
-As of version 6.0.0, the Brightcove Native Player SDK allows you to download HLS videos encrypted with FairPlay, and play them back while online or offline. Please see our app developer's guide for full details:
+As of version 6.0.0, the Brightcove Native Player SDK allows you to download HLS videos, including those protected with FairPlay encryption, and play them back while online or offline. Please see our app developer's guide for full details:
 
 [iOS App Developer's Guide to Video Downloading and Offline Playback with FairPlay](OfflinePlayback.md)
 
@@ -838,6 +839,18 @@ Finally, when playing background videos (and particularly when using playlists),
 **Important Picture in Picture Note:** When you want to support background audio and Picture in Picture on the same player, you must update the `pictureInPictureActive` property on `BCOVPlaybackController` with the Picture in Picture status. If you are using the `AVPictureInPictureController`, you can use the `pictureInPictureControllerDidStartPictureInPicture:` and `pictureInPictureControllerDidStopPictureInPicture:` delegate methods to update this property.
 
 [tqa1668]: https://developer.apple.com/library/ios/qa/qa1668
+
+Tracking Errors <a name="TrackingErrors"></a>
+-----
+
+Playback errors are typically handled and reported through video playback events from the playback controller. If you need to dig deeper and track problems with particular videos or app sessions, you can take advantage of the Brightcove Player SDK's *session ID*. The session ID is a property of the `BCOVPlayerSDKManager` that you can retrieve like this:
+
+```
+NSString *sdkSessionID = BCOVPlayerSDKManager.sharedManager.sessionID;
+```
+
+The session ID is a unique string that does not change during the app life cycle. This string is reported with various other analytics data to the Brightcove metrics servers. If you are having problems with a particular app instance, or video, you can record the session ID and send it back to your own company servers. Then you can send the session ID, video ID, and any other pertinent data to Brightcove service engineers to help diagnose any issues.
+
 
 Combining Plugins <a name="CombiningPlugins"></a>
 -----

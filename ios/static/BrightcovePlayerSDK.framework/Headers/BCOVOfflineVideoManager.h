@@ -265,7 +265,7 @@ extern NSString * const kBCOVOfflineVideoPosterFilePathPropertyKey;
 /**
  * kBCOVOfflineVideoRelativeFilePathPropertyKey
  * BCOVVideo properties key that stores the relative file path
- * of the downloaded FairPlay video bundle in device storage, as an NSString.
+ * of the downloaded HLS video bundle in device storage, as an NSString.
  * This path is used to generate the full path of the file at runtime.
  */
 extern NSString * const kBCOVOfflineVideoRelativeFilePathPropertyKey;
@@ -273,7 +273,7 @@ extern NSString * const kBCOVOfflineVideoRelativeFilePathPropertyKey;
 /**
  * kBCOVOfflineVideoFilePathPropertyKey
  * BCOVVideo properties key that stores the full path to the
- * downloaded FairPlay video bundle in device storage, as an NSString.
+ * downloaded HLS video bundle in device storage, as an NSString.
  * Due to app sandboxing, this path will likely change each time
  * the app is launched, so you should not store the full path.
  */
@@ -588,6 +588,8 @@ typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
  * Returns an array of the status of all video downloads,
  * including videos that are currently being downloaded,
  * and videos that were cancelled, paused, or failed.
+ * All objects in the array are copies, so although you can modify an object,
+ * it will have no effect on the download manager.
  *
  * This provides information about each download, like the download status,
  * start time, progress percent, underlying AVAssetDownloadTask,
@@ -596,7 +598,7 @@ typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
 - (NSArray <BCOVOfflineVideoStatus *> *)offlineVideoStatus;
 
 /**
- * Returns the BCOVOfflineVideoStatus object for a specific video download.
+ * Returns a copy of the BCOVOfflineVideoStatus object for a specific video download.
  * This provides information about the download, like the download status,
  * start time, progress percent, underlying AVAssetDownloadTask,
  * and error (if any when complete).
@@ -609,7 +611,8 @@ typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
 
 /**
  * Preload the FairPlay license before a video download begins.
- * This should only be called on iOS 10.3 and later.
+ * This may only be called on iOS 10.3 and later.
+ * This will return an error if the video does not have a FairPlay source.
  * When downloading multiple FairPlay-protected videos, you should call this
  * method for each video to acquire a license for each one before beginning
  * any of the downloads. This ensures that videos can be properly stored even
@@ -640,11 +643,11 @@ typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
  * needed application certificates to the BCOVOfflineVideoManger before
  * iniitiating a download, using -[addFairPlayApplicationCertificate:identifier:].
  *
- *  @param video    BCOVVideo to be downloaded. The video should have a source
- *                  that uses FairPlay encryption and the HTTPS scheme.
- *
+ *  @param video    BCOVVideo to be downloaded. The video should have an HLS
+ *                  source with an HTTPS scheme, and may use FairPlay encryption.
  *  @param parameters
  *                  NSDictionary of parameters used in this download request.
+ *                  May be nil.
  *                  Valid parameters are:
  *                  - kBCOVOfflineVideoManagerRequestedBitrateKey
  *                  - kBCOVFairPlayLicensePurchaseKey
@@ -709,8 +712,10 @@ typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
 
 /**
  * This method is used to add a FairPlay application certificate to the
- * playback controller's list of available FairPlay application certificates.
- * Certificates will be retained for the life of the playback controller.
+ * Offline Video Manager's list of available FairPlay application certificates.
+ * Certificates will be retained for the life of the application.
+ * To remove a certificate, add the same identifier with a nil as the
+ * certificate data.
  *
  * If you are using Dynamic Delivery, application certificates are retrieved
  * automatically by the FairPlay plugin, so this method is not needed.

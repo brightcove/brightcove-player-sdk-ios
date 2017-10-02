@@ -1,13 +1,13 @@
-iOS App Developer's Guide to Video Downloading and Offline Playback with FairPlay in the Brightcove Player SDK for iOS, version 6.0.6.129
+iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.1.0.156
 --------------
 
-The Brightcove Native Player SDK allows you to download and play back HLS videos protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
+The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
 
 ### Requirements:
 
 - iOS 10.0+
 - Brightcove Native Player SDK v6.0.0+
-- Brightcove Dynamic Delivery
+- Brightcove Account with Dynamic Delivery
 
 iOS does not allow FairPlay-protected video to display in a simulator, nor does it allow video downloads to a simulator, so it's important to develop on an actual device.
 
@@ -17,7 +17,7 @@ When you request a video download, you will be given a token that is used to kee
 
 Videos are stored in the app's Library directory, in a subdirectory determined by iOS. Apple specifically requires that these videos stay in this location. Be aware that videos can be deleted by iOS under low-storage conditions, and starting with iOS 11, users can delete downloaded videos directly from the iOS Settings app. Also, videos and their associated metadata are not backed up to iCloud.
 
-The FairPlay license can be requested either when the video download is requested, or preloaded ahead of time with a separate method call. You can specify either a purchase license, or a rental license with an associated rental duration. The license rental duration begins from the moment the request is made with the license server.
+A FairPlay license can be requested either when the video download is requested, or preloaded ahead of time with a separate method call. You can specify either a purchase license, or a rental license with an associated rental duration. The license rental duration begins from the moment the request is made with the license server.
 
 When a download begins, you can receive notification of progress and completion by setting your own class as a delegate of the `BCOVOfflineVideoManager` singleton object. Be sure that your object inherits the `BCOVOfflineVideoManagerDelegate` protocol.
 
@@ -50,7 +50,7 @@ If you want to change the `kBCOVOfflineVideoManagerAllowsCellularDownloadKey` va
 
 ### Check If A Video Can Be Downloaded
 
-In your user interface, you should indicate if a video is eligible for download. To do this,  examine the `BCOVVideo.canBeDownloaded` property. This Boolean property checks the status of the video's `offline_enabled` flag that is settable through the [Brightcove CMS API](http://docs.brightcove.com/en/video-cloud/cms-api/getting-started/overview-cms.html).
+In your user interface, you should indicate if a video is eligible for download. To do this,  examine the `BCOVVideo.canBeDownloaded` property. This Boolean property checks the status of the video's `offline_enabled` flag that is settable through the [Brightcove CMS API](https://support.brightcove.com/overview-cms-api).
 
 ### Download A Video
 
@@ -69,7 +69,7 @@ When a user requests a video download, call
 
 The video parameter is a normal `BCOVVideo` object that you get by querying the `BCOVPlaybackService`. You should make sure that its `canBeDownloaded` property is `YES` before downloading.
 
-The parameters argument is an `NSDictionary` in which you specify the license terms, preferred bitrate, and other values. For example, to request a license with a 30 day rental duration, you would use this:
+The parameters argument is an `NSDictionary` in which you specify the terms for the offline FairPlay license, preferred bitrate, and other values. For example, to request a license with a 30 day rental duration, you would use this:
 
 ```
 parameters = @{
@@ -82,7 +82,7 @@ The completion handler is where you asynchronously receive the offline video tok
 
 ### Preload A FairPLay license
 
-If you plan to download multiple videos, it's a good idea to prelaod all the FairPlay licenses beforehand, because FairPlay license exchange cannot happen while the app is in the background. In iOS 10.3 and later, request a FairPlay license with a similar call:
+If you plan to download multiple FairPlay-protected videos, it's a good idea to prelaod all the FairPlay licenses beforehand, because FairPlay license exchange cannot happen while the app is in the background. In iOS 10.3 and later, preload a FairPlay license with a similar call:
 
 ```
 [BCOVOfflineVideoManager.sharedManager
@@ -107,7 +107,7 @@ An offline video token will be established for the download at this point. After
 }];
 ```
 
-At this point, the download will continue even if the user sends the app to the background. Keep in mind, however, that a FairPlay license rental duration begins from the point at which the license is requested.
+At this point, the download will continue even if the user sends the app to the background. Keep in mind, however, that a FairPlay license rental duration begins from the time when the license is requested.
 
 In iOS 10.2 and earlier, license prelaoding is not possible. It's important to make sure that a video begins downloading before allowing the user to move the app to the background; this ensures that the FairPlay license has been established. To prevent issues with background license exchange we recommending limiting downloads to one or two videos at a time on iOS 10.2 and earlier.
 
@@ -261,7 +261,7 @@ For any given offline video token, you can determine its status by calling `[BCO
 - Progress (percentage)
 - Associated `AVAssetDownloadTask` (if the download is still in progress)
 
-This call is essential for providing feedback in the user interface about what each download is doing.
+This call is essential for providing feedback in your user interface about what each download is doing.
 
 To get information about the status of all offline videos at once, use the `BCOVOfflineVideoManager.offlineVideoStatus` property. This returns an array of `BCOVOfflineVideoStatus` objects, one for each offline video.
 
@@ -357,9 +357,9 @@ When playing back the video, you can select the subtitle to present by setting i
 
 ### Play Back Offline Videos
 
-To play an offline video, convert the offline video token to a `BCOVVideo` object, and then play the video as you would any normal online FairPlay video. Since videos can be deleted without warning by iOS (or in iOS 11, the user), it's a good idea to check that the video is playable.
+To play an offline video, convert the offline video token to a `BCOVVideo` object, and then play the video as you would any normal online video object. Since videos can be deleted without warning by iOS (or in iOS 11, the user), it's a good idea to check that the video is playable.
 
-First, here's how you might create the playback controller in your setup code:
+Here's how you might create the playback controller in your setup code for playing FairPlay videos:
 
 ```
 BCOVPlayerSDKManager *sdkManager = [BCOVPlayerSDKManager sharedManager];
@@ -417,7 +417,7 @@ The same application certificate is used across each Brightcove account, so ther
 
 iOS allows HLS video downloads to run in a background thread, even if an app is suspended or terminated under certain conditions.
 
-The `BCOVOfflineVideoManager` will restore downloads whenever possible, but it is important to understand the limitations.
+When an app is relaunched, `BCOVOfflineVideoManager` will restore downloads whenever possible, but it is important to understand the limitations.
 
 After an app is terminated, the SDK can recover downloads in progress in the following cases:
 
@@ -429,8 +429,8 @@ After an app is terminated, the SDK can recover downloads in progress in the fol
 The SDK can't recover downloads in progress when:
 
 - Running with Xcode (when Xcode terminates the process)
-- Termination via the App Switcher (double-home-press and slide up)
-- Termination while app is suspended and the device reboots
+- Termination via the App Switcher (e.g., on devices with a home button, a double-home-press and slide up)
+- Termination while the app is suspended and the device reboots
 
 Downloads are restored once during the call to `initializeOfflineVideoManagerWithDelegate:options:`. Downloads that cannot be recovered will be reported immediately through the normal delegate methods; at this point you can delete them like any other video.
 
@@ -444,10 +444,7 @@ With either technique, it's a good idea to preload any FairPlay licenses before 
 
 It's possible to download multiple videos at the same time, but performance may take a hit, so it's probably not a good idea to download more than a couple of videos at the same time.
 
-
-
-
-When you request a video download, the first thing that happens is FairPlay license generation and key exchange. After this, the download proceeds to completion.
+When you request a video download, the first thing that happens is FairPlay license generation and key exchange, if needed. After this, the download proceeds to completion.
 
 If you request multiple downloads at the same time, it may take a while for the licence and key requests for some of the videos to begin processing and/or complete. It's important that the key exchange for all the videos happen before allowing the user to move the app to the background.
 
@@ -474,11 +471,11 @@ While a movie is downloading, you can play the movie by passing a `BCOVVideo` ob
 
 Doing this has several potentially unexpected side effects:
 
-- When you start playing, progress on the download task may stop. The `AVPlayer` appears to take over all network activity to give priority to buffering and displaying the playing video. This is normal.
+- When you start playing, progress on the download task may stop. The `AVPlayer` appears to take over all network activity to give priority to buffering and displaying the playing video. This is normal behavior.
 
 - When you stop playing, the download task may not resume. This will happen if the video's session is still active in the `BCOVPlaybackController`. To clear out the current session, you can play a new video, or delete the playback controller. Be sure you don't store the current session in a strong property.
 
-- In iOS 10.x, when you begin playback of a video that is downloading, the `AVPlayer` may initially seek to the end of the video, requiring the user to manually seek back to the beginning. This does not appear to be expected behavior, as it appears to work normally in the latest versions of iOS 11.
+- In iOS 10.x, when you begin playback of a video that is downloading, the `AVPlayer` may initially seek to the end of the video, requiring the user to manually seek back to the beginning. This is an AVFoundation bug and works normally in the latest versions of iOS 11.
 
 ### AirPlay
 
@@ -500,4 +497,4 @@ To provide a more customized experience, you can set a display name for the vide
 
 Note that iOS uses the asset name string as part of the downloaded video's file path, so you should avoid characters that would not be valid in a POSIX path, like a "/" character.
 
-Also note that iOS 10 does not handle unicode names properly, so on iOS 10, any unicode strings will instead use the offline video token as the display name. You may choose to replace these with more standardized names using the `kBCOVOfflineVideoManagerDisplayNameKey` option.
+Also note that iOS 10 does not handle all unicode names properly, so on iOS 10, any unicode strings will instead use the offline video token as the display name. You may choose to replace these with more standardized names using the `kBCOVOfflineVideoManagerDisplayNameKey` option.

@@ -200,4 +200,43 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyOffset;
  */
 - (void)findVideoWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
 
+/**
+ * Initializes a source from the JSON dictionary. Properties that don't map to
+ * first class properties on the source are added to the properties dictionary.
+ *
+ * @param json Dictionary representing the deserialized source.
+ * @return The initialized source.
+ */
++ (BCOVSource *)sourceFromJSONDictionary:(NSDictionary *)json;
+
+/**
+ * Initializes a cue point from the JSON dictionary. Properties that don't
+ * map to first class properties on cue point are added to the properties
+ * dictionary.
+ *
+ * @param json Dictionary representing the deserialized cuepoint.
+ * @return The initialized cue point.
+ */
++ (BCOVCuePoint *)cuePointFromJSONDictionary:(NSDictionary *)json;
+
+/**
+ * Initializes a playlist from the JSON dictionary. Properties that don't
+ * map to first class properties on playlist are added to the properties
+ * dictionary.
+ *
+ * @param json Dictionary representing the deserialized playlist.
+ * @return The initialized playlist.
+ */
++ (BCOVPlaylist *)playlistFromJSONDictionary:(NSDictionary *)json;
+
+/**
+ * Initializes a video from the JSON dictionary. Properties that don't
+ * map to first class properties on video are added to the properties
+ * dictionary.
+ *
+ * @param json Dictionary representing the deserialized video.
+ * @return The initialized video.
+ */
++ (BCOVVideo *)videoFromJSONDictionary:(NSDictionary *)json;
+
 @end

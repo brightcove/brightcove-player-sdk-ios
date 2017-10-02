@@ -1,3 +1,26 @@
+## Release 6.1.0
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+* Adds support for downloading and playing back clear (non-DRM) video content from Video Cloud accounts using Dynamic Delivery. Previously only FairPlay-protected content could be downloaded.
+* Fixes an issue on iOS 11 where downloaded FairPlay videos would not play back until the app was restarted.
+* The `BCOVVideo` class has a new BOOL `usesFairPlay` property that returns YES if the video contains a FairPlay-encrypted source. This only applies to videos retrieved from a Dynamic Delivery account.
+* The `BCOVPlayerSDKManager` singleton class has a new `sessionID` property. This `NSString *` property is a unique read-only value that remains constant until the app is relaunched. This value is sent with all analytics reports and can be used to help diagnose playback issues. Please see the "Tracking Errors" section of the README for full details.
+* The `BCOVPlaybackService` class has four new method for converting JSON response data from the Playback Service API. These methods are useful if you need to retrieve data from the Playback Service API (through a proxy server, for example) and then convert them to objects you can work with in the SDK. These methods work identically to the methods found in the `BCOVCatalogService` class with the same names:
+	* `+ (BCOVSource *)sourceFromJSONDictionary:(NSDictionary *)json`
+	* `+ (BCOVCuePoint *)cuePointFromJSONDictionary:(NSDictionary *)json`
+	* `+ (BCOVPlaylist *)playlistFromJSONDictionary:(NSDictionary *)json`
+	* `+ (BCOVVideo *)videoFromJSONDictionary:(NSDictionary *)json`
+* The `BCOVPUIAdControlView` class is now fully declared in BCOVPUIAdControlView.h so that you can use the `BCOVPUIPlayerView` property `adControlsView`. Previously, `BCOVPUIAdControlView` was only a forward class declaration.
+
+
+### FreeWheel Plugin for Brightcove Player SDK for iOS
+
+#### Breaking Changes
+
+* Release 6.1.0 of the FreeWheel Plugin adds support for version 6.17.5 of the FreeWheel SDK, which introduces several deprecations and new classes. As a result, the return type of `BCOVFWSessionProviderAdContextPolicy` has changed from `id<FWContext>` to `BCOVFWContext*`. Please see the "Quick Start" section of the FreeWheel Plugin README, and the iOS Player Samples, for full details.
+
 ## Release 6.0.6
 
 ### Brightcove Player SDK for iOS (Core)

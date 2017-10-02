@@ -33,6 +33,9 @@ extern NSString * const kBCOVSourceDeliveryMP4;
 
 /**
  * The delivery method for DASH media.
+ * DASH is not a supported playback format on iOS.
+ * This constant can help you identify DASH sources if you need to
+ * parse JSON responses from the Playback API manually.
  */
 extern NSString * const kBCOVSourceDeliveryDASH;
 

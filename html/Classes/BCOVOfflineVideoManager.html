@@ -742,7 +742,9 @@ and <code>size</code> will be zero.</p>
 			<div class="method-subsection brief-description">
 				<p>Returns an array of the status of all video downloads,
 including videos that are currently being downloaded,
-and videos that were cancelled, paused, or failed.</p>
+and videos that were cancelled, paused, or failed.
+All objects in the array are copies, so although you can modify an object,
+it will have no effect on the download manager.</p>
 			</div>
 			
 		    
@@ -761,7 +763,9 @@ and videos that were cancelled, paused, or failed.</p>
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Returns an array of the status of all video downloads,
 including videos that are currently being downloaded,
-and videos that were cancelled, paused, or failed.</p>
+and videos that were cancelled, paused, or failed.
+All objects in the array are copies, so although you can modify an object,
+it will have no effect on the download manager.</p>
 
 <p>This provides information about each download, like the download status,
 start time, progress percent, underlying AVAssetDownloadTask,
@@ -794,7 +798,7 @@ and error (if any when complete).</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Returns the <a href="../Classes/BCOVOfflineVideoStatus.html">BCOVOfflineVideoStatus</a> object for a specific video download.
+				<p>Returns a copy of the <a href="../Classes/BCOVOfflineVideoStatus.html">BCOVOfflineVideoStatus</a> object for a specific video download.
 This provides information about the download, like the download status,
 start time, progress percent, underlying AVAssetDownloadTask,
 and error (if any when complete).</p>
@@ -814,7 +818,7 @@ and error (if any when complete).</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns the <a href="../Classes/BCOVOfflineVideoStatus.html">BCOVOfflineVideoStatus</a> object for a specific video download.
+				<p>Returns a copy of the <a href="../Classes/BCOVOfflineVideoStatus.html">BCOVOfflineVideoStatus</a> object for a specific video download.
 This provides information about the download, like the download status,
 start time, progress percent, underlying AVAssetDownloadTask,
 and error (if any when complete).</p>
@@ -850,7 +854,8 @@ Offline video token used to identify the downloaded video.</p>
 			
 			<div class="method-subsection brief-description">
 				<p>Preload the FairPlay license before a video download begins.
-This should only be called on iOS 10.3 and later.
+This may only be called on iOS 10.3 and later.
+This will return an error if the video does not have a FairPlay source.
 When downloading multiple FairPlay-protected videos, you should call this
 method for each video to acquire a license for each one before beginning
 any of the downloads. This ensures that videos can be properly stored even
@@ -895,7 +900,8 @@ be nil, and error will report any NSError.</p></td>
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Preload the FairPlay license before a video download begins.
-This should only be called on iOS 10.3 and later.
+This may only be called on iOS 10.3 and later.
+This will return an error if the video does not have a FairPlay source.
 When downloading multiple FairPlay-protected videos, you should call this
 method for each video to acquire a license for each one before beginning
 any of the downloads. This ensures that videos can be properly stored even
@@ -948,11 +954,11 @@ iniitiating a download, using -[addFairPlayApplicationCertificate:identifier:].<
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>video</code></th>
-						<td><p><a href="../Classes/BCOVVideo.html">BCOVVideo</a> to be downloaded. The video should have a source
-that uses FairPlay encryption and the HTTPS scheme.</p>
-
-<p>@param parameters
+						<td><p><a href="../Classes/BCOVVideo.html">BCOVVideo</a> to be downloaded. The video should have an HLS
+source with an HTTPS scheme, and may use FairPlay encryption.
+@param parameters
 NSDictionary of parameters used in this download request.
+May be nil.
 Valid parameters are:
 - kBCOVOfflineVideoManagerRequestedBitrateKey
 - kBCOVFairPlayLicensePurchaseKey
@@ -1262,8 +1268,10 @@ Offline video token used to identify the downloaded video.</p>
 			
 			<div class="method-subsection brief-description">
 				<p>This method is used to add a FairPlay application certificate to the
-playback controller&rsquo;s list of available FairPlay application certificates.
-Certificates will be retained for the life of the playback controller.</p>
+Offline Video Manager&rsquo;s list of available FairPlay application certificates.
+Certificates will be retained for the life of the application.
+To remove a certificate, add the same identifier with a nil as the
+certificate data.</p>
 			</div>
 			
 		    
@@ -1281,8 +1289,10 @@ Certificates will be retained for the life of the playback controller.</p>
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>This method is used to add a FairPlay application certificate to the
-playback controller&rsquo;s list of available FairPlay application certificates.
-Certificates will be retained for the life of the playback controller.</p>
+Offline Video Manager&rsquo;s list of available FairPlay application certificates.
+Certificates will be retained for the life of the application.
+To remove a certificate, add the same identifier with a nil as the
+certificate data.</p>
 
 <p>If you are using Dynamic Delivery, application certificates are retrieved
 automatically by the FairPlay plugin, so this method is not needed.
@@ -1335,7 +1345,7 @@ set this param to the acount ID.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-09-07</p>
+						<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-10-02</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

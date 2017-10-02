@@ -18,7 +18,7 @@
 
 
 /** Width value passed to layoutViewWithControlFromTag:width:elasticity
- *  to indicate that the default width for the control shoudl be used. */
+ *  to indicate that the default width for the control should be used. */
 extern CGFloat kBCOVPUILayoutUseDefaultValue;
 
 /**
@@ -267,5 +267,3 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
 + (UIView *)createPUIControlItemWithViewTag:(BCOVPUIViewTag)tag;
 
 @end
-
-

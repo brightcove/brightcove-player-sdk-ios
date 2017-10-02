@@ -100,6 +100,12 @@ extern NSString * const kBCOVVideoPropertyKeyId;
 @property (nonatomic, readonly) BOOL canBeDownloaded;
 
 /**
+ * Returns YES if this video object has a source using FairPlay encryption
+ * This applies to videos retrieved from Dynamic Delivery accounts only.
+ */
+@property (nonatomic, readonly) BOOL usesFairPlay;
+
+/**
  * Returns YES if this instance refers to an offline video.
  * Use the `playableOffline` property to determine if the
  * video is playable offline.

@@ -341,6 +341,8 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
 
 /**
  * Advertising controls view. This view is a subview of the controlsStaticView.
+ * This view holds the on-screen controls such as the ad countdown text,
+ * the "learn more" button, and the "skip button".
  */
 @property (nonatomic, readonly) BCOVPUIAdControlView *adControlsView;
 

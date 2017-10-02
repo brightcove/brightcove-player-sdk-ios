@@ -25,6 +25,19 @@
 @interface BCOVPlayerSDKManager : NSObject
 
 /**
+ * sessionID is a unique identifier associated with this instance
+ * of the application. This identifier is sent along with other
+ * analytics data to the Brightcove metrics servers.
+ *
+ * The sessionID can be useful when trying to track down problems with
+ * particular playback issues. For example, if you detect playback issues,
+ * you can send the sessionID and the video ID to your own error tracking
+ * server, and then report those two values to Brightcove service engineers
+ * to track down the source of the problem in the server logs.
+ */
+@property (nonatomic, readonly, strong) NSString *sessionID;
+
+/**
  * Creates and returns a playback controller configured with a basic session
  * provider and a default view strategy (equivalent to calling
  * `-[BCOVPlayerSDKManager createPlaybackControllerWithViewStrategy:nil]`).
