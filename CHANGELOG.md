@@ -1,3 +1,11 @@
+## Release 6.1.1
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+* Adds BCOVPUIAdControlView.h to the BrightcovePlayerSDK.h umbrella header to fix a compiler warning.
+* Fixes an issue where code coverage symbols were present in the framework executables. This caused link errors in some build configurations.
+
 ## Release 6.1.0
 
 ### Brightcove Player SDK for iOS (Core)

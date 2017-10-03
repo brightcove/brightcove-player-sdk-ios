@@ -52,6 +52,7 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 // Player UI
 #if !TARGET_OS_TV
+#import <BrightcovePlayerSDK/BCOVPUIAdControlView.h>
 #import <BrightcovePlayerSDK/BCOVPUIBasicControlView.h>
 #import <BrightcovePlayerSDK/BCOVPUIButton.h>
 #import <BrightcovePlayerSDK/BCOVPUICommon.h>
