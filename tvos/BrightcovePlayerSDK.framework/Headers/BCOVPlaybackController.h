@@ -277,6 +277,9 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 @property (nonatomic, readonly, copy) id<BCOVMutableAnalytics> analytics;
 
 /**
+ * OnceUX Only:
+ * If using other ad plug-ins, use `seekWithoutAds:completionHandler:` instead.
+ *
  * Disables ad playback which otherwise might occur after a forward -seekTo:.
  * The intended use is, for example, to resume video playback when an app has
  * quit and relaunched; the app can seek to a saved time and ads which

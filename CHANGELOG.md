@@ -1,3 +1,10 @@
+## Release 6.1.2
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+* Fixes an issue that prevented FairPlay videos from playing on Apple TV. This only affected Video Cloud accounts using Dynamic Delivery.
+
 ## Release 6.1.1
 
 ### Brightcove Player SDK for iOS (Core)
