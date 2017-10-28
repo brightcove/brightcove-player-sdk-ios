@@ -1,3 +1,10 @@
+## Release 6.1.3
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+* Fixes an issue that prevented subtitles from updating properly when playing back offline videos.
+
 ## Release 6.1.2
 
 ### Brightcove Player SDK for iOS (Core)
