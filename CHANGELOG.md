@@ -1,3 +1,12 @@
+## Release 6.1.4
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+* The PlayerUI controls, and full-screen view of the PlayerUI now respect the new iOS 11 Safe Areas. This ensures that PlayerUI views display properly on iPhone X.
+* Fixes an issue that caused link errors when building with the core Native Player SDK framework using Xcode 8.
+* The method `-[BCOVOfflineVideoManager variantBitratesForVideo:completion:]` now passes an array containing NSNumber objects to the completion handler, instead of incorrectly passing an array of NSString objects.
+
 ## Release 6.1.3
 
 ### Brightcove Player SDK for iOS (Core)
