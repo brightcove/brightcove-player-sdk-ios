@@ -25,6 +25,13 @@
 @interface BCOVPlayerSDKManager : NSObject
 
 /**
+ *  Returns the SDK version.
+ *
+ *  @return The SDK version
+ */
++ (NSString *)version;
+
+/**
  * sessionID is a unique identifier associated with this instance
  * of the application. This identifier is sent along with other
  * analytics data to the Brightcove metrics servers.

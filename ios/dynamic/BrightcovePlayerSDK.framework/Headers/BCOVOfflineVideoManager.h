@@ -293,8 +293,57 @@ extern NSString * const kBCOVOfflineVideoFilePathPropertyKey;
  */
 extern NSString * const kBCOVOfflineVideoUsesSidebandSubtitleKey;
 
+
 /**
- * Conform to this protocol to receive information about each video download.
+ * BCOVOfflineVideoDownloadState
+ * The various possible states of a video download
+ */
+typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
+    
+    /* Download requested but not yet reporting progress */
+    BCOVOfflineVideoDownloadStateRequested = 0,
+    
+    /* Download is progressing normally */
+    BCOVOfflineVideoDownloadStateDownloading = 1,
+    
+    /* Download was paused */
+    BCOVOfflineVideoDownloadStateSuspended = 2,
+    
+    /* Download was cancelled */
+    BCOVOfflineVideoDownloadStateCancelled = 3,
+    
+    /* Download completed normally */
+    BCOVOfflineVideoDownloadStateCompleted = 4,
+    
+    /* Download terminated with an error */
+    BCOVOfflineVideoDownloadStateError = 5,
+    
+    /* License has been preloaded, but the video download has not yet been requested */
+    BCOVOfflineVideoDownloadLicensePreloaded = 6,
+    
+    /* iOS 11+ only: Download of extra tracks requested but not yet reporting progress */
+    BCOVOfflineVideoDownloadStateTracksRequested = 7,
+    
+    /* iOS 11+ only: Download of extra tracks is progressing normally */
+    BCOVOfflineVideoDownloadStateTracksDownloading = 8,
+    
+    /* iOS 11+ only: Download of extra tracks was paused */
+    BCOVOfflineVideoDownloadStateTracksSuspended = 9,
+    
+    /* iOS 11+ only: Download of extra tracks completed normally */
+    BCOVOfflineVideoDownloadStateTracksCancelled = 10,
+    
+    /* iOS 11+ only: Download of extra tracks completed normally */
+    BCOVOfflineVideoDownloadStateTracksCompleted = 11,
+    
+    /* iOS 11+ only: Download of extra tracks terminated with an error */
+    BCOVOfflineVideoDownloadStateTracksError = 12
+};
+
+
+/**
+ * Conform to this protocol to receive information about each video and
+ * video track download.
  */
 @protocol BCOVOfflineVideoManagerDelegate<NSObject>
 
@@ -311,18 +360,18 @@ extern NSString * const kBCOVOfflineVideoUsesSidebandSubtitleKey;
  *
  *  @param offlineVideoToken
  *                  Offline video token used to identify the downloaded video.
- *  @param downloadtask
+ *  @param downloadTask
  *                  The AVAssetDownloadTask for this video
  *  @param progressPercent
  *                  How far along the download has progressed, expressed as a percentage.
 */
 - (void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
-             downloadTask:(AVAssetDownloadTask *)downloadtask
-            didProgressTo:(NSTimeInterval)progressPercent;
+             downloadTask:(AVAssetDownloadTask *)downloadTask
+            didProgressTo:(NSTimeInterval)progressPercent NS_AVAILABLE_IOS(10_0);
 
 /**
  * This method is called when a download is complete.
- * If any errors occurred during the download, error will be non-nil.
+ * If an error occurred during the download, error will be non-nil.
  *
  *  @param offlineVideoToken
  *                  Offline video token used to identify the downloaded video.
@@ -331,6 +380,51 @@ extern NSString * const kBCOVOfflineVideoUsesSidebandSubtitleKey;
  */
 - (void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
 didFinishDownloadWithError:(NSError *)error;
+
+/**
+ * Receive progress notification about track downloads in progress for a downloaded video.
+ * If you want to pause/resume/cancel the task, you should use the methods available
+ * in the BCOVOfflineVideoManager to perform those actions.
+ *
+ *  @param offlineVideoToken
+ *                  Offline video token used to identify the downloaded video.
+ *  @param aggregateDownloadTask
+ *                  The AVAggregateAssetDownloadTask for this set of video track downloads
+ *  @param progressPercent
+ *                  How far along the download has progressed, expressed as a percentage,
+ *                  for this individual AVMediaSelection.
+ *  @param mediaSelection
+ *                  The AVMediaSelection for which this progress is reported.
+ */
+- (void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
+             aggregateDownloadTask:(AVAggregateAssetDownloadTask *)aggregateDownloadTask
+            didProgressTo:(NSTimeInterval)progressPercent
+        forMediaSelection:(AVMediaSelection *)mediaSelection NS_AVAILABLE_IOS(11_0);
+
+/**
+ * This method is called when an individual track download is complete.
+ *
+ *  @param offlineVideoToken
+ *                  Offline video token used to identify the offline video
+ *                  for which tracks are being downloaded.
+ *  @param mediaSelection
+ *                  The AVMediaSelection that has finished downloading.
+ */
+- (void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
+didFinishMediaSelectionDownload:(AVMediaSelection *)mediaSelection NS_AVAILABLE_IOS(11_0);
+
+/**
+ * This method is called when all requested track downloads are complete for the
+ * downloaded video specified by the offline video token.
+ * If an error occurred during the download, error will be non-nil.
+ *
+ *  @param offlineVideoToken
+ *                  Offline video token used to identify the downloaded video.
+ *  @param error    NSError encountered during the track download process.
+ *                  nil if no error.
+ */
+- (void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
+didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
 
 /**
  * This method is called when the static images (thumbnail and poster) associated
@@ -347,7 +441,6 @@ didFinishDownloadWithError:(NSError *)error;
  *                  Offline video token used to identify the downloaded video.
  */
 - (void)didDownloadStaticImagesWithOfflineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken;
-
 
 /**
  * This method is called when cleaning up stranded downloads.
@@ -371,33 +464,6 @@ didFinishDownloadWithError:(NSError *)error;
 
 @end
 
-/**
- * BCOVOfflineVideoDownloadState
- * The various possible states of a video download
- */
-typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
-    
-    /* Download requested but not yet reporting progress */
-    BCOVOfflineVideoDownloadStateRequested = 0,
-
-    /* Download is progressing normally */
-    BCOVOfflineVideoDownloadStateDownloading = 1,
-
-    /* Download was paused */
-    BCOVOfflineVideoDownloadStateSuspended = 2,
-
-    /* Download was cancelled */
-    BCOVOfflineVideoDownloadStateCancelled = 3,
-
-    /* Download completed normally */
-    BCOVOfflineVideoDownloadStateCompleted = 4,
-
-    /* Download terminated with an error */
-    BCOVOfflineVideoDownloadStateError = 5,
-    
-    /* License has been preloaded, but the video download has not yet been requested */
-    BCOVOfflineVideoDownloadLicensePreloaded = 6
-};
 
 /**
  * BCOVOfflineVideoStatus
@@ -436,9 +502,17 @@ typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
  * The AVAssetDownloadTask associated with this download.
  * Will be set to nil once the download has completed.
  */
-@property (nonatomic, readonly) AVAssetDownloadTask *downloadTask;
+@property (nonatomic, readonly) AVAssetDownloadTask *downloadTask NS_AVAILABLE_IOS(10_0);
+
+/**
+ * The AVAggregateAssetDownloadTask associated with this tracks download.
+ * Will be set to nil once the download has completed.
+ */
+@property (nonatomic, readonly) AVAggregateAssetDownloadTask *aggregateDownloadTask NS_AVAILABLE_IOS(11_0);
+
 #else
 @property (nonatomic, readonly) id downloadTask;
+@property (nonatomic, readonly) id aggregateDownloadTask;
 
 #endif
 
@@ -482,7 +556,7 @@ typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
 + (BCOVOfflineVideoManager *)sharedManager;
 
 /**
- * Initialize the Offline Video Manager
+ * Initialize the Offline Video Manager.
  * This should be the first call to the Offline Video Manager.
  * You can call this method again to update the delegate and options.
  *
@@ -608,7 +682,6 @@ typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
  */
 - (BCOVOfflineVideoStatus *)offlineVideoStatusForToken:(BCOVOfflineVideoToken)offlineVideoToken;
 
-
 /**
  * Preload the FairPlay license before a video download begins.
  * This may only be called on iOS 10.3 and later.
@@ -620,7 +693,6 @@ typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
  *
  *  @param video    BCOVVideo to be downloaded. The video should have a source
  *                  that uses FairPlay encryption and the HTTPS scheme.
- *
  *  @param parameters
  *                  NSDictionary of parameters used in this download request.
  *                  Valid parameters are:
@@ -662,7 +734,7 @@ typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
                   completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler;
 
 /**
- *  Pause a current video download task
+ * Pause a current video download task
  *
  *  @param offlineVideoToken
  *                  Offline video token used to identify the download task.
@@ -670,7 +742,7 @@ typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
 - (void)pauseVideoDownload:(BCOVOfflineVideoToken)offlineVideoToken;
 
 /**
- *  Resume a suspended video download task
+ * Resume a suspended video download task
  *
  *  @param offlineVideoToken
  *                  Offline video token used to identify the download task.
@@ -678,13 +750,28 @@ typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
 - (void)resumeVideoDownload:(BCOVOfflineVideoToken)offlineVideoToken;
 
 /**
- *  Cancel a video download task
+ * Cancel a video download task
  *
  *  @param offlineVideoToken
  *                  Offline video token used to identify the download task.
  */
 - (void)cancelVideoDownload:(BCOVOfflineVideoToken)offlineVideoToken;
 
+/**
+ * Stop all download tasks in progress.
+ * This method forces all download tasks to terminate with an error
+ * by deleting their underlying download folder.
+ * Downloads that have already completed are not affected.
+ *
+ * WARNING:
+ * This method should only be used in very specific cases.
+ * iOS 11.0.x and iOS 11.1.x have a bug where a download task will resume to
+ * completion if it was paused and then cancelled.
+ * In that case, you cannot cancel or delete the runaway task, so your best
+ * option is to delete all download tasks.
+ * In iOS 11.2 and later, you should cancel download tasks individually using -cancelVideoDownload:
+ */
+- (void)forceStopAllDownloadTasks;
 
 /**
  * Convert an offline video token into a playable BCOVVideo object.
@@ -740,5 +827,58 @@ typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
  */
 - (void)addFairPlayApplicationCertificate:(NSData *)applicationCertificateData
                                identifier:(NSString *)identifier;
+
+
+/**
+ * Secondary track downloading support
+ */
+
+/**
+ * Returns the media selection group for a downloaded video specified
+ * by the offline video token.
+ * The downloaded video must be complete, or this method will return nil.
+ *
+ *  @param mediaCharacteristic
+ *                  The media characteristic that you are interested in. Supported values are
+ *                  AVMediaCharacteristicAudible and AVMediaCharacteristicLegible.
+ *  @param offlineVideoToken
+ *                  Offline video token used to identify the downloaded video.
+ *                  Must not refer to a download in progress.
+ */
+- (AVMediaSelectionGroup *)mediaSelectionGroupForMediaCharacteristic:(NSString *)mediaCharacteristic
+                                                   offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken;
+
+/**
+ * Returns the downloaded media selection options for a downloaded video specified
+ * by the offline video token, as reported by the AVMediaCache for the
+ * underlying AVURLAsset.
+ * May return nil.
+ *
+ *  @param mediaCharacteristic
+ *                  The media characteristic that you are interested in. Supported values are
+ *                  AVMediaCharacteristicAudible and AVMediaCharacteristicLegible.
+ *  @param offlineVideoToken
+ *                  Offline video token used to identify the downloaded video.
+ */
+- (NSArray<AVMediaSelectionOption *> *)downloadedMediaSelectionOptionsForMediaCharacteristic:(NSString *)mediaCharacteristic
+                                                                           offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken;
+
+/**
+ * Request the download of an additional media selection for the specified
+ * offline video token. This request should be made inside your
+ * -[offlineVideoToken:didFinishDownloadWithError:] delegate callback method.
+ * You should determine which media selections options are available,
+ * typically by a call to -[AVURLAsset allMediaSelections] for your downloaded AVURLAsset.
+ *
+ *  @param mediaSelections
+ *                  An NSArray of media selections that you wish to download.
+ *                  You can get the availalable options by calling
+ *                  -[AVURLAsset allMediaSelections] and picking the ones
+ *                  that you need.
+ *  @param offlineVideoToken
+ *                  Offline video token used to identify the downloaded video.
+ */
+- (void)requestMediaSelectionsDownload:(NSArray<AVMediaSelection *> *)mediaSelections
+                     offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken;
 
 @end

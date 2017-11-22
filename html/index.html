@@ -44,7 +44,7 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 6.1.4.200</h1>
+						<h1>Brightcove Player SDK for iOS, version 6.2.0.220</h1>
 
 <h1>Table of Contents</h1>
 
@@ -155,7 +155,7 @@
 
 <p>The <code>BrightcoveFairPlay</code> plugin framework and module is now integrated into the core <code>BrightcovePlayerSDK</code> framework. If you are currently using the Brightcove FairPlay plugin, no functional code changes are required, but you will need to make some changes for your build. See the <a href="#FairPlay">FairPlay</a> section below for details.</p>
 
-<p>For full details about using FairPlay with the Brightcove Native Player SDK, see our <a href="FairPlay.md">FairPlay guide</a>.</p>
+<p>For full details about using FairPlay with the Brightcove Native Player SDK, see our <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/FairPlay.md">FairPlay guide</a>.</p>
 
 <h2>Sidecar Subtitles</h2>
 
@@ -163,13 +163,13 @@
 
 <p>Note also that Sidecar Subtitles is generally not needed when working with Video Cloud Dynamic Delivery, as Dynamic Delivery ensures that your captions are added in-manifest before they are delivery to your app.</p>
 
-<p>For full details about using Sidecar Subtitles with the Brightcove Native Player SDK, see our <a href="SidecarSubtitles.md">Sidecar Subtitles guide</a>.</p>
+<p>For full details about using Sidecar Subtitles with the Brightcove Native Player SDK, see our <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/SidecarSubtitles.md">Sidecar Subtitles guide</a>.</p>
 
 <h2>Video Downloads and Offline Playback</h2>
 
 <p>As of version 6.0.0, the Brightcove Native Player SDK allows you to download HLS videos, including those protected with FairPlay encryption, and play them back while online or offline. Please see our app developer&rsquo;s guide for full details:</p>
 
-<p><a href="OfflinePlayback.md">iOS App Developer&rsquo;s Guide to Video Downloading and Offline Playback with FairPlay</a></p>
+<p><a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/OfflinePlayback.md">iOS App Developer&rsquo;s Guide to Video Downloading and Offline Playback with FairPlay</a></p>
 
 <h1>Installation <a name="Installation"></a></h1>
 
@@ -211,7 +211,7 @@ pod 'Brightcove-Player-Core/dynamic'
 <li>Download the latest zipped release from our <a href="https://github.com/brightcove/brightcove-player-sdk-ios/releases">release page</a>.</li>
 <li>Add <code>BrightcovePlayerSDK.framework</code> to your project. Be sure to use the version corresponding to your target, iOS or tvOS.</li>
 <li>On the &ldquo;Build Settings&rdquo; tab of your application target, ensure that the &ldquo;Framework Search Paths&rdquo; include the path to the framework. This should have been done automatically unless the framework is stored under a different root directory than your project.</li>
-<li>On the &ldquo;General&rdquo; tab of your application target, add the following to the &ldquo;Linked Frameworks and Libraries&rdquo; section:
+<li><p>On the &ldquo;General&rdquo; tab of your application target, add the following to the &ldquo;Linked Frameworks and Libraries&rdquo; section:</p>
 
 <ul>
 <li><code>AVFoundation</code></li>
@@ -551,7 +551,7 @@ logoImageView1.frame = logoLayoutView1.frame;
 
 <h1>FairPlay <a name="FairPlay"></a></h1>
 
-<p>The Brightcove Native Player SDK includes support for playing FairPlay-protected videos. For full details about using FairPlay with the Brightcove Native Player SDK, see our <a href="FairPlay.md">FairPlay guide</a>.</p>
+<p>The Brightcove Native Player SDK includes support for playing FairPlay-protected videos. For full details about using FairPlay with the Brightcove Native Player SDK, see our <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/FairPlay.md">FairPlay guide</a>.</p>
 
 <h2>Migrating From the Brightcove FairPlay Plugin</h2>
 
@@ -569,9 +569,9 @@ logoImageView1.frame = logoLayoutView1.frame;
 
 <h1>Sidecar Subtitles <a name="SidecarSubtitles"></a></h1>
 
-<p>The Brightcove Native Player SDK includes support for playing external subtitle files, also know as Sidecar Subtitles. For full details about using Sidecar Subtitles with the Brightcove Native Player SDK, see our <a href="SidecarSubtitles.md">Sidecar Subtitles guide</a>.</p>
+<p>The Brightcove Native Player SDK includes support for playing external subtitle files, also know as Sidecar Subtitles. For full details about using Sidecar Subtitles with the Brightcove Native Player SDK, see our <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/SidecarSubtitles.md">Sidecar Subtitles guide</a>.</p>
 
-<p>Please note that if you are a Brightcove Video Cloud customer using Dynamic Delivery, <strong>you will most likely not need to use Sidecar Subtitles</strong>. Please read the <a href="SidecarSubtitles.md">Sidecar Subtitles guide</a> to confirm your specific use case.</p>
+<p>Please note that if you are a Brightcove Video Cloud customer using Dynamic Delivery, <strong>you will most likely not need to use Sidecar Subtitles</strong>. Please read the <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/SidecarSubtitles.md">Sidecar Subtitles guide</a> to confirm your specific use case.</p>
 
 <h2>Migrating From the Brightcove Sidecar Subtitles Plugin</h2>
 
@@ -1177,10 +1177,6 @@ When using the AVPlayerViewController, the video_engagement events sent to the B
 								
 								<li><a href="Classes/BCOVBasicSourceSelectionPolicy.html">BCOVBasicSourceSelectionPolicy</a></li>
 								
-								<li><a href="Classes/BCOVCatalogOperation.html">BCOVCatalogOperation</a></li>
-								
-								<li><a href="Classes/BCOVCatalogService.html">BCOVCatalogService</a></li>
-								
 								<li><a href="Classes/BCOVCuePoint.html">BCOVCuePoint</a></li>
 								
 								<li><a href="Classes/BCOVCuePointCollection.html">BCOVCuePointCollection</a></li>
@@ -1190,8 +1186,6 @@ When using the AVPlayerViewController, the video_engagement events sent to the B
 								<li><a href="Classes/BCOVCuePointProgressPolicyResult.html">BCOVCuePointProgressPolicyResult</a></li>
 								
 								<li><a href="Classes/BCOVFPSBrightcoveAuthProxy.html">BCOVFPSBrightcoveAuthProxy</a></li>
-								
-								<li><a href="Classes/BCOVMediaRequestFactory.html">BCOVMediaRequestFactory</a></li>
 								
 								<li><a href="Classes/BCOVOfflineVideoManager.html">BCOVOfflineVideoManager</a></li>
 								
@@ -1340,7 +1334,7 @@ When using the AVPlayerViewController, the video_engagement events sent to the B
 					<footer>
 						<div class="footer-copyright">
 							
-							<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-11-04</p>
+							<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-11-21</p>
 							
 							
 							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
