@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.2.0.220
+# Brightcove Player SDK for iOS, version 6.1.5.228
 
 
 # Table of Contents
@@ -137,7 +137,6 @@ To add the Brightcove Player SDK to your project manually:
 2. Add `BrightcovePlayerSDK.framework` to your project. Be sure to use the version corresponding to your target, iOS or tvOS.
 3. On the "Build Settings" tab of your application target, ensure that the "Framework Search Paths" include the path to the framework. This should have been done automatically unless the framework is stored under a different root directory than your project.
 4. On the "General" tab of your application target, add the following to the "Linked Frameworks and Libraries" section:
-
     * `AVFoundation`
     * `CoreMedia`
     * `CoreMotion`

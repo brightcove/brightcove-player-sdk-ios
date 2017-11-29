@@ -12,10 +12,15 @@
 //! Project version string for BrightcovePlayerSDK.
 FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
+// Catalog
+#import <BrightcovePlayerSDK/BCOVCatalogConstants.h>
+#import <BrightcovePlayerSDK/BCOVCatalogService.h>
+#import <BrightcovePlayerSDK/BCOVMediaRequestFactory.h>
+#import <BrightcovePlayerSDK/NSDictionary+BCOVURLSupport.h>
+
 // Playback API
 #import <BrightcovePlayerSDK/BCOVPlaybackService.h>
 #import <BrightcovePlayerSDK/BCOVPlaybackServiceRequestFactory.h>
-#import <BrightcovePlayerSDK/NSDictionary+BCOVURLSupport.h>
 
 // Management
 #import <BrightcovePlayerSDK/BCOVPlayerSDKManager.h>

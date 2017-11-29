@@ -1,4 +1,4 @@
-iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.2.0.220
+iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.1.5.228
 --------------
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -6,8 +6,7 @@ The Brightcove Native Player SDK allows you to download and play back HLS videos
 ### Requirements:
 
 - iOS 10.0+
-- Xcode 9+
-- Brightcove Native Player SDK v6.2.0+
+- Brightcove Native Player SDK v6.0.0+
 - Brightcove Account with Dynamic Delivery
 
 iOS does not allow FairPlay-protected video to display in a simulator, nor does it allow video downloads to a simulator, so it's important to develop on an actual device.
@@ -112,28 +111,9 @@ At this point, the download will continue even if the user sends the app to the 
 
 In iOS 10.2 and earlier, license prelaoding is not possible. It's important to make sure that a video begins downloading before allowing the user to move the app to the background; this ensures that the FairPlay license has been established. To prevent issues with background license exchange we recommending limiting downloads to one or two videos at a time on iOS 10.2 and earlier.
 
-### Downloading Secondary Tracks
+### Subtitle Tracks
 
-Subtitle, caption, and audio tracks are collectively known as "secondary tracks", and are downloaded differently on iOS 10.x, and ios 11+.
-
-#### Downloading Secondary Tracks On iOS 11+
-
-iOS 11 introduced a newer, more reliable way of downloading secondary tracks using a new AVFoundation class, AVAggregateAssetDownloadTask.
-
-Downloading with iOS 11 involves these basic steps:
-
-1. Make sure the primary video has completed downloading.
-1. Select which tracks you would like to download. Tracks are selected as AVMediaSelection objects. You can see all the available AVMediaSelection objects for a downloaded video using the method `-[AVURLAsset allMediaSelections]`.
-1. Create an NSArray out of your media selections, and pass it to `-[BCOVOfflineVideoManager requestMediaSelectionsDownload:offlineVideoToken:]`.
-2. Track download progress through new methods in the `BCOVOfflineVideoManagerDelegate` protocol. Secondary tracks use the same offline video token as the primary video.
-
-Some tracks may have already been downloaded as part of the initial video download.
-
-#### Downloading Secondary Tracks On iOS 10
-
-iOS 10.x does not handle downloading of subtitle and caption tracks reliably, so we have created a custom WebVTT downloader and renderer for subtitles in your HLS videos. This support is known as Sideband Subtitles.
-
-Downloading secondary audio tracks is not available for iOS 10.
+iOS 10.x does not handle downloading of subtitle tracks relaibly, so we have created a custom WebVTT downloader and renderer for subtitles in your HLS videos. This support is known as Sideband Subtitles.
 
 To download subtitles, first check what subtitle languages are available in your video:
 
@@ -191,6 +171,8 @@ parameters = @{
 }];
 ```
 
+iOS 11 has improved subtitle and audio track download mechanisms. When iOS 11 and Xcode 9 are relased, we will also release support for these new APIs.
+
 **Displaying Sideband Subtitles**
 
 The PlayerUI built-in controls will automatically detect and present your available Sideband Subtitles in the same, familiar closed caption control for you, so don't need to do anything if you are using a standard `BCOVPUIPlayerView`.
@@ -200,8 +182,6 @@ If you are creating your own user interface, you should check the downloaded `BC
 To present the subtitles for a particular language, set the `kBCOVOfflineVideoManagerPlaybackSubtitleLanguageKey` in the active `BCOVPlaybackController`'s options dictionary with your selected language as the value.
 
 If the `kBCOVOfflineVideoUsesSidebandSubtitleKey` is missing or NO, you can assume that the video is using standard iOS subtitles, and you can set your media selection on the `AVPlayer` as always.
-
-If you downloaded Sideband Subtitles in iOS 10, and the device was subsequently upgraded to iOS 11, the Brightcove Native Player's PlayerUI controls will still detect that you are using Sideband Subtitles, and display properly.
 
 ### Specifying a Variant Bitrate
 
