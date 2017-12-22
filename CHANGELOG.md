@@ -1,13 +1,138 @@
-## Release 6.1.5
+## Release 6.2.1
+
+#### Breaking Changes
+
+* The minimum iOS Deployment Target for all Brightcove Native Player for iOS frameworks is now iOS 9.0. Details are available [here](https://support.brightcove.com/announcement-ios-sdk-deprecating-support-ios-9-and-eol-support-ios-8).
 
 ### Brightcove Player SDK for iOS (Core)
 
 #### Additions and Improvements
 
-* Fixes an issue where some downloaded videos using Sideband Subtitles would not display some of their subtitles when played back offline and the video is longer than an hour.
-* BCOVOfflineVideoManager has a new method, `forceStopAllDownloadTasks`, to help work around a bug in iOS 11.0.x and iOS 11.1.x. On these iOS versions, a video download will resume to completion if it was paused and then cancelled. The only way to stop the download is to force all the downloads in progress to stop wtih an error.  
-This method should not be used on other versions of iOS; you can cancel a download task normally on iOS 11.2 by calling `cancelVideoDownload`.
+Adds the ability to store playback analytics for videos that have been downloaded and played while offline. Analytics are transmitted to Brightcove servers once the device comes back online.
 
+A few new items are added to support this feature:
+
+* `kBCOVOfflineVideoManagerAnalyticsStorageFullWarningNotification` is a new NSNotification name that you can register to observe. This notification is sent when the storage for offline analytics has reached a prescribed limit (500 MiB by default). When this occurs, you have the option of encouraging your user to go back online, at which point stored analytics data will be sent to Brightcove servers.
+
+* `kBCOVOfflineVideoManagerAllowsCellularAnalyticsKey` is the dictionary key for a setting passed to the Offline Video Manager when it is initialized. You can pass @(YES) to allow analytics collected while offline to be transferred over a cellular connection. Pass @(NO) to only transfer over a WiFi connection. This setting is optional, and the default value is @(YES).
+
+* `kBCOVOfflineVideoManagerAnalyticsStorageLimitKey` is the dictionary key for a setting passed to the Offline Video Manager when it is initialized. This setting is an NSNumber that determines the maximum amount of storage space (in Bytes) that will be allowed for storing analytics collected for videos played offline. The default value is 500 MiB, and may be set as low as 1 MiB. When the limit is reached, only video_view events will be stored, and other events will start being dropped.
+
+### Omniture Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds support for Adobe Marketing Cloud v4.14.1 and Adobe Video Heartbeat v2.0.1.
+
+## Release 6.2.0
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Breaking Changes
+
+* The `BCOVCatalogService`, also referred to as the Brightcove Media API, has reached end-of-life status and been removed from the Brightcove Native Player SDK. If your app uses the BCOVCatalogService, you must update it to use the [BCOVPlaybackService](https://brightcovelearning.github.io/Brightcove-API-References/ios-sdk/index.html#PlaybackService).
+* You can no longer download caption files using Sideband Subtitles in iOS 11. Sideband Subtitles is a workaround for incomplete track download support in iOS 10. As a result, you can no longer pass `kBCOVOfflineVideoManagerSubtitleLanguagesKey` as an option when requesting a video download. iOS 11 supports downloading of both subtitle and audio tracks; see "Addtions and Improvements" below for more details. Caption tracks that were downloaded using Sideband Subtitles will continue to play correctly on iOS 11.
+
+#### Additions and Improvements
+
+* The `BCOVPlayerSDKManager` has a new `version` class method which returns an NSString containing the SDK version.
+
+* When developing for iOS 11 and later, in addition to HLS videos, you can download all secondary caption and audio tracks using iOS 11's new AVAggregateAssetDownloadTask class. This support includes the folowing changes:
+
+##### BCOVOfflineVideoDownloadState
+The `BCOVOfflineVideoDownloadState` enumeration adds the following values:
+
+```
+    /* iOS 11+ only: Download of extra tracks requested but not yet reporting progress */
+    BCOVOfflineVideoDownloadStateTracksRequested = 7,
+    
+    /* iOS 11+ only: Download of extra tracks is progressing normally */
+    BCOVOfflineVideoDownloadStateTracksDownloading = 8,
+    
+    /* iOS 11+ only: Download of extra tracks was paused */
+    BCOVOfflineVideoDownloadStateTracksSuspended = 9,
+    
+    /* iOS 11+ only: Download of extra tracks completed normally */
+    BCOVOfflineVideoDownloadStateTracksCancelled = 10,
+    
+    /* iOS 11+ only: Download of extra tracks completed normally */
+    BCOVOfflineVideoDownloadStateTracksCompleted = 11,
+    
+    /* iOS 11+ only: Download of extra tracks terminated with an error */
+    BCOVOfflineVideoDownloadStateTracksError = 12
+```
+
+##### BCOVOfflineVideoManagerDelegate
+The `BCOVOfflineVideoManagerDelegate` protocol adds the following optional methods signatures:
+
+This method is used on iOS 11.0+ to provide feedback about track downloads:
+
+```
+- (void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
+             aggregateDownloadTask:(AVAggregateAssetDownloadTask *)aggregateDownloadTask
+            didProgressTo:(NSTimeInterval)progressPercent
+        forMediaSelection:(AVMediaSelection *)mediaSelection
+```
+
+This method is called when an individual track download is complete:
+
+```
+- (void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
+didFinishMediaSelectionDownload:(AVMediaSelection *)mediaSelection
+```
+
+This method is called when all requested track downloads are complete:
+
+```
+- (void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
+didFinishAggregateDownloadWithError:(NSError *)error
+```
+
+##### BCOVOfflineVideoStatus
+The `BCOVOfflineVideoStatus` class includes a new property for managing secondary track downloads:
+
+```
+@property (nonatomic, readonly) AVAggregateAssetDownloadTask *aggregateDownloadTask
+```
+
+##### BCOVOfflineVideoManager
+Secondary track include captions, subtitles, and audio tracks. You create a list of tracks to download as an array of AVMediaSelections, and iOS will download them all together using an AVAggregateAssetDownloadTask. You can only start a track download after the primary video has been downloaded.
+
+BCOVOfflineVideoManager has several new methods to help you start and manage secondary track downloads. These new methods apply only to iOS 11.
+
+This method is used to begin downloading additional caption and audio tracks. Track selections are specified as AVMediaSelections. This request can only be made after the related video download has completed. Be sure the  `offlineVideoToken:didFinishDownloadWithError:` delegate callback method has already been called for this video.
+
+```
+- (void)requestMediaSelectionsDownload:(NSArray<AVMediaSelection *> *)mediaSelections
+                     offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
+```
+
+This method returns the AVMediaSelectionGroup for a downloaded video.
+You can get the media selection group for audio or caption tracks by specifying AVMediaCharacteristicAudible or AVMediaCharacteristicLegible respectively.
+
+```
+- (AVMediaSelectionGroup *)mediaSelectionGroupForMediaCharacteristic:(NSString *)mediaCharacteristic
+                                                   offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
+```
+
+This is a convenience method that returns the array of AVMediaSelectionOptions that have already been downloaded for an associated offline video as reported by the AVAssetCache for the underlying AVURLAsset.
+
+You can specify AVMediaCharacteristicAudible or AVMediaCharacteristicLegible to find out what audio or caption tracks have been downloaded.
+
+```
+- (NSArray<AVMediaSelectionOption *> *)downloadedMediaSelectionOptionsForMediaCharacteristic:(NSString *)mediaCharacteristic
+                                                                           offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
+```
+ 
+The `forceStopAllDownloadTasks` method is implemented as a workaround for a bug on iOS 11.0.x and iOS 11.1.x. On these iOS versions, a track download will resume to completion if it was paused and then cancelled. The only way to stop the download is to force all the downloads in progress to stop wtih an error.
+ 
+This method should not be used on other versions of iOS; you can cancel an aggregate download task normally on iOS 11.2 by calling `cancelVideoDownload`.
+ 
+```
+- (void)forceStopAllDownloadTasks
+```
+
+For full details about downloading video for offline playback, see the *iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS*, in OfflinePlayback.md in the main SDK directory.
 
 ## Release 6.1.4
 
@@ -49,7 +174,7 @@ This method should not be used on other versions of iOS; you can cancel a downlo
 * Fixes an issue on iOS 11 where downloaded FairPlay videos would not play back until the app was restarted.
 * The `BCOVVideo` class has a new BOOL `usesFairPlay` property that returns YES if the video contains a FairPlay-encrypted source. This only applies to videos retrieved from a Dynamic Delivery account.
 * The `BCOVPlayerSDKManager` singleton class has a new `sessionID` property. This `NSString *` property is a unique read-only value that remains constant until the app is relaunched. This value is sent with all analytics reports and can be used to help diagnose playback issues. Please see the "Tracking Errors" section of the README for full details.
-* The `BCOVPlaybackService` class has four new method for converting JSON response data from the Playback Service API. These methods are useful if you need to retrieve data from the Playback Service API (through a proxy server, for example) and then convert them to objects you can work with in the SDK. These methods work identically to the methods found in the `BCOVCatalogService` class with the same names:
+* The `BCOVPlaybackService` class has four new methods for converting JSON response data from the Playback Service API. These methods are useful if you need to retrieve data from the Playback Service API (through a proxy server, for example) and then convert them to objects you can work with in the SDK. These methods work identically to the methods found in the `BCOVCatalogService` class with the same names:
 	* `+ (BCOVSource *)sourceFromJSONDictionary:(NSDictionary *)json`
 	* `+ (BCOVCuePoint *)cuePointFromJSONDictionary:(NSDictionary *)json`
 	* `+ (BCOVPlaylist *)playlistFromJSONDictionary:(NSDictionary *)json`

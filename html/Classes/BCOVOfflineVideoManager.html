@@ -86,9 +86,13 @@
 		
 		<option value="//api/name/deleteOfflineVideo:">- deleteOfflineVideo:</option>
 		
+		<option value="//api/name/downloadedMediaSelectionOptionsForMediaCharacteristic:offlineVideoToken:">- downloadedMediaSelectionOptionsForMediaCharacteristic:offlineVideoToken:</option>
+		
 		<option value="//api/name/estimateDownloadSize:options:completion:">- estimateDownloadSize:options:completion:</option>
 		
 		<option value="//api/name/forceStopAllDownloadTasks">- forceStopAllDownloadTasks</option>
+		
+		<option value="//api/name/mediaSelectionGroupForMediaCharacteristic:offlineVideoToken:">- mediaSelectionGroupForMediaCharacteristic:offlineVideoToken:</option>
 		
 		<option value="//api/name/offlineVideoStatus">- offlineVideoStatus</option>
 		
@@ -97,6 +101,8 @@
 		<option value="//api/name/pauseVideoDownload:">- pauseVideoDownload:</option>
 		
 		<option value="//api/name/preloadFairPlayLicense:parameters:completion:">- preloadFairPlayLicense:parameters:completion:</option>
+		
+		<option value="//api/name/requestMediaSelectionsDownload:offlineVideoToken:">- requestMediaSelectionsDownload:offlineVideoToken:</option>
 		
 		<option value="//api/name/requestVideoDownload:parameters:completion:">- requestVideoDownload:parameters:completion:</option>
 		
@@ -364,7 +370,7 @@ the singleton BCOVOfflineVideoManager object.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Initialize the Offline Video Manager
+				<p>Initialize the Offline Video Manager.
 This should be the first call to the Offline Video Manager.
 You can call this method again to update the <a href="#//api/name/delegate">delegate</a> and options.</p>
 			</div>
@@ -383,8 +389,11 @@ You can call this method again to update the <a href="#//api/name/delegate">dele
 						<th scope="row" class="argument-name"><code>delegate</code></th>
 						<td><p>The <a href="#//api/name/delegate">delegate</a> object conforming to the <a href="../Protocols/BCOVOfflineVideoManagerDelegate.html">BCOVOfflineVideoManagerDelegate</a> protocol.
 The only valid dictionary entries are
-kBCOVOfflineVideoManagerAllowsCellularDownloadKey and
-kBCOVOfflineVideoManagerAllowsCellularPlaybackKey.</p></td>
+kBCOVOfflineVideoManagerAllowsCellularDownloadKey,
+kBCOVOfflineVideoManagerAllowsCellularPlaybackKey,
+kBCOVOfflineVideoManagerAllowsCellularAnalyticsKey,
+kBCOVOfflineVideoManagerAnalyticsStorageLimitKey,
+and kBCOVOfflineVideoManagerHTTPMaximumConnectionsPerHostKey.</p></td>
 					</tr>
 				
 				</table>
@@ -398,7 +407,7 @@ kBCOVOfflineVideoManagerAllowsCellularPlaybackKey.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Initialize the Offline Video Manager
+				<p>Initialize the Offline Video Manager.
 This should be the first call to the Offline Video Manager.
 You can call this method again to update the <a href="#//api/name/delegate">delegate</a> and options.</p>
 			</div>
@@ -877,9 +886,8 @@ when the downloads are initiated in the background.</p>
 					<tr>
 						<th scope="row" class="argument-name"><code>video</code></th>
 						<td><p><a href="../Classes/BCOVVideo.html">BCOVVideo</a> to be downloaded. The video should have a source
-that uses FairPlay encryption and the HTTPS scheme.</p>
-
-<p>@param parameters
+that uses FairPlay encryption and the HTTPS scheme.
+@param parameters
 NSDictionary of parameters used in this download request.
 Valid parameters are:
 - kBCOVFairPlayLicensePurchaseKey
@@ -1194,6 +1202,7 @@ iOS 11.0.x and iOS 11.1.x have a bug where a download task will resume to
 completion if it was paused and then cancelled.
 In that case, you cannot cancel or delete the runaway task, so your best
 option is to delete all download tasks.
+This method is not guaranteed to stop all download tasks.
 In iOS 11.2 and later, you should cancel download tasks individually using <a href="#//api/name/cancelVideoDownload:">cancelVideoDownload:</a></p>
 			</div>
 			
@@ -1392,6 +1401,183 @@ set this param to the acount ID.</p>
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/mediaSelectionGroupForMediaCharacteristic:offlineVideoToken:" title="mediaSelectionGroupForMediaCharacteristic:offlineVideoToken:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/mediaSelectionGroupForMediaCharacteristic:offlineVideoToken:">&ndash;&nbsp;mediaSelectionGroupForMediaCharacteristic:offlineVideoToken:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns the media selection group for a downloaded video specified
+by the offline video token.
+The downloaded video must be complete, or this method will return nil.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (AVMediaSelectionGroup *)mediaSelectionGroupForMediaCharacteristic:(NSString *)<em>mediaCharacteristic</em> offlineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns the media selection group for a downloaded video specified
+by the offline video token.
+The downloaded video must be complete, or this method will return nil.</p>
+
+<p>@param mediaCharacteristic
+The media characteristic that you are interested in. Supported values are
+AVMediaCharacteristicAudible and AVMediaCharacteristicLegible.
+@param offlineVideoToken
+Offline video token used to identify the downloaded video.
+Must not refer to a download in progress.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/downloadedMediaSelectionOptionsForMediaCharacteristic:offlineVideoToken:" title="downloadedMediaSelectionOptionsForMediaCharacteristic:offlineVideoToken:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/downloadedMediaSelectionOptionsForMediaCharacteristic:offlineVideoToken:">&ndash;&nbsp;downloadedMediaSelectionOptionsForMediaCharacteristic:offlineVideoToken:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns the downloaded media selection options for a downloaded video specified
+by the offline video token, as reported by the AVMediaCache for the
+underlying AVURLAsset.
+May return nil.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSArray&lt;AVMediaSelectionOption*&gt; *)downloadedMediaSelectionOptionsForMediaCharacteristic:(NSString *)<em>mediaCharacteristic</em> offlineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns the downloaded media selection options for a downloaded video specified
+by the offline video token, as reported by the AVMediaCache for the
+underlying AVURLAsset.
+May return nil.</p>
+
+<p>@param mediaCharacteristic
+The media characteristic that you are interested in. Supported values are
+AVMediaCharacteristicAudible and AVMediaCharacteristicLegible.
+@param offlineVideoToken
+Offline video token used to identify the downloaded video.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/requestMediaSelectionsDownload:offlineVideoToken:" title="requestMediaSelectionsDownload:offlineVideoToken:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/requestMediaSelectionsDownload:offlineVideoToken:">&ndash;&nbsp;requestMediaSelectionsDownload:offlineVideoToken:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Request the download of an additional media selection for the specified
+offline video token. This request should be made inside your
+-[offlineVideoToken:didFinishDownloadWithError:] delegate callback method.
+You should determine which media selections options are available,
+typically by a call to [AVURLAsset allMediaSelections] for your downloaded AVURLAsset.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)requestMediaSelectionsDownload:(NSArray&lt;AVMediaSelection*&gt; *)<em>mediaSelections</em> offlineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Request the download of an additional media selection for the specified
+offline video token. This request should be made inside your
+-[offlineVideoToken:didFinishDownloadWithError:] delegate callback method.
+You should determine which media selections options are available,
+typically by a call to [AVURLAsset allMediaSelections] for your downloaded AVURLAsset.</p>
+
+<p>@param mediaSelections
+An NSArray of media selections that you wish to download.
+You can get the availalable options by calling
+[AVURLAsset allMediaSelections] and picking the ones
+that you need.
+@param offlineVideoToken
+Offline video token used to identify the downloaded video.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -1407,7 +1593,7 @@ set this param to the acount ID.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-11-28</p>
+						<p class="copyright">Copyright &copy; 2017 Brightcove. All rights reserved. Updated: 2017-12-22</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
