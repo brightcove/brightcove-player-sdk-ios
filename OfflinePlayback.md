@@ -1,4 +1,4 @@
-iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.2.1.249
+iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.2.2.292
 --------------
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -51,7 +51,7 @@ If you want to change the `kBCOVOfflineVideoManagerAllowsCellularDownloadKey` va
 
 ### Check If A Video Can Be Downloaded
 
-In your user interface, you should indicate if a video is eligible for download. To do this,  examine the `BCOVVideo.canBeDownloaded` property. This Boolean property checks the status of the video's `offline_enabled` flag that is settable through the [Brightcove CMS API](https://support.brightcove.com/overview-cms-api).
+In your user interface, you should indicate if a video is eligible for download. To do this,  examine the `BCOVVideo.canBeDownloaded` property. This Boolean property checks the status of the video's `offline_enabled` flag that is settable through the [Brightcove CMS API](https://support.brightcove.com/offline-playback-player-sdk-ios#Prepare_videos).
 
 ### Download A Video
 
@@ -307,8 +307,7 @@ Offline video token for this video.
 
 Time that the FairPlay license was requested.
 
-This time is stored as the floating point number of seconds since the standard `NSDate` reference date.
-This value is useful when determining if a license is still valid.
+This time is stored as an NSNumber representing the of seconds since the standard `NSDate` reference date.
 You can generate an `NSDate` object from this number with: `-[NSDate dateWithTimeIntervalSinceReferenceDate:]`.
 
 
@@ -316,7 +315,7 @@ You can generate an `NSDate` object from this number with: `-[NSDate dateWithTim
 
 Time that the offline video download was requested.
 
-This time is stored as the floating point number of seconds since the standard `NSDate` reference date.
+This time is stored as an NSNumber representing the number of seconds since the standard `NSDate` reference date.
 This value is useful when sorting by the time each download process started.
 You can generate an `NSDate` object from this number with: `-[NSDate dateWithTimeIntervalSinceReferenceDate:]`.
 
@@ -324,7 +323,14 @@ You can generate an `NSDate` object from this number with: `-[NSDate dateWithTim
 
 Time that the offline video download completed (whether normally, cancelled, or failed).
 
-This time is stored as the floating point number of seconds since the standard `NSDate` reference date. This value is useful when sorting by the time each download completes. This value is not set until the download completes.
+This time is stored as an NSNumber representing the number of seconds since the standard `NSDate` reference date. This value is useful when sorting by the time each download completes. This value is not set until the download completes.
+You can generate an `NSDate` object from this number with: `-[NSDate dateWithTimeIntervalSinceReferenceDate:]`.
+
+**`kBCOVOfflineVideoLicenseAbsoluteExpirationTimePropertyKey`**
+
+Time that the offline video download will expire if using a FairPlay license. This value is only stored with version 6.2.2 and later of the iOS Native Player SDK.
+
+This time is stored as an NSNumber representing the number of seconds since the standard `NSDate` reference date. This value is set every time a FairPlay license is acquired.
 You can generate an `NSDate` object from this number with: `-[NSDate dateWithTimeIntervalSinceReferenceDate:]`.
 
 **`kBCOVOfflineVideoOnlineSourceURLPropertyKey`**
@@ -426,6 +432,30 @@ When a video is being downloaded, you can pause, resume, or cancel the download 
 - `-(void)cancelVideoDownload:(BCOVOfflineVideoToken)offlineVideoToken`
 
 You should use these methods rather than operating on the internal `AVAssetDownloadTask` itself.
+
+### Renewing a FairPlay License
+
+Starting with version 6.2.2 of the iOS Native Player SDK, you can renew the FairPlay license for a downloaded video without re-downloading the video. This functionality is available when running on iOS 10.3 or later.
+
+To renew a license, call `-renewFairPlayLicense:parameters:completion:` with the offline video token for your previously-downloaded video, and a parameter dictionary specifying the new license terms. The parameter dictionary must not contain bitrate or subtitle language information. For example, here is how you can renew a FairPlay license with a new 30-day rental license:
+
+```
+parameters = @{
+	// Renew license with a 30-day rental
+	kBCOVFairPlayLicenseRentalDurationKey: @( 30 * 24 * 60 * 60 ), // 30 days in seconds
+};
+
+[BCOVOfflineVideoManager.sharedManager
+    renewFairPlayLicense:offlineVideoToken
+    parameters:parameters
+    completion:^(BCOVOfflineVideoToken offlineVideoToken, NSError *error) {
+
+    // Handle error
+
+}];
+```
+
+When license renewal is finshed, the completion block will be called with the same offline video token that was passed in, plus an NSError indicating any problem that occurred (or nil if no error). This block is not called on any specific thread.
 
 ### FairPlay Application Certificates
 

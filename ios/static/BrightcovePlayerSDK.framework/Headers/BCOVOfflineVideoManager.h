@@ -2,7 +2,7 @@
 // BCOVOfflineVideoManager.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2017 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2018 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -234,10 +234,20 @@ extern NSString * const kBCOVOfflineVideoTokenPropertyKey;
  * standard NSDate reference date.
  * You can generate an NSDate object from this as follows:
  *   [NSDate dateWithTimeIntervalSinceReferenceDate:number]
- * Since a license rental duration begins when the license is issued,
- * this value is useful for determining when a rental license is expiring.
  */
 extern NSString * const kBCOVOfflineVideoLicenseRequestTimePropertyKey;
+
+/**
+ * kBCOVOfflineVideoLicenseAbsoluteExpirationTimePropertyKey
+ * BCOVVideo properties key that stores the time that the offline
+ * video FairPlay license will expire. After this time, you can no longer
+ * begin playback on the associated video.
+ * This time is stored as the floating point number of seconds since the
+ * standard NSDate reference date.
+ * You can generate an NSDate object from this as follows:
+ *   [NSDate dateWithTimeIntervalSinceReferenceDate:number]
+ */
+extern NSString * const kBCOVOfflineVideoLicenseAbsoluteExpirationTimePropertyKey;
 
 /**
  * kBCOVOfflineVideoDownloadStartTimePropertyKey
@@ -749,7 +759,7 @@ didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
  *                  - kBCOVFairPlayLicenseRentalDurationKey
  *  @param completionHandler
  *                  Block that receives the new offlineVideoToken after the request
- *                  is successfully made. If there is an error, offlienVideoToken will
+ *                  is successfully made. If there is an error, offlineVideoToken will
  *                  be nil, and error will report any NSError.
  */
 - (void)preloadFairPlayLicense:(BCOVVideo *)video
@@ -775,10 +785,33 @@ didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
  *                  - kBCOVFairPlayLicenseRentalDurationKey
  *  @param completionHandler
  *                  Block that receives the new offlineVideoToken after the request
- *                  is successfully made. If there is an error, offlienVideoToken will
+ *                  is successfully made. If there is an error, offlineVideoToken will
  *                  be nil, and error will report any NSError.
  */
 - (void)requestVideoDownload:(BCOVVideo *)video
+                  parameters:(NSDictionary *)parameters
+                  completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler;
+
+/**
+ * Initiate a request for a new FairPlay license.
+ * You can request a new FairPlay license any time after the initial license has been acquired.
+ * In the parameters you can specify a new rental duration, or you can convert a rental license
+ * to a purchase license. The video does not need to be re-downloaded to use a new FairPlay license.
+ * You should not specify a bitrate in the parameters. To change the bitrate you would have to delete
+ * the current download, and then initiate a completely new download at the new bitrate.
+ *
+ *  @param offlineVideoToken
+ *                  Offline video token used to identify the downloaded video for which to acquire a new license.
+ *  @param parameters
+ *                  NSDictionary of parameters used in this license renewal request.
+ *                  May be nil.
+ *                  Valid parameters are:
+ *                  - kBCOVFairPlayLicensePurchaseKey
+ *                  - kBCOVFairPlayLicenseRentalDurationKey
+ *  @param completionHandler
+ *                  Block that is called after the license renewal request has completed. If the request resulted in an error, it will be returned here as an NSError. The offlineVideoToken parameter will be the same offline video token that was passed in as the first parameter.
+ */
+- (void)renewFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken
                   parameters:(NSDictionary *)parameters
                   completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler;
 

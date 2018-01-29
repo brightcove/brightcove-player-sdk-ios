@@ -2,7 +2,7 @@
 // BCOVPUISlider.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2017 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2018 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -66,12 +66,14 @@
  * The duration (in seconds) represented by the range of the slider.
  * Used for positioning markers.
  * The default value is 30, but should be set to the length of its associated video.
+ * The duration will be set automatically for the progress slider installed into
+ * the PlayerUI at playerView.controlsView.progressSlider.
  */
 @property (nonatomic, readwrite) double duration;
 
 /**
- * Add a marker that will be displayed on the slider.
- * @param position The location on the slider in proportion to the duration.
+ * Add a marker that will be displayed on the slider at a specific location.
+ * @param position The location (in seconds) on the slider where the marker should be placed. See the "duration" property for related details.
  * @param duration The duration represented by the tick mark; can be set to zero to draw the smallest size marker (2 pixels wide).
  * @param isAd YES indicates this marker represents an ad (drawn in yellow by default). NO indicates this is a generic marker (drawn in white by default).
  * @param image An optional image that will be drawn in place of the default marker indicator. Can be set to nil.
@@ -80,7 +82,7 @@
 
 /**
  * Remove all markers at the specified position.
- * @param position The location on the slider of the marker to be removed.
+ * @param position The location on the slider (in seconds) of the marker to be removed.
  */
 - (void)removeMarkerAtPosition:(double)position;
 

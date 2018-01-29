@@ -1,3 +1,35 @@
+## Release 6.2.2
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+##### FairPlay License Renewal
+
+Adds the ability to renew FairPlay licenses for downloaded videos without re-downloading the video. To support these feature, there are a few new items in BCOVOfflineVideo.h:
+
+The following method lets you renew the FairPlay license by specifying new license terms along with the offline video token.
+
+```
+- (void)renewFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken
+                  parameters:(NSDictionary *)parameters
+                  completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler;
+```
+
+The `kBCOVOfflineVideoLicenseAbsoluteExpirationTimePropertyKey` is used to obtain the absolute expiration time of an offline `BCOVVideo` object that uses a FairPlay rental license.
+
+```
+extern NSString * const kBCOVOfflineVideoLicenseAbsoluteExpirationTimePropertyKey;
+```
+Previously downloaded videos wll not have this property, but it will be added once the license is renewed.
+
+#### Other Improvements
+
+* Fixes an issue where FairPlay licenses could not be generated on devices using non-Gregorian calendars.
+* Fixes an issue where FairPlay rental licenses did not respect the set duration. To ensure that licenses have been issued properly for your users' content, we recommend renewing any FairPlay license issued using version 6.2.1 or earlier of the Brightcove SDK. License renewal will not require the video to be downloaded again. (Tip: if a downloaded video does not have the `kBCOVOfflineVideoLicenseAbsoluteExpirationTimePropertyKey` property, its license should be renewed.)
+* Fixes an issue that caused apps using the Brightcove SDK to crash when running on iOS 9.
+* Fixes an issue where VTT files containing extra empty lines could crash when downloaded and played back on iOS 10 (Sideband Subtitles).
+
 ## Release 6.2.1
 
 #### Breaking Changes
