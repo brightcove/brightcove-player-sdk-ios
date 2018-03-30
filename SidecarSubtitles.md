@@ -1,4 +1,4 @@
-# Using Sidecar Subtitles With The Brightcove Player SDK for iOS, version 6.2.2.292
+# Using Sidecar Subtitles With The Brightcove Player SDK for iOS, version 6.3.0.310
 
 Introduction
 ===================

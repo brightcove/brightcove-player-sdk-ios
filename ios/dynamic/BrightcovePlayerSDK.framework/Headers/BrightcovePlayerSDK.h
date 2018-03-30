@@ -58,3 +58,13 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 // Offline Video Management
 #import <BrightcovePlayerSDK/BCOVOfflineVideoManager.h>
 #endif
+
+// TV UI
+#if TARGET_OS_TV
+#import <BrightcovePlayerSDK/BCOVTVCommon.h>
+#import <BrightcovePlayerSDK/BCOVTVControlsView.h>
+#import <BrightcovePlayerSDK/BCOVTVPlayerView.h>
+#import <BrightcovePlayerSDK/BCOVTVProgressView.h>
+#import <BrightcovePlayerSDK/BCOVTVSettingsView.h>
+#import <BrightcovePlayerSDK/BCOVTVTabBarItemView.h>
+#endif

@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.2.2.292
+# Brightcove Player SDK for iOS, version 6.3.0.310
 
 
 # Table of Contents
@@ -10,7 +10,8 @@
 1. [Manual Installaion](#ManualInstallation)
 1. [Imports](#Imports)
 1. [Quick Start](#QuickStart)
-1. [Built-In PlayerUI Controls](#PlayerUI)
+1. [Built-In PlayerUI Controls for iOS](#PlayerUI)
+1. [Built-In TV Player Controls for tvOS](#TVPlayer)
 1. [FairPlay](#FairPlay)
 1. [Sidecar Subtitles](#SidecarSubtitles)
 1. [Video 360](#Video360)
@@ -42,6 +43,10 @@ ARC is required.
 
 What's New <a name="New"></a>
 ============
+
+Built-In TV Player Controls for tvOS <a name="TVPlayer"></a>
+-----
+Version 6.3 of the Brightcove Native Player SDK includes built-in controls for playback in tvOS on Apple TV. For full details about using the built-in TV Player UI with the Brightcove Native Player SDK, see our [TV Player guide](TVPlayer.md).
 
 Migrating From Earlier Versions
 ------------------------------
@@ -138,14 +143,15 @@ To add the Brightcove Player SDK to your project manually:
 3. On the "Build Settings" tab of your application target, ensure that the "Framework Search Paths" include the path to the framework. This should have been done automatically unless the framework is stored under a different root directory than your project.
 4. On the "General" tab of your application target, add the following to the "Linked Frameworks and Libraries" section:
 
-    * `AVFoundation`
+    * `AVFoundation` (mark as *optional* in Xcode if supporting iOS 9)
     * `CoreMedia`
-    * `CoreMotion`
+    * `CoreMotion` (iOS only)
     * `GLKit`
     * `MediaPlayer`
-    * `MediaAccessibility`
-    * `SafariServices`
-    * `WebKit`
+    * `MediaAccessibility` (iOS only)
+    * `SafariServices` (iOS only)
+    * `SystemConfiguration` (iOS only)
+    * `WebKit` (iOS only)
     * `BrightcovePlayerSDK.framework`  
 5. (**Dynamic Framework** only) On the "General" tab of your application target, add 'BrightcovePlayerSDK.framework' to the "Embedded Binaries" section.
 6. (**Dynamic Framework** only) On the "Build Phases" tab, add a "Run Script" phase with the command `bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh`. Check "Run script only when installing". This will remove unneeded architectures from the build, which is important for App Store submission.
@@ -425,6 +431,10 @@ For more examples of PlayerUI customization, you can look at the sample code in 
 [https://github.com/BrightcoveOS/ios-player-samples][github]
 
 [github]: https://github.com/BrightcoveOS/ios-player-samples
+
+Built-In TV Player Controls for tvOS <a name="TVPlayer"></a>
+==========
+The Brightcove Native Player SDK includes built-in controls for playback in tvOS on Apple TV. For full details about using the built-in TV Player UI with the Brightcove Native Player SDK, see our [TV Player guide](TVPlayer.md).
 
 FairPlay <a name="FairPlay"></a>
 ==========

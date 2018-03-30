@@ -10,7 +10,7 @@
 
 
 /**
- * A subsclass of UISlider that provides a "buffered" track
+ * A subclass of UISlider that provides a "buffered" track
  * with markers for advertising or generic use, plus an
  * "advertising mode" used to display progress of an ad.
  */

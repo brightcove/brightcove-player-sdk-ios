@@ -11,6 +11,7 @@
 
 @class BCOVSessionProviderExtension;
 @class BCOVSource;
+@class BCOVThumbnails;
 @class BCOVVideo;
 
 

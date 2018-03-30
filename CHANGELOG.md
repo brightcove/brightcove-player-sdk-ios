@@ -1,3 +1,22 @@
+## Release 6.3.0
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+##### Built-In TV Player Controls for tvOS
+
+Version 6.3 of the Brightcove Native Player SDK includes built-in controls for playback in tvOS on Apple TV. For full details about using the built-in TV Player UI with the Brightcove Native Player SDK, see our [TV Player guide](TVPlayer.md).
+
+#### Breaking Changes
+
+- The `BCOVPlaybackSessionProvider` protocol method `-(id)playbackSessionsForVideos:` has been deprecated. This method had no practical use so no code changes are required in your app.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+#### Additions and Improvements
+* Fixes an issue where pre-roll ads would re-play after seeking to the start of the video when using an IMA ads request policy (`BCOVIMAAdsRequestPolicy`) with a `BCOVCuePointProgressPolicy` for which the `ignoringPreviouslyProcessedCuePoints` parameter is set to YES.
+* Fixes an issue where some VMAP URLs would cause the Google IMA library to crash when a post-roll was played.
+
 ## Release 6.2.2
 
 ### Brightcove Player SDK for iOS (Core)

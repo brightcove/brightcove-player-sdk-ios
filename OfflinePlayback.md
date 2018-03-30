@@ -1,4 +1,4 @@
-iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.2.2.292
+iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.3.0.310
 --------------
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -506,6 +506,8 @@ There are several ways to address this:
 - If allowing multiple concurrent downloads, inform the user that they should not move the app to the background until all the downloads have started to report progress. You could simply put up a "please wait" notice until you detect progress from all the downloads.
 
 You may want to limit the number of allowed concurrent downloads for practical reasons. The more downloads you begin at once, the longer it takes for them to begin and complete. You should test with your own videos to see what works best for your app.
+
+Prior to system version 11.3, iOS did not realiably handle pausing and resuming tasks when there were multiple videos downloading at the same time. Therefore, we do not recommend allowing concurrent downloads if you plan to use versions prior to iOS 11.3 and also allow pausing and resuming download tasks.
 
 **Sequential Downloads**
 
