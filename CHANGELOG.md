@@ -1,3 +1,26 @@
+## Release 6.3.1
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+##### Offline Video Manager
+
+Adds a new method to the `BCOVOfflineVideoManagerDelegate` protocol:
+
+```
+- (void)didCreateSharedBackgroundSesssionConfiguration:(NSURLSessionConfiguration *)backgroundSessionConfiguration;
+```
+
+This method is called after the background `NSURLSessionConfiguration` object is created, and before it's used to create the shared `AVAssetDownloadURLSession` object that's used to download videos. You can use this configuration object to set various options specified for the NSURLSessionConfiguration in NSURLSession.h, such as the `discretionary` flag, or the `HTTPMaximumConnectionsPerHost` setting.
+
+You should *not* set the `allowsCellularAccess` property; that is set through the `kBCOVOfflineVideoManagerAllowsCellularDownloadKey` setting passed to `-initializeOfflineVideoManagerWithDelegate:options:`.
+
+##### General
+
+- Fixes an issue where the HTTP version of some WebVTT URLs was being used instead of HTTPS. This only occurred when using Sidecar Subtitles with a legacy Video Cloud account.
+
+
 ## Release 6.3.0
 
 ### Brightcove Player SDK for iOS (Core)

@@ -124,6 +124,10 @@ extern NSString * const kBCOVOfflineVideoManagerAllowsCellularAnalyticsKey;
 extern NSString * const kBCOVOfflineVideoManagerAnalyticsStorageLimitKey;
 
 /**
+ * @deprecated Use the '-didCreateSharedBackgroundSesssionConfiguration:`
+ * BCOVOfflineVideoManagerDelegate protocol delegate method to change settings
+ * on the background session configuration instead.
+ *
  * kBCOVOfflineVideoManagerHTTPMaximumConnectionsPerHostKey
  * NSDictionary key used to set an option passed to
  * `-[initializeOfflineVideoManagerWithDelegate:options:]`.
@@ -133,7 +137,7 @@ extern NSString * const kBCOVOfflineVideoManagerAnalyticsStorageLimitKey;
  * option is not provided, the NSURLSessionConfiguration property is left
  * unmodified. In iOS, the default value is 4.
  */
-extern NSString * const kBCOVOfflineVideoManagerHTTPMaximumConnectionsPerHostKey;
+extern NSString * const kBCOVOfflineVideoManagerHTTPMaximumConnectionsPerHostKey DEPRECATED_ATTRIBUTE;
 
 /**
  * The following keys are used to specify values in the parameters dictionary
@@ -515,6 +519,18 @@ didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
  *                  Path to video package directory that is flagged as stranded.
  */
 - (BOOL)shouldDeleteVideoPackage:(NSString *)videoPackagePath;
+
+/**
+ * This method is called after the background NSURLSessionConfiguration object
+ * is created, and before it's used to create the shared AVAssetDownloadURLSession
+ * object that's used to download videos.
+ * You can use this configuration object to set various options specified for the
+ * NSURLSessionConfiguration in NSURLSession.h, such as the `discretionary` flag, or
+ * the `HTTPMaximumConnectionsPerHost` setting.
+ * You should *not* set the `allowsCellularAccess` property; that is set in the individual
+ * download tasks.
+ */
+- (void)didCreateSharedBackgroundSesssionConfiguration:(NSURLSessionConfiguration *)backgroundSessionConfiguration;
 
 #endif
 
