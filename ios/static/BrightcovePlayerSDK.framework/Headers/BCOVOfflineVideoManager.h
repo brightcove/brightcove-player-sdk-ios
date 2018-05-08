@@ -44,6 +44,12 @@ extern const NSInteger kBCOVOfflineVideoManagerErrorCodeDownloadFailure;
  */
 extern const NSInteger kBCOVOfflineVideoManagerErrorCodeExpiredLicense;
 
+/**
+ * The FairPlay license is invalid or missing.
+ * See the error description for more details.
+ */
+extern const NSInteger kBCOVOfflineVideoManagerErrorCodeInvalidLicense;
+
 
 /**
  * NSNotification name for a warning sent when analytics files related to
@@ -812,6 +818,43 @@ didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
  * Initiate a request for a new FairPlay license.
  * You can request a new FairPlay license any time after the initial license has been acquired.
  * In the parameters you can specify a new rental duration, or you can convert a rental license
+ * to a purchase license.
+ * The video does not need to be re-downloaded to use a new FairPlay license, but you do need
+ * to retrieve a new video object from the Playback API (either directly or through
+ * the BCOVPlaybackService class). If the referenced video is no longer available through the Playback API,
+ * you can use a substantially similar video, meaning the video should be from the same account,
+ * and also have the same FairPlay configuration.
+ * You should not specify a bitrate in the parameters. To change the bitrate you need to delete
+ * the current download, and then initiate a completely new download at the new bitrate.
+ *
+ *  @param offlineVideoToken
+ *                  Offline video token used to identify the downloaded video for which to acquire a new license.
+ *  @param video    BCOVVideo object for an online video object retrieved through the Playback API
+ *                  or the BCOVPlaybackService class. This video must not have been created by '-videoObjectFromOfflineVideoToken:'.
+ *  @param parameters
+ *                  NSDictionary of parameters used in this license renewal request.
+ *                  May be nil.
+ *                  Valid parameters are:
+ *                  - kBCOVFairPlayLicensePurchaseKey
+ *                  - kBCOVFairPlayLicenseRentalDurationKey
+ *  @param completionHandler
+ *                  Block that is called after the license renewal request has completed. If the request resulted in an error, it will be returned here as an NSError. The offlineVideoToken parameter will be the same offline video token that was passed in as the first parameter.
+ */
+- (void)renewFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken
+                       video:(BCOVVideo *)video
+                  parameters:(NSDictionary *)parameters
+                  completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler;
+
+/**
+ * @deprecated Use this method instead:
+ *   - (void)renewFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken
+ *                          video:(BCOVVideo *)video
+ *                     parameters:(NSDictionary *)parameters
+ *                     completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler;
+ *
+ * Initiate a request for a new FairPlay license.
+ * You can request a new FairPlay license any time after the initial license has been acquired.
+ * In the parameters you can specify a new rental duration, or you can convert a rental license
  * to a purchase license. The video does not need to be re-downloaded to use a new FairPlay license.
  * You should not specify a bitrate in the parameters. To change the bitrate you would have to delete
  * the current download, and then initiate a completely new download at the new bitrate.
@@ -829,7 +872,32 @@ didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
  */
 - (void)renewFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken
                   parameters:(NSDictionary *)parameters
-                  completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler;
+                  completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler DEPRECATED_ATTRIBUTE;
+
+/**
+ * Invalidate the FairPlay license for the specified offline video token.
+ * This method deletes the FairPlay license for the video associated with the
+ * offline video token, if there is one.
+ * Attempts to play back a FairPlay-protected video without a license will result
+ * in a kBCOVOfflineVideoManagerErrorCodeInvalidLicense error.
+ * If needed you can request a new FairPlay license for the video after it has been deleted.
+ *
+ *  @param offlineVideoToken
+ *                  Offline video token used to identify the downloaded video whose license will be invalidated.
+ */
+- (void)invalidateFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken;
+
+/**
+ * Returns an NSDate representing the expiration of the FairPlay license for the video
+ * associated with the offline video token.
+ * Returns NSDate.distantFuture for "purchase" licenses.
+ * Returns NSDate.distantFuture if the video is not encrypted with FairPlay.
+ * Returns nil if the video has no FairPlay license.
+ *  @param offlineVideoToken
+ *                  Offline video token used to identify the downloaded video.
+ *  @return NSDate representing the expiration of the FairPlay license, NSDate.distantFuture for purchase licenses or clear (no FairPlay) videos, or nil if there is no license.
+ */
+- (NSDate *)fairPlayLicenseExpiration:(BCOVOfflineVideoToken)offlineVideoToken;
 
 /**
  * Pause a current video download task

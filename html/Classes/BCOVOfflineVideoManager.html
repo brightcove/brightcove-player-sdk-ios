@@ -90,7 +90,11 @@
 		
 		<option value="//api/name/estimateDownloadSize:options:completion:">- estimateDownloadSize:options:completion:</option>
 		
+		<option value="//api/name/fairPlayLicenseExpiration:">- fairPlayLicenseExpiration:</option>
+		
 		<option value="//api/name/forceStopAllDownloadTasks">- forceStopAllDownloadTasks</option>
+		
+		<option value="//api/name/invalidateFairPlayLicense:">- invalidateFairPlayLicense:</option>
 		
 		<option value="//api/name/mediaSelectionGroupForMediaCharacteristic:offlineVideoToken:">- mediaSelectionGroupForMediaCharacteristic:offlineVideoToken:</option>
 		
@@ -103,6 +107,8 @@
 		<option value="//api/name/preloadFairPlayLicense:parameters:completion:">- preloadFairPlayLicense:parameters:completion:</option>
 		
 		<option value="//api/name/renewFairPlayLicense:parameters:completion:">- renewFairPlayLicense:parameters:completion:</option>
+		
+		<option value="//api/name/renewFairPlayLicense:video:parameters:completion:">- renewFairPlayLicense:video:parameters:completion:</option>
 		
 		<option value="//api/name/requestMediaSelectionsDownload:offlineVideoToken:">- requestMediaSelectionsDownload:offlineVideoToken:</option>
 		
@@ -1015,8 +1021,8 @@ iniitiating a download, using -[addFairPlayApplicationCertificate:identifier:].<
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/renewFairPlayLicense:parameters:completion:" title="renewFairPlayLicense:parameters:completion:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/renewFairPlayLicense:parameters:completion:">&ndash;&nbsp;renewFairPlayLicense:parameters:completion:</a></code>
+	<a name="//api/name/renewFairPlayLicense:video:parameters:completion:" title="renewFairPlayLicense:video:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/renewFairPlayLicense:video:parameters:completion:">&ndash;&nbsp;renewFairPlayLicense:video:parameters:completion:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -1029,16 +1035,42 @@ iniitiating a download, using -[addFairPlayApplicationCertificate:identifier:].<
 				<p>Initiate a request for a new FairPlay license.
 You can request a new FairPlay license any time after the initial license has been acquired.
 In the parameters you can specify a new rental duration, or you can convert a rental license
-to a purchase license. The video does not need to be re-downloaded to use a new FairPlay license.
-You should not specify a bitrate in the parameters. To change the bitrate you would have to delete
+to a purchase license.
+The video does not need to be re-downloaded to use a new FairPlay license, but you do need
+to retrieve a new video object from the Playback API (either directly or through
+the <a href="../Classes/BCOVPlaybackService.html">BCOVPlaybackService</a> class). If the referenced video is no longer available through the Playback API,
+you can use a substantially similar video, meaning the video should be from the same account,
+and also have the same FairPlay configuration.
+You should not specify a bitrate in the parameters. To change the bitrate you need to delete
 the current download, and then initiate a completely new download at the new bitrate.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)renewFairPlayLicense:(BCOVOfflineVideoToken)<em>offlineVideoToken</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVOfflineVideoToken offlineVideoToken , NSError *error ))<em>completionHandler</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)renewFairPlayLicense:(BCOVOfflineVideoToken)<em>offlineVideoToken</em> video:(BCOVVideo *)<em>video</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVOfflineVideoToken offlineVideoToken , NSError *error ))<em>completionHandler</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>video</code></th>
+						<td><p><a href="../Classes/BCOVVideo.html">BCOVVideo</a> object for an online video object retrieved through the Playback API
+or the <a href="../Classes/BCOVPlaybackService.html">BCOVPlaybackService</a> class. This video must not have been created by &lsquo;-videoObjectFromOfflineVideoToken:&rsquo;.
+@param parameters
+NSDictionary of parameters used in this license renewal request.
+May be nil.
+Valid parameters are:
+- kBCOVFairPlayLicensePurchaseKey
+- kBCOVFairPlayLicenseRentalDurationKey
+@param completionHandler
+Block that is called after the license renewal request has completed. If the request resulted in an error, it will be returned here as an NSError. The offlineVideoToken parameter will be the same offline video token that was passed in as the first parameter.</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -1049,6 +1081,58 @@ the current download, and then initiate a completely new download at the new bit
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Initiate a request for a new FairPlay license.
+You can request a new FairPlay license any time after the initial license has been acquired.
+In the parameters you can specify a new rental duration, or you can convert a rental license
+to a purchase license.
+The video does not need to be re-downloaded to use a new FairPlay license, but you do need
+to retrieve a new video object from the Playback API (either directly or through
+the <a href="../Classes/BCOVPlaybackService.html">BCOVPlaybackService</a> class). If the referenced video is no longer available through the Playback API,
+you can use a substantially similar video, meaning the video should be from the same account,
+and also have the same FairPlay configuration.
+You should not specify a bitrate in the parameters. To change the bitrate you need to delete
+the current download, and then initiate a completely new download at the new bitrate.</p>
+
+<p>@param offlineVideoToken
+Offline video token used to identify the downloaded video for which to acquire a new license.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/renewFairPlayLicense:parameters:completion:" title="renewFairPlayLicense:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/renewFairPlayLicense:parameters:completion:">&ndash;&nbsp;renewFairPlayLicense:parameters:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Use this method instead:
+- (void)renewFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken
+video:(<a href="../Classes/BCOVVideo.html">BCOVVideo</a> <em>)video
+parameters:(NSDictionary </em>)parameters
+completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError <em>error))completionHandler; (<b class="deprecated">Deprecated:</b><span class="deprecated"> Use this method instead:
+- (void)renewFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken
+video:(BCOVVideo </em>)video
+parameters:(NSDictionary <em>)parameters
+completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError </em>error))completionHandler;</p>
+
+<p>Initiate a request for a new FairPlay license.
 You can request a new FairPlay license any time after the initial license has been acquired.
 In the parameters you can specify a new rental duration, or you can convert a rental license
 to a purchase license. The video does not need to be re-downloaded to use a new FairPlay license.
@@ -1064,7 +1148,141 @@ Valid parameters are:
 - kBCOVFairPlayLicensePurchaseKey
 - kBCOVFairPlayLicenseRentalDurationKey
 @param completionHandler
-Block that is called after the license renewal request has completed. If the request resulted in an error, it will be returned here as an NSError. The offlineVideoToken parameter will be the same offline video token that was passed in as the first parameter.</p>
+Block that is called after the license renewal request has completed. If the request resulted in an error, it will be returned here as an NSError. The offlineVideoToken parameter will be the same offline video token that was passed in as the first parameter.</span>)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)renewFairPlayLicense:(BCOVOfflineVideoToken)<em>offlineVideoToken</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVOfflineVideoToken offlineVideoToken , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/invalidateFairPlayLicense:" title="invalidateFairPlayLicense:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/invalidateFairPlayLicense:">&ndash;&nbsp;invalidateFairPlayLicense:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Invalidate the FairPlay license for the specified offline video token.
+This method deletes the FairPlay license for the video associated with the
+offline video token, if there is one.
+Attempts to play back a FairPlay-protected video without a license will result
+in a kBCOVOfflineVideoManagerErrorCodeInvalidLicense error.
+If needed you can request a new FairPlay license for the video after it has been deleted.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)invalidateFairPlayLicense:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Invalidate the FairPlay license for the specified offline video token.
+This method deletes the FairPlay license for the video associated with the
+offline video token, if there is one.
+Attempts to play back a FairPlay-protected video without a license will result
+in a kBCOVOfflineVideoManagerErrorCodeInvalidLicense error.
+If needed you can request a new FairPlay license for the video after it has been deleted.</p>
+
+<p>@param offlineVideoToken
+Offline video token used to identify the downloaded video whose license will be invalidated.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/fairPlayLicenseExpiration:" title="fairPlayLicenseExpiration:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fairPlayLicenseExpiration:">&ndash;&nbsp;fairPlayLicenseExpiration:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns an NSDate representing the expiration of the FairPlay license for the video
+associated with the offline video token.
+Returns NSDate.distantFuture for &ldquo;purchase&rdquo; licenses.
+Returns NSDate.distantFuture if the video is not encrypted with FairPlay.
+Returns nil if the video has no FairPlay license.
+@param offlineVideoToken
+Offline video token used to identify the downloaded video.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSDate *)fairPlayLicenseExpiration:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>NSDate representing the expiration of the FairPlay license, NSDate.distantFuture for purchase licenses or clear (no FairPlay) videos, or nil if there is no license.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns an NSDate representing the expiration of the FairPlay license for the video
+associated with the offline video token.
+Returns NSDate.distantFuture for &ldquo;purchase&rdquo; licenses.
+Returns NSDate.distantFuture if the video is not encrypted with FairPlay.
+Returns nil if the video has no FairPlay license.
+@param offlineVideoToken
+Offline video token used to identify the downloaded video.</p>
 			</div>
 			
 
@@ -1662,7 +1880,7 @@ Offline video token used to identify the downloaded video.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 Brightcove. All rights reserved. Updated: 2018-04-11</p>
+						<p class="copyright">Copyright &copy; 2018 Brightcove. All rights reserved. Updated: 2018-05-08</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

@@ -1,4 +1,4 @@
-iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.3.1.325
+iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.3.2.344
 --------------
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -285,6 +285,16 @@ This call is essential for providing feedback in your user interface about what 
 
 To get information about the status of all offline videos at once, use the `BCOVOfflineVideoManager.offlineVideoStatus` property. This returns an array of `BCOVOfflineVideoStatus` objects, one for each offline video.
 
+### Determining FairPlay License Expiration
+
+You can find out when the FairPlay license for an offline video expires by querying the Offline Video Manager as follows:
+
+```
+NSDate *licenseExpirationDate = [BCOVOfflineVideoManager.sharedManager fairPlayLicenseExpiration:offlineVideoToken];
+```
+
+The method returns the expiration of the FairPlay license as an `NSDate` object. If the FairPlay license is a purchase license, or the video is not encrypted with FairPlay, `NSDate.distantFuture` is returned. If the FairPlay license is missing, `nil` is returned.
+
 ### Get Metadata From Offline Video Tokens
 
 `BCOVVideo` objects contain a host of metadata stored in a properties dictionary. When working with offline video tokens, you can access this associated metadata by first converting the token to a `BCOVVideo` object, and then accessing the properties directly.
@@ -435,27 +445,43 @@ You should use these methods rather than operating on the internal `AVAssetDownl
 
 ### Renewing a FairPlay License
 
-Starting with version 6.2.2 of the iOS Native Player SDK, you can renew the FairPlay license for a downloaded video without re-downloading the video. This functionality is available when running on iOS 10.3 or later.
+Starting with version 6.2.2 of the iOS Native Player SDK, you can renew the FairPlay license for a downloaded video without re-downloading the video. The device must be online for license renewal to succeed. This functionality is available when running on iOS 10.3 or later.
 
-To renew a license, call `-renewFairPlayLicense:parameters:completion:` with the offline video token for your previously-downloaded video, and a parameter dictionary specifying the new license terms. The parameter dictionary must not contain bitrate or subtitle language information. For example, here is how you can renew a FairPlay license with a new 30-day rental license:
+To renew a license, call `-renewFairPlayLicense:video:parameters:completion:` with the offline video token for your previously-downloaded video, and a parameter dictionary specifying the new license terms. The parameter dictionary must not contain bitrate or subtitle language information.
+
+You should also specify a `BCOVVideo` object for the `video` argument. This video object should be the same video that you originally downloaded, but freshly retrieved from the Playback API, either directly, or through the `BCOVPlaybackService` class. This video object's data are not re-downloaded; the object is used to refresh your license exchange URLs in case the original ones used to download the video have expired. If the referenced video is no longer available through the Playback API, you can use a substantially similar video, meaning the video should be from the same account, and also have the same FairPlay configuration.
+
+For example, here is how you can renew a FairPlay license with a new 30-day rental license:
 
 ```
-parameters = @{
-	// Renew license with a 30-day rental
-	kBCOVFairPlayLicenseRentalDurationKey: @( 30 * 24 * 60 * 60 ), // 30 days in seconds
-};
+  // Get fresh video object for this offline video
+  [playbackService findVideoWithVideoID:offlineVideoID
+                             parameters:nil
+                             completion:^(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error)
+   {
 
-[BCOVOfflineVideoManager.sharedManager
-    renewFairPlayLicense:offlineVideoToken
-    parameters:parameters
-    completion:^(BCOVOfflineVideoToken offlineVideoToken, NSError *error) {
+     parameters = @{
+       // Renew license with a 30-day rental
+       kBCOVFairPlayLicenseRentalDurationKey: @( 30 * 24 * 60 * 60 ), // 30 days in seconds
+     };
 
-    // Handle error
+     // Request license renewal
+     [BCOVOfflineVideoManager.sharedManager renewFairPlayLicense:offlineVideoToken
+                                                           video:video // recent video from Playback API or Playback Service class
+                                                      parameters:parameters
+                                                      completion:^(BCOVOfflineVideoToken offlineVideoToken, NSError *error)
+      {
 
+         // handle errors
+
+      }];
+      
 }];
+
+
 ```
 
-When license renewal is finshed, the completion block will be called with the same offline video token that was passed in, plus an NSError indicating any problem that occurred (or nil if no error). This block is not called on any specific thread.
+When license renewal is finshed, the completion block will be called with the same offline video token that was passed in, plus an `NSError` indicating any problem that occurred (or `nil` if no error). This block is not called on any specific thread.
 
 ### FairPlay Application Certificates
 
@@ -535,11 +561,17 @@ You cannot stream an offline HLS video to an AirPlay device for playback. This i
 
 ### Playing the Same Offline Video Twice
 
-Unexpected network activity can occur when playing the same offline video two times in a row in a certain way. If you play a video with one playback controller, and then immediately play the same video with another playback controller, the `AVPlayer` for the second video may opt to retrieve its video data from the Internet rather than from local storage. (If the device is not online then the `AVPlayer` may not play the second video.)
+Unexpected network activity can occur when playing the same offline video two times in a row in a certain way. If you play a video with one playback controller, and then immediately play the same video with another playback controller, the `AVPlayer` for the second video attempts to retrieve its video data from the Internet rather than from local storage. If the device is not online then the `AVPlayer` will not play the second video.
 
-We believe this happens when two `AVPlayer`s are in memory for a brief time referencing the same video in local storage. It's unknown exactly why the `AVPlayer` switches to playing the online version; we will address this with Apple when we can more precisely narrow down the behavior.
+This happens when two `AVPlayer`s and their associated objects are in memory together for a brief time referencing the same video in local storage. It's unknown exactly why the `AVPlayer` switches to playing the online version; we have isolated this behavior and submitted a bug report to Apple (39354411).
 
 When possible, a better way to play the same video twice is to simply seek the same playback controller to timecode zero and play again.
+
+If this is not possible, and you still need to create another playback controller, another alternative is to remove the first `AVPlayer`'s current `AVPlayerItem` when you are done with the current session, and just before you destroy the playback controller. You can accomplish this with a single call:
+
+```
+	[session.player replaceCurrentItemWithPlayerItem:nil];
+```
 
 ### Specifying the Download Display Name
 

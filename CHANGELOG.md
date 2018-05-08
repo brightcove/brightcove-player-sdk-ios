@@ -1,3 +1,82 @@
+## Release 6.3.2
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+##### Offline Video Manager
+
+Additions and improvements in the `BCOVOfflineVideoManager` class.
+
+**FairPlay License Renewal**
+
+```
+- (void)renewFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken
+                       video:(BCOVVideo *)video
+                  parameters:(NSDictionary *)parameters
+                  completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler;
+```
+
+This method, used for renewing the FairPlay license for an offline video, replaces the older method wtihout a `video` parameter. The video parameter is a recently retrieved `BCOVVideo` object from the Playback API or Playback Service class, and is used to provide updated key server exchange URLs. Key server URLs are set to expire after a certain amount of time, so this method will allow you to renew your licenses even after the original URLs have expired.
+
+**FairPlay License Invalidation**
+
+```
+- (void)invalidateFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken;
+```
+This method allows you to invalidate a FairPlay license before the license has expired, by deleting the license from storage. This is a secure way to make sure that the video is not playable on the device. If desired, a new license can be acquired using the `renewFairPlayLicense:video:parameters:completion:` method above.
+
+A new error code, `kBCOVOfflineVideoManagerErrorCodeInvalidLicense` will be returned in a playback session lifecycle event of type `kBCOVPlaybackSessionLifecycleEventFail` if you attempt to play a video with an invalid license.
+
+**FairPlay License Expiration Retrieval**
+
+```
+- (NSDate *)fairPlayLicenseExpiration:(BCOVOfflineVideoToken)offlineVideoToken;
+```
+This method provides a convenient way to determine the date and time at which the video will no longer be playable. Normal FairPlay rental licenses return an `NSDate` object representing the expiration of the license. A purchase license, or videos without FairPlay, will return `NSDate.distantFuture`.
+
+If the license was invalidated, or was never acquired, this method will return nil.
+
+**Other Improvements**
+
+- Improves task resume behavior for aggregate track downloads (secondary audio and caption tracks). Previously, a paused aggregate track download may not have been able to resume downloading if it was paused.
+
+#### Breaking Changes
+
+In the BCOVOfflineVideoManager class, this method has been deprecated.
+
+```
+- (void)renewFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken
+                  parameters:(NSDictionary *)parameters
+                  completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler;
+```
+A similar method with a new `video` parameter is now available for renewing a FairPlay license:
+
+```
+- (void)renewFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken
+                       video:(BCOVVideo *)video
+                  parameters:(NSDictionary *)parameters
+                  completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler;
+```
+You can pass `nil` as the `video` parameter, but if you do, this method will no longer work after the URLs from the original downloaded video have expired.
+
+We recommend you always pass a `BCOVVideo` object that was recently retrieved from the Playback API or Brightcove Service class as the `video` parameter.
+
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports version 3.7.0 of the Google IMA SDK for iOS. The Podspec for the IMA Plugin for Brightcove Player SDK for iOS references version 3.7.0.1 of the Google IMA iOS SDK as instructed by the [IMA Release History](https://developers.google.com/interactive-media-ads/docs/sdks/ios/v3/history).
+
+* Adds the ability to modify an IMAAdsRequest object immediately before the IMA Plugin calls the `IMAAdsLoader -requestAdsWithRequest:`  method. For details, refer to the "Modifying the IMAAdsRequest" section of the Brightcove IMA Plugin README.
+
+### OnceUX Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* VAST 3.0 CreativeExtensions embedded in an ad are now accessible through the `BCOVAd`'s properties dictionary. The header file BCOVOUXConstants.h has sample code showing how to access these values.
+
 ## Release 6.3.1
 
 ### Brightcove Player SDK for iOS (Core)
@@ -20,7 +99,6 @@ You should *not* set the `allowsCellularAccess` property; that is set through th
 
 - Fixes an issue where the HTTP version of some WebVTT URLs was being used instead of HTTPS. This only occurred when using Sidecar Subtitles with a legacy Video Cloud account.
 
-
 ## Release 6.3.0
 
 ### Brightcove Player SDK for iOS (Core)
@@ -36,6 +114,7 @@ Version 6.3 of the Brightcove Native Player SDK includes built-in controls for p
 - The `BCOVPlaybackSessionProvider` protocol method `-(id)playbackSessionsForVideos:` has been deprecated. This method had no practical use so no code changes are required in your app.
 
 ### IMA Plugin for Brightcove Player SDK for iOS
+
 #### Additions and Improvements
 * Fixes an issue where pre-roll ads would re-play after seeking to the start of the video when using an IMA ads request policy (`BCOVIMAAdsRequestPolicy`) with a `BCOVCuePointProgressPolicy` for which the `ignoringPreviouslyProcessedCuePoints` parameter is set to YES.
 * Fixes an issue where some VMAP URLs would cause the Google IMA library to crash when a post-roll was played.

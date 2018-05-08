@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.3.1.325
+# Brightcove Player SDK for iOS, version 6.3.2.344
 
 
 # Table of Contents
@@ -44,7 +44,7 @@ ARC is required.
 What's New <a name="New"></a>
 ============
 
-Built-In TV Player Controls for tvOS <a name="TVPlayer"></a>
+Built-In TV Player Controls for tvOS
 -----
 Version 6.3 of the Brightcove Native Player SDK includes built-in controls for playback in tvOS on Apple TV. For full details about using the built-in TV Player UI with the Brightcove Native Player SDK, see our [TV Player guide](TVPlayer.md).
 

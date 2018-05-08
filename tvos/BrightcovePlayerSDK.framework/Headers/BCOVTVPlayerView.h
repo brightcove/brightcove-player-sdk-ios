@@ -43,7 +43,6 @@ typedef NS_ENUM(NSUInteger, BCOVTVShowViewType) {
     BCOVTVShowViewTypeSettings
 };
 
-
 /**
  * Conform to this protocol to receive information about the BCOVTVPlayerView.
  */
