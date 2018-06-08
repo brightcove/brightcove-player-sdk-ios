@@ -1,3 +1,31 @@
+## Release 6.3.3
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+- The TV Player UI now supports playback of live and live DVR streams with controls specific to each type of stream.
+
+- The `BCOVTVPlayerView` class has a new `playerType` property, of type `BCOVTVPlayerType`. This property lets you specify whether the TV Player View will be used for VOD, live, or live DVR presentation.
+
+- The `BCOVTVPlayerType` enumeration was added to let you specify VOD, live, or live DVR playback in the TV Player UI. The enumerated values are `BCOVTVPlayerTypeVOD` for video-on-demand, `BCOVTVPlayerTypeLive` for live, and `BCOVTVPlayerTypeLiveDVR` for live DVR playback.
+
+- Fixes an issue in the Offline Video Manager where a download stopped by the user by terminating the app would result in a `downloadState` set to `BCOVOfflineVideoDownloadStateCompleted` instead of `BCOVOfflineVideoDownloadStateTracksError` in its associated `BCOVOfflineVideoStatus` object.
+
+### OnceUX Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+- Fixes an issue where HTTP video sources could be selected over HTTPS sources. HTTPS is the preferred source.
+
+### FreeWheel Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+- Supports version 6.22.0 of the FreeWheel AdManager framework for iOS.
+
+- Fixes an issue where a videoView event was sent before the slotImpression event when preroll ads were present.
+
 ## Release 6.3.2
 
 ### Brightcove Player SDK for iOS (Core)

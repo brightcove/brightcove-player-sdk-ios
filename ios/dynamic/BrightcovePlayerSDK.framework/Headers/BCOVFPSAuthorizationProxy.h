@@ -42,7 +42,7 @@ extern const NSInteger kBCOVFPSErrorCodeApplicationCertificateRequest;
  *  This is called for each asset.
  *  No guarantee is made as to the thread that this is called on.
  *  You should return the content identifier corresponding to this loading request.
- *  This is typically extracted from the "sdk://..." URL in loadingRequest.request.URL.
+ *  This is typically extracted from the "skd://..." URL in loadingRequest.request.URL.
  *  The content identifier will be passed to [AVAssetResourceLoadingRequest
  *  streamingContentKeyRequestDataForApp:contentIdentifier:options:error:]
  *  to retrieve the SPC.

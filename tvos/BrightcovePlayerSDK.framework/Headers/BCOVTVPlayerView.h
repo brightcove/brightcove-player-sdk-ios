@@ -44,6 +44,29 @@ typedef NS_ENUM(NSUInteger, BCOVTVShowViewType) {
 };
 
 /**
+ * Enumeration type used to set the type of video playback
+ * in the player view.
+ */
+typedef NS_ENUM(NSUInteger, BCOVTVPlayerType) {
+    
+    /**
+     * Controls and gestures for video-on-demand.
+     * This includes advertising controls.
+     */
+    BCOVTVPlayerTypeVOD,
+    
+    /**
+     * Controls and gestures for live video playback.
+     */
+    BCOVTVPlayerTypeLive,
+    
+    /**
+     * Controls and gestures for live DVR video playback.
+     */
+    BCOVTVPlayerTypeLiveDVR
+};
+
+/**
  * Conform to this protocol to receive information about the BCOVTVPlayerView.
  */
 @protocol BCOVTVPlayerViewDelegate <NSObject>
@@ -145,6 +168,12 @@ typedef NS_ENUM(NSUInteger, BCOVTVShowViewType) {
  * The options that were used when creating this BCOVTVPlayerView.
  */
 @property (nonatomic, copy, readonly) BCOVTVPlayerViewOptions *options;
+
+/**
+ * The video playback configuration: VOD, live, or live DVR.
+ * Default value is BCOVTVPlayerTypeVOD.
+ */
+@property (nonatomic) BCOVTVPlayerType playerType;
 
 /**
  * View that holds the video content.
