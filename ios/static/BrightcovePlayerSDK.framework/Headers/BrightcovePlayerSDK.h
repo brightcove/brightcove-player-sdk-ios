@@ -12,6 +12,9 @@
 //! Project version string for BrightcovePlayerSDK.
 FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
+// Open Source Software attributions
+#import <BrightcovePlayerSDK/BCOVAttributions.h>
+
 // Playback API
 #import <BrightcovePlayerSDK/BCOVPlaybackService.h>
 #import <BrightcovePlayerSDK/BCOVPlaybackServiceRequestFactory.h>

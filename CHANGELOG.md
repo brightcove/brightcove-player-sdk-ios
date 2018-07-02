@@ -1,3 +1,19 @@
+## Release 6.3.4
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Adds BCOVAttributions.h, acknowledging open source software which may be contained in some portions of the Brightcove Native Player SDK.
+
+* Fixes an issue with Sidecar Subtitles where text tracks added to a manifest with pre-existing text tracks were not available to the user. Affects Dynamic Delivery only.
+
+### OnceUX Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where a `BCOVVideo` with a single `BCOVSource` failed to play when the `BCOVSource`'s `deliveryMethod` was not set to `kBCOVSourceDeliveryHLS` or `kBCOVSourceDeliveryOnce`.
+
 ## Release 6.3.3
 
 ### Brightcove Player SDK for iOS (Core)
@@ -24,7 +40,7 @@
 
 - Supports version 6.22.0 of the FreeWheel AdManager framework for iOS.
 
-- Fixes an issue where a videoView event was sent before the slotImpression event when preroll ads were present.
+- Fixes an issue where a `videoView` event was sent before the `slotImpression` event when preroll ads were present.
 
 ## Release 6.3.2
 
