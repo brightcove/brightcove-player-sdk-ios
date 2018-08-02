@@ -155,7 +155,7 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
 @property (nonatomic, weak, readonly) BCOVPUISlider *progressSlider;
 
 /** The closed caption button */
-@property (nonatomic, weak, readonly) UIButton *closedCaptionButton;
+@property (nonatomic, weak, readonly) BCOVPUIButton *closedCaptionButton;
 
 /** The screen mode (fullscreen) button */
 @property (nonatomic, weak, readonly) BCOVPUIButton *screenModeButton;

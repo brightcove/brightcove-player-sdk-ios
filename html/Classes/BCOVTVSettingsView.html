@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>BCOVTVSettingsView Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Brightcove Native Player for iOS </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Brightcove</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/advertisingMode">advertisingMode</option>
+		
+		<option value="//api/name/currentTopTabBarItemView">currentTopTabBarItemView</option>
+		
+		<option value="//api/name/insets">insets</option>
+		
+		<option value="//api/name/topTabBar">topTabBar</option>
+		
+		<option value="//api/name/topTabBarBackgroundView">topTabBarBackgroundView</option>
+		
+		<option value="//api/name/topTabBarIndicatorView">topTabBarIndicatorView</option>
+		
+		<option value="//api/name/topTabBarItemContainerView">topTabBarItemContainerView</option>
+		
+		<option value="//api/name/topTabBarItemContainerViewFocusGuide">topTabBarItemContainerViewFocusGuide</option>
+		
+		<option value="//api/name/topTabBarItemViews">topTabBarItemViews</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/enable:tabBarItemView:">- enable:tabBarItemView:</option>
+		
+		<option value="//api/name/showTopTabBar:">- showTopTabBar:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BCOVTVSettingsView Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>UIView</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>BCOVTVSettingsView.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>BCOVTVSettingsView
+View that holds the top tab bar view, and its related top tab bar item views.
+This view sits inside the BCOVTVPlayerView&rsquo;s controlsStaticView, a static overlay view.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/insets" title="insets"></a>
+	<h3 class="method-title"><code><a href="#//api/name/insets">&nbsp;&nbsp;insets</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Amount by which the controls will be inset from the edge of the TV Player View.
+Defaults values are (top, left, bottom, right) = (60, 90, 60, 90).
+The top tab bar is always pinned to the top edge, but its height will change
+based on the top inset.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) UIEdgeInsets insets</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Amount by which the controls will be inset from the edge of the TV Player View.
+Defaults values are (top, left, bottom, right) = (60, 90, 60, 90).
+The top tab bar is always pinned to the top edge, but its height will change
+based on the top inset.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVSettingsView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/topTabBar" title="topTabBar"></a>
+	<h3 class="method-title"><code><a href="#//api/name/topTabBar">&nbsp;&nbsp;topTabBar</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This is the primary top tab bar used to select various settings panel views.
+The default panels (BCOVTVTabBarItemViews) are &ldquo;Info&rdquo;, &ldquo;Subtitles&rdquo;, and &ldquo;Audio&rdquo;.
+You can add or remove your own <a href="../Classes/BCOVTVTabBarItemView.html">BCOVTVTabBarItemView</a> instances in this tab bar
+by modifying the <a href="#//api/name/topTabBarItemViews">topTabBarItemViews</a> array.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) UITabBar *topTabBar</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This is the primary top tab bar used to select various settings panel views.
+The default panels (BCOVTVTabBarItemViews) are &ldquo;Info&rdquo;, &ldquo;Subtitles&rdquo;, and &ldquo;Audio&rdquo;.
+You can add or remove your own <a href="../Classes/BCOVTVTabBarItemView.html">BCOVTVTabBarItemView</a> instances in this tab bar
+by modifying the <a href="#//api/name/topTabBarItemViews">topTabBarItemViews</a> array.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVSettingsView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/topTabBarBackgroundView" title="topTabBarBackgroundView"></a>
+	<h3 class="method-title"><code><a href="#//api/name/topTabBarBackgroundView">&nbsp;&nbsp;topTabBarBackgroundView</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This view spans the width of the screen and provides the background to both
+the top tab bar and the top tab bar item container view.
+This view gives the &ldquo;blur effect&rdquo; background to the top tab bar and
+all of its related views.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) UIVisualEffectView *topTabBarBackgroundView</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This view spans the width of the screen and provides the background to both
+the top tab bar and the top tab bar item container view.
+This view gives the &ldquo;blur effect&rdquo; background to the top tab bar and
+all of its related views.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVSettingsView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/topTabBarItemContainerView" title="topTabBarItemContainerView"></a>
+	<h3 class="method-title"><code><a href="#//api/name/topTabBarItemContainerView">&nbsp;&nbsp;topTabBarItemContainerView</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This view spans the width of the screen and contains each
+tab bar item view. Its height automatically resizes to accommodate
+the height of the currently selected tab bar item view.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) UIView *topTabBarItemContainerView</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This view spans the width of the screen and contains each
+tab bar item view. Its height automatically resizes to accommodate
+the height of the currently selected tab bar item view.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVSettingsView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/topTabBarIndicatorView" title="topTabBarIndicatorView"></a>
+	<h3 class="method-title"><code><a href="#//api/name/topTabBarIndicatorView">&nbsp;&nbsp;topTabBarIndicatorView</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This view contains a subview that draws the wide down arrow that
+reminds the user that they can swipe down to reveal the top tab bar.
+The subview can be replaced with your own view.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) UIView *topTabBarIndicatorView</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This view contains a subview that draws the wide down arrow that
+reminds the user that they can swipe down to reveal the top tab bar.
+The subview can be replaced with your own view.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVSettingsView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/topTabBarItemContainerViewFocusGuide" title="topTabBarItemContainerViewFocusGuide"></a>
+	<h3 class="method-title"><code><a href="#//api/name/topTabBarItemContainerViewFocusGuide">&nbsp;&nbsp;topTabBarItemContainerViewFocusGuide</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This focus guide is installed along the bottom edge of the
+top tab bar item container view. If a tab bar item view is not wide enough
+to lie directly underneath an item title in the top tab bar, this focus guide
+will redirect focus to the default focusable item in the currently selected
+tab bar item view in the top tab bar.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) UIFocusGuide *topTabBarItemContainerViewFocusGuide</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This focus guide is installed along the bottom edge of the
+top tab bar item container view. If a tab bar item view is not wide enough
+to lie directly underneath an item title in the top tab bar, this focus guide
+will redirect focus to the default focusable item in the currently selected
+tab bar item view in the top tab bar.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVSettingsView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/currentTopTabBarItemView" title="currentTopTabBarItemView"></a>
+	<h3 class="method-title"><code><a href="#//api/name/currentTopTabBarItemView">&nbsp;&nbsp;currentTopTabBarItemView</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The currently selected tab bar item view.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) BCOVTVTabBarItemView *currentTopTabBarItemView</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The currently selected tab bar item view.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVSettingsView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/topTabBarItemViews" title="topTabBarItemViews"></a>
+	<h3 class="method-title"><code><a href="#//api/name/topTabBarItemViews">&nbsp;&nbsp;topTabBarItemViews</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The array of tab bar item views installed in the top tab bar.
+This array can be read, modified, and then re-assigned as needed.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) NSArray&lt;BCOVTVTabBarItemView*&gt; *topTabBarItemViews</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The array of tab bar item views installed in the top tab bar.
+This array can be read, modified, and then re-assigned as needed.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVSettingsView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/advertisingMode" title="advertisingMode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/advertisingMode">&nbsp;&nbsp;advertisingMode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set to YES to change the control view&rsquo;s UI to the advertising state.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) BOOL advertisingMode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Set to YES to change the control view&rsquo;s UI to the advertising state.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVSettingsView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/showTopTabBar:" title="showTopTabBar:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/showTopTabBar:">&ndash;&nbsp;showTopTabBar:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Show or hide the top tab bar view.
+Do not use this method to show or hide the top tab bar view.
+Use <a href="../Classes/BCOVTVPlayerView.html#//api/name/showTopTabBar:">[BCOVTVPlayerView showTopTabBar:]</a> instead.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)showTopTabBar:(BOOL)<em>show</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Show or hide the top tab bar view.
+Do not use this method to show or hide the top tab bar view.
+Use <a href="../Classes/BCOVTVPlayerView.html#//api/name/showTopTabBar:">[BCOVTVPlayerView showTopTabBar:]</a> instead.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVSettingsView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/enable:tabBarItemView:" title="enable:tabBarItemView:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/enable:tabBarItemView:">&ndash;&nbsp;enable:tabBarItemView:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Enable or disable a tab bar item view in the top tab bar.
+By default all tab bar item views are enabled when they are
+created and installed into the top tab bar.
+Calling <code>[settingsView enable:NO tabBarItemView:...]</code> disables the tab bar item view
+and removes it from the top tab bar, but does not remove it from
+the array of installed top tab bar item views.
+Calling <code>[settingsView enable:YES tabBarItemView:...]</code> re-enables the tab bar item view
+and shows it in the top tab bar again
+This is useful when a tab bar item view has no useful information to display
+for the current video.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)enable:(BOOL)<em>enable</em> tabBarItemView:(BCOVTVTabBarItemView *)<em>tabBarItemView</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>enable</code></th>
+						<td><p>Pass YES to make the tab bar item view visible. NO to hide.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>tabBarItemView</code></th>
+						<td><p>The tab bar item view that you wish to show or hide.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Enable or disable a tab bar item view in the top tab bar.
+By default all tab bar item views are enabled when they are
+created and installed into the top tab bar.
+Calling <code>[settingsView enable:NO tabBarItemView:...]</code> disables the tab bar item view
+and removes it from the top tab bar, but does not remove it from
+the array of installed top tab bar item views.
+Calling <code>[settingsView enable:YES tabBarItemView:...]</code> re-enables the tab bar item view
+and shows it in the top tab bar again
+This is useful when a tab bar item view has no useful information to display
+for the current video.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVSettingsView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2018 Brightcove. All rights reserved. Updated: 2018-08-02</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

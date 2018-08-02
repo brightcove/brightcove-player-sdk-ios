@@ -1,3 +1,17 @@
+## Release 6.3.5
+
+#### Breaking Changes
+
+* The Brightcove Native Player for iOS now requires Xcode 9.0 or higher.
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Adds SDK Reference documentation for built-in tvOS player controls (`BCOVTVPlayer`).
+* Fixes an issue where when downloading secondary text and audio tracks it would sometimes download another video rendtion not originally specified.
+* Fixes the declaration of the Closed Caption button in BCOVPlayerUI.
+
 ## Release 6.3.4
 
 ### Brightcove Player SDK for iOS (Core)

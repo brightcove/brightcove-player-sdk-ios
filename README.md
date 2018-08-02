@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.3.4.376
+# Brightcove Player SDK for iOS, version 6.3.5.389
 
 
 # Table of Contents
@@ -55,7 +55,7 @@ Version 6.0 has a few changes that you should be aware of, particularly if you h
 - Podspecs are no longer hosted on [CocoaPods][cocoapods]. All podspecs are now hosted [here][podspecs] in a private specs repository.
 - All of the SDK components - core library and plugin frameworks - are now released with the same version. When upgrading any single component, you should upgrade them all so that they all have the same version.
 - In your project's podfile, be sure to add `source 'https://github.com/brightcove/BrightcoveSpecs.git'`, and remove any reference to `BCOVSpecs.git`.
-- If you install frameworks manually, we recommend removing any current Brightcove frameworks, and then add the new ones. Make sure your framework search paths in your Xcode target settings point to the new frameworks.
+- If you install frameworks manually, we recommend removing any current Brightcove frameworks, and then adding the new ones. Make sure the framework search paths in your Xcode target settings point to the new frameworks.
 
 **Updated Podspec Names**
 
@@ -70,9 +70,9 @@ Brightcove-Player-SDK-FW | Brightcove-Player-FreeWheel
 Brightcove-Player-SDK-IMA | Brightcove-Player-IMA
 Brightcove-Player-SDK-Omniture | Brightcove-Player-Omniture
 Brightcove-Player-SDK-OUX | Brightcove-Player-OnceUX
-Brightcove-Player-SDK-FairPlay | *integrated into the core framework*
-Brightcove-Player-SDK-Player-UI | *integrated into the core framework*
-Brightcove-Player-SDK-SidecarSubtitles | *integrated into the core framework*
+Brightcove-Player-SDK-FairPlay | *Integrated into the core framework*
+Brightcove-Player-SDK-Player-UI | *Integrated into the core framework*
+Brightcove-Player-SDK-SidecarSubtitles | *Integrated into the core framework*
 
 
 FairPlay

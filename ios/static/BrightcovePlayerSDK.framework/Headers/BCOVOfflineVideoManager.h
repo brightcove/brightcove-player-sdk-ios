@@ -463,7 +463,7 @@ didFinishDownloadWithError:(NSError *)error;
  *                  The AVMediaSelection for which this progress is reported.
  */
 - (void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
-             aggregateDownloadTask:(AVAggregateAssetDownloadTask *)aggregateDownloadTask
+    aggregateDownloadTask:(AVAggregateAssetDownloadTask *)aggregateDownloadTask
             didProgressTo:(NSTimeInterval)progressPercent
         forMediaSelection:(AVMediaSelection *)mediaSelection NS_AVAILABLE_IOS(11_0);
 
@@ -639,7 +639,8 @@ didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
  * You can call this method again to update the delegate and options.
  *
  *  @param delegate The delegate object conforming to the BCOVOfflineVideoManagerDelegate protocol.
- *                  The only valid dictionary entries are
+ *
+ *  @param options  NSDictionary of options.  The only valid dictionary entries are
  *                  kBCOVOfflineVideoManagerAllowsCellularDownloadKey,
  *                  kBCOVOfflineVideoManagerAllowsCellularPlaybackKey,
  *                  kBCOVOfflineVideoManagerAllowsCellularAnalyticsKey,
