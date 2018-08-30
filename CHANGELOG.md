@@ -1,3 +1,15 @@
+## Release 6.3.6
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Improves performance of the BCOVOfflineVideoManager method `-videoObjectFromOfflineVideoToken:`.
+
+* Fixes a crash which could occur while downloading videos for offline viewing.
+
+* Fixes a crash which could occur when a video failed to load.
+
 ## Release 6.3.5
 
 #### Breaking Changes
@@ -9,7 +21,9 @@
 #### Additions and Improvements
 
 * Adds SDK Reference documentation for built-in tvOS player controls (`BCOVTVPlayer`).
-* Fixes an issue where when downloading secondary text and audio tracks it would sometimes download another video rendtion not originally specified.
+
+* Fixes an issue where downloading secondary tracks could cause an additional, unrequested video rendition to be downloaded.
+
 * Fixes the declaration of the Closed Caption button in BCOVPlayerUI.
 
 ## Release 6.3.4
