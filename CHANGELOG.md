@@ -1,3 +1,9 @@
+## Release 6.3.7
+
+#### Additions and Improvements
+
+* Corrects the version number.
+
 ## Release 6.3.6
 
 ### Brightcove Player SDK for iOS (Core)
