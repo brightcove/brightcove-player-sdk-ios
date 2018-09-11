@@ -1,8 +1,16 @@
+## Release 6.3.8
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes an issue where requesting a download of a rented video would fail FairPlay authentication in some regions when 24-Hour Time was turned off in the device Date & Time settings (Settings -> General -> Date & Time).
+
 ## Release 6.3.7
 
 #### Additions and Improvements
 
-* Corrects the version number.
+* Corrects the release version number.
 
 ## Release 6.3.6
 
