@@ -1,3 +1,11 @@
+## Release 6.3.9 
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes an issue with video downloads in which the load on the main thread increased as the number of stored videos increased.
+
 ## Release 6.3.8
 
 ### Brightcove Player SDK for iOS (Core)
