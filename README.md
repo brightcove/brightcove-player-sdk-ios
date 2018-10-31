@@ -239,6 +239,17 @@ You also no longer need to add the Playback Controller's view to your hierarchy,
     self.playbackController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 	[self.videoView addSubview:self.playbackController.view]
 
+Or code like this:
+
+    self.playbackController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.videoView addSubview:self.playbackController.view];
+    [NSLayoutConstraint activateConstraints:@[
+                                              [self.playbackController.view.topAnchor constraintEqualToAnchor:self.videoView.topAnchor],
+                                              [self.playbackController.view.rightAnchor constraintEqualToAnchor:self.videoView.rightAnchor],
+                                              [self.playbackController.view.leftAnchor constraintEqualToAnchor:self.videoView.leftAnchor],
+                                              [self.playbackController.view.bottomAnchor constraintEqualToAnchor:self.videoView.bottomAnchor],
+                                              ]];
+
 Instead, you will associate the Playback Controller with a new Player View and add that to your view hierarchy, as described in the **Setting up PlayerUI Controls** section of this document.
 
 Migrating from the Brightcove PlayerUI Plugin
@@ -263,6 +274,11 @@ Create a property in your UIViewController to keep track of the BCOVPUIPlayerVie
 	@property (nonatomic) BCOVPUIPlayerView *playerView;
 
 Create the BCOVPUIBasicControlView, and then the BCOVPUIPlayerView. This is where we associate the Playback Controller (and thus all the videos it plays) with the controls.
+
+You'll need to setup the layout for the player view, you can do this with Auto Layout or the older Springs & Struts method. 
+
+**Springs & Struts:**
+
 Set the player view to match the video container from your layout (`videoView`) when it resizes.
 
     // Create and configure Control View.
@@ -275,6 +291,22 @@ Finally, add the BCOVPUIPlayerView to your video container, `videoView`.
 
     // Add BCOVPUIPlayerView to your video view.
     [self.videoView addSubview:self.playerView];
+
+**Auto Layout**
+
+Set the `translatesAutoresizingMaskIntoConstraints` on BCOVPUIPlayerView to `NO` and  add the  to your video container, `videoView`.
+
+    self.videoView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.videoView addSubview:self.playerView];
+
+Then add the constraints for the layout; setting the top, right, left and bottom anchors of your BCOVPUIPlayerView to equal that of `videoView` 
+
+    [NSLayoutConstraint activateConstraints:@[
+                                              [self.playerView.topAnchor constraintEqualToAnchor:self.videoView.topAnchor],
+                                              [self.playerView.rightAnchor constraintEqualToAnchor:self.videoView.rightAnchor],
+                                              [self.playerView.leftAnchor constraintEqualToAnchor:self.videoView.leftAnchor],
+                                              [self.playerView.bottomAnchor constraintEqualToAnchor:self.videoView.bottomAnchor],
+                                              ]];
 
 **Reminder:** The PlayerUI uses a small font file for various graphics. If you are installing the static framework, and not using CocoaPods, be sure to add the file `bcovpuiiconfont.ttf` from the `BrightcovePlayerSDK.framework` bundle directly to your project listing so that the font file is copied into the app bundle
 
