@@ -579,14 +579,18 @@ didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
 /**
  * The AVAssetDownloadTask associated with this download.
  * Will be set to nil once the download has completed.
+ *
+ * **Available in iOS 10.0+**
  */
-@property (nonatomic, readonly) AVAssetDownloadTask *downloadTask NS_AVAILABLE_IOS(10_0);
+@property (nonatomic, readonly) AVAssetDownloadTask *downloadTask /* NS_AVAILABLE_IOS(10_0) */;
 
 /**
  * The AVAggregateAssetDownloadTask associated with this tracks download.
  * Will be set to nil once the download has completed.
+ *
+ * **Available in iOS 11.0+**
  */
-@property (nonatomic, readonly) AVAggregateAssetDownloadTask *aggregateDownloadTask NS_AVAILABLE_IOS(11_0);
+@property (nonatomic, readonly) AVAggregateAssetDownloadTask *aggregateDownloadTask /* NS_AVAILABLE_IOS(11_0) */;
 
 #else
 @property (nonatomic, readonly) id downloadTask;

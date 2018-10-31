@@ -1,3 +1,19 @@
+## Release 6.3.10
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes a documentation error in the BCOVOfflineVideoStatus Class Reference.
+
+### FreeWheel Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports version 6.25.0 of the FreeWheel AdManager framework for iOS.
+
+* Fixes an issue where, while looping a video with postroll ads, the lifecycle event kBCOVPlaybackSessionLifecycleEventEnd was sent only the first time the video reached its end.
+
 ## Release 6.3.9 
 
 ### Brightcove Player SDK for iOS (Core)

@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.3.9.422
+# Brightcove Player SDK for iOS, version 6.3.10.441
 
 
 # Table of Contents
@@ -676,7 +676,7 @@ You must wait before calling `- [BCOVPlaybackController resumeVideoAtTime:withAu
 
 When the `AVPlayer` is still able to access the network, but the video stalls because the network is too slow, the lifecycle delegate method will be called with a `kBCOVPlaybackSessionLifecycleEventPlaybackStalled` event. When playback is able to resume, the lifecycle delegate method will be called with a `kBCOVPlaybackSessionLifecycleEventPlaybackRecovered` event. These events only cover the case where normal playback stopped and does not cover buffering that occurs during a seek or initial load of the video.
 
-When the video is initially loading, when a seek occurs, or when playback stalls due to a slow network, the lifecycle delegate method will be called with a `kBCOVPlaybackSessionLifecycleEventPlaybackBufferEmpty` event.  When playback is able to resume,  the lifecycle delegate method will be called with a `kBCOVPlaybackSessionLifecycleEventPlaybackLikelyToKeepUp` event. You may wish to implement a loading spinner in this case.
+When the video is initially loading, when a seek occurs, or when playback stalls due to a slow network, the lifecycle delegate method will be called with a `kBCOVPlaybackSessionLifecycleEventPlaybackBufferEmpty` event.  When playback is able to resume,  the lifecycle delegate method will be called with a `kBCOVPlaybackSessionLifecycleEventPlaybackLikelyToKeepUp` event.
 
 Subclassing <a name="Subclassing"></a>
 -----------
