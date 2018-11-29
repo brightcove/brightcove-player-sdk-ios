@@ -200,12 +200,6 @@ as defined by the <a href="../Protocols/BCOVFPSAuthorizationProxy.html">BCOVFPSA
 			
 
 			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Proxy object that handles specific subtasks of FairPlay key exchange
-as defined by the <a href="../Protocols/BCOVFPSAuthorizationProxy.html">BCOVFPSAuthorizationProxy</a> protocol.</p>
-			</div>
-			
 
 			
 
@@ -247,11 +241,6 @@ as defined by the <a href="../Protocols/BCOVFPSAuthorizationProxy.html">BCOVFPSA
 			
 
 			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Delegate for this BCOVOfflineVideoManager.</p>
-			</div>
-			
 
 			
 
@@ -278,10 +267,7 @@ as defined by the <a href="../Protocols/BCOVFPSAuthorizationProxy.html">BCOVFPSA
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Returns an array of all the offline video tokens.
-Each token refers to a video download in device storage,
-including videos that are currently being downloaded,
-and videos that were cancelled, paused, or failed.</p>
+				<p>Returns an array of all the offline video tokens.</p>
 			</div>
 			
 		    
@@ -298,8 +284,7 @@ and videos that were cancelled, paused, or failed.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns an array of all the offline video tokens.
-Each token refers to a video download in device storage,
+				<p>Each token refers to a video download in device storage,
 including videos that are currently being downloaded,
 and videos that were cancelled, paused, or failed.</p>
 			</div>
@@ -330,8 +315,7 @@ and videos that were cancelled, paused, or failed.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The shared instance used to access
-the singleton BCOVOfflineVideoManager object.</p>
+				<p>The shared instance used to access the singleton BCOVOfflineVideoManager object.</p>
 			</div>
 			
 		    
@@ -345,12 +329,6 @@ the singleton BCOVOfflineVideoManager object.</p>
 
 			
 
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>The shared instance used to access
-the singleton BCOVOfflineVideoManager object.</p>
-			</div>
 			
 
 			
@@ -378,9 +356,7 @@ the singleton BCOVOfflineVideoManager object.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Initialize the Offline Video Manager.
-This should be the first call to the Offline Video Manager.
-You can call this method again to update the <a href="#//api/name/delegate">delegate</a> and options.</p>
+				<p>Initialize the Offline Video Manager.</p>
 			</div>
 			
 		    
@@ -400,12 +376,12 @@ You can call this method again to update the <a href="#//api/name/delegate">dele
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>options</code></th>
-						<td><p>NSDictionary of options.  The only valid dictionary entries are
+						<td><p>An NSDictionary of options.  The only valid dictionary entries are
 kBCOVOfflineVideoManagerAllowsCellularDownloadKey,
 kBCOVOfflineVideoManagerAllowsCellularPlaybackKey,
 kBCOVOfflineVideoManagerAllowsCellularAnalyticsKey,
-kBCOVOfflineVideoManagerAnalyticsStorageLimitKey,
-and kBCOVOfflineVideoManagerHTTPMaximumConnectionsPerHostKey.</p></td>
+kBCOVOfflineVideoManagerAnalyticsStorageLimitKey, and
+kBCOVOfflineVideoManagerHTTPMaximumConnectionsPerHostKey.</p></td>
 					</tr>
 				
 				</table>
@@ -419,8 +395,7 @@ and kBCOVOfflineVideoManagerHTTPMaximumConnectionsPerHostKey.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Initialize the Offline Video Manager.
-This should be the first call to the Offline Video Manager.
+				<p>This should be the first call to the Offline Video Manager.
 You can call this method again to update the <a href="#//api/name/delegate">delegate</a> and options.</p>
 			</div>
 			
@@ -451,12 +426,7 @@ You can call this method again to update the <a href="#//api/name/delegate">dele
 			
 			<div class="method-subsection brief-description">
 				<p>Retrieve an array of NSDictionary objects, one for each variant stream
-in the specified online HLS video.
-Each dictionary contains a key:value pair for each of the variant stream&rsquo;s
-attributes as specified by its corresponding EXT-X-STREAM-INF tag in the
-HLS manifest.
-These attributes can be used when selecting a particular bitrate for download.
-If all you need are the bitrate values, use -[variantBitratesForVideo:completion:].</p>
+in the specified online HLS video.</p>
 			</div>
 			
 		    
@@ -471,16 +441,19 @@ If all you need are the bitrate values, use -[variantBitratesForVideo:completion
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>video</code></th>
-						<td><p>The <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object from Video Cloud.
-The video object should contain a valid online HLS source.
-@param completionHandler
-Block that receives the array of variant attributes NSDictionary
-objects if the request is successfully made. If there is an error,
-<code>variantAttributesDictionariesArray</code> will be nil, and <code>error</code>
-will report any NSError.
-The completion handler is not called on any specific thread.
-You should switch to the main thread if you need to perform
-any UI work. It may be called synchronously or asynchronously.</p></td>
+						<td><p>The <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object from Video Cloud. The video object should
+contain a valid online HLS source.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>Block that receives the array of variant attributes
+NSDictionary objects if the request is successfully made. If there is an error,
+<code>variantAttributesDictionariesArray</code> will be nil, and <code>error</code> will report any NSError.</p>
+
+<p>The completion handler is not called on any specific thread. You should switch to
+the main thread if you need to perform any UI work. It may be called
+synchronously or asynchronously.</p></td>
 					</tr>
 				
 				</table>
@@ -494,12 +467,11 @@ any UI work. It may be called synchronously or asynchronously.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Retrieve an array of NSDictionary objects, one for each variant stream
-in the specified online HLS video.
-Each dictionary contains a key:value pair for each of the variant stream&rsquo;s
+				<p>Each dictionary contains a key:value pair for each of the variant stream&rsquo;s
 attributes as specified by its corresponding EXT-X-STREAM-INF tag in the
-HLS manifest.
-These attributes can be used when selecting a particular bitrate for download.
+HLS manifest.</p>
+
+<p>These attributes can be used when selecting a particular bitrate for download.
 If all you need are the bitrate values, use -[variantBitratesForVideo:completion:].</p>
 			</div>
 			
@@ -531,14 +503,7 @@ If all you need are the bitrate values, use -[variantBitratesForVideo:completion
 			<div class="method-subsection brief-description">
 				<p>Retrieve an array of NSDictionary objects, one for each alternative rendition
 in the specified online HLS video. Alternative renditions include captions,
-subtitles, and secondary audio tracks.
-Each dictionary contains a key:value pair for each of the rendition&rsquo;s
-attributes as specified by its corresponding EXT-X-MEDIA tag in the
-HLS manifest.
-These attributes can be used to determine what languages are available for
-text and audio tracks, so that these languages can be presented to the end
-user, or selected for download yourself based on the locale or some other
-criteria.</p>
+subtitles, and secondary audio tracks.</p>
 			</div>
 			
 		    
@@ -553,15 +518,19 @@ criteria.</p>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>video</code></th>
-						<td><p>The <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object from Video Cloud.
-The video object should contain a valid online HLS source.
-@param completionHandler
-Block that receives the array of rendition attributes NSDictionary
+						<td><p>The <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object from Video Cloud. The video object should contain
+a valid online HLS source.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>A block that receives the array of rendition attributes NSDictionary
 objects if the request is successfully made. If there is an error,
-<code>alternativeRenditionAttributesDictionariesArray</code> will be nil,
-and <code>error</code> will report any NSError.
-The completion handler is not called on any specific thread.
-You should switch to the main thread if you need to perform
+<code>alternativeRenditionAttributesDictionariesArray</code> will be nil, and <code>error</code>
+will report any NSError.</p>
+
+<p>The completion handler is not called on any specific
+thread. You should switch to the main thread if you need to perform
 any UI work. It may be called synchronously or asynchronously.</p></td>
 					</tr>
 				
@@ -576,15 +545,11 @@ any UI work. It may be called synchronously or asynchronously.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Retrieve an array of NSDictionary objects, one for each alternative rendition
-in the specified online HLS video. Alternative renditions include captions,
-subtitles, and secondary audio tracks.
-Each dictionary contains a key:value pair for each of the rendition&rsquo;s
+				<p>Each dictionary contains a key:value pair for each of the rendition&rsquo;s
 attributes as specified by its corresponding EXT-X-MEDIA tag in the
-HLS manifest.
-These attributes can be used to determine what languages are available for
-text and audio tracks, so that these languages can be presented to the end
-user, or selected for download yourself based on the locale or some other
+HLS manifest. These attributes can be used to determine what languages are
+available for text and audio tracks, so that these languages can be presented to
+the end user, or selected for download yourself based on the locale or some other
 criteria.</p>
 			</div>
 			
@@ -614,8 +579,7 @@ criteria.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Retrieve an array of available bitrates for the specified online HLS video.
-The array will be sorted from smallest to largest bitrate.</p>
+				<p>Retrieve an array of available bitrates for the specified online HLS video.</p>
 			</div>
 			
 		    
@@ -630,15 +594,19 @@ The array will be sorted from smallest to largest bitrate.</p>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>video</code></th>
-						<td><p>The <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object from Video Cloud.
-The video object should contain a valid online HLS source.
-@param completionHandler
-Block that receives the array of bitrates
-the request is successfully made. If there is an error,
-<code>bitrates</code> will be nil, and <code>error</code> will report any NSError.
-The completion handler is not called on any specific thread.
-You should switch to the main thread if you need to perform
-any UI work. It may be called synchronously or asynchronously.</p></td>
+						<td><p>The <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object from Video Cloud. The video object should
+contain a valid online HLS source.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>A block that receives the array of bitrates if the
+request is successfully made. If there is an error, <code>bitrates</code> will be nil,
+and <code>error</code> will report any NSError.</p>
+
+<p>The completion handler is not called on any specific thread. You should switch
+to the main thread if you need to perform any UI work. It may be called
+synchronously or asynchronously.</p></td>
 					</tr>
 				
 				</table>
@@ -652,8 +620,7 @@ any UI work. It may be called synchronously or asynchronously.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Retrieve an array of available bitrates for the specified online HLS video.
-The array will be sorted from smallest to largest bitrate.</p>
+				<p>The array will be sorted from smallest to largest bitrate.</p>
 			</div>
 			
 
@@ -682,11 +649,7 @@ The array will be sorted from smallest to largest bitrate.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Estimate the size of a video download in megabytes.
-This method calls the completion handler with an estimate of the video size
-of the largest rendition in the HLS manifest, in megabytes.
-If there are any problems retrieving the value, <code>error</code> will be set,
-and <code>size</code> will be zero.</p>
+				<p>Estimate the size of a video download in megabytes.</p>
 			</div>
 			
 		    
@@ -701,20 +664,23 @@ and <code>size</code> will be zero.</p>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>video</code></th>
-						<td><p>The <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object from Video Cloud.
-The video object should contain a valid HLS source.</p></td>
+						<td><p>The <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object from Video Cloud. The video object should
+contain a valid HLS source.</p></td>
 					</tr>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>options</code></th>
-						<td><p>NSDictionary of options used in this request.
-Use the kBCOVOfflineVideoManagerRequestedBitrateKey to specify
-the bitrate you plan to download.
-@param completionHandler
-Block that receives the estimated size of the video after
+						<td><p>NSDictionary of options used in this request. Use the
+kBCOVOfflineVideoManagerRequestedBitrateKey to specify the bitrate you plan to download.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>A block that receives the estimated size of the video after
 the request is successfully made. If there is an error,
-<code>megabytes</code> will be set to zero, and <code>error</code> will report any NSError.
-The completion handler is not called on any specific thread.
+<code>megabytes</code> will be set to zero, and <code>error</code> will report any NSError.</p>
+
+<p>The completion handler is not called on any specific thread.
 You should switch to the main thread if you need to perform
 any UI work. It may be called synchronously or asynchronously.</p></td>
 					</tr>
@@ -730,8 +696,7 @@ any UI work. It may be called synchronously or asynchronously.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Estimate the size of a video download in megabytes.
-This method calls the completion handler with an estimate of the video size
+				<p>This method calls the completion handler with an estimate of the video size
 of the largest rendition in the HLS manifest, in megabytes.
 If there are any problems retrieving the value, <code>error</code> will be set,
 and <code>size</code> will be zero.</p>
@@ -765,9 +730,7 @@ and <code>size</code> will be zero.</p>
 			<div class="method-subsection brief-description">
 				<p>Returns an array of the status of all video downloads,
 including videos that are currently being downloaded,
-and videos that were cancelled, paused, or failed.
-All objects in the array are copies, so although you can modify an object,
-it will have no effect on the download manager.</p>
+and videos that were cancelled, paused, or failed.</p>
 			</div>
 			
 		    
@@ -784,13 +747,10 @@ it will have no effect on the download manager.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns an array of the status of all video downloads,
-including videos that are currently being downloaded,
-and videos that were cancelled, paused, or failed.
-All objects in the array are copies, so although you can modify an object,
+				<p>All objects in the array are copies, so although you can modify an object,
 it will have no effect on the download manager.</p>
 
-<p>This provides information about each download, like the download status,
+<p>This method provides information about each download, like the download status,
 start time, progress percent, underlying AVAssetDownloadTask,
 and error (if any when complete).</p>
 			</div>
@@ -821,10 +781,7 @@ and error (if any when complete).</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Returns a copy of the <a href="../Classes/BCOVOfflineVideoStatus.html">BCOVOfflineVideoStatus</a> object for a specific video download.
-This provides information about the download, like the download status,
-start time, progress percent, underlying AVAssetDownloadTask,
-and error (if any when complete).</p>
+				<p>Returns a copy of the <a href="../Classes/BCOVOfflineVideoStatus.html">BCOVOfflineVideoStatus</a> object for a specific video download.</p>
 			</div>
 			
 		    
@@ -832,6 +789,18 @@ and error (if any when complete).</p>
 			<div class="method-subsection method-declaration"><code>- (BCOVOfflineVideoStatus *)offlineVideoStatusForToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video.</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -841,13 +810,8 @@ and error (if any when complete).</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns a copy of the <a href="../Classes/BCOVOfflineVideoStatus.html">BCOVOfflineVideoStatus</a> object for a specific video download.
-This provides information about the download, like the download status,
-start time, progress percent, underlying AVAssetDownloadTask,
-and error (if any when complete).</p>
-
-<p>@param offlineVideoToken
-Offline video token used to identify the downloaded video.</p>
+				<p><a href="../Classes/BCOVOfflineVideoStatus.html">BCOVOfflineVideoStatus</a> provides information about the download, like the download status,
+start time, progress percent, underlying AVAssetDownloadTask, and error (if any when complete).</p>
 			</div>
 			
 
@@ -877,12 +841,7 @@ Offline video token used to identify the downloaded video.</p>
 			
 			<div class="method-subsection brief-description">
 				<p>Preload the FairPlay license before a video download begins.
-This may only be called on iOS 10.3 and later.
-This will return an error if the video does not have a FairPlay source.
-When downloading multiple FairPlay-protected videos, you should call this
-method for each video to acquire a license for each one before beginning
-any of the downloads. This ensures that videos can be properly stored even
-when the downloads are initiated in the background.</p>
+This may only be called on iOS 10.3 and later.</p>
 			</div>
 			
 		    
@@ -898,14 +857,19 @@ when the downloads are initiated in the background.</p>
 					<tr>
 						<th scope="row" class="argument-name"><code>video</code></th>
 						<td><p><a href="../Classes/BCOVVideo.html">BCOVVideo</a> to be downloaded. The video should have a source
-that uses FairPlay encryption and the HTTPS scheme.
-@param parameters
-NSDictionary of parameters used in this download request.
+that uses FairPlay encryption and the HTTPS scheme.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>NSDictionary of parameters used in this download request.
 Valid parameters are:
-- kBCOVFairPlayLicensePurchaseKey
-- kBCOVFairPlayLicenseRentalDurationKey
-@param completionHandler
-Block that receives the new offlineVideoToken after the request
+kBCOVFairPlayLicensePurchaseKey, kBCOVFairPlayLicenseRentalDurationKey.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>Block that receives the new offlineVideoToken after the request
 is successfully made. If there is an error, offlineVideoToken will
 be nil, and error will report any NSError.</p></td>
 					</tr>
@@ -921,9 +885,7 @@ be nil, and error will report any NSError.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Preload the FairPlay license before a video download begins.
-This may only be called on iOS 10.3 and later.
-This will return an error if the video does not have a FairPlay source.
+				<p>This will return an error if the video does not have a FairPlay source.
 When downloading multiple FairPlay-protected videos, you should call this
 method for each video to acquire a license for each one before beginning
 any of the downloads. This ensures that videos can be properly stored even
@@ -956,12 +918,7 @@ when the downloads are initiated in the background.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Initiate a request for a video download.
-If you are using FairPlay videos with Video Cloud Dynamic Delivery, FairPlay
-application certificates will be downloaded automatically and used as needed.
-If you are using legacy Video Cloud FairPlay videos, you should add any
-needed application certificates to the BCOVOfflineVideoManger before
-iniitiating a download, using -[addFairPlayApplicationCertificate:identifier:].</p>
+				<p>Initiate a request for a video download.</p>
 			</div>
 			
 		    
@@ -977,16 +934,20 @@ iniitiating a download, using -[addFairPlayApplicationCertificate:identifier:].<
 					<tr>
 						<th scope="row" class="argument-name"><code>video</code></th>
 						<td><p><a href="../Classes/BCOVVideo.html">BCOVVideo</a> to be downloaded. The video should have an HLS
-source with an HTTPS scheme, and may use FairPlay encryption.
-@param parameters
-NSDictionary of parameters used in this download request.
-May be nil.
-Valid parameters are:
-- kBCOVOfflineVideoManagerRequestedBitrateKey
-- kBCOVFairPlayLicensePurchaseKey
-- kBCOVFairPlayLicenseRentalDurationKey
-@param completionHandler
-Block that receives the new offlineVideoToken after the request
+source with an HTTPS scheme, and may use FairPlay encryption.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>NSDictionary of parameters used in this download request.
+May be nil. Valid parameters are:
+kBCOVOfflineVideoManagerRequestedBitrateKey, kBCOVFairPlayLicensePurchaseKey,
+kBCOVFairPlayLicenseRentalDurationKey.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>A block that receives the new offlineVideoToken after the request
 is successfully made. If there is an error, offlineVideoToken will
 be nil, and error will report any NSError.</p></td>
 					</tr>
@@ -1002,12 +963,11 @@ be nil, and error will report any NSError.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Initiate a request for a video download.
-If you are using FairPlay videos with Video Cloud Dynamic Delivery, FairPlay
+				<p>If you are using FairPlay videos with Video Cloud Dynamic Delivery, FairPlay
 application certificates will be downloaded automatically and used as needed.
 If you are using legacy Video Cloud FairPlay videos, you should add any
 needed application certificates to the BCOVOfflineVideoManger before
-iniitiating a download, using -[addFairPlayApplicationCertificate:identifier:].</p>
+initiating a download, using -[addFairPlayApplicationCertificate:identifier:].</p>
 			</div>
 			
 
@@ -1036,17 +996,7 @@ iniitiating a download, using -[addFairPlayApplicationCertificate:identifier:].<
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Initiate a request for a new FairPlay license.
-You can request a new FairPlay license any time after the initial license has been acquired.
-In the parameters you can specify a new rental duration, or you can convert a rental license
-to a purchase license.
-The video does not need to be re-downloaded to use a new FairPlay license, but you do need
-to retrieve a new video object from the Playback API (either directly or through
-the <a href="../Classes/BCOVPlaybackService.html">BCOVPlaybackService</a> class). If the referenced video is no longer available through the Playback API,
-you can use a substantially similar video, meaning the video should be from the same account,
-and also have the same FairPlay configuration.
-You should not specify a bitrate in the parameters. To change the bitrate you need to delete
-the current download, and then initiate a completely new download at the new bitrate.</p>
+				<p>Initiate a request for a new FairPlay license.</p>
 			</div>
 			
 		    
@@ -1060,17 +1010,29 @@ the current download, and then initiate a completely new download at the new bit
 				<table class="argument-def parameter-def">
 				
 					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video for which to acquire a new license.</p></td>
+					</tr>
+				
+					<tr>
 						<th scope="row" class="argument-name"><code>video</code></th>
 						<td><p><a href="../Classes/BCOVVideo.html">BCOVVideo</a> object for an online video object retrieved through the Playback API
-or the <a href="../Classes/BCOVPlaybackService.html">BCOVPlaybackService</a> class. This video must not have been created by &lsquo;-videoObjectFromOfflineVideoToken:&rsquo;.
-@param parameters
-NSDictionary of parameters used in this license renewal request.
-May be nil.
-Valid parameters are:
-- kBCOVFairPlayLicensePurchaseKey
-- kBCOVFairPlayLicenseRentalDurationKey
-@param completionHandler
-Block that is called after the license renewal request has completed. If the request resulted in an error, it will be returned here as an NSError. The offlineVideoToken parameter will be the same offline video token that was passed in as the first parameter.</p></td>
+or the <a href="../Classes/BCOVPlaybackService.html">BCOVPlaybackService</a> class. This video must not have been created by &lsquo;-videoObjectFromOfflineVideoToken:&rsquo;.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>NSDictionary of parameters used in this license renewal request.
+May be nil. Valid parameters are: kBCOVFairPlayLicensePurchaseKey,
+kBCOVFairPlayLicenseRentalDurationKey.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>A block that is called after the license renewal request has completed.
+If the request resulted in an error, it will be returned here as an NSError.
+The offlineVideoToken parameter will be the same offline video token that was
+passed in as the first parameter.</p></td>
 					</tr>
 				
 				</table>
@@ -1084,20 +1046,19 @@ Block that is called after the license renewal request has completed. If the req
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Initiate a request for a new FairPlay license.
-You can request a new FairPlay license any time after the initial license has been acquired.
-In the parameters you can specify a new rental duration, or you can convert a rental license
-to a purchase license.
-The video does not need to be re-downloaded to use a new FairPlay license, but you do need
+				<p>You can request a new FairPlay license any time after the initial license has been acquired.</p>
+
+<p>In the parameters you can specify a new rental duration, or you can convert a rental license
+to a purchase license.</p>
+
+<p>The video does not need to be re-downloaded to use a new FairPlay license, but you do need
 to retrieve a new video object from the Playback API (either directly or through
 the <a href="../Classes/BCOVPlaybackService.html">BCOVPlaybackService</a> class). If the referenced video is no longer available through the Playback API,
 you can use a substantially similar video, meaning the video should be from the same account,
-and also have the same FairPlay configuration.
-You should not specify a bitrate in the parameters. To change the bitrate you need to delete
-the current download, and then initiate a completely new download at the new bitrate.</p>
+and also have the same FairPlay configuration.</p>
 
-<p>@param offlineVideoToken
-Offline video token used to identify the downloaded video for which to acquire a new license.</p>
+<p>You should not specify a bitrate in the parameters. To change the bitrate you need to delete
+the current download, and then initiate a completely new download at the new bitrate.</p>
 			</div>
 			
 
@@ -1126,33 +1087,7 @@ Offline video token used to identify the downloaded video for which to acquire a
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Use this method instead:
-- (void)renewFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken
-video:(<a href="../Classes/BCOVVideo.html">BCOVVideo</a> <em>)video
-parameters:(NSDictionary </em>)parameters
-completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError <em>error))completionHandler; (<b class="deprecated">Deprecated:</b><span class="deprecated"> Use this method instead:
-- (void)renewFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken
-video:(BCOVVideo </em>)video
-parameters:(NSDictionary <em>)parameters
-completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError </em>error))completionHandler;</p>
-
-<p>Initiate a request for a new FairPlay license.
-You can request a new FairPlay license any time after the initial license has been acquired.
-In the parameters you can specify a new rental duration, or you can convert a rental license
-to a purchase license. The video does not need to be re-downloaded to use a new FairPlay license.
-You should not specify a bitrate in the parameters. To change the bitrate you would have to delete
-the current download, and then initiate a completely new download at the new bitrate.</p>
-
-<p>@param offlineVideoToken
-Offline video token used to identify the downloaded video for which to acquire a new license.
-@param parameters
-NSDictionary of parameters used in this license renewal request.
-May be nil.
-Valid parameters are:
-- kBCOVFairPlayLicensePurchaseKey
-- kBCOVFairPlayLicenseRentalDurationKey
-@param completionHandler
-Block that is called after the license renewal request has completed. If the request resulted in an error, it will be returned here as an NSError. The offlineVideoToken parameter will be the same offline video token that was passed in as the first parameter.</span>)</p>
+				<p>Initiate a request for a new FairPlay license.</p>
 			</div>
 			
 		    
@@ -1161,11 +1096,48 @@ Block that is called after the license renewal request has completed. If the req
 
 		    
 			
-
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video for which to acquire a new license.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>NSDictionary of parameters used in this license renewal request.
+May be nil. Valid parameters are: kBCOVFairPlayLicensePurchaseKey,
+kBCOVFairPlayLicenseRentalDurationKey.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>A block that is called after the license renewal
+request has completed. If the request resulted in an error, it
+will be returned here as an NSError. The offlineVideoToken
+parameter will be the same offline video token that was passed
+in as the first parameter.</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
 
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>You can request a new FairPlay license any time after the initial license has been acquired.
+In the parameters you can specify a new rental duration, or you can convert a rental license
+to a purchase license. The video does not need to be re-downloaded to use a new FairPlay license.
+You should not specify a bitrate in the parameters. To change the bitrate you would have to delete
+the current download, and then initiate a completely new download at the new bitrate.</p>
+			</div>
 			
 
 			
@@ -1193,12 +1165,7 @@ Block that is called after the license renewal request has completed. If the req
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Invalidate the FairPlay license for the specified offline video token.
-This method deletes the FairPlay license for the video associated with the
-offline video token, if there is one.
-Attempts to play back a FairPlay-protected video without a license will result
-in a kBCOVOfflineVideoManagerErrorCodeInvalidLicense error.
-If needed you can request a new FairPlay license for the video after it has been deleted.</p>
+				<p>Invalidate the FairPlay license for the specified offline video token.</p>
 			</div>
 			
 		    
@@ -1206,6 +1173,19 @@ If needed you can request a new FairPlay license for the video after it has been
 			<div class="method-subsection method-declaration"><code>- (void)invalidateFairPlayLicense:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded
+video whose license will be invalidated.</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -1215,15 +1195,13 @@ If needed you can request a new FairPlay license for the video after it has been
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Invalidate the FairPlay license for the specified offline video token.
-This method deletes the FairPlay license for the video associated with the
-offline video token, if there is one.
-Attempts to play back a FairPlay-protected video without a license will result
-in a kBCOVOfflineVideoManagerErrorCodeInvalidLicense error.
-If needed you can request a new FairPlay license for the video after it has been deleted.</p>
+				<p>This method deletes the FairPlay license for the video associated with the
+offline video token, if there is one.</p>
 
-<p>@param offlineVideoToken
-Offline video token used to identify the downloaded video whose license will be invalidated.</p>
+<p>Attempts to play back a FairPlay-protected video without a license will result
+in a kBCOVOfflineVideoManagerErrorCodeInvalidLicense error.</p>
+
+<p>If needed you can request a new FairPlay license for the video after it has been deleted.</p>
 			</div>
 			
 
@@ -1252,13 +1230,8 @@ Offline video token used to identify the downloaded video whose license will be 
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Returns an NSDate representing the expiration of the FairPlay license for the video
-associated with the offline video token.
-Returns NSDate.distantFuture for &ldquo;purchase&rdquo; licenses.
-Returns NSDate.distantFuture if the video is not encrypted with FairPlay.
-Returns nil if the video has no FairPlay license.
-@param offlineVideoToken
-Offline video token used to identify the downloaded video.</p>
+				<p>@abstrsact Returns an NSDate representing the expiration of the FairPlay license for the video
+associated with the offline video token.</p>
 			</div>
 			
 		    
@@ -1267,11 +1240,24 @@ Offline video token used to identify the downloaded video.</p>
 
 		    
 			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
 
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>NSDate representing the expiration of the FairPlay license, NSDate.distantFuture for purchase licenses or clear (no FairPlay) videos, or nil if there is no license.</p>
+				<p>NSDate representing the expiration of the FairPlay license, NSDate.distantFuture
+for purchase licenses or clear (no FairPlay) videos, or nil if there is no license.</p>
 			</div>
 			
 
@@ -1280,13 +1266,12 @@ Offline video token used to identify the downloaded video.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns an NSDate representing the expiration of the FairPlay license for the video
-associated with the offline video token.
-Returns NSDate.distantFuture for &ldquo;purchase&rdquo; licenses.
-Returns NSDate.distantFuture if the video is not encrypted with FairPlay.
-Returns nil if the video has no FairPlay license.
-@param offlineVideoToken
-Offline video token used to identify the downloaded video.</p>
+				<p>@abstrsact Returns an NSDate representing the expiration of the FairPlay license for the video
+associated with the offline video token.</p><p>Returns NSDate.distantFuture for &ldquo;purchase&rdquo; licenses.</p>
+
+<p>Returns NSDate.distantFuture if the video is not encrypted with FairPlay.</p>
+
+<p>Returns nil if the video has no FairPlay license.</p>
 			</div>
 			
 
@@ -1315,7 +1300,7 @@ Offline video token used to identify the downloaded video.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Pause a current video download task</p>
+				<p>Pause a current video download task.</p>
 			</div>
 			
 		    
@@ -1324,19 +1309,23 @@ Offline video token used to identify the downloaded video.</p>
 
 		    
 			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Pause a current video download task</p>
-
-<p>@param offlineVideoToken
-Offline video token used to identify the download task.</p>
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the download task.</p></td>
+					</tr>
+				
+				</table>
 			</div>
+			
+
+			
+
+			
+
 			
 
 			
@@ -1373,19 +1362,23 @@ Offline video token used to identify the download task.</p>
 
 		    
 			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Resume a suspended video download task</p>
-
-<p>@param offlineVideoToken
-Offline video token used to identify the download task.</p>
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the download task.</p></td>
+					</tr>
+				
+				</table>
 			</div>
+			
+
+			
+
+			
+
 			
 
 			
@@ -1422,19 +1415,23 @@ Offline video token used to identify the download task.</p>
 
 		    
 			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Cancel a video download task</p>
-
-<p>@param offlineVideoToken
-Offline video token used to identify the download task.</p>
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the download task.</p></td>
+					</tr>
+				
+				</table>
 			</div>
+			
+
+			
+
+			
+
 			
 
 			
@@ -1462,10 +1459,7 @@ Offline video token used to identify the download task.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Stop all download tasks in progress.
-This method forces all download tasks to terminate with an error
-by deleting their underlying download folder.
-Downloads that have already completed are not affected.</p>
+				<p>Stop all download tasks in progress.</p>
 			</div>
 			
 		    
@@ -1482,19 +1476,20 @@ Downloads that have already completed are not affected.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Stop all download tasks in progress.
-This method forces all download tasks to terminate with an error
+				<p>This method forces all download tasks to terminate with an error
 by deleting their underlying download folder.
 Downloads that have already completed are not affected.</p>
 
 <p>WARNING:
 This method should only be used in very specific cases.
-iOS 11.0.x and iOS 11.1.x have a bug where a download task will resume to
+iOS 11.0.x and iOS 11.1.x have an issue where a download task will resume to
 completion if it was paused and then cancelled.
 In that case, you cannot cancel or delete the runaway task, so your best
-option is to delete all download tasks.
-This method is not guaranteed to stop all download tasks.
-In iOS 11.2 and later, you should cancel download tasks individually using <a href="#//api/name/cancelVideoDownload:">cancelVideoDownload:</a></p>
+option is to delete all download tasks.</p>
+
+<p>This method is not guaranteed to stop all download tasks.</p>
+
+<p>In iOS 11.2 and later, you should cancel download tasks individually using <a href="#//api/name/cancelVideoDownload:">cancelVideoDownload:</a></p>
 			</div>
 			
 
@@ -1523,10 +1518,7 @@ In iOS 11.2 and later, you should cancel download tasks individually using <a hr
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Convert an offline video token into a playable <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object.
-The returned <a href="../Classes/BCOVVideo.html">BCOVVideo</a> also contains all the new properties listed above,
-such as the downloaded thumbnail and poster image file paths, FairPlay
-license expiration date, download start and end times, and more.</p>
+				<p>Convert an offline video token into a playable <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object.</p>
 			</div>
 			
 		    
@@ -1534,6 +1526,18 @@ license expiration date, download start and end times, and more.</p>
 			<div class="method-subsection method-declaration"><code>- (BCOVVideo *)videoObjectFromOfflineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video.</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -1543,13 +1547,9 @@ license expiration date, download start and end times, and more.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Convert an offline video token into a playable <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object.
-The returned <a href="../Classes/BCOVVideo.html">BCOVVideo</a> also contains all the new properties listed above,
+				<p>The returned <a href="../Classes/BCOVVideo.html">BCOVVideo</a> also contains all the new properties listed above,
 such as the downloaded thumbnail and poster image file paths, FairPlay
 license expiration date, download start and end times, and more.</p>
-
-<p>@param offlineVideoToken
-Offline video token used to identify the downloaded video.</p>
 			</div>
 			
 
@@ -1578,8 +1578,7 @@ Offline video token used to identify the downloaded video.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Delete all files in local storage related to this offline video token.
-offlineVideoToken will be considered invalid after this call.</p>
+				<p>Delete all files in local storage related to this offline video token.</p>
 			</div>
 			
 		    
@@ -1587,6 +1586,18 @@ offlineVideoToken will be considered invalid after this call.</p>
 			<div class="method-subsection method-declaration"><code>- (void)deleteOfflineVideo:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video.</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -1596,11 +1607,7 @@ offlineVideoToken will be considered invalid after this call.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Delete all files in local storage related to this offline video token.
-offlineVideoToken will be considered invalid after this call.</p>
-
-<p>@param offlineVideoToken
-Offline video token used to identify the downloaded video.</p>
+				<p>offlineVideoToken will be considered invalid after this call.</p>
 			</div>
 			
 
@@ -1630,10 +1637,7 @@ Offline video token used to identify the downloaded video.</p>
 			
 			<div class="method-subsection brief-description">
 				<p>This method is used to add a FairPlay application certificate to the
-Offline Video Manager&rsquo;s list of available FairPlay application certificates.
-Certificates will be retained for the life of the application.
-To remove a certificate, add the same identifier with a nil as the
-certificate data.</p>
+Offline Video Manager&rsquo;s list of available FairPlay application certificates.</p>
 			</div>
 			
 		    
@@ -1641,6 +1645,35 @@ certificate data.</p>
 			<div class="method-subsection method-declaration"><code>- (void)addFairPlayApplicationCertificate:(NSData *)<em>applicationCertificateData</em> identifier:(NSString *)<em>identifier</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>applicationCertificateData</code></th>
+						<td><p>The FairPlay application certificate in an NSData object.
+If set to nil, any existing application certificate for the
+given identifier will be removed.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>identifier</code></th>
+						<td><p>A string used to locate the application certificate.</p>
+
+<p>This string may not be nil.</p>
+
+<p>For Dynamic Delivery, the identifier must be the URL that was used to
+retrieve this certificate.</p>
+
+<p>For legacy Video Cloud accounts, this should be set to kBCOVDefaultFairPlayApplicationCertificateIdentifier
+to apply to all accounts.</p>
+
+<p>If you are using multiple legacy Video Cloud accounts, set this param to the acount ID.</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -1650,32 +1683,16 @@ certificate data.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>This method is used to add a FairPlay application certificate to the
-Offline Video Manager&rsquo;s list of available FairPlay application certificates.
-Certificates will be retained for the life of the application.
+				<p>Certificates will be retained for the life of the application.
 To remove a certificate, add the same identifier with a nil as the
 certificate data.</p>
 
 <p>If you are using Dynamic Delivery, application certificates are retrieved
 automatically by the FairPlay plugin, so this method is not needed.
 You can, however, use this method to pre-load your application certificate
-to speed up playback of the first FairPlay-encrypted video.
-Certificates are stored and re-used for subsequent videos.</p>
+to speed up playback of the first FairPlay-encrypted video.</p>
 
-<p>@param applicationCertificateData
-The FairPlay application certificate in an NSData object.
-If set to nil, any existing application certificate for the
-given identifier will be removed.
-@param identifier
-A string used to locate the application certificate.
-This string may not be nil.
-- For Dynamic Delivery, the identifier must be the URL
-that was used to retrieve this certificate.
-- For legacy Video Cloud accounts, this should be set to
-kBCOVDefaultFairPlayApplicationCertificateIdentifier
-to apply to all accounts.
-- If you are using multiple legacy Video Cloud accounts,
-set this param to the acount ID.</p>
+<p>Certificates are stored and re-used for subsequent videos.</p>
 			</div>
 			
 
@@ -1705,8 +1722,7 @@ set this param to the acount ID.</p>
 			
 			<div class="method-subsection brief-description">
 				<p>Returns the media selection group for a downloaded video specified
-by the offline video token.
-The downloaded video must be complete, or this method will return nil.</p>
+by the offline video token.</p>
 			</div>
 			
 		    
@@ -1714,6 +1730,25 @@ The downloaded video must be complete, or this method will return nil.</p>
 			<div class="method-subsection method-declaration"><code>- (AVMediaSelectionGroup *)mediaSelectionGroupForMediaCharacteristic:(NSString *)<em>mediaCharacteristic</em> offlineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mediaCharacteristic</code></th>
+						<td><p>The media characteristic that you are interested in.
+Supported values are AVMediaCharacteristicAudible and AVMediaCharacteristicLegible.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video.
+Must not refer to a download in progress.</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -1723,16 +1758,7 @@ The downloaded video must be complete, or this method will return nil.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns the media selection group for a downloaded video specified
-by the offline video token.
-The downloaded video must be complete, or this method will return nil.</p>
-
-<p>@param mediaCharacteristic
-The media characteristic that you are interested in. Supported values are
-AVMediaCharacteristicAudible and AVMediaCharacteristicLegible.
-@param offlineVideoToken
-Offline video token used to identify the downloaded video.
-Must not refer to a download in progress.</p>
+				<p>The downloaded video must be complete, or this method will return nil.</p>
 			</div>
 			
 
@@ -1763,8 +1789,7 @@ Must not refer to a download in progress.</p>
 			<div class="method-subsection brief-description">
 				<p>Returns the downloaded media selection options for a downloaded video specified
 by the offline video token, as reported by the AVMediaCache for the
-underlying AVURLAsset.
-May return nil.</p>
+underlying AVURLAsset. May return nil.</p>
 			</div>
 			
 		    
@@ -1773,25 +1798,29 @@ May return nil.</p>
 
 		    
 			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns the downloaded media selection options for a downloaded video specified
-by the offline video token, as reported by the AVMediaCache for the
-underlying AVURLAsset.
-May return nil.</p>
-
-<p>@param mediaCharacteristic
-The media characteristic that you are interested in. Supported values are
-AVMediaCharacteristicAudible and AVMediaCharacteristicLegible.
-@param offlineVideoToken
-Offline video token used to identify the downloaded video.</p>
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mediaCharacteristic</code></th>
+						<td><p>The media characteristic that you are interested in.
+Supported values are AVMediaCharacteristicAudible and AVMediaCharacteristicLegible.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video.</p></td>
+					</tr>
+				
+				</table>
 			</div>
+			
+
+			
+
+			
+
 			
 
 			
@@ -1820,10 +1849,7 @@ Offline video token used to identify the downloaded video.</p>
 			
 			<div class="method-subsection brief-description">
 				<p>Request the download of an additional media selection for the specified
-offline video token. This request should be made inside your
--[offlineVideoToken:didFinishDownloadWithError:] delegate callback method.
-You should determine which media selections options are available,
-typically by a call to [AVURLAsset allMediaSelections] for your downloaded AVURLAsset.</p>
+offline video token.</p>
 			</div>
 			
 		    
@@ -1831,6 +1857,25 @@ typically by a call to [AVURLAsset allMediaSelections] for your downloaded AVURL
 			<div class="method-subsection method-declaration"><code>- (void)requestMediaSelectionsDownload:(NSArray&lt;AVMediaSelection*&gt; *)<em>mediaSelections</em> offlineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mediaSelections</code></th>
+						<td><p>An NSArray of media selections that you wish to download.
+You can get the availalable options by calling [AVURLAsset allMediaSelections] and
+picking the ones that you need.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video.</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -1840,19 +1885,9 @@ typically by a call to [AVURLAsset allMediaSelections] for your downloaded AVURL
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Request the download of an additional media selection for the specified
-offline video token. This request should be made inside your
--[offlineVideoToken:didFinishDownloadWithError:] delegate callback method.
-You should determine which media selections options are available,
+				<p>This request should be made inside your -[offlineVideoToken:didFinishDownloadWithError:]
+delegate callback method. You should determine which media selections options are available,
 typically by a call to [AVURLAsset allMediaSelections] for your downloaded AVURLAsset.</p>
-
-<p>@param mediaSelections
-An NSArray of media selections that you wish to download.
-You can get the availalable options by calling
-[AVURLAsset allMediaSelections] and picking the ones
-that you need.
-@param offlineVideoToken
-Offline video token used to identify the downloaded video.</p>
 			</div>
 			
 
@@ -1884,7 +1919,7 @@ Offline video token used to identify the downloaded video.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 Brightcove. All rights reserved. Updated: 2018-10-31</p>
+						<p class="copyright">Copyright &copy; 2018 Brightcove. All rights reserved. Updated: 2018-11-27</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

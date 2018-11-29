@@ -113,17 +113,29 @@ extern NSString * const kBCOVVideoPropertyKeyId;
 @property (nonatomic, readonly) BOOL offline;
 
 /**
- * Returns YES if this instance refers to an offline video
- * playable from the device's local storage.
- * Returns NO if the video has not completed downloading,
- * or if the video has been purged and needs to be re-downloaded.
- * This happens automatically if iOS needs to reclaim storage space
- * for proper functioning of the device.
+ * @abstract Determines if a complete rendition of an AVAsset is available to
+ *  be played without a network connection.
+ *
+ * @discussion Query this property before presenting or attempting
+ *  to play an offline asset to determine if it’s available for use. A return
+ *  value of true indicates a complete rendition of this asset is available for
+ *  offline playback.
+ *
+ *  Reading this property is equivalent to reading the playableOffline property
+ *  of the AVAssetCache of an AVAsset.
+ *
+ *  @return Returns YES if this instance refers to an offline video
+ *  playable from the device's local storage without a network connection.
+ *
+ *  Returns NO if the video has not completed downloading,
+ *  or if the video has been purged and needs to be re-downloaded.
+ *  This happens automatically if iOS needs to reclaim storage space
+ *  for proper functioning of the device.
  */
 @property (nonatomic, readonly) BOOL playableOffline;
 
 /**
- * Constructs a new video with the specified sources, cue points, and
+ * @abstract Constructs a new video with the specified sources, cue points, and
  * properties.
  *
  * @param sources The sources of this video.

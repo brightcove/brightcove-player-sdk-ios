@@ -64,6 +64,8 @@
 		
 		<option value="//api/name/didDownloadStaticImagesWithOfflineVideoToken:">- didDownloadStaticImagesWithOfflineVideoToken:</option>
 		
+		<option value="//api/name/offlineVideoStorageDidChange">- offlineVideoStorageDidChange</option>
+		
 		<option value="//api/name/offlineVideoToken:aggregateDownloadTask:didProgressTo:forMediaSelection:">- offlineVideoToken:aggregateDownloadTask:didProgressTo:forMediaSelection:</option>
 		
 		<option value="//api/name/offlineVideoToken:didFinishAggregateDownloadWithError:">- offlineVideoToken:didFinishAggregateDownloadWithError:</option>
@@ -138,11 +140,7 @@ video track download.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Receive progress notification about a download in progress.
-You can use the AVAssetDownloadTask to retrieve more information about the download,
-like the specific segments that are loaded.
-If you want to pause/resume/cancel the task, you should use the methods available
-in the <a href="../Classes/BCOVOfflineVideoManager.html">BCOVOfflineVideoManager</a> to perform those actions.</p>
+				<p>Receive progress notification about a download in progress.</p>
 			</div>
 			
 		    
@@ -150,6 +148,28 @@ in the <a href="../Classes/BCOVOfflineVideoManager.html">BCOVOfflineVideoManager
 			<div class="method-subsection method-declaration"><code>- (void)offlineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em> downloadTask:(AVAssetDownloadTask *)<em>downloadTask</em> didProgressTo:(NSTimeInterval)<em>progressPercent</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>downloadTask</code></th>
+						<td><p>The AVAssetDownloadTask for this video</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>progressPercent</code></th>
+						<td><p>How far along the download has progressed, expressed as a percentage.</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -159,18 +179,10 @@ in the <a href="../Classes/BCOVOfflineVideoManager.html">BCOVOfflineVideoManager
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Receive progress notification about a download in progress.
-You can use the AVAssetDownloadTask to retrieve more information about the download,
-like the specific segments that are loaded.
-If you want to pause/resume/cancel the task, you should use the methods available
-in the <a href="../Classes/BCOVOfflineVideoManager.html">BCOVOfflineVideoManager</a> to perform those actions.</p>
-
-<p>@param offlineVideoToken
-Offline video token used to identify the downloaded video.
-@param downloadTask
-The AVAssetDownloadTask for this video
-@param progressPercent
-How far along the download has progressed, expressed as a percentage.</p>
+				<p>You can use the AVAssetDownloadTask to retrieve more information
+about the download, like the specific segments that are loaded. If you want
+to pause/resume/cancel the task, you should use the methods available in the
+<a href="../Classes/BCOVOfflineVideoManager.html">BCOVOfflineVideoManager</a> to perform those actions.</p>
 			</div>
 			
 
@@ -199,8 +211,7 @@ How far along the download has progressed, expressed as a percentage.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>This method is called when a download is complete.
-If an error occurred during the download, error will be non-nil.</p>
+				<p>This method is called when a download is complete.</p>
 			</div>
 			
 		    
@@ -214,9 +225,13 @@ If an error occurred during the download, error will be non-nil.</p>
 				<table class="argument-def parameter-def">
 				
 					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video.</p></td>
+					</tr>
+				
+					<tr>
 						<th scope="row" class="argument-name"><code>error</code></th>
-						<td><p>NSError encountered during the download process.
-nil if no error.</p></td>
+						<td><p>NSError encountered during the download process. nil if no error.</p></td>
 					</tr>
 				
 				</table>
@@ -230,11 +245,7 @@ nil if no error.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>This method is called when a download is complete.
-If an error occurred during the download, error will be non-nil.</p>
-
-<p>@param offlineVideoToken
-Offline video token used to identify the downloaded video.</p>
+				<p>If an error occurred during the download, error will be non-nil.</p>
 			</div>
 			
 
@@ -263,9 +274,7 @@ Offline video token used to identify the downloaded video.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Receive progress notification about track downloads in progress for a downloaded video.
-If you want to pause/resume/cancel the task, you should use the methods available
-in the <a href="../Classes/BCOVOfflineVideoManager.html">BCOVOfflineVideoManager</a> to perform those actions.</p>
+				<p>Receive progress notification about track downloads in progress for a downloaded video.</p>
 			</div>
 			
 		    
@@ -273,6 +282,34 @@ in the <a href="../Classes/BCOVOfflineVideoManager.html">BCOVOfflineVideoManager
 			<div class="method-subsection method-declaration"><code>- (void)offlineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em> aggregateDownloadTask:(AVAggregateAssetDownloadTask *)<em>aggregateDownloadTask</em> didProgressTo:(NSTimeInterval)<em>progressPercent</em> forMediaSelection:(AVMediaSelection *)<em>mediaSelection</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>aggregateDownloadTask</code></th>
+						<td><p>The AVAggregateAssetDownloadTask for this set of video track downloads</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>progressPercent</code></th>
+						<td><p>How far along the download has progressed, expressed as a percentage,
+for this individual AVMediaSelection.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mediaSelection</code></th>
+						<td><p>The AVMediaSelection for which this progress is reported.</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -282,19 +319,8 @@ in the <a href="../Classes/BCOVOfflineVideoManager.html">BCOVOfflineVideoManager
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Receive progress notification about track downloads in progress for a downloaded video.
-If you want to pause/resume/cancel the task, you should use the methods available
+				<p>If you want to pause/resume/cancel the task, you should use the methods available
 in the <a href="../Classes/BCOVOfflineVideoManager.html">BCOVOfflineVideoManager</a> to perform those actions.</p>
-
-<p>@param offlineVideoToken
-Offline video token used to identify the downloaded video.
-@param aggregateDownloadTask
-The AVAggregateAssetDownloadTask for this set of video track downloads
-@param progressPercent
-How far along the download has progressed, expressed as a percentage,
-for this individual AVMediaSelection.
-@param mediaSelection
-The AVMediaSelection for which this progress is reported.</p>
 			</div>
 			
 
@@ -332,22 +358,29 @@ The AVMediaSelection for which this progress is reported.</p>
 
 		    
 			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>This method is called when an individual track download is complete.</p>
-
-<p>@param offlineVideoToken
-Offline video token used to identify the offline video
-for which tracks are being downloaded.
-@param mediaSelection
-The AVMediaSelection that has finished downloading.</p>
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the offline video
+for which tracks are being downloaded.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mediaSelection</code></th>
+						<td><p>The AVMediaSelection that has finished downloading.</p></td>
+					</tr>
+				
+				</table>
 			</div>
+			
+
+			
+
+			
+
 			
 
 			
@@ -376,8 +409,7 @@ The AVMediaSelection that has finished downloading.</p>
 			
 			<div class="method-subsection brief-description">
 				<p>This method is called when all requested track downloads are complete for the
-downloaded video specified by the offline video token.
-If an error occurred during the download, error will be non-nil.</p>
+downloaded video specified by the offline video token.</p>
 			</div>
 			
 		    
@@ -391,9 +423,13 @@ If an error occurred during the download, error will be non-nil.</p>
 				<table class="argument-def parameter-def">
 				
 					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video.</p></td>
+					</tr>
+				
+					<tr>
 						<th scope="row" class="argument-name"><code>error</code></th>
-						<td><p>NSError encountered during the track download process.
-nil if no error.</p></td>
+						<td><p>NSError encountered during the track download process. nil if no error.</p></td>
 					</tr>
 				
 				</table>
@@ -407,12 +443,7 @@ nil if no error.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>This method is called when all requested track downloads are complete for the
-downloaded video specified by the offline video token.
-If an error occurred during the download, error will be non-nil.</p>
-
-<p>@param offlineVideoToken
-Offline video token used to identify the downloaded video.</p>
+				<p>If an error occurred during the download, error will be non-nil.</p>
 			</div>
 			
 
@@ -442,14 +473,7 @@ Offline video token used to identify the downloaded video.</p>
 			
 			<div class="method-subsection brief-description">
 				<p>This method is called when the static images (thumbnail and poster) associated
-with a video are downloaded to storage.
-File URLs for the downloaded images are stored as properties on a <a href="../Classes/BCOVVideo.html">BCOVVideo</a>
-created from the offline video token using -[videoObjectFromOfflineVideoToken:]
-The properties are retrieved using the kBCOVOfflineVideoThumbnailFilePath and
-kBCOVOfflineVideoPosterFilePath keys.
-This method will be called even if no images could be retrieved, so be sure to
-check the UIImage you create from the poster and thumbnail paths. The file
-paths will be present, but there may be no images stored at those locations.</p>
+with a video are downloaded to storage.</p>
 			</div>
 			
 		    
@@ -457,6 +481,18 @@ paths will be present, but there may be no images stored at those locations.</p>
 			<div class="method-subsection method-declaration"><code>- (void)didDownloadStaticImagesWithOfflineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video.</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -466,18 +502,14 @@ paths will be present, but there may be no images stored at those locations.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>This method is called when the static images (thumbnail and poster) associated
-with a video are downloaded to storage.
-File URLs for the downloaded images are stored as properties on a <a href="../Classes/BCOVVideo.html">BCOVVideo</a>
+				<p>File URLs for the downloaded images are stored as properties on a <a href="../Classes/BCOVVideo.html">BCOVVideo</a>
 created from the offline video token using -[videoObjectFromOfflineVideoToken:]
 The properties are retrieved using the kBCOVOfflineVideoThumbnailFilePath and
-kBCOVOfflineVideoPosterFilePath keys.
-This method will be called even if no images could be retrieved, so be sure to
+kBCOVOfflineVideoPosterFilePath keys.</p>
+
+<p>This method will be called even if no images could be retrieved, so be sure to
 check the UIImage you create from the poster and thumbnail paths. The file
 paths will be present, but there may be no images stored at those locations.</p>
-
-<p>@param offlineVideoToken
-Offline video token used to identify the downloaded video.</p>
 			</div>
 			
 
@@ -506,17 +538,7 @@ Offline video token used to identify the downloaded video.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>This method is called when cleaning up stranded downloads.
-Downloads can be stranded if you force-quit an app during a download,
-or reboot while the app is suspended.
-You do not need to implement this method unless you are starting your own
-video downloads outside the Brightcove SDK and don&rsquo;t want your videos deleted.
-This method is called when a video package is flagged for deletion, meaning
-this is no record of it in the Brightcove SDK.
-If this is a file you recognize, you should return NO.
-Otherwise, returning YES will cause the video package to be deleted.
-If you do not implement this method, stranded downloads will
-be deleted by default.</p>
+				<p>This method is called when cleaning up stranded downloads.</p>
 			</div>
 			
 		    
@@ -524,6 +546,18 @@ be deleted by default.</p>
 			<div class="method-subsection method-declaration"><code>- (BOOL)shouldDeleteVideoPackage:(NSString *)<em>videoPackagePath</em></code></div>
 
 		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>videoPackagePath</code></th>
+						<td><p>Path to video package directory that is flagged as stranded.</p></td>
+					</tr>
+				
+				</table>
+			</div>
 			
 
 			
@@ -533,20 +567,17 @@ be deleted by default.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>This method is called when cleaning up stranded downloads.
-Downloads can be stranded if you force-quit an app during a download,
+				<p>Downloads can be stranded if you force-quit an app during a download,
 or reboot while the app is suspended.
 You do not need to implement this method unless you are starting your own
 video downloads outside the Brightcove SDK and don&rsquo;t want your videos deleted.
 This method is called when a video package is flagged for deletion, meaning
-this is no record of it in the Brightcove SDK.
-If this is a file you recognize, you should return NO.
+there is no record of it in the Brightcove SDK.</p>
+
+<p>If the file is one you recognize, you should return NO.
 Otherwise, returning YES will cause the video package to be deleted.
 If you do not implement this method, stranded downloads will
 be deleted by default.</p>
-
-<p>@param videoPackagePath
-Path to video package directory that is flagged as stranded.</p>
 			</div>
 			
 
@@ -577,12 +608,7 @@ Path to video package directory that is flagged as stranded.</p>
 			<div class="method-subsection brief-description">
 				<p>This method is called after the background NSURLSessionConfiguration object
 is created, and before it&rsquo;s used to create the shared AVAssetDownloadURLSession
-object that&rsquo;s used to download videos.
-You can use this configuration object to set various options specified for the
-NSURLSessionConfiguration in NSURLSession.h, such as the <code>discretionary</code> flag, or
-the <code>HTTPMaximumConnectionsPerHost</code> setting.
-You should <em>not</em> set the <code>allowsCellularAccess</code> property; that is set in the individual
-download tasks.</p>
+object that&rsquo;s used to download videos.</p>
 			</div>
 			
 		    
@@ -599,14 +625,66 @@ download tasks.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>This method is called after the background NSURLSessionConfiguration object
-is created, and before it&rsquo;s used to create the shared AVAssetDownloadURLSession
-object that&rsquo;s used to download videos.
-You can use this configuration object to set various options specified for the
+				<p>You can use this configuration object to set various options specified for the
 NSURLSessionConfiguration in NSURLSession.h, such as the <code>discretionary</code> flag, or
-the <code>HTTPMaximumConnectionsPerHost</code> setting.
-You should <em>not</em> set the <code>allowsCellularAccess</code> property; that is set in the individual
+the <code>HTTPMaximumConnectionsPerHost</code> setting.</p>
+
+<p>You should <em>not</em> set the <code>allowsCellularAccess</code> property; that is set in the individual
 download tasks.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/offlineVideoStorageDidChange" title="offlineVideoStorageDidChange"></a>
+	<h3 class="method-title"><code><a href="#//api/name/offlineVideoStorageDidChange">&ndash;&nbsp;offlineVideoStorageDidChange</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This method is called when the app is activated and offline video
+storage changed while the app was not running or was in the background, for
+example when the user deletes downloaded videos via the device Storage settings
+in the General settings of the Settings app.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)offlineVideoStorageDidChange</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>When called, you should update your UI to reflect the changes in
+offline storage.</p>
+
+<p>Detecting changes to offline video storage occurs whenever the app becomes active.</p>
+
+<p>This method is called on the main thread.</p>
 			</div>
 			
 
@@ -638,7 +716,7 @@ download tasks.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 Brightcove. All rights reserved. Updated: 2018-10-31</p>
+						<p class="copyright">Copyright &copy; 2018 Brightcove. All rights reserved. Updated: 2018-11-27</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

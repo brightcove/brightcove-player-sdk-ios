@@ -1,3 +1,13 @@
+## Release 6.3.11
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes an issue where the BCOV Offline Video Manager failed to detect the deletion of videos via the device Settings app (General --> iPhone (or iPad) Storage).
+
+* Clarifies documentation for the `BCOVVideo.playableOffline` property.
+
 ## Release 6.3.10
 
 ### Brightcove Player SDK for iOS (Core)

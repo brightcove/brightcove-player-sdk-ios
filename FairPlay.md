@@ -1,4 +1,4 @@
-# Using FairPlay With The Brightcove Player SDK for iOS, version 6.3.10.441
+# Using FairPlay With The Brightcove Player SDK for iOS, version 6.3.11.455
 
 Quick Start
 ===========
@@ -11,6 +11,7 @@ Brightcove FairPlay is a bridge between Apple FairPlay and the [Brightcove Playe
 * FairPlay streaming content will not be rendered in AirPlay Mirroring mode. For more details, see the 2015 WWDC presentation 502: [Content Protection for HLS][wwdc502].
 
 [wwdc502]: https://developer.apple.com/videos/play/wwdc2015/502/
+
 Video Cloud Dynamic Delivery
 -----------------
 When you use Video Cloud Dynamic Delivery, a reference to the FairPlay application certificate is embedded in the BCOVVideo object returned from the playback service. The SDK uses this reference to retrieve the application certificate when you play your FairPlay videos.

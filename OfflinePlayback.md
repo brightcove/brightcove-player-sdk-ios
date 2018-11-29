@@ -1,4 +1,4 @@
-iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.3.10.441
+iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.3.11.455
 --------------
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -432,6 +432,8 @@ else
   // alert user that the video needs to be re-downloaded
 }
 ```
+
+Note that `video.playableOffline` indicates whether a video is fully downloaded and stored locally and can therefore be played without a network connection. A video download in progress can be played even if `video.playableOffline` is `false`. Refer to the section "Playback During Download".
 
 ### Pause/Resume/Cancel Downloads
 

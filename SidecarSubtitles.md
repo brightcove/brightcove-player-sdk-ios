@@ -1,4 +1,4 @@
-# Using Sidecar Subtitles With The Brightcove Player SDK for iOS, version 6.3.10.441
+# Using Sidecar Subtitles With The Brightcove Player SDK for iOS, version 6.3.11.455
 
 Introduction
 ===================
@@ -62,17 +62,31 @@ Add a property to keep track of the `BCOVPUIPlayerView`:
     // PlayerUI's Player View
     @property (nonatomic) BCOVPUIPlayerView *playerView;
 
-Create the `BCOVPUIBasicControlView`, and then the `BCOVPUIPlayerView`. This is where we associate the Playback Controller (and thus all the videos it plays) with the controls. Set the player view to match the video container from your layout (`yourVideoView`) when it resizes.
+Create the `BCOVPUIBasicControlView`, and then the `BCOVPUIPlayerView`. This is where we associate the Playback Controller (and thus all the videos it plays) with the controls. You'll need to set up the layout for the player view, you can do this with Auto Layout or the older Springs & Struts approach.
 
     BCOVPUIBasicControlView *controlView = [BCOVPUIBasicControlView basicControlViewWithVODLayout];
     self.playerView = [[BCOVPUIPlayerView alloc] initWithPlaybackController:controller options:nil controlsView:controlView];
+// Add BCOVPUIPlayerView to your video view.
+    [self.yourVideoView addSubview:self.playerView];
+
+**Springs and Struts**
+
+Set the player view to match the video container from your layout (`yourVideoView`) when it resizes.
 
     // Match parent view size
     self.playerView.frame = self.yourVideoView.bounds;
     self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 
-    // Add BCOVPUIPlayerView to your video view.
-    [self.yourVideoView addSubview:self.playerView];
+**Auto Layout**
+
+    self.playerView.translatesAutoresizingMaskIntoConstraints = NO;
+
+    [NSLayoutConstraint activateConstraints:@[
+                                              [self.playerView.topAnchor constraintEqualToAnchor:self.yourVideoView.topAnchor],
+                                              [self.playerView.rightAnchor constraintEqualToAnchor:self.yourVideoView.rightAnchor],
+                                              [self.playerView.leftAnchor constraintEqualToAnchor:self.yourVideoView.leftAnchor],
+                                              [self.playerView.bottomAnchor constraintEqualToAnchor:self.yourVideoView.bottomAnchor],
+                                              ]];
 
 If you use the BCOVPUIPlayerView, you also need to remove one line above:
 

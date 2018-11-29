@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.3.10.441
+# Brightcove Player SDK for iOS, version 6.3.11.455
 
 
 # Table of Contents
@@ -239,6 +239,17 @@ You also no longer need to add the Playback Controller's view to your hierarchy,
     self.playbackController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 	[self.videoView addSubview:self.playbackController.view]
 
+Or code like this:
+
+    self.playbackController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.videoView addSubview:self.playbackController.view];
+    [NSLayoutConstraint activateConstraints:@[
+                                              [self.playbackController.view.topAnchor constraintEqualToAnchor:self.videoView.topAnchor],
+                                              [self.playbackController.view.rightAnchor constraintEqualToAnchor:self.videoView.rightAnchor],
+                                              [self.playbackController.view.leftAnchor constraintEqualToAnchor:self.videoView.leftAnchor],
+                                              [self.playbackController.view.bottomAnchor constraintEqualToAnchor:self.videoView.bottomAnchor],
+                                              ]];
+
 Instead, you will associate the Playback Controller with a new Player View and add that to your view hierarchy, as described in the **Setting up PlayerUI Controls** section of this document.
 
 Migrating from the Brightcove PlayerUI Plugin
@@ -259,22 +270,40 @@ Follow the guidelines below for setting up the PlayerUI controls.
 
 Create a property in your UIViewController to keep track of the BCOVPUIPlayerView. The BCOVPUIPlayerView will contain both the Playback Controller's view, and the controls view.
 
-	// PlayerUI's Player View
-	@property (nonatomic) BCOVPUIPlayerView *playerView;
+    // PlayerUI's Player View
+    @property (nonatomic) BCOVPUIPlayerView *playerView;
 
 Create the BCOVPUIBasicControlView, and then the BCOVPUIPlayerView. This is where we associate the Playback Controller (and thus all the videos it plays) with the controls.
-Set the player view to match the video container from your layout (`videoView`) when it resizes.
 
     // Create and configure Control View.
     BCOVPUIBasicControlView *controlView = [BCOVPUIBasicControlView basicControlViewWithVODLayout];
     self.playerView = [[BCOVPUIPlayerView alloc] initWithPlaybackController:self.playbackController options:nil controlsView:controlView];
-    self.playerView.frame = self.videoView.bounds;
-    self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-
-Finally, add the BCOVPUIPlayerView to your video container, `videoView`.
-
     // Add BCOVPUIPlayerView to your video view.
     [self.videoView addSubview:self.playerView];
+
+You'll need to set up the layout for the player view, you can do this with Auto Layout or the older Springs & Struts approach. 
+
+**Springs & Struts:**
+
+Set the player view to match the video container from your layout (`videoView`) when it resizes.
+
+    self.playerView.frame = self.videoView.bounds;
+    self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;  
+
+**Auto Layout**
+
+Set the `translatesAutoresizingMaskIntoConstraints` on BCOVPUIPlayerView to `NO`.
+
+    self.playerView.translatesAutoresizingMaskIntoConstraints = NO;
+
+Then add the constraints for the layout; setting the top, right, left and bottom anchors of your BCOVPUIPlayerView to equal that of `videoView` 
+
+    [NSLayoutConstraint activateConstraints:@[
+                                              [self.playerView.topAnchor constraintEqualToAnchor:self.videoView.topAnchor],
+                                              [self.playerView.rightAnchor constraintEqualToAnchor:self.videoView.rightAnchor],
+                                              [self.playerView.leftAnchor constraintEqualToAnchor:self.videoView.leftAnchor],
+                                              [self.playerView.bottomAnchor constraintEqualToAnchor:self.videoView.bottomAnchor],
+                                              ]];
 
 **Reminder:** The PlayerUI uses a small font file for various graphics. If you are installing the static framework, and not using CocoaPods, be sure to add the file `bcovpuiiconfont.ttf` from the `BrightcovePlayerSDK.framework` bundle directly to your project listing so that the font file is copied into the app bundle
 
