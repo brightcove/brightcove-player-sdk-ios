@@ -2,7 +2,7 @@
 // BCOVPlaybackController.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2018 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2019 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -105,7 +105,6 @@ extern const CGFloat kBCOVVideo360BaseAngleOfView;
 /**
  * Key in the playback controller's options dictionary for enabling or disabling
  * buffer optimization in the AVPlayer.
- * This value is only used on iOS 10 and later.
  * Valid values:
  *   0: Buffer optimization is turned off. Set this value if you want to set
  *      the AVPlayerItem's preferredForwardBufferDuration property yourself.

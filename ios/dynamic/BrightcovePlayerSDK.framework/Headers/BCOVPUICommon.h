@@ -2,7 +2,7 @@
 // BCOVPUICommon.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2018 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2019 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -70,6 +70,9 @@ typedef NS_ENUM(NSInteger, BCOVPUIViewTag) {
     /** Tag for the Video 360 button. */
     BCOVPUIViewTagButtonVideo360        = 16,
     
+    /** Tag for the "Preferred Bitrate" button. */
+    BCOVPUIViewTagButtonPreferredBitrate    = 17,
+    
     /** Tag that signifies the end of our reserved range. */
     BCOVPUIViewTagReservedEnd           = 200
 };
@@ -122,6 +125,9 @@ typedef NS_ENUM(NSUInteger, BCOVPUIButtonIcon) {
     
     /** Video 360 Options icon */
     BCOVPUIButtonIconVideo360,
+    
+    /** Preferred Bitrate icon **/
+    BCOVPUIButtonIconPreferredBitrate,
     
     /** Reserved icon. */
     BCOVPUIButtonIconReserved,

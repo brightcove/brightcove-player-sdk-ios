@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.3.11.455
+# Brightcove Player SDK for iOS, version 6.4.0.501
 
 
 # Table of Contents
@@ -19,6 +19,7 @@
 1. [Play, Pause, and Seek](#PlayPauseSeek)
 1. [Preloading Videos](#PreloadingVideos)
 1. [Source Selection (HLS, MP4, HTTP/HTTPS)](#SourceSelection)
+1. [Setting a Preferred Bitrate](#PreferredBitrate)
 1. [Obtaining Content And Ad Playback Information](#PlaybackInformation)
 1. [Handling Network Interruptions and Slowdowns](#HandlingNetworkInterruptionsAndSlowdowns)
 1. [Subclassing](#Subclassing)
@@ -35,7 +36,7 @@
 Supported Platforms <a name="SupportedPlatforms"></a>
 ===================
 
-iOS 9.0 and above.
+iOS 10.0 and above.
 
 tvOS 9.0 and above.
 
@@ -656,6 +657,27 @@ If this default selection policy does not work for you, there are a few alternat
 
 Please be aware there are App Store limitations regarding the use of MP4 videos. Check the latest Apple Developer information for details.
 
+Setting a Preferred Bitrate <a name="PreferredBitrate"></a>
+---------------------------
+The Brightcove Player SDK for iOS provides a way to set the preferred bitrate for a video. You can create a BCOVPreferredBitrateConfig object that contains your desired bitrate options, along with some configuration for the view controller which is created to display the options. 
+
+The title for the menu is optional. The bitrate options are an array of NSDictionary's with each dictionary having one key:value pair. The key will be used as the option name, and the value is an NSNumber with the bitrate for that option in bps (bits per second). The bitrates you enter are values that can be mapped to bitrates of the renditions of your video assets. You can learn more about renditions in [Ingest Profiles Best Practices]. 
+
+Here is an example:
+
+    BCOVPUIPlayerViewOptions *options = [[BCOVPUIPlayerViewOptions alloc] init];
+    options.preferredBitrateConfig = [BCOVPreferredBitrateConfig configWithMenuTitle:@"Select an Option" andBitrateOptions:@[@{@"Auto":@(0)}, @{@"Setting 1":@(aBitrateValue)}, @{@"Setting 2":@(aBitrateValue)}]];
+
+When the end-user selects one of the options, the [preferredPeakBitRate] property of the current AVPlayerItem will be set to the option's value. If the video is in a playlist, the next video played will also have the preferredPeakBitRate value set. 
+
+After setting a non-zero value for [preferredPeakBitRate] you may not notice a difference in quality until AVPlayer has reached the end of its current buffered cache.
+
+NOTE: End-users must be given a way to return to the default value (0) of [preferredPeakBitRate]. You can do this by providing an option with a bitrate value of 0. If you do not provide a bitrate option of 0 an "Automatic" option will be appended to your list of options for the end-user.
+
+Please see Apple's documentation on [preferredPeakBitRate] for more information.
+
+[preferredPeakBitRate]:https://developer.apple.com/documentation/avfoundation/avplayeritem/1388541-preferredpeakbitrate
+[Ingest Profiles Best Practices]:https://support.brightcove.com/ingest-profiles-best-practices
 
 Obtaining Content And Ad Playback Information <a name="PlaybackInformation"></a>
 --------------------------------------

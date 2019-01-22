@@ -2,7 +2,7 @@
 // BCOVPUIBasicControlView.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2018 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2019 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -170,11 +170,18 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
 /** The "go to live" button */
 @property (nonatomic, weak, readonly) BCOVPUIButton *liveButton;
 
+/** The Preferred Bitrate Button button */
+/** Only appears when videoQualityOptions is set on BCOVPUIPlayerViewOptions */
+@property (nonatomic, weak, readonly) BCOVPUIButton *preferredBitrateButton;
+
 /** Yes if the closedCaptionButton is visible. No if invisible. */
 @property (nonatomic, readonly, getter=isClosedCaptionEnabled) BOOL closedCaptionEnabled;
 
 /** Yes if the externalRouteView is visible. No if invisible. */
 @property (nonatomic, assign, readonly, getter=isExternalRouteEnabled) BOOL externalRouteEnabled;
+
+/** Yes if the preferredBitrateButton is visible. No if invisible */
+@property (nonatomic, assign) BOOL preferredBitrateEnabled;
 
 /** Set to YES to change the control view's UI to the advertising state. */
 @property(nonatomic, readwrite) BOOL advertisingMode;

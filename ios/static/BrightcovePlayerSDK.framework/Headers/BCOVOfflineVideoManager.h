@@ -2,7 +2,7 @@
 // BCOVOfflineVideoManager.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2018 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2019 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -598,9 +598,8 @@ didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
  * The AVAssetDownloadTask associated with this download.
  * Will be set to nil once the download has completed.
  *
- * **Available in iOS 10.0+**
  */
-@property (nonatomic, readonly) AVAssetDownloadTask *downloadTask /* NS_AVAILABLE_IOS(10_0) */;
+@property (nonatomic, readonly) AVAssetDownloadTask *downloadTask;
 
 /**
  * The AVAggregateAssetDownloadTask associated with this tracks download.

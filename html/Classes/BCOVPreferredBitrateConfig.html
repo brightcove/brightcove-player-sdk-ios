@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>BCOVMutableSource Protocol Reference</title>
+	<title>BCOVPreferredBitrateConfig Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -43,8 +43,6 @@
 							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
 	
-	<option value="overview">Overview</option>
-	
 
 	
 	
@@ -56,15 +54,19 @@
 	
 	<optgroup label="Properties">
 		
-		<option value="//api/name/deliveryMethod">deliveryMethod</option>
+		<option value="//api/name/bitrateOptions">bitrateOptions</option>
 		
-		<option value="//api/name/properties">properties</option>
-		
-		<option value="//api/name/url">url</option>
+		<option value="//api/name/menuTitle">menuTitle</option>
 		
 	</optgroup>
 	
 
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/configWithMenuTitle:andBitrateOptions:">+ configWithMenuTitle:andBitrateOptions:</option>
+		
+	</optgroup>
 	
 
 	
@@ -81,29 +83,21 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">BCOVMutableSource Protocol Reference</h1>
+					<h1 class="title">BCOVPreferredBitrateConfig Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<th>Conforms to</th>
-	<td><a href="../Protocols/BCOVSource.html">BCOVSource</a></td>
+	<th>Inherits from</th>
+	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>BCOVSource.h</td>
+	<td>BCOVPUIPlayerView.h</td>
 </tr>
 						</tbody></table></div>
 					
 
                     
-					
-					<div class="section section-overview">
-						<a title="Overview" name="overview"></a>
-						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Sub-protocol of <a href="../Classes/BCOVSource.html">BCOVSource</a>, used only in its <code>-update</code> method.</p>
-					</div>
-					
-					
 
 					
 					
@@ -116,9 +110,9 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/url" title="url"></a>
-	<h3 class="method-title"><code><a href="#//api/name/url">&nbsp;&nbsp;url</a></code>
-<span class="task-item-suffix">required method</span></h3>
+	<a name="//api/name/menuTitle" title="menuTitle"></a>
+	<h3 class="method-title"><code><a href="#//api/name/menuTitle">&nbsp;&nbsp;menuTitle</a></code>
+</h3>
 
 	<div class="method-info">
 		<div class="pointy-thing"></div>
@@ -127,12 +121,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The URL at which this source instance&rsquo;s media is accessible.</p>
+				<p>Optional string to be used for title of the menu view controller</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite, copy) NSURL *url</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *menuTitle</code></div>
 
 		    
 			
@@ -144,7 +138,7 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The URL at which this source instance&rsquo;s media is accessible.</p>
+				<p>Optional string to be used for title of the menu view controller</p>
 			</div>
 			
 
@@ -155,16 +149,16 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVSource.h</code></p>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/deliveryMethod" title="deliveryMethod"></a>
-	<h3 class="method-title"><code><a href="#//api/name/deliveryMethod">&nbsp;&nbsp;deliveryMethod</a></code>
-<span class="task-item-suffix">required method</span></h3>
+	<a name="//api/name/bitrateOptions" title="bitrateOptions"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bitrateOptions">&nbsp;&nbsp;bitrateOptions</a></code>
+</h3>
 
 	<div class="method-info">
 		<div class="pointy-thing"></div>
@@ -173,13 +167,14 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The delivery method describing this source in relation to other sources in
-the same video.</p>
+				<p>Required array of desired bitrate options
+Format should be an array of single key:value pair dictionaries
+Example: @{@&ldquo;Auto&rdquo;:@(0)}, @{@&ldquo;Setting 1&rdquo;:@(aBitrateValue)}, @{@&ldquo;Setting 2&rdquo;:@(aBitrateValue)}]</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite, copy) NSString *deliveryMethod</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSArray&lt;NSDictionary&lt;NSString*NSNumber*&gt; *&gt; *bitrateOptions</code></div>
 
 		    
 			
@@ -191,8 +186,9 @@ the same video.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The delivery method describing this source in relation to other sources in
-the same video.</p>
+				<p>Required array of desired bitrate options
+Format should be an array of single key:value pair dictionaries
+Example: @{@&ldquo;Auto&rdquo;:@(0)}, @{@&ldquo;Setting 1&rdquo;:@(aBitrateValue)}, @{@&ldquo;Setting 2&rdquo;:@(aBitrateValue)}]</p>
 			</div>
 			
 
@@ -203,16 +199,16 @@ the same video.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVSource.h</code></p>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/properties" title="properties"></a>
-	<h3 class="method-title"><code><a href="#//api/name/properties">&nbsp;&nbsp;properties</a></code>
-<span class="task-item-suffix">required method</span></h3>
+	<a name="//api/name/configWithMenuTitle:andBitrateOptions:" title="configWithMenuTitle:andBitrateOptions:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/configWithMenuTitle:andBitrateOptions:">+&nbsp;configWithMenuTitle:andBitrateOptions:</a></code>
+</h3>
 
 	<div class="method-info">
 		<div class="pointy-thing"></div>
@@ -221,12 +217,14 @@ the same video.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The metadata or properties related to this source instance.</p>
+				<p>Convenience initializer for BCOVPreferredBitrateConfig that takes
+in values for all available properties and returns an instance of
+BCOVPreferredBitrateConfig using those values</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite, copy) NSDictionary *properties</code></div>
+			<div class="method-subsection method-declaration"><code>+ (BCOVPreferredBitrateConfig *)configWithMenuTitle:(NSString *)<em>menuTitle</em> andBitrateOptions:(NSArray&lt;NSDictionary&lt;NSString*,NSNumber*&gt; *&gt; *)<em>bitrateOptions</em></code></div>
 
 		    
 			
@@ -238,7 +236,9 @@ the same video.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The metadata or properties related to this source instance.</p>
+				<p>Convenience initializer for BCOVPreferredBitrateConfig that takes
+in values for all available properties and returns an instance of
+BCOVPreferredBitrateConfig using those values</p>
 			</div>
 			
 
@@ -249,7 +249,7 @@ the same video.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVSource.h</code></p>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
 			</div>
 			
 			

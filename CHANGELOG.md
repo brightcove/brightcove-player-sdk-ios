@@ -1,3 +1,27 @@
+## Release 6.4.0
+
+#### Breaking Changes
+
+* The minimum iOS Deployment Target for all Brightcove Native Player for iOS frameworks is now iOS 10.0. Details are available [here](https://support.brightcove.com/ios-sdk-deprecating-support-ios-10-and-eol-support-ios-9).
+
+### Brightcove Player SDK for iOS (Core)
+
+* Adds functionality to select a preferred peak bitrate for AVPlayer. Refer to the `Setting a Preferred Bitrate` section of the README as well as the `preferredBitrateConfig` property on the `BCOVPUIPlayerViewOptions` class.
+
+* Fixes an issue where the status information of offline video downloads was being deleted. This issue is present only in Release 6.3.11.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+* Adds new support for integrating Google Cast with your application.
+
+### FreeWheel Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds support for tvOS.
+
+* Supports version 6.26.0 of the FreeWheel AdManager framework for iOS and tvOS.
+
 ## Release 6.3.11
 
 ### Brightcove Player SDK for iOS (Core)
@@ -538,7 +562,9 @@ For full details about downloading video for offline playback, see the *iOS App 
 #### Breaking Changes
 
 * This and future releases of Brightcove Native Player for iOS will include all software components, all having the same version number. When building your app with Brightcove Native Player for iOS components, the component version numbers must always match. As an example, when using version 6.0.1 of the FreeWheel Plugin for Brightcove Player SDK for iOS, you must also use version 6.0.1 of the core Brightcove Player SDK for iOS. Each component will continue to be available from an individual GitHub repositories.
+
 * The Brightcove Podspecs repository has moved and the Pods have been renamed. The Podspecs are now available at [https://github.com/brightcove/BrightcoveSpecs](https://github.com/brightcove/BrightcoveSpecs).
+
 * All CocoaPods podfiles that use Brightcove frameworks should include a reference to the Brightcove Podspecs at the top of the podfile:
 
 ```

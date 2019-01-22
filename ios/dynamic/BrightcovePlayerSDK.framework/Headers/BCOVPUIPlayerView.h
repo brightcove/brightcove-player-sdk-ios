@@ -2,7 +2,7 @@
 // BCOVPUIPlayerView.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2018 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2019 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -172,11 +172,40 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
 
 @end
 
+@interface BCOVPreferredBitrateConfig : NSObject
+
+/**
+ * Optional string to be used for title of the menu view controller
+ */
+@property (nonatomic, copy) NSString *menuTitle;
+
+/**
+ * Required array of desired bitrate options
+ * Format should be an array of single key:value pair dictionaries
+ * Example: @{@"Auto":@(0)}, @{@"Setting 1":@(aBitrateValue)}, @{@"Setting 2":@(aBitrateValue)}]
+ */
+@property (nonatomic, strong) NSArray<NSDictionary<NSString *, NSNumber *> *> *bitrateOptions;
+
+/**
+ * Convenience initializer for BCOVPreferredBitrateConfig that takes
+ * in values for all available properties and returns an instance of
+ * BCOVPreferredBitrateConfig using those values
+ */
++ (BCOVPreferredBitrateConfig *)configWithMenuTitle:(NSString *)menuTitle
+                                  andBitrateOptions:(NSArray<NSDictionary<NSString *, NSNumber *> *> *)bitrateOptions;
+
+@end
 
 /**
  * Optional configuration for a player view.
  */
 @interface BCOVPUIPlayerViewOptions : NSObject
+
+/**
+ * The configuration for displaying preferred bitrate
+ * options to the end-user
+ */
+@property (nonatomic, strong) BCOVPreferredBitrateConfig *preferredBitrateConfig;
 
 /**
  * This view controller will be used for features that require a presenting view
