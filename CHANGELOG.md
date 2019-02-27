@@ -1,3 +1,25 @@
+## Release 6.4.1
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Adds support for VoiceOver to the built-in BCOVPlayerUI controls.
+
+* Removes the `kBCOVOfflineVideoManagerHTTPMaximumConnectionsPerHostKey` option to BCOVOfflineVideoManager initialization. Use the BCOVOfflineVideoManagerDelegate `-didCreateSharedBackgroundSesssionConfiguration:` method instead.
+
+### FreeWheel Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds support for honoring the video Advertising setting (Free or Ad Supported).
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds support for honoring the video Advertising setting (Free or Ad Supported).
+
 ## Release 6.4.0
 
 #### Breaking Changes
@@ -6,11 +28,15 @@
 
 ### Brightcove Player SDK for iOS (Core)
 
+#### Additions and Improvements
+
 * Adds functionality to select a preferred peak bitrate for AVPlayer. Refer to the `Setting a Preferred Bitrate` section of the README as well as the `preferredBitrateConfig` property on the `BCOVPUIPlayerViewOptions` class.
 
 * Fixes an issue where the status information of offline video downloads was being deleted. This issue is present only in Release 6.3.11.
 
 ### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
 
 * Adds new support for integrating Google Cast with your application.
 
@@ -299,7 +325,7 @@ Previously downloaded videos wll not have this property, but it will be added on
 
 #### Breaking Changes
 
-* The minimum iOS Deployment Target for all Brightcove Native Player for iOS frameworks is now iOS 9.0. Details are available [here](https://support.brightcove.com/announcement-ios-sdk-deprecating-support-ios-9-and-eol-support-ios-8).
+* The minimum iOS Deployment Target for all Brightcove Native Player for iOS frameworks is now iOS 9.0.
 
 ### Brightcove Player SDK for iOS (Core)
 
@@ -327,7 +353,8 @@ A few new items are added to support this feature:
 
 #### Breaking Changes
 
-* The `BCOVCatalogService`, also referred to as the Brightcove Media API, has reached end-of-life status and been removed from the Brightcove Native Player SDK. If your app uses the BCOVCatalogService, you must update it to use the [BCOVPlaybackService](https://brightcovelearning.github.io/Brightcove-API-References/ios-sdk/index.html#PlaybackService).
+* The `BCOVCatalogService`, also referred to as the Brightcove Media API, has reached end-of-life status and been removed from the Brightcove Native Player SDK. If your app uses the BCOVCatalogService, you must update it to use the [BCOVPlaybackService](https://docs.brightcove.com/ios-sdk/Classes/BCOVPlaybackService.html).
+
 * You can no longer download caption files using Sideband Subtitles in iOS 11. Sideband Subtitles is a workaround for incomplete track download support in iOS 10. As a result, you can no longer pass `kBCOVOfflineVideoManagerSubtitleLanguagesKey` as an option when requesting a video download. iOS 11 supports downloading of both subtitle and audio tracks; see "Addtions and Improvements" below for more details. Caption tracks that were downloaded using Sideband Subtitles will continue to play correctly on iOS 11.
 
 #### Additions and Improvements

@@ -15,7 +15,9 @@
 @class BCOVPUILayoutView;
 @class BCOVPUISlider;
 @class BCOVPUIButton;
+@class BCOVUILabel;
 
+@protocol BCOVPUIButtonAccessibilityDelegate;
 
 /** Width value passed to layoutViewWithControlFromTag:width:elasticity
  *  to indicate that the default width for the control should be used. */
@@ -143,13 +145,13 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
 @property (nonatomic, weak, readonly) BCOVPUIButton *jumpBackButton;
 
 /** The current time (elapsed) label */
-@property (nonatomic, weak, readonly) UILabel *currentTimeLabel;
+@property (nonatomic, weak, readonly) BCOVUILabel *currentTimeLabel;
 
 /** The time separator label */
 @property (nonatomic, weak, readonly) UILabel *timeSeparatorLabel;
 
 /** The duration label */
-@property (nonatomic, weak, readonly) UILabel *durationLabel;
+@property (nonatomic, weak, readonly) BCOVUILabel *durationLabel;
 
 /** The progress slider */
 @property (nonatomic, weak, readonly) BCOVPUISlider *progressSlider;
@@ -272,5 +274,11 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
  * @return Initialized UI component.
  */
 + (UIView *)createPUIControlItemWithViewTag:(BCOVPUIViewTag)tag;
+
+/**
+ * Sets the accessibility delegate on control view buttons
+ * @param delegate The object which conforms to the BCOVPUIButtonAccessibilityDelegate protocol
+ */
+- (void)setButtonsAccessibilityDelegate:(id<BCOVPUIButtonAccessibilityDelegate>)delegate;
 
 @end

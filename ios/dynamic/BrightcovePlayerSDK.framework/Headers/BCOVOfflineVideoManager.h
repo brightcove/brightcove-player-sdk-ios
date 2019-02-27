@@ -130,22 +130,6 @@ extern NSString * const kBCOVOfflineVideoManagerAllowsCellularAnalyticsKey;
 extern NSString * const kBCOVOfflineVideoManagerAnalyticsStorageLimitKey;
 
 /**
- * @deprecated Use the '-didCreateSharedBackgroundSesssionConfiguration:`
- * BCOVOfflineVideoManagerDelegate protocol delegate method to change settings
- * on the background session configuration instead.
- *
- * kBCOVOfflineVideoManagerHTTPMaximumConnectionsPerHostKey
- * NSDictionary key used to set an option passed to
- * `-[initializeOfflineVideoManagerWithDelegate:options:]`.
- * When this NSNumber is set, the Offline Video Manager will set the
- * HTTPMaximumConnectionsPerHost property of the NSURLSessionConfiguration used
- * to create each AVAssetDownloadTask which performs a video download. When this
- * option is not provided, the NSURLSessionConfiguration property is left
- * unmodified. In iOS, the default value is 4.
- */
-extern NSString * const kBCOVOfflineVideoManagerHTTPMaximumConnectionsPerHostKey DEPRECATED_ATTRIBUTE;
-
-/**
  * The following keys are used to specify values in the parameters dictionary
  * passed to `-BCOVOfflineVideoManager requestVideoDownload:parameters:completion:`
  */
@@ -607,7 +591,7 @@ didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
  *
  * **Available in iOS 11.0+**
  */
-@property (nonatomic, readonly) AVAggregateAssetDownloadTask *aggregateDownloadTask /* NS_AVAILABLE_IOS(11_0) */;
+@property (nonatomic, readonly) AVAggregateAssetDownloadTask *aggregateDownloadTask NS_AVAILABLE_IOS(11_0);
 
 #else
 @property (nonatomic, readonly) id downloadTask;
@@ -665,9 +649,8 @@ didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
  * @param options An NSDictionary of options.  The only valid dictionary entries are
  *  kBCOVOfflineVideoManagerAllowsCellularDownloadKey,
  *  kBCOVOfflineVideoManagerAllowsCellularPlaybackKey,
- *  kBCOVOfflineVideoManagerAllowsCellularAnalyticsKey,
- *  kBCOVOfflineVideoManagerAnalyticsStorageLimitKey, and
- *  kBCOVOfflineVideoManagerHTTPMaximumConnectionsPerHostKey.
+ *  kBCOVOfflineVideoManagerAllowsCellularAnalyticsKey, and
+ *  kBCOVOfflineVideoManagerAnalyticsStorageLimitKey.
  */
 + (void)initializeOfflineVideoManagerWithDelegate:(id<BCOVOfflineVideoManagerDelegate>)delegate
                                           options:(NSDictionary *)options;

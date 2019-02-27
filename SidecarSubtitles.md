@@ -1,4 +1,4 @@
-# Using Sidecar Subtitles With The Brightcove Player SDK for iOS, version 6.4.0.501
+# Using Sidecar Subtitles With The Brightcove Player SDK for iOS, version 6.4.1.565
 
 Introduction
 ===================
@@ -49,7 +49,7 @@ BCOVSidecarSubtitles adds some category methods to BCOVPlaybackManager. The firs
 
 * If you are developing for tvOS, the viewStrategy passed to createSidecarSubtitlesPlaybackControllerWithViewStrategy must be nil.
 
-* Note that `BCOVSSSessionProvider` should come before any session providers in the chain passed to the manager when constructing the playback controller. This extension is **not compatible** with the Widevine plugin.
+* Note that `BCOVSSSessionProvider` should come before any session providers in the chain passed to the manager when constructing the playback controller.
 
 If you have questions or need help, visit the support forum for Brightcove Native Player SDKs at https://groups.google.com/forum/#!forum/brightcove-native-player-sdks .
 
@@ -193,8 +193,6 @@ Known Issues
 ============
 
 * Subtitles will not be displayed when viewing 360 degree videos.
-
-* This extension currently does not support integrating with the Widevine Plugin for Brightcove Brightcove Player SDK for iOS.
 
 * When retrieving your videos from the Brightcove Playback API, your renditions must include a master M3U8 playlist. Sidecar Subtitles does not work with single rendition M3U8 playlists.
 

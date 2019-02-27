@@ -71,3 +71,6 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 #import <BrightcovePlayerSDK/BCOVTVSettingsView.h>
 #import <BrightcovePlayerSDK/BCOVTVTabBarItemView.h>
 #endif
+
+// Accessibility
+#import <BrightcovePlayerSDK/BCOVUILabel.h>

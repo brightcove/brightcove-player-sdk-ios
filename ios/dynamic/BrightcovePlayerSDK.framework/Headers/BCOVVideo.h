@@ -12,6 +12,17 @@
 @class BCOVSource;
 @protocol BCOVMutableVideo;
 
+// Economics field values
+typedef NS_ENUM(NSInteger, BCOVEconomics)
+{
+    // Supported economics values
+    BCOVEconomicsAdSupported = 0,
+    BCOVEconomicsFree,
+    
+    // Currently unused
+    BCOVEconomicsPublisherPays,
+    BCOVEconomicsPayMedia
+};
 
 /**
  * Account Id for video to be used for billing/analytics.
@@ -50,6 +61,13 @@ extern NSString * const kBCOVVideoPropertyKeyId;
  * Metadata or properties related to this video or its sources in the aggregate.
  */
 @property (nonatomic, readonly, copy) NSDictionary *properties;
+
+/**
+ * The economics field that comes from Video Cloud.
+ * kBCOVEconomicsAdSupported is the default, and means that the ads should be displayed.
+ * kBCOVEconomicsFree means that no ads should be shown during video playback.
+ */
+@property (nonatomic) BCOVEconomics economics;
 
 /**
  * The sources which comprise the actual destinations at which this video's

@@ -10,6 +10,18 @@
 
 #import "BCOVPUICommon.h"
 
+@class BCOVPUIButton;
+
+/**
+ * A protocol that allows for users to easily override
+ * the defeault values of OOTB control buttons' accessibility labels
+ */
+@protocol BCOVPUIButtonAccessibilityDelegate <NSObject>
+
+- (NSString *)accessibilityLabelForButton:(BCOVPUIButton *)button isPrimaryState:(BOOL)isPrimaryState;
+
+@end
+
 
 /**
  * A subclass of UIButton that contains two titles,
@@ -38,6 +50,8 @@
  * Show the primary or secondary button title text.
  * @param primary YES displays the primary button title; otherwise the secondary title.
  */
-- (void) showPrimaryTitle:(BOOL)primary;
+- (void)showPrimaryTitle:(BOOL)primary;
+
+@property (nonatomic, weak) id<BCOVPUIButtonAccessibilityDelegate> accessibilityDelegate;
 
 @end

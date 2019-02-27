@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.4.0.501
+# Brightcove Player SDK for iOS, version 6.4.1.565
 
 
 # Table of Contents
@@ -31,6 +31,7 @@
 1. [Combining Plugins](#CombiningPlugins)
 1. [Buffer Optimization](#BufferOptimization)
 1. [Using an AVPlayerViewController with a BCOVPlaybackController](#AVPlayerViewController)
+1. [VoiceOver Support](#VoiceOver)
 1. [Frequently Asked Questions](#FAQ)
 
 Supported Platforms <a name="SupportedPlatforms"></a>
@@ -1081,6 +1082,51 @@ due to the use by those plugins of a separate instance of the AVPlayer.
 
 Analytics:
 When using the AVPlayerViewController, the video_engagement events sent to the Brightcove Analytics server will report 0 for player_width and player_height.
+
+VoiceOver Support <a name="VoiceOver"></a>
+=================
+
+VoiceOver is supported out-of-the-box for the playback controls. By default, if VoiceOver is enabled, the BCOVPlayerUI control view will not auto-hide. Using the double-tap VoiceOver activation gesture on the playback controller's view will toggle the visibility of the control view. There is an associated `accessibilityHint` that is set on the playback controller's view. The `accessibilityLabel` of each BCOVPlayerUI control can be customized within your application. 
+
+To change the `accessibilityLabel` values of any of the buttons in the control view you must set an object to be a `BCOVPUIButtonAccessibilityDelegate` like this:
+
+    [self.playerView.controlsView setButtonsAccessibilityDelegate:self];
+
+You must then have that object conform to the `BCOVPUIButtonAccessibilityDelegate` protocol by implmenting the `- (NSString *)accessibilityLabelForButton:(BCOVPUIButton *)button isPrimaryState:(BOOL)isPrimaryState` method similar to this:
+
+    - (NSString *)accessibilityLabelForButton:(BCOVPUIButton *)button isPrimaryState:(BOOL)isPrimaryState
+    {
+        switch (button.tag)
+        {
+            case BCOVPUIViewTagButtonPlayback:
+                return isPrimaryState ? NSLocalizedString(@"Start Playback", nil) : NSLocalizedString(@"Stop PLayback", nil);
+            case BCOVPUIViewTagButtonScreenMode:
+                return isPrimaryState ? NSLocalizedString(@"Enter Fullscreen", nil) : NSLocalizedString(@"Exit Fullscreen", nil);
+            case BCOVPUIViewTagButtonJumpBack:
+                return nil;
+            case BCOVPUIViewTagButtonClosedCaption:
+                return nil;
+            case BCOVPUIViewTagButtonVideo360:
+                return nil;
+            case BCOVPUIViewTagButtonPreferredBitrate:
+                return nil;
+            default:
+                return nil;
+        }
+    }
+
+If a `nil` value is returned the default value will be used.
+
+Setting the `accessibilityHint` on the playback controller can be done like this:
+
+    self.playbackController.view.accessibilityHint = @"Double tap to show or hide controls";
+
+Similarly you can set the `accessibilityLabel` on the current time and duration labels, along with the progress slider, like this:
+
+    self.playerView.controlsView.durationLabel.accessibilityLabelPrefix = @"Total Time";
+    self.playerView.controlsView.currentTimeLabel.accessibilityLabelPrefix = @"Current Time";
+    self.playerView.controlsView.progressSlider.accessibilityLabel = @"Timeline";
+
 
 Frequently Asked Questions <a name="FAQ"></a>
 ==========================

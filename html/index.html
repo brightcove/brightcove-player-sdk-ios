@@ -44,7 +44,7 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 6.4.0.501</h1>
+						<h1>Brightcove Player SDK for iOS, version 6.4.1.565</h1>
 
 <h1>Table of Contents</h1>
 
@@ -77,6 +77,7 @@
 <li><a href="#CombiningPlugins">Combining Plugins</a></li>
 <li><a href="#BufferOptimization">Buffer Optimization</a></li>
 <li><a href="#AVPlayerViewController">Using an AVPlayerViewController with a BCOVPlaybackController</a></li>
+<li><a href="#VoiceOver">VoiceOver Support</a></li>
 <li><a href="#FAQ">Frequently Asked Questions</a></li>
 </ol>
 
@@ -1198,6 +1199,53 @@ OnceUX Plugin</p>
 <p>Analytics:
 When using the AVPlayerViewController, the video_engagement events sent to the Brightcove Analytics server will report 0 for player_width and player_height.</p>
 
+<h1>VoiceOver Support <a name="VoiceOver"></a></h1>
+
+<p>VoiceOver is supported out-of-the-box for the playback controls. By default, if VoiceOver is enabled, the BCOVPlayerUI control view will not auto-hide. Using the double-tap VoiceOver activation gesture on the playback controller&rsquo;s view will toggle the visibility of the control view. There is an associated <code>accessibilityHint</code> that is set on the playback controller&rsquo;s view. The <code>accessibilityLabel</code> of each BCOVPlayerUI control can be customized within your application.</p>
+
+<p>To change the <code>accessibilityLabel</code> values of any of the buttons in the control view you must set an object to be a <code>BCOVPUIButtonAccessibilityDelegate</code> like this:</p>
+
+<pre><code>[self.playerView.controlsView setButtonsAccessibilityDelegate:self];
+</code></pre>
+
+<p>You must then have that object conform to the <code>BCOVPUIButtonAccessibilityDelegate</code> protocol by implmenting the <code>- (NSString *)accessibilityLabelForButton:(BCOVPUIButton *)button isPrimaryState:(BOOL)isPrimaryState</code> method similar to this:</p>
+
+<pre><code>- (NSString *)accessibilityLabelForButton:(BCOVPUIButton *)button isPrimaryState:(BOOL)isPrimaryState
+{
+    switch (button.tag)
+    {
+        case BCOVPUIViewTagButtonPlayback:
+            return isPrimaryState ? NSLocalizedString(@"Start Playback", nil) : NSLocalizedString(@"Stop PLayback", nil);
+        case BCOVPUIViewTagButtonScreenMode:
+            return isPrimaryState ? NSLocalizedString(@"Enter Fullscreen", nil) : NSLocalizedString(@"Exit Fullscreen", nil);
+        case BCOVPUIViewTagButtonJumpBack:
+            return nil;
+        case BCOVPUIViewTagButtonClosedCaption:
+            return nil;
+        case BCOVPUIViewTagButtonVideo360:
+            return nil;
+        case BCOVPUIViewTagButtonPreferredBitrate:
+            return nil;
+        default:
+            return nil;
+    }
+}
+</code></pre>
+
+<p>If a <code>nil</code> value is returned the default value will be used.</p>
+
+<p>Setting the <code>accessibilityHint</code> on the playback controller can be done like this:</p>
+
+<pre><code>self.playbackController.view.accessibilityHint = @"Double tap to show or hide controls";
+</code></pre>
+
+<p>Similarly you can set the <code>accessibilityLabel</code> on the current time and duration labels, along with the progress slider, like this:</p>
+
+<pre><code>self.playerView.controlsView.durationLabel.accessibilityLabelPrefix = @"Total Time";
+self.playerView.controlsView.currentTimeLabel.accessibilityLabelPrefix = @"Current Time";
+self.playerView.controlsView.progressSlider.accessibilityLabel = @"Timeline";
+</code></pre>
+
 <h1>Frequently Asked Questions <a name="FAQ"></a></h1>
 
 <p><strong>My content won&rsquo;t load. Is there an easy way to test whether the URL points to a valid video?</strong></p>
@@ -1308,6 +1356,8 @@ When using the AVPlayerViewController, the video_engagement events sent to the B
 								
 								<li><a href="Classes/BCOVTVTabBarItemView.html">BCOVTVTabBarItemView</a></li>
 								
+								<li><a href="Classes/BCOVUILabel.html">BCOVUILabel</a></li>
+								
 								<li><a href="Classes/BCOVVideo.html">BCOVVideo</a></li>
 								
 								<li><a href="Classes/BCOVVideo360ViewProjection.html">BCOVVideo360ViewProjection</a></li>
@@ -1341,6 +1391,8 @@ When using the AVPlayerViewController, the video_engagement events sent to the B
 								<li><a href="Protocols/BCOVMutableVideo.html">BCOVMutableVideo</a></li>
 								
 								<li><a href="Protocols/BCOVOfflineVideoManagerDelegate.html">BCOVOfflineVideoManagerDelegate</a></li>
+								
+								<li><a href="Protocols/BCOVPUIButtonAccessibilityDelegate.html">BCOVPUIButtonAccessibilityDelegate</a></li>
 								
 								<li><a href="Protocols/BCOVPUIPlayerViewDelegate.html">BCOVPUIPlayerViewDelegate</a></li>
 								
@@ -1378,6 +1430,8 @@ When using the AVPlayerViewController, the video_engagement events sent to the B
 							<ul>
 								
 									<li><a href="Constants/BCOVBufferOptimizerMethod.html">BCOVBufferOptimizerMethod</a></li>
+								
+									<li><a href="Constants/BCOVEconomics.html">BCOVEconomics</a></li>
 								
 									<li><a href="Constants/BCOVOfflineVideoDownloadState.html">BCOVOfflineVideoDownloadState</a></li>
 								
@@ -1425,7 +1479,7 @@ When using the AVPlayerViewController, the video_engagement events sent to the B
 					<footer>
 						<div class="footer-copyright">
 							
-							<p class="copyright">Copyright &copy; 2019 Brightcove. All rights reserved. Updated: 2019-01-22</p>
+							<p class="copyright">Copyright &copy; 2019 Brightcove. All rights reserved. Updated: 2019-02-27</p>
 							
 							
 							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
