@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const kBCOVPlaylistPropertiesKeyAccountId;
+extern NSString * const kBCOVPlaylistPropertiesKeyDescription;
+extern NSString * const kBCOVPlaylistPropertiesKeyId;
+extern NSString * const kBCOVPlaylistPropertiesKeyName;
+extern NSString * const kBCOVPlaylistPropertiesKeyReferenceId;
+extern NSString * const kBCOVPlaylistPropertiesKeyType;
+
 @class BCOVVideo;
 @protocol BCOVMutablePlaylist;
 

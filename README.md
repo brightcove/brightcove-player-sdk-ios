@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.4.1.565
+# Brightcove Player SDK for iOS, version 6.4.2.589
 
 
 # Table of Contents
@@ -31,6 +31,7 @@
 1. [Combining Plugins](#CombiningPlugins)
 1. [Buffer Optimization](#BufferOptimization)
 1. [Using an AVPlayerViewController with a BCOVPlaybackController](#AVPlayerViewController)
+1. [Playback Authorization Service](#PlaybackAuthorizationService)
 1. [VoiceOver Support](#VoiceOver)
 1. [Frequently Asked Questions](#FAQ)
 
@@ -603,28 +604,20 @@ The Brightcove Player SDK for iOS provides play, pause, and seek methods on the 
 
 Preloading Videos <a name="PreloadingVideos"></a>
 -------------------------------
-**NOTE:** *Preloading videos is no longer recommended, and this functionality may be removed in a future release.*
+If desired you may choose to preload upcoming videos in a playlist. One possible approach is to double-buffer a list of videos using two playback controllers, for example:
 
-The Brightcove Player SDK for iOS provides the ability to preload upcoming videos in a playlist. By default, this functionality is disabled because of the large amount of memory preloading may use. You can turn on preloading to help ensure futures videos load quickly, however you might want to take into account the amount of memory available on the client's device and speed of their connection. If they are not on Wifi, preloading a video may affect the current video's network resources.
+1. Initialize two playback controllers
+1. Set up your player view and assign one of the two playback controllers to the playerView's playbackController property (now your active playback controller)
+1. Once your playlist is ready assign the playlist (or just the videos array property) to a property as we'll need to access each video separately
+1. Get the first video in the videos array and give it to the active playback controller (`[self.playbackController1 setVideos:@[self.videos.firstObject]]`)
+1. Utilizing the `playbackController:didProgressTo:` delegate method of the playback controller determine if the current video has progressed far enough to where you want to begin preloading the next video
+1. Once you determine it's time to preload get the next video in the videos array and set it on the alternate playback controller
+1. Once the current video has completed set the playbackController on the playerView to the alternate playback controller
+1. Rinse and repeat steps 5-7
 
-[`BCOVBasicSessionProviderOptions`][options] and [`BCOVBasicSessionLoadingPolicy`][loadingpolicy] provide two factory methods to modify preloading behavior that are described below:
+For a working example you may download our [VideoPreloading](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/VideoPreloading) sample app from our [Player Samples](https://github.com/BrightcoveOS/ios-player-samples) repository.
 
-* `+sessionPreloadingNever` This method returns a session preloading policy that never preloading videos. This is the default setting. 
-* `+sessionPreloadingWithProgressPercentage:` This method returns a session preloading policy that preloads the next video in a playlist after the provided percentage of the current video has been reached. If a value below 0 or greater than 100 is used, then `sessionPreloadingNever` is used. Some plugins may ignore this setting.
-
-An example:
-
-         BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
-     [1] BCOVBasicSessionLoadingPolicy *policy = [BCOVBasicSessionLoadingPolicy sessionPreloadingWithProgressPercentage:50];     
-          BCOVBasicSessionProviderOptions *options = [[BCOVBasicSessionProviderOptions alloc] init];
-          options.sessionPreloadingPolicy = policy;
-          id<BCOVPlaybackSessionProvider> provider = [manager createBasicSessionProviderWithOptions:options];
-
-1. Create a session preloading policy which starts preloading of an upcoming session when the current session reaches 50% of progress. 
-
-[options]:https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVBasicSessionProvider.h#L111-L129
-
-[loadingpolicy]:https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVBasicSessionProvider.h#L80-L102
+**Note: You might want to take into account the amount of memory available on the client's device and speed of their connection. If they are not on Wifi, preloading a video may affect the current video's network resources.**
 
 Source Selection (HLS, MP4, HTTP/HTTPS) <a name="SourceSelection"></a>
 ---------------------------------------
@@ -773,7 +766,7 @@ As you can see in the example, `video1` has not been changed by the `-update` me
 Retrieving Brightcove Assets Using the Playback Service <a name="PlaybackService"></a>
 ------------------------
 
-The playback service class, `BCOVPlaybackService`, provides functionality for retrieving your Brightcove video assets and playlists via the [Brightcove Playback API][PlaybackAPI] , including rich metadata such as text tracks, previews, and thumbnails. The following example shows how to retrieve a video with a video ID. Methods for retrieving a video or playlist with that video's reference ID are also available..
+The playback service class, `BCOVPlaybackService`, provides functionality for retrieving your Brightcove video assets and playlists via the [Brightcove Playback API][PlaybackAPI] , including rich metadata such as text tracks, previews, and thumbnails. The following example shows how to retrieve a video with a video ID. Methods for retrieving a video or playlist with that video's reference ID are also available.
 
     [1] NSString *policyKey = <your-policy-key>;
         NSString *accountId = <your-account-id>;
@@ -797,6 +790,8 @@ The playback service class, `BCOVPlaybackService`, provides functionality for re
                                    }];
 
 1. The playback service requests **policy key** for authentication. To learn more about policy key and how to obtain one, please refer to the [policy key documentation][PolicyKey].
+
+**NOTE: If you are using the Playback Authorization Service please review the [section](#PlaybackAuthorizationService) of this README related to that feature.
 
 **Playlist Paging**
 
@@ -1082,6 +1077,23 @@ due to the use by those plugins of a separate instance of the AVPlayer.
 
 Analytics:
 When using the AVPlayerViewController, the video_engagement events sent to the Brightcove Analytics server will report 0 for player_width and player_height.
+
+Playback Authorization Service <a name="PlaybackAuthorizationService"></a>
+=================
+If you are using the Playback Authorization Service you will need to use the playback service methods that allow you to pass in an authorization token. 
+
+```
+- (void)findPlaylistWithPlaylistID:(NSString *)playlistID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+- (void)findPlaylistWithReferenceID:(NSString *)referenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+- (void)findVideoWithVideoID:(NSString *)videoID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+- (void)findVideoWithReferenceID:(NSString *)referenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+```
+
+**Note: In the case of playlists, all videos in the playlist must use the same token.  In a subsequent release, assigning a different token to each video in a playlist will be possible.  You will be responsible for maintaining the mapping between video id and token.**
 
 VoiceOver Support <a name="VoiceOver"></a>
 =================

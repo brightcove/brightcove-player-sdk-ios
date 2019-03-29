@@ -263,6 +263,13 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
 - (void)setTitleColorForButtons:(UIColor *)titleColor forState:(UIControlState)state;
 
 /**
+ * Shows or hides the screen mode button based on Video360 Mode
+ *
+ * @param isGogglesMode Boolean determining if device is in VR Goggles Mode
+ */
+- (void)video360OptionSelected:(BOOL)isGogglesMode;
+
+/**
  * Constructs the UI control item with the specified tag.
  * Returned object may be a BCOVPUIButton, BCOVPUISlider, UILabel,
  * or MPVolumeView depending on the specified tag.

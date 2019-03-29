@@ -1,3 +1,33 @@
+## Release 6.4.2
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Adds support for the Brightcove Playback Authorization Service.
+
+* Fixes an issue where `player_width` and `player_height` were being reported as 0 in analytics for 360° videos.
+
+* Fixes an issue where the fullscreen toggle button remained visible after entering VR Goggles mode for 360° videos.
+
+* Adds constants for common values in property/paramater dictionaries. You can find these near the top of:
+
+    * BCOVAnalytics.h
+    * BCOVAnalyticsSession.h
+    * BCOVCuePoint.h
+    * BCOVPlaybackService.h
+    * BCOVPlaylist.h
+    * BCOVSource.h
+    * BCOVVideo.h
+    
+* BCOVBasicSessionLoadingPolicy has been deprecated. Refer to the `Preloading Videos` section of the README for guidance on using multiple playback controllers to achieve a preloading effect. 
+
+### OnceUX Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where the `creativeView` ad tracking event could be reported twice for each ad.
+
 ## Release 6.4.1
 
 ### Brightcove Player SDK for iOS (Core)

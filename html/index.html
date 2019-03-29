@@ -44,7 +44,7 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 6.4.1.565</h1>
+						<h1>Brightcove Player SDK for iOS, version 6.4.2.589</h1>
 
 <h1>Table of Contents</h1>
 
@@ -77,6 +77,7 @@
 <li><a href="#CombiningPlugins">Combining Plugins</a></li>
 <li><a href="#BufferOptimization">Buffer Optimization</a></li>
 <li><a href="#AVPlayerViewController">Using an AVPlayerViewController with a BCOVPlaybackController</a></li>
+<li><a href="#PlaybackAuthorizationService">Playback Authorization Service</a></li>
 <li><a href="#VoiceOver">VoiceOver Support</a></li>
 <li><a href="#FAQ">Frequently Asked Questions</a></li>
 </ol>
@@ -724,37 +725,29 @@ logoImageView1.frame = logoLayoutView1.frame;
 
 <h2>Preloading Videos <a name="PreloadingVideos"></a></h2>
 
-<p><strong>NOTE:</strong> <em>Preloading videos is no longer recommended, and this functionality may be removed in a future release.</em></p>
-
-<p>The Brightcove Player SDK for iOS provides the ability to preload upcoming videos in a playlist. By default, this functionality is disabled because of the large amount of memory preloading may use. You can turn on preloading to help ensure futures videos load quickly, however you might want to take into account the amount of memory available on the client&rsquo;s device and speed of their connection. If they are not on Wifi, preloading a video may affect the current video&rsquo;s network resources.</p>
-
-<p><a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVBasicSessionProvider.h#L111-L129">[<code>BCOVBasicSessionProviderOptions</code>](Classes/BCOVBasicSessionProviderOptions.html)</a> and <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVBasicSessionProvider.h#L80-L102">[<code>BCOVBasicSessionLoadingPolicy</code>](Classes/BCOVBasicSessionLoadingPolicy.html)</a> provide two factory methods to modify preloading behavior that are described below:</p>
-
-<ul>
-<li><code>+sessionPreloadingNever</code> This method returns a session preloading policy that never preloading videos. This is the default setting.</li>
-<li><code>+sessionPreloadingWithProgressPercentage:</code> This method returns a session preloading policy that preloads the next video in a playlist after the provided percentage of the current video has been reached. If a value below 0 or greater than 100 is used, then <code>sessionPreloadingNever</code> is used. Some plugins may ignore this setting.</li>
-</ul>
-
-
-<p>An example:</p>
-
-<pre><code>     BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
- [1] BCOVBasicSessionLoadingPolicy *policy = [BCOVBasicSessionLoadingPolicy sessionPreloadingWithProgressPercentage:50];     
-      BCOVBasicSessionProviderOptions *options = [[BCOVBasicSessionProviderOptions alloc] init];
-      options.sessionPreloadingPolicy = policy;
-      id&lt;BCOVPlaybackSessionProvider&gt; provider = [manager createBasicSessionProviderWithOptions:options];
-</code></pre>
+<p>If desired you may choose to preload upcoming videos in a playlist. One possible approach is to double-buffer a list of videos using two playback controllers, for example:</p>
 
 <ol>
-<li>Create a session preloading policy which starts preloading of an upcoming session when the current session reaches 50% of progress.</li>
+<li>Initialize two playback controllers</li>
+<li>Set up your player view and assign one of the two playback controllers to the playerView&rsquo;s playbackController property (now your active playback controller)</li>
+<li>Once your playlist is ready assign the playlist (or just the videos array property) to a property as we&rsquo;ll need to access each video separately</li>
+<li>Get the first video in the videos array and give it to the active playback controller (<code>[self.playbackController1 setVideos:@[self.videos.firstObject]]</code>)</li>
+<li>Utilizing the <code>playbackController:didProgressTo:</code> delegate method of the playback controller determine if the current video has progressed far enough to where you want to begin preloading the next video</li>
+<li>Once you determine it&rsquo;s time to preload get the next video in the videos array and set it on the alternate playback controller</li>
+<li>Once the current video has completed set the playbackController on the playerView to the alternate playback controller</li>
+<li>Rinse and repeat steps 5-7</li>
 </ol>
 
 
+<p>For a working example you may download our <a href="https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/VideoPreloading">VideoPreloading</a> sample app from our <a href="https://github.com/BrightcoveOS/ios-player-samples">Player Samples</a> repository.</p>
+
+<p><strong>Note: You might want to take into account the amount of memory available on the client&rsquo;s device and speed of their connection. If they are not on Wifi, preloading a video may affect the current video&rsquo;s network resources.</strong></p>
+
 <h2>Source Selection (HLS, MP4, HTTP/HTTPS) <a name="SourceSelection"></a></h2>
 
-<p>The Brightcove Player SDK for iOS provides clients the ability to attach multiple url and delivery types (<code>BCOVSource</code>) to a single video (<code>BCOVVideo</code>). For example, if your videos are being retrieved by the Playback Service, there may be a mix of HLS or MP4 renditions for a single video, along with HTTP and HTTPS versions.  Which one of these sources that get selected is determined by a source selection policy block. The default source selection policy will select the first HLS <code>BCOVSource</code> on each <code>BCOVVideo</code>, with HTTPS sources preferred over HTTP.</p>
+<p>The Brightcove Player SDK for iOS provides clients the ability to attach multiple url and delivery types (<a href="Classes/BCOVSource.html"><code>BCOVSource</code></a>) to a single video (<a href="Classes/BCOVVideo.html"><code>BCOVVideo</code></a>). For example, if your videos are being retrieved by the Playback Service, there may be a mix of HLS or MP4 renditions for a single video, along with HTTP and HTTPS versions.  Which one of these sources that get selected is determined by a source selection policy block. The default source selection policy will select the first HLS <a href="Classes/BCOVSource.html"><code>BCOVSource</code></a> on each <a href="Classes/BCOVVideo.html"><code>BCOVVideo</code></a>, with HTTPS sources preferred over HTTP.</p>
 
-<p>Source selection can be overridden by creating a <code>BCOVBasicSessionProviderOptions</code> and using it to create a <code>BCOVBasicSessionProvider</code>. For example:</p>
+<p>Source selection can be overridden by creating a <a href="Classes/BCOVBasicSessionProviderOptions.html"><code>BCOVBasicSessionProviderOptions</code></a> and using it to create a <a href="Classes/BCOVBasicSessionProvider.html"><code>BCOVBasicSessionProvider</code></a>. For example:</p>
 
 <pre><code>BCOVPlayerSDKManager *sdkManager = [BCOVPlayerSDKManager sharedManager];
 
@@ -768,7 +761,7 @@ idBCOVPlaybackController playbackController = [sdkManager createPlaybackControll
 <p>If this default selection policy does not work for you, there are a few alternatives to selecting a source:</p>
 
 <ul>
-<li><p>If retrieving videos from Video Cloud via the Playback Service, before calling <a href="Protocols/BCOVPlaybackController.html#//api/name/setVideos:"><code>[BCOVPlaybackController setVideos:]</code></a>, use the update method on the <a href="Classes/BCOVVideo.html"><code>BCOVVideo</code></a> to only contain the source you want (see the &ldquo;Values&rdquo; section for more info).</p></li>
+<li><p>If retrieving videos from Video Cloud via the Playback Service, before calling <code>[BCOVPlaybackController setVideos:]</code>, use the update method on the <code>BCOVVideo</code> to only contain the source you want (see the &ldquo;Values&rdquo; section for more info).</p></li>
 <li><p>You can use the helper method <code>[BCOVBasicSourceSelectionPolicy sourceSelectionHLSWithScheme:scheme]</code> to create a policy that prefers a specific scheme. This is the method used to create the default source selection policy that prefers HTTPS.</p></li>
 <li><p>Similar to updating the video object, you may also implement your own source selection block.</p>
 
@@ -806,11 +799,11 @@ options.preferredBitrateConfig = [BCOVPreferredBitrateConfig configWithMenuTitle
 
 <h2>Obtaining Content And Ad Playback Information <a name="PlaybackInformation"></a></h2>
 
-<p>The Brightcove Player SDK for iOS provides two mechanisms for obtaining playback information. The playback controller provides a delegate property that implements <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L667-L793"><code>BCOVPlaybackControllerDelegate</code></a>. A delegate can implement these optional methods to get notified of playback metadata like progress, duration changes, and other events. If an ad plugin is installed, it may also use this delegate to provide information about <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVAdvertising.h#L120-L192">ad playback</a>. The <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L630-L641">lifecycle event</a> delegate method provides events to signal changes in playback state. For example, when a player goes from the paused state to the playing state, the lifecycle event delegate method will be called with the <code>kBCOVPlaybackSessionLifecycleEventPlay</code> event. The default Lifecycle events are declared in <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackSession.h"><code>BCOVPlaybackSession</code></a>. Plugins provided by Brightcove add additional lifecycle events which are defined in each plugin.</p>
+<p>The Brightcove Player SDK for iOS provides two mechanisms for obtaining playback information. The playback controller provides a delegate property that implements <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L667-L793">[<code>BCOVPlaybackControllerDelegate</code>](Protocols/BCOVPlaybackControllerDelegate.html)</a>. A delegate can implement these optional methods to get notified of playback metadata like progress, duration changes, and other events. If an ad plugin is installed, it may also use this delegate to provide information about <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVAdvertising.h#L120-L192">ad playback</a>. The <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L630-L641">lifecycle event</a> delegate method provides events to signal changes in playback state. For example, when a player goes from the paused state to the playing state, the lifecycle event delegate method will be called with the <code>kBCOVPlaybackSessionLifecycleEventPlay</code> event. The default Lifecycle events are declared in <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackSession.h">[<code>BCOVPlaybackSession</code>](Protocols/BCOVPlaybackSession.html)</a>. Plugins provided by Brightcove add additional lifecycle events which are defined in each plugin.</p>
 
-<p>The playback controller allows for a single delegate. In many cases, this will be enough to retrieve information; the delegate implementations can disseminate values and events to different parts of the app as necessary. In cases where multiple delegates would be required, as is the case when developing a plugin, the <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L538-L655"><code>BCOVPlaybackSessionConsumer</code></a> delegates provide equivalent functionality to the <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L667-L793"><code>BCOVPlaybackControllerDelegate</code></a> methods, including <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVAdvertising.h#L195-L259">ad data</a>.</p>
+<p>The playback controller allows for a single delegate. In many cases, this will be enough to retrieve information; the delegate implementations can disseminate values and events to different parts of the app as necessary. In cases where multiple delegates would be required, as is the case when developing a plugin, the <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L538-L655">[<code>BCOVPlaybackSessionConsumer</code>](Protocols/BCOVPlaybackSessionConsumer.html)</a> delegates provide equivalent functionality to the <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L667-L793">[<code>BCOVPlaybackControllerDelegate</code>](Protocols/BCOVPlaybackControllerDelegate.html)</a> methods, including <a href="https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVAdvertising.h#L195-L259">ad data</a>.</p>
 
-<p>Here is an example of how one might use <code>BCOVPlaybackSessionConsumer</code> to create an analytics plugin:</p>
+<p>Here is an example of how one might use <a href="Protocols/BCOVPlaybackSessionConsumer.html"><code>BCOVPlaybackSessionConsumer</code></a> to create an analytics plugin:</p>
 
 <pre><code>@interface XYZAnalytics : NSObject BCOVPlaybackSessionConsumer
 @end
@@ -835,13 +828,13 @@ XYZAnalytics *analytics = [[XYZAnalytics alloc] init];
 
 <h2>Handling Network Interruptions and Slowdowns <a name="HandlingNetworkInterruptionsAndSlowdowns"></a></h2>
 
-<p>When the application experiences network interruptions, the <code>AVPlayer</code> used by the <code>BCOVPlaybackController</code> may stop attempting to recover if the interruption lasts too long. If this occurs, the lifecycle delegate method will be called with a <code>kBCOVPlaybackSessionLifecycleEventFailedToPlayToEndTime</code> event. When this event occurs, playback <strong>will not</strong> recover automatically. In order to recover from this event, you will need to detect when the network recovers in your client code.</p>
+<p>When the application experiences network interruptions, the <code>AVPlayer</code> used by the <a href="Protocols/BCOVPlaybackController.html"><code>BCOVPlaybackController</code></a> may stop attempting to recover if the interruption lasts too long. If this occurs, the lifecycle delegate method will be called with a <code>kBCOVPlaybackSessionLifecycleEventFailedToPlayToEndTime</code> event. When this event occurs, playback <strong>will not</strong> recover automatically. In order to recover from this event, you will need to detect when the network recovers in your client code.</p>
 
-<p>Once you have determined that the network has recovered, you can use <code>- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:]</code> to re-initialize the player. You will need to keep track of where you want to resume to. The player will make its best effort to suppress lifecycle events and progress events, in order to prevent ads from replaying or from analytics being interfered with.</p>
+<p>Once you have determined that the network has recovered, you can use <code>- [</code>[BCOVPlaybackController resumeVideoAtTime:withAutoPlay:]<code>](Protocols/BCOVPlaybackController.html#//api/name/resumeVideoAtTime:withAutoPlay:)</code> to re-initialize the player. You will need to keep track of where you want to resume to. The player will make its best effort to suppress lifecycle events and progress events, in order to prevent ads from replaying or from analytics being interfered with.</p>
 
-<p>Upon calling <code>- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:]</code>, the player will send a lifecycle event of type <code>kBCOVPlaybackSessionLifecycleEventResumeBegin</code>. <code>kBCOVPlaybackSessionLifecycleEventResumeComplete</code> will be sent if this action succeeds, otherwise <code>kBCOVPlaybackSessionLifecycleEventResumeFail</code> will be sent.</p>
+<p>Upon calling <code>- [</code>[BCOVPlaybackController resumeVideoAtTime:withAutoPlay:]<code>](Protocols/BCOVPlaybackController.html#//api/name/resumeVideoAtTime:withAutoPlay:)</code>, the player will send a lifecycle event of type <code>kBCOVPlaybackSessionLifecycleEventResumeBegin</code>. <code>kBCOVPlaybackSessionLifecycleEventResumeComplete</code> will be sent if this action succeeds, otherwise <code>kBCOVPlaybackSessionLifecycleEventResumeFail</code> will be sent.</p>
 
-<p>You must wait before calling <code>- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:]</code> a second time until you have received either <code>kBCOVPlaybackSessionLifecycleEventResumeComplete</code> or <code>kBCOVPlaybackSessionLifecycleEventResumeFail</code> from the previous call. You may wish to impose a retry limit, before giving the user a message that their network is too unstable.</p>
+<p>You must wait before calling <code>- [</code>[BCOVPlaybackController resumeVideoAtTime:withAutoPlay:]<code>](Protocols/BCOVPlaybackController.html#//api/name/resumeVideoAtTime:withAutoPlay:)</code> a second time until you have received either <code>kBCOVPlaybackSessionLifecycleEventResumeComplete</code> or <code>kBCOVPlaybackSessionLifecycleEventResumeFail</code> from the previous call. You may wish to impose a retry limit, before giving the user a message that their network is too unstable.</p>
 
 <p>When the <code>AVPlayer</code> is still able to access the network, but the video stalls because the network is too slow, the lifecycle delegate method will be called with a <code>kBCOVPlaybackSessionLifecycleEventPlaybackStalled</code> event. When playback is able to resume, the lifecycle delegate method will be called with a <code>kBCOVPlaybackSessionLifecycleEventPlaybackRecovered</code> event. These events only cover the case where normal playback stopped and does not cover buffering that occurs during a seek or initial load of the video.</p>
 
@@ -853,7 +846,7 @@ XYZAnalytics *analytics = [[XYZAnalytics alloc] init];
 
 <h2>Values <a name="Values"></a></h2>
 
-<p>Also known as &ldquo;model objects&rdquo;, these classes (<code>BCOVPlaylist</code>, <code>BCOVVideo</code>, <code>BCOVSource</code>, <code>BCOVCuePoint</code>, <code>BCOVCuePointCollection</code>) are used to represent data in the Player SDK for iOS. It is crucial to understand that these data types are treated as <em>values</em>, rather than <em>identities</em>. By this, we mean that if you have two instances of a value class which have the exact same data, they represent the same idea or value, even though they are technically two different objects at separate memory addresses. In other words, neither SDK code nor your client code should ever use identity comparisons (&ldquo;pointer equality&rdquo;) with value objects. Instead, each value class implements <code>-isEqual:</code> and provides a class-specific equality method overload, either of which should be used instead.</p>
+<p>Also known as &ldquo;model objects&rdquo;, these classes (<a href="Classes/BCOVPlaylist.html"><code>BCOVPlaylist</code></a>, <a href="Classes/BCOVVideo.html"><code>BCOVVideo</code></a>, <a href="Classes/BCOVSource.html"><code>BCOVSource</code></a>, <a href="Classes/BCOVCuePoint.html"><code>BCOVCuePoint</code></a>, <a href="Classes/BCOVCuePointCollection.html"><code>BCOVCuePointCollection</code></a>) are used to represent data in the Player SDK for iOS. It is crucial to understand that these data types are treated as <em>values</em>, rather than <em>identities</em>. By this, we mean that if you have two instances of a value class which have the exact same data, they represent the same idea or value, even though they are technically two different objects at separate memory addresses. In other words, neither SDK code nor your client code should ever use identity comparisons (&ldquo;pointer equality&rdquo;) with value objects. Instead, each value class implements <code>-isEqual:</code> and provides a class-specific equality method overload, either of which should be used instead.</p>
 
 <p>This is bad:</p>
 
@@ -891,7 +884,7 @@ video2.properties = otherDictionary; // causes compiler error
 
 <h2>Retrieving Brightcove Assets Using the Playback Service <a name="PlaybackService"></a></h2>
 
-<p>The playback service class, <code>BCOVPlaybackService</code>, provides functionality for retrieving your Brightcove video assets and playlists via the <a href="https://support.brightcove.com/overview-playback-api">Brightcove Playback API</a> , including rich metadata such as text tracks, previews, and thumbnails. The following example shows how to retrieve a video with a video ID. Methods for retrieving a video or playlist with that video&rsquo;s reference ID are also available..</p>
+<p>The playback service class, <a href="Classes/BCOVPlaybackService.html"><code>BCOVPlaybackService</code></a>, provides functionality for retrieving your Brightcove video assets and playlists via the <a href="https://support.brightcove.com/overview-playback-api">Brightcove Playback API</a> , including rich metadata such as text tracks, previews, and thumbnails. The following example shows how to retrieve a video with a video ID. Methods for retrieving a video or playlist with that video&rsquo;s reference ID are also available.</p>
 
 <pre><code>[1] NSString *policyKey = &lt;your-policy-key&gt;;
     NSString *accountId = &lt;your-account-id&gt;;
@@ -919,6 +912,8 @@ video2.properties = otherDictionary; // causes compiler error
 <li>The playback service requests <strong>policy key</strong> for authentication. To learn more about policy key and how to obtain one, please refer to the <a href="https://support.brightcove.com/policy-keys">policy key documentation</a>.</li>
 </ol>
 
+
+<p>**NOTE: If you are using the Playback Authorization Service please review the <a href="#PlaybackAuthorizationService">section</a> of this README related to that feature.</p>
 
 <p><strong>Playlist Paging</strong></p>
 
@@ -1199,16 +1194,31 @@ OnceUX Plugin</p>
 <p>Analytics:
 When using the AVPlayerViewController, the video_engagement events sent to the Brightcove Analytics server will report 0 for player_width and player_height.</p>
 
+<h1>Playback Authorization Service <a name="PlaybackAuthorizationService"></a></h1>
+
+<p>If you are using the Playback Authorization Service you will need to use the playback service methods that allow you to pass in an authorization token.</p>
+
+<pre><code>- (void)findPlaylistWithPlaylistID:(NSString *)playlistID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+- (void)findPlaylistWithReferenceID:(NSString *)referenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+- (void)findVideoWithVideoID:(NSString *)videoID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+- (void)findVideoWithReferenceID:(NSString *)referenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+</code></pre>
+
+<p><strong>Note: In the case of playlists, all videos in the playlist must use the same token.  In a subsequent release, assigning a different token to each video in a playlist will be possible.  You will be responsible for maintaining the mapping between video id and token.</strong></p>
+
 <h1>VoiceOver Support <a name="VoiceOver"></a></h1>
 
 <p>VoiceOver is supported out-of-the-box for the playback controls. By default, if VoiceOver is enabled, the BCOVPlayerUI control view will not auto-hide. Using the double-tap VoiceOver activation gesture on the playback controller&rsquo;s view will toggle the visibility of the control view. There is an associated <code>accessibilityHint</code> that is set on the playback controller&rsquo;s view. The <code>accessibilityLabel</code> of each BCOVPlayerUI control can be customized within your application.</p>
 
-<p>To change the <code>accessibilityLabel</code> values of any of the buttons in the control view you must set an object to be a <code>BCOVPUIButtonAccessibilityDelegate</code> like this:</p>
+<p>To change the <code>accessibilityLabel</code> values of any of the buttons in the control view you must set an object to be a <a href="Protocols/BCOVPUIButtonAccessibilityDelegate.html"><code>BCOVPUIButtonAccessibilityDelegate</code></a> like this:</p>
 
 <pre><code>[self.playerView.controlsView setButtonsAccessibilityDelegate:self];
 </code></pre>
 
-<p>You must then have that object conform to the <code>BCOVPUIButtonAccessibilityDelegate</code> protocol by implmenting the <code>- (NSString *)accessibilityLabelForButton:(BCOVPUIButton *)button isPrimaryState:(BOOL)isPrimaryState</code> method similar to this:</p>
+<p>You must then have that object conform to the <a href="Protocols/BCOVPUIButtonAccessibilityDelegate.html"><code>BCOVPUIButtonAccessibilityDelegate</code></a> protocol by implmenting the <code>- (NSString *)accessibilityLabelForButton:(</code>BCOVPUIButton<code> *)button isPrimaryState:(BOOL)isPrimaryState</code> method similar to this:</p>
 
 <pre><code>- (NSString *)accessibilityLabelForButton:(BCOVPUIButton *)button isPrimaryState:(BOOL)isPrimaryState
 {
@@ -1254,11 +1264,11 @@ self.playerView.controlsView.progressSlider.accessibilityLabel = @"Timeline";
 
 <p><strong>I can hear the audio track playing, but the video freezes for a few seconds sporadically. What&rsquo;s happening?</strong></p>
 
-<p>This is a common symptom of having called a main thread-only UIKit or AVFoundation method from a non-main thread. The delegate methods on <code>BCOVPlaybackControllerDelegate</code> are always called on the main thread.</p>
+<p>This is a common symptom of having called a main thread-only UIKit or AVFoundation method from a non-main thread. The delegate methods on <a href="Protocols/BCOVPlaybackControllerDelegate.html"><code>BCOVPlaybackControllerDelegate</code></a> are always called on the main thread.</p>
 
 <p><strong>Why do I see a message in the log indicating that no source has been found?</strong></p>
 
-<p>This message indicates that the default source selection policy can&rsquo;t figure which source to pick. The default policy selects the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryHLS</code> (&ldquo;HLS&rdquo;). If no HLS source is found, its fallback behavior will select the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryMP4</code> (&ldquo;MP4&rdquo;). If no source with a <code>deliveryMethod</code> of &ldquo;HLS&rdquo; or &ldquo;MP4&rdquo; exists on the video, the policy will select the video&rsquo;s first source (regardless of <code>deliveryMethod</code>). If you aren&rsquo;t happy with its selection, you can use <code>[BCOVPlayerSDKManager createBasicSessionProviderWithOptions:]</code> and pass in an instance of <code>BCOVBasicSessionProviderOptions</code> with a custom <code>sourceSelectionPolicy</code> property set. When creating videos and sources manually, ensure that the sources are created with the appropriate <code>deliveryMethod</code>.</p>
+<p>This message indicates that the default source selection policy can&rsquo;t figure which source to pick. The default policy selects the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryHLS</code> (&ldquo;HLS&rdquo;). If no HLS source is found, its fallback behavior will select the first source whose <code>deliveryMethod</code> is <code>kBCOVSourceDeliveryMP4</code> (&ldquo;MP4&rdquo;). If no source with a <code>deliveryMethod</code> of &ldquo;HLS&rdquo; or &ldquo;MP4&rdquo; exists on the video, the policy will select the video&rsquo;s first source (regardless of <code>deliveryMethod</code>). If you aren&rsquo;t happy with its selection, you can use <a href="Classes/BCOVPlayerSDKManager.html#//api/name/createBasicSessionProviderWithOptions:"><code>[BCOVPlayerSDKManager createBasicSessionProviderWithOptions:]</code></a> and pass in an instance of <a href="Classes/BCOVBasicSessionProviderOptions.html"><code>BCOVBasicSessionProviderOptions</code></a> with a custom <code>sourceSelectionPolicy</code> property set. When creating videos and sources manually, ensure that the sources are created with the appropriate <code>deliveryMethod</code>.</p>
 
 <p><strong><a href="https://developer.apple.com/Library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioGuidelinesByAppType/AudioGuidelinesByAppType.html">Apple recommends</a> that apps which play video should still play audio even when the device is muted. Why doesn&rsquo;t the Brightcove Player SDK for iOS respect these guidelines?</strong></p>
 
@@ -1479,7 +1489,7 @@ self.playerView.controlsView.progressSlider.accessibilityLabel = @"Timeline";
 					<footer>
 						<div class="footer-copyright">
 							
-							<p class="copyright">Copyright &copy; 2019 Brightcove. All rights reserved. Updated: 2019-02-27</p>
+							<p class="copyright">Copyright &copy; 2019 Brightcove. All rights reserved. Updated: 2019-03-29</p>
 							
 							
 							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

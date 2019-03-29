@@ -53,7 +53,11 @@ extern NSString * const kBCOVSourceDeliveryBoltSSAI;
 /**
  * The key used in the source properties to declare the DRM type of this source.
  */
-extern NSString * const kBCOVSourceKeySystems;
+extern NSString * const kBCOVSourcePropertyKeySystems;
+
+extern NSString * const kBCOVSourcePropertyKeyEXTXVersion;
+extern NSString * const kBCOVSourcePropertyKeyType;
+extern NSString * const kBCOVSourcePropertyKeyVMAP;
 
 
 /**

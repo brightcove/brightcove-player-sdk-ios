@@ -108,6 +108,8 @@
 		
 		<option value="//api/name/renewFairPlayLicense:parameters:completion:">- renewFairPlayLicense:parameters:completion:</option>
 		
+		<option value="//api/name/renewFairPlayLicense:video:authToken:parameters:completion:">- renewFairPlayLicense:video:authToken:parameters:completion:</option>
+		
 		<option value="//api/name/renewFairPlayLicense:video:parameters:completion:">- renewFairPlayLicense:video:parameters:completion:</option>
 		
 		<option value="//api/name/requestMediaSelectionsDownload:offlineVideoToken:">- requestMediaSelectionsDownload:offlineVideoToken:</option>
@@ -1075,6 +1077,102 @@ the current download, and then initiate a completely new download at the new bit
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/renewFairPlayLicense:video:authToken:parameters:completion:" title="renewFairPlayLicense:video:authToken:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/renewFairPlayLicense:video:authToken:parameters:completion:">&ndash;&nbsp;renewFairPlayLicense:video:authToken:parameters:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initiate a request for a new FairPlay license.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)renewFairPlayLicense:(BCOVOfflineVideoToken)<em>offlineVideoToken</em> video:(BCOVVideo *)<em>video</em> authToken:(NSString *)<em>authToken</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVOfflineVideoToken offlineVideoToken , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video for which to acquire a new license.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>video</code></th>
+						<td><p><a href="../Classes/BCOVVideo.html">BCOVVideo</a> object for an online video object retrieved through the Playback API
+or the <a href="../Classes/BCOVPlaybackService.html">BCOVPlaybackService</a> class. This video must not have been created by &lsquo;-videoObjectFromOfflineVideoToken:&rsquo;.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>authToken</code></th>
+						<td><p>The authentication token with which to validate the video&rsquo;s license</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>NSDictionary of parameters used in this license renewal request.
+May be nil. Valid parameters are: kBCOVFairPlayLicensePurchaseKey,
+kBCOVFairPlayLicenseRentalDurationKey.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>A block that is called after the license renewal request has completed.
+If the request resulted in an error, it will be returned here as an NSError.
+The offlineVideoToken parameter will be the same offline video token that was
+passed in as the first parameter.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>You can request a new FairPlay license any time after the initial license has been acquired.</p>
+
+<p>In the parameters you can specify a new rental duration, or you can convert a rental license
+to a purchase license.</p>
+
+<p>The video does not need to be re-downloaded to use a new FairPlay license, but you do need
+to retrieve a new video object from the Playback API (either directly or through
+the <a href="../Classes/BCOVPlaybackService.html">BCOVPlaybackService</a> class). If the referenced video is no longer available through the Playback API,
+you can use a substantially similar video, meaning the video should be from the same account,
+and also have the same FairPlay configuration.</p>
+
+<p>You should not specify a bitrate in the parameters. To change the bitrate you need to delete
+the current download, and then initiate a completely new download at the new bitrate.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/renewFairPlayLicense:parameters:completion:" title="renewFairPlayLicense:parameters:completion:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/renewFairPlayLicense:parameters:completion:">&ndash;&nbsp;renewFairPlayLicense:parameters:completion:</a></code>
 </h3>
@@ -1229,7 +1327,7 @@ in a kBCOVOfflineVideoManagerErrorCodeInvalidLicense error.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>@abstrsact Returns an NSDate representing the expiration of the FairPlay license for the video
+				<p>Returns an NSDate representing the expiration of the FairPlay license for the video
 associated with the offline video token.</p>
 			</div>
 			
@@ -1265,8 +1363,7 @@ for purchase licenses or clear (no FairPlay) videos, or nil if there is no licen
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>@abstrsact Returns an NSDate representing the expiration of the FairPlay license for the video
-associated with the offline video token.</p><p>Returns NSDate.distantFuture for &ldquo;purchase&rdquo; licenses.</p>
+				<p>Returns NSDate.distantFuture for &ldquo;purchase&rdquo; licenses.</p>
 
 <p>Returns NSDate.distantFuture if the video is not encrypted with FairPlay.</p>
 
@@ -1918,7 +2015,7 @@ typically by a call to [AVURLAsset allMediaSelections] for your downloaded AVURL
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2019 Brightcove. All rights reserved. Updated: 2019-02-27</p>
+						<p class="copyright">Copyright &copy; 2019 Brightcove. All rights reserved. Updated: 2019-03-29</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

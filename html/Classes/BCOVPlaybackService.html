@@ -78,11 +78,19 @@
 	
 	<optgroup label="Instance Methods">
 		
+		<option value="//api/name/findPlaylistWithPlaylistID:authToken:parameters:completion:">- findPlaylistWithPlaylistID:authToken:parameters:completion:</option>
+		
 		<option value="//api/name/findPlaylistWithPlaylistID:parameters:completion:">- findPlaylistWithPlaylistID:parameters:completion:</option>
+		
+		<option value="//api/name/findPlaylistWithReferenceID:authToken:parameters:completion:">- findPlaylistWithReferenceID:authToken:parameters:completion:</option>
 		
 		<option value="//api/name/findPlaylistWithReferenceID:parameters:completion:">- findPlaylistWithReferenceID:parameters:completion:</option>
 		
+		<option value="//api/name/findVideoWithReferenceID:authToken:parameters:completion:">- findVideoWithReferenceID:authToken:parameters:completion:</option>
+		
 		<option value="//api/name/findVideoWithReferenceID:parameters:completion:">- findVideoWithReferenceID:parameters:completion:</option>
+		
+		<option value="//api/name/findVideoWithVideoID:authToken:parameters:completion:">- findVideoWithVideoID:authToken:parameters:completion:</option>
 		
 		<option value="//api/name/findVideoWithVideoID:parameters:completion:">- findVideoWithVideoID:parameters:completion:</option>
 		
@@ -360,7 +368,89 @@ background queue.</p>
 						<th scope="row" class="argument-name"><code>parameters</code></th>
 						<td><p>Additional NSString query parameters to add to the Playback
 API requests. These values will override the default values if they conflict.
-Can use the &ldquo;offset&rdquo; and &ldquo;limit&rdquo; parameters. See &ldquo;Playlist Paging&rdquo; above.</p></td>
+Can use the kBCOVPlaybackServiceParameterKeyOffset and kBCOVPlaybackServiceParameterKeyLimit
+parameters. See &ldquo;Playlist Paging&rdquo; above.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>block which will be invoked when the request
+finishes. Execution of the completionHandler will occur on the main thread.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Playback API service by its playlist ID on a
+background queue.</p>
+
+<p>If the completionHandler provides an NSError, the <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> will be nil.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/findPlaylistWithPlaylistID:authToken:parameters:completion:" title="findPlaylistWithPlaylistID:authToken:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/findPlaylistWithPlaylistID:authToken:parameters:completion:">&ndash;&nbsp;findPlaylistWithPlaylistID:authToken:parameters:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Playback API service by its playlist ID on a
+background queue.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)findPlaylistWithPlaylistID:(NSString *)<em>playlistID</em> authToken:(NSString *)<em>authToken</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVPlaylist *playlist , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>playlistID</code></th>
+						<td><p>The ID of the playlist to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>authToken</code></th>
+						<td><p>The authorization token with which to validate the video&rsquo;s license</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to the Playback
+API requests. These values will override the default values if they conflict.
+Can use the kBCOVPlaybackServiceParameterKeyOffset and kBCOVPlaybackServiceParameterKeyLimit
+parameters. See &ldquo;Playlist Paging&rdquo; above.</p></td>
 					</tr>
 				
 					<tr>
@@ -434,7 +524,89 @@ background queue.</p>
 					<tr>
 						<th scope="row" class="argument-name"><code>parameters</code></th>
 						<td><p>Additional NSString query parameters to add to the Playback
-Can use the &ldquo;offset&rdquo; and &ldquo;limit&rdquo; parameters. See &ldquo;Playlist Paging&rdquo; above.
+Can use the kBCOVPlaybackServiceParameterKeyOffset and kBCOVPlaybackServiceParameterKeyLimit
+parameters. See &ldquo;Playlist Paging&rdquo; above.
+API requests. These values will override the default values if they conflict.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>block which will be invoked when the request
+finishes. Execution of the completionHandler will occur on the main thread.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Playback API service by its reference ID on a
+background queue.</p>
+
+<p>If the completionHandler provides an NSError, the <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> will be nil.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/findPlaylistWithReferenceID:authToken:parameters:completion:" title="findPlaylistWithReferenceID:authToken:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/findPlaylistWithReferenceID:authToken:parameters:completion:">&ndash;&nbsp;findPlaylistWithReferenceID:authToken:parameters:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Retrieves a <a href="../Classes/BCOVPlaylist.html">BCOVPlaylist</a> from the Playback API service by its reference ID on a
+background queue.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)findPlaylistWithReferenceID:(NSString *)<em>referenceID</em> authToken:(NSString *)<em>authToken</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVPlaylist *playlist , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>referenceID</code></th>
+						<td><p>The reference ID of the video to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>authToken</code></th>
+						<td><p>The authorization token with which to validate the video&rsquo;s license</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to the Playback
+Can use the kBCOVPlaybackServiceParameterKeyOffset and kBCOVPlaybackServiceParameterKeyLimit
+parameters. See &ldquo;Playlist Paging&rdquo; above.
 API requests. These values will override the default values if they conflict.</p></td>
 					</tr>
 				
@@ -550,6 +722,85 @@ queue.</p>
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/findVideoWithVideoID:authToken:parameters:completion:" title="findVideoWithVideoID:authToken:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/findVideoWithVideoID:authToken:parameters:completion:">&ndash;&nbsp;findVideoWithVideoID:authToken:parameters:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Playback API service by its video ID on a background
+queue.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)findVideoWithVideoID:(NSString *)<em>videoID</em> authToken:(NSString *)<em>authToken</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVVideo *video , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>videoID</code></th>
+						<td><p>The ID of the video to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>authToken</code></th>
+						<td><p>The authorization token with which to validate the video&rsquo;s license</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to the Playback
+API requests. These values will override the default values if they conflict.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>block which will be invoked when the request
+finishes. Execution of the completionHandler will occur on the main thread.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Playback API service by its video ID on a background
+queue.</p>
+
+<p>If the completionHandler provides an NSError, the <a href="../Classes/BCOVVideo.html">BCOVVideo</a> will be nil.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/findVideoWithReferenceID:parameters:completion:" title="findVideoWithReferenceID:parameters:completion:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/findVideoWithReferenceID:parameters:completion:">&ndash;&nbsp;findVideoWithReferenceID:parameters:completion:</a></code>
 </h3>
@@ -578,6 +829,85 @@ queue.</p>
 					<tr>
 						<th scope="row" class="argument-name"><code>referenceID</code></th>
 						<td><p>The reference ID of the video to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>Additional NSString query parameters to add to the Playback
+API requests. These values will override the default values if they conflict.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>block which will be invoked when the request
+finishes. Execution of the completionHandler will occur on the main thread.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Playback API service by its reference ID on a background
+queue.</p>
+
+<p>If the completionHandler provides an NSError, the <a href="../Classes/BCOVVideo.html">BCOVVideo</a> will be nil.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackService.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/findVideoWithReferenceID:authToken:parameters:completion:" title="findVideoWithReferenceID:authToken:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/findVideoWithReferenceID:authToken:parameters:completion:">&ndash;&nbsp;findVideoWithReferenceID:authToken:parameters:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Retrieves a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> from the Playback API service by its reference ID on a background
+queue.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)findVideoWithReferenceID:(NSString *)<em>referenceID</em> authToken:(NSString *)<em>authToken</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVVideo *video , NSDictionary *jsonResponse , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>referenceID</code></th>
+						<td><p>The reference ID of the video to find.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>authToken</code></th>
+						<td><p>The authorization token with which to validate the video&rsquo;s license</p></td>
 					</tr>
 				
 					<tr>
@@ -904,7 +1234,7 @@ dictionary.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2019 Brightcove. All rights reserved. Updated: 2019-02-27</p>
+						<p class="copyright">Copyright &copy; 2019 Brightcove. All rights reserved. Updated: 2019-03-29</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

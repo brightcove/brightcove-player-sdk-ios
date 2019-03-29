@@ -25,19 +25,25 @@ typedef NS_ENUM(NSInteger, BCOVEconomics)
 };
 
 /**
- * Account Id for video to be used for billing/analytics.
+ * The properties dictionary on a BCOVVideo object can contain
+ * any of the following keys. These can be used when
+ * manually initializing a BCOVVideo, like initWithSource:cuePoints:properties
  */
 extern NSString * const kBCOVVideoPropertyKeyAccountId;
-
-/**
- * Name for video to be used for billing/analytics.
- */
-extern NSString * const kBCOVVideoPropertyKeyName;
-
-/**
- * ID for video to be used for billing/analytics.
- */
+extern NSString * const kBCOVVideoPropertyKeyDescription;
+extern NSString * const kBCOVVideoPropertyKeyDuration;
+extern NSString * const kBCOVVideoPropertyKeyEconomics;
 extern NSString * const kBCOVVideoPropertyKeyId;
+extern NSString * const kBCOVVideoPropertyKeyLongDescription;
+extern NSString * const kBCOVVideoPropertyKeyName;
+extern NSString * const kBCOVVideoPropertyKeyPoster;
+extern NSString * const kBCOVVideoPropertyKeyPosterSources;
+extern NSString * const kBCOVVideoPropertyKeyProjection;
+extern NSString * const kBCOVVideoPropertyKeyReferenceId;
+extern NSString * const kBCOVVideoPropertyKeyTags;
+extern NSString * const kBCOVVideoPropertyKeyTextTracks;
+extern NSString * const kBCOVVideoPropertyKeyThumbnail;
+extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
 
 
 /**
@@ -59,6 +65,8 @@ extern NSString * const kBCOVVideoPropertyKeyId;
 
 /**
  * Metadata or properties related to this video or its sources in the aggregate.
+ * You can find constants for the keys that this SDK uses with this dictionary
+ * near the top of this header file.
  */
 @property (nonatomic, readonly, copy) NSDictionary *properties;
 
@@ -101,6 +109,11 @@ extern NSString * const kBCOVVideoPropertyKeyId;
 @protocol BCOVMutableVideo <BCOVVideo>
 
 @property (nonatomic, readwrite, copy) BCOVCuePointCollection *cuePoints;
+
+/**
+ * You can find constants for the keys that this SDK uses with this dictionary
+ * near the top of this header file.
+ */
 @property (nonatomic, readwrite, copy) NSDictionary *properties;
 @property (nonatomic, readwrite, copy) NSArray *sources;
 
@@ -156,6 +169,10 @@ extern NSString * const kBCOVVideoPropertyKeyId;
  * @abstract Constructs a new video with the specified sources, cue points, and
  * properties.
  *
+ * @discussion When using this initializer you can take advantage of the
+ * kBCOVVideoPropertyKey constants to create the properties dictionary. You can find
+ * constants for the keys that this SDK uses with this dictionary near the top of this header file.
+ *
  * @param sources The sources of this video.
  * @param cuePoints The cue points associated to this video.
  * @param properties The metadata or properties associated to this video.
@@ -166,6 +183,10 @@ extern NSString * const kBCOVVideoPropertyKeyId;
 /**
  * Constructs a new video with a single specified source, the specified cue
  * points, and the specified properties.
+ *
+ * @discussion When using this initializer you can take advantage of the
+ * kBCOVVideoPropertyKey constants to create the properties dictionary. You can find
+ * constants for the keys that this SDK uses with this dictionary near the top of this header file.
  *
  * @param source The sole source of this video.
  * @param cuePoints The cue points associated to this video.

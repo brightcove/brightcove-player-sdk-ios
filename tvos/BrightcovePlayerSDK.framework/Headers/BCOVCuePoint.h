@@ -20,6 +20,8 @@ extern NSString * const kBCOVCuePointTypeAdSlot;
  */
 extern NSString * const kBCOVCuePointTypeAdCompanion;
 
+extern NSString * const kBCOVCuePointPropertyKeyName;
+
 
 @protocol BCOVMutableCuePoint;
 

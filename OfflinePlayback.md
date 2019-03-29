@@ -1,4 +1,4 @@
-iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.4.1.565
+iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.4.2.589
 --------------
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -481,6 +481,22 @@ For example, here is how you can renew a FairPlay license with a new 30-day rent
 }];
 
 
+```
+
+If you are using the Playback Authorization Service you'll need to use the renew FairPlay license method that accepts an authorization token:
+
+```
+    // Request license renewal
+    [BCOVOfflineVideoManager.sharedManager renewFairPlayLicense:offlineVideoToken
+                                                          video:video // recent video from Playback API or Playback Service class
+                                                      authToken: authToken
+                                                     parameters:parameters
+                                                     completion:^(BCOVOfflineVideoToken offlineVideoToken, NSError *error)
+    {
+
+        // handle errors
+
+    }];
 ```
 
 When license renewal is finshed, the completion block will be called with the same offline video token that was passed in, plus an `NSError` indicating any problem that occurred (or `nil` if no error). This block is not called on any specific thread.

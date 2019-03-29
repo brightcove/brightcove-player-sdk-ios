@@ -141,11 +141,11 @@ central registry, and diagnostics center in the Brightcove Player SDK for
 iOS. After obtaining an instance of the Manager, use it to obtain instances
 of other objects from the Player SDK ecosystem.</p>
 
+<p>Adds methods to BCOVPlayerSDKManager to create FairPlay players and session providers.</p>
+
 <p>@constant kBCOVSSTextTracksKeySourceTypeM3U8URL</p><p>This key/value pair is only necessary if the
 source URL refers to an M3U8 file, but does not use
 an &ldquo;.m3u8&rdquo; extension.</p>
-
-<p>Adds methods to BCOVPlayerSDKManager to create FairPlay players and session providers.</p>
 					</div>
 					
 					
@@ -764,170 +764,6 @@ Registering a component &ldquo;activates it&rdquo; for use, enabling its functio
 						</div>
 						
 
-						<a title="BCOVSSAdditions Methods" name="task_BCOVSSAdditions Methods"></a>
-						<h2 class="task-title">BCOVSSAdditions Methods</h2>
-
-						<div class="task-list">
-							<div class="section-method">
-	<a name="//api/name/createSidecarSubtitlesPlaybackControllerWithViewStrategy:" title="createSidecarSubtitlesPlaybackControllerWithViewStrategy:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/createSidecarSubtitlesPlaybackControllerWithViewStrategy:">&ndash;&nbsp;createSidecarSubtitlesPlaybackControllerWithViewStrategy:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Creates and returns a new playback controller configured for sidecar subtitles
-with the specified view strategy.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt;)createSidecarSubtitlesPlaybackControllerWithViewStrategy:(BCOVPlaybackControllerViewStrategy)<em>viewStrategy</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>viewStrategy</code></th>
-						<td><p>A view strategy that determines the view for the returned
-playback controller.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>A new playback controller configured for sidecar subtitles playback
-sessions.</p>
-			</div>
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Creates and returns a new playback controller configured for sidecar subtitles
-with the specified view strategy.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVSSComponent.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:" title="createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:">&ndash;&nbsp;createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Creates and returns a new sidecar subtitle session provider with the
-specified parameters.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackSessionProvider&gt;)createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:(id&lt;BCOVPlaybackSessionProvider&gt;)<em>provider</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>provider</code></th>
-						<td><p>Optional upstream session provider.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>A new session provider with the specified parameters.</p>
-			</div>
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Creates and returns a new sidecar subtitle session provider with the
-specified parameters.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVSSComponent.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div>
-						</div>
-						
-
-						<a title="BCOVSSAdditionsDepricated Methods" name="task_BCOVSSAdditionsDepricated Methods"></a>
-						<h2 class="task-title">BCOVSSAdditionsDepricated Methods</h2>
-
-						<div class="task-list">
-							<div class="section-method">
-	<a name="//api/name/createSidecarSubtitlesSessionProviderWithOptions:" title="createSidecarSubtitlesSessionProviderWithOptions:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/createSidecarSubtitlesSessionProviderWithOptions:">&ndash;&nbsp;createSidecarSubtitlesSessionProviderWithOptions:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackSessionProvider&gt;)createSidecarSubtitlesSessionProviderWithOptions:(BCOVSSSessionProviderOption *)<em>options</em></code></div>
-
-		    
-		</div>
-	</div>
-</div>
-						</div>
-						
-
 						<a title="BCOVFPSAdditions Methods" name="task_BCOVFPSAdditions Methods"></a>
 						<h2 class="task-title">BCOVFPSAdditions Methods</h2>
 
@@ -1238,6 +1074,170 @@ will be used.</p></td>
 </div>
 						</div>
 						
+
+						<a title="BCOVSSAdditions Methods" name="task_BCOVSSAdditions Methods"></a>
+						<h2 class="task-title">BCOVSSAdditions Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/createSidecarSubtitlesPlaybackControllerWithViewStrategy:" title="createSidecarSubtitlesPlaybackControllerWithViewStrategy:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createSidecarSubtitlesPlaybackControllerWithViewStrategy:">&ndash;&nbsp;createSidecarSubtitlesPlaybackControllerWithViewStrategy:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates and returns a new playback controller configured for sidecar subtitles
+with the specified view strategy.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt;)createSidecarSubtitlesPlaybackControllerWithViewStrategy:(BCOVPlaybackControllerViewStrategy)<em>viewStrategy</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>viewStrategy</code></th>
+						<td><p>A view strategy that determines the view for the returned
+playback controller.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A new playback controller configured for sidecar subtitles playback
+sessions.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Creates and returns a new playback controller configured for sidecar subtitles
+with the specified view strategy.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVSSComponent.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:" title="createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:">&ndash;&nbsp;createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates and returns a new sidecar subtitle session provider with the
+specified parameters.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackSessionProvider&gt;)createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:(id&lt;BCOVPlaybackSessionProvider&gt;)<em>provider</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>provider</code></th>
+						<td><p>Optional upstream session provider.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A new session provider with the specified parameters.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Creates and returns a new sidecar subtitle session provider with the
+specified parameters.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVSSComponent.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="BCOVSSAdditionsDepricated Methods" name="task_BCOVSSAdditionsDepricated Methods"></a>
+						<h2 class="task-title">BCOVSSAdditionsDepricated Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/createSidecarSubtitlesSessionProviderWithOptions:" title="createSidecarSubtitlesSessionProviderWithOptions:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/createSidecarSubtitlesSessionProviderWithOptions:">&ndash;&nbsp;createSidecarSubtitlesSessionProviderWithOptions:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackSessionProvider&gt;)createSidecarSubtitlesSessionProviderWithOptions:(BCOVSSSessionProviderOption *)<em>options</em></code></div>
+
+		    
+		</div>
+	</div>
+</div>
+						</div>
+						
 					</div>
 					
 					
@@ -1250,7 +1250,7 @@ will be used.</p></td>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2019 Brightcove. All rights reserved. Updated: 2019-02-27</p>
+						<p class="copyright">Copyright &copy; 2019 Brightcove. All rights reserved. Updated: 2019-03-29</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
