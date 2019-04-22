@@ -1,3 +1,45 @@
+## Release 6.4.3
+
+#### Breaking Changes
+
+* Release 6.4.3 of the Brightcove Player SDK for iOS deprecates BrightcoveOUX, replacing it with the SSAI Plugin for Brightcove Player SDK for iOS. Refer to the OnceUX or SSAI README for instructions on migrating your app to the new BrightcoveSSAI framework.
+
+### Brightcove Player SDK for tvOS (Core)
+
+#### Additions and Improvements
+
+* Adds support for VoiceOver to the built-in BCOVTVPlayerUI controls.
+
+* Adds the `BCOVTVAccessibilityDelegate` protocol to allow customization of some accessibility labels.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports version 3.9.0 of the Google IMA SDK for iOS. 
+
+* Adds default values for the `playerView` and `playerType` properties of the IMASettings object.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Introduces the SSAI Plugin. Refer to the OnceUX or SSAI README for instructions on migrating your apps to the new BrightcoveSSAI framework.
+
+* Provides access to the VMAP data retrieved in response to a `-setVideos:` call to the Playback Controller. Refer to the SSAI README for details.
+
+* Fixes an issue which could cause rewind or jump-back to fail, and which could prevent a preroll ad from playing.
+
+### OnceUX Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Deprecates the OnceUX Plugin. Support for OnceUX is now provided by the SSAI Plugin for Brightcove Player SDK for iOS. Refer to the README for information on migrating your apps to BrightcoveSSAI.
+
+* Provides access to the VMAP data retrieved in response to a `-setVideos:` call to the Playback Controller. Refer to the OnceUX README for details.
+
+* Fixes an issue which could cause rewind or jump-back to fail, and which could prevent a preroll ad from playing.
+
 ## Release 6.4.2
 
 ### Brightcove Player SDK for iOS (Core)
@@ -27,6 +69,7 @@
 #### Additions and Improvements
 
 * Fixes an issue where the `creativeView` ad tracking event could be reported twice for each ad.
+* Adds ability to obtain VMAP data after it has been recieved by observing the `kBCOVOUXVMAPResponseReceivedNotification` notification.
 
 ## Release 6.4.1
 
@@ -618,7 +661,7 @@ For full details about downloading video for offline playback, see the *iOS App 
 
 #### Breaking Changes
 
-* This and future releases of Brightcove Native Player for iOS will include all software components, all having the same version number. When building your app with Brightcove Native Player for iOS components, the component version numbers must always match. As an example, when using version 6.0.1 of the FreeWheel Plugin for Brightcove Player SDK for iOS, you must also use version 6.0.1 of the core Brightcove Player SDK for iOS. Each component will continue to be available from an individual GitHub repositories.
+* This and future releases of Brightcove Native Player for iOS will include all software components, all having the same version number. When building your app with Brightcove Native Player for iOS components, the component version numbers must always match. As an example, when using version 6.0.1 of the FreeWheel Plugin for Brightcove Player SDK for iOS, you must also use version 6.0.1 of the core Brightcove Player SDK for iOS. Each component will continue to be available from individual GitHub repositories.
 
 * The Brightcove Podspecs repository has moved and the Pods have been renamed. The Podspecs are now available at [https://github.com/brightcove/BrightcoveSpecs](https://github.com/brightcove/BrightcoveSpecs).
 
@@ -631,6 +674,7 @@ source 'https://github.com/brightcove/BrightcoveSpecs.git'
 * CHANGELOG.md (this file) has been consolidated to include all Brightcove Native Player for iOS software components.
 
 ### Brightcove Player SDK for iOS (Core)
+
 #### Breaking Changes
 
 * The BrightcoveFairPlay module is now integrated into the core BrightcovePlayerSDK module and framework. No functional code changes are required, but you should make these changes for your build:

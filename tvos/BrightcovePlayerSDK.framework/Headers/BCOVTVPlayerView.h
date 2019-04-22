@@ -14,6 +14,7 @@
 @class BCOVTVControlsView;
 @class BCOVTVPlayerView;
 @class BCOVTVSettingsView;
+@protocol BCOVTVAccessibilityDelegate;
 
 
 /**
@@ -25,6 +26,11 @@ typedef NS_ENUM(NSUInteger, BCOVTVShowViewType) {
      * None: hide both the controls and settings views
      */
     BCOVTVShowViewTypeNone,
+    
+    /**
+     * VoiceOverEnabledAndPaused:
+     */
+    BCOVTVShowViewTypeVoiceOverEnabledAndPaused,
 
     /**
      * Controls: used when hiding the settings view
@@ -146,6 +152,8 @@ typedef NS_ENUM(NSUInteger, BCOVTVPlayerType) {
  */
 @property (nonatomic, assign) NSTimeInterval showControlsAnimationDuration;
 
+@property (nonatomic, weak) id<BCOVTVAccessibilityDelegate> accessibilityDelegate;
+
 @end
 
 
@@ -225,6 +233,12 @@ typedef NS_ENUM(NSUInteger, BCOVTVPlayerType) {
  * controlsFadingView view.
  */
 @property (nonatomic, readonly) BCOVTVControlsView *controlsView;
+
+/**
+ * settingsControlFocusGuide a UIFocusGuide that allows VoiceOver users
+ * to navigate between the settings view to the controls view
+ */
+@property (nonatomic, strong) UIFocusGuide *settingsControlFocusGuide;
 
 
 /**

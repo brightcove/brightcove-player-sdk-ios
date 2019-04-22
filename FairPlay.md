@@ -1,4 +1,4 @@
-# Using FairPlay With The Brightcove Player SDK for iOS, version 6.4.2.589
+# Using FairPlay With The Brightcove Player SDK for iOS, version 6.4.3.616
 
 Quick Start
 ===========
