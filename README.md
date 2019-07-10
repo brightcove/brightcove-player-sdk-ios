@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.4.3.616
+# Brightcove Player SDK for iOS, version 6.4.4.683
 
 
 # Table of Contents
@@ -12,6 +12,7 @@
 1. [Quick Start](#QuickStart)
 1. [Built-In PlayerUI Controls for iOS](#PlayerUI)
 1. [Built-In TV Player Controls for tvOS](#TVPlayer)
+1. [AirPlay](#AirPlay)
 1. [FairPlay](#FairPlay)
 1. [Sidecar Subtitles](#SidecarSubtitles)
 1. [Video 360](#Video360)
@@ -26,7 +27,8 @@
 1. [Values](#Values)
 1. [Retrieving Brightcove Assets Using the Playback Service](#PlaybackService)
 1. [View Strategy](#ViewStrategy)
-1. [Playing Video In The Background and Picture In Picture](#BackgroundPIP)
+1. [Playing Video In The Background](#BackgroundVideo)
+1. [Picture In Picture](#PIP)
 1. [Tracking Errors](#TrackingErrors)
 1. [Combining Plugins](#CombiningPlugins)
 1. [Buffer Optimization](#BufferOptimization)
@@ -76,7 +78,6 @@ Brightcove-Player-SDK-OUX | Brightcove-Player-OnceUX
 Brightcove-Player-SDK-FairPlay | *Integrated into the core framework*
 Brightcove-Player-SDK-Player-UI | *Integrated into the core framework*
 Brightcove-Player-SDK-SidecarSubtitles | *Integrated into the core framework*
-
 
 FairPlay
 --------
@@ -467,6 +468,42 @@ For more examples of PlayerUI customization, you can look at the sample code in 
 Built-In TV Player Controls for tvOS <a name="TVPlayer"></a>
 ==========
 The Brightcove Native Player SDK includes built-in controls for playback in tvOS on Apple TV. For full details about using the built-in TV Player UI with the Brightcove Native Player SDK, see our [TV Player guide](TVPlayer.md).
+
+AirPlay <a name="AirPlay"></a>
+==========
+
+Enable AirPlay functionality by setting the `setAllowsExternalPlayback` property on your `BCOVPlaybackController` to `true`. The AirPlay button will be displayed in the playback controls if AirPlay devices are found on your network.
+
+If you also want to support AirPlay 2 and allow for multiple devices to be selected for audio output you will have to do a few additional things. First, you'll need to configure AVAudioSession so that you can set the `routeSharingPolicy`. For example:
+
+```
+[AVAudioSession.sharedInstance setCategory:AVAudioSessionCategoryPlayback mode:AVAudioSessionModeMoviePlayback routeSharingPolicy:AVAudioSessionRouteSharingPolicyLongForm options:0 error:nil];
+```
+You will also need to configure at least one playback command via `MPRemoteCommandCenter`. At the very least you'll want to configure both the `pauseCommand` and `playCommand`. For Example:
+
+```
+MPRemoteCommandCenter *center = MPRemoteCommandCenter.sharedCommandCenter;
+
+[center.pauseCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+[self.playbackController pause];
+return MPRemoteCommandHandlerStatusSuccess;
+}];
+
+[center.playCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+[self.playbackController play];
+return MPRemoteCommandHandlerStatusSuccess;
+}];
+```
+Devices that are running iOS 11 or later will take advantage of `AVRoutePickerView` which has two delegate methods. These delegate methods are passed through to `BCOVPUIPlayerViewDelegate`. The methods are:
+
+```
+- (void)routePickerViewWillBeginPresentingRoutes:(AVRoutePickerView *)routePickerView;
+- (void)routePickerViewDidEndPresentingRoutes:(AVRoutePickerView *)routePickerView;
+```
+
+For more information on incorporating AirPlay 2 into your app please see the [Getting Airplay 2 into Your App](https://developer.apple.com/documentation/avfoundation/airplay_2/getting_airplay_2_into_your_app) documentation.
+
+**Important Note: AirPlay 2 is only supported on devices running iOS 11.4 or later.**
 
 FairPlay <a name="FairPlay"></a>
 ==========
@@ -884,7 +921,7 @@ Again, for most use cases it should suffice to not use a view strategy at all. J
 
 There is one caveat to using a view strategy: you must not access the playback controller's `view` property from within the view strategy block. Since the block is being called *because* the playback controller's `view` property was accessed for the first time, accessing the `view` property again *within* the view strategy block will cause your program to crash.
 
-Playing Video In The Background and Picture In Picture <a name="BackgroundPIP"></a>
+Playing Video In The Background <a name="BackgroundVideo"></a>
 -------------
 By default, when an iOS application is sent to the background, or the device is locked, iOS will pause any video that is playing. To change this behavior, set the `allowsBackgroundAudioPlayback` property of the `BCOVPlaybackController` object to `YES`. (The default value is `NO`, indicating playback will pause in the background.)
 
@@ -892,11 +929,31 @@ You should also follow the guidelines set by Apple in [Technical Q&A QA1668][tqa
 
 It's important that the `AVPlayerLayer` be detached from the `AVPlayer` before the app is switched to the background (and reattached when the app returns to the foreground). The Brightcove Player SDK will handle this for you when `allowsBackgroundAudioPlayback` is set to `YES`.
 
-Finally, when playing background videos (and particularly when using playlists), you should use the iOS `MPRemoteCommandCenter` API to give the user playback control on the lock screen and in the control center. Note that `MPRemoteCommandCenter` is only available in iOS 7.1 and later; if you need to support iOS 7.0, you should use `UIApplication`'s `beginReceivingRemoteControlEvents` and `endReceivingRemoteControlEvents`.
-
-**Important Picture in Picture Note:** When you want to support background audio and Picture in Picture on the same player, you must update the `pictureInPictureActive` property on `BCOVPlaybackController` with the Picture in Picture status. If you are using the `AVPictureInPictureController`, you can use the `pictureInPictureControllerDidStartPictureInPicture:` and `pictureInPictureControllerDidStopPictureInPicture:` delegate methods to update this property.
+Finally, when playing background videos (and particularly when using playlists), you should use the iOS `MPRemoteCommandCenter` API to give the user playback control on the lock screen and in the control center.
 
 [tqa1668]: https://developer.apple.com/library/ios/qa/qa1668
+
+Picture in Picture <a name="PIP"></a>
+-------------
+To enable Picture-in-Picture in your application, set the `displayPictureInPictureButton` property of the `BCOVPUIPlayerViewOptions` object to `YES` when instantiating your `BCOVPUIPlayerView` object. The Picture-in-Picture button will then be displayed in the controls bar on any devices that support it. 
+
+For PIcture-in-Picture to work properly you will need to ensure that the `Audio, AirPlay, and Picture in Picture` mode is turned in the `Background Modes` section of the target Capabilities tab of your project. You should also follow the guidelines set by Apple in [Technical Q&A QA1668][tqa1668] to set the proper background modes and audio session category for your app.
+
+We pass through some of the  `AVPictureInPictureControllerDelegate` methods via `BCOVPUIPlayerViewDelegate`. These methods are:
+
+```
+- (void)pictureInPictureControllerDidStartPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
+- (void)pictureInPictureControllerDidStopPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
+- (void)pictureInPictureControllerWillStartPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
+- (void)pictureInPictureControllerWillStopPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
+- (void)pictureInPictureController:(AVPictureInPictureController *)pictureInPictureController failedToStartPictureInPictureWithError:(NSError *)error
+```
+
+To implement your own Picture-in-Picture behavior, keep the `pictureInPictureActive` property of `BCOVPLaybackController` updated with the Picture-in-Picture status. If you are using the `AVPictureInPictureController`, you can use the `pictureInPictureControllerDidStartPictureInPicture:` and `pictureInPictureControllerDidStopPictureInPicture:` delegate methods to update this property.
+
+You can read more about implmeneting Picture-in-Picture from Apple's [Adopting PIcure in PIcture in a Custom Player](https://developer.apple.com/documentation/avkit/adopting_picture_in_picture_in_a_custom_player) Documentation.
+
+**Important: The Brightcove Native Player SDK's Picture-in-Picture functionality does not support videos with ad playback. Trying to use a video with ads with the Picture-in-Picture functionality active will result in unexpected behavior.**
 
 Tracking Errors <a name="TrackingErrors"></a>
 -----

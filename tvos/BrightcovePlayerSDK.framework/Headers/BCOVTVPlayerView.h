@@ -111,6 +111,14 @@ typedef NS_ENUM(NSUInteger, BCOVTVPlayerType) {
  */
 - (void)playerView:(BCOVTVPlayerView *)playerView controlsFadingViewDidFadeIn:(UIView *)controlsFadingView;
 
+/**
+ * Called when the user is attempting to seek or skip over video content. Return
+ * YES to prevent seeking and skipping. Return NO to permit seeking and skipping.
+ * The default behavior is to allow seeking. Analogous to the requireLinearPlayback
+ * property of AVPlayerViewController.
+ */
+- (BOOL)playerViewShouldRequireLinearPlayback:(BCOVTVPlayerView *)playerView;
+
 @end
 
 

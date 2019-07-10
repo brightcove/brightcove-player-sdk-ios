@@ -79,9 +79,10 @@ typedef BCOVSource *(^BCOVBasicSessionProviderSourceSelectionPolicy)(BCOVVideo *
 
 
 /**
+ * @warning *Deprecated:* Refer to the PreloadingVideos section of the README for guidance on using multiple playback controllers to achieve a preloading effect.
  * The basic session loading policy decides when to load sessions.
  */
-__deprecated_msg("Refer to the PreloadingVideos section of the README for guidance on using multiple playback controllers to achieve a preloading effect.")
+__attribute__((deprecated("Refer to the PreloadingVideos section of the README for guidance on using multiple playback controllers to achieve a preloading effect.")))
 @interface BCOVBasicSessionLoadingPolicy : NSObject <NSCopying>
 
 /**
@@ -122,9 +123,11 @@ __deprecated_msg("Refer to the PreloadingVideos section of the README for guidan
 @property (nonatomic, copy) BCOVSource *(^sourceSelectionPolicy)(BCOVVideo *video);
 
 /**
+ * @warning *Deprecated:* Refer to the PreloadingVideos section of the README for guidance
+ * on using multiple playback controllers to achieve a preloading effect.
  * The session loading policy that preloads an upcoming session when the
  * previous session reaches certain percentage of progress.
  */
-@property (nonatomic, copy) BCOVBasicSessionLoadingPolicy *sessionPreloadingPolicy __deprecated_msg("Refer to the PreloadingVideos section of the README for guidance on using multiple playback controllers to achieve a preloading effect.");
+@property (nonatomic, copy) BCOVBasicSessionLoadingPolicy *sessionPreloadingPolicy __attribute__((deprecated("Refer to the PreloadingVideos section of the README for guidance on using multiple playback controllers to achieve a preloading effect.")));
 
 @end

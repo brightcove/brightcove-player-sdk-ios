@@ -10,10 +10,12 @@
 
 #import <BrightcovePlayerSDK/BCOVPlaybackController.h>
 
+@class AVRoutePickerView;
 @class BCOVAd;
 @class BCOVPUIPlayerView;
 @class BCOVPUIAdControlView;
 @class BCOVPUIBasicControlView;
+@class AVPictureInPictureController;
 
 
 /**
@@ -157,6 +159,17 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
 - (void)didReturnFromExternalBrowserWithAd:(BCOVAd *)ad;
 
 /**
+ * Informs the delegate that the AVRoutePickerView will start presenting routes to the user.
+ */
+- (void)routePickerViewWillBeginPresentingRoutes:(AVRoutePickerView *)routePickerView NS_AVAILABLE_IOS(11);
+
+/**
+ * Informs the delegate that the AVRoutePickerView finished presenting routes to the user.
+ */
+- (void)routePickerViewDidEndPresentingRoutes:(AVRoutePickerView *)routePickerView NS_AVAILABLE_IOS(11);
+
+
+/**
  * Delegate methods related to Video 360
  */
 
@@ -169,6 +182,15 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
  */
 - (void)didSetVideo360NavigationMethod:(BCOVPUIVideo360NavigationMethod)navigationMethod
                        projectionStyle:(BCOVVideo360ProjectionStyle)projectionStyle;
+
+/**
+ * Pass-through AVPictureInPictureControllerDelegate methods
+ */
+- (void)pictureInPictureControllerDidStartPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
+- (void)pictureInPictureControllerDidStopPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
+- (void)pictureInPictureControllerWillStartPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
+- (void)pictureInPictureControllerWillStopPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
+- (void)pictureInPictureController:(AVPictureInPictureController *)pictureInPictureController failedToStartPictureInPictureWithError:(NSError *)error;
 
 @end
 
@@ -304,6 +326,12 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
  * Defaults to 0.0.
  */
 @property (nonatomic, assign) float rotateMax;
+
+/**
+ * Will display the Picture-in-Picture button on the control bar
+ * on supported devices.
+ */
+@property (nonatomic, assign) BOOL showPictureInPictureButton;
 
 @end
 

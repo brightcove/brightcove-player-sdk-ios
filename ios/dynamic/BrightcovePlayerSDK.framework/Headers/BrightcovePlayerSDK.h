@@ -21,6 +21,7 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 #import <BrightcovePlayerSDK/NSDictionary+BCOVURLSupport.h>
 
 // Management
+//#import <BrightcovePlayerSDK/BCOVGlobalConfiguration.h>
 #import <BrightcovePlayerSDK/BCOVPlayerSDKManager.h>
 
 // Playback

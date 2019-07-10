@@ -87,17 +87,6 @@
 - (id<BCOVPlaybackSessionProvider>)createBasicSessionProviderWithOptions:(BCOVBasicSessionProviderOptions *)options;
 
 /**
- * Returns a view strategy that wraps the video view it is given with the
- * default playback controls.
- *
- * This view strategy is intended to provide a "stock" set of controls to aid
- * development, testing, and Brightcove code samples.
- *
- * @return A view strategy block that wraps the video view with stock controls.
- */
-- (BCOVPlaybackControllerViewStrategy)defaultControlsViewStrategy __attribute__((deprecated("Use the built-in PlayerUI controls instead; see the README for details")));
-
-/**
  * Registers the specified component object with the BCOVPlayerSDKManager. The
  * component should implement the methods in the `BCOVComponent` protocol.
  * Registering a component "activates it" for use, enabling its functionality.

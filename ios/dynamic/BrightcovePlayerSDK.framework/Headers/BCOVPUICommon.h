@@ -73,6 +73,9 @@ typedef NS_ENUM(NSInteger, BCOVPUIViewTag) {
     /** Tag for the "Preferred Bitrate" button. */
     BCOVPUIViewTagButtonPreferredBitrate    = 17,
     
+    /** Tag for Picture-In-Picture button */
+    BCOVPUIViewTagButtonPictureInPicture = 18,
+    
     /** Tag that signifies the end of our reserved range. */
     BCOVPUIViewTagReservedEnd           = 200
 };

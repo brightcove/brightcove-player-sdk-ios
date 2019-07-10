@@ -1,3 +1,27 @@
+## Release 6.4.4
+
+### Brightcove Player SDK for tvOS (Core)
+
+#### Additions and Improvements
+
+* Extended support for Picture-in-Picture by adding `showPictureInPictureButton` to `BCOVPUIPlayerViewOptions`. When set to true, a Picture-in-Picture button will be added to the player controls on supported devices. Refer to the VidoCloudBasicPlayer sample project for example code.
+
+* Adds support for AirPlay 2. Refer to the AirPlay section of the SDK Core README for details on adding AirPlay 2 support to your apps.
+
+* Adds the optional BCOVTVPlayerViewDelegate method `- (BOOL)playerViewShouldRequireLinearPlayback:(BCOVTVPlayerView *)playerView;`. Refer to the BCOVTVPlayerViewDelegate reference.
+
+* Fixes an issue where setting the BCOVPlaybackController `shutter` property from a non-main thread generated an exception.
+
+#### Breaking Changes
+
+* Removes the `defaultControlsViewStrategy` option on `BCOVPlayerSDKManager`. Use the built-in PlayerUI controls instead; see the Built-In PlayerUI Controls section in the README for details.
+
+### FreeWheel Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes a crash which occured when getting or setting the `shutter` property of the BCOVPlaybackController from a non-main thread.
+
 ## Release 6.4.3
 
 #### Breaking Changes
@@ -18,7 +42,7 @@
 
 * Supports version 3.9.0 of the Google IMA SDK for iOS. 
 
-* Adds default values for the `playerView` and `playerType` properties of the IMASettings object.
+* Adds default values for the `playerType` and `playerVersion` properties of the IMASettings object.
 
 ### SSAI Plugin for Brightcove Player SDK for iOS
 

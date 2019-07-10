@@ -328,9 +328,13 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 @property (nonatomic, readwrite, assign, getter=isPictureInPictureActive) BOOL pictureInPictureActive;
 
 /**
- * Set shutter to YES to hide the current player view behind an opaque
- * black shutter view. Set shutter active to NO to make the shutter view
- * transparent to reveal the player view.
+ * @abstract A view which obscures or reveals the player view.
+ *
+ * @discussion Set shutter to YES to hide the current player view behind an opaque
+ * black shutter view. Set shutter to NO to make the shutter view
+ * transparent, revealing the player view.
+ *
+ * The shutter property setter method dispatches to the main thread.
  */
 
 @property (nonatomic, readwrite) BOOL shutter;

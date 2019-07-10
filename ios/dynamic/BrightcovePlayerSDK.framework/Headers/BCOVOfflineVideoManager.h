@@ -581,7 +581,6 @@ didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
 /**
  * The AVAssetDownloadTask associated with this download.
  * Will be set to nil once the download has completed.
- *
  */
 @property (nonatomic, readonly) AVAssetDownloadTask *downloadTask;
 
@@ -591,7 +590,7 @@ didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
  *
  * **Available in iOS 11.0+**
  */
-@property (nonatomic, readonly) AVAggregateAssetDownloadTask *aggregateDownloadTask NS_AVAILABLE_IOS(11_0);
+@property (nonatomic, readonly) AVAggregateAssetDownloadTask *aggregateDownloadTask __attribute__((availability(ios,introduced=11.0)));
 
 #else
 @property (nonatomic, readonly) id downloadTask;
@@ -902,7 +901,7 @@ didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
                   completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler;
 
 /**
- * @deprecated Use this method instead:
+ * @warning Use this method instead:
  *   - (void)renewFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken
  *                          video:(BCOVVideo *)video
  *                     parameters:(NSDictionary *)parameters

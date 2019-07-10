@@ -167,7 +167,7 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
 @property (nonatomic, weak, readonly) BCOVPUIButton *video360Button;
 
 /** The external route (airplay) button */
-@property (nonatomic, weak, readonly) MPVolumeView *externalRouteView;
+@property (nonatomic, weak, readonly) UIView *externalRouteView;
 
 /** The "go to live" button */
 @property (nonatomic, weak, readonly) BCOVPUIButton *liveButton;
@@ -175,6 +175,10 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
 /** The Preferred Bitrate Button button */
 /** Only appears when videoQualityOptions is set on BCOVPUIPlayerViewOptions */
 @property (nonatomic, weak, readonly) BCOVPUIButton *preferredBitrateButton;
+
+/** The Picture-In-Picture Button */
+/** Only appears on iPads running iOS 9.0+ **/
+@property (nonatomic, weak, readonly) BCOVPUIButton *pictureInPictureButton;
 
 /** Yes if the closedCaptionButton is visible. No if invisible. */
 @property (nonatomic, readonly, getter=isClosedCaptionEnabled) BOOL closedCaptionEnabled;
@@ -184,6 +188,8 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
 
 /** Yes if the preferredBitrateButton is visible. No if invisible */
 @property (nonatomic, assign) BOOL preferredBitrateEnabled;
+
+@property (nonatomic, assign) BOOL pictureInPictureEnabled;
 
 /** Set to YES to change the control view's UI to the advertising state. */
 @property(nonatomic, readwrite) BOOL advertisingMode;
