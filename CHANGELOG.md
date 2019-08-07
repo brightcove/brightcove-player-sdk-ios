@@ -1,10 +1,18 @@
+## Release 6.4.5
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an exception which occurred when calling `setVideos:` more than once for a single  `BCOVPlaybackController` object. The exception error message includes the text `Exception 'Cannot remove an observer...`.
+
 ## Release 6.4.4
 
 ### Brightcove Player SDK for tvOS (Core)
 
 #### Additions and Improvements
 
-* Extended support for Picture-in-Picture by adding `showPictureInPictureButton` to `BCOVPUIPlayerViewOptions`. When set to true, a Picture-in-Picture button will be added to the player controls on supported devices. Refer to the VidoCloudBasicPlayer sample project for example code.
+* Extends support for Picture-in-Picture by adding `showPictureInPictureButton` to `BCOVPUIPlayerViewOptions`. When set to true, a Picture-in-Picture button will be added to the player controls on supported devices. Refer to the VidoCloudBasicPlayer sample project for example code.
 
 * Adds support for AirPlay 2. Refer to the AirPlay section of the SDK Core README for details on adding AirPlay 2 support to your apps.
 
