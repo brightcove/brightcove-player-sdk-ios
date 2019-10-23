@@ -38,6 +38,16 @@ extern NSString * const kBCOVPlaybackSessionLifecycleEventPlay;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventPause;
 
 /**
+ *  A request to play the current video has been made.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventPlayRequest;
+
+/**
+ * A request to pause the current video has been made.
+*/
+extern NSString * const kBCOVPlaybackSessionLifecycleEventPauseRequest;
+
+/**
  * The video failed during playback and was unable to recover, possibly due to a
  * network error. The event properties will contain the underlying error keyed
  * by kBCOVPlaybackSessionEventKeyError.
@@ -108,6 +118,42 @@ extern NSString * const kBCOVPlaybackSessionLifecycleEventTerminate;
  * error keyed by kBCOVPlaybackSessionEventKeyError.
  */
 extern NSString * const kBCOVPlaybackSessionLifecycleEventError;
+
+/**
+ * The video has entered an ad sequenece.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventAdSequenceEnter;
+
+/**
+ * The video has exited an ad sequenece.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventAdSequenceExit;
+
+/**
+ * The video has entered an ad.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventAdEnter;
+
+/**
+ * The video has exited an ad.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventAdExit;
+
+/**
+ * A progress event for the currently playing ad.
+ * Information about the current ad may be found in the properties dictionary.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventAdProgress;
+
+/**
+ * The current ad has been paused.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventAdPause;
+
+/**
+ * The current ad has been resumed.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventAdResume;
 
 /**
  * The key for the error in the Event properties.

@@ -115,6 +115,13 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyOffset;
  */
 extern NSString * const kBCOVPlaybackServiceParamaterKeyAdConfigId;
 
+/**
+ * Parameter dictionary key for BCOVPlaybackService methods that return a playlist or video.
+ * This key enables Dynamic Delivery Rules for just-in-time manifest generation.
+ * This constant can be used in place of the string value "config_id".
+ */
+extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
+
 
 /**
  * The BCOVPlaybackService class provides asynchronous methods for retrieving 

@@ -1,3 +1,29 @@
+## Release 6.5.0
+
+* Support for Xcode 10 has been deprecated and Brightcove SDK releases after 6.5.0 will require you to build your apps with Xcode 11+.
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Adds support for Live streams with FairPlay DRM. Refer to the [Live DRM](https://support.brightcove.com/live-drm) support pages.
+
+* Adds localizations for traditional Chinese (zh-hant) and simplified Chinese (zh-hans) language scripts.
+
+* Fixes an issue causing the duration and progress labels to display in Times New Roman on devices running iOS 13.
+
+* Fixes the public declarations of Playback Session lifecycle event types `kBCOVPlaybackSessionLifecycleEventPlayRequest`, `kBCOVPlaybackSessionLifecycleEventPauseRequest`, `kBCOVPlaybackSessionLifecycleEventAdSequenceEnter`, `kBCOVPlaybackSessionLifecycleEventAdSequenceExit`, `kBCOVPlaybackSessionLifecycleEventAdEnter`, `kBCOVPlaybackSessionLifecycleEventAdExit`, `kBCOVPlaybackSessionLifecycleEventAdProgress`, `kBCOVPlaybackSessionLifecycleEventAdPause` and `kBCOVPlaybackSessionLifecycleEventAdResume` which can be found in the framework header BCOVPlaybackSession.h.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports version 4.4.5 of the Google Cast SDK for iOS. 
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+* Adds support for Live Streams with Server-Side Ad Insertion. Refer to the [Overview: Advanced Player Toolkit for Live SSAI](https://support.brightcove.com/overview-advanced-player-toolkit-live-ssai) pages for details.
+
 ## Release 6.4.5
 
 ### SSAI Plugin for Brightcove Player SDK for iOS
@@ -16,7 +42,7 @@
 
 * Adds support for AirPlay 2. Refer to the AirPlay section of the SDK Core README for details on adding AirPlay 2 support to your apps.
 
-* Adds the optional BCOVTVPlayerViewDelegate method `- (BOOL)playerViewShouldRequireLinearPlayback:(BCOVTVPlayerView *)playerView;`. Refer to the BCOVTVPlayerViewDelegate reference.
+* Adds the optional BCOVTVPlayerViewDelegate method `- (BOOL)playerViewShouldRequireLinearPlayback:(BCOVTVPlayerView *)playerView;`. Refer to the [BCOVTVPlayerViewDelegate](https://docs.brightcove.com/ios-sdk/Protocols/BCOVTVPlayerViewDelegate.html) reference.
 
 * Fixes an issue where setting the BCOVPlaybackController `shutter` property from a non-main thread generated an exception.
 
@@ -28,7 +54,7 @@
 
 #### Additions and Improvements
 
-* Fixes a crash which occured when getting or setting the `shutter` property of the BCOVPlaybackController from a non-main thread.
+* Fixes a crash which occurred when getting or setting the `shutter` property of the BCOVPlaybackController from a non-main thread.
 
 ## Release 6.4.3
 
