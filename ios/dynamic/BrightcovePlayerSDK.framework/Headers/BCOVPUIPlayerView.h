@@ -38,10 +38,7 @@ typedef NS_ENUM(NSUInteger, BCOVPUILearnMoreButtonBrowserStyle) {
     /** Default style launches a URL in the default system browser external to the application **/
     BCOVPUILearnMoreButtonUseExternalBrowser,
     
-    /** Launch URLs in an in-app browser.
-     In iOS 9 this is a SFSafariViewController.
-     In iOS 8 this is a WKWebView inside a UIViewController.
-     In iOS 7 this is a UIWebView inside a UIViewController.
+    /** Launch URLs in an in-app SFSafariViewController browser.
      */
     BCOVPUILearnMoreButtonUseInAppBrowser
     
@@ -209,12 +206,35 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
 @property (nonatomic, strong) NSArray<NSDictionary<NSString *, NSNumber *> *> *bitrateOptions;
 
 /**
- * Convenience initializer for BCOVPreferredBitrateConfig that takes
- * in values for all available properties and returns an instance of
- * BCOVPreferredBitrateConfig using those values
+ * The array index of the bitrate option that should be initially selected.
+ */
+@property (nonatomic, assign, readonly) NSUInteger initialSelectionIndex;
+
+/**
+ * Convenience initializer for BCOVPreferredBitrateConfig with the
+ * given options
+ *
+ * @param menuTitle String value to be used for the menu title
+ * @param bitrateOptions Array of bitrate options
+ *
+ * @return The fully initialized BCOVPreferredBitrateConfig object
  */
 + (BCOVPreferredBitrateConfig *)configWithMenuTitle:(NSString *)menuTitle
                                   andBitrateOptions:(NSArray<NSDictionary<NSString *, NSNumber *> *> *)bitrateOptions;
+
+/**
+ * Convenience initializer for BCOVPreferredBitrateConfig with the
+ * given options
+ *
+ * @param menuTitle String value to be used for the menu title
+ * @param bitrateOptions Array of bitrate options
+ * @param initialSelectionIndex The index of the initial bitrate option
+ *
+ * @return The fully initialized BCOVPreferredBitrateConfig object
+*/
++ (BCOVPreferredBitrateConfig *)configWithMenuTitle:(NSString *)menuTitle
+                                     bitrateOptions:(NSArray<NSDictionary<NSString *, NSNumber *> *> *)bitrateOptions
+                         andIndexofInitialSelection:(NSInteger)initialSelectionIndex;
 
 @end
 

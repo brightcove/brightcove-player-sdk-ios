@@ -101,21 +101,4 @@ extern const NSInteger kBCOVFPSAuthProxyErrorCodeContentKeyGenerationFailed;
 
 @end
 
-
-@interface BCOVFPSBrightcoveAuthProxy (Unavailable)
-
-- (nullable instancetype)init
-    __attribute__((unavailable("Use `-[BCOVFPSBrightcoveAuthProxy initWithApplicationId:publisherId:]` instead.")));
-
-@end
-
-
-@interface BCOVFPSBrightcoveAuthProxy (Deprecated)
-
-- (nullable instancetype)initWithApplicationId:(NSString *)appId
-                                   publisherId:(NSString *)pubId
-    __attribute__((deprecated("Use -BCOVFPSBrightcoveAuthProxy initWithPublisherId:applicationId: instead")));
-
-@end
-
 NS_ASSUME_NONNULL_END

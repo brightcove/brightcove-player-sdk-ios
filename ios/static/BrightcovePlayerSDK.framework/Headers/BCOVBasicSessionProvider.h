@@ -77,39 +77,6 @@ typedef BCOVSource *(^BCOVBasicSessionProviderSourceSelectionPolicy)(BCOVVideo *
 
 @end
 
-
-/**
- * @warning *Deprecated:* Refer to the PreloadingVideos section of the README for guidance on using multiple playback controllers to achieve a preloading effect.
- * The basic session loading policy decides when to load sessions.
- */
-__attribute__((deprecated("Refer to the PreloadingVideos section of the README for guidance on using multiple playback controllers to achieve a preloading effect.")))
-@interface BCOVBasicSessionLoadingPolicy : NSObject <NSCopying>
-
-/**
- * Returns a session loading policy that doesn't preload upcoming sessions.
- */
-+ (instancetype)sessionPreloadingNever;
-
-/**
- * Returns a session loading policy that preloads an upcoming session when the
- * previous session reaches certain percentage of progress.
- * 
- * @param progressPercentage A NSUInteger between 0 and 100.
- * @return A session loading policy that preloads an upcoming session when the
- * previous session reaches certain percentage of progress. If progressPercentage
- * is not between 0 and 100, a `+[sessionPreloadingNever]` will be returned.
- */
-+ (instancetype)sessionPreloadingWithProgressPercentage:(NSUInteger)progressPercentage;
-
-@end
-
-@interface BCOVBasicSessionLoadingPolicy (Unavailable)
-
-- (instancetype)init __attribute__((unavailable("Use `+[BCOVBasicSessionLoadingPolicy sessionPreloadingNever] or +[BCOVBasicSessionLoadingPolicy sessionPreloadingWithProgressPercentage:]` instead.")));
-
-@end
-
-
 /**
  * Optional configuration for basic session providers.
  */
@@ -121,13 +88,5 @@ __attribute__((deprecated("Refer to the PreloadingVideos section of the README f
  * "MP4". If neither are found, it returns nil.
  */
 @property (nonatomic, copy) BCOVSource *(^sourceSelectionPolicy)(BCOVVideo *video);
-
-/**
- * @warning *Deprecated:* Refer to the PreloadingVideos section of the README for guidance
- * on using multiple playback controllers to achieve a preloading effect.
- * The session loading policy that preloads an upcoming session when the
- * previous session reaches certain percentage of progress.
- */
-@property (nonatomic, copy) BCOVBasicSessionLoadingPolicy *sessionPreloadingPolicy __attribute__((deprecated("Refer to the PreloadingVideos section of the README for guidance on using multiple playback controllers to achieve a preloading effect.")));
 
 @end

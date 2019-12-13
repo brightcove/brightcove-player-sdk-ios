@@ -1,8 +1,9 @@
-# Brightcove Player SDK for iOS, version 6.5.0.745
+# Brightcove Player SDK for iOS, version 6.6.0.817
 
 
 # Table of Contents
 
+1. [Requirements](#Requirements)
 1. [Supported Platforms](#SupportedPlatforms)
 1. [What's New](#New)
 1. [Installation](#Installation)
@@ -37,14 +38,18 @@
 1. [VoiceOver Support](#VoiceOver)
 1. [Frequently Asked Questions](#FAQ)
 
+Requirements <a name="Requirements"></a>
+============
+
+- Xcode 11.0+
+- ARC
+
 Supported Platforms <a name="SupportedPlatforms"></a>
 ===================
 
 iOS 10.0 and above.
 
-tvOS 9.0 and above.
-
-ARC is required.
+tvOS 10.0 and above.
 
 What's New <a name="New"></a>
 ============
@@ -106,7 +111,7 @@ Installation <a name="Installation"></a>
 ============
 The Brightcove Player SDK provides two installation packages for iOS, a static library framework and a dynamic framework. Deployment is supported on iOS 8 and above.
 
-The Brightcove Player SDK provides a dynamic framework to support tvOS 9.0 and above.
+The Brightcove Player SDK provides a dynamic framework to support tvOS 10.0 and above.
 
 CocoaPods <a name="CocoaPods"></a>
 --------------
@@ -147,7 +152,7 @@ To add the Brightcove Player SDK to your project manually:
 3. On the "Build Settings" tab of your application target, ensure that the "Framework Search Paths" include the path to the framework. This should have been done automatically unless the framework is stored under a different root directory than your project.
 4. On the "General" tab of your application target, add the following to the "Linked Frameworks and Libraries" section:
 
-    * `AVFoundation` (mark as *optional* in Xcode if supporting iOS 9)
+    * `AVFoundation`
     * `CoreMedia`
     * `CoreMotion` (iOS only)
     * `GLKit`
@@ -702,6 +707,10 @@ Here is an example:
 When the end-user selects one of the options, the [preferredPeakBitRate] property of the current AVPlayerItem will be set to the option's value. If the video is in a playlist, the next video played will also have the preferredPeakBitRate value set. 
 
 After setting a non-zero value for [preferredPeakBitRate] you may not notice a difference in quality until AVPlayer has reached the end of its current buffered cache.
+
+You may additionally use the `configWithMenuTitle:bitrateOptions:andIndexofInitialSelection:` initializer that provides the ability to set the index of your preferred initial value. The index should correlate to the index of the desired option in the `bitrateOptions` array. 
+
+You may additionally use the `setPreferredPeakBitRate:` method on your `BCOVPlaybackController` object to programatically set the preferred bitrate for the current and future sessions. 
 
 NOTE: End-users must be given a way to return to the default value (0) of [preferredPeakBitRate]. You can do this by providing an option with a bitrate value of 0. If you do not provide a bitrate option of 0 an "Automatic" option will be appended to your list of options for the end-user.
 

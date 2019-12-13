@@ -1,12 +1,10 @@
-iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.5.0.745
+iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.6.0.817
 --------------
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
 
 ### Requirements:
 
-- iOS 10.0+
-- Xcode 9+
 - Brightcove Native Player SDK v6.2.0+
 - Brightcove Account with Dynamic Delivery
 
@@ -114,7 +112,18 @@ In iOS 10.2 and earlier, license prelaoding is not possible. It's important to m
 
 ### Downloading Secondary Tracks
 
-Subtitle, caption, and audio tracks are collectively known as "secondary tracks", and are downloaded differently on iOS 10.x, and ios 11+.
+Subtitle, caption, and audio tracks are collectively known as "secondary tracks", and are downloaded differently on different versions of iOS (10 through 13).
+
+#### Downloading Secondary Tracks on iOS 13+
+
+With iOS 13+, secondary tracks are downloaded together with the main video using a single AVAggregateAssetDownloadTask. The steps outlined below for iOS 11+ will fail on iOS 13 however the steps outlined here for iOS 13 work equally well on iOS 11 and iOS 12. In the near future, this wil be the only download method available in the SDK for all supported versions of iOS.
+
+Downloading with iOS 13 involves these basic steps:
+
+1. Select the tracks you would like to download. Tracks are selected as AVMediaSelection objects and BCOVOfflineVideoManager provides the utility method `-[BCOVOfflineVideoManager urlAssetForVideo:error:]` to help you choose AVMediaSelections of interest. Refer to the "Finding Media Selections" methods of AVAsset.
+1. Create an NSArray of your media selections, and pass it to `-[BCOVOfflineVideoManager requestVideoDownload:mediaSelections:parameters:completion:]` or pass `nil` to automatically download the preferred AVMediaSelections.
+2. Track download progress through new methods in the `BCOVOfflineVideoManagerDelegate` protocol.
+
 
 #### Downloading Secondary Tracks On iOS 11+
 
@@ -124,7 +133,7 @@ Downloading with iOS 11 involves these basic steps:
 
 1. Make sure the primary video has completed downloading.
 1. Select which tracks you would like to download. Tracks are selected as AVMediaSelection objects. You can see all the available AVMediaSelection objects for a downloaded video using the method `-[AVURLAsset allMediaSelections]`.
-1. Create an NSArray out of your media selections, and pass it to `-[BCOVOfflineVideoManager requestMediaSelectionsDownload:offlineVideoToken:]`.
+1. Create an NSArray of your media selections, and pass it to `-[BCOVOfflineVideoManager requestMediaSelectionsDownload:offlineVideoToken:]`.
 2. Track download progress through new methods in the `BCOVOfflineVideoManagerDelegate` protocol. Secondary tracks use the same offline video token as the primary video.
 
 Some tracks may have already been downloaded as part of the initial video download.

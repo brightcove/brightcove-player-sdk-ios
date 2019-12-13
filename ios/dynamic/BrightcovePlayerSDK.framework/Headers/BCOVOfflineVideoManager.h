@@ -13,7 +13,7 @@
 #import <BrightcovePlayerSDK/BCOVAdvertising.h>
 
 @class BCOVVideo;
-@class AVAggregateAssetDownloadTask;        // forward ref allows building apps with Xcode 8.
+@class AVAggregateAssetDownloadTask;
 
 @protocol BCOVFPSAuthorizationProxy;
 
@@ -593,6 +593,7 @@ didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
 @property (nonatomic, readonly) AVAggregateAssetDownloadTask *aggregateDownloadTask __attribute__((availability(ios,introduced=11.0)));
 
 #else
+
 @property (nonatomic, readonly) id downloadTask;
 @property (nonatomic, readonly) id aggregateDownloadTask;
 
@@ -653,6 +654,15 @@ didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
  */
 + (void)initializeOfflineVideoManagerWithDelegate:(id<BCOVOfflineVideoManagerDelegate>)delegate
                                           options:(NSDictionary *)options;
+
+/**
+ * @abstract Given a BCOVVideo, returns an AVURLAsset which represents the
+ * video source that will be used for offline downloads. BCOVVideo objects can
+ * contain multiple video sources with the preferred source being secure and appropriate
+ * for playback on iOS. Do not use this method in the context of online playback.
+ */
+- (AVURLAsset *)urlAssetForVideo:(BCOVVideo *)video
+                           error:(NSError **)error;
 
 /**
  * @abstract Retrieve an array of NSDictionary objects, one for each variant stream
@@ -799,6 +809,40 @@ didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
 - (void)preloadFairPlayLicense:(BCOVVideo *)video
                     parameters:(NSDictionary *)parameters
                     completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler;
+
+/**
+ * @abstract Initiate a request for a video download.
+ *
+ * @discussion If you are using FairPlay videos with Video Cloud Dynamic Delivery, FairPlay
+ *  application certificates will be downloaded automatically and used as needed.
+ *  If you are using legacy Video Cloud FairPlay videos, you should add any
+ *  needed application certificates to the BCOVOfflineVideoManger before
+ *  initiating a download, using -[addFairPlayApplicationCertificate:identifier:].
+ *
+ *  @param mediaSelections An array of AVMediaSelections to be downloaded, in addition
+ *  to the main video. The available AVMediaSelections for a BCOVVideo can be retrieved by calling
+ *  -urlAssetForVideo:error: followed by -[AVAsset preferredMediaSelection] or -[AVAsset allMediaSelections].
+ *  Passing nil for mediaSelections will cause the preferred AVMediaSelections to be fetched. Note
+ *  that with iOS 13+, all video assets must be downloaded using a single call to
+ *  requestVideoDownload:mediaSelections:parameters:completion:.
+ *  Additional tracks cannot be downloaded later.
+ *
+ * @param video BCOVVideo to be downloaded. The video should have an HLS
+ *  source with an HTTPS scheme, and may use FairPlay encryption.
+ *
+ * @param parameters NSDictionary of parameters used in this download request.
+ *  May be nil. Valid parameters are:
+ *  kBCOVOfflineVideoManagerRequestedBitrateKey, kBCOVFairPlayLicensePurchaseKey,
+ *  kBCOVFairPlayLicenseRentalDurationKey.
+ *
+ * @param completionHandler A block that receives the new offlineVideoToken after the request
+ *  is successfully made. If there is an error, offlineVideoToken will
+ *  be nil, and error will report any NSError.
+ */
+- (void)requestVideoDownload:(BCOVVideo *)video
+             mediaSelections:(NSArray<AVMediaSelection *> *)mediaSelections
+                  parameters:(NSDictionary *)parameters
+                  completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler;
 
 /**
  * @abstract Initiate a request for a video download.

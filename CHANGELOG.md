@@ -1,4 +1,46 @@
+## Release 6.6.0
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Reduces the file size of the dynamic framework by ~10MB, and ~20MB for the static framework. 
+
+* Reduces CPU load up to 40% when playing video, decreases memory usage by up to 10%, and decreases energy usage by up to 30%.
+
+* Fixes an issue causing **default** captions to not be automatically selected. (*Note: The **default** caption may not be selected when the user has enabled "Closed Captions + SDH"*)
+
+* Fixes an issue where tapping the LIVE button on a paused live video did not begin playback after seeking to the live edge.
+
+* Fixes an issue when retrying a download of secondary tracks after a previous attempt resulted in a failure.
+
+* Enables playback of an IMA pre-roll ad with Live HLS streams.
+
+* Adds functionality to specify an initial selection when setting bitrate options along with the ability to programatically set a preferred bitrate.  Refer to the `Setting a Preferred Bitrate` section of the README for more information.
+
+* Removes a reference to the deprecated UIWebKit.
+
+#### Breaking Changes
+
+* The Offline Downloads API has changed for iOS 13+. Refer to the Downloading Secondary Tracks section of OfflinePlayback.md for details.
+
+* The minimum tvOS Deployment Target for all Brightcove Native Player for tvOS frameworks is now tvOS 10.0.
+
+* Support for BCOVBasicSessionLoadingPolicy has been removed. Refer to the `Preloading Videos` section of the README for guidance on using multiple playback controllers to achieve a preloading effect.
+
+* Requires Xcode 11+.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where the delegate method  `playbackController:playbackSession:didExitAd:` was not being triggered when an applicable IMA ad was skipped. 
+
+* Fixes an issue where ads were not replayed when `ignoringPreviouslyProcessedCuePoints` on `BCOVCuePointProgressPolicy` was disabled. 
+
 ## Release 6.5.0
+
+#### Breaking Changes
 
 * Support for Xcode 10 has been deprecated and Brightcove SDK releases after 6.5.0 will require you to build your apps with Xcode 11+.
 
@@ -21,6 +63,8 @@
 * Supports version 4.4.5 of the Google Cast SDK for iOS. 
 
 ### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
 
 * Adds support for Live Streams with Server-Side Ad Insertion. Refer to the [Overview: Advanced Player Toolkit for Live SSAI](https://support.brightcove.com/overview-advanced-player-toolkit-live-ssai) pages for details.
 
@@ -750,7 +794,7 @@ source 'https://github.com/brightcove/BrightcoveSpecs.git'
 
 * Supports downloading FairPlay-encrypted HLS videos, and playing them back from storage while online or offline.
 * New classes and types to support offline playback: `BCOVOfflineVideoManager`, `BCOVOfflineVideoStatus`, `BCOVOfflineVideoToken`, `BCOVOfflineVideoDownloadState`.
-* Please see our app developer's guide for full details: [iOS App Developer's Guide to Video Downloading and Offline Playback with FairPlay](OfflinePlayback.md)
+* Please see our app developer's guide for full details: "iOS App Developer's Guide to Video Downloading and Offline Playback with FairPlay" in OfflinePlayback.md.
 * The `BCOVVideo` class has three new properties:
 	* `BOOL canBeDownloaded`: Returns YES if this video object can be downloaded for offline playback
 	* `BOOL offline`: Returns YES if this instance refers to an offline video.

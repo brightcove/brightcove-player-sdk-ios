@@ -177,7 +177,6 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
 @property (nonatomic, weak, readonly) BCOVPUIButton *preferredBitrateButton;
 
 /** The Picture-In-Picture Button */
-/** Only appears on iPads running iOS 9.0+ **/
 @property (nonatomic, weak, readonly) BCOVPUIButton *pictureInPictureButton;
 
 /** Yes if the closedCaptionButton is visible. No if invisible. */

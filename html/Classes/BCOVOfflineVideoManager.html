@@ -114,9 +114,13 @@
 		
 		<option value="//api/name/requestMediaSelectionsDownload:offlineVideoToken:">- requestMediaSelectionsDownload:offlineVideoToken:</option>
 		
+		<option value="//api/name/requestVideoDownload:mediaSelections:parameters:completion:">- requestVideoDownload:mediaSelections:parameters:completion:</option>
+		
 		<option value="//api/name/requestVideoDownload:parameters:completion:">- requestVideoDownload:parameters:completion:</option>
 		
 		<option value="//api/name/resumeVideoDownload:">- resumeVideoDownload:</option>
+		
+		<option value="//api/name/urlAssetForVideo:error:">- urlAssetForVideo:error:</option>
 		
 		<option value="//api/name/variantAttributesDictionariesForVideo:completion:">- variantAttributesDictionariesForVideo:completion:</option>
 		
@@ -399,6 +403,50 @@ kBCOVOfflineVideoManagerAnalyticsStorageLimitKey.</p></td>
 				<p>This should be the first call to the Offline Video Manager.
 You can call this method again to update the <a href="#//api/name/delegate">delegate</a> and options.</p>
 			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/urlAssetForVideo:error:" title="urlAssetForVideo:error:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/urlAssetForVideo:error:">&ndash;&nbsp;urlAssetForVideo:error:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Given a <a href="../Classes/BCOVVideo.html">BCOVVideo</a>, returns an AVURLAsset which represents the
+video source that will be used for offline downloads. <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects can
+contain multiple video sources with the preferred source being secure and appropriate
+for playback on iOS. Do not use this method in the context of online playback.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (AVURLAsset *)urlAssetForVideo:(BCOVVideo *)<em>video</em> error:(NSError **)<em>error</em></code></div>
+
+		    
+			
+
+			
+
+			
+
 			
 
 			
@@ -891,6 +939,95 @@ When downloading multiple FairPlay-protected videos, you should call this
 method for each video to acquire a license for each one before beginning
 any of the downloads. This ensures that videos can be properly stored even
 when the downloads are initiated in the background.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/requestVideoDownload:mediaSelections:parameters:completion:" title="requestVideoDownload:mediaSelections:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/requestVideoDownload:mediaSelections:parameters:completion:">&ndash;&nbsp;requestVideoDownload:mediaSelections:parameters:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initiate a request for a video download.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)requestVideoDownload:(BCOVVideo *)<em>video</em> mediaSelections:(NSArray&lt;AVMediaSelection*&gt; *)<em>mediaSelections</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVOfflineVideoToken offlineVideoToken , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>video</code></th>
+						<td><p><a href="../Classes/BCOVVideo.html">BCOVVideo</a> to be downloaded. The video should have an HLS
+source with an HTTPS scheme, and may use FairPlay encryption.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mediaSelections</code></th>
+						<td><p>An array of AVMediaSelections to be downloaded, in addition
+to the main video. The available AVMediaSelections for a BCOVVideo can be retrieved by calling
+-urlAssetForVideo:error: followed by [AVAsset preferredMediaSelection] or [AVAsset allMediaSelections].
+Passing nil for mediaSelections will cause the preferred AVMediaSelections to be fetched. Note
+that with iOS 13+, all video assets must be downloaded using a single call to
+requestVideoDownload:mediaSelections:parameters:completion:.
+Additional tracks cannot be downloaded later.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>NSDictionary of parameters used in this download request.
+May be nil. Valid parameters are:
+kBCOVOfflineVideoManagerRequestedBitrateKey, kBCOVFairPlayLicensePurchaseKey,
+kBCOVFairPlayLicenseRentalDurationKey.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>A block that receives the new offlineVideoToken after the request
+is successfully made. If there is an error, offlineVideoToken will
+be nil, and error will report any NSError.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>If you are using FairPlay videos with Video Cloud Dynamic Delivery, FairPlay
+application certificates will be downloaded automatically and used as needed.
+If you are using legacy Video Cloud FairPlay videos, you should add any
+needed application certificates to the BCOVOfflineVideoManger before
+initiating a download, using -[addFairPlayApplicationCertificate:identifier:].</p>
 			</div>
 			
 
@@ -2017,7 +2154,7 @@ typically by a call to [AVURLAsset allMediaSelections] for your downloaded AVURL
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2019 Brightcove. All rights reserved. Updated: 2019-10-23</p>
+						<p class="copyright">Copyright &copy; 2019 Brightcove. All rights reserved. Updated: 2019-12-13</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

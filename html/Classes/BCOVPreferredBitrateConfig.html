@@ -56,6 +56,8 @@
 		
 		<option value="//api/name/bitrateOptions">bitrateOptions</option>
 		
+		<option value="//api/name/initialSelectionIndex">initialSelectionIndex</option>
+		
 		<option value="//api/name/menuTitle">menuTitle</option>
 		
 	</optgroup>
@@ -65,6 +67,8 @@
 	<optgroup label="Class Methods">
 		
 		<option value="//api/name/configWithMenuTitle:andBitrateOptions:">+ configWithMenuTitle:andBitrateOptions:</option>
+		
+		<option value="//api/name/configWithMenuTitle:bitrateOptions:andIndexofInitialSelection:">+ configWithMenuTitle:bitrateOptions:andIndexofInitialSelection:</option>
 		
 	</optgroup>
 	
@@ -206,8 +210,8 @@ Example: @{@&ldquo;Auto&rdquo;:@(0)}, @{@&ldquo;Setting 1&rdquo;:@(aBitrateValue
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/configWithMenuTitle:andBitrateOptions:" title="configWithMenuTitle:andBitrateOptions:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/configWithMenuTitle:andBitrateOptions:">+&nbsp;configWithMenuTitle:andBitrateOptions:</a></code>
+	<a name="//api/name/initialSelectionIndex" title="initialSelectionIndex"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initialSelectionIndex">&nbsp;&nbsp;initialSelectionIndex</a></code>
 </h3>
 
 	<div class="method-info">
@@ -217,14 +221,12 @@ Example: @{@&ldquo;Auto&rdquo;:@(0)}, @{@&ldquo;Setting 1&rdquo;:@(aBitrateValue
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Convenience initializer for BCOVPreferredBitrateConfig that takes
-in values for all available properties and returns an instance of
-BCOVPreferredBitrateConfig using those values</p>
+				<p>The array index of the bitrate option that should be initially selected.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (BCOVPreferredBitrateConfig *)configWithMenuTitle:(NSString *)<em>menuTitle</em> andBitrateOptions:(NSArray&lt;NSDictionary&lt;NSString*,NSNumber*&gt; *&gt; *)<em>bitrateOptions</em></code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly) NSUInteger initialSelectionIndex</code></div>
 
 		    
 			
@@ -236,9 +238,152 @@ BCOVPreferredBitrateConfig using those values</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Convenience initializer for BCOVPreferredBitrateConfig that takes
-in values for all available properties and returns an instance of
-BCOVPreferredBitrateConfig using those values</p>
+				<p>The array index of the bitrate option that should be initially selected.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/configWithMenuTitle:andBitrateOptions:" title="configWithMenuTitle:andBitrateOptions:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/configWithMenuTitle:andBitrateOptions:">+&nbsp;configWithMenuTitle:andBitrateOptions:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Convenience initializer for BCOVPreferredBitrateConfig with the
+given options</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BCOVPreferredBitrateConfig *)configWithMenuTitle:(NSString *)<em>menuTitle</em> andBitrateOptions:(NSArray&lt;NSDictionary&lt;NSString*,NSNumber*&gt; *&gt; *)<em>bitrateOptions</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>menuTitle</code></th>
+						<td><p>String value to be used for the menu title</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>bitrateOptions</code></th>
+						<td><p>Array of bitrate options</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>The fully initialized BCOVPreferredBitrateConfig object</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Convenience initializer for BCOVPreferredBitrateConfig with the
+given options</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/configWithMenuTitle:bitrateOptions:andIndexofInitialSelection:" title="configWithMenuTitle:bitrateOptions:andIndexofInitialSelection:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/configWithMenuTitle:bitrateOptions:andIndexofInitialSelection:">+&nbsp;configWithMenuTitle:bitrateOptions:andIndexofInitialSelection:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Convenience initializer for BCOVPreferredBitrateConfig with the
+given options</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BCOVPreferredBitrateConfig *)configWithMenuTitle:(NSString *)<em>menuTitle</em> bitrateOptions:(NSArray&lt;NSDictionary&lt;NSString*,NSNumber*&gt; *&gt; *)<em>bitrateOptions</em> andIndexofInitialSelection:(NSInteger)<em>initialSelectionIndex</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>menuTitle</code></th>
+						<td><p>String value to be used for the menu title</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>bitrateOptions</code></th>
+						<td><p>Array of bitrate options</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>initialSelectionIndex</code></th>
+						<td><p>The index of the initial bitrate option</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>The fully initialized BCOVPreferredBitrateConfig object</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Convenience initializer for BCOVPreferredBitrateConfig with the
+given options</p>
 			</div>
 			
 
@@ -268,7 +413,7 @@ BCOVPreferredBitrateConfig using those values</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2019 Brightcove. All rights reserved. Updated: 2019-10-23</p>
+						<p class="copyright">Copyright &copy; 2019 Brightcove. All rights reserved. Updated: 2019-12-13</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

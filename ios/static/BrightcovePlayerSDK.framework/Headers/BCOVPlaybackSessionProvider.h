@@ -16,6 +16,7 @@
  */
 @protocol BCOVPlaybackSessionProvider <NSObject>
 
+@optional
 /**
  * @warning *Deprecated:* Do not use
  * Returns a series of id<BCOVPlaybackSession> objects that correspond to the

@@ -81,7 +81,7 @@ extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
  * The sources which comprise the actual destinations at which this video's
  * content can be accessed.
  */
-@property (nonatomic, readonly, copy) NSArray *sources;
+@property (nonatomic, readonly, copy) NSArray<BCOVSource *> *sources;
 
 /**
  * Returns a modified version of this source. Because BCOVVideo objects
@@ -178,7 +178,7 @@ extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
  * @param properties The metadata or properties associated to this video.
  * @return A new video with the specified sources, cue points, and properties.
  */
-- (instancetype)initWithSources:(NSArray *)sources cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
+- (instancetype)initWithSources:(NSArray<BCOVSource *> *)sources cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
 
 /**
  * Constructs a new video with a single specified source, the specified cue

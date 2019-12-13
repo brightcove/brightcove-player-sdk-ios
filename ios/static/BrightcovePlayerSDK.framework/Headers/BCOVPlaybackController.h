@@ -328,6 +328,12 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 @property (nonatomic, readwrite, assign, getter=isPictureInPictureActive) BOOL pictureInPictureActive;
 
 /**
+ * Set this to your preferred peak bit rate value. This value will be set on the current
+ * session and future sessions unless changed via the (optional) Preferred Bitrate menu.
+ */
+- (void)setPreferredPeakBitRate:(double)preferredPeakBitRate;
+
+/**
  * @abstract A view which obscures or reveals the player view.
  *
  * @discussion Set shutter to YES to hide the current player view behind an opaque
