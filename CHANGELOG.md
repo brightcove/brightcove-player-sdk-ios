@@ -1,4 +1,16 @@
+## Release 6.6.2
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes an issue where the `didChangeSeekableRanges` delegate method was not being called. This issue first appeared in SDK release 6.6.0.
+
+* Fixes an issue where the `kBCOVPlaybackSessionLifecycleEventReady` lifecycle event might be sent in response to seek starts and ends.
+
 ## Release 6.6.1
+
+### Brightcove Player SDK for iOS (Core)
 
 #### Additions and Improvements
 
