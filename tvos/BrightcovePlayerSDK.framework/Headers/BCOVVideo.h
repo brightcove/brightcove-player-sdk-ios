@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <BrightcovePlayerSDK/BCOVVideoErrorCodes.h>
 
 @class BCOVCuePointCollection;
 @class BCOVSource;
@@ -166,6 +167,27 @@ extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
 @property (nonatomic, readonly) BOOL playableOffline;
 
 /**
+ * A string representation of an error code for an unplayable video
+ */
+@property (nonatomic, copy) NSString *errorCode;
+
+/**
+ * A string representation of an error sub code for an unplayable video
+ */
+@property (nonatomic, copy) NSString *errorSubCode;
+
+/**
+ * A error emssage string for an unplayable video
+*/
+@property (nonatomic, copy) NSString *errorMessage;
+
+/**
+ * Returns NO if `errorCode`, `errorSubCode` and `errorMessage` are all nil
+ * otherwise if any of those properties have a vaile will return YES
+ */
+@property (nonatomic, readonly) BOOL hasError;
+
+/**
  * @abstract Constructs a new video with the specified sources, cue points, and
  * properties.
  *
@@ -195,6 +217,21 @@ extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
  * and properties.
  */
 - (instancetype)initWithSource:(BCOVSource *)source cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
+
+/**
+ * Constructs a new video with with error information.
+ *
+ * @discussion When attempting to retreive a video the server may an
+ * error. The error may be caused due to various restrictions  other reasons.
+ * The information is stored on the BCOVideo object for informative purposes.
+ *
+ * @param errorCode The error code
+ * @param errorSubCode The error sub-code
+ * @param errorMessage The error message
+ * @param properties The metadata or properties associated to this video.
+ * @return A new video with error information attributes
+ */
+- (instancetype)initWithErrorCode:(NSString *)errorCode errorSubCode:(NSString *)errorSubCode errorMessage:(NSString *)errorMessage properties:(NSDictionary *)properties;
 
 /**
  * Returns YES if `video` is equivalent to this instance.

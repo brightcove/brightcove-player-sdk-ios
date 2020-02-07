@@ -39,6 +39,18 @@ extern NSString * const kBCOVPlaylistPropertiesKeyType;
 @property (nonatomic, readonly, copy) NSDictionary *properties;
 
 /**
+* Returns an array of error-free BCOVVideo objects, stripping out
+* any BCOVVideo objects that contain an error.
+*/
+@property (nonatomic, readonly) NSArray<BCOVVideo *> *allPlayableVideos;
+
+/**
+* Returns an array of error-free BCOVVideo objects, stripping out
+* any BCOVVideo objects that contain an error.
+*/
+@property (nonatomic, readonly) NSArray<BCOVVideo *> *allFailedVideos;
+
+/**
  * Returns a modified version of this playlist. Because BCOVPlaylist objects
  * are immutable, an entirely new BCOVPlaylist must be created even if only
  * a single change is needed. Therefore, this method provides a convenient way
@@ -54,6 +66,22 @@ extern NSString * const kBCOVPlaylistPropertiesKeyType;
  * @return The copy of this cue point modified by `updateBlock`.
  */
 - (instancetype)update:(void (^)(id<BCOVMutablePlaylist> mutablePlaylist))updateBlock;
+
+/**
+ * Returns an array of error-free BCOVVideo objects, stripping out
+ * any BCOVVideo objects that contain an error.
+ *
+ * @param videos The array of vidoes to be filtered
+ */
++ (NSArray<BCOVVideo *> *)allPlayableVideosFrom:(id<NSFastEnumeration>)videos;
+
+/**
+ * Returns an array of BCOVVideo objects that contain errors, stripping out
+ * any BCOVVideo objects that do not contain an error.
+ *
+ * @param videos The array of vidoes to be filtered
+ */
++ (NSArray<BCOVVideo *> *)allFailedVideosFrom:(id<NSFastEnumeration>)videos;
 
 @end
 

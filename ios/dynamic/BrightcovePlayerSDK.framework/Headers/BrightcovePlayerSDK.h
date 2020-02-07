@@ -9,9 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-//! Project version string for BrightcovePlayerSDK.
-FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
-
 // Open Source Software attributions
 #import <BrightcovePlayerSDK/BCOVAttributions.h>
 

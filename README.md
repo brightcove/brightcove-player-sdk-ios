@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.6.2.897
+# Brightcove Player SDK for iOS, version 6.7.0.912
 
 
 # Table of Contents
@@ -79,7 +79,7 @@ Brightcove-Player-SDK | Brightcove-Player-Core
 Brightcove-Player-SDK-FW | Brightcove-Player-FreeWheel
 Brightcove-Player-SDK-IMA | Brightcove-Player-IMA
 Brightcove-Player-SDK-Omniture | Brightcove-Player-Omniture
-Brightcove-Player-SDK-OUX | Brightcove-Player-OnceUX
+Brightcove-Player-SDK-OUX | Brightcove-Player-SSAI
 Brightcove-Player-SDK-FairPlay | *Integrated into the core framework*
 Brightcove-Player-SDK-Player-UI | *Integrated into the core framework*
 Brightcove-Player-SDK-SidecarSubtitles | *Integrated into the core framework*
@@ -175,7 +175,7 @@ Brightcove-Player-Core | <https://github.com/brightcove/brightcove-player-sdk-io
 Brightcove-Player-FreeWheel | <https://github.com/brightcove/brightcove-player-sdk-ios-fw/releases>
 Brightcove-Player-IMA | <https://github.com/brightcove/brightcove-player-sdk-ios-ima/releases>
 Brightcove-Player-Omniture | <https://github.com/brightcove/brightcove-player-sdk-ios-omniture/releases>
-Brightcove-Player-OnceUX | <https://github.com/brightcove/brightcove-player-sdk-ios-oux/releases>
+Brightcove-Player-SSAI | <https://github.com/brightcove/brightcove-player-sdk-ios-ssai/releases>
 
 Imports <a name="Imports"></a>
 --------------
@@ -1133,15 +1133,18 @@ The default value of kBCOVAVPlayerViewControllerCompatibilityKey is @NO, which m
 
 Limitations to Using the AVPlayerViewController
 -----------------------------------------------
-Advertising:
+**Advertising:**
+
 Using the AVPlayerViewController's AVPlayerLayer will not work with the iOS SDK advertising plugins:
+
 IMA Plugin
 FreeWheel Plugin
-OnceUX Plugin
+SSAI Plugin
 
 due to the use by those plugins of a separate instance of the AVPlayer.
 
-Analytics:
+**Analytics:**
+
 When using the AVPlayerViewController, the video_engagement events sent to the Brightcove Analytics server will report 0 for player_width and player_height.
 
 Playback Authorization Service <a name="PlaybackAuthorizationService"></a>

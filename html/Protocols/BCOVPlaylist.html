@@ -56,6 +56,10 @@
 	
 	<optgroup label="Properties">
 		
+		<option value="//api/name/allFailedVideos">allFailedVideos</option>
+		
+		<option value="//api/name/allPlayableVideos">allPlayableVideos</option>
+		
 		<option value="//api/name/properties">properties</option>
 		
 		<option value="//api/name/videos">videos</option>
@@ -63,6 +67,14 @@
 	</optgroup>
 	
 
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/allFailedVideosFrom:">+ allFailedVideosFrom:</option>
+		
+		<option value="//api/name/allPlayableVideosFrom:">+ allPlayableVideosFrom:</option>
+		
+	</optgroup>
 	
 
 	
@@ -216,6 +228,102 @@ take NSFastEnumeration parameters (such as <a href="../Protocols/BCOVPlaybackCon
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/allPlayableVideos" title="allPlayableVideos"></a>
+	<h3 class="method-title"><code><a href="#//api/name/allPlayableVideos">&nbsp;&nbsp;allPlayableVideos</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns an array of error-free <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects, stripping out
+any <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects that contain an error.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSArray&lt;BCOVVideo*&gt; *allPlayableVideos</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns an array of error-free <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects, stripping out
+any <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects that contain an error.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaylist.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/allFailedVideos" title="allFailedVideos"></a>
+	<h3 class="method-title"><code><a href="#//api/name/allFailedVideos">&nbsp;&nbsp;allFailedVideos</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns an array of error-free <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects, stripping out
+any <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects that contain an error.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSArray&lt;BCOVVideo*&gt; *allFailedVideos</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns an array of error-free <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects, stripping out
+any <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects that contain an error.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaylist.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/update:" title="update:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/update:">&ndash;&nbsp;update:</a></code>
 <span class="task-item-suffix">required method</span></h3>
@@ -291,6 +399,126 @@ playlist object returned from this method.</p>
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/allPlayableVideosFrom:" title="allPlayableVideosFrom:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/allPlayableVideosFrom:">+&nbsp;allPlayableVideosFrom:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns an array of error-free <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects, stripping out
+any <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects that contain an error.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (NSArray&lt;BCOVVideo*&gt; *)allPlayableVideosFrom:(id&lt;NSFastEnumeration&gt;)<em>videos</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>videos</code></th>
+						<td><p>The array of vidoes to be filtered</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns an array of error-free <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects, stripping out
+any <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects that contain an error.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaylist.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/allFailedVideosFrom:" title="allFailedVideosFrom:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/allFailedVideosFrom:">+&nbsp;allFailedVideosFrom:</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns an array of <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects that contain errors, stripping out
+any <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects that do not contain an error.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (NSArray&lt;BCOVVideo*&gt; *)allFailedVideosFrom:(id&lt;NSFastEnumeration&gt;)<em>videos</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>videos</code></th>
+						<td><p>The array of vidoes to be filtered</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns an array of <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects that contain errors, stripping out
+any <a href="../Classes/BCOVVideo.html">BCOVVideo</a> objects that do not contain an error.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaylist.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -304,7 +532,7 @@ playlist object returned from this method.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-02-03</p>
+						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-02-07</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

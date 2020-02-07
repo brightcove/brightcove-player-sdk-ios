@@ -58,6 +58,14 @@
 		
 		<option value="//api/name/canBeDownloaded">canBeDownloaded</option>
 		
+		<option value="//api/name/errorCode">errorCode</option>
+		
+		<option value="//api/name/errorMessage">errorMessage</option>
+		
+		<option value="//api/name/errorSubCode">errorSubCode</option>
+		
+		<option value="//api/name/hasError">hasError</option>
+		
 		<option value="//api/name/offline">offline</option>
 		
 		<option value="//api/name/playableOffline">playableOffline</option>
@@ -81,6 +89,8 @@
 
 	
 	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/initWithErrorCode:errorSubCode:errorMessage:properties:">- initWithErrorCode:errorSubCode:errorMessage:properties:</option>
 		
 		<option value="//api/name/initWithSource:cuePoints:properties:">- initWithSource:cuePoints:properties:</option>
 		
@@ -349,6 +359,192 @@ of the AVAssetCache of an AVAsset.</p>
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/errorCode" title="errorCode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/errorCode">&nbsp;&nbsp;errorCode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>A string representation of an error code for an unplayable video</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *errorCode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>A string representation of an error code for an unplayable video</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVVideo.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/errorSubCode" title="errorSubCode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/errorSubCode">&nbsp;&nbsp;errorSubCode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>A string representation of an error sub code for an unplayable video</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *errorSubCode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>A string representation of an error sub code for an unplayable video</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVVideo.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/errorMessage" title="errorMessage"></a>
+	<h3 class="method-title"><code><a href="#//api/name/errorMessage">&nbsp;&nbsp;errorMessage</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>A error emssage string for an unplayable video</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *errorMessage</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>A error emssage string for an unplayable video</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVVideo.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/hasError" title="hasError"></a>
+	<h3 class="method-title"><code><a href="#//api/name/hasError">&nbsp;&nbsp;hasError</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns NO if <a href="#//api/name/errorCode"><code>errorCode</code></a>, <a href="#//api/name/errorSubCode"><code>errorSubCode</code></a> and <a href="#//api/name/errorMessage"><code>errorMessage</code></a> are all nil
+otherwise if any of those properties have a vaile will return YES</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BOOL hasError</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns NO if <a href="#//api/name/errorCode"><code>errorCode</code></a>, <a href="#//api/name/errorSubCode"><code>errorSubCode</code></a> and <a href="#//api/name/errorMessage"><code>errorMessage</code></a> are all nil
+otherwise if any of those properties have a vaile will return YES</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVVideo.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/initWithSources:cuePoints:properties:" title="initWithSources:cuePoints:properties:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/initWithSources:cuePoints:properties:">&ndash;&nbsp;initWithSources:cuePoints:properties:</a></code>
 </h3>
@@ -486,6 +682,86 @@ and properties.</p>
 points, and the specified properties.</p><p>When using this initializer you can take advantage of the
 kBCOVVideoPropertyKey constants to create the properties dictionary. You can find
 constants for the keys that this SDK uses with this dictionary near the top of this header file.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVVideo.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithErrorCode:errorSubCode:errorMessage:properties:" title="initWithErrorCode:errorSubCode:errorMessage:properties:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithErrorCode:errorSubCode:errorMessage:properties:">&ndash;&nbsp;initWithErrorCode:errorSubCode:errorMessage:properties:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Constructs a new video with with error information.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithErrorCode:(NSString *)<em>errorCode</em> errorSubCode:(NSString *)<em>errorSubCode</em> errorMessage:(NSString *)<em>errorMessage</em> properties:(NSDictionary *)<em>properties</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>errorCode</code></th>
+						<td><p>The error code</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>errorSubCode</code></th>
+						<td><p>The error sub-code</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>errorMessage</code></th>
+						<td><p>The error message</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>properties</code></th>
+						<td><p>The metadata or properties associated to this video.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A new video with error information attributes</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Constructs a new video with with error information.</p><p>When attempting to retreive a video the server may an
+error. The error may be caused due to various restrictions  other reasons.
+The information is stored on the BCOVideo object for informative purposes.</p>
 			</div>
 			
 
@@ -777,7 +1053,7 @@ video.</p></td>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-02-03</p>
+						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-02-07</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

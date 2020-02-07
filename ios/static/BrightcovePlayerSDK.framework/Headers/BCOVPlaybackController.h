@@ -276,7 +276,7 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 @property (nonatomic, readonly, copy) id<BCOVMutableAnalytics> analytics;
 
 /**
- * OnceUX Only:
+ * SSAI Only:
  * If using other ad plug-ins, use `seekWithoutAds:completionHandler:` instead.
  *
  * Disables ad playback which otherwise might occur after a forward -seekTo:.
@@ -798,6 +798,15 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * session seekableRanges.
  */
 - (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didChangeSeekableRanges:(NSArray *)seekableRanges;
+
+/**
+ * Called when the playback controller can find no playable videos
+ * when videos are passed into the playback controller's `setVideos:` method
+ *
+ * @param controller The playback controller to which this instance serves as delegate.
+ * @param unplayableVideos The videos that were passed into the `setVideos:` method
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller noPlayableVideosFound:(id<NSFastEnumeration>)unplayableVideos;
 
 @end
 

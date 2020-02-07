@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
 
 /**
  * The BCOVPlaybackServiceRequestFactory class provides methods for creating
@@ -19,6 +20,11 @@
  * Videocloud Account Id.
  */
 @property (nonatomic, copy, readonly) NSString *accountId;
+
+/**
+ * Videocloud Policy Key
+ */
+@property (nonatomic, copy, readonly) NSString *policyKey;
 
 /**
  * NSDictionary of additional HTTP request headers set on each NSURLRequest.
@@ -33,6 +39,8 @@
  * Returns an initialized instance with the specified policy. The base URL
  * string used by the returned instance is https://edge.api.brightcove.com/playback/v1 .
  *
+ * If using the Edge Playback Service, the policyKey value should be nil
+ *
  * @param accountId A Video Cloud account. Must not be nil.
  * @param policyKey A Video Cloud CMS policy. Must not be nil.
  * @return The initialized BCOVPlaybackServiceRequestFactory.
@@ -41,6 +49,8 @@
 
 /**
  * Returns an initialized instance with the specified token, account, and base URL string.
+ *
+ * If using the Edge Playback Service, the policyKey value should be nil
  *
  * @param accountId A Video Cloud account.
  * @param policyKey A Video Cloud CMS policy.

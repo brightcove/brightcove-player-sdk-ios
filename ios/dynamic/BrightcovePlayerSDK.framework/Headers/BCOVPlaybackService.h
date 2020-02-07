@@ -141,9 +141,11 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * Initializes a BCOVPlaybackService. It uses the accountId and policyKey
  * to create a BCOVPlaybackServiceRequestFactory internally.
  *
+ * If using the Edge Playback Service, the policyKey value should be nil
+ *
  *
  * @param accountId Account Id to be used for each request. Must not be nil.
- * @param policyKey PolicyKey to be used for each request. Must not be nil.
+ * @param policyKey PolicyKey to be used for each request. May be nil.
  * @return An initialized instance.
  */
 - (instancetype)initWithAccountId:(NSString *)accountId policyKey:(NSString *)policyKey;

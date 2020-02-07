@@ -106,8 +106,6 @@
 		
 		<option value="//api/name/preloadFairPlayLicense:parameters:completion:">- preloadFairPlayLicense:parameters:completion:</option>
 		
-		<option value="//api/name/renewFairPlayLicense:parameters:completion:">- renewFairPlayLicense:parameters:completion:</option>
-		
 		<option value="//api/name/renewFairPlayLicense:video:authToken:parameters:completion:">- renewFairPlayLicense:video:authToken:parameters:completion:</option>
 		
 		<option value="//api/name/renewFairPlayLicense:video:parameters:completion:">- renewFairPlayLicense:video:parameters:completion:</option>
@@ -419,6 +417,640 @@ You can call this method again to update the <a href="#//api/name/delegate">dele
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/requestVideoDownload:mediaSelections:parameters:completion:" title="requestVideoDownload:mediaSelections:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/requestVideoDownload:mediaSelections:parameters:completion:">&ndash;&nbsp;requestVideoDownload:mediaSelections:parameters:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initiate a request for a video download.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)requestVideoDownload:(BCOVVideo *)<em>video</em> mediaSelections:(NSArray&lt;AVMediaSelection*&gt; *)<em>mediaSelections</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVOfflineVideoToken offlineVideoToken , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>video</code></th>
+						<td><p><a href="../Classes/BCOVVideo.html">BCOVVideo</a> to be downloaded. The video should have an HLS
+source with an HTTPS scheme, and may use FairPlay encryption.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mediaSelections</code></th>
+						<td><p>An array of AVMediaSelections to be downloaded, in addition
+to the main video. The available AVMediaSelections for a BCOVVideo can be retrieved by calling
+-urlAssetForVideo:error: followed by [AVAsset preferredMediaSelection] or [AVAsset allMediaSelections].
+Passing nil for mediaSelections will cause the preferred AVMediaSelections to be fetched. Note
+that with iOS 13+, all video assets must be downloaded using a single call to
+requestVideoDownload:mediaSelections:parameters:completion:.
+Additional tracks cannot be downloaded later.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>NSDictionary of parameters used in this download request.
+May be nil. Valid parameters are:
+kBCOVOfflineVideoManagerRequestedBitrateKey, kBCOVFairPlayLicensePurchaseKey,
+kBCOVFairPlayLicenseRentalDurationKey.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>A block that receives the new offlineVideoToken after the request
+is successfully made. If there is an error, offlineVideoToken will
+be nil, and error will report any NSError.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>If you are using FairPlay videos with Video Cloud Dynamic Delivery, FairPlay
+application certificates will be downloaded automatically and used as needed.
+If you are using legacy Video Cloud FairPlay videos, you should add any
+needed application certificates to the BCOVOfflineVideoManger before
+initiating a download, using -[addFairPlayApplicationCertificate:identifier:].</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/requestVideoDownload:parameters:completion:" title="requestVideoDownload:parameters:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/requestVideoDownload:parameters:completion:">&ndash;&nbsp;requestVideoDownload:parameters:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initiate a request for a video download.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)requestVideoDownload:(BCOVVideo *)<em>video</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVOfflineVideoToken offlineVideoToken , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>video</code></th>
+						<td><p><a href="../Classes/BCOVVideo.html">BCOVVideo</a> to be downloaded. The video should have an HLS
+source with an HTTPS scheme, and may use FairPlay encryption.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>NSDictionary of parameters used in this download request.
+May be nil. Valid parameters are:
+kBCOVOfflineVideoManagerRequestedBitrateKey, kBCOVFairPlayLicensePurchaseKey,
+kBCOVFairPlayLicenseRentalDurationKey.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>A block that receives the new offlineVideoToken after the request
+is successfully made. If there is an error, offlineVideoToken will
+be nil, and error will report any NSError.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>If you are using FairPlay videos with Video Cloud Dynamic Delivery, FairPlay
+application certificates will be downloaded automatically and used as needed.
+If you are using legacy Video Cloud FairPlay videos, you should add any
+needed application certificates to the BCOVOfflineVideoManger before
+initiating a download, using -[addFairPlayApplicationCertificate:identifier:].</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/offlineVideoStatus" title="offlineVideoStatus"></a>
+	<h3 class="method-title"><code><a href="#//api/name/offlineVideoStatus">&ndash;&nbsp;offlineVideoStatus</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns an array of the status of all video downloads,
+including videos that are currently being downloaded,
+and videos that were cancelled, paused, or failed.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSArray&lt;BCOVOfflineVideoStatus*&gt; *)offlineVideoStatus</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>All objects in the array are copies, so although you can modify an object,
+it will have no effect on the download manager.</p>
+
+<p>This method provides information about each download, like the download status,
+start time, progress percent, underlying AVAssetDownloadTask,
+and error (if any when complete).</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/offlineVideoStatusForToken:" title="offlineVideoStatusForToken:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/offlineVideoStatusForToken:">&ndash;&nbsp;offlineVideoStatusForToken:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns a copy of the <a href="../Classes/BCOVOfflineVideoStatus.html">BCOVOfflineVideoStatus</a> object for a specific video download.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BCOVOfflineVideoStatus *)offlineVideoStatusForToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p><a href="../Classes/BCOVOfflineVideoStatus.html">BCOVOfflineVideoStatus</a> provides information about the download, like the download status,
+start time, progress percent, underlying AVAssetDownloadTask, and error (if any when complete).</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pauseVideoDownload:" title="pauseVideoDownload:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pauseVideoDownload:">&ndash;&nbsp;pauseVideoDownload:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Pause a current video download task.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)pauseVideoDownload:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the download task.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/resumeVideoDownload:" title="resumeVideoDownload:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/resumeVideoDownload:">&ndash;&nbsp;resumeVideoDownload:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Resume a suspended video download task</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)resumeVideoDownload:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the download task.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/cancelVideoDownload:" title="cancelVideoDownload:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/cancelVideoDownload:">&ndash;&nbsp;cancelVideoDownload:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Cancel a video download task</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)cancelVideoDownload:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the download task.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deleteOfflineVideo:" title="deleteOfflineVideo:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteOfflineVideo:">&ndash;&nbsp;deleteOfflineVideo:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Delete all files in local storage related to this offline video token.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)deleteOfflineVideo:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>offlineVideoToken will be considered invalid after this call.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/forceStopAllDownloadTasks" title="forceStopAllDownloadTasks"></a>
+	<h3 class="method-title"><code><a href="#//api/name/forceStopAllDownloadTasks">&ndash;&nbsp;forceStopAllDownloadTasks</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Stop all download tasks in progress.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)forceStopAllDownloadTasks</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This method forces all download tasks to terminate with an error
+by deleting their underlying download folder.
+Downloads that have already completed are not affected.</p>
+
+<p>WARNING:
+This method should only be used in very specific cases.
+iOS 11.0.x and iOS 11.1.x have an issue where a download task will resume to
+completion if it was paused and then cancelled.
+In that case, you cannot cancel or delete the runaway task, so your best
+option is to delete all download tasks.</p>
+
+<p>This method is not guaranteed to stop all download tasks.</p>
+
+<p>In iOS 11.2 and later, you should cancel download tasks individually using <a href="#//api/name/cancelVideoDownload:">cancelVideoDownload:</a></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/estimateDownloadSize:options:completion:" title="estimateDownloadSize:options:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/estimateDownloadSize:options:completion:">&ndash;&nbsp;estimateDownloadSize:options:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Estimate the size of a video download in megabytes.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)estimateDownloadSize:(BCOVVideo *)<em>video</em> options:(NSDictionary *)<em>options</em> completion:(void ( ^ ) ( double megabytes , NSError *error ))<em>completionHandler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>video</code></th>
+						<td><p>The <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object from Video Cloud. The video object should
+contain a valid HLS source.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>options</code></th>
+						<td><p>NSDictionary of options used in this request. Use the
+kBCOVOfflineVideoManagerRequestedBitrateKey to specify the bitrate you plan to download.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completionHandler</code></th>
+						<td><p>A block that receives the estimated size of the video after
+the request is successfully made. If there is an error,
+<code>megabytes</code> will be set to zero, and <code>error</code> will report any NSError.</p>
+
+<p>The completion handler is not called on any specific thread.
+You should switch to the main thread if you need to perform
+any UI work. It may be called synchronously or asynchronously.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This method calls the completion handler with an estimate of the video size
+of the largest rendition in the HLS manifest, in megabytes.
+If there are any problems retrieving the value, <code>error</code> will be set,
+and <code>size</code> will be zero.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/urlAssetForVideo:error:" title="urlAssetForVideo:error:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/urlAssetForVideo:error:">&ndash;&nbsp;urlAssetForVideo:error:</a></code>
 </h3>
@@ -687,8 +1319,8 @@ synchronously or asynchronously.</p></td>
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/estimateDownloadSize:options:completion:" title="estimateDownloadSize:options:completion:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/estimateDownloadSize:options:completion:">&ndash;&nbsp;estimateDownloadSize:options:completion:</a></code>
+	<a name="//api/name/videoObjectFromOfflineVideoToken:" title="videoObjectFromOfflineVideoToken:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/videoObjectFromOfflineVideoToken:">&ndash;&nbsp;videoObjectFromOfflineVideoToken:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -698,144 +1330,12 @@ synchronously or asynchronously.</p></td>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Estimate the size of a video download in megabytes.</p>
+				<p>Convert an offline video token into a playable <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)estimateDownloadSize:(BCOVVideo *)<em>video</em> options:(NSDictionary *)<em>options</em> completion:(void ( ^ ) ( double megabytes , NSError *error ))<em>completionHandler</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>video</code></th>
-						<td><p>The <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object from Video Cloud. The video object should
-contain a valid HLS source.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>options</code></th>
-						<td><p>NSDictionary of options used in this request. Use the
-kBCOVOfflineVideoManagerRequestedBitrateKey to specify the bitrate you plan to download.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>completionHandler</code></th>
-						<td><p>A block that receives the estimated size of the video after
-the request is successfully made. If there is an error,
-<code>megabytes</code> will be set to zero, and <code>error</code> will report any NSError.</p>
-
-<p>The completion handler is not called on any specific thread.
-You should switch to the main thread if you need to perform
-any UI work. It may be called synchronously or asynchronously.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>This method calls the completion handler with an estimate of the video size
-of the largest rendition in the HLS manifest, in megabytes.
-If there are any problems retrieving the value, <code>error</code> will be set,
-and <code>size</code> will be zero.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/offlineVideoStatus" title="offlineVideoStatus"></a>
-	<h3 class="method-title"><code><a href="#//api/name/offlineVideoStatus">&ndash;&nbsp;offlineVideoStatus</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Returns an array of the status of all video downloads,
-including videos that are currently being downloaded,
-and videos that were cancelled, paused, or failed.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (NSArray&lt;BCOVOfflineVideoStatus*&gt; *)offlineVideoStatus</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>All objects in the array are copies, so although you can modify an object,
-it will have no effect on the download manager.</p>
-
-<p>This method provides information about each download, like the download status,
-start time, progress percent, underlying AVAssetDownloadTask,
-and error (if any when complete).</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/offlineVideoStatusForToken:" title="offlineVideoStatusForToken:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/offlineVideoStatusForToken:">&ndash;&nbsp;offlineVideoStatusForToken:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Returns a copy of the <a href="../Classes/BCOVOfflineVideoStatus.html">BCOVOfflineVideoStatus</a> object for a specific video download.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (BCOVOfflineVideoStatus *)offlineVideoStatusForToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (BCOVVideo *)videoObjectFromOfflineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
 
 		    
 			
@@ -859,8 +1359,9 @@ and error (if any when complete).</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p><a href="../Classes/BCOVOfflineVideoStatus.html">BCOVOfflineVideoStatus</a> provides information about the download, like the download status,
-start time, progress percent, underlying AVAssetDownloadTask, and error (if any when complete).</p>
+				<p>The returned <a href="../Classes/BCOVVideo.html">BCOVVideo</a> also contains all the new properties listed above,
+such as the downloaded thumbnail and poster image file paths, FairPlay
+license expiration date, download start and end times, and more.</p>
 			</div>
 			
 
@@ -939,173 +1440,6 @@ When downloading multiple FairPlay-protected videos, you should call this
 method for each video to acquire a license for each one before beginning
 any of the downloads. This ensures that videos can be properly stored even
 when the downloads are initiated in the background.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/requestVideoDownload:mediaSelections:parameters:completion:" title="requestVideoDownload:mediaSelections:parameters:completion:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/requestVideoDownload:mediaSelections:parameters:completion:">&ndash;&nbsp;requestVideoDownload:mediaSelections:parameters:completion:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Initiate a request for a video download.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)requestVideoDownload:(BCOVVideo *)<em>video</em> mediaSelections:(NSArray&lt;AVMediaSelection*&gt; *)<em>mediaSelections</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVOfflineVideoToken offlineVideoToken , NSError *error ))<em>completionHandler</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>video</code></th>
-						<td><p><a href="../Classes/BCOVVideo.html">BCOVVideo</a> to be downloaded. The video should have an HLS
-source with an HTTPS scheme, and may use FairPlay encryption.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>mediaSelections</code></th>
-						<td><p>An array of AVMediaSelections to be downloaded, in addition
-to the main video. The available AVMediaSelections for a BCOVVideo can be retrieved by calling
--urlAssetForVideo:error: followed by [AVAsset preferredMediaSelection] or [AVAsset allMediaSelections].
-Passing nil for mediaSelections will cause the preferred AVMediaSelections to be fetched. Note
-that with iOS 13+, all video assets must be downloaded using a single call to
-requestVideoDownload:mediaSelections:parameters:completion:.
-Additional tracks cannot be downloaded later.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>NSDictionary of parameters used in this download request.
-May be nil. Valid parameters are:
-kBCOVOfflineVideoManagerRequestedBitrateKey, kBCOVFairPlayLicensePurchaseKey,
-kBCOVFairPlayLicenseRentalDurationKey.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>completionHandler</code></th>
-						<td><p>A block that receives the new offlineVideoToken after the request
-is successfully made. If there is an error, offlineVideoToken will
-be nil, and error will report any NSError.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>If you are using FairPlay videos with Video Cloud Dynamic Delivery, FairPlay
-application certificates will be downloaded automatically and used as needed.
-If you are using legacy Video Cloud FairPlay videos, you should add any
-needed application certificates to the BCOVOfflineVideoManger before
-initiating a download, using -[addFairPlayApplicationCertificate:identifier:].</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/requestVideoDownload:parameters:completion:" title="requestVideoDownload:parameters:completion:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/requestVideoDownload:parameters:completion:">&ndash;&nbsp;requestVideoDownload:parameters:completion:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Initiate a request for a video download.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)requestVideoDownload:(BCOVVideo *)<em>video</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVOfflineVideoToken offlineVideoToken , NSError *error ))<em>completionHandler</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>video</code></th>
-						<td><p><a href="../Classes/BCOVVideo.html">BCOVVideo</a> to be downloaded. The video should have an HLS
-source with an HTTPS scheme, and may use FairPlay encryption.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>NSDictionary of parameters used in this download request.
-May be nil. Valid parameters are:
-kBCOVOfflineVideoManagerRequestedBitrateKey, kBCOVFairPlayLicensePurchaseKey,
-kBCOVFairPlayLicenseRentalDurationKey.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>completionHandler</code></th>
-						<td><p>A block that receives the new offlineVideoToken after the request
-is successfully made. If there is an error, offlineVideoToken will
-be nil, and error will report any NSError.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>If you are using FairPlay videos with Video Cloud Dynamic Delivery, FairPlay
-application certificates will be downloaded automatically and used as needed.
-If you are using legacy Video Cloud FairPlay videos, you should add any
-needed application certificates to the BCOVOfflineVideoManger before
-initiating a download, using -[addFairPlayApplicationCertificate:identifier:].</p>
 			</div>
 			
 
@@ -1310,8 +1644,8 @@ the current download, and then initiate a completely new download at the new bit
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/renewFairPlayLicense:parameters:completion:" title="renewFairPlayLicense:parameters:completion:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/renewFairPlayLicense:parameters:completion:">&ndash;&nbsp;renewFairPlayLicense:parameters:completion:</a></code>
+	<a name="//api/name/addFairPlayApplicationCertificate:identifier:" title="addFairPlayApplicationCertificate:identifier:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addFairPlayApplicationCertificate:identifier:">&ndash;&nbsp;addFairPlayApplicationCertificate:identifier:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -1321,12 +1655,13 @@ the current download, and then initiate a completely new download at the new bit
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Initiate a request for a new FairPlay license.</p>
+				<p>This method is used to add a FairPlay application certificate to the
+Offline Video Manager&rsquo;s list of available FairPlay application certificates.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)renewFairPlayLicense:(BCOVOfflineVideoToken)<em>offlineVideoToken</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVOfflineVideoToken offlineVideoToken , NSError *error ))<em>completionHandler</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)addFairPlayApplicationCertificate:(NSData *)<em>applicationCertificateData</em> identifier:(NSString *)<em>identifier</em></code></div>
 
 		    
 			
@@ -1335,24 +1670,25 @@ the current download, and then initiate a completely new download at the new bit
 				<table class="argument-def parameter-def">
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
-						<td><p>Offline video token used to identify the downloaded video for which to acquire a new license.</p></td>
+						<th scope="row" class="argument-name"><code>applicationCertificateData</code></th>
+						<td><p>The FairPlay application certificate in an NSData object.
+If set to nil, any existing application certificate for the
+given identifier will be removed.</p></td>
 					</tr>
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>NSDictionary of parameters used in this license renewal request.
-May be nil. Valid parameters are: kBCOVFairPlayLicensePurchaseKey,
-kBCOVFairPlayLicenseRentalDurationKey.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>completionHandler</code></th>
-						<td><p>A block that is called after the license renewal
-request has completed. If the request resulted in an error, it
-will be returned here as an NSError. The offlineVideoToken
-parameter will be the same offline video token that was passed
-in as the first parameter.</p></td>
+						<th scope="row" class="argument-name"><code>identifier</code></th>
+						<td><p>A string used to locate the application certificate.</p>
+
+<p>This string may not be nil.</p>
+
+<p>For Dynamic Delivery, the identifier must be the URL that was used to
+retrieve this certificate.</p>
+
+<p>For legacy Video Cloud accounts, this should be set to kBCOVDefaultFairPlayApplicationCertificateIdentifier
+to apply to all accounts.</p>
+
+<p>If you are using multiple legacy Video Cloud accounts, set this param to the acount ID.</p></td>
 					</tr>
 				
 				</table>
@@ -1366,15 +1702,16 @@ in as the first parameter.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<div class="warning"><p><strong>Warning:</strong> Use this method instead:
-- (void)renewFairPlayLicense:(BCOVOfflineVideoToken)offlineVideoToken
-video:(<a href="../Classes/BCOVVideo.html">BCOVVideo</a> <em>)video
-parameters:(NSDictionary </em>)parameters
-completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler;</p></div><p>You can request a new FairPlay license any time after the initial license has been acquired.
-In the parameters you can specify a new rental duration, or you can convert a rental license
-to a purchase license. The video does not need to be re-downloaded to use a new FairPlay license.
-You should not specify a bitrate in the parameters. To change the bitrate you would have to delete
-the current download, and then initiate a completely new download at the new bitrate.</p>
+				<p>Certificates will be retained for the life of the application.
+To remove a certificate, add the same identifier with a nil as the
+certificate data.</p>
+
+<p>If you are using Dynamic Delivery, application certificates are retrieved
+automatically by the FairPlay plugin, so this method is not needed.
+You can, however, use this method to pre-load your application certificate
+to speed up playback of the first FairPlay-encrypted video.</p>
+
+<p>Certificates are stored and re-used for subsequent videos.</p>
 			</div>
 			
 
@@ -1509,427 +1846,6 @@ for purchase licenses or clear (no FairPlay) videos, or nil if there is no licen
 <p>Returns NSDate.distantFuture if the video is not encrypted with FairPlay.</p>
 
 <p>Returns nil if the video has no FairPlay license.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/pauseVideoDownload:" title="pauseVideoDownload:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/pauseVideoDownload:">&ndash;&nbsp;pauseVideoDownload:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Pause a current video download task.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)pauseVideoDownload:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
-						<td><p>Offline video token used to identify the download task.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/resumeVideoDownload:" title="resumeVideoDownload:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/resumeVideoDownload:">&ndash;&nbsp;resumeVideoDownload:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Resume a suspended video download task</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)resumeVideoDownload:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
-						<td><p>Offline video token used to identify the download task.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/cancelVideoDownload:" title="cancelVideoDownload:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/cancelVideoDownload:">&ndash;&nbsp;cancelVideoDownload:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Cancel a video download task</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)cancelVideoDownload:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
-						<td><p>Offline video token used to identify the download task.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/forceStopAllDownloadTasks" title="forceStopAllDownloadTasks"></a>
-	<h3 class="method-title"><code><a href="#//api/name/forceStopAllDownloadTasks">&ndash;&nbsp;forceStopAllDownloadTasks</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Stop all download tasks in progress.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)forceStopAllDownloadTasks</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>This method forces all download tasks to terminate with an error
-by deleting their underlying download folder.
-Downloads that have already completed are not affected.</p>
-
-<p>WARNING:
-This method should only be used in very specific cases.
-iOS 11.0.x and iOS 11.1.x have an issue where a download task will resume to
-completion if it was paused and then cancelled.
-In that case, you cannot cancel or delete the runaway task, so your best
-option is to delete all download tasks.</p>
-
-<p>This method is not guaranteed to stop all download tasks.</p>
-
-<p>In iOS 11.2 and later, you should cancel download tasks individually using <a href="#//api/name/cancelVideoDownload:">cancelVideoDownload:</a></p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/videoObjectFromOfflineVideoToken:" title="videoObjectFromOfflineVideoToken:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/videoObjectFromOfflineVideoToken:">&ndash;&nbsp;videoObjectFromOfflineVideoToken:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Convert an offline video token into a playable <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (BCOVVideo *)videoObjectFromOfflineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
-						<td><p>Offline video token used to identify the downloaded video.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>The returned <a href="../Classes/BCOVVideo.html">BCOVVideo</a> also contains all the new properties listed above,
-such as the downloaded thumbnail and poster image file paths, FairPlay
-license expiration date, download start and end times, and more.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/deleteOfflineVideo:" title="deleteOfflineVideo:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/deleteOfflineVideo:">&ndash;&nbsp;deleteOfflineVideo:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Delete all files in local storage related to this offline video token.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)deleteOfflineVideo:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
-						<td><p>Offline video token used to identify the downloaded video.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>offlineVideoToken will be considered invalid after this call.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/addFairPlayApplicationCertificate:identifier:" title="addFairPlayApplicationCertificate:identifier:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/addFairPlayApplicationCertificate:identifier:">&ndash;&nbsp;addFairPlayApplicationCertificate:identifier:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>This method is used to add a FairPlay application certificate to the
-Offline Video Manager&rsquo;s list of available FairPlay application certificates.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)addFairPlayApplicationCertificate:(NSData *)<em>applicationCertificateData</em> identifier:(NSString *)<em>identifier</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>applicationCertificateData</code></th>
-						<td><p>The FairPlay application certificate in an NSData object.
-If set to nil, any existing application certificate for the
-given identifier will be removed.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>identifier</code></th>
-						<td><p>A string used to locate the application certificate.</p>
-
-<p>This string may not be nil.</p>
-
-<p>For Dynamic Delivery, the identifier must be the URL that was used to
-retrieve this certificate.</p>
-
-<p>For legacy Video Cloud accounts, this should be set to kBCOVDefaultFairPlayApplicationCertificateIdentifier
-to apply to all accounts.</p>
-
-<p>If you are using multiple legacy Video Cloud accounts, set this param to the acount ID.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Certificates will be retained for the life of the application.
-To remove a certificate, add the same identifier with a nil as the
-certificate data.</p>
-
-<p>If you are using Dynamic Delivery, application certificates are retrieved
-automatically by the FairPlay plugin, so this method is not needed.
-You can, however, use this method to pre-load your application certificate
-to speed up playback of the first FairPlay-encrypted video.</p>
-
-<p>Certificates are stored and re-used for subsequent videos.</p>
 			</div>
 			
 
@@ -2154,7 +2070,7 @@ typically by a call to [AVURLAsset allMediaSelections] for your downloaded AVURL
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-02-03</p>
+						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-02-07</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
