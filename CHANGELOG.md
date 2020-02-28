@@ -1,3 +1,33 @@
+## Release 6.7.1
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes an issue that could prevent downloads from starting immediately when using `BCOVOfflineVideoManager`.
+
+* Adds the `playbackController:determinedVideoType:forVideo:` delegate method to `BCOVPlaybackController`. See the `BCOVPlaybackController` header for more information, including all available types of `BCOVVideoType`. 
+
+* Updates header documentation for the `BCOVVideo.playableOffline` property which can have an unexpected value when the video is loaded for playback.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds support for setting Audience Segment Targeting information on ad requests. See `updateAudienceSegmentTargetingValues:` in `BCOVPlaybackController` for more information. *This is currently only supported when using IMA + VAST.*
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes scrubbing behavior when using BCOVPlayerUI player controls and the SSAI plugin to play back VOD.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes bitcode embedding.
+
 ## Release 6.7.0
 
 #### Additions and Improvements

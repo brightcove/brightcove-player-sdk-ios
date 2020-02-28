@@ -49,6 +49,24 @@ typedef NS_ENUM(NSInteger, BCOVVideo360ProjectionStyle) {
     
 };
 
+/**
+ * Type of video.
+ */
+typedef NS_ENUM(NSUInteger, BCOVVideoType) {
+
+    /** Video type can not be determined. */
+    BCOVVideoTypeUnknown,
+
+    /** Video on demand (has a duration). */
+    BCOVVideoTypeVOD,
+
+    /** Video has no duration, and a limited seekable range. */
+    BCOVVideoTypeLive,
+
+    /** Video has no duration, and a large seekable range. */
+    BCOVVideoTypeLiveDVR
+};
+
 // The approximate vertical angle of view when the view orientation's zoom is 1.0.
 // Set to 75 degrees
 extern const CGFloat kBCOVVideo360BaseAngleOfView;
@@ -332,6 +350,12 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * session and future sessions unless changed via the (optional) Preferred Bitrate menu.
  */
 - (void)setPreferredPeakBitRate:(double)preferredPeakBitRate;
+
+/**
+ * Sets the audience segment targeting key/values you want to be be passed on in
+ * ad requests. This is only currently supported with IMA + VAST.
+ */
+- (void)updateAudienceSegmentTargetingValues:(NSDictionary *)audienceSegmentTargetingValues;
 
 /**
  * @abstract A view which obscures or reveals the player view.
@@ -807,6 +831,28 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * @param unplayableVideos The videos that were passed into the `setVideos:` method
  */
 - (void)playbackController:(id<BCOVPlaybackController>)controller noPlayableVideosFound:(id<NSFastEnumeration>)unplayableVideos;
+
+/**
+ * Called when the video type has been determined for the current video.
+ *
+ * The video type will be determined after `kBCOVPlaybackSessionLifecycleEventReady`
+ * has been received for the session.
+ *
+ * You can use the returned videoType to determine which BCOVPUIControlLayout to
+ * utilize on the current BCOVPUIPlayerView. This can be helpful for dynamically
+ * switching between control layouts if utilizing different video types in a playlist.
+ *
+ * The value can be one of the following:
+ * - BCOVVideoTypeVOD
+ * - BCOVVideoTypeLive
+ * - BCOVVideoTypeLiveDVR
+ * - BCOVVideoTypeUnknown
+ *
+ * @param controller The playback controller to which this instance serves as delegate.
+ * @param videoType The determined video type.
+ * @param video The video which has had its type determined.
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller determinedVideoType:(BCOVVideoType)videoType forVideo:(BCOVVideo *)video;
 
 @end
 

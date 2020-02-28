@@ -80,26 +80,6 @@ typedef NS_ENUM(NSInteger, BCOVPUIViewTag) {
     BCOVPUIViewTagReservedEnd           = 200
 };
 
-
-/**
- * Type of video.
- */
-typedef NS_ENUM(NSUInteger, BCOVPUIVideoType) {
-
-    /** Video type can not be determined. */
-    BCOVPUIVideoTypeUnknown,
-
-    /** Video on demand (has a duration). */
-    BCOVPUIVideoTypeVOD,
-
-    /** Video has no duration, and a limited seekable range. */
-    BCOVPUIVideoTypeLive,
-
-    /** Video has no duration, and a large seekable range. */
-    BCOVPUIVideoTypeLiveDVR
-};
-
-
 /**
  * Distinct Icon types.
  */

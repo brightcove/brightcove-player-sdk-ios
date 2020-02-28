@@ -163,6 +163,11 @@ extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
  *  or if the video has been purged and needs to be re-downloaded.
  *  This happens automatically if iOS needs to reclaim storage space
  *  for proper functioning of the device.
+ *
+ *  On some versions of iOS `playableOffline` may return NO if the offline video is already
+ *  loaded up in an instance of AVPlayer. Calling `replaceCurrentItemWithPlayerItem`
+ *  on the current instance of `AVPlayer` with a `nil` value prior to checking
+ *  should result in the expected value of TRUE being returned.
  */
 @property (nonatomic, readonly) BOOL playableOffline;
 
