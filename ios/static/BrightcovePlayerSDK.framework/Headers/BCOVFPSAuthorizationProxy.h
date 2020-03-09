@@ -82,7 +82,7 @@ extern const NSInteger kBCOVFPSErrorCodeApplicationCertificateRequest;
  *  @param contentKeyIdentifier    The "skd://..." loading request URL string made for the asset.
  *  @param keyRequest        The key request data returned by [AVAssetResourceLoadingRequest streamingContentKeyRequestDataForApp:contentIdentifier:options:error:].
  *  @param source            The BCOVSource used to make this request
- *  @param options           The parameters originally passed to `-BCOVOfflineVideoManager requestVideoDownload:parameters:completion:`
+ *  @param options           The parameters originally passed to `-BCOVOfflineVideoManager requestVideoDownload:mediaSelections:parameters:completion:`
  *  @param completionHandler The completion handler to return the content key. If returning an error, you must leave the contentkey and response parameters nil.
  */
 - (void)encryptedContentKeyForContentKeyIdentifier:(nonnull NSString *)contentKeyIdentifier // the "skd://..." url string

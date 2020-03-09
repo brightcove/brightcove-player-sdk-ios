@@ -108,7 +108,7 @@ extern NSString * const kBCOVOfflineVideoManagerAnalyticsStorageLimitKey;
 
 /**
  * The following keys are used to specify values in the parameters dictionary
- * passed to `-BCOVOfflineVideoManager requestVideoDownload:parameters:completion:`
+ * passed to `-BCOVOfflineVideoManager requestVideoDownload:mediaSelections:parameters:completion:`
  */
 
 /**
@@ -133,20 +133,6 @@ extern NSString * const kBCOVOfflineVideoManagerRequestedBitrateKey;
 extern NSString * const kBCOVOfflineVideoManagerDisplayNameKey;
 
 /**
- * kBCOVOfflineVideoManagerSubtitleLanguagesKey
- * This is an NSArray of NSStrings for the IETF BCP 47 language tags
- * that will be downloaded for this video. (iOS 10.x only)
- * On iOS 10.x, videos are downloaded using the
- * kBCOVOfflineVideoManagerSubtitleLanguagesKey key.
- * Downloaded videos that use iOS 10.x captions have
- * the kBCOVOfflineVideoUsesSidebandSubtitleKey property set
- * to YES.
- * See kBCOVOfflineVideoManagerPlaybackSubtitleLanguageKey
- * for playback details.
- */
-extern NSString * const kBCOVOfflineVideoManagerSubtitleLanguagesKey;
-
-/**
  * kBCOVFairPlayLicensePurchaseKey
  * A Boolean boxed in an NSValue.
  * If YES, the downloaded FairPlay content will be assigned
@@ -162,29 +148,6 @@ extern NSString * const kBCOVFairPlayLicensePurchaseKey;
  * The rental period begins as soon as the download request is made.
  */
 extern NSString * const kBCOVFairPlayLicenseRentalDurationKey;
-
-
-/**
- * The following keys are used to set values in the the
- * BCOVPlaybackController's options dictionary
- */
-
-/**
- * kBCOVOfflineVideoManagerPlaybackSubtitleLanguageKey
- * This is an NSString for the IETF BCP 47 language tag
- * that will be displayed for this video.
- * On iOS 10.x, videos are downloaded using the
- * kBCOVOfflineVideoManagerSubtitleLanguagesKey key.
- * This key is set on [BCOVPlaybackController options] to
- * display one of the selected subtitle tracks.
- * Downloaded videos that use iOS 10.x captions have
- * the kBCOVOfflineVideoUsesSidebandSubtitleKey property set
- * to YES.
- * The kBCOVOfflineVideoManagerSubtitleLanguagesKey property
- * contains an array of any downloaded subtitle languages.
- */
-extern NSString * const kBCOVOfflineVideoManagerPlaybackSubtitleLanguageKey;
-
 
 /**
  * The following keys are used to access values in the the
@@ -306,16 +269,3 @@ extern NSString * const kBCOVOfflineVideoRelativeFilePathPropertyKey;
  */
 extern NSString * const kBCOVOfflineVideoFilePathPropertyKey;
 
-/**
- * kBCOVOfflineVideoUsesSidebandSubtitleKey
- * BCOVVideo properties key that indicates when sideband subtitles are being
- * used for this video.
- * Sideband subtitles are downloaded separately from the HLS video, and also
- * displayed using a custom overlay.
- * When this NSNumber is YES, you should examine the
- * kBCOVOfflineVideoManagerSubtitleLanguagesKey property to determine what
- * languages are available for display.
- * Use the kBCOVOfflineVideoManagerPlaybackSubtitleLanguageKey with the playback
- * controller to display the selected language.
- */
-extern NSString * const kBCOVOfflineVideoUsesSidebandSubtitleKey;

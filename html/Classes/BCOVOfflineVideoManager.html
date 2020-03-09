@@ -110,11 +110,7 @@
 		
 		<option value="//api/name/renewFairPlayLicense:video:parameters:completion:">- renewFairPlayLicense:video:parameters:completion:</option>
 		
-		<option value="//api/name/requestMediaSelectionsDownload:offlineVideoToken:">- requestMediaSelectionsDownload:offlineVideoToken:</option>
-		
 		<option value="//api/name/requestVideoDownload:mediaSelections:parameters:completion:">- requestVideoDownload:mediaSelections:parameters:completion:</option>
-		
-		<option value="//api/name/requestVideoDownload:parameters:completion:">- requestVideoDownload:parameters:completion:</option>
 		
 		<option value="//api/name/resumeVideoDownload:">- resumeVideoDownload:</option>
 		
@@ -506,84 +502,6 @@ initiating a download, using -[addFairPlayApplicationCertificate:identifier:].</
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/requestVideoDownload:parameters:completion:" title="requestVideoDownload:parameters:completion:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/requestVideoDownload:parameters:completion:">&ndash;&nbsp;requestVideoDownload:parameters:completion:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Initiate a request for a video download.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)requestVideoDownload:(BCOVVideo *)<em>video</em> parameters:(NSDictionary *)<em>parameters</em> completion:(void ( ^ ) ( BCOVOfflineVideoToken offlineVideoToken , NSError *error ))<em>completionHandler</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>video</code></th>
-						<td><p><a href="../Classes/BCOVVideo.html">BCOVVideo</a> to be downloaded. The video should have an HLS
-source with an HTTPS scheme, and may use FairPlay encryption.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>NSDictionary of parameters used in this download request.
-May be nil. Valid parameters are:
-kBCOVOfflineVideoManagerRequestedBitrateKey, kBCOVFairPlayLicensePurchaseKey,
-kBCOVFairPlayLicenseRentalDurationKey.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>completionHandler</code></th>
-						<td><p>A block that receives the new offlineVideoToken after the request
-is successfully made. If there is an error, offlineVideoToken will
-be nil, and error will report any NSError.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>If you are using FairPlay videos with Video Cloud Dynamic Delivery, FairPlay
-application certificates will be downloaded automatically and used as needed.
-If you are using legacy Video Cloud FairPlay videos, you should add any
-needed application certificates to the BCOVOfflineVideoManger before
-initiating a download, using -[addFairPlayApplicationCertificate:identifier:].</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
 	<a name="//api/name/offlineVideoStatus" title="offlineVideoStatus"></a>
 	<h3 class="method-title"><code><a href="#//api/name/offlineVideoStatus">&ndash;&nbsp;offlineVideoStatus</a></code>
 </h3>
@@ -678,7 +596,7 @@ and error (if any when complete).</p>
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p><a href="../Classes/BCOVOfflineVideoStatus.html">BCOVOfflineVideoStatus</a> provides information about the download, like the download status,
-start time, progress percent, underlying AVAssetDownloadTask, and error (if any when complete).</p>
+start time, progress percent, underlying AVAggregateAssetDownloadTask, and error (if any when complete).</p>
 			</div>
 			
 
@@ -1390,8 +1308,7 @@ license expiration date, download start and end times, and more.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Preload the FairPlay license before a video download begins.
-This may only be called on iOS 10.3 and later.</p>
+				<p>Preload the FairPlay license before a video download begins.</p>
 			</div>
 			
 		    
@@ -1989,74 +1906,6 @@ Supported values are AVMediaCharacteristicAudible and AVMediaCharacteristicLegib
 			
 		</div>
 	</div>
-</div><div class="section-method">
-	<a name="//api/name/requestMediaSelectionsDownload:offlineVideoToken:" title="requestMediaSelectionsDownload:offlineVideoToken:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/requestMediaSelectionsDownload:offlineVideoToken:">&ndash;&nbsp;requestMediaSelectionsDownload:offlineVideoToken:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Request the download of an additional media selection for the specified
-offline video token.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)requestMediaSelectionsDownload:(NSArray&lt;AVMediaSelection*&gt; *)<em>mediaSelections</em> offlineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>mediaSelections</code></th>
-						<td><p>An NSArray of media selections that you wish to download.
-You can get the availalable options by calling [AVURLAsset allMediaSelections] and
-picking the ones that you need.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
-						<td><p>Offline video token used to identify the downloaded video.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>This request should be made inside your -[offlineVideoToken:didFinishDownloadWithError:]
-delegate callback method. You should determine which media selections options are available,
-typically by a call to [AVURLAsset allMediaSelections] for your downloaded AVURLAsset.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVOfflineVideoManager.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
 </div>
 						</div>
 						
@@ -2070,7 +1919,7 @@ typically by a call to [AVURLAsset allMediaSelections] for your downloaded AVURL
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-02-28</p>
+						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-03-09</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

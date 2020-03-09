@@ -103,32 +103,6 @@
                   completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler;
 
 /**
- * @abstract Initiate a request for a video download.
- *
- * @discussion If you are using FairPlay videos with Video Cloud Dynamic Delivery, FairPlay
- *  application certificates will be downloaded automatically and used as needed.
- *  If you are using legacy Video Cloud FairPlay videos, you should add any
- *  needed application certificates to the BCOVOfflineVideoManger before
- *  initiating a download, using -[addFairPlayApplicationCertificate:identifier:].
- *
- * @param video BCOVVideo to be downloaded. The video should have an HLS
- *  source with an HTTPS scheme, and may use FairPlay encryption.
- *
- * @param parameters NSDictionary of parameters used in this download request.
- *  May be nil. Valid parameters are:
- *  kBCOVOfflineVideoManagerRequestedBitrateKey, kBCOVFairPlayLicensePurchaseKey,
- *  kBCOVFairPlayLicenseRentalDurationKey.
- *
- * @param completionHandler A block that receives the new offlineVideoToken after the request
- *  is successfully made. If there is an error, offlineVideoToken will
- *  be nil, and error will report any NSError.
- */
-- (void)requestVideoDownload:(BCOVVideo *)video
-                  parameters:(NSDictionary *)parameters
-                  completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler
-            __attribute__((deprecated("Use -requestVideoDownload:mediaSelections:parameters:completion: instead. See also -urlAssetForVideo:error:.")));
-
-/**
  * @abstract Returns an array of the status of all video downloads,
  *  including videos that are currently being downloaded,
  *  and videos that were cancelled, paused, or failed.
@@ -146,7 +120,7 @@
  * @abstract Returns a copy of the BCOVOfflineVideoStatus object for a specific video download.
  *
  * @discussion BCOVOfflineVideoStatus provides information about the download, like the download status,
- *  start time, progress percent, underlying AVAssetDownloadTask, and error (if any when complete).
+ *  start time, progress percent, underlying AVAggregateAssetDownloadTask, and error (if any when complete).
  *
  * @param offlineVideoToken Offline video token used to identify the downloaded video.
  */
@@ -323,7 +297,6 @@
 
 /**
  * @abstract Preload the FairPlay license before a video download begins.
- *  This may only be called on iOS 10.3 and later.
  *
  * @discussion This will return an error if the video does not have a FairPlay source.
  *  When downloading multiple FairPlay-protected videos, you should call this
@@ -517,24 +490,5 @@
  */
 - (NSArray<AVMediaSelectionOption *> *)downloadedMediaSelectionOptionsForMediaCharacteristic:(NSString *)mediaCharacteristic
                                                                            offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken;
-
-/**
- * @abstract Request the download of an additional media selection for the specified
- * offline video token.
- *
- * @discussion This request should be made inside your -[offlineVideoToken:didFinishDownloadWithError:]
- *  delegate callback method. You should determine which media selections options are available,
- *  typically by a call to -[AVURLAsset allMediaSelections] for your downloaded AVURLAsset.
- *
- * @param mediaSelections An NSArray of media selections that you wish to download.
- *  You can get the availalable options by calling -[AVURLAsset allMediaSelections] and
- *  picking the ones that you need.
- *
- * @param offlineVideoToken Offline video token used to identify the downloaded video.
- */
-- (void)requestMediaSelectionsDownload:(NSArray<AVMediaSelection *> *)mediaSelections
-                     offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
-            __attribute__((deprecated("Use -requestVideoDownload:mediaSelections:parameters:completion: instead. See also -urlAssetForVideo:error:.")));
-
 
 @end

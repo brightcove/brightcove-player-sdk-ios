@@ -1,3 +1,29 @@
+## Release 6.7.2
+
+#### Breaking Changes
+
+* The minimum Deployment Target for all Brightcove Native Player for iOS frameworks is now iOS 11.0 and tvOS 11.0. Details are available [here](https://support.brightcove.com/native-sdk-ios-eol-support-iostvos-10).
+
+#### Additions and Improvements
+
+* Fixes an issue with apps crashing during launch on iOS Simulators running iOS 11 and 12 (`dyld: Symbol not found: _OBJC_CLASS_$_AVAssetDownloadURLSession`). The exception to the fix is apps built with the Google Cast SDK for iOS CocoaPod due to an issue with the google-cast-sdk Podspec. To work around the issue, for example in the Brightcove BasicCastPlayer sample project for Objective-C, follow these steps:
+
+1. Run `pod install`
+1. Open the BasicCastPlayer.xcworkspace document
+1. In the Xcode Project Navigator, navigate to Pods -> Target Support Files -> Pods-BasicCastPlayer
+1. In the files Pods-BasicCastPlayer.debug.xcconfig and Pods-BasicCastPlayer.release.xcconfig change this line:
+
+```
+OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -framework "AVFoundation" -framework "Accelerate" -framework "AudioToolbox" -framework "BrightcoveGoogleCast" -framework "BrightcovePlayerSDK" -framework "CFNetwork" -framework "CoreBluetooth" -framework "CoreData" -framework "CoreGraphics" -framework "CoreMedia" -framework "CoreText" -framework "Foundation" -framework "GoogleCast" -framework "MediaAccessibility" -framework "MediaPlayer" -framework "QuartzCore" -framework "Security" -framework "SystemConfiguration" -framework "UIKit" -framework "protobuf"
+```
+
+  to this:
+
+```
+OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -framework "BrightcovePlayerSDK" -framework "BrightcoveGoogleCast" -framework "GoogleCast" -framework "protobuf"
+```
+
+
 ## Release 6.7.1
 
 ### Brightcove Player SDK for iOS (Core)

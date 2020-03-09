@@ -46,16 +46,9 @@
 
 #if !TARGET_OS_TV
 /**
- * The AVAssetDownloadTask associated with this download.
- * Will be set to nil once the download has completed.
- */
-@property (nonatomic, readonly) AVAssetDownloadTask *downloadTask;
-
-/**
- * The AVAggregateAssetDownloadTask associated with this tracks download.
+ * The AVAggregateAssetDownloadTask associated with the download.
  * Will be set to nil once the download has completed.
  *
- * **Available in iOS 11.0+**
  */
 @property (nonatomic, readonly) AVAggregateAssetDownloadTask *aggregateDownloadTask __attribute__((availability(ios,introduced=11.0)));
 

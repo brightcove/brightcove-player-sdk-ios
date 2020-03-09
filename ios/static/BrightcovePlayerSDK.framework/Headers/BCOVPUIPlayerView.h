@@ -158,12 +158,12 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
 /**
  * Informs the delegate that the AVRoutePickerView will start presenting routes to the user.
  */
-- (void)routePickerViewWillBeginPresentingRoutes:(AVRoutePickerView *)routePickerView NS_AVAILABLE_IOS(11);
+- (void)routePickerViewWillBeginPresentingRoutes:(AVRoutePickerView *)routePickerView;
 
 /**
  * Informs the delegate that the AVRoutePickerView finished presenting routes to the user.
  */
-- (void)routePickerViewDidEndPresentingRoutes:(AVRoutePickerView *)routePickerView NS_AVAILABLE_IOS(11);
+- (void)routePickerViewDidEndPresentingRoutes:(AVRoutePickerView *)routePickerView;
 
 
 /**

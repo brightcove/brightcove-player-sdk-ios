@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.7.1.940
+# Brightcove Player SDK for iOS, version 6.7.2.958
 
 
 # Table of Contents
@@ -47,9 +47,9 @@ Requirements <a name="Requirements"></a>
 Supported Platforms <a name="SupportedPlatforms"></a>
 ===================
 
-iOS 10.0 and above.
+iOS 11.0 and above.
 
-tvOS 10.0 and above.
+tvOS 11.0 and above.
 
 What's New <a name="New"></a>
 ============
@@ -109,9 +109,9 @@ As of version 6.0.0, the Brightcove Native Player SDK allows you to download HLS
 
 Installation <a name="Installation"></a>
 ============
-The Brightcove Player SDK provides two installation packages for iOS, a static library framework and a dynamic framework. Deployment is supported on iOS 8 and above.
+The Brightcove Player SDK provides two installation packages for iOS, a static library framework and a dynamic framework. Deployment is supported on iOS 11 and above.
 
-The Brightcove Player SDK provides a dynamic framework to support tvOS 10.0 and above.
+The Brightcove Player SDK provides a dynamic framework to support tvOS 11.0 and above.
 
 CocoaPods <a name="CocoaPods"></a>
 --------------
@@ -1059,7 +1059,7 @@ These options should be set before calling `-BCOVPlaybackController setVideos:`.
 - If the values are set too small, playback may stall under erratic network conditions. 
 - If the values are set too large, the `AVPlayer` may buffer data that is never viewed. 
 - Testing based on your expected use cases is important. 
-- Values are specified in seconds of time, and must be greater than or equal to 1.0. (Zero is a special value in the `AVPlayerItem` that tells the `AVPlayer` to determine its own buffer size, as is done with iOS 9 and earlier).
+- Values are specified in seconds of time, and must be greater than or equal to 1.0. (Zero is a special value in the `AVPlayerItem` that tells the `AVPlayer` to determine its own buffer size.
 
 
 Turning Off Buffer Optimization
@@ -1075,7 +1075,7 @@ If you do not want any buffer optimization active in your current playback sessi
     // Set new dictionary in your playback controller
     self.playbackController.options = options;
 
-With the method set to “None”, iOS will maintain full control of the forward buffer size, as is done on iOS 9 and earlier.
+With the method set to “None”, iOS will maintain full control of the forward buffer size.
 
 Implementing Your Own Buffer Optimization Method
 -----
@@ -1083,7 +1083,7 @@ If you want to set your own buffer size for playback, first turn off buffer opti
 
 	- (void)playbackController:(id<BCOVPlaybackController>)controller didAdvanceToPlaybackSession:(id<BCOVPlaybackSession>)session
 	{
-	  // Make sure the property exists on the current AVPlayerItem. This will return false for iOS 9 or earlier.
+	  // Make sure the property exists on the current AVPlayerItem.
       if ([session.player.currentItem respondsToSelector:NSSelectorFromString(@"preferredForwardBufferDuration")])
       {
         // Set your preferredForwardBufferDuration value here.
@@ -1091,13 +1091,13 @@ If you want to set your own buffer size for playback, first turn off buffer opti
       }
 	}
 
-**Important:** You must compile against the iOS 10 SDK to use the `preferredForwardBufferDuration` property directly. Do not attempt to access this property on iOS 9 or earlier, or your app will crash.
+**Important:** You must compile against the iOS 10 SDK to use the `preferredForwardBufferDuration` property directly.
 
 If you want to change the buffer size dynamically over time, you can set `session.player.currentItem.preferredForwardBufferDuration` in the `BCOVPlaybackController`'s progress delegate method in a similar fashion:
 
 	- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didProgressTo:(NSTimeInterval)progress
 	{
-	  // Make sure the property exists on the current AVPlayerItem. This will return false for iOS 9 or earlier.
+	  // Make sure the property exists on the current AVPlayerItem.
       if ([session.player.currentItem respondsToSelector:NSSelectorFromString(@"preferredForwardBufferDuration")])
       {
         // Set preferredForwardBufferDuration based on your own logic here

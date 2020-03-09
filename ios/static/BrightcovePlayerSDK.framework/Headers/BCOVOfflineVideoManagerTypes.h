@@ -46,23 +46,23 @@ typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
     /* License has been preloaded, but the video download has not yet been requested */
     BCOVOfflineVideoDownloadLicensePreloaded = 6,
     
-    /* iOS 11+ only: Download of extra tracks requested but not yet reporting progress */
-    BCOVOfflineVideoDownloadStateTracksRequested = 7,
+    /* Deprecated: Use BCOVOfflineVideoDownloadStateRequested instead.  */
+    BCOVOfflineVideoDownloadStateTracksRequested __attribute__((deprecated)) = 7,
     
-    /* iOS 11+ only: Download of extra tracks is progressing normally */
-    BCOVOfflineVideoDownloadStateTracksDownloading = 8,
+    /*  Deprecated: Use BCOVOfflineVideoDownloadStateDownloading instead. */
+    BCOVOfflineVideoDownloadStateTracksDownloading __attribute__((deprecated)) = 8,
     
-    /* iOS 11+ only: Download of extra tracks was paused */
-    BCOVOfflineVideoDownloadStateTracksSuspended = 9,
+    /*  Deprecated: Use BCOVOfflineVideoDownloadStateSuspended instead. */
+    BCOVOfflineVideoDownloadStateTracksSuspended __attribute__((deprecated)) = 9,
     
-    /* iOS 11+ only: Download of extra tracks completed normally */
-    BCOVOfflineVideoDownloadStateTracksCancelled = 10,
+    /*  Deprecated: Use BCOVOfflineVideoDownloadStateCancelled instead. */
+    BCOVOfflineVideoDownloadStateTracksCancelled __attribute__((deprecated)) = 10,
     
-    /* iOS 11+ only: Download of extra tracks completed normally */
-    BCOVOfflineVideoDownloadStateTracksCompleted = 11,
+    /*  Deprecated: Use BCOVOfflineVideoDownloadStateCompleted instead. */
+    BCOVOfflineVideoDownloadStateTracksCompleted __attribute__((deprecated)) = 11,
     
-    /* iOS 11+ only: Download of extra tracks terminated with an error */
-    BCOVOfflineVideoDownloadStateTracksError = 12
+    /*  Deprecated: Use BCOVOfflineVideoDownloadStateError instead. */
+    BCOVOfflineVideoDownloadStateTracksError __attribute__((deprecated)) = 12
 };
 
 typedef void (^BCOVOfflineVideoLicenseCompletionCallback)(BCOVOfflineVideoToken, NSError *);

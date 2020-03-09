@@ -21,24 +21,6 @@
 @optional
 
 /**
- * @abstract Receive progress notification about a download in progress.
- *
- * @discussion You can use the AVAssetDownloadTask to retrieve more information
- *  about the download, like the specific segments that are loaded. If you want
- *  to pause/resume/cancel the task, you should use the methods available in the
- *  BCOVOfflineVideoManager to perform those actions.
- *
- * @param offlineVideoToken Offline video token used to identify the downloaded video.
- *
- * @param downloadTask The AVAssetDownloadTask for this video
- *
- * @param progressPercent How far along the download has progressed, expressed as a percentage.
- */
-- (void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
-             downloadTask:(AVAssetDownloadTask *)downloadTask
-            didProgressTo:(NSTimeInterval)progressPercent NS_AVAILABLE_IOS(10_0);
-
-/**
  * @abstract This method is called when a download is complete.
  *
  * @discussion If an error occurred during the download, error will be non-nil.
@@ -68,7 +50,7 @@ didFinishDownloadWithError:(NSError *)error;
 - (void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
     aggregateDownloadTask:(AVAggregateAssetDownloadTask *)aggregateDownloadTask
             didProgressTo:(NSTimeInterval)progressPercent
-        forMediaSelection:(AVMediaSelection *)mediaSelection NS_AVAILABLE_IOS(11_0);
+        forMediaSelection:(AVMediaSelection *)mediaSelection;
 
 /**
  * @abstract This method is called when an individual track download is complete.
@@ -79,7 +61,7 @@ didFinishDownloadWithError:(NSError *)error;
  * @param mediaSelection The AVMediaSelection that has finished downloading.
  */
 - (void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
-didFinishMediaSelectionDownload:(AVMediaSelection *)mediaSelection NS_AVAILABLE_IOS(11_0);
+didFinishMediaSelectionDownload:(AVMediaSelection *)mediaSelection;
 
 /**
  * @abstract This method is called when all requested track downloads are complete for the
@@ -92,7 +74,7 @@ didFinishMediaSelectionDownload:(AVMediaSelection *)mediaSelection NS_AVAILABLE_
  * @param error NSError encountered during the track download process. nil if no error.
  */
 - (void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
-didFinishAggregateDownloadWithError:(NSError *)error NS_AVAILABLE_IOS(11_0);
+didFinishAggregateDownloadWithError:(NSError *)error;
 
 /**
  * @abstract This method is called when the static images (thumbnail and poster) associated
