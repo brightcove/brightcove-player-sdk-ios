@@ -1,3 +1,11 @@
+## Release 6.7.3
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Adds improvements to some video analytics.
+
 ## Release 6.7.2
 
 #### Breaking Changes

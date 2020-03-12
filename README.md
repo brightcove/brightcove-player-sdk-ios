@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.7.2.958
+# Brightcove Player SDK for iOS, version 6.7.3.965
 
 
 # Table of Contents
@@ -152,15 +152,6 @@ To add the Brightcove Player SDK to your project manually:
 3. On the "Build Settings" tab of your application target, ensure that the "Framework Search Paths" include the path to the framework. This should have been done automatically unless the framework is stored under a different root directory than your project.
 4. On the "General" tab of your application target, add the following to the "Linked Frameworks and Libraries" section:
 
-    * `AVFoundation`
-    * `CoreMedia`
-    * `CoreMotion` (iOS only)
-    * `GLKit`
-    * `MediaPlayer`
-    * `MediaAccessibility` (iOS only)
-    * `SafariServices` (iOS only)
-    * `SystemConfiguration` (iOS only)
-    * `WebKit` (iOS only)
     * `BrightcovePlayerSDK.framework`  
 5. (**Dynamic Framework** only) On the "General" tab of your application target, add 'BrightcovePlayerSDK.framework' to the "Embedded Binaries" section.
 6. (**Dynamic Framework** only) On the "Build Phases" tab, add a "Run Script" phase with the command `bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh`. Check "Run script only when installing". This will remove unneeded architectures from the build, which is important for App Store submission.
@@ -1023,7 +1014,7 @@ Buffer Optimization <a name="BufferOptimization"></a>
 Overview
 -----
 
-With the release of iOS 10, you now have control over the size of the forward playback buffer used by the `AVPlayer`. This is done by setting the `preferredForwardBufferDuration` property in the `AVPlayerItem` class.
+Developers have control over the size of the forward playback buffer used by the `AVPlayer`. This is done by setting the `preferredForwardBufferDuration` property in the `AVPlayerItem` class.
 
 By default, the Brightcove Native Player SDK sets the `preferredForwardBufferDuration` property in a way that optimizes overall bandwidth without sacrificing playback quality. This behavior can be overridden with your own values.
 
@@ -1090,8 +1081,6 @@ If you want to set your own buffer size for playback, first turn off buffer opti
 		 session.player.currentItem.preferredForwardBufferDuration = newPreferredForwardBufferDurationValue;
       }
 	}
-
-**Important:** You must compile against the iOS 10 SDK to use the `preferredForwardBufferDuration` property directly.
 
 If you want to change the buffer size dynamically over time, you can set `session.player.currentItem.preferredForwardBufferDuration` in the `BCOVPlaybackController`'s progress delegate method in a similar fashion:
 
