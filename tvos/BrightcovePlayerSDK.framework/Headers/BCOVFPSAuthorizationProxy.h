@@ -91,6 +91,7 @@ extern const NSInteger kBCOVFPSErrorCodeApplicationCertificateRequest;
                                            options:(nullable NSDictionary *)options
                                  completionHandler:(nonnull void (^)(NSURLResponse * __nullable response,
                                                                      NSData * __nullable contentKey,
+                                                                     NSDate * __nullable expirationDate,
                                                                      NSError * __nullable error))completionHandler;
 
 @end

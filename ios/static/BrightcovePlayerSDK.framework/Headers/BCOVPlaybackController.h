@@ -358,6 +358,13 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 - (void)updateAudienceSegmentTargetingValues:(NSDictionary *)audienceSegmentTargetingValues;
 
 /**
+ * Enables or disables thumbnail scrubbing for this playback controller.
+ *
+ * Default value is YES
+ */
+@property (nonatomic, readwrite, assign) BOOL thumbnailScrubbingEnabled;
+
+/**
  * @abstract A view which obscures or reveals the player view.
  *
  * @discussion Set shutter to YES to hide the current player view behind an opaque

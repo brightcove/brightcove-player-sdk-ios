@@ -1,3 +1,31 @@
+## Release 6.7.4
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Adds support for the Brightcove Playback Rights Management Service.
+
+* Adds support for HEVC and HLSv7 video playback.
+
+* Adds new localizations for Arabic (ar), French (fr), German (de), Japanese (ja), Korean (ko) and Spanish (es).
+
+### Pulse Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds new support for integrating Pulse Video Advertising with your iOS and tvOS apps.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports version 3.11.3 of the Google IMA SDK for iOS. 
+
+* Supports version 4.2.1 of the Google IMA SDK for tvOS.
+
+* Fixes an issue where `kBCOVIMALifecycleEventAdsLoaderLoaded` was not triggered for VAST ad profiles.
+
 ## Release 6.7.3
 
 ### Brightcove Player SDK for iOS (Core)
@@ -30,7 +58,11 @@ OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -framework "AVFoundation" -framework 
 ```
 OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -framework "BrightcovePlayerSDK" -framework "BrightcoveGoogleCast" -framework "GoogleCast" -framework "protobuf"
 ```
+### Brightcove Player SDK for iOS (Core)
 
+#### Additions and Improvements
+
+* Adds support for short-duration license renewal for FairPlay protected videos. See `updateLicenseRenewalInterval:` on `BCOVPlaybackController`  for more information.
 
 ## Release 6.7.1
 
