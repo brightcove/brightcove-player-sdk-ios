@@ -1,3 +1,35 @@
+## Release 6.7.5 ##
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes a fatal exception on tvOS caused by multiple app launches.
+
+* Adds support for preloading content keys for online FairPlay protected videos. See `preloadContentKeysForVideos:` on `BCOVFairPlayManager` for more information.
+
+* Improves support for right-to-left languages.
+
+* Adds support for localized number values.
+
+* Fixes an issue where the Captions button was hidden after changing the controls layout.
+
+* Fixes an issue where `offlineVideoToken:aggregateDownloadTask:didProgressTo:forMediaSelection:` was not being called after an app was moved from the background to the foreground.
+
+### Pulse Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds the ability to pause and resume ads with support for Pulse PauseAd.
+
+* Supports seeking without ads (resume).
+
+* Fixes post-roll ad playback on tvOS.
+
+* Improves handling for various error conditions such as bad ad paths.
+
+* Improves support for right-to-left languages.
+
 ## Release 6.7.4
 
 ### Brightcove Player SDK for iOS (Core)

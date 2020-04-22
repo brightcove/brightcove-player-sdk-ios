@@ -282,8 +282,13 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
 
 
 /**
- * The method to use for opening web views when the Learn More button is tapped.
+ * The style to use for opening web views when the Learn More button is tapped.
  * Defaults to BCOVPUILearnMoreButtonUseExternalBrowser.
+ *
+ * NOTE: The IMA SDK uses its own internal behavior for the Learn More button.
+ * Thus this property will have no effect with IMA ads.
+ * See `webOpenerPresentingController` in the `IMAAdsRenderingSettings` class
+ * for more information.
  */
 @property (nonatomic, assign) BCOVPUILearnMoreButtonBrowserStyle learnMoreButtonBrowserStyle;
 

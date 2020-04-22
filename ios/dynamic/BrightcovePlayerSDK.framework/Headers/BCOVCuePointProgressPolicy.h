@@ -108,6 +108,12 @@ typedef NS_ENUM(NSInteger, BCOVProgressPolicyResumePosition) {
 - (BCOVCuePointProgressPolicyResult *)applyToEvent:(NSDictionary *)cuePointEvent;
 
 /**
+ * Whether the policy should tell its caller to ignore cue points that it has already
+ * been instructed to process.
+ */
+@property (nonatomic, readonly) BOOL ignoringPreviouslyProcessedCuePoints;
+
+/**
  * Convenience factory method that returns a cue point progress policy
  * configured according to the specified parameters.
  *

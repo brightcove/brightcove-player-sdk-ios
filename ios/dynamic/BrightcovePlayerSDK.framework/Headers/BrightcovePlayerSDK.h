@@ -32,6 +32,7 @@
 #import <BrightcovePlayerSDK/BCOVFPSAuthorizationProxy.h>
 #import <BrightcovePlayerSDK/BCOVFPSBrightcoveAuthProxy.h>
 #import <BrightcovePlayerSDK/BCOVFPSComponent.h>
+#import <BrightcovePlayerSDK/BCOVFairPlayManager.h>
 
 // Sidecar Subtitles
 #import <BrightcovePlayerSDK/BCOVSSComponent.h>
