@@ -1,3 +1,23 @@
+## Release 6.7.6 ##
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Adds the optional `BCOVPUIPlayerViewDelegate` methods `progressSliderDidTouchDown:`, `progressSliderDidChangeValue:` and `progressSliderDidTouchUp:` for iOS.
+
+* Adds the optional `BCOVTVPlayerViewDelegate` methods `progressViewPanGestureStateBegan:`, `progressViewPanGestureStateChanged:` and `progressViewPanGestureStateEnded:` for tvOS.
+
+* Adds support for dual expiry for offline FairPlay protected videos.  Refer to the _Download a Video_ section of OfflinePlayback.md for more information.
+
+* Fixes an issue on tvOS where audio would continue to play after a player view had been removed from the view heirarchy.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds support for pre-roll and post-roll ad playback over AirPlay. Set `enableBackgroundPlayback` to `YES` on `IMASettings` along with enabling AirPlay on your `BCOVPlaybackController`. Refer to the _AirPlay_ section of the README for more information.
+
 ## Release 6.7.5 ##
 
 ### Brightcove Player SDK for iOS (Core)
@@ -70,7 +90,7 @@
 
 #### Breaking Changes
 
-* The minimum Deployment Target for all Brightcove Native Player for iOS frameworks is now iOS 11.0 and tvOS 11.0. Details are available [here](https://support.brightcove.com/native-sdk-ios-eol-support-iostvos-10).
+* The minimum Deployment Target for all Brightcove Native Player for iOS frameworks is now iOS 11.0 and tvOS 11.0. Details are available [here](https://sdks.support.brightcove.com/support/announcements/native-sdk-ios-eol-support-iostvos-10.html).
 
 #### Additions and Improvements
 
@@ -246,7 +266,7 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Adds support for Live streams with FairPlay DRM. Refer to the [Live DRM](https://support.brightcove.com/live-drm) support pages.
+* Adds support for Live streams with FairPlay DRM. Refer to the [Live DRM](https://live.support.brightcove.com/general/live-drm.html) support pages.
 
 * Adds localizations for traditional Chinese (zh-hant) and simplified Chinese (zh-hans) language scripts.
 
@@ -264,7 +284,7 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Adds support for Live Streams with Server-Side Ad Insertion. Refer to the [Overview: Advanced Player Toolkit for Live SSAI](https://support.brightcove.com/overview-advanced-player-toolkit-live-ssai) pages for details.
+* Adds support for Live Streams with Server-Side Ad Insertion. Refer to the [Overview: Advanced Player Toolkit for Live SSAI](https://live.support.brightcove.com/live-api/ssai/overview-player-enhancements-live-ssai.html) pages for details.
 
 ## Release 6.4.5
 
@@ -398,7 +418,7 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Breaking Changes
 
-* The minimum iOS Deployment Target for all Brightcove Native Player for iOS frameworks is now iOS 10.0. Details are available [here](https://support.brightcove.com/ios-sdk-deprecating-support-ios-10-and-eol-support-ios-9).
+* The minimum iOS Deployment Target for all Brightcove Native Player for iOS frameworks is now iOS 10.0. Details are available [here](https://sdks.support.brightcove.com/support/announcements/native-sdk-ios-eol-support-iostvos-10.html).
 
 ### Brightcove Player SDK for iOS (Core)
 

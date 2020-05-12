@@ -1,4 +1,4 @@
-# Using FairPlay With The Brightcove Player SDK for iOS, version 6.7.5.1079
+# Using FairPlay With The Brightcove Player SDK for iOS, version 6.7.6.1121
 
 Quick Start
 ===========
@@ -113,6 +113,23 @@ If you have questions or need help, we have a support forum for Brightcove's nat
 
 [bcovsdk]: https://github.com/brightcove/brightcove-player-sdk-ios
 [forum]: https://groups.google.com/forum/#!forum/brightcove-native-player-sdks
+
+Content Key Preloading
+===========
+You may preload content keys for videos by calling  the `preloadContentKeysForVideos:` class method on `BCOVFairPlayManager`. Typically a content key for a FairPlay protected video is processed when the video begins playback. By preloading the content key you can improve the playback startup experience for your users. For example:
+
+```
+static NSString * const kViewControllerVideoID = @"...";
+    
+[self.playbackService findVideoWithVideoID:kViewControllerVideoID parameters:nil completion:^(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error) {
+
+    if (video)
+    {
+        [BCOVFairPlayManager preloadContentKeysForVideos:@[video]];
+    }
+
+}];
+```
 
 Application Certificates
 ===========

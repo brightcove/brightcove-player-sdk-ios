@@ -86,6 +86,14 @@
 		
 		<option value="//api/name/playerView:willTransitionToScreenMode:">- playerView:willTransitionToScreenMode:</option>
 		
+		<option value="//api/name/playerViewShouldDisplayThumbnailPreviewWithRect:">- playerViewShouldDisplayThumbnailPreviewWithRect:</option>
+		
+		<option value="//api/name/progressSliderDidChangeValue:">- progressSliderDidChangeValue:</option>
+		
+		<option value="//api/name/progressSliderDidTouchDown:">- progressSliderDidTouchDown:</option>
+		
+		<option value="//api/name/progressSliderDidTouchUp:">- progressSliderDidTouchUp:</option>
+		
 		<option value="//api/name/routePickerViewDidEndPresentingRoutes:">- routePickerViewDidEndPresentingRoutes:</option>
 		
 		<option value="//api/name/routePickerViewWillBeginPresentingRoutes:">- routePickerViewWillBeginPresentingRoutes:</option>
@@ -381,6 +389,77 @@
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Called when the playerView controls faded in.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playerViewShouldDisplayThumbnailPreviewWithRect:" title="playerViewShouldDisplayThumbnailPreviewWithRect:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playerViewShouldDisplayThumbnailPreviewWithRect:">&ndash;&nbsp;playerViewShouldDisplayThumbnailPreviewWithRect:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called just before the thumbnail preview is set up.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (CGRect)playerViewShouldDisplayThumbnailPreviewWithRect:(BCOVPUIPlayerView *)<em>playerView</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>playerView</code></th>
+						<td><p>The player view that will display the thumbnail preview.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>The customized CGRect for the thumbnail preview</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called just before the thumbnail preview is set up.</p>
+
+<p>You can implement this to customize the thumbnail preview size for different
+devices, layouts, screen modes, etc.</p>
+
+<p>The <code>x</code> value of the CGRect will be ignored, so you can keep the <code>x</code> value set to 0.</p>
+
+<p>If this delegate method is not implemented the size of the thumbnail preview
+will be 100x56 with a vertical offset of -60.</p>
 			</div>
 			
 
@@ -1025,6 +1104,144 @@ orientation to landscape when using the BCOVVideo360ProjectionStyleVRGoggles pro
 		    
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/progressSliderDidTouchDown:" title="progressSliderDidTouchDown:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/progressSliderDidTouchDown:">&ndash;&nbsp;progressSliderDidTouchDown:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called after the SDK handles the event. The delegate should not block the main thread.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)progressSliderDidTouchDown:(UISlider *)<em>slider</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called after the SDK handles the event. The delegate should not block the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/progressSliderDidTouchUp:" title="progressSliderDidTouchUp:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/progressSliderDidTouchUp:">&ndash;&nbsp;progressSliderDidTouchUp:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called after the SDK seeks the player to the new progress value. The delegate should not block the main thread.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)progressSliderDidTouchUp:(UISlider *)<em>slider</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called after the SDK seeks the player to the new progress value. The delegate should not block the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/progressSliderDidChangeValue:" title="progressSliderDidChangeValue:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/progressSliderDidChangeValue:">&ndash;&nbsp;progressSliderDidChangeValue:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called after the SDK handles the event. The delegate should not block the main thread.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)progressSliderDidChangeValue:(UISlider *)<em>slider</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called after the SDK handles the event. The delegate should not block the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPUIPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -1038,7 +1255,7 @@ orientation to landscape when using the BCOVVideo360ProjectionStyleVRGoggles pro
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-04-22</p>
+						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-05-12</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

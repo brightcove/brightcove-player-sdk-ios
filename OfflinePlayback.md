@@ -1,4 +1,4 @@
-iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.7.5.1079
+iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.7.6.1121
 --------------
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -49,7 +49,7 @@ If you want to change the `kBCOVOfflineVideoManagerAllowsCellularDownloadKey` va
 
 ### Check If A Video Can Be Downloaded
 
-In your user interface, you should indicate if a video is eligible for download. To do this,  examine the `BCOVVideo.canBeDownloaded` property. This Boolean property checks the status of the video's `offline_enabled` flag that is settable through the [Brightcove CMS API](https://support.brightcove.com/offline-playback-native-player-sdks#Download_management).
+In your user interface, you should indicate if a video is eligible for download. To do this,  examine the `BCOVVideo.canBeDownloaded` property. This Boolean property checks the status of the video's `offline_enabled` flag that is settable through the [Brightcove CMS API](https://sdks.support.brightcove.com/features/offline-playback-native-player-sdks.html#Download_management).
 
 ### Download A Video
 
@@ -76,6 +76,18 @@ parameters = @{
 	kBCOVFairPlayLicenseRentalDurationKey: @(60 * 60 * 24 * 30),
 };
 ```
+
+You can also specify how long a license should remain valid after the video has begun playback. This is known as Dual Expiry or a Rental Profile:
+
+```
+parameters = @{
+    // 30 days in seconds
+    kBCOVFairPlayLicenseRentalDurationKey: @(60 * 60 * 24 * 30),
+    // 24 hours in seconds
+    kBCOVFairPlayLicensePlayDurationKey: @(60 * 60 * 24)
+};
+``` 
+**NOTE: If a license expires during playback of a video the video will not stop, but attempting to reload the video will result in a "license expired" error.**
 
 The completion handler is where you asynchronously receive the offline video token or the error. You can store a reference to this offline video token if the error is nil. You will receive notficiation of progress and completion thorugh delegate methods.
 

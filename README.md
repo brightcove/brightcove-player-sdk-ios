@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.7.5.1079
+# Brightcove Player SDK for iOS, version 6.7.6.1121
 
 
 # Table of Contents
@@ -31,6 +31,7 @@
 1. [View Strategy](#ViewStrategy)
 1. [Playing Video In The Background](#BackgroundVideo)
 1. [Picture In Picture](#PIP)
+1. [Thumbnail Scrubbing](#ThumbnailScrubbing)
 1. [Tracking Errors](#TrackingErrors)
 1. [Combining Plugins](#CombiningPlugins)
 1. [Buffer Optimization](#BufferOptimization)
@@ -415,6 +416,8 @@ AirPlay <a name="AirPlay"></a>
 ==========
 
 Enable AirPlay functionality by setting the `setAllowsExternalPlayback` property on your `BCOVPlaybackController` to `true`. The AirPlay button will be displayed in the playback controls if AirPlay devices are found on your network.
+
+Currently, IMA is the only plugin that supports AirPlay and only when using pre-roll and/or post-roll ads. Using AirPlay with the Pulse, SSAI or FreeWheel ad plugins may result in unexpected behavior.
 
 If you also want to support AirPlay 2 and allow for multiple devices to be selected for audio output you will have to do a few additional things. First, you'll need to configure AVAudioSession so that you can set the `routeSharingPolicy`. For example:
 
@@ -864,6 +867,20 @@ To implement your own Picture-in-Picture behavior, keep the `pictureInPictureAct
 You can read more about implmeneting Picture-in-Picture in Apple's [Adopting Picture in Picture in a Custom Player](https://developer.apple.com/documentation/avkit/adopting_picture_in_picture_in_a_custom_player) documentation.
 
 **Important: The Brightcove Native Player SDK's Picture-in-Picture functionality does not support videos with ad playback. Trying to use a video with ads with the Picture-in-Picture functionality active will result in unexpected behavior.**
+
+Thumbnail Scrubbing <a name="ThumbnailScrubbing"></a>
+-------------
+Thumbnail scrubbing allows users to drag the playhead along the timeline and view thumbnails as a preview of the associated content. This gives users the ability to quickly navigate a video file and find the content that they are interested in.
+
+This feature is also referred to by Apple as Trick Play, and is referenced in their [HLS Authoring Specification](https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices?language=objc).
+
+This feature is enabled by default. If you wish to disable thumbnail scrubbing you can do so by setting the `thumbnailScrubbingEnabled` property on your `BCOVPlaybackController` to `NO`. 
+
+```
+self.playbackController.thumbnailScrubbingEnabled = NO;
+```
+
+Thumbnail scrubbing is only available for online videos; downloaded/offline videos do not support this feature. 
 
 Tracking Errors <a name="TrackingErrors"></a>
 -----

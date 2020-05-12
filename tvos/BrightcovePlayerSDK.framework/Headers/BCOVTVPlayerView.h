@@ -119,6 +119,53 @@ typedef NS_ENUM(NSUInteger, BCOVTVPlayerType) {
  */
 - (BOOL)playerViewShouldRequireLinearPlayback:(BCOVTVPlayerView *)playerView;
 
+/**
+ * Called just before the thumbnail preview is set up.
+ *
+ * You can implement this to customize the thumbnail preview size.
+ *
+ * If this delegate method is not implemented the size of the thumbnail preview
+ * will be 1/5 the size of the playerView.
+ *
+ * @param playerView The player view that will display the thumbnail preview.
+ *
+ * @return The width and height the thumbnail should be displayed.
+ */
+- (CGSize)playerViewShouldDisplayThumbnailPreviewWithSize:(BCOVTVPlayerView *)playerView;
+
+/**
+ * Called when a progressView panning gesture begins.
+ *
+ * @param progressValue The progress value represented by the pan gesture, passed
+ * as a parameter because the progress property of the BCOVTVProgressView does not update
+ * until playback resumes.
+ *
+ * This method is called on the main thread and should not be blocked.
+ */
+- (void)progressViewPanGestureStateBegan:(NSTimeInterval)progressValue;
+
+/**
+ * Called when a progressView panning gesture changes state (location).
+ *
+ * @param progressValue The progress value represented by the pan gesture, passed
+ * as a parameter because the progress property of the BCOVTVProgressView does not update
+ * until playback resumes.
+ *
+ * This method is called on the main thread and should not be blocked.
+ */
+- (void)progressViewPanGestureStateChanged:(NSTimeInterval)progressValue;
+
+/**
+ * Called when a panning gesture ends.
+ *
+ * @param progressValue The progress value represented by the pan gesture, passed
+ * as a parameter because the progress property of the BCOVTVProgressView does not update
+ * until playback resumes.
+ *
+ * This method is called on the main thread and should not be blocked.
+ */
+- (void)progressViewPanGestureStateEnded:(NSTimeInterval)progressValue;
+
 @end
 
 

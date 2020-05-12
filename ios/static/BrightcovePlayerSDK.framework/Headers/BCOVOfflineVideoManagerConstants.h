@@ -150,6 +150,14 @@ extern NSString * const kBCOVFairPlayLicensePurchaseKey;
 extern NSString * const kBCOVFairPlayLicenseRentalDurationKey;
 
 /**
+ * kBCOVFairPlayLicensePlayDurationKey
+ * Specifies the duration of the FairPlay License, in seconds,
+ * after playback has started.
+ * The number should be a positive integer greater than zero.
+ */
+extern NSString * const kBCOVFairPlayLicensePlayDurationKey;
+
+/**
  * The following keys are used to access values in the the
  * BCOVVideo's properties dictionary
  */
@@ -182,6 +190,20 @@ extern NSString * const kBCOVOfflineVideoLicenseRequestTimePropertyKey;
  *   [NSDate dateWithTimeIntervalSinceReferenceDate:number]
  */
 extern NSString * const kBCOVOfflineVideoLicenseAbsoluteExpirationTimePropertyKey;
+
+/**
+ * kBCOVOfflineVideoInitialPlaybackTimeKey
+ * BCOVVideo properties key that stores the time that the video
+ * first started playback. If a playDuration value was used for the
+ * video's license then you can use this value in addition to the
+ * value from kBCOVFairPlayLicensePlayDurationKey to determine
+ * when the dual-expiry license will expire.
+ * This time is stored as the floating point number of seconds since the
+ * standard NSDate reference date.
+ * You can generate an NSDate object from this as follows:
+ *   [NSDate dateWithTimeIntervalSinceReferenceDate:number]
+ */
+extern NSString * const kBCOVOfflineVideoInitialPlaybackTimeKey;
 
 /**
  * kBCOVOfflineVideoDownloadStartTimePropertyKey

@@ -11,11 +11,11 @@
 #import <BrightcovePlayerSDK/BCOVPlaybackController.h>
 
 @class AVRoutePickerView;
+@class AVPictureInPictureController;
 @class BCOVAd;
-@class BCOVPUIPlayerView;
 @class BCOVPUIAdControlView;
 @class BCOVPUIBasicControlView;
-@class AVPictureInPictureController;
+@class BCOVPUIPlayerView;
 
 
 /**
@@ -71,6 +71,7 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
  * Conform to this protocol to receive information for regarding the BCOVPUIPlayerView.
  */
 @protocol BCOVPUIPlayerViewDelegate <NSObject>
+
 @optional
 
 /**
@@ -104,6 +105,23 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
  * @param controlsFadingView The controls fading view that faded in.
  */
 - (void)playerView:(BCOVPUIPlayerView *)playerView controlsFadingViewDidFadeIn:(UIView *)controlsFadingView;
+
+/**
+ * Called just before the thumbnail preview is set up.
+ *
+ * You can implement this to customize the thumbnail preview size for different
+ * devices, layouts, screen modes, etc.
+ *
+ * The `x` value of the CGRect will be ignored, so you can keep the `x` value set to 0.
+ *
+ * If this delegate method is not implemented the size of the thumbnail preview
+ * will be 100x56 with a vertical offset of -60.
+ *
+ * @param playerView The player view that will display the thumbnail preview.
+ *
+ * @return The customized CGRect for the thumbnail preview
+ */
+- (CGRect)playerViewShouldDisplayThumbnailPreviewWithRect:(BCOVPUIPlayerView *)playerView;
 
 /**
  * This delegate method will be called when the learn more button has
@@ -188,6 +206,25 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
 - (void)pictureInPictureControllerWillStartPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
 - (void)pictureInPictureControllerWillStopPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
 - (void)pictureInPictureController:(AVPictureInPictureController *)pictureInPictureController failedToStartPictureInPictureWithError:(NSError *)error;
+
+/**
+ * Progress Slider callbacks
+ */
+
+/**
+ * Called after the SDK handles the event. The delegate should not block the main thread.
+ */
+- (void)progressSliderDidTouchDown:(UISlider *)slider;
+
+/**
+ * Called after the SDK seeks the player to the new progress value. The delegate should not block the main thread.
+ */
+- (void)progressSliderDidTouchUp:(UISlider *)slider;
+
+/**
+ * Called after the SDK handles the event. The delegate should not block the main thread.
+ */
+- (void)progressSliderDidChangeValue:(UISlider *)slider;
 
 @end
 

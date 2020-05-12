@@ -68,7 +68,15 @@
 		
 		<option value="//api/name/playerView:controlsFadingViewWillFadeOut:">- playerView:controlsFadingViewWillFadeOut:</option>
 		
+		<option value="//api/name/playerViewShouldDisplayThumbnailPreviewWithSize:">- playerViewShouldDisplayThumbnailPreviewWithSize:</option>
+		
 		<option value="//api/name/playerViewShouldRequireLinearPlayback:">- playerViewShouldRequireLinearPlayback:</option>
+		
+		<option value="//api/name/progressViewPanGestureStateBegan:">- progressViewPanGestureStateBegan:</option>
+		
+		<option value="//api/name/progressViewPanGestureStateChanged:">- progressViewPanGestureStateChanged:</option>
+		
+		<option value="//api/name/progressViewPanGestureStateEnded:">- progressViewPanGestureStateEnded:</option>
 		
 	</optgroup>
 	
@@ -423,6 +431,260 @@ property of AVPlayerViewController.</p>
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/playerViewShouldDisplayThumbnailPreviewWithSize:" title="playerViewShouldDisplayThumbnailPreviewWithSize:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playerViewShouldDisplayThumbnailPreviewWithSize:">&ndash;&nbsp;playerViewShouldDisplayThumbnailPreviewWithSize:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called just before the thumbnail preview is set up.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (CGSize)playerViewShouldDisplayThumbnailPreviewWithSize:(BCOVTVPlayerView *)<em>playerView</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>playerView</code></th>
+						<td><p>The player view that will display the thumbnail preview.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>The width and height the thumbnail should be displayed.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called just before the thumbnail preview is set up.</p>
+
+<p>You can implement this to customize the thumbnail preview size.</p>
+
+<p>If this delegate method is not implemented the size of the thumbnail preview
+will be 1/5 the size of the playerView.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/progressViewPanGestureStateBegan:" title="progressViewPanGestureStateBegan:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/progressViewPanGestureStateBegan:">&ndash;&nbsp;progressViewPanGestureStateBegan:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when a progressView panning gesture begins.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)progressViewPanGestureStateBegan:(NSTimeInterval)<em>progressValue</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>progressValue</code></th>
+						<td><p>The progress value represented by the pan gesture, passed
+as a parameter because the progress property of the <a href="../Classes/BCOVTVProgressView.html">BCOVTVProgressView</a> does not update
+until playback resumes.</p>
+
+<p>This method is called on the main thread and should not be blocked.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when a progressView panning gesture begins.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/progressViewPanGestureStateChanged:" title="progressViewPanGestureStateChanged:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/progressViewPanGestureStateChanged:">&ndash;&nbsp;progressViewPanGestureStateChanged:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when a progressView panning gesture changes state (location).</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)progressViewPanGestureStateChanged:(NSTimeInterval)<em>progressValue</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>progressValue</code></th>
+						<td><p>The progress value represented by the pan gesture, passed
+as a parameter because the progress property of the <a href="../Classes/BCOVTVProgressView.html">BCOVTVProgressView</a> does not update
+until playback resumes.</p>
+
+<p>This method is called on the main thread and should not be blocked.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when a progressView panning gesture changes state (location).</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/progressViewPanGestureStateEnded:" title="progressViewPanGestureStateEnded:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/progressViewPanGestureStateEnded:">&ndash;&nbsp;progressViewPanGestureStateEnded:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when a panning gesture ends.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)progressViewPanGestureStateEnded:(NSTimeInterval)<em>progressValue</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>progressValue</code></th>
+						<td><p>The progress value represented by the pan gesture, passed
+as a parameter because the progress property of the <a href="../Classes/BCOVTVProgressView.html">BCOVTVProgressView</a> does not update
+until playback resumes.</p>
+
+<p>This method is called on the main thread and should not be blocked.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when a panning gesture ends.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -436,7 +698,7 @@ property of AVPlayerViewController.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-04-22</p>
+						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-05-12</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

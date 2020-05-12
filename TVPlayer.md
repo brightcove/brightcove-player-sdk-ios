@@ -1,4 +1,4 @@
-# Using the TV Player UI With The Brightcove Player SDK for tvOS, version 6.7.5.1079
+# Using the TV Player UI With The Brightcove Player SDK for tvOS, version 6.7.6.1121
 
 ## Overview
 The Brightcove Native Player SDK provides a full set of controls for playback in tvOS on Apple TV known as the TV Player. The TV Player provides playback controls for both regular video content, and video content with Brightcove Server-Side Ad Insertion (SSAI) enabled.
@@ -217,6 +217,6 @@ Support
 ----------------
 If you have questions or need help, we have a support forum for Brightcove's native Player SDKs at <https://groups.google.com/forum/#!forum/brightcove-native-player-sdks>.
 
-[ssai]: https://support.brightcove.com/video-cloud-ssai-native-player-sdks
+[ssai]: https://sdks.support.brightcove.com/features/implementing-server-side-ads-native-player-sdks.html
 [bcovsdk]: https://github.com/brightcove/brightcove-player-sdk-ios
 
