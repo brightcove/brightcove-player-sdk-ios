@@ -1,3 +1,43 @@
+## Release 6.7.7 ##
+
+#### Breaking Changes
+
+* Several Brightcove Player SDK Podspecs have been renamed which might affect your project Podfile. Refer to the *Noteworthy* section of the SDK Core README.
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Updates the `Brightcove-Player-Core` podspec to install the dynamic SDK Core framework. To install the static framework, reference the `Brightcove-Player-SDK-static` podspec instead. 
+
+* Fixes an issue where use of a custom layout prevented scrubbing.
+
+* Fixes an issue where occasionally, a downloaded video could not be played while off-line.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds support for IMA pre-roll ads with SSAI live streams on iOS and tvOS.
+
+* Adds support for version 3.11.4 of the Google IMA SDK for iOS. 
+
+* Adds support for version 4.2.3 of the Google IMA SDK for tvOS.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Updates the `Brightcove-Player-SSAI` podspec to install the dynamic SSAI framework. To install the static framework, reference the `Brightcove-Player-SSAI-static` podspec instead. 
+
+* Improves the behavior of seeking around ads and Seek Without Ads.
+
+### GoogleCast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Updates the `Brightcove-Player-GoogleCast` podspec to install the dynamic Core framework. To install the static Core framework, reference the `Brightcove-Player-GoogleCast-static` podspec instead.
+
 ## Release 6.7.6 ##
 
 ### Brightcove Player SDK for iOS (Core)

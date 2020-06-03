@@ -1,4 +1,4 @@
-iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.7.6.1121
+iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.7.7.1171
 --------------
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -123,17 +123,13 @@ At this point, the download will continue even if the user sends the app to the 
 
 ### Downloading Secondary Tracks
 
-Subtitle, caption, and audio tracks are collectively known as "secondary tracks", and are downloaded differently on different versions of iOS (10 through 13).
-
-#### Downloading Secondary Tracks
-
-Secondary tracks are downloaded together with the main video using a single AVAggregateAssetDownloadTask.
+Subtitle, caption and audio tracks of a language are known collectively as a media selection option. A video can have multiple media selection options, for example, English, French and Spanish. The language settings of the device determine the *preferred* media selection option, for example, English. When downloading a video for offline viewing, the preferred media selection option and any chosen additional media selection options are downloaded together in response to a single download request. Internally, the SDK manages the download using a single AVAggregateAssetDownloadTask.
 
 Downloading involves these basic steps:
 
-1. Select the tracks you would like to download. Tracks are selected as AVMediaSelection objects and BCOVOfflineVideoManager provides the utility method `-[BCOVOfflineVideoManager urlAssetForVideo:error:]` to help you choose AVMediaSelections of interest. Refer to the "Finding Media Selections" methods of AVAsset.
+1. Select the tracks you would like to download. Tracks are selected as AVMediaSelection objects and BCOVOfflineVideoManager provides the utility method `-[BCOVOfflineVideoManager urlAssetForVideo:error:]` to help you choose AVMediaSelections of interest. Refer to the "*Finding Media Selections*" methods of AVAsset.
 1. Create an NSArray of your media selections, and pass it to `-[BCOVOfflineVideoManager requestVideoDownload:mediaSelections:parameters:completion:]` or pass `nil` to automatically download the preferred AVMediaSelections.
-2. Track download progress through new methods in the `BCOVOfflineVideoManagerDelegate` protocol.
+2. Track download progress using methods in the `BCOVOfflineVideoManagerDelegate` protocol.
 
 Some tracks may have already been downloaded as part of the initial video download.
 

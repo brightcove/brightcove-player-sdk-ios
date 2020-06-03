@@ -44,7 +44,7 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 6.7.6.1121</h1>
+						<h1>Brightcove Player SDK for iOS, version 6.7.7.1171</h1>
 
 <h1>Table of Contents</h1>
 
@@ -105,6 +105,82 @@
 <h1>Noteworthy <a name="Noteworthy"></a></h1>
 
 <p>All SDK components - the core and plugin frameworks - are released with the same version number. When upgrading any single component, upgrade all components to the same version.</p>
+
+<p><strong>CocoaPods Podspec names (since release 6.7.7)</strong></p>
+
+<p>Release 6.7.7 of the Brightcove Player SDK renames some Podspec files in order to improve CocoaPods compliance. Several Podspec files retain original names. Where there is a choice of dynamic and static frameworks, static framework Podspec files are named with a <em>-static</em> suffix. Prior to Release 6.7.7, static Brightcove frameworks were the default and dynamic frameworks were differentiated by a subspec name, for example <code>Brightcove-Player-Core/dynamic</code>. Using the Core SDK as an example:</p>
+
+<ul>
+<li>If your Podfile imports <code>Brightcove-Player-Core/dynamic</code>, rename it <code>Brightcove-Player-Core</code>.</li>
+<li>If your Podfile imports <code>Brightcove-Player-Core/static</code>, rename it <code>Brightcove-Player-Core-static</code>.</li>
+<li>If your Podfile imports <code>Brightcove-Player-Core</code>, rename it <code>Brightcove-Player-Core-static</code> or better, leave it unchanged and make the switch to dynamic frameworks.</li>
+</ul>
+
+
+<table>
+<thead>
+<tr>
+<th>Podspec Name  </th>
+<th>  Framework Type  </th>
+<th>  Dependency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brightcove-Player-Core </td>
+<td> dynamic </td>
+<td> -</td>
+</tr>
+<tr>
+<td>Brightcove-Player-Core-static </td>
+<td> static  </td>
+<td> -</td>
+</tr>
+<tr>
+<td>Brightcove-Player-FreeWheel </td>
+<td> static </td>
+<td> Brightcove-Player-Core-static for iOS, Brightcove-Player-Core for tvOS</td>
+</tr>
+<tr>
+<td>Brightcove-Player-GoogleCast </td>
+<td> static </td>
+<td> Brightcove-Player-Core</td>
+</tr>
+<tr>
+<td>Brightcove-Player-GoogleCast-static </td>
+<td> static </td>
+<td> Brightcove-Player-Core-static</td>
+</tr>
+<tr>
+<td>Brightcove-Player-IMA </td>
+<td> dynamic </td>
+<td> Brightcove-Player-Core</td>
+</tr>
+<tr>
+<td>Brightcove-Player-Omniture </td>
+<td> static </td>
+<td> Brightcove-Player-Core-static</td>
+</tr>
+<tr>
+<td>Brightcove-Player-Pulse </td>
+<td> dynamic </td>
+<td> Brightcove-Player-Core</td>
+</tr>
+<tr>
+<td>Brightcove-Player-SSAI </td>
+<td> dynamic </td>
+<td> Brightcove-Player-Core</td>
+</tr>
+<tr>
+<td>Brightcove-Player-SSAI-static </td>
+<td> static </td>
+<td> Brightcove-Player-Core-static</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Dynamic frameworks are preferred over static library frameworks and there will be additional moves to dynamic frameworks in future releases.</p>
 
 <p><strong>CocoaPods Podspec names (since release 6.0.0)</strong></p>
 
@@ -170,9 +246,9 @@
 
 <p>When using Brightcove CocoaPods in your project, add <code>source '</code>https://github.com/brightcove/BrightcoveSpecs.git'<code></code> to the start of your Podfile.</p>
 
-<p>Specifying the default pod <code>Brightcove-Player-Core</code> will install the static library framework. To install the dynamic framework, declare the pod with the <code>dynamic</code> subspec: <code>Brightcove-Player-Core/dynamic</code></p>
+<p>Specifying the default pod <code>Brightcove-Player-Core</code> will install the dynamic library framework. To install the static framework, append <code>-static</code> like this: <code>pod 'Brightcove-Player-Core-static'</code>.</p>
 
-<p>Static Framework example:</p>
+<p>Dynamic Framework example:</p>
 
 <pre><code>source 'https://github.com/CocoaPods/Specs'
 source 'https://github.com/brightcove/BrightcoveSpecs.git'
@@ -185,7 +261,7 @@ target 'MyVideoPlayer' do
 end
 </code></pre>
 
-<p>Dynamic Framework example:</p>
+<p>Static Framework example:</p>
 
 <pre><code>source 'https://github.com/CocoaPods/Specs'
 source 'https://github.com/brightcove/BrightcoveSpecs.git'
@@ -194,7 +270,7 @@ platform :ios, '11.0'
 use_frameworks!
 
 target 'MyVideoPlayer' do
-  pod 'Brightcove-Player-Core/dynamic'
+  pod 'Brightcove-Player-Core-static'
 end
 </code></pre>
 
@@ -1147,17 +1223,30 @@ self.playbackController.options = mutableOptions;
 
 <p>The default value of kBCOVAVPlayerViewControllerCompatibilityKey is @NO, which means that a <a href="Protocols/BCOVPlaybackController.html">BCOVPlaybackController</a> created without this dictionary property explicitly set will use the BCOVPlaybackSession&rsquo;s AVPlayerLayer by default.</p>
 
+<h2>Sample Projects</h2>
+
+<p>We have sample projects demonstrating the use of AVPlayerViewController with the Brightcove iOS SDK.  You can find the <a href="https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/NativeControls">iOS sample project here</a> and the <a href="https://github.com/BrightcoveOS/ios-player-samples/tree/master/IMA/NativeControlsIMAPlayer_tvOS">tvOS sample project here</a>.</p>
+
 <h2>Limitations to Using the AVPlayerViewController</h2>
 
 <p><strong>Advertising:</strong></p>
 
-<p>Using the AVPlayerViewController&rsquo;s AVPlayerLayer will not work with the iOS SDK advertising plugins:</p>
+<p>The Brightcove IMA and FreeWheel ad plugins are compatible when using AVPlayerViewController. You can use the AVPlayerViewController&rsquo;s <code>contentOverlayView</code> for the view in which to display ads.</p>
 
-<p>IMA Plugin
-FreeWheel Plugin
-SSAI Plugin</p>
+<p>You may wish to hide/show the AVPlayerViewController&rsquo;s playback controls before and after ads play:</p>
 
-<p>due to the use by those plugins of a separate instance of the AVPlayer.</p>
+<pre><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)controller playbackSession:(id&lt;BCOVPlaybackSession&gt;)session didEnterAdSequence:(BCOVAdSequence *)adSequence
+{
+    self.avpvc.showsPlaybackControls = NO;
+}
+
+- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)controller playbackSession:(id&lt;BCOVPlaybackSession&gt;)session didExitAdSequence:(BCOVAdSequence *)adSequence
+{
+    self.avpvc.showsPlaybackControls = YES;
+}
+</code></pre>
+
+<p>The Brightcove SSAI and Pulse ad plugins are not currently compatible with AVPlayerViewController.</p>
 
 <p><strong>Analytics:</strong></p>
 
@@ -1460,7 +1549,7 @@ self.playerView.controlsView.progressSlider.accessibilityLabel = @"Timeline";
 					<footer>
 						<div class="footer-copyright">
 							
-							<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-05-12</p>
+							<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-06-03</p>
 							
 							
 							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
