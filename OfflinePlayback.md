@@ -1,11 +1,13 @@
-iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.7.7.1171
+iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.3.12
 --------------
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
 
 ### Requirements:
 
-- Brightcove Native Player SDK v6.6.2+
+- iOS 10.0+
+- Xcode 9+
+- Brightcove Native Player SDK v6.2.0+
 - Brightcove Account with Dynamic Delivery
 
 iOS does not allow FairPlay-protected video to display in a simulator, nor does it allow video downloads to a simulator, so it's important to develop on an actual device.
@@ -14,7 +16,7 @@ iOS does not allow FairPlay-protected video to display in a simulator, nor does 
 
 When you request a video download, you will be given a token that is used to keep track of both the active download and the offline video in device storage. The token is of type `BCOVOfflineVideoToken`, and is referred to as a token rather than an object because it can be persisted, and is valid across instances of the app.
 
-Videos are stored in the app's Library directory, in a subdirectory determined by iOS. Apple specifically requires that these videos stay in this location. Be aware that videos can be deleted by iOS under low-storage conditions, and users can delete downloaded videos directly from the iOS Settings app. Also, videos and their associated metadata are not backed up to iCloud.
+Videos are stored in the app's Library directory, in a subdirectory determined by iOS. Apple specifically requires that these videos stay in this location. Be aware that videos can be deleted by iOS under low-storage conditions, and starting with iOS 11, users can delete downloaded videos directly from the iOS Settings app. Also, videos and their associated metadata are not backed up to iCloud.
 
 A FairPlay license can be requested either when the video download is requested, or preloaded ahead of time with a separate method call. You can specify either a purchase license, or a rental license with an associated rental duration. The license rental duration begins from the moment the request is made with the license server.
 
@@ -49,7 +51,7 @@ If you want to change the `kBCOVOfflineVideoManagerAllowsCellularDownloadKey` va
 
 ### Check If A Video Can Be Downloaded
 
-In your user interface, you should indicate if a video is eligible for download. To do this,  examine the `BCOVVideo.canBeDownloaded` property. This Boolean property checks the status of the video's `offline_enabled` flag that is settable through the [Brightcove CMS API](https://sdks.support.brightcove.com/features/offline-playback-native-player-sdks.html#Download_management).
+In your user interface, you should indicate if a video is eligible for download. To do this,  examine the `BCOVVideo.canBeDownloaded` property. This Boolean property checks the status of the video's `offline_enabled` flag that is settable through the [Brightcove CMS API](https://support.brightcove.com/offline-playback-native-player-sdks#Download_management).
 
 ### Download A Video
 
@@ -77,23 +79,11 @@ parameters = @{
 };
 ```
 
-You can also specify how long a license should remain valid after the video has begun playback. This is known as Dual Expiry or a Rental Profile:
-
-```
-parameters = @{
-    // 30 days in seconds
-    kBCOVFairPlayLicenseRentalDurationKey: @(60 * 60 * 24 * 30),
-    // 24 hours in seconds
-    kBCOVFairPlayLicensePlayDurationKey: @(60 * 60 * 24)
-};
-``` 
-**NOTE: If a license expires during playback of a video the video will not stop, but attempting to reload the video will result in a "license expired" error.**
-
 The completion handler is where you asynchronously receive the offline video token or the error. You can store a reference to this offline video token if the error is nil. You will receive notficiation of progress and completion thorugh delegate methods.
 
 ### Preload A FairPLay license
 
-If you plan to download multiple FairPlay-protected videos, it's a good idea to prelaod all the FairPlay licenses beforehand, because FairPlay license exchange cannot happen while the app is in the background. Preload a FairPlay license with a similar call:
+If you plan to download multiple FairPlay-protected videos, it's a good idea to prelaod all the FairPlay licenses beforehand, because FairPlay license exchange cannot happen while the app is in the background. In iOS 10.3 and later, preload a FairPlay license with a similar call:
 
 ```
 [BCOVOfflineVideoManager.sharedManager
@@ -110,7 +100,6 @@ An offline video token will be established for the download at this point. After
 ```
 [BCOVOfflineVideoManager.sharedManager
     requestVideoDownload:video
-    mediaSelections:nil
     parameters:nil
     completion:^(BCOVOfflineVideoToken offlineVideoToken, NSError *error) {
 
@@ -121,17 +110,86 @@ An offline video token will be established for the download at this point. After
 
 At this point, the download will continue even if the user sends the app to the background. Keep in mind, however, that a FairPlay license rental duration begins from the time when the license is requested.
 
+In iOS 10.2 and earlier, license prelaoding is not possible. It's important to make sure that a video begins downloading before allowing the user to move the app to the background; this ensures that the FairPlay license has been established. To prevent issues with background license exchange we recommending limiting downloads to one or two videos at a time on iOS 10.2 and earlier.
+
 ### Downloading Secondary Tracks
 
-Subtitle, caption and audio tracks of a language are known collectively as a media selection option. A video can have multiple media selection options, for example, English, French and Spanish. The language settings of the device determine the *preferred* media selection option, for example, English. When downloading a video for offline viewing, the preferred media selection option and any chosen additional media selection options are downloaded together in response to a single download request. Internally, the SDK manages the download using a single AVAggregateAssetDownloadTask.
+Subtitle, caption, and audio tracks are collectively known as "secondary tracks", and are downloaded differently on iOS 10.x, and ios 11+.
 
-Downloading involves these basic steps:
+#### Downloading Secondary Tracks On iOS 11+
 
-1. Select the tracks you would like to download. Tracks are selected as AVMediaSelection objects and BCOVOfflineVideoManager provides the utility method `-[BCOVOfflineVideoManager urlAssetForVideo:error:]` to help you choose AVMediaSelections of interest. Refer to the "*Finding Media Selections*" methods of AVAsset.
-1. Create an NSArray of your media selections, and pass it to `-[BCOVOfflineVideoManager requestVideoDownload:mediaSelections:parameters:completion:]` or pass `nil` to automatically download the preferred AVMediaSelections.
-2. Track download progress using methods in the `BCOVOfflineVideoManagerDelegate` protocol.
+iOS 11 introduced a newer, more reliable way of downloading secondary tracks using a new AVFoundation class, AVAggregateAssetDownloadTask.
+
+Downloading with iOS 11 involves these basic steps:
+
+1. Make sure the primary video has completed downloading.
+1. Select which tracks you would like to download. Tracks are selected as AVMediaSelection objects. You can see all the available AVMediaSelection objects for a downloaded video using the method `-[AVURLAsset allMediaSelections]`.
+1. Create an NSArray out of your media selections, and pass it to `-[BCOVOfflineVideoManager requestMediaSelectionsDownload:offlineVideoToken:]`.
+2. Track download progress through new methods in the `BCOVOfflineVideoManagerDelegate` protocol. Secondary tracks use the same offline video token as the primary video.
 
 Some tracks may have already been downloaded as part of the initial video download.
+
+#### Downloading Secondary Tracks On iOS 10
+
+iOS 10.x does not handle downloading of subtitle and caption tracks reliably, so we have created a custom WebVTT downloader and renderer for subtitles in your HLS videos. This support is known as Sideband Subtitles.
+
+Downloading secondary audio tracks is not available for iOS 10.
+
+To download subtitles, first check what subtitle languages are available in your video:
+
+```
+[BCOVOfflineVideoManager.sharedManager
+    alternativeRenditionAttributesDictionariesForVideo:video
+    completion:^(NSArray<NSDictionary *> *alternativeRenditionAttributesDictionariesArray, NSError *error) {
+
+	// Check available languages
+
+	// This set collects the language code for each language
+	NSMutableSet *languagesSet = NSMutableSet.set;
+	
+	// Loop through each of the alternative rendition tracks
+	for (NSDictionary *alternativeRenditionAttributesDictionary in alternativeRenditionAttributesDictionariesArray)
+	{
+		NSString *typeString = alternativeRenditionAttributesDictionary[@"TYPE"];
+		NSString *languageString = alternativeRenditionAttributesDictionary[@"LANGUAGE"];
+	
+		// If it's a subtitle with a valid language code, add it to the set	
+		if ([typeString isEqualToString:@"SUBTITLES"] && languageString != nil)
+		{
+			[languagesSet addObject:languageString];
+		}
+	}
+	
+	// Get array of all languages from set and save it
+	self.languagesArray = languagesSet.allObjects;
+
+}];
+```
+
+"Alternative renditions" is the HLS term for subtitles and audio tracks that provide a different way of presenting the main content.
+
+The `alternativeRenditionAttributesDictionariesArray` array will contain an array of dictionaries, one for each alternative rendition. Attribute keys are taken directly from the attribute names in the HLS specification. You can check dictionaries whose "TYPE" key is "SUBTITLES", and record the "LANGUAGE" field used by each one. Once you have the languages you want to download, put them in an array and pass them along with your other download parameters to the download request method.
+
+To download all the languages we found above, you can pass the entire array as the value for `kBCOVOfflineVideoManagerPlaybackSubtitleLanguageKey `.
+
+```
+parameters = @{
+	// Purchase license
+	kBCOVFairPlayLicensePurchaseKey: @(YES),
+	
+	// Languages to download
+	kBCOVOfflineVideoManagerPlaybackSubtitleLanguageKey: self.languagesArray
+};
+
+[BCOVOfflineVideoManager.sharedManager
+    requestVideoDownload:video
+    parameters:parameters
+    completion:^(BCOVOfflineVideoToken offlineVideoToken, NSError *error) {
+
+    // store offlineVideoToken or handle error
+
+}];
+```
 
 **Displaying Sideband Subtitles**
 
@@ -389,7 +447,7 @@ You should use these methods rather than operating on the internal `AVAssetDownl
 
 ### Renewing a FairPlay License
 
-Starting with version 6.2.2 of the iOS Native Player SDK, you can renew the FairPlay license for a downloaded video without re-downloading the video. The device must be online for license renewal to succeed.
+Starting with version 6.2.2 of the iOS Native Player SDK, you can renew the FairPlay license for a downloaded video without re-downloading the video. The device must be online for license renewal to succeed. This functionality is available when running on iOS 10.3 or later.
 
 To renew a license, call `-renewFairPlayLicense:video:parameters:completion:` with the offline video token for your previously-downloaded video, and a parameter dictionary specifying the new license terms. The parameter dictionary must not contain bitrate or subtitle language information.
 
@@ -423,22 +481,6 @@ For example, here is how you can renew a FairPlay license with a new 30-day rent
 }];
 
 
-```
-
-If you are using the Playback Authorization Service you'll need to use the renew FairPlay license method that accepts an authorization token:
-
-```
-    // Request license renewal
-    [BCOVOfflineVideoManager.sharedManager renewFairPlayLicense:offlineVideoToken
-                                                          video:video // recent video from Playback API or Playback Service class
-                                                      authToken: authToken
-                                                     parameters:parameters
-                                                     completion:^(BCOVOfflineVideoToken offlineVideoToken, NSError *error)
-    {
-
-        // handle errors
-
-    }];
 ```
 
 When license renewal is finshed, the completion block will be called with the same offline video token that was passed in, plus an `NSError` indicating any problem that occurred (or `nil` if no error). This block is not called on any specific thread.
@@ -497,7 +539,7 @@ Prior to system version 11.3, iOS did not realiably handle pausing and resuming 
 
 **Sequential Downloads**
 
-You can preload FairPlay licenses for a set of videos, and then create a queue for downloading videos one at a time until they are all complete.
+On iOS 10.3 and later, you can preload FairPlay licenses for a set of videos, and then create a queue for downloading videos one at a time until they are all complete.
 
 When doing this it's a good idea to enable the "Background Fetch" mode for the application so that you can be woken up periodically to handle download completions and kick off new downloads.
 
@@ -512,6 +554,8 @@ Doing this has several potentially unexpected side effects:
 - When you start playing, progress on the download task may stop. The `AVPlayer` appears to take over all network activity to give priority to buffering and displaying the playing video. This is normal behavior.
 
 - When you stop playing, the download task may not resume. This will happen if the video's session is still active in the `BCOVPlaybackController`. To clear out the current session, you can play a new video, or delete the playback controller. Be sure you don't store the current session in a strong property.
+
+- In iOS 10.x, when you begin playback of a video that is downloading, the `AVPlayer` may initially seek to the end of the video, requiring the user to manually seek back to the beginning. This is an AVFoundation bug and works normally in the latest versions of iOS 11.
 
 ### AirPlay
 
@@ -533,10 +577,10 @@ If this is not possible, and you still need to create another playback controlle
 
 ### Specifying the Download Display Name
 
-Users can directly examine and optionally delete downloaded videos using the Settings app. The displayed video name is taken from the "name" property of the `BCOVVideo` object. If the "name" property is not present, the offline video token's value will be used instead.
+In iOS 11+, users can directly examine and optionally delete downloaded videos using the Settings app. The displayed video name is taken from the "name" property of the `BCOVVideo` object. If the "name" property is not present, the offline video token's value will be used instead.
 
 To provide a more customized experience, you can set a display name for the video asset in the options dictionary passed to `-requestVideoDownload:parameters:completion:` (or when preloading the license). Use the `kBCOVOfflineVideoManagerDisplayNameKey` key to set an `NSString` as the new asset display name.
 
 Note that iOS uses the asset name string as part of the downloaded video's file path, so you should avoid characters that would not be valid in a POSIX path, like a "/" character.
 
-You may choose to replace these with more standardized names using the `kBCOVOfflineVideoManagerDisplayNameKey` option.
+Also note that iOS 10 does not handle all unicode names properly, so on iOS 10, any unicode strings will instead use the offline video token as the display name. You may choose to replace these with more standardized names using the `kBCOVOfflineVideoManagerDisplayNameKey` option.

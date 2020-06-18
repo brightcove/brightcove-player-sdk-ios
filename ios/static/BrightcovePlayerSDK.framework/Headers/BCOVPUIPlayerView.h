@@ -10,12 +10,10 @@
 
 #import <BrightcovePlayerSDK/BCOVPlaybackController.h>
 
-@class AVRoutePickerView;
-@class AVPictureInPictureController;
 @class BCOVAd;
+@class BCOVPUIPlayerView;
 @class BCOVPUIAdControlView;
 @class BCOVPUIBasicControlView;
-@class BCOVPUIPlayerView;
 
 
 /**
@@ -71,7 +69,6 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
  * Conform to this protocol to receive information for regarding the BCOVPUIPlayerView.
  */
 @protocol BCOVPUIPlayerViewDelegate <NSObject>
-
 @optional
 
 /**
@@ -105,23 +102,6 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
  * @param controlsFadingView The controls fading view that faded in.
  */
 - (void)playerView:(BCOVPUIPlayerView *)playerView controlsFadingViewDidFadeIn:(UIView *)controlsFadingView;
-
-/**
- * Called just before the thumbnail preview is set up.
- *
- * You can implement this to customize the thumbnail preview size for different
- * devices, layouts, screen modes, etc.
- *
- * The `x` value of the CGRect will be ignored, so you can keep the `x` value set to 0.
- *
- * If this delegate method is not implemented the size of the thumbnail preview
- * will be 100x56 with a vertical offset of -60.
- *
- * @param playerView The player view that will display the thumbnail preview.
- *
- * @return The customized CGRect for the thumbnail preview
- */
-- (CGRect)playerViewShouldDisplayThumbnailPreviewWithRect:(BCOVPUIPlayerView *)playerView;
 
 /**
  * This delegate method will be called when the learn more button has
@@ -174,17 +154,6 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
 - (void)didReturnFromExternalBrowserWithAd:(BCOVAd *)ad;
 
 /**
- * Informs the delegate that the AVRoutePickerView will start presenting routes to the user.
- */
-- (void)routePickerViewWillBeginPresentingRoutes:(AVRoutePickerView *)routePickerView;
-
-/**
- * Informs the delegate that the AVRoutePickerView finished presenting routes to the user.
- */
-- (void)routePickerViewDidEndPresentingRoutes:(AVRoutePickerView *)routePickerView;
-
-
-/**
  * Delegate methods related to Video 360
  */
 
@@ -198,93 +167,13 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
 - (void)didSetVideo360NavigationMethod:(BCOVPUIVideo360NavigationMethod)navigationMethod
                        projectionStyle:(BCOVVideo360ProjectionStyle)projectionStyle;
 
-/**
- * Pass-through AVPictureInPictureControllerDelegate methods
- */
-- (void)pictureInPictureControllerDidStartPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
-- (void)pictureInPictureControllerDidStopPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
-- (void)pictureInPictureControllerWillStartPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
-- (void)pictureInPictureControllerWillStopPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
-- (void)pictureInPictureController:(AVPictureInPictureController *)pictureInPictureController failedToStartPictureInPictureWithError:(NSError *)error;
-
-/**
- * Progress Slider callbacks
- */
-
-/**
- * Called after the SDK handles the event. The delegate should not block the main thread.
- */
-- (void)progressSliderDidTouchDown:(UISlider *)slider;
-
-/**
- * Called after the SDK seeks the player to the new progress value. The delegate should not block the main thread.
- */
-- (void)progressSliderDidTouchUp:(UISlider *)slider;
-
-/**
- * Called after the SDK handles the event. The delegate should not block the main thread.
- */
-- (void)progressSliderDidChangeValue:(UISlider *)slider;
-
 @end
 
-@interface BCOVPreferredBitrateConfig : NSObject
-
-/**
- * Optional string to be used for title of the menu view controller
- */
-@property (nonatomic, copy) NSString *menuTitle;
-
-/**
- * Required array of desired bitrate options
- * Format should be an array of single key:value pair dictionaries
- * Example: @{@"Auto":@(0)}, @{@"Setting 1":@(aBitrateValue)}, @{@"Setting 2":@(aBitrateValue)}]
- */
-@property (nonatomic, strong) NSArray<NSDictionary<NSString *, NSNumber *> *> *bitrateOptions;
-
-/**
- * The array index of the bitrate option that should be initially selected.
- */
-@property (nonatomic, assign, readonly) NSUInteger initialSelectionIndex;
-
-/**
- * Convenience initializer for BCOVPreferredBitrateConfig with the
- * given options
- *
- * @param menuTitle String value to be used for the menu title
- * @param bitrateOptions Array of bitrate options
- *
- * @return The fully initialized BCOVPreferredBitrateConfig object
- */
-+ (BCOVPreferredBitrateConfig *)configWithMenuTitle:(NSString *)menuTitle
-                                  andBitrateOptions:(NSArray<NSDictionary<NSString *, NSNumber *> *> *)bitrateOptions;
-
-/**
- * Convenience initializer for BCOVPreferredBitrateConfig with the
- * given options
- *
- * @param menuTitle String value to be used for the menu title
- * @param bitrateOptions Array of bitrate options
- * @param initialSelectionIndex The index of the initial bitrate option
- *
- * @return The fully initialized BCOVPreferredBitrateConfig object
-*/
-+ (BCOVPreferredBitrateConfig *)configWithMenuTitle:(NSString *)menuTitle
-                                     bitrateOptions:(NSArray<NSDictionary<NSString *, NSNumber *> *> *)bitrateOptions
-                         andIndexofInitialSelection:(NSInteger)initialSelectionIndex;
-
-@end
 
 /**
  * Optional configuration for a player view.
  */
 @interface BCOVPUIPlayerViewOptions : NSObject
-
-/**
- * The configuration for displaying preferred bitrate
- * options to the end-user
- */
-@property (nonatomic, strong) BCOVPreferredBitrateConfig *preferredBitrateConfig;
 
 /**
  * This view controller will be used for features that require a presenting view
@@ -319,13 +208,8 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
 
 
 /**
- * The style to use for opening web views when the Learn More button is tapped.
+ * The method to use for opening web views when the Learn More button is tapped.
  * Defaults to BCOVPUILearnMoreButtonUseExternalBrowser.
- *
- * NOTE: The IMA SDK uses its own internal behavior for the Learn More button.
- * Thus this property will have no effect with IMA ads.
- * See `webOpenerPresentingController` in the `IMAAdsRenderingSettings` class
- * for more information.
  */
 @property (nonatomic, assign) BCOVPUILearnMoreButtonBrowserStyle learnMoreButtonBrowserStyle;
 
@@ -388,12 +272,6 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
  * Defaults to 0.0.
  */
 @property (nonatomic, assign) float rotateMax;
-
-/**
- * Will display the Picture-in-Picture button on the control bar
- * on supported devices.
- */
-@property (nonatomic, assign) BOOL showPictureInPictureButton;
 
 @end
 

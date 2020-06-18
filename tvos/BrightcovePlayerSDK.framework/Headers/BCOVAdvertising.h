@@ -258,3 +258,21 @@ extern NSString * const kBCOVPlaybackSessionLifecycleEventWillPauseForAd;
 
 @end
 
+
+@interface BCOVAdSequence (Unavailable)
+
+/**
+ * Private method.
+ */
+- (instancetype)init __attribute__((unavailable("Use `-[BCOVAdSequence initWithAds:properties:]` instead.")));
+
+@end
+
+@interface BCOVAd (Unavailable)
+
+/**
+ * Private method.
+ */
+- (instancetype)init __attribute__((unavailable("Use `-[BCOVAd initWithTitle:adId:beginTime:duration:properties:]` instead.")));
+
+@end

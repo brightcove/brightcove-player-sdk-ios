@@ -60,8 +60,6 @@
 		
 		<option value="//api/name/additionalHTTPRequestHeaders">additionalHTTPRequestHeaders</option>
 		
-		<option value="//api/name/policyKey">policyKey</option>
-		
 	</optgroup>
 	
 
@@ -74,19 +72,11 @@
 		
 		<option value="//api/name/initWithAccountId:policyKey:baseURLStr:">- initWithAccountId:policyKey:baseURLStr:</option>
 		
-		<option value="//api/name/requestForPlaylistWithPlaylistID:authToken:parameters:">- requestForPlaylistWithPlaylistID:authToken:parameters:</option>
-		
 		<option value="//api/name/requestForPlaylistWithPlaylistID:parameters:">- requestForPlaylistWithPlaylistID:parameters:</option>
-		
-		<option value="//api/name/requestForPlaylistWithReferenceID:authToken:parameters:">- requestForPlaylistWithReferenceID:authToken:parameters:</option>
 		
 		<option value="//api/name/requestForPlaylistWithReferenceID:parameters:">- requestForPlaylistWithReferenceID:parameters:</option>
 		
-		<option value="//api/name/requestForVideoWithReferenceID:authToken:parameters:">- requestForVideoWithReferenceID:authToken:parameters:</option>
-		
 		<option value="//api/name/requestForVideoWithReferenceID:parameters:">- requestForVideoWithReferenceID:parameters:</option>
-		
-		<option value="//api/name/requestForVideoWithVideoID:authToken:parameters:">- requestForVideoWithVideoID:authToken:parameters:</option>
 		
 		<option value="//api/name/requestForVideoWithVideoID:parameters:">- requestForVideoWithVideoID:parameters:</option>
 		
@@ -170,52 +160,6 @@ requests for videos from Brightcove’s Playback API.</p>
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Videocloud Account Id.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlaybackServiceRequestFactory.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/policyKey" title="policyKey"></a>
-	<h3 class="method-title"><code><a href="#//api/name/policyKey">&nbsp;&nbsp;policyKey</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Videocloud Policy Key</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *policyKey</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Videocloud Policy Key</p>
 			</div>
 			
 
@@ -340,8 +284,6 @@ string used by the returned instance is <a href="https://edge.api.brightcove.com
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Returns an initialized instance with the specified policy. The base URL
 string used by the returned instance is <a href="https://edge.api.brightcove.com/playback/v1">https://edge.api.brightcove.com/playback/v1</a> .</p>
-
-<p>If using the Edge Playback Service, the <a href="#//api/name/policyKey">policyKey</a> value should be nil</p>
 			</div>
 			
 
@@ -415,8 +357,6 @@ string used by the returned instance is <a href="https://edge.api.brightcove.com
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Returns an initialized instance with the specified token, account, and base URL string.</p>
-
-<p>If using the Edge Playback Service, the <a href="#//api/name/policyKey">policyKey</a> value should be nil</p>
 			</div>
 			
 
@@ -461,80 +401,6 @@ string used by the returned instance is <a href="https://edge.api.brightcove.com
 					<tr>
 						<th scope="row" class="argument-name"><code>playlistId</code></th>
 						<td><p>Id of the playlist to request.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>parameters that will be added as URL parameters to the request.
-These parameters will override any default parameters that had been set.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>Built NSURLRequest that can be used to fetch the playlist.</p>
-			</div>
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Constructs a request for a playlist by the playlist id.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlaybackServiceRequestFactory.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/requestForPlaylistWithPlaylistID:authToken:parameters:" title="requestForPlaylistWithPlaylistID:authToken:parameters:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/requestForPlaylistWithPlaylistID:authToken:parameters:">&ndash;&nbsp;requestForPlaylistWithPlaylistID:authToken:parameters:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Constructs a request for a playlist by the playlist id.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (NSURLRequest *)requestForPlaylistWithPlaylistID:(NSString *)<em>playlistId</em> authToken:(NSString *)<em>authToken</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>playlistId</code></th>
-						<td><p>Id of the playlist to request.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>authToken</code></th>
-						<td><p>The authorization token with which to validate the video&rsquo;s license</p></td>
 					</tr>
 				
 					<tr>
@@ -646,80 +512,6 @@ These parameters will override any default parameters that had been set.</p></td
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/requestForPlaylistWithReferenceID:authToken:parameters:" title="requestForPlaylistWithReferenceID:authToken:parameters:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/requestForPlaylistWithReferenceID:authToken:parameters:">&ndash;&nbsp;requestForPlaylistWithReferenceID:authToken:parameters:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Constructs a request for a playlist by the reference id.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (NSURLRequest *)requestForPlaylistWithReferenceID:(NSString *)<em>referenceId</em> authToken:(NSString *)<em>authToken</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>referenceId</code></th>
-						<td><p>Reference id of the playlist to request.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>authToken</code></th>
-						<td><p>The authorization token with which to validate the video&rsquo;s license</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>parameters that will be added as URL parameters to the request.
-These parameters will override any default parameters that had been set.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>Built NSURLRequest that can be used to fetch the playlist.</p>
-			</div>
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Constructs a request for a playlist by the reference id.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlaybackServiceRequestFactory.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
 	<a name="//api/name/requestForVideoWithVideoID:parameters:" title="requestForVideoWithVideoID:parameters:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/requestForVideoWithVideoID:parameters:">&ndash;&nbsp;requestForVideoWithVideoID:parameters:</a></code>
 </h3>
@@ -747,80 +539,6 @@ These parameters will override any default parameters that had been set.</p></td
 					<tr>
 						<th scope="row" class="argument-name"><code>videoId</code></th>
 						<td><p>Id of the video to request.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>parameters that will be added as URL parameters to the request.
-These parameters will override any default parameters that had been set.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>Built NSURLRequest that can be used to fetch the video.</p>
-			</div>
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Constructs a request for a video by the video id.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlaybackServiceRequestFactory.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/requestForVideoWithVideoID:authToken:parameters:" title="requestForVideoWithVideoID:authToken:parameters:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/requestForVideoWithVideoID:authToken:parameters:">&ndash;&nbsp;requestForVideoWithVideoID:authToken:parameters:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Constructs a request for a video by the video id.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (NSURLRequest *)requestForVideoWithVideoID:(NSString *)<em>videoId</em> authToken:(NSString *)<em>authToken</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>videoId</code></th>
-						<td><p>Id of the video to request.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>authToken</code></th>
-						<td><p>The authorization token with which to validate the video&rsquo;s license</p></td>
 					</tr>
 				
 					<tr>
@@ -931,80 +649,6 @@ These parameters will override any default parameters that had been set.</p></td
 			
 		</div>
 	</div>
-</div><div class="section-method">
-	<a name="//api/name/requestForVideoWithReferenceID:authToken:parameters:" title="requestForVideoWithReferenceID:authToken:parameters:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/requestForVideoWithReferenceID:authToken:parameters:">&ndash;&nbsp;requestForVideoWithReferenceID:authToken:parameters:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Constructs a request for a video by the reference id.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (NSURLRequest *)requestForVideoWithReferenceID:(NSString *)<em>referenceId</em> authToken:(NSString *)<em>authToken</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>referenceId</code></th>
-						<td><p>Reference id of the video to request.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>authToken</code></th>
-						<td><p>The authorization token with which to validate the video&rsquo;s license</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>parameters that will be added as URL parameters to the request.
-These parameters will override any default parameters that had been set.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>Built NSURLRequest that can be used to fetch the video.</p>
-			</div>
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Constructs a request for a video by the reference id.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlaybackServiceRequestFactory.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
 </div>
 						</div>
 						
@@ -1018,7 +662,7 @@ These parameters will override any default parameters that had been set.</p></td
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-06-03</p>
+						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-06-18</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

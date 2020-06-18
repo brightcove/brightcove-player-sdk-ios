@@ -57,6 +57,24 @@ extern const NSInteger kBCOVFPSErrorCodeApplicationCertificateRequest;
 @required
 
 /**
+ *  Implement this method to handle retrieving the content key. This is called for each asset.
+ *  No guarantee is made as to the thread that this is called on.
+ *
+ *  @param loadingRequest    The "skd://..." loading request made for the asset.
+ *  @param keyRequest        The key request data returned by [AVAssetResourceLoadingRequest streamingContentKeyRequestDataForApp:contentIdentifier:options:error:].
+ *  @param source            The BCOVSource used to make this request
+ *  @param completionHandler The completion handler to return the content key. If returning an error, you must leave the contentkey and response parameters nil.
+ */
+- (void)encryptedContentKeyForLoadingRequest:(nonnull AVAssetResourceLoadingRequest *)loadingRequest
+                           contentKeyRequest:(nonnull NSData *)keyRequest
+                                      source:(nonnull BCOVSource *)source
+                           completionHandler:(nonnull void (^)(NSURLResponse * __nullable response,
+                                                               NSData * __nullable contentKey,
+                                                               NSError * __nullable error))completionHandler;
+
+@optional
+
+/**
  *  Implement this method to handle retrieving the content key for a video that
  *  is being downloaded for offline playback. This is called for each asset.
  *  No guarantee is made as to the thread that this is called on.
@@ -64,7 +82,7 @@ extern const NSInteger kBCOVFPSErrorCodeApplicationCertificateRequest;
  *  @param contentKeyIdentifier    The "skd://..." loading request URL string made for the asset.
  *  @param keyRequest        The key request data returned by [AVAssetResourceLoadingRequest streamingContentKeyRequestDataForApp:contentIdentifier:options:error:].
  *  @param source            The BCOVSource used to make this request
- *  @param options           The parameters originally passed to `-BCOVOfflineVideoManager requestVideoDownload:mediaSelections:parameters:completion:`
+ *  @param options           The parameters originally passed to `-BCOVOfflineVideoManager requestVideoDownload:parameters:completion:`
  *  @param completionHandler The completion handler to return the content key. If returning an error, you must leave the contentkey and response parameters nil.
  */
 - (void)encryptedContentKeyForContentKeyIdentifier:(nonnull NSString *)contentKeyIdentifier // the "skd://..." url string
@@ -73,7 +91,6 @@ extern const NSInteger kBCOVFPSErrorCodeApplicationCertificateRequest;
                                            options:(nullable NSDictionary *)options
                                  completionHandler:(nonnull void (^)(NSURLResponse * __nullable response,
                                                                      NSData * __nullable contentKey,
-                                                                     NSDate * __nullable expirationDate,
                                                                      NSError * __nullable error))completionHandler;
 
 @end

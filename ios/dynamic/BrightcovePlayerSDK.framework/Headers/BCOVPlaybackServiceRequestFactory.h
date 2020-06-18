@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
 
 /**
  * The BCOVPlaybackServiceRequestFactory class provides methods for creating
@@ -20,11 +19,6 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
  * Videocloud Account Id.
  */
 @property (nonatomic, copy, readonly) NSString *accountId;
-
-/**
- * Videocloud Policy Key
- */
-@property (nonatomic, copy, readonly) NSString *policyKey;
 
 /**
  * NSDictionary of additional HTTP request headers set on each NSURLRequest.
@@ -39,8 +33,6 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
  * Returns an initialized instance with the specified policy. The base URL
  * string used by the returned instance is https://edge.api.brightcove.com/playback/v1 .
  *
- * If using the Edge Playback Service, the policyKey value should be nil
- *
  * @param accountId A Video Cloud account. Must not be nil.
  * @param policyKey A Video Cloud CMS policy. Must not be nil.
  * @return The initialized BCOVPlaybackServiceRequestFactory.
@@ -49,8 +41,6 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
 
 /**
  * Returns an initialized instance with the specified token, account, and base URL string.
- *
- * If using the Edge Playback Service, the policyKey value should be nil
  *
  * @param accountId A Video Cloud account.
  * @param policyKey A Video Cloud CMS policy.
@@ -70,17 +60,6 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
 - (NSURLRequest *)requestForPlaylistWithPlaylistID:(NSString *)playlistId parameters:(NSDictionary *)parameters;
 
 /**
- * Constructs a request for a playlist by the playlist id.
- *
- * @param playlistId Id of the playlist to request.
- * @param authToken The authorization token with which to validate the video's license
- * @param parameters parameters that will be added as URL parameters to the request.
- * These parameters will override any default parameters that had been set.
- * @return Built NSURLRequest that can be used to fetch the playlist.
- */
-- (NSURLRequest *)requestForPlaylistWithPlaylistID:(NSString *)playlistId authToken:(NSString *)authToken parameters:(NSDictionary *)parameters;
-
-/**
  * Constructs a request for a playlist by the reference id.
  *
  * @param referenceId Reference id of the playlist to request.
@@ -89,17 +68,6 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
  * @return Built NSURLRequest that can be used to fetch the playlist.
  */
 - (NSURLRequest *)requestForPlaylistWithReferenceID:(NSString *)referenceId parameters:(NSDictionary *)parameters;
-
-/**
- * Constructs a request for a playlist by the reference id.
- *
- * @param referenceId Reference id of the playlist to request.
- * @param authToken The authorization token with which to validate the video's license
- * @param parameters parameters that will be added as URL parameters to the request.
- * These parameters will override any default parameters that had been set.
- * @return Built NSURLRequest that can be used to fetch the playlist.
- */
-- (NSURLRequest *)requestForPlaylistWithReferenceID:(NSString *)referenceId authToken:(NSString *)authToken parameters:(NSDictionary *)parameters;
 
 /**
  * Constructs a request for a video by the video id.
@@ -112,17 +80,6 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
 - (NSURLRequest *)requestForVideoWithVideoID:(NSString *)videoId parameters:(NSDictionary *)parameters;
 
 /**
- * Constructs a request for a video by the video id.
- *
- * @param videoId Id of the video to request.
- * @param authToken The authorization token with which to validate the video's license
- * @param parameters parameters that will be added as URL parameters to the request.
- * These parameters will override any default parameters that had been set.
- * @return Built NSURLRequest that can be used to fetch the video.
- */
-- (NSURLRequest *)requestForVideoWithVideoID:(NSString *)videoId authToken:(NSString *)authToken parameters:(NSDictionary *)parameters;
-
-/**
  * Constructs a request for a video by the reference id.
  *
  * @param referenceId Reference id of the video to request.
@@ -131,16 +88,5 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
  * @return Built NSURLRequest that can be used to fetch the video.
  */
 - (NSURLRequest *)requestForVideoWithReferenceID:(NSString *)referenceId parameters:(NSDictionary *)parameters;
-
-/**
- * Constructs a request for a video by the reference id.
- *
- * @param referenceId Reference id of the video to request.
- * @param authToken The authorization token with which to validate the video's license
- * @param parameters parameters that will be added as URL parameters to the request.
- * These parameters will override any default parameters that had been set.
- * @return Built NSURLRequest that can be used to fetch the video.
- */
-- (NSURLRequest *)requestForVideoWithReferenceID:(NSString *)referenceId authToken:(NSString *)authToken parameters:(NSDictionary *)parameters;
 
 @end

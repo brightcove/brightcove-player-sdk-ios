@@ -108,20 +108,6 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyLimit;
  */
 extern NSString * const kBCOVPlaybackServiceParameterKeyOffset;
 
-/**
- * Parameter dictionary key for BCOVPlaybackService methods that return a playlist or video.
- * This key sets the SSAI ad config ID.
- * This constant can be used in place of the string value "ad_config_id".
- */
-extern NSString * const kBCOVPlaybackServiceParamaterKeyAdConfigId;
-
-/**
- * Parameter dictionary key for BCOVPlaybackService methods that return a playlist or video.
- * This key enables Dynamic Delivery Rules for just-in-time manifest generation.
- * This constant can be used in place of the string value "config_id".
- */
-extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
-
 
 /**
  * The BCOVPlaybackService class provides asynchronous methods for retrieving 
@@ -141,11 +127,9 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * Initializes a BCOVPlaybackService. It uses the accountId and policyKey
  * to create a BCOVPlaybackServiceRequestFactory internally.
  *
- * If using the Edge Playback Service, the policyKey value should be nil
- *
  *
  * @param accountId Account Id to be used for each request. Must not be nil.
- * @param policyKey PolicyKey to be used for each request. May be nil.
+ * @param policyKey PolicyKey to be used for each request. Must not be nil.
  * @return An initialized instance.
  */
 - (instancetype)initWithAccountId:(NSString *)accountId policyKey:(NSString *)policyKey;
@@ -167,31 +151,13 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * @param playlistID The ID of the playlist to find.
  * @param parameters Additional NSString query parameters to add to the Playback
  * API requests. These values will override the default values if they conflict.
- * Can use the kBCOVPlaybackServiceParameterKeyOffset and kBCOVPlaybackServiceParameterKeyLimit
- * parameters. See "Playlist Paging" above.
+ * Can use the "offset" and "limit" parameters. See "Playlist Paging" above.
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
 - (void)findPlaylistWithPlaylistID:(NSString *)playlistID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
 
 /**
- * Retrieves a BCOVPlaylist from the Playback API service by its playlist ID on a
- * background queue.
- *
- * If the completionHandler provides an NSError, the BCOVPlaylist will be nil.
- *
- * @param playlistID The ID of the playlist to find.
- * @param authToken The authorization token with which to validate the video's license
- * @param parameters Additional NSString query parameters to add to the Playback
- * API requests. These values will override the default values if they conflict.
- * Can use the kBCOVPlaybackServiceParameterKeyOffset and kBCOVPlaybackServiceParameterKeyLimit
- * parameters. See "Playlist Paging" above.
- * @param completionHandler block which will be invoked when the request
- * finishes. Execution of the completionHandler will occur on the main thread.
- */
-- (void)findPlaylistWithPlaylistID:(NSString *)playlistID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
-
-/**
  * Retrieves a BCOVPlaylist from the Playback API service by its reference ID on a
  * background queue.
  *
@@ -199,30 +165,12 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  *
  * @param referenceID The reference ID of the video to find.
  * @param parameters Additional NSString query parameters to add to the Playback
- * Can use the kBCOVPlaybackServiceParameterKeyOffset and kBCOVPlaybackServiceParameterKeyLimit
- * parameters. See "Playlist Paging" above.
+ * Can use the "offset" and "limit" parameters. See "Playlist Paging" above.
  * API requests. These values will override the default values if they conflict.
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
 - (void)findPlaylistWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
-
-/**
- * Retrieves a BCOVPlaylist from the Playback API service by its reference ID on a
- * background queue.
- *
- * If the completionHandler provides an NSError, the BCOVPlaylist will be nil.
- *
- * @param referenceID The reference ID of the video to find.
- * @param authToken The authorization token with which to validate the video's license
- * @param parameters Additional NSString query parameters to add to the Playback
- * Can use the kBCOVPlaybackServiceParameterKeyOffset and kBCOVPlaybackServiceParameterKeyLimit
- * parameters. See "Playlist Paging" above.
- * API requests. These values will override the default values if they conflict.
- * @param completionHandler block which will be invoked when the request
- * finishes. Execution of the completionHandler will occur on the main thread.
- */
-- (void)findPlaylistWithReferenceID:(NSString *)referenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
 
 /**
  * Retrieves a BCOVVideo from the Playback API service by its video ID on a background
@@ -239,21 +187,6 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
 - (void)findVideoWithVideoID:(NSString *)videoID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
 
 /**
- * Retrieves a BCOVVideo from the Playback API service by its video ID on a background
- * queue.
- *
- * If the completionHandler provides an NSError, the BCOVVideo will be nil.
- *
- * @param videoID The ID of the video to find.
- * @param authToken The authorization token with which to validate the video's license
- * @param parameters Additional NSString query parameters to add to the Playback
- * API requests. These values will override the default values if they conflict.
- * @param completionHandler block which will be invoked when the request
- * finishes. Execution of the completionHandler will occur on the main thread.
- */
-- (void)findVideoWithVideoID:(NSString *)videoID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
-
-/**
  * Retrieves a BCOVVideo from the Playback API service by its reference ID on a background
  * queue.
  *
@@ -266,21 +199,6 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
 - (void)findVideoWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
-
-/**
- * Retrieves a BCOVVideo from the Playback API service by its reference ID on a background
- * queue.
- *
- * If the completionHandler provides an NSError, the BCOVVideo will be nil.
- *
- * @param referenceID The reference ID of the video to find.
- * @param authToken The authorization token with which to validate the video's license
- * @param parameters Additional NSString query parameters to add to the Playback
- * API requests. These values will override the default values if they conflict.
- * @param completionHandler block which will be invoked when the request
- * finishes. Execution of the completionHandler will occur on the main thread.
- */
-- (void)findVideoWithReferenceID:(NSString *)referenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
 
 /**
  * Initializes a source from the JSON dictionary. Properties that don't map to

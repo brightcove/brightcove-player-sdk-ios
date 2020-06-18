@@ -16,9 +16,8 @@
  */
 @protocol BCOVPlaybackSessionProvider <NSObject>
 
-@optional
 /**
- * @warning *Deprecated:* Do not use
+ * @deprecated Do not use.
  * Returns a series of id<BCOVPlaybackSession> objects that correspond to the
  * specified videos. The first playback session will be sent as soon as it
  * becomes available. Each subsequent playback session will be sent after its

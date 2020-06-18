@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @class BCOVTVTabBarItemView;
-@protocol BCOVTVAccessibilityDelegate;
 
 /**
  * BCOVTVSettingsView
@@ -80,13 +79,6 @@
   * Set to YES to change the control view's UI to the advertising state.
  */
 @property(nonatomic, readwrite) BOOL advertisingMode;
-
-/**
- * Set to YES if player is actively playing
- */
-@property (nonatomic, assign) BOOL isPlaying;
-
-@property (nonatomic, weak) id<BCOVTVAccessibilityDelegate> accessibilityDelegate;
 
 /**
  * Show or hide the top tab bar view.

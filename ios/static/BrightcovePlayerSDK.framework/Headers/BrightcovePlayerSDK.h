@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+//! Project version string for BrightcovePlayerSDK.
+FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
+
 // Open Source Software attributions
 #import <BrightcovePlayerSDK/BCOVAttributions.h>
 
@@ -18,7 +21,6 @@
 #import <BrightcovePlayerSDK/NSDictionary+BCOVURLSupport.h>
 
 // Management
-#import <BrightcovePlayerSDK/BCOVGlobalConfiguration.h>
 #import <BrightcovePlayerSDK/BCOVPlayerSDKManager.h>
 
 // Playback
@@ -32,7 +34,6 @@
 #import <BrightcovePlayerSDK/BCOVFPSAuthorizationProxy.h>
 #import <BrightcovePlayerSDK/BCOVFPSBrightcoveAuthProxy.h>
 #import <BrightcovePlayerSDK/BCOVFPSComponent.h>
-#import <BrightcovePlayerSDK/BCOVFairPlayManager.h>
 
 // Sidecar Subtitles
 #import <BrightcovePlayerSDK/BCOVSSComponent.h>
@@ -70,6 +71,3 @@
 #import <BrightcovePlayerSDK/BCOVTVSettingsView.h>
 #import <BrightcovePlayerSDK/BCOVTVTabBarItemView.h>
 #endif
-
-// Accessibility
-#import <BrightcovePlayerSDK/BCOVUILabel.h>

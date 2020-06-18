@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>BCOVComponent Protocol Reference</title>
+	<title>BCOVBasicSessionLoadingPolicy Class Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -54,19 +54,21 @@
 
 	
 	
-	<optgroup label="Properties">
+
+	
+	<optgroup label="Class Methods">
 		
-		<option value="//api/name/bcov_componentIdentity">bcov_componentIdentity</option>
+		<option value="//api/name/sessionPreloadingNever">+ sessionPreloadingNever</option>
+		
+		<option value="//api/name/sessionPreloadingWithProgressPercentage:">+ sessionPreloadingWithProgressPercentage:</option>
 		
 	</optgroup>
 	
 
 	
-
-	
 	<optgroup label="Instance Methods">
 		
-		<option value="//api/name/bcov_setComponentContext:">- bcov_setComponentContext:</option>
+		<option value="//api/name/init">- init</option>
 		
 	</optgroup>
 	
@@ -83,16 +85,19 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">BCOVComponent Protocol Reference</h1>
+					<h1 class="title">BCOVBasicSessionLoadingPolicy Class Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<th>Conforms to</th>
+	<th>Inherits from</th>
 	<td>NSObject</td>
 </tr><tr>
+	<th>Conforms to</th>
+	<td>NSCopying</td>
+</tr><tr>
 	<th>Declared in</th>
-	<td>BCOVPlayerSDKManager.h</td>
+	<td>BCOVBasicSessionProvider.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -102,8 +107,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Objects which must be registered with the <a href="../Classes/BCOVPlayerSDKManager.html">BCOVPlayerSDKManager</a> in order to
-activate their functionality should conform to the BCOVComponent protocol.</p>
+						<p>The basic session loading policy decides when to load sessions.</p>
 					</div>
 					
 					
@@ -115,58 +119,12 @@ activate their functionality should conform to the BCOVComponent protocol.</p>
 						
 
 						
-						
+						<h2 class="task-title">Other Methods</h2>
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/bcov_componentIdentity" title="bcov_componentIdentity"></a>
-	<h3 class="method-title"><code><a href="#//api/name/bcov_componentIdentity">&nbsp;&nbsp;bcov_componentIdentity</a></code>
-<span class="task-item-suffix">required method</span></h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Uniquely identifies this component with the returned component identity.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) id&lt;BCOVComponentIdentity&gt; bcov_componentIdentity</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Uniquely identifies this component with the returned component identity.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/bcov_setComponentContext:" title="bcov_setComponentContext:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/bcov_setComponentContext:">&ndash;&nbsp;bcov_setComponentContext:</a></code>
+	<a name="//api/name/sessionPreloadingNever" title="sessionPreloadingNever"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sessionPreloadingNever">+&nbsp;sessionPreloadingNever</a></code>
 </h3>
 
 	<div class="method-info">
@@ -176,27 +134,14 @@ activate their functionality should conform to the BCOVComponent protocol.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>This method allows the <a href="../Classes/BCOVPlayerSDKManager.html">BCOVPlayerSDKManager</a> to supply contextual information
-to this component when it is registered.</p>
+				<p>Returns a session loading policy that doesn&rsquo;t preload upcoming sessions.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)bcov_setComponentContext:(NSDictionary *)<em>componentContext</em></code></div>
+			<div class="method-subsection method-declaration"><code>+ (instancetype)sessionPreloadingNever</code></div>
 
 		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>componentContext</code></th>
-						<td><p>The contextual information to be communicated to this component.</p></td>
-					</tr>
-				
-				</table>
-			</div>
 			
 
 			
@@ -206,8 +151,7 @@ to this component when it is registered.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>This method allows the <a href="../Classes/BCOVPlayerSDKManager.html">BCOVPlayerSDKManager</a> to supply contextual information
-to this component when it is registered.</p>
+				<p>Returns a session loading policy that doesn&rsquo;t preload upcoming sessions.</p>
 			</div>
 			
 
@@ -218,10 +162,101 @@ to this component when it is registered.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
+				<p><code class="declared-in-ref">BCOVBasicSessionProvider.h</code></p>
 			</div>
 			
 			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sessionPreloadingWithProgressPercentage:" title="sessionPreloadingWithProgressPercentage:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sessionPreloadingWithProgressPercentage:">+&nbsp;sessionPreloadingWithProgressPercentage:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns a session loading policy that preloads an upcoming session when the
+previous session reaches certain percentage of progress.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)sessionPreloadingWithProgressPercentage:(NSUInteger)<em>progressPercentage</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>progressPercentage</code></th>
+						<td><p>A NSUInteger between 0 and 100.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A session loading policy that preloads an upcoming session when the
+previous session reaches certain percentage of progress. If progressPercentage
+is not between 0 and 100, a <code>+[sessionPreloadingNever]</code> will be returned.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns a session loading policy that preloads an upcoming session when the
+previous session reaches certain percentage of progress.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVBasicSessionProvider.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Unavailable Methods" name="task_Unavailable Methods"></a>
+						<h2 class="task-title">Unavailable Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="method-title"><code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)init</code></div>
+
+		    
 		</div>
 	</div>
 </div>

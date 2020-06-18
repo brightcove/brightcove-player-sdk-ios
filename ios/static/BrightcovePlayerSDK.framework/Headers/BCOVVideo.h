@@ -7,44 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <BrightcovePlayerSDK/BCOVVideoErrorCodes.h>
 
 @class BCOVCuePointCollection;
 @class BCOVSource;
 @protocol BCOVMutableVideo;
 
-// Economics field values
-typedef NS_ENUM(NSInteger, BCOVEconomics)
-{
-    // Supported economics values
-    BCOVEconomicsAdSupported = 0,
-    BCOVEconomicsFree,
-    
-    // Currently unused
-    BCOVEconomicsPublisherPays,
-    BCOVEconomicsPayMedia
-};
 
 /**
- * The properties dictionary on a BCOVVideo object can contain
- * any of the following keys. These can be used when
- * manually initializing a BCOVVideo, like initWithSource:cuePoints:properties
+ * Account Id for video to be used for billing/analytics.
  */
 extern NSString * const kBCOVVideoPropertyKeyAccountId;
-extern NSString * const kBCOVVideoPropertyKeyDescription;
-extern NSString * const kBCOVVideoPropertyKeyDuration;
-extern NSString * const kBCOVVideoPropertyKeyEconomics;
-extern NSString * const kBCOVVideoPropertyKeyId;
-extern NSString * const kBCOVVideoPropertyKeyLongDescription;
+
+/**
+ * Name for video to be used for billing/analytics.
+ */
 extern NSString * const kBCOVVideoPropertyKeyName;
-extern NSString * const kBCOVVideoPropertyKeyPoster;
-extern NSString * const kBCOVVideoPropertyKeyPosterSources;
-extern NSString * const kBCOVVideoPropertyKeyProjection;
-extern NSString * const kBCOVVideoPropertyKeyReferenceId;
-extern NSString * const kBCOVVideoPropertyKeyTags;
-extern NSString * const kBCOVVideoPropertyKeyTextTracks;
-extern NSString * const kBCOVVideoPropertyKeyThumbnail;
-extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
+
+/**
+ * ID for video to be used for billing/analytics.
+ */
+extern NSString * const kBCOVVideoPropertyKeyId;
 
 
 /**
@@ -66,23 +48,14 @@ extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
 
 /**
  * Metadata or properties related to this video or its sources in the aggregate.
- * You can find constants for the keys that this SDK uses with this dictionary
- * near the top of this header file.
  */
 @property (nonatomic, readonly, copy) NSDictionary *properties;
-
-/**
- * The economics field that comes from Video Cloud.
- * kBCOVEconomicsAdSupported is the default, and means that the ads should be displayed.
- * kBCOVEconomicsFree means that no ads should be shown during video playback.
- */
-@property (nonatomic) BCOVEconomics economics;
 
 /**
  * The sources which comprise the actual destinations at which this video's
  * content can be accessed.
  */
-@property (nonatomic, readonly, copy) NSArray<BCOVSource *> *sources;
+@property (nonatomic, readonly, copy) NSArray *sources;
 
 /**
  * Returns a modified version of this source. Because BCOVVideo objects
@@ -110,11 +83,6 @@ extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
 @protocol BCOVMutableVideo <BCOVVideo>
 
 @property (nonatomic, readwrite, copy) BCOVCuePointCollection *cuePoints;
-
-/**
- * You can find constants for the keys that this SDK uses with this dictionary
- * near the top of this header file.
- */
 @property (nonatomic, readwrite, copy) NSDictionary *properties;
 @property (nonatomic, readwrite, copy) NSArray *sources;
 
@@ -163,57 +131,23 @@ extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
  *  or if the video has been purged and needs to be re-downloaded.
  *  This happens automatically if iOS needs to reclaim storage space
  *  for proper functioning of the device.
- *
- *  On some versions of iOS `playableOffline` may return NO if the offline video is already
- *  loaded up in an instance of AVPlayer. Calling `replaceCurrentItemWithPlayerItem`
- *  on the current instance of `AVPlayer` with a `nil` value prior to checking
- *  should result in the expected value of TRUE being returned.
  */
 @property (nonatomic, readonly) BOOL playableOffline;
 
 /**
- * A string representation of an error code for an unplayable video
- */
-@property (nonatomic, copy) NSString *errorCode;
-
-/**
- * A string representation of an error sub code for an unplayable video
- */
-@property (nonatomic, copy) NSString *errorSubCode;
-
-/**
- * A error emssage string for an unplayable video
-*/
-@property (nonatomic, copy) NSString *errorMessage;
-
-/**
- * Returns NO if `errorCode`, `errorSubCode` and `errorMessage` are all nil
- * otherwise if any of those properties have a vaile will return YES
- */
-@property (nonatomic, readonly) BOOL hasError;
-
-/**
  * @abstract Constructs a new video with the specified sources, cue points, and
  * properties.
- *
- * @discussion When using this initializer you can take advantage of the
- * kBCOVVideoPropertyKey constants to create the properties dictionary. You can find
- * constants for the keys that this SDK uses with this dictionary near the top of this header file.
  *
  * @param sources The sources of this video.
  * @param cuePoints The cue points associated to this video.
  * @param properties The metadata or properties associated to this video.
  * @return A new video with the specified sources, cue points, and properties.
  */
-- (instancetype)initWithSources:(NSArray<BCOVSource *> *)sources cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
+- (instancetype)initWithSources:(NSArray *)sources cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
 
 /**
  * Constructs a new video with a single specified source, the specified cue
  * points, and the specified properties.
- *
- * @discussion When using this initializer you can take advantage of the
- * kBCOVVideoPropertyKey constants to create the properties dictionary. You can find
- * constants for the keys that this SDK uses with this dictionary near the top of this header file.
  *
  * @param source The sole source of this video.
  * @param cuePoints The cue points associated to this video.
@@ -222,21 +156,6 @@ extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
  * and properties.
  */
 - (instancetype)initWithSource:(BCOVSource *)source cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
-
-/**
- * Constructs a new video with with error information.
- *
- * @discussion When attempting to retreive a video the server may an
- * error. The error may be caused due to various restrictions  other reasons.
- * The information is stored on the BCOVideo object for informative purposes.
- *
- * @param errorCode The error code
- * @param errorSubCode The error sub-code
- * @param errorMessage The error message
- * @param properties The metadata or properties associated to this video.
- * @return A new video with error information attributes
- */
-- (instancetype)initWithErrorCode:(NSString *)errorCode errorSubCode:(NSString *)errorSubCode errorMessage:(NSString *)errorMessage properties:(NSDictionary *)properties;
 
 /**
  * Returns YES if `video` is equivalent to this instance.

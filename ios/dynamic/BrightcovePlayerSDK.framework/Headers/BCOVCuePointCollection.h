@@ -168,14 +168,6 @@
  */
 - (BCOVCuePoint *)objectAtIndexedSubscript:(NSUInteger)index;
 
-/*
- * A boolean value to ignore cuepoints. This may be useful
- * if ads are being played in the current AVPlayer instance
- * and you want to ignore progress events temporarily until
- * the primary video is swapped back in.
- */
-@property (nonatomic, assign) BOOL ignoreCuePoints;
-
 /**
  * Returns a new cue point collection containing the specified cue points.
  *

@@ -70,15 +70,29 @@ typedef NS_ENUM(NSInteger, BCOVPUIViewTag) {
     /** Tag for the Video 360 button. */
     BCOVPUIViewTagButtonVideo360        = 16,
     
-    /** Tag for the "Preferred Bitrate" button. */
-    BCOVPUIViewTagButtonPreferredBitrate    = 17,
-    
-    /** Tag for Picture-In-Picture button */
-    BCOVPUIViewTagButtonPictureInPicture = 18,
-    
     /** Tag that signifies the end of our reserved range. */
     BCOVPUIViewTagReservedEnd           = 200
 };
+
+
+/**
+ * Type of video.
+ */
+typedef NS_ENUM(NSUInteger, BCOVPUIVideoType) {
+
+    /** Video type can not be determined. */
+    BCOVPUIVideoTypeUnknown,
+
+    /** Video on demand (has a duration). */
+    BCOVPUIVideoTypeVOD,
+
+    /** Video has no duration, and a limited seekable range. */
+    BCOVPUIVideoTypeLive,
+
+    /** Video has no duration, and a large seekable range. */
+    BCOVPUIVideoTypeLiveDVR
+};
+
 
 /**
  * Distinct Icon types.
@@ -108,9 +122,6 @@ typedef NS_ENUM(NSUInteger, BCOVPUIButtonIcon) {
     
     /** Video 360 Options icon */
     BCOVPUIButtonIconVideo360,
-    
-    /** Preferred Bitrate icon **/
-    BCOVPUIButtonIconPreferredBitrate,
     
     /** Reserved icon. */
     BCOVPUIButtonIconReserved,
