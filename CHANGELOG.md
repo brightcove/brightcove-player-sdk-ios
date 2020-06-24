@@ -1,3 +1,27 @@
+## Release 6.7.8 ##
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Breaking Changes
+
+* Removes the `offlineVideoToken:didFinishAggregateDownloadWithError:` method of the `BCOVOfflineVideoManagerDelegate` protocol.
+
+#### Additions and Improvements
+
+* Resolves App Store submission issues related to use of the IDFA (Identifier for Advertisers) by moving those references out of the Core SDK framework.
+
+* Fixes an issue where playback of DRM protected content could stop in mid-play when using certain authorization schemes.
+
+* Adds support for customizing the layout of thumbnail previews. See `playerViewShouldDisplayThumbnailPreviewWithSize:` on the `BCOVTVPlayerViewDelegate` protocol and `playerViewShouldDisplayThumbnailPreviewWithRect:` on the `BCOVPUIPlayerViewDelegate` protocol for more information.
+
+* Fixes an issue where the player layer of a custom view strategy was not updated as needed, resulting in a black video display. Updates the View Strategy section of the Core SDK README. Provides a new ViewStrategy sample project in PlayerUI/ViewStrategy of the [ios-sample-projects.git](https://github.com/BrightcoveOS/ios-player-samples) git repository.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds bitcode to the tvOS framework to fix app submission.
+
 ## Release 6.7.7 ##
 
 #### Breaking Changes
@@ -481,6 +505,28 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 * Adds support for tvOS.
 
 * Supports version 6.26.0 of the FreeWheel AdManager framework for iOS and tvOS.
+
+## Release 6.3.12
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Removes references to UIWebView.
+
+* Fixes an issue where the status information of offline video downloads was being deleted. This issue is present only in Release 6.3.11.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports IMA 3.11.3 for iOS which, among other improvements, removes references to UIWebView. When running on an iOS 9.x device, configure IMAAdsRenderingSettings to use Safari when opening landing pages in response to taps on "Learn More" or companions ads.
+
+```objc
+IMAAdsRenderingSettings *renderSettings = [[IMAAdsRenderingSettings alloc] init];
+renderSettings.webOpenerPresentingController = nil;
+renderSettings.webOpenerDelegate = self; // optional
+```
 
 ## Release 6.3.11
 

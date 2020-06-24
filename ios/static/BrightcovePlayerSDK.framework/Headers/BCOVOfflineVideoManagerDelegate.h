@@ -21,16 +21,18 @@
 @optional
 
 /**
- * @abstract This method is called when a download is complete.
+ * @abstract This method is called after the background NSURLSessionConfiguration object
+ * is created, and before it's used to create the shared AVAssetDownloadURLSession
+ * object that's used to download videos.
  *
- * @discussion If an error occurred during the download, error will be non-nil.
+ * @discussion You can use this configuration object to set various options specified for the
+ * NSURLSessionConfiguration in NSURLSession.h, such as the `discretionary` flag, or
+ * the `HTTPMaximumConnectionsPerHost` setting.
  *
- * @param offlineVideoToken Offline video token used to identify the downloaded video.
- *
- * @param error NSError encountered during the download process. nil if no error.
+ * You should *not* set the `allowsCellularAccess` property; that is set in the individual
+ * download tasks.
  */
-- (void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
-didFinishDownloadWithError:(NSError *)error;
+- (void)didCreateSharedBackgroundSesssionConfiguration:(NSURLSessionConfiguration *)backgroundSessionConfiguration;
 
 /**
  * @abstract Receive progress notification about track downloads in progress for a downloaded video.
@@ -64,17 +66,16 @@ didFinishDownloadWithError:(NSError *)error;
 didFinishMediaSelectionDownload:(AVMediaSelection *)mediaSelection;
 
 /**
- * @abstract This method is called when all requested track downloads are complete for the
- * downloaded video specified by the offline video token.
+ * @abstract This method is called when a download is complete.
  *
  * @discussion If an error occurred during the download, error will be non-nil.
  *
  * @param offlineVideoToken Offline video token used to identify the downloaded video.
  *
- * @param error NSError encountered during the track download process. nil if no error.
+ * @param error NSError encountered during the download process. nil if no error.
  */
 - (void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
-didFinishAggregateDownloadWithError:(NSError *)error;
+didFinishDownloadWithError:(NSError *)error;
 
 /**
  * @abstract This method is called when the static images (thumbnail and poster) associated
@@ -111,20 +112,6 @@ didFinishAggregateDownloadWithError:(NSError *)error;
  * @param videoPackagePath Path to video package directory that is flagged as stranded.
  */
 - (BOOL)shouldDeleteVideoPackage:(NSString *)videoPackagePath;
-
-/**
- * @abstract This method is called after the background NSURLSessionConfiguration object
- * is created, and before it's used to create the shared AVAssetDownloadURLSession
- * object that's used to download videos.
- *
- * @discussion You can use this configuration object to set various options specified for the
- * NSURLSessionConfiguration in NSURLSession.h, such as the `discretionary` flag, or
- * the `HTTPMaximumConnectionsPerHost` setting.
- *
- * You should *not* set the `allowsCellularAccess` property; that is set in the individual
- * download tasks.
- */
-- (void)didCreateSharedBackgroundSesssionConfiguration:(NSURLSessionConfiguration *)backgroundSessionConfiguration;
 
 /**
  * @abstract This method is called when the app is activated and offline video

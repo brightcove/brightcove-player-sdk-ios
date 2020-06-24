@@ -68,8 +68,6 @@
 		
 		<option value="//api/name/offlineVideoToken:aggregateDownloadTask:didProgressTo:forMediaSelection:">- offlineVideoToken:aggregateDownloadTask:didProgressTo:forMediaSelection:</option>
 		
-		<option value="//api/name/offlineVideoToken:didFinishAggregateDownloadWithError:">- offlineVideoToken:didFinishAggregateDownloadWithError:</option>
-		
 		<option value="//api/name/offlineVideoToken:didFinishDownloadWithError:">- offlineVideoToken:didFinishDownloadWithError:</option>
 		
 		<option value="//api/name/offlineVideoToken:didFinishMediaSelectionDownload:">- offlineVideoToken:didFinishMediaSelectionDownload:</option>
@@ -127,8 +125,8 @@ video track download.</p>
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/offlineVideoToken:didFinishDownloadWithError:" title="offlineVideoToken:didFinishDownloadWithError:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/offlineVideoToken:didFinishDownloadWithError:">&ndash;&nbsp;offlineVideoToken:didFinishDownloadWithError:</a></code>
+	<a name="//api/name/didCreateSharedBackgroundSesssionConfiguration:" title="didCreateSharedBackgroundSesssionConfiguration:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/didCreateSharedBackgroundSesssionConfiguration:">&ndash;&nbsp;didCreateSharedBackgroundSesssionConfiguration:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -138,31 +136,16 @@ video track download.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>This method is called when a download is complete.</p>
+				<p>This method is called after the background NSURLSessionConfiguration object
+is created, and before it&rsquo;s used to create the shared AVAssetDownloadURLSession
+object that&rsquo;s used to download videos.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)offlineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em> didFinishDownloadWithError:(NSError *)<em>error</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)didCreateSharedBackgroundSesssionConfiguration:(NSURLSessionConfiguration *)<em>backgroundSessionConfiguration</em></code></div>
 
 		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
-						<td><p>Offline video token used to identify the downloaded video.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>error</code></th>
-						<td><p>NSError encountered during the download process. nil if no error.</p></td>
-					</tr>
-				
-				</table>
-			</div>
 			
 
 			
@@ -172,7 +155,12 @@ video track download.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>If an error occurred during the download, error will be non-nil.</p>
+				<p>You can use this configuration object to set various options specified for the
+NSURLSessionConfiguration in NSURLSession.h, such as the <code>discretionary</code> flag, or
+the <code>HTTPMaximumConnectionsPerHost</code> setting.</p>
+
+<p>You should <em>not</em> set the <code>allowsCellularAccess</code> property; that is set in the individual
+download tasks.</p>
 			</div>
 			
 
@@ -324,8 +312,8 @@ for which tracks are being downloaded.</p></td>
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/offlineVideoToken:didFinishAggregateDownloadWithError:" title="offlineVideoToken:didFinishAggregateDownloadWithError:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/offlineVideoToken:didFinishAggregateDownloadWithError:">&ndash;&nbsp;offlineVideoToken:didFinishAggregateDownloadWithError:</a></code>
+	<a name="//api/name/offlineVideoToken:didFinishDownloadWithError:" title="offlineVideoToken:didFinishDownloadWithError:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/offlineVideoToken:didFinishDownloadWithError:">&ndash;&nbsp;offlineVideoToken:didFinishDownloadWithError:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -335,13 +323,12 @@ for which tracks are being downloaded.</p></td>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>This method is called when all requested track downloads are complete for the
-downloaded video specified by the offline video token.</p>
+				<p>This method is called when a download is complete.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)offlineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em> didFinishAggregateDownloadWithError:(NSError *)<em>error</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)offlineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em> didFinishDownloadWithError:(NSError *)<em>error</em></code></div>
 
 		    
 			
@@ -356,7 +343,7 @@ downloaded video specified by the offline video token.</p>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>error</code></th>
-						<td><p>NSError encountered during the track download process. nil if no error.</p></td>
+						<td><p>NSError encountered during the download process. nil if no error.</p></td>
 					</tr>
 				
 				</table>
@@ -522,59 +509,6 @@ be deleted by default.</p>
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/didCreateSharedBackgroundSesssionConfiguration:" title="didCreateSharedBackgroundSesssionConfiguration:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/didCreateSharedBackgroundSesssionConfiguration:">&ndash;&nbsp;didCreateSharedBackgroundSesssionConfiguration:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>This method is called after the background NSURLSessionConfiguration object
-is created, and before it&rsquo;s used to create the shared AVAssetDownloadURLSession
-object that&rsquo;s used to download videos.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)didCreateSharedBackgroundSesssionConfiguration:(NSURLSessionConfiguration *)<em>backgroundSessionConfiguration</em></code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>You can use this configuration object to set various options specified for the
-NSURLSessionConfiguration in NSURLSession.h, such as the <code>discretionary</code> flag, or
-the <code>HTTPMaximumConnectionsPerHost</code> setting.</p>
-
-<p>You should <em>not</em> set the <code>allowsCellularAccess</code> property; that is set in the individual
-download tasks.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVOfflineVideoManagerDelegate.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
 	<a name="//api/name/offlineVideoStorageDidChange" title="offlineVideoStorageDidChange"></a>
 	<h3 class="method-title"><code><a href="#//api/name/offlineVideoStorageDidChange">&ndash;&nbsp;offlineVideoStorageDidChange</a></code>
 </h3>
@@ -641,7 +575,7 @@ offline storage.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-06-03</p>
+						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-06-24</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

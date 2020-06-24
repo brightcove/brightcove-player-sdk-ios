@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.7.7.1171
+# Brightcove Player SDK for iOS, version 6.7.8.1200
 
 
 # Table of Contents
@@ -798,63 +798,50 @@ For example, if you have a playlist with 100 videos, you can request only 6 vide
 
 View Strategy <a name="ViewStrategy"></a>
 -------------
-**NOTE:** *Using a view strategy block is no longer recommended, as this functionality may be removed in a future release.*
 
-`BCOVPlaybackController` objects are constructed with a **view strategy**, which allows you, as the client of the SDK, to define the exact UIView object that is returned from the playback controller's `view` property. This is important when using plugins that affect the playback controller's view, such as an advertising plugin that overlays the video view with an ad view. Imagine trying to integrate custom controls with such a plugin: normally, custom controls are just regular UIView objects in the view hierarchy that float above the playback controller's video view. But with an advertising plugin, you generally want the ads to float over your custom controls. How to accomplish this without having in-depth knowledge of the structure of the playback controller's view hierarchy? The solution is to construct a view strategy that composes the video view, your custom controls, and the advertising view in a hierarchy of your choosing. The playback controller will call this view strategy the first time you access its `view` property. The final UIView object returned from the strategy will serve as its view permanently (until the controller is destroyed).
-
-Many apps will have no need to create a view strategy, and can simply pass `nil` when creating a new playback controller. This will create a standard video view in the playback controller. However, for apps that do need the control offered by a view strategy, we provide a more detailed explanation here.
+The `BCOVPlaybackController` object is constructed with a view strategy, which allows you, as the client of the SDK, to define the exact UIView object that is returned from the playback controller's view property. This is important when using plugins that affect the playback controller's view, such as an advertising plugin that overlays the video view with an ad view. 
+Many apps will have no need to create a view strategy, and can simply pass `nil` when creating a new playback controller. This will create a standard video view in the playback controller.
 
 The `BCOVPlaybackControllerViewStrategy` typedef aliases (and documents) this more complex block signature:
 
-    UIView *(^)(UIView *view, id<BCOVPlaybackController> playbackController);
+```objc
+UIView *(^)(UIView *videoView, id<BCOVPlaybackController> playbackController);
+```
 
-This signature describes an Objective-C block that returns a UIView and takes two parameters: a UIView and a playback controller. The return value is easy to understand: it is the UIView object that you want the playback controller's `view` property to point to. But what about the parameters to the block; what is the UIView that is passed as the first parameter? And why is the playback controller passed as the second parameter?
+This signature describes an Objective-C block that returns a UIView and takes two parameters: a UIView and a playback controller. The return value is the UIView object that the playback controller's view property will point to.
+The first parameter is an UIView that contains the video layer, the UIView will show the video. The second parameter is the playback controller object to which the view strategy has been given, the playback controller can be used to add necessary session consumers such as video controls or ad controls.
 
-The first parameter is a UIView that *would* have become the playback controller's `view` property, if your view strategy didn't exist to specify otherwise. To illustrate, you could create a pointless no-op view strategy by implementing the block to return its `view` parameter directly:
+Example of view strategy implementation:
 
-    BCOVPlaybackControllerViewStrategy viewStrategy =
-            ^ UIView *(UIView *videoView, id<BCOVPlaybackController> playbackController) {
+```objc
+BCOVPlaybackControllerViewStrategy viewStrategy = ^(UIView *videoView, id<BCOVPlaybackController> playbackController) {
 
-        return videoView;
-
-    };
-
-This has the same effect as passing a `nil` view strategy when creating the playback controller.
-
-The second parameter is the same playback controller object to which the view strategy has been given. Why would the view strategy need to reference its playback controller? In many cases, it probably doesn't, and the second parameter can be safely ignored. But some apps might need a view strategy that adds a session consumer to the playback controller. For example, to update custom controls every time the controller advances to a new playback session, you need to be notified of new sessions. The playback controller is made available in the second parameter to the block, so that the view strategy can add any necessary session consumers.
-
-It is very important not to retain this reference to the playback controller. That is, it is safe to use within the block if you need, but don't try to assign it to a `__block` variable or global variable so that you can access it later. The parameter is passed in only because there is no playback controller reference that can be closed-over within the block at the time the view strategy is defined.
-
-Here's an example of a more sensible view strategy implementation:
-
-    BCOVPlaybackControllerViewStrategy viewStrategy =
-            ^(UIView *videoView, id<BCOVPlaybackController> playbackController) {
-
-        // Create some custom controls for the video view,
-        // and compose both into a container view.
-        UIView<BCOVPlaybackSessionConsumer> *myControlsView = [[MyControlsView alloc] init];
-        UIView *controlsAndVideoView = [[UIView alloc] init];
-        [controlsAndVideoView addSubview:videoView];
+    // Create some custom controls for the video view,
+    // and compose both into a container view.
+    [1] UIView<BCOVPlaybackSessionConsumer> *myControlsView = [[MyControlsView alloc] init];
+    [2] UIView *controlsAndVideoView = [[UIView alloc] init];
+    [3] [controlsAndVideoView addSubview:videoView];
         [controlsAndVideoView addSubview:myControlsView];
-
-        // Compose the container with an advertising view
-        // into another container view.
-        UIView<BCOVPlaybackSessionConsumer> *adView = [[SomeAdPluginView alloc] init];
-        UIView *adAndVideoView = [[UIView alloc] init];
-        [adAndVideoView addSubview:controlsAndVideoView];
+    // Compose the container with an advertising view
+    // into another container view.
+    [4] UIView<BCOVPlaybackSessionConsumer> *adView = [[SomeAdPluginView alloc] init];
+    [5] UIView *adAndVideoView = [[UIView alloc] init];
+    [6] [adAndVideoView addSubview:controlsAndVideoView];
         [adAndVideoView addSubview:adView];
-
-        [playbackController addSessionConsumer:myControlsView];
+    [7] [playbackController addSessionConsumer:myControlsView];
         [playbackController addSessionConsumer:adView];
-
-        // This container view will become `playbackController.view`.
-        return adAndVideoView;
-
-    };
-
-Let's review what this view strategy does in detail: first, it creates a custom controls view that conforms to the `BCOVPlaybackSessionConsumer` protocol. (Note that custom views are not required to conform to this protocol; some other non-view object could have been added as a session consumer instead. This just makes the example easier to follow.) Notice how the view hierarchy is composed in this view strategy block: a container view is created to hold both the video view and the controls. These views are added in an order such that the controls will appear *over* the video view. Next, a container view is created to hold the ad view and the first container view. They are added in an order such that the ad view will appear over the container with the custom controls and video view. Finally, the custom controls and the ad view are registered as session consumers, so that when a new playback session is delivered to the playback controller, these views can subscribe to the appropriate events on the session.
-
-Again, for most use cases it should suffice to not use a view strategy at all. Just add the playback controller's view to a view hierarchy, and compose custom controls on top of it. But for more nuanced cases such as when using certain plugins, it helps to have an opportunity to take control of the composition of the playback controller's view, and that's exactly why you can pass a view strategy to the `BCOVPlayerSDKManager` when creating a new playback controller.
+    // This container view will become `playbackController.view`.
+    return adAndVideoView;
+};
+```
+Breaking the code down into steps:
+[1] Create a custom controls view that conforms to the `BCOVPlaybackSessionConsumer` protocol. `BCOVPlaybackSessionConsumer`protocol allows to receive basic playback information for each video in addition to advertising.
+[2] Create a container view for the video view and custom controls.
+[3] Add as a subview the video container and the custom controls. The hierarchy is composed in the same order that views are added.
+[4] Create an ad controls view that conforms to the `BCOVPlaybackSessionConsumer` protocol.
+[5] Create a container view for the video view and controls, and the advertising view.
+[6] Add as a subview the video container and the ad controls view.
+[7] Register the custom controls view and the ad controls view as session consumers using the playback controller object returned by the block.
 
 There is one caveat to using a view strategy: you must not access the playback controller's `view` property from within the view strategy block. Since the block is being called *because* the playback controller's `view` property was accessed for the first time, accessing the `view` property again *within* the view strategy block will cause your program to crash.
 
@@ -902,6 +889,55 @@ This feature is enabled by default. If you wish to disable thumbnail scrubbing y
 
 ```
 self.playbackController.thumbnailScrubbingEnabled = NO;
+```
+
+You can customize the layout of the thumbnail preview by making use of a delegate method with your `BCOVPUIPlayerView` or `BCOVTVPlayerView`. 
+
+On iOS you can adjust the height, width and vertical offset:
+
+```
+- (void)setupPlayerView
+{
+    BCOVPUIPlayerView *playerView = [[BCOVPUIPlayerView alloc] initWithPlaybackController:nil];
+    playerView.delegate = self;
+    ...
+}
+
+#pragma mark - BCOVPUIPlayerViewDelegate
+
+- (CGRect)playerViewShouldDisplayThumbnailPreviewWithRect:(BCOVPUIPlayerView *)playerView
+{
+    CGFloat width = 100;
+    CGFloat height = 56;
+    CGFloat verticalOffset = -60;
+    CGFloat modifier = 1;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        modifier = 2;
+    }
+    return CGRectMake(0, verticalOffset * modifier, width * modifier, height * modifier);
+}
+```
+
+On tvOS you can adjust the height and width:
+
+```
+- (void)setupPlayerView
+{
+    self.playerView = [[BCOVTVPlayerView alloc] initWithOptions:nil];    
+    self.playerView.delegate = self;
+    ...
+}
+
+#pragma mark - BCOVTVPlayerViewDelegate
+
+- (CGSize)playerViewShouldDisplayThumbnailPreviewWithSize:(BCOVTVPlayerView *)playerView
+{
+    CGSize size = self.view.frame.size;
+    size.width = size.width / 6;
+    size.height = size.height / 6;
+    return size;
+}
 ```
 
 Thumbnail scrubbing is only available for online videos; downloaded/offline videos do not support this feature. 
