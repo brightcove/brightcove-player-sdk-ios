@@ -1,3 +1,19 @@
+## Release 6.7.9 ##
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes an issue where, while using an AVPlayerViewController, video could appear to freeze after a few seconds while audio continued to play.
+
+* Fixes a crash in Sidecar Subtitles Playback Session Provider caused by an unexpected WebVTT text track.
+
+* Fixes a crash that could occur when calling `setVideos:` multiple times on `BCOVPlaybackController`.
+
+* Fixes a crash that could occur when an application certificate is not available during Fairplay license processing.
+
+* Fixes an issue where a Fairplay video might not play back when using certain session providers.
+
 ## Release 6.7.8 ##
 
 ### Brightcove Player SDK for iOS (Core)
@@ -286,7 +302,7 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Reduces the file size of the dynamic framework by ~10MB, and ~20MB for the static framework.
+* Reduces the file size of the dynamic framework by ~10MB, and ~20MB for the static framework. 
 
 * Reduces CPU load up to 40% when playing video, decreases memory usage by up to 10%, and decreases energy usage by up to 30%.
 
@@ -316,9 +332,9 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Fixes an issue where the delegate method  `playbackController:playbackSession:didExitAd:` was not being triggered when an applicable IMA ad was skipped.
+* Fixes an issue where the delegate method  `playbackController:playbackSession:didExitAd:` was not being triggered when an applicable IMA ad was skipped. 
 
-* Fixes an issue where ads were not replayed when `ignoringPreviouslyProcessedCuePoints` on `BCOVCuePointProgressPolicy` was disabled.
+* Fixes an issue where ads were not replayed when `ignoringPreviouslyProcessedCuePoints` on `BCOVCuePointProgressPolicy` was disabled. 
 
 ## Release 6.5.0
 
