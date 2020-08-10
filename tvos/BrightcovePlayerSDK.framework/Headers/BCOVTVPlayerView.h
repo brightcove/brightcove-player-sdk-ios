@@ -73,6 +73,37 @@ typedef NS_ENUM(NSUInteger, BCOVTVPlayerType) {
 };
 
 /**
+ * Enumeration type used to determine icon type
+ * for certain UI behaviors.
+ */
+typedef NS_ENUM(NSUInteger, BCOVTVIconType)
+{
+    /**
+     * Icon shown as icon for jump-back
+     * Default size is 36x40
+     */
+    BCOVTVIconTypeJumpBack,
+    
+    /**
+     * Icon shown as icon for jump-foward
+     * Default size is 36x40
+    */
+    BCOVTVIconTypeJumpFoward,
+    
+    /**
+     * Icon shown when rewinding
+     * Default size is 32x32
+    */
+    BCOVTVIconTypeRewind,
+    
+    /**
+     * Icon shown when fast-forwarding
+     * Default size is 32x32
+    */
+    BCOVTVIconTypeFastForward
+};
+
+/**
  * Conform to this protocol to receive information about the BCOVTVPlayerView.
  */
 @protocol BCOVTVPlayerViewDelegate <NSObject>
@@ -166,6 +197,42 @@ typedef NS_ENUM(NSUInteger, BCOVTVPlayerType) {
  */
 - (void)progressViewPanGestureStateEnded:(NSTimeInterval)progressValue;
 
+/**
+ * Called during video playback.
+ *
+ * Use this optional delegate method to provide a custom view to indicate to users wether a video is at
+ * the live edge or not. If this method is not implemented by your delegate, a default behavior of showing
+ * "Live" at the top left of the BCOVTVPlayerView will be displayed, with the "L" tinted green if the video
+ * is at the live edge.
+ *
+ * The view will be added to as a subview inside BCOVTVPlayerView and will be relative to it. A frame with
+ * an x, y value of 0 will be positioned at the top left of the view as expected. You may position the view
+ * however you like.
+ *
+ * @param playing Wether or not the video is currently playing
+ * @param atLiveEdge Wether or not the video is at the live edge
+ *
+ * This method is called on the main thread and should not be blocked.
+ */
+- (UIView *)liveIndicatorViewForIsPlaying:(BOOL)playing atLiveEdge:(BOOL)atLiveEdge;
+
+/**
+ * Called prior to displaying an icon for certain UI behaviors.
+ *
+ * These currently include icons for 'jump-back', 'jump-forward', 'fast-forward' and 'rewind'.
+ *
+ * You can set your own icon image using this delegate method. You will also need to set the frame of the image
+ * and note that its superview is 40x40. You can position the imageView however you'd like inside of the superview
+ * while keeping a maximum height and width of 40.
+ * Return `YES` if you are overriding the icon, ottherwise return `NO`
+ *
+ * @param iconType The type of icon tha should be displayed
+ * @param imageView The image view that the icon will be displayed in
+ *
+ * @return A boolean indicating if the default icon should be overriden.
+ */
+- (BOOL)willDisplayIconType:(BCOVTVIconType)iconType withImageView:(UIImageView *)imageView;
+
 @end
 
 
@@ -183,10 +250,17 @@ typedef NS_ENUM(NSUInteger, BCOVTVPlayerType) {
 
 /**
  * The time in seconds to jump back or ahead when the jump backward/forward gesture is invoked.
- * The jump gesture is invoked by double clicking on the left or right edge of the Siri remote trackpad.
+ * The jump gesture is invoked by clicking on the left or right edge of the Siri remote trackpad.
  * Defaults to 10 seconds.
  */
 @property (nonatomic, assign) NSTimeInterval jumpInterval;
+
+/**
+ * The rate at which the AVPlayer will use when fast-forwarding or rewinding is activated by
+ * long-pressing on the left or right edge of the Siri remote trackpad.
+ * Defaults to 24.
+ */
+@property (nonatomic, assign) CGFloat fastForwardAndRewindRate;
 
 /**
  * The time in seconds since the last touch before fading the controls.

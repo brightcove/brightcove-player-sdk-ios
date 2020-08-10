@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>BCOVTVPlayerType Constants Reference</title>
+	<title>BCOVTVIconType Constants Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -59,7 +59,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">BCOVTVPlayerType Constants Reference</h1>
+					<h1 class="title">BCOVTVIconType Constants Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -75,12 +75,12 @@
 					
 
                     
-                    <h3 class="subsubtitle method-title">BCOVTVPlayerType</h3>
+                    <h3 class="subsubtitle method-title">BCOVTVIconType</h3>
                     
 					
 					<div class="section section-overview">
-                        <p>Enumeration type used to set the type of video playback
-in the player view.</p>
+                        <p>Enumeration type used to determine icon type
+for certain UI behaviors.</p>
 					</div>
 					
 					
@@ -88,13 +88,15 @@ in the player view.</p>
                         <!-- display enum values -->
                         
                         <h4 class="method-subtitle">Definition</h4>
-                        <code>typedef NS_ENUM(NSUInteger, BCOVTVPlayerType ) {<br>
+                        <code>typedef NS_ENUM(NSUInteger, BCOVTVIconType ) {<br>
                             
-                            &nbsp;&nbsp; <a href="">BCOVTVPlayerTypeVOD</a>,<br>
+                            &nbsp;&nbsp; <a href="">BCOVTVIconTypeJumpBack</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">BCOVTVPlayerTypeLive</a>,<br>
+                            &nbsp;&nbsp; <a href="">BCOVTVIconTypeJumpFoward</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">BCOVTVPlayerTypeLiveDVR</a>,<br>
+                            &nbsp;&nbsp; <a href="">BCOVTVIconTypeRewind</a>,<br>
+                            
+                            &nbsp;&nbsp; <a href="">BCOVTVIconTypeFastForward</a>,<br>
                             
                             };</code>
                     
@@ -104,12 +106,12 @@ in the player view.</p>
                         <h4 class="method-subtitle">Constants</h4>
                         <dl class="termdef">
                             
-                            <dt><a name="" title="BCOVTVPlayerTypeVOD"></a><code>BCOVTVPlayerTypeVOD</code></dt>
+                            <dt><a name="" title="BCOVTVIconTypeJumpBack"></a><code>BCOVTVIconTypeJumpBack</code></dt>
 <dd>
 
 
-<p>Controls and gestures for video-on-demand.
-This includes advertising controls.</p>
+<p>Icon shown as icon for jump-back
+Default size is 36x40</p>
 
 
 
@@ -122,11 +124,12 @@ This includes advertising controls.</p>
 	
 </dd>
                             
-                            <dt><a name="" title="BCOVTVPlayerTypeLive"></a><code>BCOVTVPlayerTypeLive</code></dt>
+                            <dt><a name="" title="BCOVTVIconTypeJumpFoward"></a><code>BCOVTVIconTypeJumpFoward</code></dt>
 <dd>
 
 
-<p>Controls and gestures for live video playback.</p>
+<p>Icon shown as icon for jump-foward
+Default size is 36x40</p>
 
 
 
@@ -139,11 +142,30 @@ This includes advertising controls.</p>
 	
 </dd>
                             
-                            <dt><a name="" title="BCOVTVPlayerTypeLiveDVR"></a><code>BCOVTVPlayerTypeLiveDVR</code></dt>
+                            <dt><a name="" title="BCOVTVIconTypeRewind"></a><code>BCOVTVIconTypeRewind</code></dt>
 <dd>
 
 
-<p>Controls and gestures for live DVR video playback.</p>
+<p>Icon shown when rewinding
+Default size is 32x32</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">BCOVTVPlayerView.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="BCOVTVIconTypeFastForward"></a><code>BCOVTVIconTypeFastForward</code></dt>
+<dd>
+
+
+<p>Icon shown when fast-forwarding
+Default size is 32x32</p>
 
 
 

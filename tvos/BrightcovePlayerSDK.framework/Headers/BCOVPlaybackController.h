@@ -861,6 +861,28 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  */
 - (void)playbackController:(id<BCOVPlaybackController>)controller determinedVideoType:(BCOVVideoType)videoType forVideo:(BCOVVideo *)video;
 
+/**
+ * Called when a new audible AVMediaSelectionOption is set on the current BCOVPlaybackSession
+ * which can be done using BCOVPlayerView or BCOVTVPlayerView, or by calling the
+ * AVMediaSelectionOption setter methods of BCOVPlaybackSession.
+ *
+ * @param controller The playback controller to which this instance serves as delegate.
+ * @param session The playback session whose AVPlayer's currentItem's media option was changed
+ * @param audibleMediaOption The newly selected AVMediaSelectionOption
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didChangeSelectedAudibleMediaOption:(AVMediaSelectionOption *)audibleMediaOption;
+
+/**
+ * Called when a new legible AVMediaSelectionOption is set on the current BCOVPlaybackSession
+ * which can be done using BCOVPlayerView or BCOVTVPlayerView, or by calling the
+ * AVMediaSelectionOption setter methods of BCOVPlaybackSession.
+ *
+ * @param controller The playback controller to which this instance serves as delegate.
+ * @param session The playback session whose AVPlayer's currentItem's media option was changed
+ * @param legibleMediaOption The newly selected AVMediaSelectionOption
+*/
+- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didChangeSelectedLegibleMediaOption:(AVMediaSelectionOption *)legibleMediaOption;
+
 @end
 
 

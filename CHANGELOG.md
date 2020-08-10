@@ -1,3 +1,41 @@
+## Release 6.7.10 ##
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Adds the `BCOVTVPlayerViewDelegate` method `-liveIndicatorViewForIsPlaying:atLiveEdge:` to allow for customization of the DVR Live indicator.
+
+* Adds the `BCOVPlaybackControllerDelegate` method `playbackController:playbackSession:didChangeSelectedAudibleMediaOption` to be notified when the audible media option for the current video is changed.
+
+* Adds the `BCOVPlaybackControllerDelegate` method `playbackController:playbackSession:didChangeSelectedLegibleMediaOption` to be notified when the legible media option for the current video is changed.
+
+* Fixes an issue where BCOVPlaybackSessionLifecycleEvent `kBCOVPlaybackSessionLifecycleEventReady` or `kBCOVPlaybackSessionLifecycleEventFail` sometimes failed to reach the `BCOVPlaybackController` delegate.
+
+* Fixes an issue where subtitles set with the Sidecar plugin could cause subsequent videos in a playlist to not play.
+
+* Improves the appearance of the built-in TV Player Controls and the handling of Siri Remote gestures.
+
+* Adds Objective-C and Swift sample projects for playing IMA preroll ads with Live SSAI streams. See SSAI/SLS_IMA-Player and SSAI/SLS_IMA-tvOSPlayer in brightcoveos/ios-player-samples.git on GitHub.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where playback controls remained hidden after an ad failed to play when using a VAST ad profile.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds the optional `BCOVGoogleCastManagerDelegate` method `willBuildMediaInformationBuilder:` to allow for additional configuration of the `GCKMediaInformationBuilder` object.
+
+* Adds the optional  `BCOVGoogleCastManagerDelegate` method `useSourceFromSources:` to allow for custom source selection.
+
+* Adds the optional `BCOVGoogleCastManagerDelegate` method `willSendMediaLoadOptions:` to allow for additional configuration of the `GCKMediaLoadOptions` object.
+
+* Adds the optional `BCOVGoogleCastManagerDelegate` method `shouldCastVideo:` to allow for customization of cast behavior. 
+
 ## Release 6.7.9 ##
 
 ### Brightcove Player SDK for iOS (Core)
@@ -88,7 +126,7 @@
 
 * Adds the optional `BCOVTVPlayerViewDelegate` methods `progressViewPanGestureStateBegan:`, `progressViewPanGestureStateChanged:` and `progressViewPanGestureStateEnded:` for tvOS.
 
-* Adds support for dual expiry for offline FairPlay protected videos.  Refer to the _Download a Video_ section of OfflinePlayback.md for more information.
+* Adds support for dual expiry for offline FairPlay protected videos. Refer to the _Download a Video_ section of OfflinePlayback.md for more information.
 
 * Fixes an issue on tvOS where audio would continue to play after a player view had been removed from the view heirarchy.
 
@@ -185,7 +223,7 @@
 OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -framework "AVFoundation" -framework "Accelerate" -framework "AudioToolbox" -framework "BrightcoveGoogleCast" -framework "BrightcovePlayerSDK" -framework "CFNetwork" -framework "CoreBluetooth" -framework "CoreData" -framework "CoreGraphics" -framework "CoreMedia" -framework "CoreText" -framework "Foundation" -framework "GoogleCast" -framework "MediaAccessibility" -framework "MediaPlayer" -framework "QuartzCore" -framework "Security" -framework "SystemConfiguration" -framework "UIKit" -framework "protobuf"
 ```
 
-  to this:
+to this:
 
 ```
 OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -framework "BrightcovePlayerSDK" -framework "BrightcoveGoogleCast" -framework "GoogleCast" -framework "protobuf"
@@ -302,7 +340,7 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Reduces the file size of the dynamic framework by ~10MB, and ~20MB for the static framework. 
+* Reduces the file size of the dynamic framework by ~10MB, and ~20MB for the static framework.
 
 * Reduces CPU load up to 40% when playing video, decreases memory usage by up to 10%, and decreases energy usage by up to 30%.
 
@@ -332,9 +370,9 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Fixes an issue where the delegate method  `playbackController:playbackSession:didExitAd:` was not being triggered when an applicable IMA ad was skipped. 
+* Fixes an issue where the delegate method  `playbackController:playbackSession:didExitAd:` was not being triggered when an applicable IMA ad was skipped.
 
-* Fixes an issue where ads were not replayed when `ignoringPreviouslyProcessedCuePoints` on `BCOVCuePointProgressPolicy` was disabled. 
+* Fixes an issue where ads were not replayed when `ignoringPreviouslyProcessedCuePoints` on `BCOVCuePointProgressPolicy` was disabled.
 
 ## Release 6.5.0
 

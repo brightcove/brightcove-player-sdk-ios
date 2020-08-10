@@ -74,6 +74,10 @@
 		
 		<option value="//api/name/playbackController:playbackSession:didChangeSeekableRanges:">- playbackController:playbackSession:didChangeSeekableRanges:</option>
 		
+		<option value="//api/name/playbackController:playbackSession:didChangeSelectedAudibleMediaOption:">- playbackController:playbackSession:didChangeSelectedAudibleMediaOption:</option>
+		
+		<option value="//api/name/playbackController:playbackSession:didChangeSelectedLegibleMediaOption:">- playbackController:playbackSession:didChangeSelectedLegibleMediaOption:</option>
+		
 		<option value="//api/name/playbackController:playbackSession:didPassCuePoints:">- playbackController:playbackSession:didPassCuePoints:</option>
 		
 		<option value="//api/name/playbackController:playbackSession:didProgressTo:">- playbackController:playbackSession:didProgressTo:</option>
@@ -881,6 +885,150 @@ switching between control layouts if utilizing different video types in a playli
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackController:playbackSession:didChangeSelectedAudibleMediaOption:" title="playbackController:playbackSession:didChangeSelectedAudibleMediaOption:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:playbackSession:didChangeSelectedAudibleMediaOption:">&ndash;&nbsp;playbackController:playbackSession:didChangeSelectedAudibleMediaOption:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when a new audible AVMediaSelectionOption is set on the current <a href="../Protocols/BCOVPlaybackSession.html">BCOVPlaybackSession</a>
+which can be done using BCOVPlayerView or <a href="../Classes/BCOVTVPlayerView.html">BCOVTVPlayerView</a>, or by calling the
+AVMediaSelectionOption setter methods of <a href="../Protocols/BCOVPlaybackSession.html">BCOVPlaybackSession</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em> didChangeSelectedAudibleMediaOption:(AVMediaSelectionOption *)<em>audibleMediaOption</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller to which this instance serves as delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session whose AVPlayer&rsquo;s currentItem&rsquo;s media option was changed</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>audibleMediaOption</code></th>
+						<td><p>The newly selected AVMediaSelectionOption</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when a new audible AVMediaSelectionOption is set on the current <a href="../Protocols/BCOVPlaybackSession.html">BCOVPlaybackSession</a>
+which can be done using BCOVPlayerView or <a href="../Classes/BCOVTVPlayerView.html">BCOVTVPlayerView</a>, or by calling the
+AVMediaSelectionOption setter methods of <a href="../Protocols/BCOVPlaybackSession.html">BCOVPlaybackSession</a>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackController:playbackSession:didChangeSelectedLegibleMediaOption:" title="playbackController:playbackSession:didChangeSelectedLegibleMediaOption:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:playbackSession:didChangeSelectedLegibleMediaOption:">&ndash;&nbsp;playbackController:playbackSession:didChangeSelectedLegibleMediaOption:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when a new legible AVMediaSelectionOption is set on the current <a href="../Protocols/BCOVPlaybackSession.html">BCOVPlaybackSession</a>
+which can be done using BCOVPlayerView or <a href="../Classes/BCOVTVPlayerView.html">BCOVTVPlayerView</a>, or by calling the
+AVMediaSelectionOption setter methods of <a href="../Protocols/BCOVPlaybackSession.html">BCOVPlaybackSession</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em> didChangeSelectedLegibleMediaOption:(AVMediaSelectionOption *)<em>legibleMediaOption</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller to which this instance serves as delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session whose AVPlayer&rsquo;s currentItem&rsquo;s media option was changed</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>legibleMediaOption</code></th>
+						<td><p>The newly selected AVMediaSelectionOption</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when a new legible AVMediaSelectionOption is set on the current <a href="../Protocols/BCOVPlaybackSession.html">BCOVPlaybackSession</a>
+which can be done using BCOVPlayerView or <a href="../Classes/BCOVTVPlayerView.html">BCOVTVPlayerView</a>, or by calling the
+AVMediaSelectionOption setter methods of <a href="../Protocols/BCOVPlaybackSession.html">BCOVPlaybackSession</a>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -894,7 +1042,7 @@ switching between control layouts if utilizing different video types in a playli
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-07-01</p>
+						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-08-10</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

@@ -60,6 +60,8 @@
 	
 	<optgroup label="Instance Methods">
 		
+		<option value="//api/name/liveIndicatorViewForIsPlaying:atLiveEdge:">- liveIndicatorViewForIsPlaying:atLiveEdge:</option>
+		
 		<option value="//api/name/playerView:controlsFadingViewDidFadeIn:">- playerView:controlsFadingViewDidFadeIn:</option>
 		
 		<option value="//api/name/playerView:controlsFadingViewDidFadeOut:">- playerView:controlsFadingViewDidFadeOut:</option>
@@ -77,6 +79,8 @@
 		<option value="//api/name/progressViewPanGestureStateChanged:">- progressViewPanGestureStateChanged:</option>
 		
 		<option value="//api/name/progressViewPanGestureStateEnded:">- progressViewPanGestureStateEnded:</option>
+		
+		<option value="//api/name/willDisplayIconType:withImageView:">- willDisplayIconType:withImageView:</option>
 		
 	</optgroup>
 	
@@ -685,6 +689,155 @@ until playback resumes.</p>
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/liveIndicatorViewForIsPlaying:atLiveEdge:" title="liveIndicatorViewForIsPlaying:atLiveEdge:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/liveIndicatorViewForIsPlaying:atLiveEdge:">&ndash;&nbsp;liveIndicatorViewForIsPlaying:atLiveEdge:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called during video playback.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (UIView *)liveIndicatorViewForIsPlaying:(BOOL)<em>playing</em> atLiveEdge:(BOOL)<em>atLiveEdge</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>playing</code></th>
+						<td><p>Wether or not the video is currently playing</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>atLiveEdge</code></th>
+						<td><p>Wether or not the video is at the live edge</p>
+
+<p>This method is called on the main thread and should not be blocked.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called during video playback.</p>
+
+<p>Use this optional delegate method to provide a custom view to indicate to users wether a video is at
+the live edge or not. If this method is not implemented by your delegate, a default behavior of showing
+&ldquo;Live&rdquo; at the top left of the <a href="../Classes/BCOVTVPlayerView.html">BCOVTVPlayerView</a> will be displayed, with the &ldquo;L&rdquo; tinted green if the video
+is at the live edge.</p>
+
+<p>The view will be added to as a subview inside <a href="../Classes/BCOVTVPlayerView.html">BCOVTVPlayerView</a> and will be relative to it. A frame with
+an x, y value of 0 will be positioned at the top left of the view as expected. You may position the view
+however you like.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/willDisplayIconType:withImageView:" title="willDisplayIconType:withImageView:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/willDisplayIconType:withImageView:">&ndash;&nbsp;willDisplayIconType:withImageView:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called prior to displaying an icon for certain UI behaviors.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)willDisplayIconType:(BCOVTVIconType)<em>iconType</em> withImageView:(UIImageView *)<em>imageView</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>iconType</code></th>
+						<td><p>The type of icon tha should be displayed</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>imageView</code></th>
+						<td><p>The image view that the icon will be displayed in</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A boolean indicating if the default icon should be overriden.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called prior to displaying an icon for certain UI behaviors.</p>
+
+<p>These currently include icons for &lsquo;jump-back&rsquo;, &lsquo;jump-forward&rsquo;, &lsquo;fast-forward&rsquo; and &lsquo;rewind&rsquo;.</p>
+
+<p>You can set your own icon image using this delegate method. You will also need to set the frame of the image
+and note that its superview is 40x40. You can position the imageView however you&rsquo;d like inside of the superview
+while keeping a maximum height and width of 40.
+Return <code>YES</code> if you are overriding the icon, ottherwise return <code>NO</code></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVPlayerView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -698,7 +851,7 @@ until playback resumes.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-07-01</p>
+						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-08-10</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
