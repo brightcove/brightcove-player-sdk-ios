@@ -155,6 +155,11 @@ extern NSString * const kBCOVPlaybackSessionLifecycleEventAdPause;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventAdResume;
 
 /**
+ * The current ad has been skipped.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventAdSkipped;
+
+/**
  * The key for the error in the Event properties.
  */
 extern NSString * const kBCOVPlaybackSessionEventKeyError;

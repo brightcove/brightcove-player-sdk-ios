@@ -1,4 +1,4 @@
-iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.7.11.1278
+iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.8.0.1318
 --------------
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -40,7 +40,7 @@ As part of setup, you also need to create and assign an authorization proxy to h
 ```
 // Publisher/application IDs not required for Dynamic Delivery
 self.authProxy = [[BCOVFPSBrightcoveAuthProxy alloc] initWithPublisherId:nil
-                                                       applicationId:nil];
+                                                           applicationId:nil];
     
 BCOVOfflineVideoManager.sharedManager.authProxy = self.authProxy;
 ```
@@ -56,10 +56,10 @@ In your user interface, you should indicate if a video is eligible for download.
 When a user requests a video download, call
 
 ```
-[BCOVOfflineVideoManager.sharedManager
-    requestVideoDownload:video
-    parameters:parameters
-    completion:^(BCOVOfflineVideoToken offlineVideoToken, NSError *error) {
+[BCOVOfflineVideoManager.sharedManager requestVideoDownload:video
+                                                 parameters:parameters
+                                                 completion:^(BCOVOfflineVideoToken offlineVideoToken,
+                                                              NSError *error) {
 
     // store offlineVideoToken or handle error
 
@@ -96,10 +96,10 @@ The completion handler is where you asynchronously receive the offline video tok
 If you plan to download multiple FairPlay-protected videos, it's a good idea to prelaod all the FairPlay licenses beforehand, because FairPlay license exchange cannot happen while the app is in the background. Preload a FairPlay license with a similar call:
 
 ```
-[BCOVOfflineVideoManager.sharedManager
-    preloadFairPlayLicense:video
-    parameters:parameters
-    completion:^(BCOVOfflineVideoToken offlineVideoToken, NSError *error) {
+[BCOVOfflineVideoManager.sharedManager preloadFairPlayLicense:video
+                                                   parameters:parameters
+                                                   completion:^(BCOVOfflineVideoToken offlineVideoToken,
+                                                                NSError *error) {
 
     // store offlineVideoToken or handle error
 
@@ -108,11 +108,11 @@ If you plan to download multiple FairPlay-protected videos, it's a good idea to 
 An offline video token will be established for the download at this point. After the license has been acquired, you can then request the video download without any parameters:
 
 ```
-[BCOVOfflineVideoManager.sharedManager
-    requestVideoDownload:video
-    mediaSelections:nil
-    parameters:nil
-    completion:^(BCOVOfflineVideoToken offlineVideoToken, NSError *error) {
+[BCOVOfflineVideoManager.sharedManager requestVideoDownload:video
+                                            mediaSelections:nil
+                                                 parameters:nil
+                                                 completion:^(BCOVOfflineVideoToken offlineVideoToken,
+                                                              NSError *error) {
 
     // returns the same offline video token here
 
@@ -123,15 +123,15 @@ At this point, the download will continue even if the user sends the app to the 
 
 ### Downloading Secondary Tracks
 
-Subtitle, caption and audio tracks of a language are known collectively as a media selection option. A video can have multiple media selection options, for example, English, French and Spanish. The language settings of the device determine the *preferred* media selection option, for example, English. When downloading a video for offline viewing, the preferred media selection option and any chosen additional media selection options are downloaded together in response to a single download request. Internally, the SDK manages the download using a single AVAggregateAssetDownloadTask.
+When secondary tracks are to be included for offline viewing, they must be downloaded along with the video in the call to <nobr>`-requestVideoDownload:mediaSelections:parameters:completion:`</nobr>.
 
-Downloading involves these basic steps:
+Subtitle, caption and audio tracks for a language are known collectively as a Media Selection and are represented by Apple's `AVMediaSelection` class. A video can have multiple media selections, for example, English, French and Spanish. The language settings of the device determine the *preferred* media selection, for example, English. Internally, the SDK manages the download of a video and its secondary tracks using a single `AVAggregateAssetDownloadTask`.
 
-1. Select the tracks you would like to download. Tracks are selected as AVMediaSelection objects and BCOVOfflineVideoManager provides the utility method `-[BCOVOfflineVideoManager urlAssetForVideo:error:]` to help you choose AVMediaSelections of interest. Refer to the "*Finding Media Selections*" methods of AVAsset.
-1. Create an NSArray of your media selections, and pass it to `-[BCOVOfflineVideoManager requestVideoDownload:mediaSelections:parameters:completion:]` or pass `nil` to automatically download the preferred AVMediaSelections.
-2. Track download progress using methods in the `BCOVOfflineVideoManagerDelegate` protocol.
+Downloading for offline viewing involves these basic steps:
 
-Some tracks may have already been downloaded as part of the initial video download.
+1. Choose the media selections to be downloaded. Media Selection are properties of the `AVAsset` class. `BCOVOfflineVideoManager` provides the utility method `-[BCOVOfflineVideoManager urlAssetForVideo:error:]` to help you assemble `AVMediaSelection` objects of interest. Refer to the "*Finding Media Selections*" methods of `AVAsset`.
+1. Create an `NSArray<AVMediaSelection *>` of your media selections, and pass it to `-[BCOVOfflineVideoManager requestVideoDownload:mediaSelections:parameters:completion:]` or pass `nil` to automatically download the *preferred* `AVMediaSelection` objects.
+1. Track download progress using methods of the `BCOVOfflineVideoManagerDelegate` protocol. Note that when downloading additional media selections, progress callbacks are made for each downloaded item individually, with each ranging in progress from 0% to 100%.
 
 **Displaying Sideband Subtitles**
 
@@ -188,10 +188,10 @@ parameters = @{
 	kBCOVOfflineVideoManagerRequestedBitrateKey: @( preferredBitrate )
 };
 
-[BCOVOfflineVideoManager.sharedManager
-    requestVideoDownload:video
-    parameters:parameters
-    completion:^(BCOVOfflineVideoToken offlineVideoToken, NSError *error) {
+[BCOVOfflineVideoManager.sharedManager requestVideoDownload:video
+                                                 parameters:parameters
+                                                 completion:^(BCOVOfflineVideoToken offlineVideoToken,
+                                                              NSError *error) {
 
     // store offlineVideoToken or handle error
 
@@ -411,9 +411,10 @@ For example, here is how you can renew a FairPlay license with a new 30-day rent
 
      // Request license renewal
      [BCOVOfflineVideoManager.sharedManager renewFairPlayLicense:offlineVideoToken
-                                                           video:video // recent video from Playback API or Playback Service class
+                                                           video:video // recent video from Playback API or Playback Service
                                                       parameters:parameters
-                                                      completion:^(BCOVOfflineVideoToken offlineVideoToken, NSError *error)
+                                                      completion:^(BCOVOfflineVideoToken offlineVideoToken,
+                                                                   NSError *error)
       {
 
          // handle errors
@@ -430,10 +431,11 @@ If you are using the Playback Authorization Service you'll need to use the renew
 ```
     // Request license renewal
     [BCOVOfflineVideoManager.sharedManager renewFairPlayLicense:offlineVideoToken
-                                                          video:video // recent video from Playback API or Playback Service class
-                                                      authToken: authToken
+                                                          video:video // recent video from Playback API or Playback Service
+                                                      authToken:authToken
                                                      parameters:parameters
-                                                     completion:^(BCOVOfflineVideoToken offlineVideoToken, NSError *error)
+                                                     completion:^(BCOVOfflineVideoToken offlineVideoToken,
+                                                                  NSError *error)
     {
 
         // handle errors
@@ -527,7 +529,7 @@ When possible, a better way to play the same video twice is to simply seek the s
 
 If this is not possible, and you still need to create another playback controller, another alternative is to remove the first `AVPlayer`'s current `AVPlayerItem` when you are done with the current session, and just before you destroy the playback controller. You can accomplish this with a single call:
 
-```
+```objc
 	[session.player replaceCurrentItemWithPlayerItem:nil];
 ```
 

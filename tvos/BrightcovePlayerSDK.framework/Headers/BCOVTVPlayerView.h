@@ -165,7 +165,7 @@ typedef NS_ENUM(NSUInteger, BCOVTVIconType)
 - (CGSize)playerViewShouldDisplayThumbnailPreviewWithSize:(BCOVTVPlayerView *)playerView;
 
 /**
- * Called when a progressView panning gesture begins.
+ * Called when a progressView panning gesture (seek) begins.
  *
  * @param progressValue The progress value represented by the pan gesture, passed
  * as a parameter because the progress property of the BCOVTVProgressView does not update
@@ -176,7 +176,7 @@ typedef NS_ENUM(NSUInteger, BCOVTVIconType)
 - (void)progressViewPanGestureStateBegan:(NSTimeInterval)progressValue;
 
 /**
- * Called when a progressView panning gesture changes state (location).
+ * Called when a progressView panning gesture (seek) changes state (playhead position).
  *
  * @param progressValue The progress value represented by the pan gesture, passed
  * as a parameter because the progress property of the BCOVTVProgressView does not update
@@ -187,7 +187,7 @@ typedef NS_ENUM(NSUInteger, BCOVTVIconType)
 - (void)progressViewPanGestureStateChanged:(NSTimeInterval)progressValue;
 
 /**
- * Called when a panning gesture ends.
+ * Called when a panning gesture (seek) ends.
  *
  * @param progressValue The progress value represented by the pan gesture, passed
  * as a parameter because the progress property of the BCOVTVProgressView does not update
@@ -196,6 +196,26 @@ typedef NS_ENUM(NSUInteger, BCOVTVIconType)
  * This method is called on the main thread and should not be blocked.
  */
 - (void)progressViewPanGestureStateEnded:(NSTimeInterval)progressValue;
+
+/**
+ * Called when fast-forwarding on the player begins.
+ */
+- (void)playerDidBeginFastForward;
+
+/**
+ * Called when fast-forwarding on the player ends.
+*/
+- (void)playerDidEndFastForward;
+
+/**
+ * Called when fast-rewinding on the player begins.
+*/
+- (void)playerDidBeginFastRewind;
+
+/**
+ * Called when fast-rewinding on the player ends.
+*/
+- (void)playerDidEndFastRewind;
 
 /**
  * Called during video playback.

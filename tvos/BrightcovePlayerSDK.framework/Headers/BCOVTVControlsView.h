@@ -61,21 +61,4 @@
  */
 @property (nonatomic, weak, readonly) UILabel *descriptionLabel;
 
-/**
- * UIImageView to display action hints on the right side of the current time label.
- * These include the fast-fowarding icon and the jump-forward icon.
- */
-@property (nonatomic, weak, readonly) UIImageView *actionIconImageViewRight;
-
-/**
- * UIImageView to display action hints on the left side of the current time label.
- * These include the rewinding icon and the jump-backward icon.
-*/
-@property (nonatomic, weak, readonly) UIImageView *actionIconImageViewLeft;
-
-/**
- * UIStackView containing currentTimeLabel, actionIconImageViewRight and actionIconImageViewLeft
- */
-@property (nonatomic, weak, readonly) UIStackView *currentTimeStackView;
-
 @end

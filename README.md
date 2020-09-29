@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.7.11.1278
+# Brightcove Player SDK for iOS, version 6.8.0.1318
 
 
 # Table of Contents
@@ -52,6 +52,8 @@ Supported Platforms <a name="SupportedPlatforms"></a>
 iOS 11.0 and above.
 
 tvOS 11.0 and above.
+
+The Core SDK is localized for Arabic (ar), English (en), French (fr), German (de), Japanese (ja), Korean (ko), Spanish (es), Simplified Chinese (zh-Hans) and Traditional Chinese (zh-Hant). To gain the benefit of a localization, your app must also be localized for the same language and locale.
 
 Noteworthy <a name="Noteworthy"></a>
 ============

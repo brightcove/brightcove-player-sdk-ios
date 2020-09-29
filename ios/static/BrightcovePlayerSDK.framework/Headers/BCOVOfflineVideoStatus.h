@@ -54,7 +54,6 @@
 
 #else
 
-@property (nonatomic, readonly) id downloadTask;
 @property (nonatomic, readonly) id aggregateDownloadTask;
 
 #endif
