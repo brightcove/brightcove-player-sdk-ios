@@ -1,3 +1,31 @@
+## Release 6.8.1 ##
+
+#### Breaking Changes
+
+* Some Brightcove Player SDK Podspecs have been updated which might affect your project Podfile. Refer to the *Noteworthy* section of the SDK Core README.
+
+#### Additions and Improvements
+
+* Fixes an issue where _Rebuild from Bitcode_ failed during Distribution, Validation and App Store submission for apps built with dynamic Brightcove frameworks.
+
+* Fixes some Podspecs to allow the IMA and Omniture plugins to be used together.
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Breaking Changes
+
+* The property `externalRouteView` on `BCOVPUIBasicControlView` has been renamed to `externalRouteViewButton` and is now a `BCOVPUIButton`. 
+
+#### Additions and Improvements
+
+* Fixes the AirPlay button accessibility label.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes a memory leak which could cause a video to continue playing after its view controller had been dismissed.
+
 ## Release 6.8.0 ##
 
 ### Brightcove Player SDK for iOS (Core)
@@ -24,7 +52,7 @@
 
 #### Additions and Improvements
 
-* Adds support for the Brightcove CAF Receiver. See the [Brightcove CAF Receiver](https://github.com/brightcove/brightcove-player-sdk-ios-googlecast#brightcove-cast-receiver) section of the Google Cast Plugin README for more information.
+* Adds support for the Brightcove CAF Receiver. See the [Brightcove CAF Receiver](https://github.com/brightcove/brightcove-player-sdk-ios-googlecast#brightcove-caf-receiver) section of the Google Cast Plugin README for more information.
 
 * Supports version 4.5.0 of the Google Cast SDK for iOS. See the [iOS Permissions Changes](https://developers.google.com/cast/docs/ios_sender/ios_permissions_changes) page for information about permission changes for iOS 14 and how they play into the Google Cast SDK.
 
@@ -268,7 +296,7 @@
 
 #### Breaking Changes
 
-* The minimum Deployment Target for all Brightcove Native Player for iOS frameworks is now iOS 11.0 and tvOS 11.0. Details are available [here](https://sdks.support.brightcove.com/support/announcements/native-sdk-ios-eol-support-iostvos-10.html).
+* The minimum Deployment Target for all Brightcove Native Player for iOS frameworks is now iOS 11.0 and tvOS 11.0.
 
 #### Additions and Improvements
 
@@ -596,7 +624,7 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Breaking Changes
 
-* The minimum iOS Deployment Target for all Brightcove Native Player for iOS frameworks is now iOS 10.0. Details are available [here](https://sdks.support.brightcove.com/support/announcements/native-sdk-ios-eol-support-iostvos-10.html).
+* The minimum iOS Deployment Target for all Brightcove Native Player for iOS frameworks is now iOS 10.0.
 
 ### Brightcove Player SDK for iOS (Core)
 

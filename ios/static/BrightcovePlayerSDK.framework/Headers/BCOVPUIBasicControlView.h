@@ -167,7 +167,7 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
 @property (nonatomic, weak, readonly) BCOVPUIButton *video360Button;
 
 /** The external route (airplay) button */
-@property (nonatomic, weak, readonly) UIView *externalRouteView;
+@property (nonatomic, weak, readonly) BCOVPUIButton *externalRouteViewButton;
 
 /** The "go to live" button */
 @property (nonatomic, weak, readonly) BCOVPUIButton *liveButton;
@@ -182,7 +182,7 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
 /** Yes if the closedCaptionButton is visible. No if invisible. */
 @property (nonatomic, readonly, getter=isClosedCaptionEnabled) BOOL closedCaptionEnabled;
 
-/** Yes if the externalRouteView is visible. No if invisible. */
+/** Yes if the externalRouteViewButton is visible. No if invisible. */
 @property (nonatomic, assign, readonly, getter=isExternalRouteEnabled) BOOL externalRouteEnabled;
 
 /** Yes if the preferredBitrateButton is visible. No if invisible */

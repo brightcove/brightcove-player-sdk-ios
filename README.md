@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.8.0.1318
+# Brightcove Player SDK for iOS, version 6.8.1.1355
 
 
 # Table of Contents
@@ -60,40 +60,28 @@ Noteworthy <a name="Noteworthy"></a>
 
 All SDK components - the core and plugin frameworks - are released with the same version number. When upgrading any single component, upgrade all components to the same version.
 
-**CocoaPods Podspec names (since release 6.7.7)**
+**CocoaPods Podspec names (since release 6.8.1)**
 
-Release 6.7.7 of the Brightcove Player SDK renames some Podspec files in order to improve CocoaPods compliance. Several Podspec files retain original names. Where there is a choice of dynamic and static frameworks, static framework Podspec files are named with a *-static* suffix. Prior to Release 6.7.7, static Brightcove frameworks were the default and dynamic frameworks were differentiated by a subspec name, for example `Brightcove-Player-Core/dynamic`. Using the Core SDK as an example:
-
-* If your Podfile imports `Brightcove-Player-Core/dynamic`, rename it `Brightcove-Player-Core`.
-* If your Podfile imports `Brightcove-Player-Core/static`, rename it `Brightcove-Player-Core-static`.
-* If your Podfile imports `Brightcove-Player-Core`, rename it `Brightcove-Player-Core-static` or better, leave it unchanged and make the switch to dynamic frameworks.
+Release 6.8.1 of the Brightcove Player SDK updates the `Brightcove-Player-FreeWheel` and `Brightcove-Player-Omniture` podspecs to install the dynamic version of `BrightcovePlayerSDK`. A  `-static` podspec is now available for each plugin which will install the static version of `BrightcovePlayerSDK` along with the static version of the plugin framework itself. If there is no static version of a plugin, the dynamic version will be installed with the static version of `BrightcovePlayerSDK`.
 
 
 Podspec Name  |  Framework Type  |  Dependency
 ------------- | ------------- | -------------
 Brightcove-Player-Core | dynamic | -
 Brightcove-Player-Core-static | static  | -
-Brightcove-Player-FreeWheel | static | Brightcove-Player-Core-static for iOS, Brightcove-Player-Core for tvOS
+Brightcove-Player-FreeWheel | static | Brightcove-Player-Core for iOS,<br/>Brightcove-Player-Core for tvOS
+Brightcove-Player-FreeWheel-static | static | Brightcove-Player-Core-static for iOS,<br/>Brightcove-Player-Core for tvOS
 Brightcove-Player-GoogleCast | static | Brightcove-Player-Core
 Brightcove-Player-GoogleCast-static | static | Brightcove-Player-Core-static
 Brightcove-Player-IMA | dynamic | Brightcove-Player-Core
-Brightcove-Player-Omniture | static | Brightcove-Player-Core-static
+Brightcove-Player-IMA-static | dynamic | Brightcove-Player-Core-static
+Brightcove-Player-Omniture | static | Brightcove-Player-Core
+Brightcove-Player-Omniture-static | static | Brightcove-Player-Core-static
 Brightcove-Player-Pulse | dynamic | Brightcove-Player-Core
+Brightcove-Player-Pulse-static | dynamic | Brightcove-Player-Core-static
 Brightcove-Player-SSAI | dynamic | Brightcove-Player-Core
 Brightcove-Player-SSAI-static | static | Brightcove-Player-Core-static
 
-Dynamic frameworks are preferred over static library frameworks and there will be additional moves to dynamic frameworks in future releases. 
-
-**CocoaPods Podspec names (since release 6.0.0)**
-
-Framework  | Podspec Name
-------------- | -------------
-Brightcove Player SDK for iOS | Brightcove-Player-Core
-FreeWheel ad plugin | Brightcove-Player-FreeWheel
-IMA ad plugin | Brightcove-Player-IMA
-Omniture analytics plugin | Brightcove-Player-Omniture
-Pulse ad plugin | Brightcove-Player-Pulse
-SSAI ad plugin | Brightcove-Player-SSAI
 
 FairPlay <a name="FairPlay"></a>
 --------

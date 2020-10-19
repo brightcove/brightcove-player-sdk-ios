@@ -26,6 +26,8 @@
 # VALID_ARCHS
 # EXPANDED_CODE_SIGN_IDENTITY
 
+# VALID_ARCHS is not defined by Xcode 12+
+VALID_ARCHS="arm64"
 
 # Signs a framework with the provided identity
 code_sign() {
