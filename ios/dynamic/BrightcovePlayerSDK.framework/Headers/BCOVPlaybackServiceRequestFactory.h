@@ -57,7 +57,20 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
  * @param baseURLStr A string URL to the API.
  * @return The initialized BCOVPlaybackServiceRequestFactory.
  */
-- (instancetype)initWithAccountId:(NSString *)accountId policyKey:(NSString *)policyKey  baseURLStr:(NSString *)baseURLStr NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithAccountId:(NSString *)accountId policyKey:(NSString *)policyKey  baseURLStr:(NSString *)baseURLStr;
+
+/**
+ * Returns an initialized instance with the specified token, account, and base URL string.
+ *
+ * If using the Edge Playback Service, the policyKey value should be nil
+ *
+ * @param accountId A Video Cloud account.
+ * @param policyKey A Video Cloud CMS policy.
+ * @param baseURLStr A string URL to the API.
+ * @param authBaseURLStr A string URL to the API that will be used for EPA/PAS requests.
+ * @return The initialized BCOVPlaybackServiceRequestFactory.
+ */
+- (instancetype)initWithAccountId:(NSString *)accountId policyKey:(NSString *)policyKey baseURLStr:(NSString *)baseURLStr  authBaseURLStr:(NSString *)authBaseURLStr NS_DESIGNATED_INITIALIZER;
 
 /**
  * Constructs a request for a playlist by the playlist id.

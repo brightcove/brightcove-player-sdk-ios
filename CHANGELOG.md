@@ -1,3 +1,47 @@
+## Release 6.8.2 ##
+
+#### Additions and Improvements
+
+* Exposes ad skip properties for all SDK ad plugins. Refer to `kBCOVAdPropertyKeySkippable` and `kBCOVAdPropertyKeySkipTime` in `BCOVAdvertising.h`.
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Adds convenience methods for accessing Multilingual Metadata in a Playback API response. Refer to `localizedNameForLocale`, `localizedShortDescriptionForLocale` and `localizedLongDescriptionForLocale` in `BCOVVideo` and note that these are C-style functions in keeping with the pattern of `NSLocalizeString`. Also adds the `BCOVPlaybackControllerBasicDelegate` callback method `playbackController:determinedMetadata:forVideo:`.
+
+* Adds the `BCOVPlaybackControllerBasicDelegate` method `-playbackController:determinedCodecs:forVideo:` to report the codecs used during playback.
+
+* Fixes an issue with custom progress bar thumb images on iOS 14.
+
+* Fixes issues with background audio on some devices running iOS 14.
+
+* Fixes an issue where a video manifest would be requested even if `thumbnailScrubbingEnabled` was set to false.
+
+* Fixes an issue where subtitles were no longer visible after an app returned to the foreground.
+
+* Fixes an issue where a paused video resumed playing after swiping down to expose the tab bar menu on tvOS.
+
+* Fixes playback for some complex custom view strategies.
+
+* Reduces SDK startup time after videos have been downloaded to the device.
+
+### FreeWheel Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports version 6.38.0 of the FreeWheel AdManager framework for iOS and tvOS.
+
+* Fixes an issue where an incorrect ad duration value could be passed to a `BCOVFWSessionProviderAdContextPolicy` block.
+ 
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+ * Adds support for VAST 4.1 AdVerification through integration of the [IAB Open Measurement SDK (OM SDK)](https://iabtechlab.com/standards/open-measurement-sdk/) v1.3. Refer to `createSSAISessionProviderWithUpstreamSessionProvider:omidPartner:` in the `BCOVSSAIAdditions` category of `BCOVPlayerSDKManager` in `BCOVSSAIComponent.h`. Addition of the OM SDK has increased the file size of the SSAI dynamic framework by ~13 MB, and the static framework by ~18MB.
+ 
+ * Fixes an issue where the browser view displayed in response to tapping a companion ad was transparent on iPad devices.
+
 ## Release 6.8.1 ##
 
 #### Breaking Changes

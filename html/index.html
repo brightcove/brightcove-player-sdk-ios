@@ -44,7 +44,7 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 6.8.1.1355</h1>
+						<h1>Brightcove Player SDK for iOS, version 6.8.2.1421</h1>
 
 <h1>Table of Contents</h1>
 
@@ -85,6 +85,7 @@
 <li><a href="#PlaybackAuthorizationService">Playback Authorization Service</a></li>
 <li><a href="#VoiceOver">VoiceOver Support</a></li>
 <li><a href="#FAQ">Frequently Asked Questions</a></li>
+<li><a href="#Support">Support</a></li>
 </ol>
 
 
@@ -611,7 +612,7 @@ return MPRemoteCommandHandlerStatusSuccess;
 - (void)routePickerViewDidEndPresentingRoutes:(AVRoutePickerView *)routePickerView;
 </code></pre>
 
-<p>For more information on incorporating AirPlay 2 into your app please see the <a href="https://developer.apple.com/documentation/avfoundation/airplay_2/getting_airplay_2_into_your_app">Getting Airplay 2 into Your App</a> documentation.</p>
+<p>For more information on incorporating AirPlay 2 into your app please see the <a href="https://developer.apple.com/documentation/avfoundation/media_playback_and_selection/getting_airplay_2_into_your_app?language=objc">Getting Airplay 2 into Your App</a> documentation.</p>
 
 <p><strong>Important Note: AirPlay 2 is only supported on devices running iOS 11.4 or later.</strong></p>
 
@@ -764,7 +765,7 @@ idBCOVPlaybackController playbackController = [sdkManager createPlaybackControll
 
 <p>The Brightcove Player SDK for iOS provides a way to set the preferred bitrate for a video. You can create a <a href="Classes/BCOVPreferredBitrateConfig.html">BCOVPreferredBitrateConfig</a> object that contains your desired bitrate options, along with some configuration for the view controller which is created to display the options.</p>
 
-<p>The title for the menu is optional. The bitrate options are an array of NSDictionary&rsquo;s with each dictionary having one key:value pair. The key will be used as the option name, and the value is an NSNumber with the bitrate for that option in bps (bits per second). The bitrates you enter are values that can be mapped to bitrates of the renditions of your video assets. You can learn more about renditions in <a href="https://support.brightcove.com/ingest-profiles-best-practices">Ingest Profiles Best Practices</a>.</p>
+<p>The title for the menu is optional. The bitrate options are an array of NSDictionary&rsquo;s with each dictionary having one key:value pair. The key will be used as the option name, and the value is an NSNumber with the bitrate for that option in bps (bits per second). The bitrates you enter are values that can be mapped to bitrates of the renditions of your video assets. You can learn more about renditions in <a href="https://studio.support.brightcove.com/admin/ingest-profiles-best-practices.html">Ingest Profiles Best Practices</a>.</p>
 
 <p>Here is an example:</p>
 
@@ -871,7 +872,7 @@ video2.properties = otherDictionary; // causes compiler error
 
 <h2>Retrieving Brightcove Assets Using the Playback Service <a name="PlaybackService"></a></h2>
 
-<p>The playback service class, <a href="Classes/BCOVPlaybackService.html"><code>BCOVPlaybackService</code></a>, provides functionality for retrieving your Brightcove video assets and playlists via the <a href="https://support.brightcove.com/overview-playback-api">Brightcove Playback API</a> , including rich metadata such as text tracks, previews, and thumbnails. The following example shows how to retrieve a video with a video ID. Methods for retrieving a video or playlist with that video&rsquo;s reference ID are also available.</p>
+<p>The playback service class, <a href="Classes/BCOVPlaybackService.html"><code>BCOVPlaybackService</code></a>, provides functionality for retrieving your Brightcove video assets and playlists via the <a href="https://apis.support.brightcove.com/playback/getting-started/overview-playback-api.html">Brightcove Playback API</a> , including rich metadata such as text tracks, previews, and thumbnails. The following example shows how to retrieve a video with a video ID. Methods for retrieving a video or playlist with that video&rsquo;s reference ID are also available.</p>
 
 <pre><code>[1] NSString *policyKey = &lt;your-policy-key&gt;;
     NSString *accountId = &lt;your-account-id&gt;;
@@ -896,7 +897,7 @@ video2.properties = otherDictionary; // causes compiler error
 </code></pre>
 
 <ol>
-<li>The playback service requests <strong>policy key</strong> for authentication. To learn more about policy key and how to obtain one, please refer to the <a href="https://support.brightcove.com/policy-keys">policy key documentation</a>.</li>
+<li>The playback service requests <strong>policy key</strong> for authentication. To learn more about policy key and how to obtain one, please refer to the <a href="https://apis.support.brightcove.com/policy/getting-started/policy-keys.html">policy key documentation</a>.</li>
 </ol>
 
 
@@ -1002,6 +1003,8 @@ Breaking the code down into steps:
 </code></pre>
 
 <p>To implement your own Picture-in-Picture behavior, keep the <code>pictureInPictureActive</code> property of <a href="Protocols/BCOVPlaybackController.html"><code>BCOVPlaybackController</code></a> updated with the Picture-in-Picture status. If you are using the <code>AVPictureInPictureController</code>, you can use the <code>pictureInPictureControllerDidStartPictureInPicture:</code> and <code>pictureInPictureControllerDidStopPictureInPicture:</code> delegate methods to update this property.</p>
+
+<p>If you have <code>autoPlay</code> and <code>autoAdvance</code> enabled on your <a href="Protocols/BCOVPlaybackController.html"><code>BCOVPlaybackController</code></a> and picture-in-picture is active while the app is in the background and the current video completes, the <code>autoPlay</code> behavior will be ignored and require the app to be re-opened. Similarly, if the app is in the foreground while picture-in-picture is active when the current video completes the picture-in-picture controller will close and playback will begin normally.</p>
 
 <p>You can read more about implmeneting Picture-in-Picture in Apple&rsquo;s <a href="https://developer.apple.com/documentation/avkit/adopting_picture_in_picture_in_a_custom_player">Adopting Picture in Picture in a Custom Player</a> documentation.</p>
 
@@ -1112,8 +1115,6 @@ id&lt;BCOVPlaybackController&gt; *playbackController =
     [sdkManager createPlaybackControllerWithSessionProvider:imaSessionProvider
                                                viewStrategy:nil];
 </code></pre>
-
-<p>The chaining of session providers creates a linked list of objects whose order is important to the proper function of the Player SDK. In the example above, the Sidecar Subtitles session provider is placed upstream from the IMA session provider. When combined with the FairPlay plugin, Fairplay is placed upstream from the Sidecar Subtitles session provider.</p>
 
 <h1>Buffer Optimization <a name="BufferOptimization"></a></h1>
 
@@ -1338,6 +1339,10 @@ self.playerView.controlsView.progressSlider.accessibilityLabel = @"Timeline";
 <p><strong><a href="https://developer.apple.com/Library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioGuidelinesByAppType/AudioGuidelinesByAppType.html">Apple recommends</a> that apps which play video should still play audio even when the device is muted. Why doesn&rsquo;t the Brightcove Player SDK for iOS respect these guidelines?</strong></p>
 
 <p>The API which controls whether an app emits audio in iOS apps is the <a href="https://developer.apple.com/Library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007875-CH1-SW1">AVAudioSession API</a>. An audio session is global to an app, which means that its configuration affects both the sounds that are emitted by the AVPlayers created by the Player SDK, as well as other sounds that an app may produce. Since the Player SDK cannot know how the app wants the audio session configured for those other sounds, it doesn&rsquo;t affect the audio session at all. This means that unless you explicitly configure your app&rsquo;s audio session otherwise, you inherit the default behavior of suppressing any and all audio when the device is muted, including audio emitted by AVPlayers. To conform to Apple&rsquo;s recommendations regarding audio playback, you (the app developer) must configure the audio session according to your app&rsquo;s specific needs.</p>
+
+<h1>Support <a name="Support"></a></h1>
+
+<p>If you have questions, need help or want to provide feedback, please use the <a href="https://supportportal.brightcove.com/s/login/">Support Portal</a> or contact your Account Manager.  To receive notification of new SDK software releases, subscribe to the Brightcove Native Player SDKs <a href="https://groups.google.com/g/brightcove-native-player-sdks">Google Group</a>.</p>
 						
 						
 					</div>
@@ -1558,7 +1563,7 @@ self.playerView.controlsView.progressSlider.accessibilityLabel = @"Timeline";
 					<footer>
 						<div class="footer-copyright">
 							
-							<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-10-19</p>
+							<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-12-08</p>
 							
 							
 							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

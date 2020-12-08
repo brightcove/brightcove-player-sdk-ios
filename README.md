@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.8.1.1355
+# Brightcove Player SDK for iOS, version 6.8.2.1421
 
 
 # Table of Contents
@@ -39,6 +39,7 @@
 1. [Playback Authorization Service](#PlaybackAuthorizationService)
 1. [VoiceOver Support](#VoiceOver)
 1. [Frequently Asked Questions](#FAQ)
+1. [Support](#Support)
 
 Requirements <a name="Requirements"></a>
 ============
@@ -460,7 +461,7 @@ Devices that are running iOS 11 or later will take advantage of `AVRoutePickerVi
 - (void)routePickerViewDidEndPresentingRoutes:(AVRoutePickerView *)routePickerView;
 ```
 
-For more information on incorporating AirPlay 2 into your app please see the [Getting Airplay 2 into Your App](https://developer.apple.com/documentation/avfoundation/airplay_2/getting_airplay_2_into_your_app) documentation.
+For more information on incorporating AirPlay 2 into your app please see the [Getting Airplay 2 into Your App](https://developer.apple.com/documentation/avfoundation/media_playback_and_selection/getting_airplay_2_into_your_app?language=objc) documentation.
 
 **Important Note: AirPlay 2 is only supported on devices running iOS 11.4 or later.**
 
@@ -635,7 +636,7 @@ NOTE: End-users must be given a way to return to the default value (0) of [prefe
 Please see Apple's documentation on [preferredPeakBitRate] for more information.
 
 [preferredPeakBitRate]:https://developer.apple.com/documentation/avfoundation/avplayeritem/1388541-preferredpeakbitrate
-[Ingest Profiles Best Practices]:https://support.brightcove.com/ingest-profiles-best-practices
+[Ingest Profiles Best Practices]:https://studio.support.brightcove.com/admin/ingest-profiles-best-practices.html
 
 Obtaining Content and Ad Playback Information <a name="PlaybackInformation"></a>
 --------------------------------------
@@ -783,8 +784,8 @@ For example, if you have a playlist with 100 videos, you can request only 6 vide
 ```
 
 
-[PlaybackAPI]: https://support.brightcove.com/overview-playback-api
-[PolicyKey]: https://support.brightcove.com/policy-keys
+[PlaybackAPI]: https://apis.support.brightcove.com/playback/getting-started/overview-playback-api.html
+[PolicyKey]: https://apis.support.brightcove.com/policy/getting-started/policy-keys.html
 
 View Strategy <a name="ViewStrategy"></a>
 -------------
@@ -864,6 +865,8 @@ Some `AVPictureInPictureControllerDelegate` methods are passed along via `BCOVPU
 ```
 
 To implement your own Picture-in-Picture behavior, keep the `pictureInPictureActive` property of `BCOVPlaybackController` updated with the Picture-in-Picture status. If you are using the `AVPictureInPictureController`, you can use the `pictureInPictureControllerDidStartPictureInPicture:` and `pictureInPictureControllerDidStopPictureInPicture:` delegate methods to update this property.
+
+If you have `autoPlay` and `autoAdvance` enabled on your `BCOVPlaybackController` and picture-in-picture is active while the app is in the background and the current video completes, the `autoPlay` behavior will be ignored and require the app to be re-opened. Similarly, if the app is in the foreground while picture-in-picture is active when the current video completes the picture-in-picture controller will close and playback will begin normally.
 
 You can read more about implmeneting Picture-in-Picture in Apple's [Adopting Picture in Picture in a Custom Player](https://developer.apple.com/documentation/avkit/adopting_picture_in_picture_in_a_custom_player) documentation.
 
@@ -982,8 +985,6 @@ id<BCOVPlaybackController> *playbackController =
     [sdkManager createPlaybackControllerWithSessionProvider:imaSessionProvider
                                                viewStrategy:nil];
 ```
-
-The chaining of session providers creates a linked list of objects whose order is important to the proper function of the Player SDK. In the example above, the Sidecar Subtitles session provider is placed upstream from the IMA session provider. When combined with the FairPlay plugin, Fairplay is placed upstream from the Sidecar Subtitles session provider.
 
 Buffer Optimization <a name="BufferOptimization"></a>
 ============
@@ -1208,3 +1209,8 @@ The API which controls whether an app emits audio in iOS apps is the [AVAudioSes
 
 [audioguidelines]: https://developer.apple.com/Library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioGuidelinesByAppType/AudioGuidelinesByAppType.html
 [avaudiosessionapi]: https://developer.apple.com/Library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007875-CH1-SW1
+
+Support <a name="Support"></a>
+=======
+If you have questions, need help or want to provide feedback, please use the [Support Portal](https://supportportal.brightcove.com/s/login/) or contact your Account Manager.  To receive notification of new SDK software releases, subscribe to the Brightcove Native Player SDKs [Google Group](https://groups.google.com/g/brightcove-native-player-sdks).
+

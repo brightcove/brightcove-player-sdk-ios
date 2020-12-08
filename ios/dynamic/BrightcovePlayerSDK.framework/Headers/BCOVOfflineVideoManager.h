@@ -289,9 +289,25 @@
  *  such as the downloaded thumbnail and poster image file paths, FairPlay
  *  license expiration date, download start and end times, and more.
  *
+ *  If the downloadState of the video is `BCOVOfflineVideoDownloadStateCompleted` then
+ *  the video associated with the token will be cached. If you need to clear the cache for
+ *  any reason you can call `clearOfflineVideoCache` on `BCOVOfflineVideoManager`.
+ *
+ *
  * @param offlineVideoToken Offline video token used to identify the downloaded video.
  */
 - (BCOVVideo *)videoObjectFromOfflineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken;
+
+/**
+ * @abstract Clears cache of offline BCOVVideo objects
+ *
+ * @discussion When `videoObjectFromOfflineVideoToken:` is used with a video
+ * which has a downloadState of `BCOVOfflineVideoDownloadStateCompleted`then
+ * BCOVOfflienVideoManager will cache that object to increase performance. This method
+ * will clean out the cache so that the next time `videoObjectFromOfflineVideoToken:` is called
+ * a brand new BCOVVideo object will be created.
+ */
+- (void)clearOfflineVideoCache;
 
 #pragma mark - FairPlay DRM
 

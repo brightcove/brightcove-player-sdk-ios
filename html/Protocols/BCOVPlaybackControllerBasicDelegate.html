@@ -60,6 +60,10 @@
 	
 	<optgroup label="Instance Methods">
 		
+		<option value="//api/name/playbackController:determinedCodecs:forVideo:">- playbackController:determinedCodecs:forVideo:</option>
+		
+		<option value="//api/name/playbackController:determinedMetadata:forVideo:">- playbackController:determinedMetadata:forVideo:</option>
+		
 		<option value="//api/name/playbackController:determinedVideoType:forVideo:">- playbackController:determinedVideoType:forVideo:</option>
 		
 		<option value="//api/name/playbackController:didAdvanceToPlaybackSession:">- playbackController:didAdvanceToPlaybackSession:</option>
@@ -805,6 +809,77 @@ when videos are passed into the playback controller&rsquo;s <code>setVideos:</co
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/playbackController:determinedMetadata:forVideo:" title="playbackController:determinedMetadata:forVideo:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:determinedMetadata:forVideo:">&ndash;&nbsp;playbackController:determinedMetadata:forVideo:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when the metadata have been determined for the current video.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> determinedMetadata:(NSDictionary&lt;NSString*,NSString*&gt; *)<em>metadata</em> forVideo:(BCOVVideo *)<em>video</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller to which this instance serves as delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>metadata</code></th>
+						<td><p>The dictionary containing key-value pairs of the metadata.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>video</code></th>
+						<td><p>The video which has had its metadata determined.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when the metadata have been determined for the current video.</p>
+
+<p>The metadata will be determined after <code>kBCOVPlaybackSessionLifecycleEventReady</code>
+has been received for the session using the device locale.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/playbackController:determinedVideoType:forVideo:" title="playbackController:determinedVideoType:forVideo:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/playbackController:determinedVideoType:forVideo:">&ndash;&nbsp;playbackController:determinedVideoType:forVideo:</a></code>
 </h3>
@@ -869,6 +944,77 @@ switching between control layouts if utilizing different video types in a playli
 - BCOVVideoTypeLive
 - BCOVVideoTypeLiveDVR
 - BCOVVideoTypeUnknown</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackController:determinedCodecs:forVideo:" title="playbackController:determinedCodecs:forVideo:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:determinedCodecs:forVideo:">&ndash;&nbsp;playbackController:determinedCodecs:forVideo:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when the codecs have been determined for the current video.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> determinedCodecs:(NSArray&lt;NSString*&gt; *)<em>codecs</em> forVideo:(BCOVVideo *)<em>video</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller to which this instance serves as delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>codecs</code></th>
+						<td><p>The array containing NSString values of the codecs used for the video</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>video</code></th>
+						<td><p>The video which has had its codecs determined.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when the codecs have been determined for the current video.</p>
+
+<p>The codecs will be determined after <code>kBCOVPlaybackSessionLifecycleEventReady</code>
+has been received for the session.</p>
 			</div>
 			
 
@@ -1042,7 +1188,7 @@ AVMediaSelectionOption setter methods of <a href="../Protocols/BCOVPlaybackSessi
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-10-19</p>
+						<p class="copyright">Copyright &copy; 2020 Brightcove. All rights reserved. Updated: 2020-12-08</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

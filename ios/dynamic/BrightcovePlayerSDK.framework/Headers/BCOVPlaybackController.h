@@ -840,6 +840,18 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 - (void)playbackController:(id<BCOVPlaybackController>)controller noPlayableVideosFound:(id<NSFastEnumeration>)unplayableVideos;
 
 /**
+ * Called when the metadata have been determined for the current video.
+ *
+ * The metadata will be determined after `kBCOVPlaybackSessionLifecycleEventReady`
+ * has been received for the session using the device locale.
+ *
+ * @param controller The playback controller to which this instance serves as delegate.
+ * @param metadata The dictionary containing key-value pairs of the metadata.
+ * @param video The video which has had its metadata determined.
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller determinedMetadata:(NSDictionary<NSString *, NSString *> *)metadata forVideo:(BCOVVideo *)video;
+
+/**
  * Called when the video type has been determined for the current video.
  *
  * The video type will be determined after `kBCOVPlaybackSessionLifecycleEventReady`
@@ -860,6 +872,18 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * @param video The video which has had its type determined.
  */
 - (void)playbackController:(id<BCOVPlaybackController>)controller determinedVideoType:(BCOVVideoType)videoType forVideo:(BCOVVideo *)video;
+
+/**
+ * Called when the codecs have been determined for the current video.
+ *
+ * The codecs will be determined after `kBCOVPlaybackSessionLifecycleEventReady`
+ * has been received for the session.
+ *
+ * @param controller The playback controller to which this instance serves as delegate.
+ * @param codecs The array containing NSString values of the codecs used for the video
+ * @param video The video which has had its codecs determined.
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller determinedCodecs:(NSArray<NSString *> *)codecs forVideo:(BCOVVideo *)video;
 
 /**
  * Called when a new audible AVMediaSelectionOption is set on the current BCOVPlaybackSession

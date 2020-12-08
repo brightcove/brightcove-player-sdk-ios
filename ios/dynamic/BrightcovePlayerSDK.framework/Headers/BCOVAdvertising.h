@@ -18,6 +18,17 @@
  */
 extern NSString * const kBCOVPlaybackSessionLifecycleEventWillPauseForAd;
 
+/**
+ * Is this ad skippable. Boolean NSNumber.
+ */
+extern NSString * const kBCOVAdPropertyKeySkippable;
+
+/**
+ * Skip time. NSNumber seconds after which you can skip the ad.
+ * Ignored unless kBCOVAdPropertyKeySkippable is "YES".
+ */
+extern NSString * const kBCOVAdPropertyKeySkipTime;
+
 
 /**
  * This object represents a sequence of ads intended to be viewed in sequence,

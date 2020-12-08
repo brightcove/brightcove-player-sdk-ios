@@ -45,6 +45,25 @@ extern NSString * const kBCOVVideoPropertyKeyTags;
 extern NSString * const kBCOVVideoPropertyKeyTextTracks;
 extern NSString * const kBCOVVideoPropertyKeyThumbnail;
 extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
+extern NSString * const kBCOVVideoPropertyKeyVariants;
+
+/**
+ * Pass nil to get the video name for the device locale or
+ * the preferred description if the device locale is not available.
+ */
+extern NSString * _Nullable localizedNameForLocale(BCOVVideo * _Nullable video, NSLocale * _Nullable locale);
+
+/**
+ * Pass nil to get the short description for the device locale or
+ * the preferred description if the device locale is not available.
+ */
+extern NSString * _Nullable localizedShortDescriptionForLocale(BCOVVideo * _Nullable video, NSLocale * _Nullable locale);
+
+/**
+ * Pass nil to get the long description for the device locale or
+ * the preferred description if the device locale is not available.
+ */
+extern NSString * _Nullable localizedLongDescriptionForLocale(BCOVVideo * _Nullable video, NSLocale * _Nullable locale);
 
 
 /**
@@ -245,6 +264,19 @@ extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
  * @return Whether `video` is equivalent to this instance.
  */
 - (BOOL)isEqualToVideo:(BCOVVideo *)video;
+
+/**
+ * Loops through language variants on this video and attempt to match it
+ * with one of the languages provided.
+ *
+ * The first match found will be returned.
+ *
+ * If no result is found a `nil` value is returned.
+ *
+ * @property preferredLanguages Array of preferred languages with which
+ * to attempt a match. Use with `NSLocale.preferredLanguages`
+ */
+- (NSDictionary *)variantForPreferredLanguage:(NSArray *)preferredLanguages;
 
 /**
  * Returns a new video with a single source containing the specified URL.

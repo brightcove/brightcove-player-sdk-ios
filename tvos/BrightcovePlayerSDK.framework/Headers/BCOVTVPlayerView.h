@@ -301,6 +301,14 @@ typedef NS_ENUM(NSUInteger, BCOVTVIconType)
  */
 @property (nonatomic, assign) NSTimeInterval showControlsAnimationDuration;
 
+/**
+ * Whether to use a language variant, if available, for the
+ * video info tab.
+ *
+ * Defaults to YES
+ */
+@property (nonatomic, assign) BOOL useLocalizedVariantForVideoInfo;
+
 @property (nonatomic, weak) id<BCOVTVAccessibilityDelegate> accessibilityDelegate;
 
 @end
