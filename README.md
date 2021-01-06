@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.8.2.1421
+# Brightcove Player SDK for iOS, version 6.8.3.1457
 
 
 # Table of Contents
@@ -866,9 +866,9 @@ Some `AVPictureInPictureControllerDelegate` methods are passed along via `BCOVPU
 
 To implement your own Picture-in-Picture behavior, keep the `pictureInPictureActive` property of `BCOVPlaybackController` updated with the Picture-in-Picture status. If you are using the `AVPictureInPictureController`, you can use the `pictureInPictureControllerDidStartPictureInPicture:` and `pictureInPictureControllerDidStopPictureInPicture:` delegate methods to update this property.
 
-If you have `autoPlay` and `autoAdvance` enabled on your `BCOVPlaybackController` and picture-in-picture is active while the app is in the background and the current video completes, the `autoPlay` behavior will be ignored and require the app to be re-opened. Similarly, if the app is in the foreground while picture-in-picture is active when the current video completes the picture-in-picture controller will close and playback will begin normally.
-
 You can read more about implmeneting Picture-in-Picture in Apple's [Adopting Picture in Picture in a Custom Player](https://developer.apple.com/documentation/avkit/adopting_picture_in_picture_in_a_custom_player) documentation.
+
+Using a playlist of videos with mixed formats with picture-in-picture will result in the picture-in-picture window closing between each video.
 
 **Important: The Brightcove Native Player SDK's Picture-in-Picture functionality does not support videos with ad playback. Trying to use a video with ads with the Picture-in-Picture functionality active will result in unexpected behavior.**
 
@@ -931,6 +931,14 @@ On tvOS you can adjust the height and width:
     size.height = size.height / 6;
     return size;
 }
+```
+If manually constructing a `BCOVVideo` object you can set the URL to be used for the I-FRAME source:
+
+```
+BCOVVideo *video = [BCOVVideo videoWithURL:[NSURL URLWithString:@"https://mydomain.com/master.m3u8"]];
+video = [video update:^(id<BCOVMutableVideo> mutableVideo) {
+    mutableVideo.iFramePlaylistURL = [NSURL URLWithString:@"https://mydomain.com/iframe.m3u8"];
+}];
 ```
 
 Thumbnail scrubbing is only available for online videos; downloaded/offline videos do not support this feature. 

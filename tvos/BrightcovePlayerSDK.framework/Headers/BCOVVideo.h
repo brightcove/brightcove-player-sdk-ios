@@ -2,7 +2,7 @@
 // BCOVVideo.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2020 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2021 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -104,6 +104,11 @@ extern NSString * _Nullable localizedLongDescriptionForLocale(BCOVVideo * _Nulla
 @property (nonatomic, readonly, copy) NSArray<BCOVSource *> *sources;
 
 /**
+ * The I-FRAME manifest URL to be used for thumbnail scrubbing.
+ */
+@property (nonatomic, readonly, copy) NSURL *iFramePlaylistURL;
+
+/**
  * Returns a modified version of this source. Because BCOVVideo objects
  * are immutable, an entirely new BCOVVideo must be created even if only
  * a single change is needed. Therefore, this method provides a convenient way
@@ -136,6 +141,7 @@ extern NSString * _Nullable localizedLongDescriptionForLocale(BCOVVideo * _Nulla
  */
 @property (nonatomic, readwrite, copy) NSDictionary *properties;
 @property (nonatomic, readwrite, copy) NSArray *sources;
+@property (nonatomic, readwrite, copy) NSURL *iFramePlaylistURL;
 
 @end
 

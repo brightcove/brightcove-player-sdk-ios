@@ -2,7 +2,7 @@
 // BCOVFPSBrightcoveAuthProxy.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2020 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2021 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -31,6 +31,11 @@ extern NSString * const kBCOVSourceKeySystemFairPlayKeyRequestURLKey;
  * Error domain for FairPlay Auth Proxy related errors.
  */
 extern NSString * const kBCOVFPSAuthProxyErrorDomain;
+
+/**
+ * Key for retreiving response data from an NSError object's userInfo dictionary.
+ */
+extern NSString * const kBCOVFPSAuthProxyResponseData;
 
 /*
  * Request for Application Certificate failed.

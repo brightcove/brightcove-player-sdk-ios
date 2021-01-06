@@ -1,3 +1,58 @@
+## Release 6.8.3 ##
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* An `NSError` returned with a `kBCOVPlaybackSessionLifecycleEventError` event may now contain the `kBCOVFPSAuthProxyResponseData` key in its `userInfo`.
+
+* Adds the `iFramePlaylistURL` property to `BCOVVideo` to allow an iFrame (TrickPlay) playlist URL to be defined at runtime. Refer to the _Thumbnail Scrubbing_ section of the Core SDK _README_ for details.
+
+* Fixes Automatic Picture in Picture compatibility with iOS 14.
+
+* Fixes an issue where an app in Picture in Picture mode closed the PiP view when advancing to the next video in a video playlist.
+
+* Fixes an issue where auto-advancing to an MP4 video in a playlist would not auto-play.
+
+* Fixes the `BCOVPlaybackController` method `resumeVideoAtTime:withAutoPlay:`.
+
+* Improves resuming Live video streams after very long pauses.
+
+* Fixes an issue where the Video360 screen-mode button was not disabled when entering VR Goggles mode.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Release 6.8.2 added support for setting a splash screen image URL. For example:
+```
+BCOVReceiverAppConfig *appConfig = [BCOVReceiverAppConfig new];
+appConfig.splashScreen = @"https://host.company.com/images/cast-splash.jpg";
+self.googleCastManager = [[BCOVGoogleCastManager alloc] initForBrightcoveReceiverApp:appConfig];
+```
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds the `kBCOVIMAOptionBlockAdTargetingAPIsKey` option to prevent the Brightcove IMA plugin from making calls to Apple's AdSupport and AppTrackingTransparency APIs. This can be helpful when submitting certain apps to the App Store. Refer to the _Device Ad Targeting_ section of the IMA _README_ for details. Refer also to the header comments of the `createIMAPlaybackControllerWithSettings:` methods in `BCOVIMAComponent.h`.
+
+* Fixes an issue where `kBCOVPlaybackSessionLifecycleEventEnd` was not sent when a video played with no ads.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* When a VMAP document cannot be found it will be reported by a `kBCOVPlaybackSessionLifecycleEventError` event with an `NSError` having a `code` property set to `kBCOVSSAIErrorCodeVMAPMissingError`.
+
+* Fixes an issue where VMAP documents could be requested twice.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where `kBCOVPlaybackSessionLifecycleEventEnd` would not be triggered when using an `IMASessionProvider` with no ads configured.
+
 ## Release 6.8.2 ##
 
 #### Additions and Improvements
@@ -8,9 +63,9 @@
 
 #### Additions and Improvements
 
-* Adds convenience methods for accessing Multilingual Metadata in a Playback API response. Refer to `localizedNameForLocale`, `localizedShortDescriptionForLocale` and `localizedLongDescriptionForLocale` in `BCOVVideo` and note that these are C-style functions in keeping with the pattern of `NSLocalizeString`. Also adds the `BCOVPlaybackControllerBasicDelegate` callback method `playbackController:determinedMetadata:forVideo:`.
+* Adds convenience methods for accessing Multilingual Metadata in a Playback API response. Refer to `localizedNameForLocale`, `localizedShortDescriptionForLocale` and `localizedLongDescriptionForLocale` in `BCOVVideo` and note that these are C-style functions in keeping with the pattern of `NSLocalizedString`. Also adds the `BCOVPlaybackControllerBasicDelegate` callback method `playbackController:determinedMetadata:forVideo:`.
 
-* Adds the `BCOVPlaybackControllerBasicDelegate` method `-playbackController:determinedCodecs:forVideo:` to report the codecs used during playback.
+* Adds the `BCOVPlaybackControllerBasicDelegate` method `-playbackController:determinedCodecs:forVideo:` to report the codecs in use during playback.
 
 * Fixes an issue with custom progress bar thumb images on iOS 14.
 
@@ -34,6 +89,17 @@
 
 * Fixes an issue where an incorrect ad duration value could be passed to a `BCOVFWSessionProviderAdContextPolicy` block.
  
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds support for setting a splash screen image URL. For example:
+```
+BCOVReceiverAppConfig *appConfig = [BCOVReceiverAppConfig new];
+appConfig.splashScreen = @"https://host.company.com/images/cast-splash.jpg";
+self.googleCastManager = [[BCOVGoogleCastManager alloc] initForBrightcoveReceiverApp:appConfig];
+```
+
 ### SSAI Plugin for Brightcove Player SDK for iOS
 
 #### Additions and Improvements
