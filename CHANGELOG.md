@@ -1,3 +1,49 @@
+## Release 6.8.4 ##
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Breaking Changes
+
+* Nullability annotations have been added to BCOVVideo.h to resolve compile time warnings. You may need to use `guard let` or `if let` in your Swift code to handle optionals.
+
+#### Additions and Improvements
+
+* Deprecates `thumbnailScrubbingEnabled`. Use `thumbnailSeekingEnabled` instead.
+
+### FreeWheel Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds the `kBCOVFWLifecycleEventAdError` eventType to pass through errors encountered by the FreeWheel SDK. Refer to the _Tracking FreeWheel Errors_ section of the Freewheel _README_ for details.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where the `playerUrl` property of the `BCOVReceiverAppConfig` was ignored.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Updates the IMA _README_ to reflect deprecations, e.g. `registerVideoControlsOverlay`, in Google IMA SDK v3.12.1 for iOS.
+
+* Adds Open Measurement example code to the BasicIMAPlayer [sample project](https://github.com/BrightcoveOS/ios-player-samples).
+
+### Pulse Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where `kBCOVPlaybackSessionLifecycleEventEnd` was posted before a postroll ad.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds an abbreviated ad time remaining label (e.g. "30s") to the built-in PlayerUI ad controls. This label is used only when the available width is at a minimum as is the case for some small iOS devices and syllable-verbose languages.
+
+* Adds the `vmapResponseData` property to the SSAI session object. Refer to the _Access to VMAP Response Data_ section of the SSAI plugin _README_ for details.
+
 ## Release 6.8.3 ##
 
 ### Brightcove Player SDK for iOS (Core)

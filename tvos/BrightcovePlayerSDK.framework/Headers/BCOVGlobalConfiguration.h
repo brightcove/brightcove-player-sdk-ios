@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - China Delivery
 
 /**
- * Sets a custom, fully qualified domain name (FQDN) for Catalog API, and Metrics and
+ * Sets a custom, fully qualified domain name (FQDN) for Catalog API, Metrics and
  * Analytics collection services. This method is to be used specifically for
  * reliable content delivery in China and requires particular account arrangements.
  * Setting this property in any other situation will result in unknown behavior.

@@ -44,7 +44,7 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 6.8.3.1457</h1>
+						<h1>Brightcove Player SDK for iOS, version 6.8.4.1493</h1>
 
 <h1>Table of Contents</h1>
 
@@ -77,13 +77,14 @@
 <li><a href="#ViewStrategy">View Strategy</a></li>
 <li><a href="#BackgroundVideo">Playing Video In The Background</a></li>
 <li><a href="#PIP">Picture In Picture</a></li>
-<li><a href="#ThumbnailScrubbing">Thumbnail Scrubbing</a></li>
+<li><a href="#ThumbnailSeeking">Thumbnail Seeking</a></li>
 <li><a href="#TrackingErrors">Tracking Errors</a></li>
 <li><a href="#CombiningPlugins">Combining Plugins</a></li>
 <li><a href="#BufferOptimization">Buffer Optimization</a></li>
 <li><a href="#AVPlayerViewController">Using an AVPlayerViewController with a BCOVPlaybackController</a></li>
 <li><a href="#PlaybackAuthorizationService">Playback Authorization Service</a></li>
 <li><a href="#VoiceOver">VoiceOver Support</a></li>
+<li><a href="#ChinaDelivery">China Delivery</a></li>
 <li><a href="#FAQ">Frequently Asked Questions</a></li>
 <li><a href="#Support">Support</a></li>
 </ol>
@@ -584,7 +585,7 @@ logoImageView1.frame = logoLayoutView1.frame;
 
 <p>Enable AirPlay functionality by setting the <code>setAllowsExternalPlayback</code> property on your <a href="Protocols/BCOVPlaybackController.html"><code>BCOVPlaybackController</code></a> to <code>true</code>. The AirPlay button will be displayed in the playback controls if AirPlay devices are found on your network.</p>
 
-<p>Currently, IMA is the only plugin that supports AirPlay and only when using pre-roll and/or post-roll ads. Using AirPlay with the Pulse, SSAI or FreeWheel ad plugins may result in unexpected behavior.</p>
+<p>Currently, IMA is the only ad plugin that supports AirPlay and only when using pre-roll and/or post-roll ads. Using AirPlay with the Pulse, SSAI or FreeWheel ad plugins may result in unexpected behavior.</p>
 
 <p>If you also want to support AirPlay 2 and allow for multiple devices to be selected for audio output you will have to do a few additional things. First, you&rsquo;ll need to configure AVAudioSession so that you can set the <code>routeSharingPolicy</code>. For example:</p>
 
@@ -1008,17 +1009,19 @@ Breaking the code down into steps:
 
 <p>Using a playlist of videos with mixed formats with picture-in-picture will result in the picture-in-picture window closing between each video.</p>
 
+<p>iOS and iPadOS 14 introduced automatic Picture-in-Picture behavior which can be toggled on/off in <code>Settings &gt; General &gt; Picture in Picture</code>. In order for this feature to work as expected the player view must be equal to the width of the screen and the height must have a ratio of at least 0.57 to the width (16:9 or larger). If the width or height of your player view are smaller than these values Picture-in-Picture may not automatically be triggered when the application enters the background.</p>
+
 <p><strong>Important: The Brightcove Native Player SDK&rsquo;s Picture-in-Picture functionality does not support videos with ad playback. Trying to use a video with ads with the Picture-in-Picture functionality active will result in unexpected behavior.</strong></p>
 
-<h2>Thumbnail Scrubbing <a name="ThumbnailScrubbing"></a></h2>
+<h2>Thumbnail Seeking <a name="ThumbnailSeeking"></a></h2>
 
-<p>Thumbnail scrubbing allows users to drag the playhead along the timeline and view thumbnails as a preview of the associated content. This gives users the ability to quickly navigate a video file and find the content that they are interested in.</p>
+<p>Thumbnail seeking allows users to drag the playhead along the timeline and view thumbnails as a preview of the associated content. This gives users the ability to quickly navigate a video file and find the content that they are interested in.</p>
 
 <p>This feature is also referred to by Apple as Trick Play, and is referenced in their <a href="https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices?language=objc">HLS Authoring Specification</a>.</p>
 
-<p>This feature is enabled by default. If you wish to disable thumbnail scrubbing you can do so by setting the <code>thumbnailScrubbingEnabled</code> property on your <a href="Protocols/BCOVPlaybackController.html"><code>BCOVPlaybackController</code></a> to <code>NO</code>.</p>
+<p>This feature is enabled by default. If you wish to disable thumbnail seeking you can do so by setting the <code>thumbnailSeekingEnabled</code> property on your <a href="Protocols/BCOVPlaybackController.html"><code>BCOVPlaybackController</code></a> to <code>NO</code>.</p>
 
-<pre><code>self.playbackController.thumbnailScrubbingEnabled = NO;
+<pre><code>self.playbackController.thumbnailSeekingEnabled = NO;
 </code></pre>
 
 <p>You can customize the layout of the thumbnail preview by making use of a delegate method with your <a href="Classes/BCOVPUIPlayerView.html"><code>BCOVPUIPlayerView</code></a> or <a href="Classes/BCOVTVPlayerView.html"><code>BCOVTVPlayerView</code></a>.</p>
@@ -1330,6 +1333,15 @@ self.playerView.controlsView.currentTimeLabel.accessibilityLabelPrefix = @"Curre
 self.playerView.controlsView.progressSlider.accessibilityLabel = @"Timeline";
 </code></pre>
 
+<h1>China Delivery <a name="ChinaDelivery"></a></h1>
+
+<p>To define a proxy domain for playback services, metrics and analytics servers in China, set the <code>chinaProxyDomain</code> property of the <a href="Classes/BCOVGlobalConfiguration.html"><code>BCOVGlobalConfiguration</code></a> singleton to a fully qualified domain name. For example:</p>
+
+<pre><code>BCOVGlobalConfiguration.sharedConfig.chinaProxyDomain = @"host.mydomain.com";
+</code></pre>
+
+<p>Be sure to set the proxy domain name before using any other services of the Native Player SDK. Refer to the <a href="https://docs.brightcove.com/ios-sdk/Classes/BCOVGlobalConfiguration.html#//api/name/chinaProxyDomain"><em>BCOVGlobalConfiguration Class Reference</em></a> for details.</p>
+
 <h1>Frequently Asked Questions <a name="FAQ"></a></h1>
 
 <p><strong>My content won&rsquo;t load. Is there an easy way to test whether the URL points to a valid video?</strong></p>
@@ -1571,7 +1583,7 @@ self.playerView.controlsView.progressSlider.accessibilityLabel = @"Timeline";
 					<footer>
 						<div class="footer-copyright">
 							
-							<p class="copyright">Copyright &copy; 2021 Brightcove. All rights reserved. Updated: 2021-01-06</p>
+							<p class="copyright">Copyright &copy; 2021 Brightcove. All rights reserved. Updated: 2021-02-02</p>
 							
 							
 							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

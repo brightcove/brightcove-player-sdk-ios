@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BCOVPUICommon.h"
+#import <BrightcovePlayerSDK/BCOVPUICommon.h>
 
 @class BCOVPUIButton;
 

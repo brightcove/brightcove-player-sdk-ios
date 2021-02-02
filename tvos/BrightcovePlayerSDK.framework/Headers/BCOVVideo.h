@@ -25,6 +25,8 @@ typedef NS_ENUM(NSInteger, BCOVEconomics)
     BCOVEconomicsPayMedia
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * The properties dictionary on a BCOVVideo object can contain
  * any of the following keys. These can be used when
@@ -106,7 +108,7 @@ extern NSString * _Nullable localizedLongDescriptionForLocale(BCOVVideo * _Nulla
 /**
  * The I-FRAME manifest URL to be used for thumbnail scrubbing.
  */
-@property (nonatomic, readonly, copy) NSURL *iFramePlaylistURL;
+@property (nonatomic, readonly, copy, nullable) NSURL *iFramePlaylistURL;
 
 /**
  * Returns a modified version of this source. Because BCOVVideo objects
@@ -133,15 +135,15 @@ extern NSString * _Nullable localizedLongDescriptionForLocale(BCOVVideo * _Nulla
  */
 @protocol BCOVMutableVideo <BCOVVideo>
 
-@property (nonatomic, readwrite, copy) BCOVCuePointCollection *cuePoints;
+@property (nonatomic, readwrite, copy, nullable) BCOVCuePointCollection *cuePoints;
 
 /**
  * You can find constants for the keys that this SDK uses with this dictionary
  * near the top of this header file.
  */
-@property (nonatomic, readwrite, copy) NSDictionary *properties;
-@property (nonatomic, readwrite, copy) NSArray *sources;
-@property (nonatomic, readwrite, copy) NSURL *iFramePlaylistURL;
+@property (nonatomic, readwrite, copy, nullable) NSDictionary *properties;
+@property (nonatomic, readwrite, copy, nullable) NSArray *sources;
+@property (nonatomic, readwrite, copy, nullable) NSURL *iFramePlaylistURL;
 
 @end
 
@@ -199,17 +201,17 @@ extern NSString * _Nullable localizedLongDescriptionForLocale(BCOVVideo * _Nulla
 /**
  * A string representation of an error code for an unplayable video
  */
-@property (nonatomic, copy) NSString *errorCode;
+@property (nonatomic, copy, nullable) NSString *errorCode;
 
 /**
  * A string representation of an error sub code for an unplayable video
  */
-@property (nonatomic, copy) NSString *errorSubCode;
+@property (nonatomic, copy, nullable) NSString *errorSubCode;
 
 /**
  * A error emssage string for an unplayable video
 */
-@property (nonatomic, copy) NSString *errorMessage;
+@property (nonatomic, copy, nullable) NSString *errorMessage;
 
 /**
  * Returns NO if `errorCode`, `errorSubCode` and `errorMessage` are all nil
@@ -230,7 +232,7 @@ extern NSString * _Nullable localizedLongDescriptionForLocale(BCOVVideo * _Nulla
  * @param properties The metadata or properties associated to this video.
  * @return A new video with the specified sources, cue points, and properties.
  */
-- (instancetype)initWithSources:(NSArray<BCOVSource *> *)sources cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
+- (instancetype)initWithSources:(nullable NSArray<BCOVSource *> *)sources cuePoints:(nullable BCOVCuePointCollection *)cuePoints properties:(nullable NSDictionary *)properties;
 
 /**
  * Constructs a new video with a single specified source, the specified cue
@@ -246,7 +248,7 @@ extern NSString * _Nullable localizedLongDescriptionForLocale(BCOVVideo * _Nulla
  * @return A new video with a single source, as well as the specified cue points
  * and properties.
  */
-- (instancetype)initWithSource:(BCOVSource *)source cuePoints:(BCOVCuePointCollection *)cuePoints properties:(NSDictionary *)properties;
+- (instancetype)initWithSource:(nullable BCOVSource *)source cuePoints:(nullable BCOVCuePointCollection *)cuePoints properties:(nullable NSDictionary *)properties;
 
 /**
  * Constructs a new video with with error information.
@@ -261,7 +263,7 @@ extern NSString * _Nullable localizedLongDescriptionForLocale(BCOVVideo * _Nulla
  * @param properties The metadata or properties associated to this video.
  * @return A new video with error information attributes
  */
-- (instancetype)initWithErrorCode:(NSString *)errorCode errorSubCode:(NSString *)errorSubCode errorMessage:(NSString *)errorMessage properties:(NSDictionary *)properties;
+- (instancetype)initWithErrorCode:(nullable NSString *)errorCode errorSubCode:(nullable NSString *)errorSubCode errorMessage:(nullable NSString *)errorMessage properties:(nullable NSDictionary *)properties;
 
 /**
  * Returns YES if `video` is equivalent to this instance.
@@ -269,7 +271,7 @@ extern NSString * _Nullable localizedLongDescriptionForLocale(BCOVVideo * _Nulla
  * @param video The video to test for equivalence with this instance.
  * @return Whether `video` is equivalent to this instance.
  */
-- (BOOL)isEqualToVideo:(BCOVVideo *)video;
+- (BOOL)isEqualToVideo:(nullable BCOVVideo *)video;
 
 /**
  * Loops through language variants on this video and attempt to match it
@@ -282,7 +284,7 @@ extern NSString * _Nullable localizedLongDescriptionForLocale(BCOVVideo * _Nulla
  * @property preferredLanguages Array of preferred languages with which
  * to attempt a match. Use with `NSLocale.preferredLanguages`
  */
-- (NSDictionary *)variantForPreferredLanguage:(NSArray *)preferredLanguages;
+- (NSDictionary *)variantForPreferredLanguage:(nullable NSArray *)preferredLanguages;
 
 /**
  * Returns a new video with a single source containing the specified URL.
@@ -311,7 +313,8 @@ extern NSString * _Nullable localizedLongDescriptionForLocale(BCOVVideo * _Nulla
  * @param deliveryMethod The delivery method for this source. See BCOVSource for options.
  * @return A new video with a source containing the specified URL.
  */
-+ (BCOVVideo *)videoWithURL:(NSURL *)url deliveryMethod:(NSString *)deliveryMethod;
++ (BCOVVideo *)videoWithURL:(NSURL *)url deliveryMethod:(nullable NSString *)deliveryMethod;
 
 @end
 
+NS_ASSUME_NONNULL_END

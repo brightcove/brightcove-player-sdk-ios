@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-#import "BCOVPUICommon.h"
+#import <BrightcovePlayerSDK/BCOVPUICommon.h>
 
 
 @class BCOVPUILayoutView;

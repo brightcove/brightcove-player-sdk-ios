@@ -6,7 +6,7 @@
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
-#import "BCOVFPSComponent.h"
+#import <BrightcovePlayerSDK/BCOVFPSComponent.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

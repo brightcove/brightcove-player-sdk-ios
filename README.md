@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.8.3.1457
+# Brightcove Player SDK for iOS, version 6.8.4.1493
 
 
 # Table of Contents
@@ -31,13 +31,14 @@
 1. [View Strategy](#ViewStrategy)
 1. [Playing Video In The Background](#BackgroundVideo)
 1. [Picture In Picture](#PIP)
-1. [Thumbnail Scrubbing](#ThumbnailScrubbing)
+1. [Thumbnail Seeking](#ThumbnailSeeking)
 1. [Tracking Errors](#TrackingErrors)
 1. [Combining Plugins](#CombiningPlugins)
 1. [Buffer Optimization](#BufferOptimization)
 1. [Using an AVPlayerViewController with a BCOVPlaybackController](#AVPlayerViewController)
 1. [Playback Authorization Service](#PlaybackAuthorizationService)
 1. [VoiceOver Support](#VoiceOver)
+1. [China Delivery](#ChinaDelivery)
 1. [Frequently Asked Questions](#FAQ)
 1. [Support](#Support)
 
@@ -432,7 +433,7 @@ AirPlay <a name="AirPlay"></a>
 
 Enable AirPlay functionality by setting the `setAllowsExternalPlayback` property on your `BCOVPlaybackController` to `true`. The AirPlay button will be displayed in the playback controls if AirPlay devices are found on your network.
 
-Currently, IMA is the only plugin that supports AirPlay and only when using pre-roll and/or post-roll ads. Using AirPlay with the Pulse, SSAI or FreeWheel ad plugins may result in unexpected behavior.
+Currently, IMA is the only ad plugin that supports AirPlay and only when using pre-roll and/or post-roll ads. Using AirPlay with the Pulse, SSAI or FreeWheel ad plugins may result in unexpected behavior.
 
 If you also want to support AirPlay 2 and allow for multiple devices to be selected for audio output you will have to do a few additional things. First, you'll need to configure AVAudioSession so that you can set the `routeSharingPolicy`. For example:
 
@@ -870,18 +871,20 @@ You can read more about implmeneting Picture-in-Picture in Apple's [Adopting Pic
 
 Using a playlist of videos with mixed formats with picture-in-picture will result in the picture-in-picture window closing between each video.
 
+iOS and iPadOS 14 introduced automatic Picture-in-Picture behavior which can be toggled on/off in `Settings > General > Picture in Picture`. In order for this feature to work as expected the player view must be equal to the width of the screen and the height must have a ratio of at least 0.57 to the width (16:9 or larger). If the width or height of your player view are smaller than these values Picture-in-Picture may not automatically be triggered when the application enters the background.
+
 **Important: The Brightcove Native Player SDK's Picture-in-Picture functionality does not support videos with ad playback. Trying to use a video with ads with the Picture-in-Picture functionality active will result in unexpected behavior.**
 
-Thumbnail Scrubbing <a name="ThumbnailScrubbing"></a>
+Thumbnail Seeking <a name="ThumbnailSeeking"></a>
 -------------
-Thumbnail scrubbing allows users to drag the playhead along the timeline and view thumbnails as a preview of the associated content. This gives users the ability to quickly navigate a video file and find the content that they are interested in.
+Thumbnail seeking allows users to drag the playhead along the timeline and view thumbnails as a preview of the associated content. This gives users the ability to quickly navigate a video file and find the content that they are interested in.
 
 This feature is also referred to by Apple as Trick Play, and is referenced in their [HLS Authoring Specification](https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices?language=objc).
 
-This feature is enabled by default. If you wish to disable thumbnail scrubbing you can do so by setting the `thumbnailScrubbingEnabled` property on your `BCOVPlaybackController` to `NO`. 
+This feature is enabled by default. If you wish to disable thumbnail seeking you can do so by setting the `thumbnailSeekingEnabled` property on your `BCOVPlaybackController` to `NO`. 
 
 ```
-self.playbackController.thumbnailScrubbingEnabled = NO;
+self.playbackController.thumbnailSeekingEnabled = NO;
 ```
 
 You can customize the layout of the thumbnail preview by making use of a delegate method with your `BCOVPUIPlayerView` or `BCOVTVPlayerView`. 
@@ -1196,6 +1199,16 @@ Similarly you can set the `accessibilityLabel` on the current time and duration 
     self.playerView.controlsView.currentTimeLabel.accessibilityLabelPrefix = @"Current Time";
     self.playerView.controlsView.progressSlider.accessibilityLabel = @"Timeline";
 
+China Delivery <a name="ChinaDelivery"></a>
+==========================
+
+To define a proxy domain for playback services, metrics and analytics servers in China, set the `chinaProxyDomain` property of the `BCOVGlobalConfiguration` singleton to a fully qualified domain name. For example:
+
+```
+BCOVGlobalConfiguration.sharedConfig.chinaProxyDomain = @"host.mydomain.com";
+```
+
+Be sure to set the proxy domain name before using any other services of the Native Player SDK. Refer to the [_BCOVGlobalConfiguration Class Reference_](https://docs.brightcove.com/ios-sdk/Classes/BCOVGlobalConfiguration.html#//api/name/chinaProxyDomain) for details.
 
 Frequently Asked Questions <a name="FAQ"></a>
 ==========================

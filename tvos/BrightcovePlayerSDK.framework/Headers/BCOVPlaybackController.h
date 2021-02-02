@@ -360,9 +360,18 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 /**
  * Enables or disables thumbnail scrubbing for this playback controller.
  *
+ * @warning *Deprecated:* Use thumbnailSeekingEnabled instead
+ *
  * Default value is YES
  */
-@property (nonatomic, readwrite, assign) BOOL thumbnailScrubbingEnabled;
+@property (nonatomic, readwrite, assign) BOOL thumbnailScrubbingEnabled __attribute__((deprecated("Use thumbnailSeekingEnabled instead.")));
+
+/**
+ * Enables or disables thumbnail seeking for this playback controller.
+ *
+ * Default value is YES
+ */
+@property (nonatomic, readwrite, assign) BOOL thumbnailSeekingEnabled;
 
 /**
  * @abstract A view which obscures or reveals the player view.
