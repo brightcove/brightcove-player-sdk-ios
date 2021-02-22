@@ -1,3 +1,39 @@
+## Release 6.8.5 ##
+
+#### Additions and Improvements
+
+* Adds examples of app localization to the VideoCloudBasicPlayer, BasicIMAPlayer, BasicSSAIPlayer and AppleTV sample projects.
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Adds the `automaticControlTypeSelection` property to `BCOVPUIPlayerViewOptions`  and `BCOVTVPlayerViewOptions`. Refer to the _BCOVPUIPlayerViewOptions_ section of the Core SDK _README_ for details.
+
+* Fixes an issue where FairPlay license renewal was failing for downloaded videos.
+
+* Fixes an issue where the Audio & Subtitles buton could fail to show when loading a video was delayed.
+
+* Fixes an issue where audio played but video could be black whan an app was launched from a Universal Link.
+
+* Fixes an issue where dragging the progress slider to the start of a video set the playhead position to a time value greater than zero.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where `kBCOVPlaybackSessionLifecycleEventEnd` failed to fire when an ad or ads failed to play.
+
+* Fixes an issue where releasing an IMA Playback Session object could cause a UI background thread exception.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds support for the VMAP Tracking events `breakStart` and `breakEnd`.
+
+* Fixes an issue where the VAST Tracking event `complete` was incorrectly fired when an ad was skipped.
+
 ## Release 6.8.4 ##
 
 ### Brightcove Player SDK for iOS (Core)

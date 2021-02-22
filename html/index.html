@@ -44,7 +44,7 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 6.8.4.1493</h1>
+						<h1>Brightcove Player SDK for iOS, version 6.8.5.1519</h1>
 
 <h1>Table of Contents</h1>
 
@@ -420,6 +420,7 @@ self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAuto
 <li><code>showControlsAnimationDuration</code> The time in seconds it takes for the controls to animate to visible.</li>
 <li><code>learnMoreButtonBrowserStyle</code> Setting that determines if tapping the &ldquo;Learn More&rdquo; button on an ad will display the clickthrough link in an external browser (default setting) or an internal browser.</li>
 <li><code>presentingViewController</code> The UIViewController subclass to use for presenting other view controllers (like the closed caption selection view controller).</li>
+<li><code>automaticControlTypeSelection</code> Whether or not you want the <code>BCOVPUIPlayerView</code> to pick a <code>BCOVPUIBasicControlView</code> type automatically based on the video type. If the video is VOD then <code>basicControlViewWithVODLayout</code> will be used, for live <code>basicControlViewWithLiveLayout</code> and for live DVR <code>basicControlViewWithLiveDVRLayout</code>. When this value is set to <code>YES</code> the <code>BCOVPUIBasicControlView</code> property passed into the <code>BCOVPUIPlayerView</code> initializer will be ignored.</li>
 </ul>
 
 
@@ -439,23 +440,23 @@ self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAuto
 <p>Three layouts are provided to support different types of video:</p>
 
 <ul>
-<li><p><code>BCOVPUIControlLayout basicVODControlLayout</code> is a basic layout for general on-demand video streams.</p></li>
-<li><p><code>BCOVPUIControlLayout basicLiveControlLayout</code> is a layout for live video.</p></li>
-<li><p><code>BCOVPUIControlLayout basicLiveDVRControlLayout</code> is a layout for live video streams with DVR controls.</p></li>
+<li><p><code></code>BCOVPUIControlLayout<code> basicVODControlLayout</code> is a basic layout for general on-demand video streams.</p></li>
+<li><p><code></code>BCOVPUIControlLayout<code> basicLiveControlLayout</code> is a layout for live video.</p></li>
+<li><p><code></code>BCOVPUIControlLayout<code> basicLiveDVRControlLayout</code> is a layout for live video streams with DVR controls.</p></li>
 </ul>
 
 
-<p>You typically set a new layout immediatley after your <code>BCOVPUIPlayerView</code> is created, but you can also set a new layout at any time. For example, you can set a new VOD layout like this:</p>
+<p>You typically set a new layout immediatley after your <a href="Classes/BCOVPUIPlayerView.html"><code>BCOVPUIPlayerView</code></a> is created, but you can also set a new layout at any time. For example, you can set a new VOD layout like this:</p>
 
 <pre><code>playerView.controlsView.layout = [BCOVPUIControlLayout basicVODControlLayout]
 </code></pre>
 
 <h2>Custom Layouts</h2>
 
-<p>In addition to the default layouts, you can create your own highly customized layouts by instantiating a new <code>BCOVPUIControlLayout</code> with your own design.</p>
+<p>In addition to the default layouts, you can create your own highly customized layouts by instantiating a new <a href="Classes/BCOVPUIControlLayout.html"><code>BCOVPUIControlLayout</code></a> with your own design.</p>
 
 <ol>
-<li><p>First, create the controls that will go in your layout using <code>BCOVPUIBasicControlView layoutViewWithControlFromTag:width:elasticity:</code>. Each control is packaged in a <code>BCOVPUILayoutView</code> that determines the control spacing.</p></li>
+<li><p>First, create the controls that will go in your layout using <a href="Classes/BCOVPUIBasicControlView.html"><code>BCOVPUIBasicControlView</code></a> layoutViewWithControlFromTag:width:elasticity:<code>. Each control is packaged in a</code><a href="Classes/BCOVPUILayoutView.html"><code>BCOVPUILayoutView</code></a> that determines the control spacing.</p></li>
 <li><p>You can set the <code>width</code> of each layout view to the default width (which is based on the type of control), or you can specify your own width.</p></li>
 <li><p>Use the <code>elasticity</code> argument to determine how much the layout view containing the control reizes its width to fill the control bar.</p>
 
@@ -548,7 +549,7 @@ logoImageView1.frame = logoLayoutView1.frame;
         NSArray *compactLayoutLines = @[ compactLayoutLine1, compactLayoutLine2 ];
 </code></pre>
 
-<p>Finally, now that there are two layout configurations (one for full width, and one for compact width), you can create a new <code>BCOVPUIControlLayout</code> object, and set it in the player&rsquo;s control view.</p>
+<p>Finally, now that there are two layout configurations (one for full width, and one for compact width), you can create a new <a href="Classes/BCOVPUIControlLayout.html"><code>BCOVPUIControlLayout</code></a> object, and set it in the player&rsquo;s control view.</p>
 
 <pre><code>        BCOVPUIControlLayout *customLayout = [[BCOVPUIControlLayout alloc] initWithStandardControls:standardLayoutLines compactControls:compactLayoutLines];
         playerView.controlsView.layout = customLayout;
@@ -611,6 +612,17 @@ return MPRemoteCommandHandlerStatusSuccess;
 
 <pre><code>- (void)routePickerViewWillBeginPresentingRoutes:(AVRoutePickerView *)routePickerView;
 - (void)routePickerViewDidEndPresentingRoutes:(AVRoutePickerView *)routePickerView;
+</code></pre>
+
+<p>The <code>AVRouteDetector</code> used to discover AirPlay routes is available on the <a href="Classes/BCOVPUIBasicControlView.html"><code>BCOVPUIBasicControlView</code></a> object so you can enable or disable its <code>routeDetectionEnabled</code> property as needed.</p>
+
+<p>Per Apple&rsquo;s documentation: &ldquo;<em>Route detection significantly increases power consumption and must be turned off when it&rsquo;s no longer needed.</em>&rdquo;</p>
+
+<pre><code>// Objective-C
+self.playerView.controlsView.routeDetector.routeDetectionEnabled = NO;
+
+// Swift
+playerView?.controlsView.routeDetector.isRouteDetectionEnabled = false
 </code></pre>
 
 <p>For more information on incorporating AirPlay 2 into your app please see the <a href="https://developer.apple.com/documentation/avfoundation/media_playback_and_selection/getting_airplay_2_into_your_app?language=objc">Getting Airplay 2 into Your App</a> documentation.</p>
@@ -1583,7 +1595,7 @@ self.playerView.controlsView.progressSlider.accessibilityLabel = @"Timeline";
 					<footer>
 						<div class="footer-copyright">
 							
-							<p class="copyright">Copyright &copy; 2021 Brightcove. All rights reserved. Updated: 2021-02-02</p>
+							<p class="copyright">Copyright &copy; 2021 Brightcove. All rights reserved. Updated: 2021-02-22</p>
 							
 							
 							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

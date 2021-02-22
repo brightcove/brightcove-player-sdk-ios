@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.8.4.1493
+# Brightcove Player SDK for iOS, version 6.8.5.1519
 
 
 # Table of Contents
@@ -280,6 +280,7 @@ The `BCOVPUIPlayerViewOptions` class allows you to customize some BCOVPlayerUI b
 * `showControlsAnimationDuration` The time in seconds it takes for the controls to animate to visible.
 * `learnMoreButtonBrowserStyle` Setting that determines if tapping the "Learn More" button on an ad will display the clickthrough link in an external browser (default setting) or an internal browser.
 * `presentingViewController` The UIViewController subclass to use for presenting other view controllers (like the closed caption selection view controller).
+* `automaticControlTypeSelection` Whether or not you want the `BCOVPUIPlayerView` to pick a `BCOVPUIBasicControlView` type automatically based on the video type. If the video is VOD then `basicControlViewWithVODLayout` will be used, for live `basicControlViewWithLiveLayout` and for live DVR `basicControlViewWithLiveDVRLayout`. When this value is set to `YES` the `BCOVPUIBasicControlView` property passed into the `BCOVPUIPlayerView` initializer will be ignored. 
 
 Options can be set using the following method:
 
@@ -460,6 +461,18 @@ Devices that are running iOS 11 or later will take advantage of `AVRoutePickerVi
 ```
 - (void)routePickerViewWillBeginPresentingRoutes:(AVRoutePickerView *)routePickerView;
 - (void)routePickerViewDidEndPresentingRoutes:(AVRoutePickerView *)routePickerView;
+```
+
+The `AVRouteDetector` used to discover AirPlay routes is available on the `BCOVPUIBasicControlView` object so you can enable or disable its `routeDetectionEnabled` property as needed. 
+
+Per Apple's documentation: "*Route detection significantly increases power consumption and must be turned off when it's no longer needed.*" 
+
+```
+// Objective-C
+self.playerView.controlsView.routeDetector.routeDetectionEnabled = NO;
+
+// Swift
+playerView?.controlsView.routeDetector.isRouteDetectionEnabled = false
 ```
 
 For more information on incorporating AirPlay 2 into your app please see the [Getting Airplay 2 into Your App](https://developer.apple.com/documentation/avfoundation/media_playback_and_selection/getting_airplay_2_into_your_app?language=objc) documentation.

@@ -1,4 +1,4 @@
-# Using the TV Player UI With The Brightcove Player SDK for tvOS, version 6.8.4.1493
+# Using the TV Player UI With The Brightcove Player SDK for tvOS, version 6.8.5.1519
 
 ## Overview
 The Brightcove Native Player SDK provides a full set of controls for playback in tvOS on Apple TV known as the TV Player. The TV Player provides playback controls for both regular video content, and video content with Brightcove Server-Side Ad Insertion (SSAI) enabled.
@@ -79,8 +79,8 @@ Keep in mind that a "tap" is a touch on the Siri Remote trackpad, while a "click
 | Pan | Timeline scrubbing while paused | If the video is paused and the top tab bar is not showing, panning left and right will seek backward or forward in the video. Resuming playback will play at that new point. If the panning speed is high, then panning will snap back to the starting point when going over it. Slow panning will not snap back, allowing for greater accuracy in setting a precise time. |
 | Play/Pause Button | Play/pause video | If the video is playing, this will pause the video and show the progress view. If the top tab bar was visible and the video was playing, it will resume playback and continue to show the top tab bar. If the video was paused, resume playback. Hide the progress view if it was visible. If the top tab bar was visible, continue to show it. |
 | Menu Button | Hide top tab bar, or perform default Menu button behavior |If the top tab bar is visible, hide the top tab bar. If the top tab bar is not visible, perform the default Menu button action (return to home screen if not otherwise overridden).|
-| Click and Hold + Pan | Fast forward/reverse | Click and hold, then pan left/right to fast forward and reverse. The longer you click, the faster you can move, up to a limit. The video will seek to the current scrubbing location every 3 seconds to provide a preview of the video at the new time. Previews are only shown while scrubbing if there are no ads. |
-| Double Click | Jump forward/backward | Double click on the left quarter of the Siri remote track pad to go back 10 seconds. Double click on the right quarter of the Siri remote track pad to go forward 10 seconds. Jump forward/backward only works while the video is playing. |
+| Click and Hold | Fast forward/reverse | Click and hold on the left quarter of the Siri remote track pad to begin fast-forwarding or on the right quarter to fast-rewind. |
+| Single Click | Jump forward/backward | Single click on the left quarter of the Siri remote track pad to go back 10 seconds. Single click on the right quarter of the Siri remote track pad to go forward 10 seconds. Jump forward/backward only works while the video is playing. |
 
 ## Tab Bar Item Views
 By default, the TV Player view contains a top tab bar with three default tab bar items:

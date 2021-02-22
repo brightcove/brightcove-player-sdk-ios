@@ -395,6 +395,12 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
  */
 @property (nonatomic, assign) BOOL showPictureInPictureButton;
 
+/**
+ * Will automatically select an appropriate BCOVPUIBasicControlView
+ * for the current video.
+ */
+@property (nonatomic, assign) BOOL automaticControlTypeSelection;
+
 @end
 
 

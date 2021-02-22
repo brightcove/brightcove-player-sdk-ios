@@ -309,6 +309,12 @@ typedef NS_ENUM(NSUInteger, BCOVTVIconType)
  */
 @property (nonatomic, assign) BOOL useLocalizedVariantForVideoInfo;
 
+/**
+ * Will automatically select an appropriate BCOVPUIBasicControlView
+ * for the current video.
+ */
+@property (nonatomic, assign) BOOL automaticControlTypeSelection;
+
 @property (nonatomic, weak) id<BCOVTVAccessibilityDelegate> accessibilityDelegate;
 
 @end

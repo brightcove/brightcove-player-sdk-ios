@@ -16,6 +16,7 @@
 @class BCOVPUISlider;
 @class BCOVPUIButton;
 @class BCOVUILabel;
+@class AVRouteDetector;
 
 @protocol BCOVPUIButtonAccessibilityDelegate;
 
@@ -89,10 +90,10 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
 /**
  * Initializes a BCOVPUIControlLayout layout with default settings.
  *
- * @param standardLayoutLines An array of arrays, where each sub-array 
+ * @param standardLayoutLines An array of arrays, where each sub-array
  * corresponds to one row of controls in the player control view.
  * Each of these sub-arrays is a list of BCOVPUILayoutView objects used in the
- * standard width layout. Each layout view typically contains a single 
+ * standard width layout. Each layout view typically contains a single
  * control element and can be created with
  * [BCOVPUIBasicControlView layoutViewWithControlFromTag:width:elasticity:]
  *
@@ -155,6 +156,9 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
 
 /** The progress slider */
 @property (nonatomic, weak, readonly) BCOVPUISlider *progressSlider;
+
+/** The  AVRouteDetector used when allowsExternalPlayback is enabled. */
+@property (nonatomic, readonly) AVRouteDetector *routeDetector;
 
 /** The closed caption button */
 @property (nonatomic, weak, readonly) BCOVPUIButton *closedCaptionButton;
