@@ -1,4 +1,4 @@
-iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.8.5.1519
+iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.8.6.1579
 --------------
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -68,30 +68,51 @@ When a user requests a video download, call
 
 The video parameter is a normal `BCOVVideo` object that you get by querying the `BCOVPlaybackService`. You should make sure that its `canBeDownloaded` property is `YES` before downloading.
 
-The parameters argument is an `NSDictionary` in which you specify the terms for the offline FairPlay license, preferred bitrate, and other values. For example, to request a license with a 30 day rental duration, you would use this:
+The parameters argument is an `NSDictionary` in which you specify the terms for the offline FairPlay license, preferred bitrate, and other values. 
+
+The following are the valid parameter keys that you may use when requesting a video download:
+
+* kBCOVFairPlayLicensePlayDurationKey
+* kBCOVFairPlayLicensePurchaseKey
+* kBCOVFairPlayLicenseRentalDurationKey
+* kBCOVOfflineVideoManagerRequestedBitrateKey
+
+Here are some examples of video download parameters for common license-types:
 
 ```
+// A purchased video download
+// In this case only `kBCOVFairPlayLicensePurchaseKey` is required
+// but you may also specify the bitrate you'd like to download
 parameters = @{
-	// 30 days in seconds
-	kBCOVFairPlayLicenseRentalDurationKey: @(60 * 60 * 24 * 30),
+    kBCOVFairPlayLicensePurchaseKey: @(YES),
+    // kBCOVOfflineVideoManagerRequestedBitrateKey: @(1000000)
 };
 ```
-
-You can also specify how long a license should remain valid after the video has begun playback. This is known as Dual Expiry or a Rental Profile:
-
 ```
+// A rented video valid for 30 days
+// You could also specify the bitrate as in the purchased video example
+parameters = @{
+    // 30 days in seconds
+    kBCOVFairPlayLicenseRentalDurationKey: @(60 * 60 * 24 * 30)
+};
+```
+```
+// A rented video valid for 30 days or 24 hours after playback begins
+// This is known as "Dual Expiry" or a "Rental Profile"
+// You could also specify the bitrate as in the purchased video example
 parameters = @{
     // 30 days in seconds
     kBCOVFairPlayLicenseRentalDurationKey: @(60 * 60 * 24 * 30),
     // 24 hours in seconds
     kBCOVFairPlayLicensePlayDurationKey: @(60 * 60 * 24)
 };
-``` 
+```
+
 **NOTE: If a license expires during playback of a video the video will not stop, but attempting to reload the video will result in a "license expired" error.**
 
 The completion handler is where you asynchronously receive the offline video token or the error. You can store a reference to this offline video token if the error is nil. You will receive notficiation of progress and completion thorugh delegate methods.
 
-### Preload A FairPLay license
+### Preload A FairPlay license
 
 If you plan to download multiple FairPlay-protected videos, it's a good idea to prelaod all the FairPlay licenses beforehand, because FairPlay license exchange cannot happen while the app is in the background. Preload a FairPlay license with a similar call:
 

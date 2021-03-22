@@ -1,3 +1,41 @@
+## Release 6.8.6 ##
+
+#### Additions and Improvements
+
+* Adds sample code to the [CustomControls sample project](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/CustomControls) which demonstrates a custom implementation of the built-in Audio and Subtitles control, often referred to as the "_CC button_".
+
+* Adds sample code to the [VideoCloudBasicPlayer sample project](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/VideoCloudBasicPlayer) which demonstrates one possible method for enabling and disabling AirPlay route detection and [reducing energy consumption](https://developer.apple.com/documentation/avfoundation/avroutedetector/2915762-routedetectionenabled).
+
+* Adds sample code to the [BrightcoveCastReceiver sample project](https://github.com/BrightcoveOS/ios-player-samples/tree/master/GoogleCast/BrightcoveCastReceiver) which demonstrates the use of the `playerUR` property of the `BCOVReceiverAppConfig` class.
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes an issue where calling `-setVideos:` twice with the same DRM protected video failed to play the second time.
+
+* Fixes an issue where the AirPlay button might not appear after calling `BCOVPlaybackController` `-setVideos:`, due to a missed update in AirPlay route detection.
+
+* Fixes an issue where the ad countdown label could be missing for multi-ad sequences played on a small device. This problem primarily affected German localizations.
+
+* Adds the `BCOVPUIPlayerViewDelegate` method <br/> `-pictureInPictureController:restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:`.
+
+* Clarifies the documentation of FairPlay parameters used for downloading videos for offline viewing. See [OfflinePlayback.md](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/OfflinePlayback.md).
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds documentation for the `splashScreen` and `playerURL` properties of the `BCOVReceiverAppConfig` class. Refer to the [Brightcove CAF Receiver](https://github.com/brightcove/brightcove-player-sdk-ios-googlecast#brightcove-caf-receiver) section of the GoogleCast plugin README.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where a Main Thread Checker exception was raised by the IMA framework when releasing a BCOVPlaybackSession.
+
+* Fixes an issue where `kBCOVPlaybackSessionLifecycleEventAdSequenceExit` was not always sent.
+
 ## Release 6.8.5 ##
 
 #### Additions and Improvements
@@ -12,9 +50,9 @@
 
 * Fixes an issue where FairPlay license renewal was failing for downloaded videos.
 
-* Fixes an issue where the Audio & Subtitles buton could fail to show when loading a video was delayed.
+* Fixes an issue where the Audio & Subtitles button could fail to show when loading a video was delayed.
 
-* Fixes an issue where audio played but video could be black whan an app was launched from a Universal Link.
+* Fixes an issue where audio played but video could be black when an app was launched from a Universal Link.
 
 * Fixes an issue where dragging the progress slider to the start of a video set the playhead position to a time value greater than zero.
 

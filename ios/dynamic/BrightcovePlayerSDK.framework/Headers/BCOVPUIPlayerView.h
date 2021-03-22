@@ -200,12 +200,15 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
 
 /**
  * Pass-through AVPictureInPictureControllerDelegate methods
+ *
+ * See https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate for more information
  */
 - (void)pictureInPictureControllerDidStartPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
 - (void)pictureInPictureControllerDidStopPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
 - (void)pictureInPictureControllerWillStartPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
 - (void)pictureInPictureControllerWillStopPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
 - (void)pictureInPictureController:(AVPictureInPictureController *)pictureInPictureController failedToStartPictureInPictureWithError:(NSError *)error;
+- (void)pictureInPictureController:(AVPictureInPictureController *)pictureInPictureController restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(void (^)(BOOL))completionHandler;
 
 /**
  * Progress Slider callbacks
