@@ -265,6 +265,9 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  *
  * Defaults to NO.
  *
+ * NOTE: Enabling autoPlay in conjunction with setting a custom rate on AVPlayer
+ * may cause unexpected behavior.
+ *
  * @return Whether to begin playback as soon as a new session is received.
  */
 @property (nonatomic, assign, getter = isAutoPlay) BOOL autoPlay;

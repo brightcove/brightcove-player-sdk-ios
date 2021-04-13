@@ -1,12 +1,34 @@
+## Release 6.8.7 ##
+
+#### Additions and Improvements
+
+* Adds the new [SubtitleRendering sample project](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/SubtitleRendering) which demonstrates how to find text tracks in a video manifest and rendering subtitles in a separate view.
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes an issue where Picture in Picture could fail to start.
+
+* Fixes issues with the behavior of the `automaticControlTypeSelection` property of `BCOVPUIPlayerViewOptions`; the duration label could be missing from the UI, or the wrong controls layout could be auto-selected when an ad plugin plays a pre-roll ad.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds support for creating a `BCOVSource` from VMAP XML data. Refer to the _Using VMAP XML data_ section of the SSAI _README_ for details.
+
+* Fixes an issue with `seekWithoutAds` when using the FairPlay plugin with SSAI in which `seekWithoutAds` could fail to call the completion handler. 
+
 ## Release 6.8.6 ##
 
 #### Additions and Improvements
 
 * Adds sample code to the [CustomControls sample project](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/CustomControls) which demonstrates a custom implementation of the built-in Audio and Subtitles control, often referred to as the "_CC button_".
 
-* Adds sample code to the [VideoCloudBasicPlayer sample project](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/VideoCloudBasicPlayer) which demonstrates one possible method for enabling and disabling AirPlay route detection and [reducing energy consumption](https://developer.apple.com/documentation/avfoundation/avroutedetector/2915762-routedetectionenabled).
+* Adds sample code to the [VideoCloudBasicPlayer sample project](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/VideoCloudBasicPlayer) which demonstrates one possible method for enabling and disabling AirPlay route detection which can [reduce energy consumption](https://developer.apple.com/documentation/avfoundation/avroutedetector/2915762-routedetectionenabled).
 
-* Adds sample code to the [BrightcoveCastReceiver sample project](https://github.com/BrightcoveOS/ios-player-samples/tree/master/GoogleCast/BrightcoveCastReceiver) which demonstrates the use of the `playerUR` property of the `BCOVReceiverAppConfig` class.
+* Adds sample code to the [BrightcoveCastReceiver sample project](https://github.com/BrightcoveOS/ios-player-samples/tree/master/GoogleCast/BrightcoveCastReceiver) which demonstrates the use of the `playerURL` property of the `BCOVReceiverAppConfig` class.
 
 ### Brightcove Player SDK for iOS (Core)
 
@@ -20,7 +42,7 @@
 
 * Adds the `BCOVPUIPlayerViewDelegate` method <br/> `-pictureInPictureController:restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:`.
 
-* Clarifies the documentation of FairPlay parameters used for downloading videos for offline viewing. See [OfflinePlayback.md](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/OfflinePlayback.md).
+* Clarifies the documentation for FairPlay parameters used for downloading videos for offline viewing. See [OfflinePlayback.md](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/OfflinePlayback.md).
 
 ### Google Cast Plugin for Brightcove Player SDK for iOS
 
