@@ -138,6 +138,11 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
 @property (nonatomic, strong) NSURLSession *sharedURLSession;
 
 /**
+ * The watermarking token for use with Forensic Watermarking
+ */
+@property (nonatomic, copy) NSString *watermarkingToken;
+
+/**
  * Initializes a BCOVPlaybackService. It uses the accountId and policyKey
  * to create a BCOVPlaybackServiceRequestFactory internally.
  *

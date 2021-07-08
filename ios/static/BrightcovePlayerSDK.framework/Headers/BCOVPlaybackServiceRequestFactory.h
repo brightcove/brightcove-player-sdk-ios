@@ -26,6 +26,11 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
  */
 @property (nonatomic, copy, readonly) NSString *policyKey;
 
+/*
+ * Auth Token for EPA/PAS
+ */
+@property (nonatomic, copy, readonly) NSString *authToken;
+
 /**
  * NSDictionary of additional HTTP request headers set on each NSURLRequest.
  * The dictionary key defines the header field name.

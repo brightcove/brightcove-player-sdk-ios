@@ -1,4 +1,4 @@
-iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.8.7.1605
+iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.9.0.1697
 --------------
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -46,6 +46,8 @@ BCOVOfflineVideoManager.sharedManager.authProxy = self.authProxy;
 ```
 
 If you want to change the `kBCOVOfflineVideoManagerAllowsCellularDownloadKey` value later on in your app to allow or disallow cellular access, you can call `-[BCOVOfflineVideoManager initializeOfflineVideoManagerWithDelegate:options:]` again with a new options dictionary and/or delegate.
+
+**NOTE: Changing the value of `kBCOVOfflineVideoManagerAllowsCellularDownloadKey` will not have an effect on active downloads, only downloads initialized after the value has been changed.**
 
 ### Check If A Video Can Be Downloaded
 

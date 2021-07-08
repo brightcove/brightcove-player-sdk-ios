@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.8.7.1605
+# Brightcove Player SDK for iOS, version 6.9.0.1697
 
 
 # Table of Contents
@@ -39,6 +39,7 @@
 1. [Playback Authorization Service](#PlaybackAuthorizationService)
 1. [VoiceOver Support](#VoiceOver)
 1. [China Delivery](#ChinaDelivery)
+1. [AVAudioSession Configuration](#AVAudioSessionConfig)
 1. [Frequently Asked Questions](#FAQ)
 1. [Support](#Support)
 
@@ -51,9 +52,15 @@ Requirements <a name="Requirements"></a>
 Supported Platforms <a name="SupportedPlatforms"></a>
 ===================
 
-iOS 11.0 and above.
+Brightcove provides active support for the latest iOS SDK on the latest public release of the following iOS versions:
 
-tvOS 11.0 and above.
+ * iOS 12, 13 and 14
+ * tvOS 12, 13 and 14
+
+Brightcove provides passive support for the following iOS versions:
+
+ * iOS 11.4.1
+ * tvOS 11.4.1
 
 The Core SDK is localized for Arabic (ar), English (en), French (fr), German (de), Japanese (ja), Korean (ko), Spanish (es), Simplified Chinese (zh-Hans) and Traditional Chinese (zh-Hant). To gain the benefit of a localization, your app must also be localized for the same language and locale.
 
@@ -1226,6 +1233,105 @@ BCOVGlobalConfiguration.sharedConfig.chinaProxyDomain = @"host.mydomain.com";
 
 Be sure to set the proxy domain name before using any other services of the Native Player SDK. Refer to the [_BCOVGlobalConfiguration Class Reference_](https://docs.brightcove.com/ios-sdk/Classes/BCOVGlobalConfiguration.html#//api/name/chinaProxyDomain) for details.
 
+AVAudioSession Configuration <a name="AVAudioSessionConfig"></a>
+==========================
+
+Depending on how you need your application to perform when it comes to audio playback you can configure AVAudioSession to suit your specific needs. For example if you want to support AirPlay 2 and multiple audio routes see the [AirPlay](#AirPlay) section of this README. 
+
+A basic AVAudioSession can be configured like this:
+
+```
+//  Obj-C
+NSError *categoryError = nil;
+// see https://developer.apple.com/documentation/avfoundation/avaudiosessioncategoryplayback
+BOOL success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&categoryError];
+
+if (!success)
+{
+    // Handle error
+}
+```
+
+```
+// Swift
+var categoryError :NSError?
+var success: Bool
+do {
+    // see https://developer.apple.com/documentation/avfoundation/avaudiosessioncategoryplayback
+    try AVAudioSession.sharedInstance().setCategory(.playback)
+    success = true
+} catch let error as NSError {
+    categoryError = error
+    success = false
+}
+
+if !success {
+    // Handle error
+}
+```
+
+This configuration can typically be done in your AppDelegate's `application:didFinishLaunchingWithOptions:` method. There may be situations where you need a more sophisticated AVAudioSession configuration, for example if you want to allow audio from other apps to be heard when the audio in your app is muted. In this situation you can configure the AVAudioSession in the view controller that has access to your current AVPlayer. For example:
+
+```
+// Swift
+func setUpAudioSession() {
+    var categoryError :NSError?
+    var success: Bool
+
+    do {
+        if let currentPlayer = currentPlayer {
+            // If the player is muted, then allow mixing.
+            // Ensure other apps can have their background audio
+            // active when this app is in foreground
+            if currentPlayer.isMuted {
+                try AVAudioSession.sharedInstance().setCategory(.playback, options: .mixWithOthers)
+            } else {
+                try AVAudioSession.sharedInstance().setCategory(.playback, options: AVAudioSession.CategoryOptions(rawValue: 0))
+            }
+        } else {
+            try AVAudioSession.sharedInstance().setCategory(.playback, options: AVAudioSession.CategoryOptions(rawValue: 0))
+        }
+        
+        success = true
+    } catch let error as NSError {
+        categoryError = error
+        success = false
+    }
+
+    if !success {
+        print("AppDelegate Debug - Error setting AVAudioSession category.  Because of this, there may be no sound. \(categoryError!)")
+    }
+}
+```
+```
+// Objc-C
+- (void)setUpAudioSession
+{
+    NSError *categoryError = nil;
+    BOOL success;
+    
+    // If the player is muted, then allow mixing.
+    // Ensure other apps can have their background audio
+    // active when this app is in foreground
+    if (self.currentPlayer.isMuted)
+    {
+        success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:&categoryError];
+    }
+    else
+    {
+        success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:0 error:&categoryError];
+    }
+    
+    if (!success)
+    {
+        NSLog(@"AppDelegate Debug - Error setting AVAudioSession category.  Because of this, there may be no sound. `%@`", categoryError);
+    }
+}
+```
+Sample code can be found in our [VideoCloudBasicPlayer](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/VideoCloudBasicPlayer) sample project.
+
+You can read more about AVAudioSession [here](https://developer.apple.com/documentation/avfoundation/avaudiosession). 
+
 Frequently Asked Questions <a name="FAQ"></a>
 ==========================
 **My content won't load. Is there an easy way to test whether the URL points to a valid video?**
@@ -1243,6 +1349,8 @@ This message indicates that the default source selection policy can't figure whi
 **[Apple recommends][audioguidelines] that apps which play video should still play audio even when the device is muted. Why doesn't the Brightcove Player SDK for iOS respect these guidelines?**
 
 The API which controls whether an app emits audio in iOS apps is the [AVAudioSession API][avaudiosessionapi]. An audio session is global to an app, which means that its configuration affects both the sounds that are emitted by the AVPlayers created by the Player SDK, as well as other sounds that an app may produce. Since the Player SDK cannot know how the app wants the audio session configured for those other sounds, it doesn't affect the audio session at all. This means that unless you explicitly configure your app's audio session otherwise, you inherit the default behavior of suppressing any and all audio when the device is muted, including audio emitted by AVPlayers. To conform to Apple's recommendations regarding audio playback, you (the app developer) must configure the audio session according to your app's specific needs.
+
+See our [AVAudioSession Configuration](#AVAudioSessionConfig) section in this README for additional information.
 
 [audioguidelines]: https://developer.apple.com/Library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/AudioGuidelinesByAppType/AudioGuidelinesByAppType.html
 [avaudiosessionapi]: https://developer.apple.com/Library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007875-CH1-SW1

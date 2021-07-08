@@ -15,7 +15,7 @@
 // Playback API
 #import <BrightcovePlayerSDK/BCOVPlaybackService.h>
 #import <BrightcovePlayerSDK/BCOVPlaybackServiceRequestFactory.h>
-#import <BrightcovePlayerSDK/NSDictionary+BCOVURLSupport.h>
+#import <BrightcovePlayerSDK/NSDictionary-BCOVURLSupport.h>
 
 // Management
 #import <BrightcovePlayerSDK/BCOVGlobalConfiguration.h>

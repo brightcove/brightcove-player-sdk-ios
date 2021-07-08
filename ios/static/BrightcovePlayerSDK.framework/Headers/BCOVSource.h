@@ -58,6 +58,7 @@ extern NSString * const kBCOVSourcePropertyKeySystems;
 extern NSString * const kBCOVSourcePropertyKeyEXTXVersion;
 extern NSString * const kBCOVSourcePropertyKeyType;
 extern NSString * const kBCOVSourcePropertyKeyVMAP;
+extern NSString * const kBCOVSourcePropertyKeyAuthToken;
 
 
 /**

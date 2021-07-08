@@ -1,5 +1,5 @@
 //
-// NSDictionary+BCOVURLSupport.h
+// NSDictionary-BCOVURLSupport.h
 // BrightcovePlayerSDK
 //
 // Copyright (c) 2021 Brightcove, Inc. All rights reserved.

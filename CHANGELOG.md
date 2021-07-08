@@ -1,8 +1,63 @@
+## Release 6.9.0 ##
+
+#### Breaking Changes
+
+* If you install the Brightcove Native Player frameworks manually, be aware that the following header file names have changed to replace '+' characters with '-', for example, `NSDictionary+BCOVURLSupport.h` is now `NSDictionary-BCOVURLSupport.h`. The following header files have been renamed: `NSDictionary-BCOVURLSupport.h`, `BCOVPlayerSDKManager-BCOVFWAdditions.html`, `BCOVSessionProviderExtension-BCOVFWAdditions.html`, `BCOVPlayerSDKManager-BCOVIMAAdditions.html`, `BCOVSessionProviderExtension-BCOVIMAAdditions.html`, `BCOVSessionProviderExtension-BCOVPulseAdditions.html`, `BCOVPlayerSDKManager-BCOVPulseAdditions.html`, `BCOVSource-BCOVSSAIAdditions.html`, `BCOVPlayerSDKManager-BCOVSSAIAdditions.html` and `BCOVSessionProviderExtension-BCOVSSAIAdditions.html`.
+
+* Future versions of the iOS SDK will be built using Xcode 12.5.1 or higher. Apps built with Xcode 12.4 and **static** versions of future Brightcove SDKs may report the following error during export and archive (the same error has **not** been seen for apps built with Xcode 12.4 and **dynamic** versions of Brightcove SDKs built with Xcode 12.5.1):
+
+```
+ld: could not reparse object file in bitcode bundle: 'Invalid bitcode version (Producer: '1205.0.22.11.0_0' Reader: '1200.0.32.29_0')', using libLTO version 'LLVM version 12.0.0, (clang-1200.0.32.29)' for architecture arm64
+```
+
+
+#### Additions and Improvements
+
+* Adds support for Forensic Watermarking. Refer to [Forensic Watermarking with Native SDKs](https://sdks.support.brightcove.com/features/forensic-watermarking-with-sdks.html).
+
+* Fixes UI issues observed when using `automaticControlTypeSelection`.
+
+* Adds an example of modifying the AVAudioSession configuration at runtime based on the mute state of the AVPlayer. Refer to the [VideoCloudBasicPlayer](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/VideoCloudBasicPlayer) sample project.
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes FairPlay license preloading for online playback.
+
+* Fixes FairPlay license loading when downloading videos for offline playback.
+
+* Fixes FairPlay license renewal for offline video playback.
+
+* Fixes a crash that occurred when loading a DRM-protected video without a network connection (affects iOS and tvOS).
+
+* Fixes a crash that occurred when the network connection is lost during playback of a Live DRM protected stream.
+
+* Fixes an issue where the progress slider was disabled after switching from a Live stream to a Live-DVR stream.
+
+* Migrates Video360 playback from OpenGL ES to Apple Metal to fix deprecation warnings.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes a Main Thread Checker Exception which could occur when releasing an IMA Playback Session.
+
+* Fixes an issue where autoPlay could fail when using VMAP documents.
+
+* Fixes a delay when starting playback of a pre-roll ad with a live stream.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where video playback would not resume after a mid-roll ad sequence completed and Picture-in-Picture was active.
+
 ## Release 6.8.7 ##
 
 #### Additions and Improvements
 
-* Adds the new [SubtitleRendering sample project](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/SubtitleRendering) which demonstrates how to find text tracks in a video manifest and rendering subtitles in a separate view.
+* Adds the new [SubtitleRendering sample project](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/SubtitleRendering) which demonstrates how to find text tracks in a video manifest and how to render subtitles in a separate view.
 
 ### Brightcove Player SDK for iOS (Core)
 
@@ -12,11 +67,13 @@
 
 * Fixes issues with the behavior of the `automaticControlTypeSelection` property of `BCOVPUIPlayerViewOptions`; the duration label could be missing from the UI, or the wrong controls layout could be auto-selected when an ad plugin plays a pre-roll ad.
 
+* When `automaticControlTypeSelection` is enabled, the video and control views will be briefly hidden by an opaque, black overlay view between videos. Once the video-type of the next video has been detemined and the new control view is automatically selected, the black view will fade out. You can disable this new behavior by setting  `automaticControlTypeSelectionUsesShutter` to `NO`. You can also control the length of the fade-out by setting  `automaticControlTypeSelectionShutterFadeTime`. 
+
 ### SSAI Plugin for Brightcove Player SDK for iOS
 
 #### Additions and Improvements
 
-* Adds support for creating a `BCOVSource` from VMAP XML data. Refer to the _Using VMAP XML data_ section of the SSAI _README_ for details.
+* Adds support for creating a `BCOVSource` from VMAP XML data. Refer to the _[Using VMAP XML data](https://github.com/brightcove/brightcove-player-sdk-ios-ssai/blob/master/README.md#using-vmap-xml-data)_ section of the SSAI _[README](https://github.com/brightcove/brightcove-player-sdk-ios-ssai/blob/master/README.md)_ for details.
 
 * Fixes an issue with `seekWithoutAds` when using the FairPlay plugin with SSAI in which `seekWithoutAds` could fail to call the completion handler. 
 
@@ -314,7 +371,7 @@ self.googleCastManager = [[BCOVGoogleCastManager alloc] initForBrightcoveReceive
 
 #### Breaking Changes
 
-* As a result of new support for Google Ads IMA SDK 3.12.1 for iOS and 4.3.2 for tvOS, all `BCOVPlayerSDKManager(BCOVIMAAdditions)` category methods now require the `UIViewController` of the IMA ad container view to be passed as an additional parameter. Refer to the [BCOVPlayerSDKManager(BCOVIMAAdditions) Category Reference](https://docs.brightcove.com/ios-plugins/ima/Categories/BCOVPlayerSDKManager+BCOVIMAAdditions.html) page. Refer also to Section 3.12.0 of the [Google IMA iOS SDK release history](https://developers.google.com/interactive-media-ads/docs/sdks/ios/client-side/history).
+* As a result of new support for Google Ads IMA SDK 3.12.1 for iOS and 4.3.2 for tvOS, all `BCOVPlayerSDKManager(BCOVIMAAdditions)` category methods now require the `UIViewController` of the IMA ad container view to be passed as an additional parameter. Refer to the [BCOVPlayerSDKManager(BCOVIMAAdditions) Category Reference](https://docs.brightcove.com/ios-plugins/ima/Categories/BCOVPlayerSDKManager-BCOVIMAAdditions.html) page. Refer also to Section 3.12.0 of the [Google IMA iOS SDK release history](https://developers.google.com/interactive-media-ads/docs/sdks/ios/client-side/history).
 
 #### Additions and Improvements
 

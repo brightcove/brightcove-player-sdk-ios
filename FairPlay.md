@@ -1,4 +1,4 @@
-# Using FairPlay With The Brightcove Player SDK for iOS, version 6.8.7.1605
+# Using FairPlay With The Brightcove Player SDK for iOS, version 6.9.0.1697
 
 Quick Start
 ===========
@@ -113,6 +113,41 @@ If you have questions or need help, we have a support forum for Brightcove's nat
 
 [bcovsdk]: https://github.com/brightcove/brightcove-player-sdk-ios
 [forum]: https://groups.google.com/forum/#!forum/brightcove-native-player-sdks
+
+Error Handling
+===========
+FairPlay license related errors will be passed through in a `kBCOVPlaybackSessionLifecycleEventError` lifecycleEvent. These can include license server request failures or AVContentKeySession errors. You can access the `NSError` object with the `kBCOVPlaybackSessionEventKeyError` in the lifecycleEvent's properties dictionary. 
+
+If the issue is releated to a license server request (which can include concurrency-limit errors) you'll be able to retrieve the response data from the userInfo dictionary on the `NSError` with the `kBCOVFPSAuthProxyResponseData` key. 
+
+Here is an example of logging errors from an `kBCOVPlaybackSessionLifecycleEventError` lifecycleEvent:
+
+```
+- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didReceiveLifecycleEvent:(BCOVPlaybackSessionLifecycleEvent *)lifecycleEvent
+{
+    if ([kBCOVPlaybackSessionLifecycleEventError isEqualToString:lifecycleEvent.eventType])
+    {
+        NSError *error = lifecycleEvent.properties[kBCOVPlaybackSessionEventKeyError];
+        NSData *responseData = error.userInfo[kBCOVFPSAuthProxyResponseData];
+        if (responseData)
+        {
+            NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+            NSLog(@"License Server Error: %@", responseString);
+        }
+        else
+        {
+            NSLog(@"Error: %@", error.localizedDescription);
+
+            // Some errors may contain an underlying NSError
+            NSError *underlyingError = error.userInfo[NSUnderlyingErrorKey];
+            if (underlyingError)
+            {
+                NSLog(@"Underlying Error: %@", underlyingError.localizedDescription);
+            }
+        }
+    }
+}
+```
 
 Content Key Preloading
 ===========

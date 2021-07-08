@@ -404,6 +404,22 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
  */
 @property (nonatomic, assign) BOOL automaticControlTypeSelection;
 
+/**
+ * When enabled a shutter view will be added and faded-out when control
+ * views are changed between videos. If this is not enabled you may see
+ * a flicker between videos when control views are swapped.
+ * Defaults to `YES`.
+ */
+@property (nonatomic, assign) BOOL automaticControlTypeSelectionUsesShutter;
+
+/**
+ * The fade-out time for the shutter view used between videos when
+ * automaticControlTypeSelection and automaticControlTypeSelectionUsesShutter
+ * are enabled.
+ * Defaults to `0.5`
+ */
+@property (nonatomic, assign) float automaticControlTypeSelectionShutterFadeTime;
+
 @end
 
 

@@ -16,6 +16,7 @@
 @class BCOVPlaylist;
 @class BCOVSource;
 @class BCOVVideo;
+@class AVPictureInPictureController;
 
 @protocol BCOVMutableAnalytics;
 @protocol BCOVPlaybackController;
@@ -404,6 +405,16 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * roll: 0 degrees
  */
 @property (nonatomic, readwrite, copy) BCOVVideo360ViewProjection *viewProjection;
+
+/**
+ * The AVPictureInPictureController for this playback controller. May be nil if
+ * `showPictureInPictureButton` is not enabled on BCOVPUIPlayerViewOptions.
+ *
+ * You should not set your own delegate on this instance of AVPictureInPictureController,
+ * and instead utilize BCOVPUIPlayerViewDelegate which will pass through each of the
+ * AVPictureInPictureController delegate methods.
+ */
+@property (nonatomic, weak, readonly) AVPictureInPictureController *pictureInPictureController;
 
 /**
  * Registers a session consumer with a container, to be notified of new
