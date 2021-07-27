@@ -735,7 +735,7 @@ Here is an example of using this method to create a "modified" version of an exi
     BCOVVideo *video1; // (properties include a key "foo" whose value is "bar")
     BCOVVideo *video2 = [video1 update:^(id<BCOVMutableVideo> mutable) {
         
-        mutable.properties = @{ @"foo": @"bar" };
+        mutable.properties = @{ @"foo": @"quux" };
         
     }];
     
