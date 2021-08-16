@@ -417,6 +417,18 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 @property (nonatomic, weak, readonly) AVPictureInPictureController *pictureInPictureController;
 
 /**
+ * The rate (speed) desired for playback.
+ * If a value less than or equal to 0 is set the default value will be used.
+ * If a valid value other than 1.0 is set the audioTimePitchAlgorithm of
+ * the current AVPlayer item will be set to AVAudioTimePitchAlgorithmTimeDomain.
+ * Defaults to `1.0`
+ * Acts as a proxy for `rate` on AVPlayer.
+ * See AVPlayer documentation for more information:
+ * https://developer.apple.com/documentation/avfoundation/avplayer/1388846-rate
+ */
+@property (nonatomic, assign) float playbackRate;
+
+/**
  * Registers a session consumer with a container, to be notified of new
  * sessions. Added consumers will be retained by this container. If a session
  * already existed in the container at the time of subscription, the specified
@@ -953,7 +965,7 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * The default value for this property, if it is not overridden, will be
  * "bcsdk://" followed by the bundle identifier.
  *
- * Please refer to http://en.wikipedia.org/wiki/URI_scheme#Generic_syntax
+ * Refer to http://en.wikipedia.org/wiki/URI_scheme#Generic_syntax
  * for more information on and examples of URI syntax.
  *
  * In particular, a destination without a hierarchical part (e.g. just a scheme)
@@ -966,7 +978,7 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * authority.
  * The default value is nil.
  *
- * Please refer to http://en.wikipedia.org/wiki/URI_scheme#Generic_syntax
+ * Refer to http://en.wikipedia.org/wiki/URI_scheme#Generic_syntax
  * for more information on and examples of URI syntax.
  *
  * In particular, a source without a hierarchical part (e.g. just a scheme)

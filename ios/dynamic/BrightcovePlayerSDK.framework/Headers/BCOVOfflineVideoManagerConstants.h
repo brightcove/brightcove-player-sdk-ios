@@ -64,8 +64,8 @@ extern NSString * const kBCOVOfflineVideoManagerAnalyticsStorageFullWarningNotif
  * If @(NO), cellular connections will not be allowed.
  * Default value is @(NO).
  * Corresponds directly to NSURLSessionConfiguration's allowCellularAccess property.
- * Changing this value will not have an effect on active downloads, only downloads
- * initialized after the value has been changed.
+ * Changing this value will not have an effect on active downloads; only downloads
+ * initialized after the value has been changed will be affected.
  */
 extern NSString * const kBCOVOfflineVideoManagerAllowsCellularDownloadKey;
 

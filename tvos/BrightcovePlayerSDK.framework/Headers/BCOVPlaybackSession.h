@@ -160,6 +160,12 @@ extern NSString * const kBCOVPlaybackSessionLifecycleEventAdResume;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventAdSkipped;
 
 /**
+ * The thumbnail seeking asset failed to load. The event properties may contain the underlying
+ * error keyed by kBCOVPlaybackSessionEventKeyError.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventThumbnailAssetFailedToLoad;
+
+/**
  * The key for the error in the Event properties.
  */
 extern NSString * const kBCOVPlaybackSessionEventKeyError;

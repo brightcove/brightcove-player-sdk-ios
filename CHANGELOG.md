@@ -1,3 +1,47 @@
+## Release 6.9.1 ##
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Adds `playbackRate` to `BCOVPlaybackController` to customize the playback speed of AVPlayer. See the [Playback Rate](https://github.com/brightcove/brightcove-player-sdk-ios#PlaybackRate) section of the README for more information.
+
+* Fixes an issue where the AirPlay button would not be visible when using `automaticControlTypeSelection` 
+
+* Fixes an issue where there would appear to be no video playback after the notification tray was brought down and then dismissed.
+
+* Fixes an issue where a FairPlay license request may not occur.
+
+### FreeWheel Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes a Main Thread Exception issue.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds support for jump-backward and jump-forward buttons on the `GCKUIExpandedMediaControlsViewController` when using a Brightcove CAF receiver.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue with controls not being visible after advancing to the next video in a playlist after a post-roll ad completed.
+
+* Adds support for auto-hiding/showing the controls view when entering and exiting ad sequences on tvOS.
+
+* Fixes an issue where the `kBCOVPlaybackSessionLifecycleEventEnd` lifecyle event may not be triggered.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where ad controls would lock up when starting an AirPlay session during ad playback.
+
+* Fixes an issue with thumbnail seeking.
+
 ## Release 6.9.0 ##
 
 #### Breaking Changes
@@ -9,7 +53,6 @@
 ```
 ld: could not reparse object file in bitcode bundle: 'Invalid bitcode version (Producer: '1205.0.22.11.0_0' Reader: '1200.0.32.29_0')', using libLTO version 'LLVM version 12.0.0, (clang-1200.0.32.29)' for architecture arm64
 ```
-
 
 #### Additions and Improvements
 
@@ -31,7 +74,7 @@ ld: could not reparse object file in bitcode bundle: 'Invalid bitcode version (P
 
 * Fixes a crash that occurred when loading a DRM-protected video without a network connection (affects iOS and tvOS).
 
-* Fixes a crash that occurred when the network connection is lost during playback of a Live DRM protected stream.
+* Fixes a crash that occurred when the network connection is lost during playback of a Live DRM-protected stream.
 
 * Fixes an issue where the progress slider was disabled after switching from a Live stream to a Live-DVR stream.
 
@@ -57,7 +100,7 @@ ld: could not reparse object file in bitcode bundle: 'Invalid bitcode version (P
 
 #### Additions and Improvements
 
-* Adds the new [SubtitleRendering sample project](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/SubtitleRendering) which demonstrates how to find text tracks in a video manifest and how to render subtitles in a separate view.
+* Adds the new [SubtitleRendering sample project](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/SubtitleRendering) which demonstrates how to find text tracks in a video manifest and render them in a separate view.
 
 ### Brightcove Player SDK for iOS (Core)
 
@@ -91,7 +134,7 @@ ld: could not reparse object file in bitcode bundle: 'Invalid bitcode version (P
 
 #### Additions and Improvements
 
-* Fixes an issue where calling `-setVideos:` twice with the same DRM protected video failed to play the second time.
+* Fixes an issue where calling `-setVideos:` twice with the same DRM-protected video failed to play the second time.
 
 * Fixes an issue where the AirPlay button might not appear after calling `BCOVPlaybackController` `-setVideos:`, due to a missed update in AirPlay route detection.
 
@@ -461,7 +504,7 @@ self.googleCastManager = [[BCOVGoogleCastManager alloc] initForBrightcoveReceive
 
 * Resolves App Store submission issues related to use of the IDFA (Identifier for Advertisers) by moving those references out of the Core SDK framework.
 
-* Fixes an issue where playback of DRM protected content could stop in mid-play when using certain authorization schemes.
+* Fixes an issue where playback of DRM-protected content could stop in mid-play when using certain authorization schemes.
 
 * Adds support for customizing the layout of thumbnail previews. See `playerViewShouldDisplayThumbnailPreviewWithSize:` on the `BCOVTVPlayerViewDelegate` protocol and `playerViewShouldDisplayThumbnailPreviewWithRect:` on the `BCOVPUIPlayerViewDelegate` protocol for more information.
 
@@ -1428,7 +1471,7 @@ For full details about downloading video for offline playback, see the *iOS App 
 * Adds support for downloading and playing back clear (non-DRM) video content from Video Cloud accounts using Dynamic Delivery. Previously only FairPlay-protected content could be downloaded.
 * Fixes an issue on iOS 11 where downloaded FairPlay videos would not play back until the app was restarted.
 * The `BCOVVideo` class has a new BOOL `usesFairPlay` property that returns YES if the video contains a FairPlay-encrypted source. This only applies to videos retrieved from a Dynamic Delivery account.
-* The `BCOVPlayerSDKManager` singleton class has a new `sessionID` property. This `NSString *` property is a unique read-only value that remains constant until the app is relaunched. This value is sent with all analytics reports and can be used to help diagnose playback issues. Please see the "Tracking Errors" section of the README for full details.
+* The `BCOVPlayerSDKManager` singleton class has a new `sessionID` property. This `NSString *` property is a unique read-only value that remains constant until the app is relaunched. This value is sent with all analytics reports and can be used to help diagnose playback issues. Refer to the "Tracking Errors" section of the README for full details.
 * The `BCOVPlaybackService` class has four new methods for converting JSON response data from the Playback Service API. These methods are useful if you need to retrieve data from the Playback Service API (through a proxy server, for example) and then convert them to objects you can work with in the SDK. These methods work identically to the methods found in the `BCOVCatalogService` class with the same names:
 	* `+ (BCOVSource *)sourceFromJSONDictionary:(NSDictionary *)json`
 	* `+ (BCOVCuePoint *)cuePointFromJSONDictionary:(NSDictionary *)json`
@@ -1441,7 +1484,7 @@ For full details about downloading video for offline playback, see the *iOS App 
 
 #### Breaking Changes
 
-* Release 6.1.0 of the FreeWheel Plugin adds support for version 6.17.5 of the FreeWheel SDK, which introduces several deprecations and new classes. As a result, the return type of `BCOVFWSessionProviderAdContextPolicy` has changed from `id<FWContext>` to `BCOVFWContext*`. Please see the "Quick Start" section of the FreeWheel Plugin README, and the iOS Player Samples, for full details.
+* Release 6.1.0 of the FreeWheel Plugin adds support for version 6.17.5 of the FreeWheel SDK, which introduces several deprecations and new classes. As a result, the return type of `BCOVFWSessionProviderAdContextPolicy` has changed from `id<FWContext>` to `BCOVFWContext*`. Refer to the "Quick Start" section of the FreeWheel Plugin README, and the iOS Player Samples, for full details.
 
 ## Release 6.0.6
 
@@ -1550,7 +1593,7 @@ source 'https://github.com/brightcove/BrightcoveSpecs.git'
 
 * Supports downloading FairPlay-encrypted HLS videos, and playing them back from storage while online or offline.
 * New classes and types to support offline playback: `BCOVOfflineVideoManager`, `BCOVOfflineVideoStatus`, `BCOVOfflineVideoToken`, `BCOVOfflineVideoDownloadState`.
-* Please see our app developer's guide for full details: "iOS App Developer's Guide to Video Downloading and Offline Playback with FairPlay" in OfflinePlayback.md.
+* Refer to our app developer's guide for full details: "iOS App Developer's Guide to Video Downloading and Offline Playback with FairPlay" in OfflinePlayback.md.
 * The `BCOVVideo` class has three new properties:
 	* `BOOL canBeDownloaded`: Returns YES if this video object can be downloaded for offline playback
 	* `BOOL offline`: Returns YES if this instance refers to an offline video.

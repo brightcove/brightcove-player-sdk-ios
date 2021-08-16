@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.9.0.1697
+# Brightcove Player SDK for iOS, version 6.9.1.1726
 
 
 # Table of Contents
@@ -20,6 +20,7 @@
 1. [Video 360](#Video360)
 1. [Architectural Overview](#ArchitecturalOverview)
 1. [Play, Pause, and Seek](#PlayPauseSeek)
+1. [Playback Rate](#PlaybackRate)
 1. [Preloading Videos](#PreloadingVideos)
 1. [Source Selection (HLS, MP4, HTTP/HTTPS)](#SourceSelection)
 1. [Setting a Preferred Bitrate](#PreferredBitrate)
@@ -584,6 +585,26 @@ The Brightcove Player SDK for iOS provides play, pause, and seek methods on the 
 
 *Calling play, pause, or seek on the AVPlayer directly may cause undefined behavior.*
 
+Playback Rate <a name="PlaybackRate"></a>
+-------------------------------
+To set a custom playback rate for AVPlayer you can use the `playbackRate` property on `BCOVPlaybackController`. **It is important that you set the playback rate using this property instead of setting it directly on AVPlayer.** 
+
+Attempting to set `playbackRate` to a value of 0 or below will result in the value being set to 1.0. If AVPlayer's `currentItem` does not support `canPlaySlowForward` (for values less than 1) or `canPlayFastForward` (for values greater than 1) then the default playback rate of 1.0 will be used. Ad playback will not be affected.
+
+If a custom value has been set for `playbackRate` the `audioTimePitchAlgorithm` for each `AVPlayerItem` will be set to `AVAudioTimePitchAlgorithmTimeDomain`. Alternatively you can set your own value for `audioTimePitchAlgorithm` like this:
+
+```
+- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didReceiveLifecycleEvent:(BCOVPlaybackSessionLifecycleEvent *)lifecycleEvent
+{
+    if ([lifecycleEvent.eventType isEqualToString:kBCOVPlaybackSessionLifecycleEventReady])
+    {
+        session.player.currentItem.audioTimePitchAlgorithm = AVAudioTimePitchAlgorithmVarispeed;
+    }
+}
+```
+
+You can read more about `audioTimePitchAlgorithm` [here](https://developer.apple.com/documentation/avfoundation/avaudiotimepitchalgorithm).
+
 Preloading Videos <a name="PreloadingVideos"></a>
 -------------------------------
 If desired you may choose to preload upcoming videos in a playlist. One possible approach is to double-buffer a list of videos using two playback controllers, for example:
@@ -735,7 +756,7 @@ Here is an example of using this method to create a "modified" version of an exi
     BCOVVideo *video1; // (properties include a key "foo" whose value is "bar")
     BCOVVideo *video2 = [video1 update:^(id<BCOVMutableVideo> mutable) {
         
-        mutable.properties = @{ @"foo": @"quux" };
+        mutable.properties = @{ @"foo": @"bar" };
         
     }];
     
