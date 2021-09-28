@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.9.1.1726
+# Brightcove Player SDK for iOS, version 6.10.0.1786
 
 
 # Table of Contents
@@ -55,13 +55,13 @@ Supported Platforms <a name="SupportedPlatforms"></a>
 
 Brightcove provides active support for the latest iOS SDK on the latest public release of the following iOS versions:
 
- * iOS 12, 13 and 14
- * tvOS 12, 13 and 14
+ * iOS 13, 14 and 15
+ * tvOS 13, 14 and 15
 
 Brightcove provides passive support for the following iOS versions:
 
- * iOS 11.4.1
- * tvOS 11.4.1
+ * iOS 11.4.1, 12.5.4
+ * tvOS 11.4.1, 12.4.1
 
 The Core SDK is localized for Arabic (ar), English (en), French (fr), German (de), Japanese (ja), Korean (ko), Spanish (es), Simplified Chinese (zh-Hans) and Traditional Chinese (zh-Hant). To gain the benefit of a localization, your app must also be localized for the same language and locale.
 
@@ -70,10 +70,56 @@ Noteworthy <a name="Noteworthy"></a>
 
 All SDK components - the core and plugin frameworks - are released with the same version number. When upgrading any single component, upgrade all components to the same version.
 
+**Running on Apple Silicon M1 Simulators with Universal Frameworks**
+
+For projects using Xcode 12 on Apple Silicon M1 and Universal Frameworks (.framework) a build error is returned when building the project for the arm64 simulator.
+
+```
+*ld: building for iOS Simulator, but linking in dylib built for iOS, file for architecture arm64*
+```
+For build on arm64 simulator:
+1. On the "Build Settings" tab of your application target:
+    * Ensure that `arm64` has been added to your "Excluded Architectures" build setting for `Any iOS Simulator SDK`.
+
+**CocoaPods Podspec XCFramework Subspecs (since release 6.10.0)**
+
+Release 6.10.0 of the Brightcove Player SDK adds subspecs for core and each plugin to support XCFramework. The default value for each subspec is `/Framework` and it's not necessary to be added.
+
+`BrightcoveIMA` does not support XCFramework, however, when using `Brightcove-Player-IMA/XCFramework` or `Brightcove-Player-IMA-static/XCFramework` the Universal Framework version will be installed.
+
+`BrightcoveGoogleCast` plugin supports the `no-bluetooth` version. The first subspec indicates the GoogleCast version (bluetooth or no-bluetooth) to be used and the second is the distribution package (Framework or XCFramework) for the plugin. Bluetooth and Framework are the default subspecs for `BrightcoveGoogleCast` plugin.
+
+```bash
+  pod 'Brightcove-Player-GoogleCast'                          # Bluetooth and Framework
+  pod 'Brightcove-Player-GoogleCast/Bluetooth'                # Bluetooth and Framework
+  pod 'Brightcove-Player-GoogleCast/Bluetooth/Framework'      # Bluetooth and Framework
+  pod 'Brightcove-Player-GoogleCast/Bluetooth/XCFramework'    # Bluetooth and XCFramework
+  pod 'Brightcove-Player-GoogleCast/No-Bluetooth'             # No-Bluetooth and Framework
+  pod 'Brightcove-Player-GoogleCast/No-Bluetooth/Framework'   # No-Bluetooth and Framework
+  pod 'Brightcove-Player-GoogleCast/No-Bluetooth/XCFramework' # No-Bluetooth and XCFramework
+```
+
+| Podspec Name | Subspec Names |
+|---|---|
+| Brightcove-Player-Core | Brightcove-Player-Core/Framework<br>Brightcove-Player-Core/XCFramework |
+| Brightcove-Player-Core-static | Brightcove-Player-Core-static/Framework<br>Brightcove-Player-Core-static/XCFramework |
+| Brightcove-Player-FreeWheel | Brightcove-Player-FreeWheel/Framework<br>Brightcove-Player-FreeWheel/XCFramework |
+| Brightcove-Player-FreeWheel-static | Brightcove-Player-FreeWheel-static/Framework<br>Brightcove-Player-FreeWheel-static/XCFramework |
+| Brightcove-Player-GoogleCast | Brightcove-Player-GoogleCast/Bluetooth/Framework<br>Brightcove-Player-GoogleCast/No-Bluetooth/Framework<br>Brightcove-Player-GoogleCast/Bluetooth/XCFramework<br>Brightcove-Player-GoogleCast/No-Bluetooth/XCFramework |
+| Brightcove-Player-GoogleCast-static | Brightcove-Player-GoogleCast-static/Bluetooth/Framework<br>Brightcove-Player-GoogleCast-static/No-Bluetooth/Framework<br>Brightcove-Player-GoogleCast-static/Bluetooth/XCFramework<br>Brightcove-Player-GoogleCast-static/No-Bluetooth/XCFramework |
+| Brightcove-Player-IMA | Brightcove-Player-IMA/Framework<br>Brightcove-Player-IMA/XCFramework |
+| Brightcove-Player-IMA-static | Brightcove-Player-IMA-static/Framework<br>Brightcove-Player-IMA-static/XCFramework |
+| Brightcove-Player-Omniture | Brightcove-Player-Omniture/Framework<br>Brightcove-Player-Omniture/XCFramework |
+| Brightcove-Player-Omniture-static | Brightcove-Player-Omniture-static/Framework<br>Brightcove-Player-Omniture-static/XCFramework |
+| Brightcove-Player-Pulse | Brightcove-Player-Pulse/Framework<br>Brightcove-Player-Pulse/XCFramework |
+| Brightcove-Player-Pulse-static | Brightcove-Player-Pulse-static/Framework<br>Brightcove-Player-Pulse-static/XCFramework |
+| Brightcove-Player-SSAI | Brightcove-Player-SSAI/Framework<br>Brightcove-Player-SSAI/XCFramework |
+| Brightcove-Player-SSAI-static | Brightcove-Player-SSAI-static/Framework<br>Brightcove-Player-SSAI-static/XCFramework |
+
+
 **CocoaPods Podspec names (since release 6.8.1)**
 
-Release 6.8.1 of the Brightcove Player SDK updates the `Brightcove-Player-FreeWheel` and `Brightcove-Player-Omniture` podspecs to install the dynamic version of `BrightcovePlayerSDK`. A  `-static` podspec is now available for each plugin which will install the static version of `BrightcovePlayerSDK` along with the static version of the plugin framework itself. If there is no static version of a plugin, the dynamic version will be installed with the static version of `BrightcovePlayerSDK`.
-
+Release 6.8.1 of the Brightcove Player SDK updates the `Brightcove-Player-FreeWheel` and `Brightcove-Player-Omniture` podspecs to install the dynamic version of `BrightcovePlayerSDK`. A `-static` podspec is now available for each plugin which will install the static version of `BrightcovePlayerSDK` along with the static version of the plugin framework itself. If there is no static version of a plugin, the dynamic version will be installed with the static version of `BrightcovePlayerSDK`.
 
 Podspec Name  |  Framework Type  |  Dependency
 ------------- | ------------- | -------------
@@ -90,7 +136,7 @@ Brightcove-Player-Omniture-static | static | Brightcove-Player-Core-static
 Brightcove-Player-Pulse | dynamic | Brightcove-Player-Core
 Brightcove-Player-Pulse-static | dynamic | Brightcove-Player-Core-static
 Brightcove-Player-SSAI | dynamic | Brightcove-Player-Core
-Brightcove-Player-SSAI-static | static | Brightcove-Player-Core-static
+Brightcove-Player-SSAI-static | static (dynamic since 6.10.0) | Brightcove-Player-Core-static
 
 
 FairPlay <a name="FairPlay"></a>
@@ -127,7 +173,7 @@ Specifying the default pod `Brightcove-Player-Core` will install the dynamic lib
 
 Dynamic Framework example:
 
-```
+```bash
 source 'https://github.com/CocoaPods/Specs'
 source 'https://github.com/brightcove/BrightcoveSpecs.git'
 
@@ -141,7 +187,7 @@ end
 
 Static Framework example:
 
-```
+```bash
 source 'https://github.com/CocoaPods/Specs'
 source 'https://github.com/brightcove/BrightcoveSpecs.git'
 
@@ -153,6 +199,23 @@ target 'MyVideoPlayer' do
 end
 ```
 
+XCFramework will be installed appending the `/XCFramework` subspec in the pod.
+
+XCFramework example:
+
+```bash
+source 'https://github.com/CocoaPods/Specs'
+source 'https://github.com/brightcove/BrightcoveSpecs.git'
+
+platform :ios, '11.0'
+use_frameworks!
+
+target 'MyVideoPlayer' do
+  pod 'Brightcove-Player-Core/XCFramework'
+  pod 'Brightcove-Player-Core-static/XCFramework'
+end
+```
+
 When updating your installation, it's a good idea to refresh the local copy of your BrightcoveSpecs repository so that you have the latest podspecs locally, just as you would update your CococaPods master repository. Typically if you run `pod update` in Terminal this will happen automatically, or alternatively you can update explicitly with `pod repo update`.
 
 Manual Installation <a name="ManualInstallation"></a>
@@ -161,15 +224,17 @@ Manual Installation <a name="ManualInstallation"></a>
 To add the Brightcove Player SDK to your project manually:
 
 1. Download the latest zipped release from our [release page][release].
-2. Add `BrightcovePlayerSDK.framework` to your project. Be sure to use the version corresponding to your target, iOS or tvOS.
-3. On the "Build Settings" tab of your application target, ensure that the "Framework Search Paths" include the path to the framework. This should have been done automatically unless the framework is stored under a different root directory than your project.
-4. On the "General" tab of your application target, add the following to the "Frameworks, Libraries, Embedded Content" section:
-
-    * `BrightcovePlayerSDK.framework`  
-5. (**Dynamic Framework** only) On the "General" tab of your application target, add 'BrightcovePlayerSDK.framework' to the "Embedded Binaries" section.
-6. (**Dynamic Framework** only) On the "Build Phases" tab, add a "Run Script" phase with the command `bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh`. Check "Run script only when installing". This will remove unneeded architectures from the build, which is important for App Store submission.
-7. (**Static Framework** only) On the "Build Settings" tab of your application target, add `-ObjC` to the "Other Linker Flags" build setting.
-8. (**Static Framework** only) Locate the file `bcovpuiiconfont.ttf` within the `BrightcovePlayerSDK.framework` bundle and drag it directly into your project listing so that the font file becomes a part of your app. After dragging the file, be sure to add it to your app's build target when prompted to do so. Once your app is built, the font file should reside in the app bundle at the same level as the app's Info.plist file. The font file supplies some of the `BrightcovePlayerUI` interface elements, but it does not need to be listed in the plist itself.
+1. Add `BrightcovePlayerSDK.framework` or `BrightcovePlayerSDK.xcframework` to your project. Be sure to use the version corresponding to your target, iOS or tvOS.
+1. On the "Build Settings" tab of your application target, ensure that the "Framework Search Paths" include the path to the framework. This should have been done automatically unless the framework is stored under a different root directory than your project.
+1. On the "General" tab of your application target, add the following to the "Frameworks, Libraries, Embedded Content" section:
+    * `BrightcovePlayerSDK.framework`  / `BrightcovePlayerSDK.xcframework`
+1. (**Dynamic Framework** only) On the "General" tab of your application target, add 'BrightcovePlayerSDK.framework' to the "Embedded Binaries" section.
+1. (**Dynamic Framework** only) On the "Build Phases" tab, add a "Run Script" phase with the command `bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh`. Check "Run script only when installing". This will remove unneeded architectures from the build, which is important for App Store submission. This step is no longer necessary when using XCFramework.
+1. (**Static Framework** only) On the "Build Settings" tab of your application target, add `-ObjC` to the "Other Linker Flags" build setting.
+1. (**Static Framework** only) Locate the file `bcovpuiiconfont.ttf` within the `BrightcovePlayerSDK.framework` bundle and drag it directly into your project listing so that the font file becomes a part of your app. After dragging the file, be sure to add it to your app's build target when prompted to do so. Once your app is built, the font file should reside in the app bundle at the same level as the app's Info.plist file. The font file supplies some of the `BrightcovePlayerUI` interface elements, but it does not need to be listed in the plist itself. When using XCFramework, the `BrightcovePlayerSDK` can be found in the ios-arm64 folder.
+1. (**Universal Framework** only) On the "Build Phases" tab, add a "Run Script" phase with the command `bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh`. Check "Run script only when installing". This will remove unneeded architectures from the build, which is important for App Store submission.
+1. (**Apple Silicon with Universal Framework** only) On the "Build Settings" tab of your application target:
+    * Ensure that `arm64` has been added to your "Excluded Architectures" build setting for `Any iOS Simulator SDK`.
 
 For reference, here are all the SDK components and corresponding URLs to help you locate and download the latest releases:
 
@@ -1151,17 +1216,11 @@ To use the AVPlayerViewController, you can set a BCOVPlaybackController dictiona
 
     self.playbackController.options = mutableOptions;
 
-The default value of kBCOVAVPlayerViewControllerCompatibilityKey is @NO, which means that a BCOVPlaybackController created without this dictionary property explicitly set will use the BCOVPlaybackSession's AVPlayerLayer by default.
+The default value of kBCOVAVPlayerViewControllerCompatibilityKey is `@NO`, which means that a BCOVPlaybackController created without this dictionary property explicitly set will use the BCOVPlaybackSession's AVPlayerLayer by default.
 
-Sample Projects
+Advertising
 ---------------
-We have sample projects demonstrating the use of AVPlayerViewController with the Brightcove iOS SDK.  You can find the [iOS sample project here](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/NativeControls) and the [tvOS sample project here](https://github.com/BrightcoveOS/ios-player-samples/tree/master/IMA/NativeControlsIMAPlayer_tvOS).
-
-Limitations to Using the AVPlayerViewController
------------------------------------------------
-**Advertising:**
-
-The Brightcove IMA and FreeWheel ad plugins are compatible when using AVPlayerViewController. You can use the AVPlayerViewController's `contentOverlayView` for the view in which to display ads. 
+The Brightcove IMA, FreeWheel, Pulse and SSAI[^1] ad plugins are compatible when using AVPlayerViewController. You can use the AVPlayerViewController's `contentOverlayView` for the view in which to display ads (not applicable to SSAI). 
 
 You may wish to hide/show the AVPlayerViewController's playback controls before and after ads play:
 
@@ -1176,8 +1235,68 @@ You may wish to hide/show the AVPlayerViewController's playback controls before 
     self.avpvc.showsPlaybackControls = YES;
 }
 ```
-The Brightcove SSAI and Pulse ad plugins are not currently compatible with AVPlayerViewController.
 
+[^1]: SSAI's `AVPlayerViewController` compatibility is specific to tvOS due to the availability of `AVInterstitialTimeRange`. You will still be able to have playback on iOS however the duration of the video will include the duration of all the ads. 
+
+**tvOS**
+
+If using the IMA, FreeWheel, Pulse or SSAI plugins on tvOS an array of `AVInterstitialTimeRange` will be created for each ad cue point and set on the `interstitialTimeRanges` of the associated `AVPlayerItem`. For the IMA, FreeWheel and Pulse plugins you will want to create a play/pause gesture so that when an ad is active you can correctly pause and resume the ad and not affect playback of the video itself. Here is an example:
+
+```
+- (void)setUpAdPlayPauseGesture
+{
+    self.playPauseGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playPauseAd:)];
+    self.playPauseGesture.allowedPressTypes = @[@(UIPressTypePlayPause)];
+    [self.avpvc.view addGestureRecognizer:self.playPauseGesture];
+}
+
+- (void)playPauseAd:(UITapGestureRecognizer *)gesture
+{
+    if (self.insideAdSequence)
+    {
+        if (self.adPlaying)
+        {
+            [self.playbackController resumeAd];
+            self.adPlaying = NO;
+        }
+        else
+        {
+            [self.playbackController pauseAd];
+            self.adPlaying = YES;
+        }
+    }
+    else
+    {
+        if (self.avpvc.player.rate == 0)
+        {
+            [self.playbackController play];
+        }
+        else
+        {
+            [self.playbackController pause];
+        }
+    }
+}
+
+- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didEnterAdSequence:(BCOVAdSequence *)adSequence
+{
+    self.insideAdSequence = YES;
+}
+
+- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didExitAdSequence:(BCOVAdSequence *)adSequence
+{
+    self.insideAdSequence = NO;
+}
+```
+
+For displaying an ad overlay, like a countdown, please see the **AVPlayerViewController Support** section of the ad plugin README you are using for some guidance. 
+
+Sample Projects
+---------------
+We have sample projects demonstrating the use of AVPlayerViewController with the Brightcove iOS SDK.  You can find the [iOS sample project here](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/NativeControls) and the [tvOS sample project here](https://github.com/BrightcoveOS/ios-player-samples/tree/master/IMA/NativeControlsIMAPlayer_tvOS).
+
+Limitations to Using the AVPlayerViewController
+-----------------------------------------------
 **Analytics:**
 
 When using the AVPlayerViewController, the video_engagement events sent to the Brightcove Analytics server will report 0 for player_width and player_height.

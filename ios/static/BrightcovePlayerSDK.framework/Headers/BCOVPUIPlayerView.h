@@ -327,7 +327,7 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
  *
  * NOTE: The IMA SDK uses its own internal behavior for the Learn More button.
  * Thus this property will have no effect with IMA ads.
- * See `webOpenerPresentingController` in the `IMAAdsRenderingSettings` class
+ * See `linkOpenerPresentingController` in the `IMAAdsRenderingSettings` class
  * for more information.
  */
 @property (nonatomic, assign) BCOVPUILearnMoreButtonBrowserStyle learnMoreButtonBrowserStyle;

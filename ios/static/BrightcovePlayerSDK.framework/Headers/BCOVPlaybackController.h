@@ -378,6 +378,14 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 @property (nonatomic, readwrite, assign) BOOL thumbnailSeekingEnabled;
 
 /**
+ * When enabled an array of AVInterstitialTimeRange objects will be created based
+ * on the ads for each BCOVVideo and will be set on the interstitialTimeRanges property of
+ * the AVPlayerItem for that BCOVVideo.
+ * The default value of generateInterstitialTimeRanges is YES.
+ */
+@property (nonatomic, assign) BOOL generateInterstitialTimeRanges API_AVAILABLE(tvos(9.0)) API_UNAVAILABLE(macos, ios, watchos);
+
+/**
  * @abstract A view which obscures or reveals the player view.
  *
  * @discussion Set shutter to YES to hide the current player view behind an opaque
@@ -414,7 +422,7 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * and instead utilize BCOVPUIPlayerViewDelegate which will pass through each of the
  * AVPictureInPictureController delegate methods.
  */
-@property (nonatomic, weak, readonly) AVPictureInPictureController *pictureInPictureController;
+@property (nonatomic, weak, readonly) AVPictureInPictureController *pictureInPictureController API_AVAILABLE(ios(9.0), tvos(14.0));
 
 /**
  * The rate (speed) desired for playback.

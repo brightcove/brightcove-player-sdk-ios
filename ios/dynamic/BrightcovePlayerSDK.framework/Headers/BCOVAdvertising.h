@@ -29,6 +29,16 @@ extern NSString * const kBCOVAdPropertyKeySkippable;
  */
 extern NSString * const kBCOVAdPropertyKeySkipTime;
 
+/**
+ * Array of NSStrings representing Clickthrough URLs
+ */
+extern NSString * const kBCOVAdPropertyKeyClickthroughURLs;
+
+/**
+ * Array of NSStrings representing Tracking URLs
+ */
+extern NSString * const kBCOVAdPropertyKeyTrackingURLs;
+
 
 /**
  * This object represents a sequence of ads intended to be viewed in sequence,

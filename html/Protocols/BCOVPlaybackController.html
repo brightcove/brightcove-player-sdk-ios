@@ -56,6 +56,8 @@
 	
 	<optgroup label="Properties">
 		
+		<option value="//api/name/)">)</option>
+		
 		<option value="//api/name/adsDisabled">adsDisabled</option>
 		
 		<option value="//api/name/allowsBackgroundAudioPlayback">allowsBackgroundAudioPlayback</option>
@@ -73,8 +75,6 @@
 		<option value="//api/name/options">options</option>
 		
 		<option value="//api/name/pictureInPictureActive">pictureInPictureActive</option>
-		
-		<option value="//api/name/pictureInPictureController">pictureInPictureController</option>
 		
 		<option value="//api/name/playbackRate">playbackRate</option>
 		
@@ -955,6 +955,58 @@ ad requests. This is only currently supported with IMA + VAST.</p>
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/)" title=")"></a>
+	<h3 class="method-title"><code><a href="#//api/name/)">&nbsp;&nbsp;)</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>When enabled an array of AVInterstitialTimeRange objects will be created based
+on the ads for each <a href="../Classes/BCOVVideo.html">BCOVVideo</a> and will be set on the interstitialTimeRanges property of
+the AVPlayerItem for that <a href="../Classes/BCOVVideo.html">BCOVVideo</a>.
+The default value of generateInterstitialTimeRanges is YES.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL generateInterstitialTimeRanges API_AVAILABLE ( tvos ( 9.0 API_UNAVAILABLE ( macos , ios , watchos )</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>When enabled an array of AVInterstitialTimeRange objects will be created based
+on the ads for each <a href="../Classes/BCOVVideo.html">BCOVVideo</a> and will be set on the interstitialTimeRanges property of
+the AVPlayerItem for that <a href="../Classes/BCOVVideo.html">BCOVVideo</a>.
+The default value of generateInterstitialTimeRanges is YES.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/shutter" title="shutter"></a>
 	<h3 class="method-title"><code><a href="#//api/name/shutter">&nbsp;&nbsp;shutter</a></code>
 <span class="task-item-suffix">required method</span></h3>
@@ -1092,58 +1144,6 @@ pan: 0 degrees
 tilt: 0 degrees
 zoom: 1.0
 roll: 0 degrees</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/pictureInPictureController" title="pictureInPictureController"></a>
-	<h3 class="method-title"><code><a href="#//api/name/pictureInPictureController">&nbsp;&nbsp;pictureInPictureController</a></code>
-<span class="task-item-suffix">required method</span></h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>The AVPictureInPictureController for this playback controller. May be nil if
-<code>showPictureInPictureButton</code> is not enabled on <a href="../Classes/BCOVPUIPlayerViewOptions.html">BCOVPUIPlayerViewOptions</a>.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) AVPictureInPictureController *pictureInPictureController</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>The AVPictureInPictureController for this playback controller. May be nil if
-<code>showPictureInPictureButton</code> is not enabled on <a href="../Classes/BCOVPUIPlayerViewOptions.html">BCOVPUIPlayerViewOptions</a>.</p>
-
-<p>You should not set your own <a href="#//api/name/delegate">delegate</a> on this instance of AVPictureInPictureController,
-and instead utilize <a href="../Protocols/BCOVPUIPlayerViewDelegate.html">BCOVPUIPlayerViewDelegate</a> which will pass through each of the
-AVPictureInPictureController <a href="#//api/name/delegate">delegate</a> methods.</p>
 			</div>
 			
 
@@ -2058,7 +2058,7 @@ set this param to the acount ID.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2021 Brightcove. All rights reserved. Updated: 2021-08-16</p>
+						<p class="copyright">Copyright &copy; 2021 Brightcove. All rights reserved. Updated: 2021-09-27</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

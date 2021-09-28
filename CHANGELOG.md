@@ -1,3 +1,57 @@
+## Release 6.10.0 ##
+
+#### Breaking Changes
+
+* Adds XCFramework plugins for Core, FreeWheel, GoogleCast, Omniture, Pulse and SSAI. IMA does not support XCFramework. The static SSAI framework is no longer available.
+
+* Adds XCFramework subspecs to the relevant plugin Podspecs. Refer to the *Noteworthy* section of the SDK Core README.
+
+* Adds the [SwiftUI sample project](http://github.com/BrightcoveOS/ios-player-samples/SwiftUI) which runs natively on iPad and Apple silicon Macs.
+
+* Fixes an issue where building with Universal Frameworks for iOS Simulator on Apple silicon Macs.
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Adds support for `interstitialTimeRanges` when using `AVPlayerViewController` on tvOS. See the *Advertising* sub-section of [Using an AVPlayerViewController with a BCOVPlaybackController ](https://github.com/brightcove/brightcove-player-sdk-ios#AVPlayerViewController)  for more information.
+
+* Adds two new keys, `kBCOVAdPropertyKeyClickthroughURLs` and `kBCOVAdPropertyKeyTrackingURLs`, for use with the BCOVAd's `properties` dictionary. The keys  `kBCOVAdPrivatePropertyKeyClickthroughURLs` and `kBCOVAdPrivatePropertyKeyTrackingURLs` will be removed from the `privateProperties` dictionary in a future SDK release.
+
+* Fixes thumbnail seeking for some DRM-protected thumbnail assets.
+
+* Adds support for the 2nd generation Siri Remote for Apple TV.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports version 4.6.1 of the Google Cast SDK for iOS.
+
+* Supports the `no-bluetooth` version of the Google Cast SDK via `Brightcove-Player-GoogleCast/No-Bluetooth` or `Brightcove-Player-GoogleCast-static/No-Bluetooth` subspecs.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports Google Ads IMA SDK 3.14.4 for iOS and 4.4.2 for tvOS.
+
+### Pulse Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports Pulse SDK 2.6.21.6.0 for iOS and tvOS.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Breaking Changes
+
+* Removes the static SSAI framework. The `Brightcove-Player-SSAI-static` Podspec now installs the static Core framework  with the dynamic SSAI framework.
+
+#### Additions and Improvements
+
+* Supports Open Measurement SDK 3.1.22 for iOS.
+
 ## Release 6.9.1 ##
 
 ### Brightcove Player SDK for iOS (Core)
