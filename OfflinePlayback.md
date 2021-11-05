@@ -1,4 +1,4 @@
-iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.10.0.1786
+iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.10.1.1827
 --------------
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -156,6 +156,8 @@ Downloading for offline viewing involves these basic steps:
 1. Create an `NSArray<AVMediaSelection *>` of your media selections, and pass it to `-[BCOVOfflineVideoManager requestVideoDownload:mediaSelections:parameters:completion:]` or pass `nil` to automatically download the *preferred* `AVMediaSelection` objects.
 1. Track download progress using methods of the `BCOVOfflineVideoManagerDelegate` protocol. Note that when downloading additional media selections, progress callbacks are made for each downloaded item individually, with each ranging in progress from 0% to 100%.
 
+The [Discover how to download and play HLS offline](https://developer.apple.com/videos/play/wwdc2020/10655) session from **WWDC 2020** covers reccomended methods of gathering the media selections (4:55) you'd like to download in addition to handling download progress for an `AVAggregateAssetDownloadTask` (5:22).
+
 **Displaying Sideband Subtitles**
 
 The PlayerUI built-in controls will automatically detect and present your available Sideband Subtitles in the same, familiar closed caption control for you, so don't need to do anything if you are using a standard `BCOVPUIPlayerView`.
@@ -202,7 +204,7 @@ Then you can pass your preferred bitrate as the value for the `kBCOVOfflineVideo
 
 
 ```
-long int preferredBitrate = 1996500; // value in megabits per second
+long int preferredBitrate = 1996500; // value in bits per second
 parameters = @{
 	// Purchase license
 	kBCOVFairPlayLicensePurchaseKey: @(YES),

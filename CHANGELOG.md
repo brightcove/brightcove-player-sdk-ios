@@ -1,3 +1,25 @@
+## Release 6.10.1 ##
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Adds support for Fallback HDCP.
+
+* Adds support for enabling and disabling _playback_ over cellular networks. See `allowsCellularPlayback` on `BCOVGlobalConfiguration`.
+
+* Since release 6.8.7, the SDK exposes the `AVPictureInPictureController` through the `pictureInPictureController` property of `BCOVPlaybackController.h`. This addition was mistakenly absent from the original 6.8.7 release announcement.
+
+* Fixes an issue where custom playback rates were not applied in some use cases.
+
+* Updates the TVPlayer README to clarify remote control gestures for Live and Live DVR playback.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Legible and Audible media selections are now synchronized between the CAF receiver and AVPlayer.
+
 ## Release 6.10.0 ##
 
 #### Breaking Changes
@@ -6,7 +28,7 @@
 
 * Adds XCFramework subspecs to the relevant plugin Podspecs. Refer to the *Noteworthy* section of the SDK Core README.
 
-* Adds the [SwiftUI sample project](http://github.com/BrightcoveOS/ios-player-samples/SwiftUI) which runs natively on iPad and Apple silicon Macs.
+* Adds the [SwiftUI sample project](https://github.com/BrightcoveOS/ios-player-samples/tree/master/SwiftUI) which runs natively on iPad and Apple silicon Macs.
 
 * Fixes an issue where building with Universal Frameworks for iOS Simulator on Apple silicon Macs.
 
@@ -160,11 +182,13 @@ ld: could not reparse object file in bitcode bundle: 'Invalid bitcode version (P
 
 #### Additions and Improvements
 
+* Exposes the `AVPictureInPictureController` through the new `pictureInPictureController` property of `BCOVPlaybackController.h`.
+ 
 * Fixes an issue where Picture in Picture could fail to start.
 
 * Fixes issues with the behavior of the `automaticControlTypeSelection` property of `BCOVPUIPlayerViewOptions`; the duration label could be missing from the UI, or the wrong controls layout could be auto-selected when an ad plugin plays a pre-roll ad.
 
-* When `automaticControlTypeSelection` is enabled, the video and control views will be briefly hidden by an opaque, black overlay view between videos. Once the video-type of the next video has been detemined and the new control view is automatically selected, the black view will fade out. You can disable this new behavior by setting  `automaticControlTypeSelectionUsesShutter` to `NO`. You can also control the length of the fade-out by setting  `automaticControlTypeSelectionShutterFadeTime`. 
+* When `automaticControlTypeSelection` is enabled, the video and control views will be briefly hidden by an opaque, black overlay view between videos. Once the video-type of the next video has been detemined and the new control view is automatically selected, the black view will fade out. You can disable this new behavior by setting  `automaticControlTypeSelectionUsesShutter` to `NO`. You can also control the duration of the fade-out by setting `automaticControlTypeSelectionShutterFadeTime`. 
 
 ### SSAI Plugin for Brightcove Player SDK for iOS
 

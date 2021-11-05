@@ -1,4 +1,4 @@
-# Using the TV Player UI With The Brightcove Player SDK for tvOS, version 6.10.0.1786
+# Using the TV Player UI With The Brightcove Player SDK for tvOS, version 6.10.1.1827
 
 ## Overview
 The Brightcove Native Player SDK provides a full set of controls for playback in tvOS on Apple TV known as the TV Player. The TV Player provides playback controls for both regular video content, and video content with Brightcove Server-Side Ad Insertion (SSAI) enabled.
@@ -69,6 +69,8 @@ The Apple Siri Remote is the primary means for controlling video playback on the
 
 Keep in mind that a "tap" is a touch on the Siri Remote trackpad, while a "click" is when the trackpad is fully depressed.
 
+### Controls and Gestures across Player Types
+
 | Gesture / Button  | Action  | Description |
 |:------------- |:---------------:| :-------------|
 | Single Tap| Show/hide controls |Toggles the visibility of the TV Player view's  progress view and related controls. When the controls are visible, another single tap will switch to display the current time under the progress indicator, and the video end time in place of the video time remaining.|
@@ -76,11 +78,22 @@ Keep in mind that a "tap" is a touch on the Siri Remote trackpad, while a "click
 | Single Click |Pause/resume playback|If video is playing, pause video and show controls. If video is paused, resume playback and hide controls.|
 | Swipe Down |Show top tab bar|Show the top tab bar and hide the progress view.|
 | Swipe Up | Hide top tab bar | If the top tab bar is visible, and focus is on the tab bar button, swiping up will hide the top tab bar. |
-| Pan | Timeline scrubbing while paused | If the video is paused and the top tab bar is not showing, panning left and right will seek backward or forward in the video. Resuming playback will play at that new point. If the panning speed is high, then panning will snap back to the starting point when going over it. Slow panning will not snap back, allowing for greater accuracy in setting a precise time. |
 | Play/Pause Button | Play/pause video | If the video is playing, this will pause the video and show the progress view. If the top tab bar was visible and the video was playing, it will resume playback and continue to show the top tab bar. If the video was paused, resume playback. Hide the progress view if it was visible. If the top tab bar was visible, continue to show it. |
 | Menu Button | Hide top tab bar, or perform default Menu button behavior |If the top tab bar is visible, hide the top tab bar. If the top tab bar is not visible, perform the default Menu button action (return to home screen if not otherwise overridden).|
-| Click and Hold | Fast forward/reverse | Click and hold on the left quarter of the Siri remote track pad to begin fast-forwarding or on the right quarter to fast-rewind. |
-| Single Click | Jump forward/backward | Single click on the left quarter of the Siri remote track pad to go back 10 seconds. Single click on the right quarter of the Siri remote track pad to go forward 10 seconds. Jump forward/backward only works while the video is playing. |
+
+### Additional Controls and Gestures when using BCOVTVPlayerTypeVOD
+
+| Gesture / Button  | Action  | Description |
+|:------------- |:---------------:| :-------------|
+| Pan | Timeline scrubbing while paused | If the video is paused and the top tab bar is not showing, panning left and right will seek backward or forward in the video. Resuming playback will play at that new point. If the panning speed is high, then panning will snap back to the starting point when going over it. Slow panning will not snap back, allowing for greater accuracy in setting a precise time. |
+| Click and Hold | Fast forward/reverse | Click and hold on the left quarter of the Siri v1 remote track pad, or the left arrow of the Siri v2 remote, to begin fast-rewinding or on the right quarter of the Siri v1 remote track pad, or the right arrow of the Siri v2 remote, to fast-forward. |
+| Single Click | Jump forward/backward | Single click on the left quarter of the Siri v1 remote track pad, or the left arrow of the Siri v2 remote to go back 10 seconds. Single click on the right quarter of the Siri v1 remote track pad, or the right arrow of the Siri v2 remote to go forward 10 seconds. Jump forward/backward only works while the video is playing. |
+
+### Additional Controls and Gestures when using BCOVTVPlayerTypeLiveDVR
+
+| Gesture / Button  | Action  | Description |
+|:------------- |:---------------:| :-------------|
+| Single Click | Seek to Live Edge | Single click on the right quarter of the Siri v1 remote track pad, or the right arrow of the Siri v2 remote to seek to live edge. Seeking to live edge only works while the video is playing. |
 
 ## Tab Bar Item Views
 By default, the TV Player view contains a top tab bar with three default tab bar items:

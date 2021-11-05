@@ -209,6 +209,11 @@ extern const NSInteger kBCOVPlaybackSessionErrorCodeFailedToPlayToEnd;
  */
 extern const NSInteger kBCOVPlaybackSessionErrorCodeNoPlayableSource;
 
+/**
+ * No WiFi network is available and allowsCellularPlayback is disabled.
+ */
+extern const NSInteger kBCOVPlaybackSessionErrorCodeWifiUnavailable;
+
 
 /**
  * A playback session represents the playback of a single video. The session

@@ -31,6 +31,21 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (BCOVGlobalConfiguration *)sharedConfig;
 
+#pragma mark - General Configurations
+
+/**
+ * Allow playback when device is on cellular data.
+ *
+ * Changing this value during playback will not stop playback of the current video
+ * if the device changes over to cellular data.
+ *
+ * Example Usage:
+ * BCOVGlobalConfiguration.sharedConfig.allowsCellularPlayback = NO;
+ *
+ * Default value is YES.
+ */
+@property (nonatomic, readwrite) BOOL allowsCellularPlayback;
+
 #pragma mark - China Delivery
 
 /**
