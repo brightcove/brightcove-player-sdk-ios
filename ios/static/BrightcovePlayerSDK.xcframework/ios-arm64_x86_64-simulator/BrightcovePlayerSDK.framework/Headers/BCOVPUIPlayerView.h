@@ -420,6 +420,13 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
  */
 @property (nonatomic, assign) float automaticControlTypeSelectionShutterFadeTime;
 
+/**
+ * When enabled, this property will effectively disable the controls from
+ * hiding during playback. Typically used for audio-only playback.
+ * Defaults to 'NO'.
+ */
+@property (nonatomic, assign) BOOL keepControlsVisible;
+
 @end
 
 

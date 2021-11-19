@@ -1,3 +1,23 @@
+## Release 6.10.2 ##
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Adds support for Generic Stream Concurrency.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Legible and Audible media selections are now synchronized between the CAF receiver and AVPlayer (in addition to fixes made in 6.10.1).
+
+### Pulse Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes a crash when using the Pulse SDK with AVPlayerViewController.
+
 ## Release 6.10.1 ##
 
 ### Brightcove Player SDK for iOS (Core)

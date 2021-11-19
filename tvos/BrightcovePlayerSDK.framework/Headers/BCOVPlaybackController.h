@@ -168,6 +168,12 @@ extern NSString * const kBCOVBufferOptimizerMaximumDurationKey;
 extern NSString * const kBCOVAVPlayerViewControllerCompatibilityKey;
 
 /**
+ * Key in the playback controller's options dictionary for setting the
+ * session id for Generic Stream Concurrency.
+ */
+extern NSString * const kBCOVAuthHeartbeatPropertyKeySessionId;
+
+/**
  * Enumeration defining the valid values that may be set for the
  * kBCOVBufferOptimizerMethodKey key
  */
@@ -376,6 +382,14 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * Default value is YES
  */
 @property (nonatomic, readwrite, assign) BOOL thumbnailSeekingEnabled;
+
+/**
+ * Enables or disables stream concurrency for this playback controller.
+ *
+ *  Default value is NO
+ */
+@property (nonatomic, readwrite, assign) BOOL streamConcurrencyEnabled;
+
 
 /**
  * When enabled an array of AVInterstitialTimeRange objects will be created based
@@ -949,6 +963,17 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * @param legibleMediaOption The newly selected AVMediaSelectionOption
 */
 - (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didChangeSelectedLegibleMediaOption:(AVMediaSelectionOption *)legibleMediaOption;
+
+/**
+ * Called when the maximum concurrency limit is reached.
+ * This method will only be called when `streamConcurrencyEnabled` is set to `YES`.
+ *
+ * @param controller The playback controller to which this instance serves as delegate.
+ * @param session The playback session whose AVPlayer's currentItem's media option was changed.
+ * @param sessions An NSDictionary containing the active sessions for the current user and account.
+ *
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didReachMaxConcurrency:(NSDictionary *)sessions;
 
 @end
 

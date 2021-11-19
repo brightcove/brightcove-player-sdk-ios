@@ -124,6 +124,24 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
  */
 + (instancetype)basicLiveDVRControlLayout;
 
+/**
+ * Convenience factory method to create a control layout
+ * designed for audio-only playback.
+ */
++ (instancetype)basicAODControlLayout;
+
+/**
+ * Convenience factory method to create a control layout
+ * designed for live audio-only playback.
+ */
++ (instancetype)basicLiveAudioControlLayout;
+
+/**
+ * Convenience factory method to create a control layout
+ * designed for live DVR audio-only playback.
+ */
++ (instancetype)basicLiveDVRAudioControlLayout;
+
 @end
 
 
@@ -224,7 +242,6 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
  *
  * @return A BCOVPUIBasicControlView instance initialzed with a control layout for live video streams.
  */
-
 + (instancetype)basicControlViewWithLiveLayout;
 
 /**
@@ -234,6 +251,30 @@ extern CGFloat kBCOVPUILayoutUseDefaultValue;
  * @return A BCOVPUIBasicControlView instance initialzed with a control layout for live DVR video streams.
  */
 + (instancetype)basicControlViewWithLiveDVRLayout;
+
+/**
+ * Convenience factory method to create a control view with
+ * a control layout for audio-only Video On Demand streams.
+ *
+ * @return A BCOVPUIBasicControlView instance initialzed with a control layout for audio-only Video On Demand streams.
+ */
++ (instancetype)basicControlViewWithAODLayout;
+
+/**
+ * Convenience factory method to create a control view with
+ * a control layout for audio-only live video streams.
+ *
+ * @return A BCOVPUIBasicControlView instance initialzed with a control layout for live audio-only streams.
+ */
++ (instancetype)basicControlViewWithLiveAudioLayout;
+
+/**
+ * Convenience factory method to create a control view with
+ * a control layout for live DVR video streams.
+ *
+ * @return A BCOVPUIBasicControlView instance initialzed with a control layout for live DVR audi-only video streams.
+ */
++ (instancetype)basicControlViewWithLiveDVRAudioLayout;
 
 /**
  * Enable or disable all the standard controls

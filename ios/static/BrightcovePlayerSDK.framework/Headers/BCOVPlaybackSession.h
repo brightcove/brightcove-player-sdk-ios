@@ -113,6 +113,16 @@ extern NSString * const kBCOVPlaybackSessionLifecycleEventPlaybackLikelyToKeepUp
 extern NSString * const kBCOVPlaybackSessionLifecycleEventTerminate;
 
 /**
+ * A cast session has started.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventStartCastSession;
+
+/**
+ * A cast session has ended.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventEndCastSession;
+
+/**
  * A generic error has occurred. The event properties may contain the underlying
  * error keyed by kBCOVPlaybackSessionEventKeyError.
  */

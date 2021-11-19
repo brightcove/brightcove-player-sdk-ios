@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.10.1.1827
+# Brightcove Player SDK for iOS, version 6.10.2.1847
 
 
 # Table of Contents
@@ -33,6 +33,7 @@
 1. [Playing Video In The Background](#BackgroundVideo)
 1. [Picture In Picture](#PIP)
 1. [Thumbnail Seeking](#ThumbnailSeeking)
+1. [Generic Stream Concurrency](#GSC)
 1. [Tracking Errors](#TrackingErrors)
 1. [Combining Plugins](#CombiningPlugins)
 1. [Buffer Optimization](#BufferOptimization)
@@ -1054,6 +1055,32 @@ video = [video update:^(id<BCOVMutableVideo> mutableVideo) {
 ```
 
 Thumbnail scrubbing is only available for online videos; downloaded/offline videos do not support this feature. 
+
+Generic Stream Concurrency <a name="GSC"></a>
+-------------
+
+The Generic Stream Concurrency (GSC) is a service with the ability to decide if the playback is allowed based in the active sessions for the viewer and the concurrency limit. The service is requested through the Edge Playback Authorization (EPA) service. The same JWT used to retrieve the video is used here, and should include a `uid` claim, a `climit` claim (and optionally, a `sid` claim). This feature needs to be enabled in your acccount.
+
+This feature is not enabled by default. If you wish to enable generic stream concurrency you can do so by setting the `streamConcurrencyEnabled` property on your `BCOVPlaybackController` to `YES`.
+
+```
+self.playbackController.streamConcurrencyEnabled = YES;
+```
+
+The `sid` value can be included in the JWT or send as a `BCOVPlaybackController` option, both values are optional. The value in JWT has precedence over the `BCOVPlaybackController` option.
+
+```
+self.playbackController.options[kBCOVAuthHeartbeatPropertyKeySessionId] = @"sessionId";
+```
+
+A new delegate method has been added to `BCOVPlaybackControllerDelegate` to retrieve the active sessions when the max concurrency is reached.
+
+```
+- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didReachMaxConcurrency:(NSDictionary *)sessions
+{
+    NSLog(@"%@", sessions);
+}
+```
 
 Tracking Errors <a name="TrackingErrors"></a>
 -----
