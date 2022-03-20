@@ -2,7 +2,7 @@
 // BCOVVideo.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2021 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2022 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -48,6 +48,9 @@ extern NSString * const kBCOVVideoPropertyKeyTextTracks;
 extern NSString * const kBCOVVideoPropertyKeyThumbnail;
 extern NSString * const kBCOVVideoPropertyKeyThumbnailSources;
 extern NSString * const kBCOVVideoPropertyKeyVariants;
+extern NSString * const kBCOVVideoPropertyKeyManifestURLTTL;
+extern NSString * const kBCOVVideoPropertyKeyPolicyKey;
+extern NSString * const kBCOVVideoPropertyKeyCatalogResponseTime;
 
 /**
  * Pass nil to get the video name for the device locale or

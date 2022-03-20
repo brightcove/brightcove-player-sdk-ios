@@ -2,7 +2,7 @@
 // BCOVPUISlider.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2021 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2022 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 

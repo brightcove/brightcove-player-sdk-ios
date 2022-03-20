@@ -2,7 +2,7 @@
 // BCOVPlaybackSession.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2021 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2022 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -16,6 +16,12 @@
 
 /**
  * The video loaded successfully and is ready to play.
+ *
+ * If `autoPlay` is enabled It is possible for this event to be triggered
+ * after seeing `kBCOVPlaybackSessionLifecycleEventPlay`. If you require
+ * this event to be triggered prior to `kBCOVPlaybackSessionLifecycleEventPlay`
+ * you can disable `autoPlay` and call `play` on your `BCOVPlaybackController`
+ * after observing `kBCOVPlaybackSessionLifecycleEventReady`. 
  */
 extern NSString * const kBCOVPlaybackSessionLifecycleEventReady;
 

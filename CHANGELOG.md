@@ -1,4 +1,59 @@
+## Release 6.10.3 ##
+
+#### 17 Mar 2022
+
+#### Additions and Improvements
+
+* Adds Mac Catalyst support for the SDK Core and SSAI plugin.
+
+* Each XCFramework now contains all supported platform binaries, for example, simulator and device binaries for iOS, tvOS and Mac Catalyst.
+
+* Adds a SharePlay sample project to the [ios-sample-projects](https://github.com/BrightcoveOS/ios-player-samples) git repository.
+
+* Adds a Flutter sample project to the [ios-sample-projects](https://github.com/BrightcoveOS/ios-player-samples) git repository.
+
+#### Breaking Changes
+
+* `Brightcove-Player-OpenMeasurement` is no longer installed by default with the SSAI Plugin. Add `pod 'Brightcove-Player-OpenMeasurement'` to your Podfile to include it in your project.
+
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Breaking Changes
+
+* The deprecated `BCOVPlaybackController` property `thumbnailScrubbingEnabled` has been removed. Use `thumbnailSeekingEnabled` instead.
+
+#### Additions and Improvements
+
+* Supports Low Latency HLS and Dolby Atmos playback.
+
+* Adds new audio-only playback control layouts for on demand, live and live-DVR audio. Refer to the *Audio-Only Support* section of the [Core README](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/README.md#AudioOnlySupport) for details.
+
+* Adds support for Mac Catalyst.
+
+* Adds support for the addition of custom localizations. Refer to the *Custom Localization* section of the [Core README](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/README.md#AudioOnlySupport) for details.
+
+* Fixes an issue where thumbnail images failed to download for offline viewing when a network disconnect occurred during the download.
+
+* Fixes an issue where using renewable FairPlay licenses with AirPlay caused unnecessary license renewals, leading to false errors.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Breaking Changes
+
+* `Brightcove-Player-OpenMeasurement` is no longer installed by default with the SSAI Plugin. Add `pod 'Brightcove-Player-OpenMeasurement'` to your Podfile to include IAB Open Measurement in your project.
+
+#### Additions and Improvements
+
+* Adds support for Mac Catalyst.
+
+* Fixes an issue where the player would sometimes fail to respond to the Apple TV Remote Menu button.
+
+* `Brightcove-Player-OpenMeasurement` is not supported by Mac Catalyst apps. See the *Open Measurement* section of the [SSAI README](https://github.com/brightcove/brightcove-player-sdk-ios-ssai/blob/master/README.md#OpenMeasurement) for details.
+
 ## Release 6.10.2 ##
+
+#### 19 Nov 2021
 
 ### Brightcove Player SDK for iOS (Core)
 
@@ -19,6 +74,8 @@
 * Fixes a crash when using the Pulse SDK with AVPlayerViewController.
 
 ## Release 6.10.1 ##
+
+#### 5 Nov 2021
 
 ### Brightcove Player SDK for iOS (Core)
 
@@ -41,6 +98,8 @@
 * Legible and Audible media selections are now synchronized between the CAF receiver and AVPlayer.
 
 ## Release 6.10.0 ##
+
+#### 29 Sep 2021
 
 #### Breaking Changes
 
@@ -92,9 +151,11 @@
 
 #### Additions and Improvements
 
-* Supports Open Measurement SDK 3.1.22 for iOS.
+* Supports Open Measurement SDK 1.3.22 for iOS.
 
 ## Release 6.9.1 ##
+
+#### 16 Aug 2021
 
 ### Brightcove Player SDK for iOS (Core)
 
@@ -139,6 +200,8 @@
 * Fixes an issue with thumbnail seeking.
 
 ## Release 6.9.0 ##
+
+#### 8 Jul 2021
 
 #### Breaking Changes
 
@@ -194,6 +257,8 @@ ld: could not reparse object file in bitcode bundle: 'Invalid bitcode version (P
 
 ## Release 6.8.7 ##
 
+#### 13 Apr 2021
+
 #### Additions and Improvements
 
 * Adds the new [SubtitleRendering sample project](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/SubtitleRendering) which demonstrates how to find text tracks in a video manifest and render them in a separate view.
@@ -219,6 +284,8 @@ ld: could not reparse object file in bitcode bundle: 'Invalid bitcode version (P
 * Fixes an issue with `seekWithoutAds` when using the FairPlay plugin with SSAI in which `seekWithoutAds` could fail to call the completion handler. 
 
 ## Release 6.8.6 ##
+
+#### 22 Mar 2021
 
 #### Additions and Improvements
 
@@ -258,6 +325,8 @@ ld: could not reparse object file in bitcode bundle: 'Invalid bitcode version (P
 
 ## Release 6.8.5 ##
 
+#### 23 Feb 2021
+
 #### Additions and Improvements
 
 * Adds examples of app localization to the VideoCloudBasicPlayer, BasicIMAPlayer, BasicSSAIPlayer and AppleTV sample projects.
@@ -293,6 +362,8 @@ ld: could not reparse object file in bitcode bundle: 'Invalid bitcode version (P
 * Fixes an issue where the VAST Tracking event `complete` was incorrectly fired when an ad was skipped.
 
 ## Release 6.8.4 ##
+
+#### 3 Feb 2021
 
 ### Brightcove Player SDK for iOS (Core)
 
@@ -339,6 +410,8 @@ ld: could not reparse object file in bitcode bundle: 'Invalid bitcode version (P
 * Adds the `vmapResponseData` property to the SSAI session object. Refer to the _Access to VMAP Response Data_ section of the SSAI plugin _README_ for details.
 
 ## Release 6.8.3 ##
+
+#### 6 Jan 2021
 
 ### Brightcove Player SDK for iOS (Core)
 
@@ -395,6 +468,8 @@ self.googleCastManager = [[BCOVGoogleCastManager alloc] initForBrightcoveReceive
 
 ## Release 6.8.2 ##
 
+#### 8 Dec 2020
+
 #### Additions and Improvements
 
 * Exposes ad skip properties for all SDK ad plugins. Refer to `kBCOVAdPropertyKeySkippable` and `kBCOVAdPropertyKeySkipTime` in `BCOVAdvertising.h`.
@@ -450,6 +525,8 @@ self.googleCastManager = [[BCOVGoogleCastManager alloc] initForBrightcoveReceive
 
 ## Release 6.8.1 ##
 
+#### 19 Oct 2020
+
 #### Breaking Changes
 
 * Some Brightcove Player SDK Podspecs have been updated which might affect your project Podfile. Refer to the *Noteworthy* section of the SDK Core README.
@@ -477,6 +554,8 @@ self.googleCastManager = [[BCOVGoogleCastManager alloc] initForBrightcoveReceive
 * Fixes a memory leak which could cause a video to continue playing after its view controller had been dismissed.
 
 ## Release 6.8.0 ##
+
+#### 29 Sep 2020
 
 ### Brightcove Player SDK for iOS (Core)
 

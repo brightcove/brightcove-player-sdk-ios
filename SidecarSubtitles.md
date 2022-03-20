@@ -1,24 +1,22 @@
-# Using Sidecar Subtitles With The Brightcove Player SDK for iOS, version 6.10.2.1847
+# Using Sidecar Subtitles With The Brightcove Player SDK for iOS, version 6.10.3.2003
 
-Introduction
-===================
+## Introduction
 
 Sidecar Subtitles is an extension to the Brightcove Player SDK that allows you to add WebVTT subtitles to an HLS manifest from within an iOS/tvOS app. There are two primary uses for Sidecar Subtitles:
 
 -  If you are a legacy Video Cloud customer with captions added in Brightcove Studio, Sidecar Subtitles inserts your supplied WebVTT captions into the HLS manifest for playback.
 -  If you have additional files that you want to retrieve and add at runtime in your app, Sidecar Subtitles will let you add these WebVTT caption files just before playing back the video.
 
-**Video Cloud Dynamic Delivery**
+### Video Cloud Dynamic Delivery
 
 If you are a Video Cloud Dynamic Delivery customer, and you set all your captions on the Brightcove servers (Brightcove Studio, for example), then you will have **no need** for the Sidecar Subtitles extension. Dynamic Delivery ensures that your captions are inserted into the HLS manifest when your video is retrieved from the Internet, so there is no need for Sidecar Subtitles, and nothing else you need to do.
 
 Still, if you are using Dynamic Delivery and need to add additional subtitle files *after* you have retrieved the video, you can still use Sidecar Subtitles to add them.
 
 
-Quick Start
-===========
+## Quick Start
 
-**Legacy Video Cloud**
+### Legacy Video Cloud
 
 If you are using legacy Video Cloud and need to make sure the captions you set up on the server are inserted into the manifest, then all you need to do is make sure that you are using a Sidecar Subtitles playback controller or session provider:
 
@@ -51,10 +49,10 @@ BCOVSidecarSubtitles adds some category methods to BCOVPlaybackManager. The firs
 
 * Note that `BCOVSSSessionProvider` should come before any session providers in the chain passed to the manager when constructing the playback controller.
 
-If you have questions or need help, visit the support forum for Brightcove Native Player SDKs at https://groups.google.com/forum/#!forum/brightcove-native-player-sdks .
+If you have questions or need help, visit the support forum for Brightcove Native Player SDKs at https://groups.google.com/forum/#!forum/brightcove-native-player-sdks.
 
-Using the Built-In PlayerUI Controls
----
+## Using the Built-In PlayerUI Controls
+
 The code snippet above presents a video player without any controls. You can add playback controls to your code like this.
 
 Add a property to keep track of the `BCOVPUIPlayerView`:
@@ -69,7 +67,7 @@ Create the `BCOVPUIBasicControlView`, and then the `BCOVPUIPlayerView`. This is 
 // Add BCOVPUIPlayerView to your video view.
     [self.yourVideoView addSubview:self.playerView];
 
-**Springs and Struts**
+### Springs and Struts
 
 Set the player view to match the video container from your layout (`yourVideoView`) when it resizes.
 
@@ -77,7 +75,7 @@ Set the player view to match the video container from your layout (`yourVideoVie
     self.playerView.frame = self.yourVideoView.bounds;
     self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 
-**Auto Layout**
+### Auto Layout
 
     self.playerView.translatesAutoresizingMaskIntoConstraints = NO;
 
@@ -102,8 +100,8 @@ Please see the Brightcove Native Player SDK's README for more information about 
 
 If you have questions or need help, visit the [Brightcove Native Player SDK support forum](https://groups.google.com/forum/#!forum/brightcove-native-player-sdks).
 
-Manually populating subtitle data
-=================================
+## Manually Populating Subtitle Data
+
 Whether using legacy Video Cloud, or Video Cloud with Dynamic delivery, you can add your own WebVTT captions files at runtime.
 
 The BCOVSidecarSubtitle extension will look for the presence of an array of subtitle metadata in the `BCOVVideo` object properties, keyed by `kBCOVSSVideoPropertiesKeyTextTracks`. If you are using `BCOVPlaybackService` to retrieve videos and those videos have text tracks associated with them, this will be populated automatically.
@@ -189,8 +187,7 @@ If you are supplying tracks to a video retrieved from Video Cloud, you should **
 
 Please refer to the code documentation in the BCOVSSComponent.h header file for more information on usage of these keys.
 
-Known Issues
-============
+## Known Issues
 
 * Subtitles will not be displayed when viewing 360 degree videos.
 

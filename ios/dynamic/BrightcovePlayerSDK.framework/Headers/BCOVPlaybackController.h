@@ -2,7 +2,7 @@
 // BCOVPlaybackController.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2021 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2022 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -17,6 +17,7 @@
 @class BCOVSource;
 @class BCOVVideo;
 @class AVPictureInPictureController;
+@class BCOVPlaybackService;
 
 @protocol BCOVMutableAnalytics;
 @protocol BCOVPlaybackController;
@@ -66,6 +67,15 @@ typedef NS_ENUM(NSUInteger, BCOVVideoType) {
 
     /** Video has no duration, and a large seekable range. */
     BCOVVideoTypeLiveDVR
+};
+
+/**
+ * The media type for a source.
+ */
+typedef NS_ENUM(NSUInteger, BCOVSourceMediaType)
+{
+    BCOVSourceMediaTypeAudio = 1,
+    BCOVSourceMediaTypeAudioVideo
 };
 
 // The approximate vertical angle of view when the view orientation's zoom is 1.0.
@@ -366,15 +376,6 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * ad requests. This is only currently supported with IMA + VAST.
  */
 - (void)updateAudienceSegmentTargetingValues:(NSDictionary *)audienceSegmentTargetingValues;
-
-/**
- * Enables or disables thumbnail scrubbing for this playback controller.
- *
- * @warning *Deprecated:* Use thumbnailSeekingEnabled instead
- *
- * Default value is YES
- */
-@property (nonatomic, readwrite, assign) BOOL thumbnailScrubbingEnabled __attribute__((deprecated("Use thumbnailSeekingEnabled instead.")));
 
 /**
  * Enables or disables thumbnail seeking for this playback controller.
@@ -749,6 +750,17 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  */
 - (void)playbackSession:(id<BCOVPlaybackSession>)session didChangeSeekableRanges:(NSArray *)seekableRanges;
 
+/**
+ * Called when the media type of a source has been determined.
+ *
+ * MP4 sources will always be marked as BCOVSourceMediaTypeAudioVideo
+ *
+ * @param session The playback session whose AVPlayer's currentItem's media option was changed
+ * @param mediaType The media type that was determined
+ */
+- (void)playbackSession:(id<BCOVPlaybackSession>)session determinedMediaType:(BCOVSourceMediaType)mediaType;
+
+
 @end
 
 
@@ -943,6 +955,17 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 - (void)playbackController:(id<BCOVPlaybackController>)controller determinedCodecs:(NSArray<NSString *> *)codecs forVideo:(BCOVVideo *)video;
 
 /**
+ * Called when the media type of a source has been determined.
+ *
+ * MP4 sources will always be marked as BCOVSourceMediaTypeAudioVideo.
+ *
+ * @param controller The playback controller to which this instance serves as delegate.
+ * @param session The playback session whose AVPlayer's currentItem's media option was changed
+ * @param mediaType The media type that was determined
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session determinedMediaType:(BCOVSourceMediaType)mediaType;
+
+/**
  * Called when a new audible AVMediaSelectionOption is set on the current BCOVPlaybackSession
  * which can be done using BCOVPUIPlayerView or BCOVTVPlayerView, or by calling the
  * AVMediaSelectionOption setter methods of BCOVPlaybackSession.
@@ -974,6 +997,33 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  *
  */
 - (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didReachMaxConcurrency:(NSDictionary *)sessions;
+
+/**
+ * Called when the TTL token for the current source's manifest has expired and needs to be refreshed.
+ * You will want to implement this delegate method if you are using a BCOVPlaybackService with
+ * a custom URL.
+ *
+ * If you are using the default initilaizer for BCOVPlaybackService, `initWithAccountId:policyKey:`
+ * you do not need to implement this delegate method.
+ *
+ * If you return `nil`, or do not implement this method, an instance of BCOVPlaybackService will be
+ * created internally with the `initWithAccountId:policyKey:` initializer.
+ *
+ * @param controller The playback controller to which this instance serves as delegate.
+ * @param session The playback session whose AVPlayer's currentItem's media option was changed
+ *
+ * @return An instance of BCOVPlaybackService that will be used to update the manifest TTL token.
+ */
+- (BCOVPlaybackService *)playbackServiceForManifestURLTTLUpdateForPlaybackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session;
+
+/**
+ * Called after the TTL token for the current source's manifest has attempted to be updated.
+ *
+ * @param error If the update was successful this will be nil, otherwise the error encountered will be accessible here
+ * @param controller The playback controller to which this instance serves as delegate.
+ * @param session The playback session whose AVPlayer's currentItem's media option was changed
+ */
+- (void)manifestTTLWasUpdatedWithError:(NSError *)error playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session;
 
 @end
 

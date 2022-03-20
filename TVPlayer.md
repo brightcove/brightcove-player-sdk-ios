@@ -1,6 +1,7 @@
-# Using the TV Player UI With The Brightcove Player SDK for tvOS, version 6.10.2.1847
+# Using the TV Player UI With The Brightcove Player SDK for tvOS, version 6.10.3.2003
 
 ## Overview
+
 The Brightcove Native Player SDK provides a full set of controls for playback in tvOS on Apple TV known as the TV Player. The TV Player provides playback controls for both regular video content, and video content with Brightcove Server-Side Ad Insertion (SSAI) enabled.
 
 TV Player controls are manipulated through gestures and button presses on the Apple Siri Remote. Controls and gestures are similar to those found in the AVKit interface so they will be familiar to current Apple TV users.
@@ -48,6 +49,7 @@ Apple TV views typically aren't resized, so we don't worry about adding any size
 Assigning the playbackController links the playback controller to the TV Player view. You can re-use the TV Player view by creating new playback controllers and assigning them to the TV Player view's playbackController property at any time.
 
 ## Architecture
+
 The TV Player view class `BCOVTVPlayerView` is a `UIView` subclass that creates a hierarchy of subviews when instantiated. Each of its important subviews is referenced as a property inside the TV Player view.
 
 At the top level, there is the video **content container view**, `contentContainerView`. This view contains the AVPlayerLayer that displays the actual video.
@@ -65,6 +67,7 @@ The **settings view**, `settingsView`, type `BCOVTVSettingsView`, is a subview o
 The **controls view**, `controlsView`, type `BCOVTVControlsView`, is a subview of the controls fading view. The controls view contains the progress view and its related labels. All of these controls are shown and hidden together, and generally remain in the same location.
 
 ## Siri Remote and Gestures
+
 The Apple Siri Remote is the primary means for controlling video playback on the Apple TV. The Brightcove Native Player SDK uses button presses and gestures on the Siri Remote to manipulate the user interface as described here.
 
 Keep in mind that a "tap" is a touch on the Siri Remote trackpad, while a "click" is when the trackpad is fully depressed.
@@ -96,6 +99,7 @@ Keep in mind that a "tap" is a touch on the Siri Remote trackpad, while a "click
 | Single Click | Seek to Live Edge | Single click on the right quarter of the Siri v1 remote track pad, or the right arrow of the Siri v2 remote to seek to live edge. Seeking to live edge only works while the video is playing. |
 
 ## Tab Bar Item Views
+
 By default, the TV Player view contains a top tab bar with three default tab bar items:
 
 - **Info**
@@ -215,19 +219,18 @@ Once the array is installed, the new tab bar item views will automatically be pr
 
 ### Sample Projects
 
-
 Please check out our sample apps to see the TV Player View in action, including modification of the default Info view, and the creation of a custom `BCOVTVTabBarItemView` subclass. Sample apps can be found in github at <https://github.com/BrightcoveOS/ios-player-samples>
 
-Brightcove Server-Side Ad Insertion (SSAI)
-----------------
+## Brightcove Server-Side Ad Insertion (SSAI)
+
 Videos enabled with Brightcove Server-Side Ad Insertion can be presented with the TV Player UI. Ad markers are set in the progress view for each set of midroll ads to let users know when ads will be played.
 
 When an ad is played, the top tab bar is hidden and disabled. The progress view is displayed, and shows the ad count, and time remaining for each ad in the ad pod. The user can pause and play the ad, but otherwise no other gestures are available for controlling the video.
 
 For more information about setting up and using SSAI, see our online guide: [Video Cloud SSAI with the Native Player SDKs][ssai].
 
-Support
-----------------
+## Support
+
 If you have questions or need help, we have a support forum for Brightcove's native Player SDKs at <https://groups.google.com/forum/#!forum/brightcove-native-player-sdks>.
 
 [ssai]: https://sdks.support.brightcove.com/features/implementing-server-side-ads-native-player-sdks.html

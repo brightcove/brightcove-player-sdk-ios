@@ -2,7 +2,7 @@
 // BCOVPUIPlayerView.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2021 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2022 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -426,6 +426,13 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
  * Defaults to 'NO'.
  */
 @property (nonatomic, assign) BOOL keepControlsVisible;
+
+/**
+ * The UIViewContentMode for the poster image UIImageView which is displayed
+ * for audio-only streams.
+ * Defaults to `UIViewContentModeScaleAspectFit`.
+ */
+@property (nonatomic, assign) UIViewContentMode contentModeForPosterImage;
 
 @end
 

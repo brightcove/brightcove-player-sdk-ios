@@ -1,16 +1,17 @@
-iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.10.2.1847
---------------
+
+# iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.10.3.2003
+
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
 
-### Requirements:
+## Requirements
 
 - Brightcove Native Player SDK v6.6.2+
 - Brightcove Account with Dynamic Delivery
 
 iOS does not allow FairPlay-protected video to display in a simulator, nor does it allow video downloads to a simulator, so it's important to develop on an actual device.
 
-### Basic Concepts
+## Basic Concepts
 
 When you request a video download, you will be given a token that is used to keep track of both the active download and the offline video in device storage. The token is of type `BCOVOfflineVideoToken`, and is referred to as a token rather than an object because it can be persisted, and is valid across instances of the app.
 
@@ -22,7 +23,7 @@ When a download begins, you can receive notification of progress and completion 
 
 By default, downloads are only allowed over WiFi connections, but this can be changed to enable downloads over cellular as well. Similarly, during playback, iOS may request some additional resources (like subtitle tracks if they were not downloaded). This will only happen on WiFi, but can be changed as well.
 
-### Initialization
+## Initialization
 
 The `BCOVOfflineVideoManager` is a singleton class that manages all video downloads. Before using any `BCOVOfflineVideoManager` methods, you should call
 
@@ -49,11 +50,11 @@ If you want to change the `kBCOVOfflineVideoManagerAllowsCellularDownloadKey` va
 
 **NOTE: Changing the value of `kBCOVOfflineVideoManagerAllowsCellularDownloadKey` will not have an effect on active downloads, only downloads initialized after the value has been changed.**
 
-### Check If A Video Can Be Downloaded
+## Check Whether a Video Can Be Downloaded
 
 In your user interface, you should indicate if a video is eligible for download. To do this,  examine the `BCOVVideo.canBeDownloaded` property. This Boolean property checks the status of the video's `offline_enabled` flag that is settable through the [Brightcove CMS API](https://sdks.support.brightcove.com/features/offline-playback-native-player-sdks.html#Download_management).
 
-### Download A Video
+## Download a Video
 
 When a user requests a video download, call
 
@@ -114,7 +115,7 @@ parameters = @{
 
 The completion handler is where you asynchronously receive the offline video token or the error. You can store a reference to this offline video token if the error is nil. You will receive notficiation of progress and completion thorugh delegate methods.
 
-### Preload A FairPlay license
+## Preload a FairPlay license
 
 If you plan to download multiple FairPlay-protected videos, it's a good idea to prelaod all the FairPlay licenses beforehand, because FairPlay license exchange cannot happen while the app is in the background. Preload a FairPlay license with a similar call:
 
@@ -144,7 +145,7 @@ An offline video token will be established for the download at this point. After
 
 At this point, the download will continue even if the user sends the app to the background. Keep in mind, however, that a FairPlay license rental duration begins from the time when the license is requested.
 
-### Downloading Secondary Tracks
+## Downloading Secondary Tracks
 
 When secondary tracks are to be included for offline viewing, they must be downloaded along with the video in the call to <nobr>`-requestVideoDownload:mediaSelections:parameters:completion:`</nobr>.
 
@@ -158,7 +159,7 @@ Downloading for offline viewing involves these basic steps:
 
 The [Discover how to download and play HLS offline](https://developer.apple.com/videos/play/wwdc2020/10655) session from **WWDC 2020** covers reccomended methods of gathering the media selections (4:55) you'd like to download in addition to handling download progress for an `AVAggregateAssetDownloadTask` (5:22).
 
-**Displaying Sideband Subtitles**
+## Displaying Sideband Subtitles
 
 The PlayerUI built-in controls will automatically detect and present your available Sideband Subtitles in the same, familiar closed caption control for you, so don't need to do anything if you are using a standard `BCOVPUIPlayerView`.
 
@@ -170,7 +171,7 @@ If the `kBCOVOfflineVideoUsesSidebandSubtitleKey` is missing or NO, you can assu
 
 If you downloaded Sideband Subtitles in iOS 10, and the device was subsequently upgraded to iOS 11, the Brightcove Native Player's PlayerUI controls will still detect that you are using Sideband Subtitles, and display properly.
 
-### Specifying a Variant Bitrate
+## Specifying a Variant Bitrate
 
 If you do not specify a bitrate for your download, you will get the lowest rendition that has a video track. To pick a specific variant based on the bitrate or resolution, you can call:
 
@@ -223,7 +224,7 @@ parameters = @{
 }];
 ```
 
-### Check Download Size
+## Check Download Size
 
 Before a download is requested, it's a good idea to make sure there is enough space in device storage for the download.
 
@@ -233,11 +234,11 @@ iOS needs a cushion to run properly, so you should not allow downloads to fill u
 
 The Brightcove SDK does not enforce any free space requirements, but we suggest making sure you leave at least 1 GB free to prevent storage cleanup policies from taking effect.
 
-### Get All Downloads
+## Get All Downloads
 
 The `BCOVOfflineVideoManager` has an `offlineVideoTokens` property that returns an array of all the current offline video tokens. This includes tokens for videos that are currently preloaded or downloading, and tokens for videos that are already in storage and have finished downloading. You can examine this property at any time to present to the user a list of videos that are downloading, or a list of videos that have been downloaded and are available for offline playback.
 
-### Get Status Of Downloads
+## Get the Status of Downloads
 
 For any given offline video token, you can determine its status by calling `[BCOVOfflineVideoManager offlineVideoStatusForToken:]`. This method returns a `BCOVOfflineVideoStatus` object that contains various bits of useful data about the download:
 
@@ -252,7 +253,7 @@ This call is essential for providing feedback in your user interface about what 
 
 To get information about the status of all offline videos at once, use the `BCOVOfflineVideoManager.offlineVideoStatus` property. This returns an array of `BCOVOfflineVideoStatus` objects, one for each offline video.
 
-### Determining FairPlay License Expiration
+## Determining FairPlay License Expiration
 
 You can find out when the FairPlay license for an offline video expires by querying the Offline Video Manager as follows:
 
@@ -262,7 +263,7 @@ NSDate *licenseExpirationDate = [BCOVOfflineVideoManager.sharedManager fairPlayL
 
 The method returns the expiration of the FairPlay license as an `NSDate` object. If the FairPlay license is a purchase license, or the video is not encrypted with FairPlay, `NSDate.distantFuture` is returned. If the FairPlay license is missing, `nil` is returned.
 
-### Get Metadata From Offline Video Tokens
+## Get Metadata from Offline Video Tokens
 
 `BCOVVideo` objects contain a host of metadata stored in a properties dictionary. When working with offline video tokens, you can access this associated metadata by first converting the token to a `BCOVVideo` object, and then accessing the properties directly.
 
@@ -358,7 +359,7 @@ Boolean value, stored as an NSNumber, that is set to YES when this video is usin
 When using Sideband Subtitles, you can get the array of downloaded languages from the `kBCOVOfflineVideoManagerSubtitleLanguagesKey` property.
 When playing back the video, you can select the subtitle to present by setting it as the value for the `kBCOVOfflineVideoManagerPlaybackSubtitleLanguageKey` key in the `BCOVPlaybackController`'s options property.
 
-### Play Back Offline Videos
+## Play Offline Videos
 
 To play an offline video, convert the offline video token to a `BCOVVideo` object, and then play the video as you would any normal online video object. Since videos can be deleted without warning by iOS (or in iOS 11, the user), it's a good idea to check that the video is playable.
 
@@ -402,7 +403,7 @@ else
 
 Note that `video.playableOffline` indicates whether a video is fully downloaded and stored locally and can therefore be played without a network connection. A video download in progress can be played even if `video.playableOffline` is `false`. Refer to the section "Playback During Download".
 
-### Pause/Resume/Cancel Downloads
+## Pause/Resume/Cancel Downloads
 
 When a video is being downloaded, you can pause, resume, or cancel the download using the following `BCOVOfflineVideoManager` methods:
 
@@ -412,7 +413,7 @@ When a video is being downloaded, you can pause, resume, or cancel the download 
 
 You should use these methods rather than operating on the internal `AVAssetDownloadTask` itself.
 
-### Renewing a FairPlay License
+## Renewing a FairPlay License
 
 Starting with version 6.2.2 of the iOS Native Player SDK, you can renew the FairPlay license for a downloaded video without re-downloading the video. The device must be online for license renewal to succeed.
 
@@ -470,13 +471,13 @@ If you are using the Playback Authorization Service you'll need to use the renew
 
 When license renewal is finshed, the completion block will be called with the same offline video token that was passed in, plus an `NSError` indicating any problem that occurred (or `nil` if no error). This block is not called on any specific thread.
 
-### FairPlay Application Certificates
+## FairPlay Application Certificates
 
 As part of Dynamic Delivery, a reference to the FairPlay application certificate associated with each video is stored inside each FairPlay-encrypted `BCOVVideo` object. The certificate is retrieved from a remote server as needed, so you do not need to load or set any FairPlay application certificates on your own.
 
 The same application certificate is used across each Brightcove account, so there will often be a single application certificate used for all your videos. Application certificates are cached for re-use so they will typically be retrieved only once.
 
-### Downloading Videos In The Background
+## Downloading Videos in the Background
 
 iOS allows HLS video downloads to run in a background thread, even if an app is suspended or terminated under certain conditions.
 
@@ -497,7 +498,7 @@ The SDK can't recover downloads in progress when:
 
 Downloads are restored once during the call to `initializeOfflineVideoManagerWithDelegate:options:`. Downloads that cannot be recovered will be reported immediately through the normal delegate methods; at this point you can delete them like any other video.
 
-### Downloading Multiple Videos
+## Downloading Multiple Videos
 
 When downloading multiple videos, you can download them all at once, or with a download queue.
 
@@ -530,7 +531,7 @@ When doing this it's a good idea to enable the "Background Fetch" mode for the a
 
 Please note that iOS does not wake up your application from the background immediately when a download has completed. This can take 10 to 15 minutes or longer; iOS has complete control over the timing and seems to minimize this activity for maximum energy efficiency. In some cases, when downloading multiple videos in the background, iOS may not complete your download at all in the background, opting instead to finish the download when the application has been brought back to the foreground. For the most reliable results, you may want to preload a single video license, download one video, and then post a notification to the user to return to the foreground to kick off another download.
 
-### Playback During Download
+## Playback During Download
 
 While a movie is downloading, you can play the movie by passing a `BCOVVideo` object created from the offline video token to the `BCOVPlaybackController` just like any other movie. We do this by using an internal reference stored in the currently active `AVAssetDownloadTask` (this is the method recommended by Apple to make the download and playback as efficient as possible).
 
@@ -540,11 +541,11 @@ Doing this has several potentially unexpected side effects:
 
 - When you stop playing, the download task may not resume. This will happen if the video's session is still active in the `BCOVPlaybackController`. To clear out the current session, you can play a new video, or delete the playback controller. Be sure you don't store the current session in a strong property.
 
-### AirPlay
+## AirPlay
 
 You cannot stream an offline HLS video to an AirPlay device for playback. This is an AVFoundation limitation.
 
-### Playing the Same Offline Video Twice
+## Playing the Same Offline Video Twice
 
 Unexpected network activity can occur when playing the same offline video two times in a row in a certain way. If you play a video with one playback controller, and then immediately play the same video with another playback controller, the `AVPlayer` for the second video attempts to retrieve its video data from the Internet rather than from local storage. If the device is not online then the `AVPlayer` will not play the second video.
 
@@ -558,7 +559,7 @@ If this is not possible, and you still need to create another playback controlle
 	[session.player replaceCurrentItemWithPlayerItem:nil];
 ```
 
-### Specifying the Download Display Name
+## Specifying the Download Display Name
 
 Users can directly examine and optionally delete downloaded videos using the Settings app. The displayed video name is taken from the "name" property of the `BCOVVideo` object. If the "name" property is not present, the offline video token's value will be used instead.
 

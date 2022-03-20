@@ -1,7 +1,7 @@
-# Using FairPlay With The Brightcove Player SDK for iOS, version 6.10.2.1847
+# Using FairPlay With The Brightcove Player SDK for iOS, version 6.10.3.2003
 
-Quick Start
-===========
+## Quick Start
+
 Brightcove FairPlay is a bridge between Apple FairPlay and the [Brightcove Player SDK for iOS][bcovsdk]. The following sections show how to set up your code for basic playback.
 
 **Please note the following FairPlay limitations with iOS/tvOS:**
@@ -12,8 +12,8 @@ Brightcove FairPlay is a bridge between Apple FairPlay and the [Brightcove Playe
 
 [wwdc502]: https://developer.apple.com/videos/play/wwdc2015/502/
 
-Video Cloud Dynamic Delivery
------------------
+## Video Cloud Dynamic Delivery
+
 When you use Video Cloud Dynamic Delivery, a reference to the FairPlay application certificate is embedded in the BCOVVideo object returned from the playback service. The SDK uses this reference to retrieve the application certificate when you play your FairPlay videos.
 
 Here are the basic steps you need to follow:
@@ -52,8 +52,9 @@ Here are the basic steps you need to follow:
                                    
                                }];
 ```
-Legacy Video Cloud Workflow
-----------------
+
+## Legacy Video Cloud Workflow
+
 If you are using a legacy Video Cloud workflow, you need to retrieve a FairPlay certificate prior to playing your videos.
 This code shows basic setup and playback:
 
@@ -114,8 +115,8 @@ If you have questions or need help, we have a support forum for Brightcove's nat
 [bcovsdk]: https://github.com/brightcove/brightcove-player-sdk-ios
 [forum]: https://groups.google.com/forum/#!forum/brightcove-native-player-sdks
 
-Error Handling
-===========
+## Error Handling
+
 FairPlay license related errors will be passed through in a `kBCOVPlaybackSessionLifecycleEventError` lifecycleEvent. These can include license server request failures or AVContentKeySession errors. You can access the `NSError` object with the `kBCOVPlaybackSessionEventKeyError` in the lifecycleEvent's properties dictionary. 
 
 If the issue is releated to a license server request (which can include concurrency-limit errors) you'll be able to retrieve the response data from the userInfo dictionary on the `NSError` with the `kBCOVFPSAuthProxyResponseData` key. 
@@ -149,8 +150,8 @@ Here is an example of logging errors from an `kBCOVPlaybackSessionLifecycleEvent
 }
 ```
 
-Content Key Preloading
-===========
+## Content Key Preloading
+
 You may preload content keys for videos by calling  the `preloadContentKeysForVideos:` class method on `BCOVFairPlayManager`. Typically a content key for a FairPlay protected video is processed when the video begins playback. By preloading the content key you can improve the playback startup experience for your users. For example:
 
 ```
@@ -166,8 +167,8 @@ static NSString * const kViewControllerVideoID = @"...";
 }];
 ```
 
-Application Certificates
-===========
+## Application Certificates
+
 Playabck of FairPlay-protected videos requires an application certificate associated with the content. 
 
 If you are using Video Cloud Dynamic Delivery, application certificates are downloaded and used as needed by the Brightcove SDK. Certificates are cached for re-use so there will typically be a single download per account.
@@ -176,8 +177,8 @@ If you are using legacy Video Cloud services, you still need to retrieve an appl
 
 If you store your own application certificate remotely, you can retrieve it with a normal `NSURLSessionDataTask` retrieving the certificate as an `NSData` object. Once received, you can add the certificate to your playback controller using `-[BCOVPlaybackController addFairPlayApplicationCertificate:identifier:]`. In most cases you would use `kBCOVDefaultFairPlayApplicationCertificateIdentifier` as the identifier.
 
-Using A Third-Party FairPlay license Server
-===========
+## Using a Third-Party FairPlay License Server
+
 The `BCOVFPSBrightcoveAuthProxy` is intended to work with `fps.brightcove.com`. If you need to use another FairPlay license server, you can either implement the `BCOVFPSAuthorizationProxy` protocol to handle the license communication, or if your needs are simple you can override a few of the `BCOVFPSAuthorizationProxy` properties:
 
 ```

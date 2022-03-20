@@ -60,6 +60,8 @@
 	
 	<optgroup label="Instance Methods">
 		
+		<option value="//api/name/manifestTTLWasUpdatedWithError:playbackController:playbackSession:">- manifestTTLWasUpdatedWithError:playbackController:playbackSession:</option>
+		
 		<option value="//api/name/playbackController:determinedCodecs:forVideo:">- playbackController:determinedCodecs:forVideo:</option>
 		
 		<option value="//api/name/playbackController:determinedMetadata:forVideo:">- playbackController:determinedMetadata:forVideo:</option>
@@ -71,6 +73,8 @@
 		<option value="//api/name/playbackController:didCompletePlaylist:">- playbackController:didCompletePlaylist:</option>
 		
 		<option value="//api/name/playbackController:noPlayableVideosFound:">- playbackController:noPlayableVideosFound:</option>
+		
+		<option value="//api/name/playbackController:playbackSession:determinedMediaType:">- playbackController:playbackSession:determinedMediaType:</option>
 		
 		<option value="//api/name/playbackController:playbackSession:didChangeDuration:">- playbackController:playbackSession:didChangeDuration:</option>
 		
@@ -89,6 +93,8 @@
 		<option value="//api/name/playbackController:playbackSession:didReachMaxConcurrency:">- playbackController:playbackSession:didReachMaxConcurrency:</option>
 		
 		<option value="//api/name/playbackController:playbackSession:didReceiveLifecycleEvent:">- playbackController:playbackSession:didReceiveLifecycleEvent:</option>
+		
+		<option value="//api/name/playbackServiceForManifestURLTTLUpdateForPlaybackController:playbackSession:">- playbackServiceForManifestURLTTLUpdateForPlaybackController:playbackSession:</option>
 		
 	</optgroup>
 	
@@ -1034,6 +1040,76 @@ has been received for the session.</p>
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/playbackController:playbackSession:determinedMediaType:" title="playbackController:playbackSession:determinedMediaType:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:playbackSession:determinedMediaType:">&ndash;&nbsp;playbackController:playbackSession:determinedMediaType:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when the media type of a source has been determined.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em> determinedMediaType:(BCOVSourceMediaType)<em>mediaType</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller to which this instance serves as delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session whose AVPlayer&rsquo;s currentItem&rsquo;s media option was changed</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mediaType</code></th>
+						<td><p>The media type that was determined</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when the media type of a source has been determined.</p>
+
+<p>MP4 sources will always be marked as BCOVSourceMediaTypeAudioVideo.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/playbackController:playbackSession:didChangeSelectedAudibleMediaOption:" title="playbackController:playbackSession:didChangeSelectedAudibleMediaOption:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/playbackController:playbackSession:didChangeSelectedAudibleMediaOption:">&ndash;&nbsp;playbackController:playbackSession:didChangeSelectedAudibleMediaOption:</a></code>
 </h3>
@@ -1247,6 +1323,152 @@ This method will only be called when <code>streamConcurrencyEnabled</code> is se
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackServiceForManifestURLTTLUpdateForPlaybackController:playbackSession:" title="playbackServiceForManifestURLTTLUpdateForPlaybackController:playbackSession:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackServiceForManifestURLTTLUpdateForPlaybackController:playbackSession:">&ndash;&nbsp;playbackServiceForManifestURLTTLUpdateForPlaybackController:playbackSession:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when the TTL token for the current source&rsquo;s manifest has expired and needs to be refreshed.
+You will want to implement this delegate method if you are using a <a href="../Classes/BCOVPlaybackService.html">BCOVPlaybackService</a> with
+a custom URL.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BCOVPlaybackService *)playbackServiceForManifestURLTTLUpdateForPlaybackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller to which this instance serves as delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session whose AVPlayer&rsquo;s currentItem&rsquo;s media option was changed</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An instance of <a href="../Classes/BCOVPlaybackService.html">BCOVPlaybackService</a> that will be used to update the manifest TTL token.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when the TTL token for the current source&rsquo;s manifest has expired and needs to be refreshed.
+You will want to implement this delegate method if you are using a <a href="../Classes/BCOVPlaybackService.html">BCOVPlaybackService</a> with
+a custom URL.</p>
+
+<p>If you are using the default initilaizer for <a href="../Classes/BCOVPlaybackService.html">BCOVPlaybackService</a>, <code>initWithAccountId:policyKey:</code>
+you do not need to implement this delegate method.</p>
+
+<p>If you return <code>nil</code>, or do not implement this method, an instance of <a href="../Classes/BCOVPlaybackService.html">BCOVPlaybackService</a> will be
+created internally with the <code>initWithAccountId:policyKey:</code> initializer.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/manifestTTLWasUpdatedWithError:playbackController:playbackSession:" title="manifestTTLWasUpdatedWithError:playbackController:playbackSession:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/manifestTTLWasUpdatedWithError:playbackController:playbackSession:">&ndash;&nbsp;manifestTTLWasUpdatedWithError:playbackController:playbackSession:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called after the TTL token for the current source&rsquo;s manifest has attempted to be updated.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)manifestTTLWasUpdatedWithError:(NSError *)<em>error</em> playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>If the update was successful this will be nil, otherwise the error encountered will be accessible here</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller to which this instance serves as delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session whose AVPlayer&rsquo;s currentItem&rsquo;s media option was changed</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called after the TTL token for the current source&rsquo;s manifest has attempted to be updated.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -1255,14 +1477,12 @@ This method will only be called when <code>streamConcurrencyEnabled</code> is se
 					
 
                     
-                    
-          
 				</main>
 
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2021 Brightcove. All rights reserved. Updated: 2021-11-18</p>
+						<p class="copyright">Copyright &copy; 2022 Brightcove. All rights reserved. Updated: 2022-03-17</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
