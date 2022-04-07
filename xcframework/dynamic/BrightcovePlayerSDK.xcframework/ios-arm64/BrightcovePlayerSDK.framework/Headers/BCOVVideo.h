@@ -109,9 +109,18 @@ extern NSString * _Nullable localizedLongDescriptionForLocale(BCOVVideo * _Nulla
 @property (nonatomic, readonly, copy) NSArray<BCOVSource *> *sources;
 
 /**
+ * The URL at which this video's VTT thumbnails source is available.
+ * This value overrides any thumbnails VTT track that the SDK uses
+ * from a PAPI response.
+ *
+ * The value will be `nil` if you have not set a value.
+ */
+@property (nonatomic, readonly, copy, nullable) NSURL *thumbnailVTTURL;
+
+/**
  * The I-FRAME manifest URL to be used for thumbnail scrubbing.
  */
-@property (nonatomic, readonly, copy, nullable) NSURL *iFramePlaylistURL;
+@property (nonatomic, readonly, copy, nullable) NSURL *iFramePlaylistURL __attribute__((deprecated("Use `thumbnailVTTURL` instead.")));
 
 /**
  * Returns a modified version of this source. Because BCOVVideo objects
@@ -146,7 +155,8 @@ extern NSString * _Nullable localizedLongDescriptionForLocale(BCOVVideo * _Nulla
  */
 @property (nonatomic, readwrite, copy, nullable) NSDictionary *properties;
 @property (nonatomic, readwrite, copy, nullable) NSArray *sources;
-@property (nonatomic, readwrite, copy, nullable) NSURL *iFramePlaylistURL;
+@property (nonatomic, readwrite, copy, nullable) NSURL *thumbnailVTTURL;
+@property (nonatomic, readwrite, copy, nullable) NSURL *iFramePlaylistURL __attribute__((deprecated("Use `thumbnailVTTURL` instead.")));
 
 @end
 

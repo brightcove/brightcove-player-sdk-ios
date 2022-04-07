@@ -38,6 +38,8 @@ extern const NSInteger kBCOVFPSErrorCodeApplicationCertificateRequest;
 
 /**
  *  Optional method.
+ *  This method is only called when downloading a video when the license has not
+ *  been preloaded prior to downloading.
  *  Implement this method to handle retrieving the content identifier from the loading request.
  *  This is called for each asset.
  *  No guarantee is made as to the thread that this is called on.
@@ -55,6 +57,20 @@ extern const NSInteger kBCOVFPSErrorCodeApplicationCertificateRequest;
 - (nullable NSData *)contentIdentifierFromLoadingRequest:(nonnull AVAssetResourceLoadingRequest *)loadingRequest;
 
 @required
+
+/**
+ *  Implement this method to handle retrieving the content identifier from the content key request.
+ *  This is called for each asset.
+ *  No guarantee is made as to the thread that this is called on.
+ *  You should return the content identifier corresponding to this content key request.
+ *  This is typically extracted from the "skd://..." value in keyRequest.identifier.
+ *  The content identifier will be passed to [AVContentKeySession makeStreamingContentKeyRequestDataForApp:
+ *  contentIdentifier:options:completionHandler]
+ *  to retrieve the SPC.
+ *
+ *  @param keyRequest The AVContentKeyRequest for the asset.
+ */
+- (nullable NSData *)contentIdentifierFromKeyRequest:(nullable AVContentKeyRequest *)keyRequest;
 
 /**
  *  Implement this method to handle retrieving the content key for a video that

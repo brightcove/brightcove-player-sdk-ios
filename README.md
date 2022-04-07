@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.10.3.2005
+# Brightcove Player SDK for iOS, version 6.10.4.2043
 
 
 ## Table of Contents
@@ -411,7 +411,7 @@ Here are examples of creating a variety of basic controls.
 	// Video duration label
     BCOVPUILayoutView *durationLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagLabelDuration width:kBCOVPUILayoutUseDefaultValue elasticity:0.0];
 
-	// Slider bar used for scrubbing through the video
+	// Slider bar used for seeking through the video
 	// The elasticity is set to 1 so that it can resize to fill available space
     BCOVPUILayoutView *progressLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagSliderProgress width:kBCOVPUILayoutUseDefaultValue elasticity:1.0];
 
@@ -1047,7 +1047,7 @@ video = [video update:^(id<BCOVMutableVideo> mutableVideo) {
 }];
 ```
 
-Thumbnail scrubbing is only available for online videos; downloaded/offline videos do not support this feature. 
+Thumbnail seeking is only available for online videos; downloaded/offline videos do not support this feature. 
 
 ## Generic Stream Concurrency <a name="GSC"></a>
 
@@ -1379,7 +1379,7 @@ Similarly you can set the `accessibilityLabel` on the current time and duration 
 
 You can provide additional language localizations that the Brightcove iOS SDK does not support out-of-the-box. 
 
-1. Ensure that the language you want to add localization for is configured for your project. You can find this under Project > Localizations (under the Info tab)
+1. Add the language you need to your project if you have not already done so. You can add localizations by navigating to Project > Localizations (under the Info tab) and clicking the `+` button beneath the "Localizations" section.
 1. In Xcode, with your project open, navigate to File > New > File
 1. In the *Filter* search bar enter "Strings" and then select the "Strings File" and click "Next"
 1. Name the file "BrightcoveSDK.strings" and click "Create"

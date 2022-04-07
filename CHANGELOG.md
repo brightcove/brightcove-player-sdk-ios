@@ -1,3 +1,28 @@
+## Release 6.10.4 ##
+
+### 7 Apr 2022
+
+#### Additions and Improvements
+
+* Adds a ReactNative sample project to the [ios-sample-projects](https://github.com/BrightcoveOS/ios-player-samples/tree/master/PlayerUI/ReactNative) git repository.
+
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Support for I-frame playlists (also known as HLS Trick Play) has been deprecated in favor of WebVTT files. This change only affects apps that utilize a custom I-frame playlist URL.
+
+* Fixes an issue with playlist auto-advance when playing in a Picture in Picture controller.
+
+* Fixes an issue where the `contentIdentifierFromLoadingRequest` delegate was not being called while using a custom FairPlay proxy implementation.
+
+### Omniture Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds support for Adobe Marketing Cloud v4.21.2 and Adobe Video Heartbeat v2.3.0.
+
 ## Release 6.10.3 ##
 
 #### 17 Mar 2022
@@ -8,14 +33,13 @@
 
 * Each XCFramework now contains all supported platform binaries, for example, simulator and device binaries for iOS, tvOS and Mac Catalyst.
 
-* Adds a SharePlay sample project to the [ios-sample-projects](https://github.com/BrightcoveOS/ios-player-samples) git repository.
+* Adds a SharePlay sample project to the [ios-sample-projects](https://github.com/BrightcoveOS/ios-player-samples/tree/master/SharePlay) git repository.
 
-* Adds a Flutter sample project to the [ios-sample-projects](https://github.com/BrightcoveOS/ios-player-samples) git repository.
+* Adds a Flutter sample project to the [ios-sample-projects](https://github.com/BrightcoveOS/ios-player-samples/tree/master/PlayerUI/Flutter) git repository.
 
 #### Breaking Changes
 
 * `Brightcove-Player-OpenMeasurement` is no longer installed by default with the SSAI Plugin. Add `pod 'Brightcove-Player-OpenMeasurement'` to your Podfile to include it in your project.
-
 
 ### Brightcove Player SDK for iOS (Core)
 
