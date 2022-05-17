@@ -1,11 +1,48 @@
-## Release 6.10.4 ##
+## Release 6.10.5
 
-### 7 Apr 2022
+#### 17 May 2022
+
+#### Additions and Improvements
+
+* Adds support for Swift Package Manager. Refer to the *Swift Package Manager* sections of the Core SDK and Plugin READMEs.
+
+* Adds sample code for customizing UI controls in the PlayerUI/PlayerUICustomization projects in the [ios-sample-projects](https://github.com/BrightcoveOS/ios-player-samples).
+
+* Removes references to legacy Video Cloud services from the [ios-sample-projects](https://github.com/BrightcoveOS/ios-player-samples).
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Improves GSC retry logic.
+
+* Uses thumbnail VTT tracks to improve the performance of Thumbnail Seeking. The `iFramePlaylistURL` property of `BCOVVideo` has been deprecated and it, and all other support for I-frame playlists, will be removed in a future release of the SDK.
+
+* Fixes seek behavior when the progress slider is dragged to its end after the video has already completed.
+
+* Clarifies the steps for adding custom localizations. Refer to the *Custom Localization* section of the Core SDK README.
+
+* Adds guidance for presenting a LEARN MORE button during IMA ad playback while using an AVPlayerViewController. Refer to the *Using an AVPlayerViewController with a BCOVPlaybackController* section of the Core SDK README.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue with duplicate tracks while casting to a GoogleCast device.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds limited support for picture-in-picture playback. See the [Picture in Picture](https://github.com/brightcove/brightcove-player-sdk-ios-ima#picture-in-picture) section of the IMA README for information on supported configurations and expectations.
+
+## Release 6.10.4
+
+#### 7 Apr 2022
 
 #### Additions and Improvements
 
 * Adds a ReactNative sample project to the [ios-sample-projects](https://github.com/BrightcoveOS/ios-player-samples/tree/master/PlayerUI/ReactNative) git repository.
-
 
 ### Brightcove Player SDK for iOS (Core)
 

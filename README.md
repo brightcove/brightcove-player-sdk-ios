@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.10.4.2043
+# Brightcove Player SDK for iOS, version 6.10.5.2109
 
 
 ## Table of Contents
@@ -12,6 +12,7 @@
 1. [Installation](#Installation)
 1. [CocoaPods](#CocoaPods)
 1. [Manual Installaion](#ManualInstallation)
+1. [Swift Package Manager](#SwiftPackageManager)
 1. [Imports](#Imports)
 1. [Quick Start](#QuickStart)
 1. [Built-In PlayerUI Controls for iOS](#PlayerUI)
@@ -240,6 +241,18 @@ Brightcove-Player-IMA | <https://github.com/brightcove/brightcove-player-sdk-ios
 Brightcove-Player-Omniture | <https://github.com/brightcove/brightcove-player-sdk-ios-omniture/releases>
 Brightcove-Player-Pulse | <https://github.com/brightcove/brightcove-player-sdk-ios-pulse/releases>
 Brightcove-Player-SSAI | <https://github.com/brightcove/brightcove-player-sdk-ios-ssai/releases>
+
+### Swift Package Manager <a name="SwiftPackageManager"></a>
+
+To add the Brightcove Player SDK to your project with Swift Package Manager: 
+
+1. Select the "Package Dependencies" tab for your Project.
+1. Click the "+" button.
+1. In the "Search or Enter Package URL" field enter `https://github.com/brightcove/brightcove-player-sdk-ios.git`
+1. When the UI updates click the "Add Package" button.
+1. After Xcode processess the repo you'll be prompted to "Choose Package Products" ensure that your app target is selected and click the "Add Package" button.
+
+*Note: Only the dynamic XCFramework is supported for Swift Package Manager.*
 
 ### Imports <a name="Imports"></a>
 
@@ -1233,7 +1246,7 @@ The default value of kBCOVAVPlayerViewControllerCompatibilityKey is `@NO`, which
 
 ### Advertising
 
-The Brightcove IMA, FreeWheel, Pulse and SSAI[^1] ad plugins are compatible when using AVPlayerViewController. You can use the AVPlayerViewController's `contentOverlayView` for the view in which to display ads (not applicable to SSAI). 
+The Brightcove IMA, FreeWheel, Pulse and SSAI ad plugins are compatible when using AVPlayerViewController. You can use the AVPlayerViewController's `contentOverlayView` for the view in which to display ads (not applicable to SSAI). 
 
 You may wish to hide/show the AVPlayerViewController's playback controls before and after ads play:
 
@@ -1248,6 +1261,8 @@ You may wish to hide/show the AVPlayerViewController's playback controls before 
     self.avpvc.showsPlaybackControls = YES;
 }
 ```
+
+When using an AVPlayerViewController with the Brightcove IMA plugin and ads with a "Learn More" button you'll need to create an additional UIView to use as the ad container view. This is because AVPlayerViewController's `contentOverlayView` is not interactive so attempting to tap the "Learn More" button will have no effect. You can use the `playbackController:playbackSession:didEnterAdSequence:` and `playbackController:playbackSession:didExitAdSequence:` delegate methods to show and hide your ad container view.
 
 ### tvOS
 
