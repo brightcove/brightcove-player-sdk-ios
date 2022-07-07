@@ -1,4 +1,4 @@
-# Using FairPlay With The Brightcove Player SDK for iOS, version 6.10.5.2109
+# Using FairPlay With The Brightcove Player SDK for iOS, version 6.10.6.2156
 
 ## Quick Start
 
@@ -67,7 +67,7 @@ This code shows basic setup and playback:
     // application id and publisher id used to register your
     // FairPlay credentials with Brightcove.
     BCOVFPSBrightcoveAuthProxy *proxy = [[BCOVFPSBrightcoveAuthProxy alloc] initWithPublisherId:<pub-id>
-                                                                                  applicationId:<app-id>
+                                                                                  applicationId:<app-id>];
     
     BCOVPlayerSDKManager *sdkManager = [BCOVPlayerSDKManager sharedManager];
     

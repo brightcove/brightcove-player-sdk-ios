@@ -1,3 +1,51 @@
+## Release 6.10.6
+
+#### 7 Jul 2022
+
+#### Breaking Changes
+
+* In preparation for Xcode 14, bitcode has been removed from all frameworks of the Brightcove Native Player SDK for iOS.
+
+#### Additions and Improvements
+
+* Adds the TableViewPlayer sample projects in Objective-C and Swift to demonstrate a scrolling list of playing videos.
+
+* Fixes a crash in the BasicSSAIPlayer
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Support for Short Manifest TTL was added in SDK release 6.10.3.
+
+* Adds `rendition_width`, `rendition_height` and `dropped_frames` metrics when reporting engagement events.
+
+* Fixes an issue where the completion block of `-preloadFairPlayLicense:parameters:completion:` was not called when a loading error occurred.
+
+* Fixes an issue where the player view could be black when multiple BCOVPlaybackControllers are in use (e.g. a table view of video players).
+
+* Fixes an issue where calling `-play` on a `BCOVPlaybackController` after the video had completed might not restart the video.
+
+* Fixes a crash that could occur on iOS 11 and iOS 12 when using a renewing DRM license.
+
+### FreeWheel Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds limited support for picture-in-picture playback. Refer to the [Picture in Picture](https://github.com/brightcove/brightcove-player-sdk-ios-fw#picture-in-picture) section of the FreeWheel README for information on supported configurations and expectations.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds support for Generic Stream Concurrency.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Deprecates `kBCOVIMAOptionBlockAdTargetingAPIsKey`. The option will be removed in a future release of the SDK.
+
 ## Release 6.10.5
 
 #### 17 May 2022
@@ -14,7 +62,7 @@
 
 #### Additions and Improvements
 
-* Improves GSC retry logic.
+* Improves Generic Stream Concurrency retry logic.
 
 * Uses thumbnail VTT tracks to improve the performance of Thumbnail Seeking. The `iFramePlaylistURL` property of `BCOVVideo` has been deprecated and it, and all other support for I-frame playlists, will be removed in a future release of the SDK.
 
@@ -34,7 +82,7 @@
 
 #### Additions and Improvements
 
-* Adds limited support for picture-in-picture playback. See the [Picture in Picture](https://github.com/brightcove/brightcove-player-sdk-ios-ima#picture-in-picture) section of the IMA README for information on supported configurations and expectations.
+* Adds limited support for picture-in-picture playback. Refer to the [Picture in Picture](https://github.com/brightcove/brightcove-player-sdk-ios-ima#picture-in-picture) section of the IMA README for information on supported configurations and expectations.
 
 ## Release 6.10.4
 
