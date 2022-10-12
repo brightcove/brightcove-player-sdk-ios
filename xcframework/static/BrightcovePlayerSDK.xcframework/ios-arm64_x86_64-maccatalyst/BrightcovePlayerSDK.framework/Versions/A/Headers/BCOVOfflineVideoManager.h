@@ -89,7 +89,8 @@
  *  source with an HTTPS scheme, and may use FairPlay encryption.
  *
  * @param parameters NSDictionary of parameters used in this download request.
- *  May be nil. Valid parameters are:
+ *  May be nil if the license was preloaded using the `preloadFairPlayLicense:parameters:completion` method.
+ *  Valid parameters are:
  *  kBCOVOfflineVideoManagerRequestedBitrateKey, kBCOVFairPlayLicensePurchaseKey,
  *  kBCOVFairPlayLicenseRentalDurationKey.
  *

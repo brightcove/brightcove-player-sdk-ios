@@ -22,9 +22,11 @@
 @protocol BCOVMutableAnalytics;
 @protocol BCOVPlaybackController;
 @protocol BCOVPlaybackControllerBasicDelegate;
+@protocol BCOVPlaybackControllerBumperDelegate;
 @protocol BCOVPlaybackControllerDelegate;
 @protocol BCOVPlaybackSession;
 @protocol BCOVPlaybackSessionBasicConsumer;
+@protocol BCOVPlaybackSessionBumperConsumer;
 @protocol BCOVPlaybackSessionConsumer;
 
 /**
@@ -628,7 +630,54 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * Conform to this protocol to receive basic playback information for each video in
  * addition to advertising.
  */
-@protocol BCOVPlaybackSessionConsumer <BCOVPlaybackSessionBasicConsumer, BCOVPlaybackSessionAdsConsumer>
+@protocol BCOVPlaybackSessionConsumer <BCOVPlaybackSessionBumperConsumer, BCOVPlaybackSessionBasicConsumer, BCOVPlaybackSessionAdsConsumer>
+
+@end
+
+
+@protocol BCOVPlaybackSessionBumperConsumer <NSObject>
+@optional
+
+/**
+ * Called when playback enters a bumper within a playback session.
+ *
+ * @param session The playback session within which the bumper transition occurred.
+ * @param video The bumper being entered.
+ */
+- (void)playbackSession:(id<BCOVPlaybackSession>)session didEnterBumper:(BCOVVideo *)video;
+
+/**
+ * Called when playback exits a bumper within a playback session.
+ *
+ * @param session The playback session within which the bumper transition occurred.
+ * @param video The bumper being exited.
+ */
+- (void)playbackSession:(id<BCOVPlaybackSession>)session didExitBumper:(BCOVVideo *)video;
+
+/**
+ * Called with the playback session's bumper playback progress.
+ *
+ * @param session The playback session within which the bumper transition occurred.
+ * @param video The bumper that is progressing.
+ * @param progress The progress time of the bumper.
+ */
+- (void)playbackSession:(id<BCOVPlaybackSession>)session bumper:(BCOVVideo *)video didProgressTo:(NSTimeInterval)progress;
+
+/**
+ * Called when a bumper paused.
+ *
+ * @param session The playback session within which the bumper transition occurred.
+ * @param video The bumper being paused.
+ */
+- (void)playbackSession:(id<BCOVPlaybackSession>)session didPauseBumper:(BCOVVideo *)video;
+
+/**
+ * Called when a bumper resumed.
+ *
+ * @param session The playback session within which the bumper transition occurred.
+ * @param video The bumper being resumed.
+ */
+- (void)playbackSession:(id<BCOVPlaybackSession>)session didResumeBumper:(BCOVVideo *)video;
 
 @end
 
@@ -768,7 +817,59 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * Conform to this protocol to receive basic playback information for each video in
  * addition to advertising.
  */
-@protocol BCOVPlaybackControllerDelegate <BCOVPlaybackControllerBasicDelegate, BCOVPlaybackControllerAdsDelegate>
+@protocol BCOVPlaybackControllerDelegate <BCOVPlaybackControllerBumperDelegate, BCOVPlaybackControllerBasicDelegate, BCOVPlaybackControllerAdsDelegate>
+
+@end
+
+
+@protocol BCOVPlaybackControllerBumperDelegate <NSObject>
+@optional
+
+/**
+ * Called when playback enters a bumper within a playback session.
+ *
+ * @param controller The playback controller in which this transition occurred.
+ * @param session The playback session within which the bumper transition occurred.
+ * @param video The bumper being entered.
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didEnterBumper:(BCOVVideo *)video;
+
+/**
+ * Called when playback exits a bumper within a playback session.
+ *
+ * @param controller The playback controller in which this transition occurred.
+ * @param session The playback session within which the bumper transition occurred.
+ * @param video The bumper being exited.
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didExitBumper:(BCOVVideo *)video;
+
+/**
+ * Called with the playback session's bumper playback progress.
+ *
+ * @param controller The playback controller in which a bumper is progressing.
+ * @param session The playback session within which the bumper transition occurred.
+ * @param video The bumper that is progressing.
+ * @param progress The progress time of the bumper.
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session bumper:(BCOVVideo *)video didProgressTo:(NSTimeInterval)progress;
+
+/**
+ * Called when a bumper paused.
+ *
+ * @param controller The playback controller in which this transition occurred.
+ * @param session The playback session within which the bumper transition occurred.
+ * @param video The bumper being paused.
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didPauseBumper:(BCOVVideo *)video;
+
+/**
+ * Called when a bumper resumed.
+ *
+ * @param controller The playback controller in which this transition occurred.
+ * @param session The playback session within which the bumper transition occurred.
+ * @param video The bumper being resumed.
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didResumeBumper:(BCOVVideo *)video;
 
 @end
 

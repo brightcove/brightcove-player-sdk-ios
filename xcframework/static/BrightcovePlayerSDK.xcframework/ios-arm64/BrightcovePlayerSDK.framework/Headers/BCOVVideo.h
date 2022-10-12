@@ -6,6 +6,7 @@
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
+#import <AVFoundation/AVFoundation.h>
 #import <Foundation/Foundation.h>
 #import <BrightcovePlayerSDK/BCOVVideoErrorCodes.h>
 

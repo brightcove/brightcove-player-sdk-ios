@@ -185,7 +185,7 @@ extern NSString * const kBCOVAdPropertyKeyTrackingURLs;
  * Called with the playback session's ad playback progress.
  *
  *
- * @param controller The playback controller in which an add is progressing.
+ * @param controller The playback controller in which an ad is progressing.
  * @param session The playback session within which the ad transition occurred.
  * @param ad The ad that is progressing.
  * @param progress The progress time of the ad.

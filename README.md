@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.10.6.2156
+# Brightcove Player SDK for iOS, version 6.11.0.2264
 
 
 ## Table of Contents
@@ -45,6 +45,7 @@
 1. [China Delivery](#ChinaDelivery)
 1. [AVAudioSession Configuration](#AVAudioSessionConfig)
 1. [Audio-Only Support](#AudioOnlySupport)
+1. [Bumper Support](#BumperSupport)
 1. [Frequently Asked Questions](#FAQ)
 1. [Support](#Support)
 
@@ -989,7 +990,7 @@ Using a playlist of videos with mixed formats with picture-in-picture will resul
 
 iOS and iPadOS 14 introduced automatic Picture-in-Picture behavior which can be toggled on/off in `Settings > General > Picture in Picture`. In order for this feature to work as expected the player view must be equal to the width of the screen and the height must have a ratio of at least 0.57 to the width (16:9 or larger). If the width or height of your player view are smaller than these values Picture-in-Picture may not automatically be triggered when the application enters the background.
 
-**Important: The Brightcove Native Player SDK's Picture-in-Picture functionality does not support videos with ad playback. Trying to use a video with ads with the Picture-in-Picture functionality active will result in unexpected behavior.**
+**Important: The IMA, FreeWheel, Pulse and SSAI plugins each handles Picture-in-Picture functionality differently. Review the Picture-in-Picture section in each plugin README for additional information.**
 
 ## Thumbnail Seeking <a name="ThumbnailSeeking"></a>
 
@@ -1108,7 +1109,6 @@ BCOVPlayerSDKManager *sdkManager = [BCOVPlayerSDKManager sharedManager];
 IMASettings *imaSettings = [[IMASettings alloc] init];
 imaSettings.ppid = kViewControllerIMAPublisherID;
 imaSettings.language = kViewControllerIMALanguage;
-imaSettings.enableBackgroundPlayback = self.allowBackgroundAudioPlayback;
         
 IMAAdsRenderingSettings *renderSettings = [[IMAAdsRenderingSettings alloc] init];
 renderSettings.webOpenerPresentingController = self;
@@ -1116,22 +1116,28 @@ renderSettings.webOpenerPresentingController = self;
 BCOVIMAAdsRequestPolicy *adsRequestPolicy =
     [BCOVIMAAdsRequestPolicy videoPropertiesVMAPAdTagUrlAdsRequestPolicy];
 
-
 // create the sidecar subtitles session provider. it has no upstream session provider.
-id<BCOVPlaybackSessionProvider> *sidecarSessionProvider =
+id<BCOVPlaybackSessionProvider> sidecarSessionProvider =
     [sdkManager createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:nil];
+
+// create a fairplay session provider with the sidecar session provider as its upstream session
+id<BCOVFPSAuthorizationProxy> authProxy =
+    [[BCOVFPSBrightcoveAuthProxy alloc] initWithPublisherId:nil applicationId:nil];
+id<BCOVPlaybackSessionProvider> fairPlaySessionProvider =
+    [sdkManager createFairPlaySessionProviderWithAuthorizationProxy:authProxy upstreamSessionProvider:sidecarSessionProvider];
     
 // create the IMA session provider with an upstream sidecar subtitles session provider.
-id<BCOVPlaybackSessionProvider> *imaSessionProvider =
+id<BCOVPlaybackSessionProvider> imaSessionProvider =
     [sdkManager createIMASessionProviderWithSettings:imaSettings
                                 adsRenderingSettings:renderSettings
                                     adsRequestPolicy:adsRequestPolicy
                                          adContainer:self.playerView.contentOverlayView
+                                      viewController:self
                                       companionSlots:nil
-                             upstreamSessionProvider:sidecarSessionProvider];
+                             upstreamSessionProvider:fairPlaySessionProvider];
 
 // create the playback controller using the session provider chain.
-id<BCOVPlaybackController> *playbackController =
+id<BCOVPlaybackController> playbackController =
     [sdkManager createPlaybackControllerWithSessionProvider:imaSessionProvider
                                                viewStrategy:nil];
 ```
@@ -1542,7 +1548,64 @@ You can also be notified if a stream is audio-only or video+audio with the `play
 }
 ```
 
-Our [VideoCloudBasicPlayer](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/VideoCloudBasicPlayer) has support for displaying the media information on the Lock Screen, Control Center and over AirPlay. See the `NowPlayingHandler` class for implementation details. 
+Our [VideoCloudBasicPlayer](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/VideoCloudBasicPlayer) has support for displaying the media information on the Lock Screen, Control Center and over AirPlay. See the `NowPlayingHandler` class for implementation details.
+
+## Bumper Support <a name="BumperSupport"></a>
+
+A Video Bumper is a short asset, usually 10 seconds or less, that plays before all other media and typically shows the brand or company that your video represents.  A player will request a bumper from the Playback API like any other video, and insert it before ads and content.
+
+Bumpers are a player-level feature, meaning a given player may only be associated with a single bumper. The playlists share the same bumper video. There will be two ways to configure a player to play a bumper video:
+
+#### 1. Playback Service (BCOVPlaybackService) signatures.
+
+- `bumperID`. The ID of the video to find.
+
+```
+- (void)findPlaylistWithPlaylistID:(NSString *)playlistID bumperID:(NSString *)bumperID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+- (void)findPlaylistWithPlaylistID:(NSString *)playlistID bumperID:(NSString *)bumperID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+- (void)findVideoWithVideoID:(NSString *)videoID bumperID:(NSString *)bumperID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+- (void)findVideoWithVideoID:(NSString *)videoID bumperID:(NSString *)bumperID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+```
+
+- `BumperRefID`. The reference ID of the video to find.
+
+```
+- (void)findPlaylistWithReferenceID:(NSString *)referenceID bumperReferenceID:(NSString *)bumperReferenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+- (void)findPlaylistWithReferenceID:(NSString *)referenceID bumperReferenceID:(NSString *)bumperReferenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+- (void)findVideoWithReferenceID:(NSString *)referenceID bumperReferenceID:(NSString *)bumperReferenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+- (void)findVideoWithReferenceID:(NSString *)referenceID bumperReferenceID:(NSString *)bumperReferenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+```
+
+#### 2. Custom Fields.
+
+The `bumper_id` field can be defined in Custom Fields in VideoCloud/Studio. The `bumper_id` can be used without the signatures previously defined. The `bumper_id` must be a valid video ID.
+
+**Note: BumperID passed via the Custom Fields (`bumper_id` field) take precedence over any ID in the playback service.**
+
+Playback controls can be hidden while the bumper is playing.
+
+```
+BCOVPUIPlayerViewOptions *options = [BCOVPUIPlayerViewOptions new];
+options.automaticControlTypeSelection = YES;
+options.showBumperControls = NO;
+BCOVPUIPlayerView *playerView = [[BCOVPUIPlayerView alloc] initWithPlaybackController:nil options:options controlsView:nil];
+```
+
+If the `automaticControlTypeSelection` option is set to `YES`, the layout for the bumper will adapt to the content (video or audio only). `basicControlViewWithVODLayout` and `basicControlViewWithAODLayout` layouts are designed for bumpers, `Live` or `LiveDRV` layouts are not available. Playback controls have a unique appearance when a bumper active:
+
+- The Progress Bar is purple
+- Buffering is not reflected in the progress bar
+- Seeking is not allowed
+- The JumpBack button is not present
+- AirPlay and PiP depend on the playerView configuration
+  - the AirPlay icon depends on the content (video/audio-only)
+  - PiP is not allowed for audio-only content
 
 ## Frequently Asked Questions <a name="FAQ"></a>
 

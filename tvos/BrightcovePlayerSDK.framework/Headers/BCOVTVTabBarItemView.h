@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BCOVPlaybackController.h"
+#import <BrightcovePlayerSDK/BCOVPlaybackController.h>
 
 @class BCOVTVPlayerView;
 @protocol BCOVPlaybackSession;

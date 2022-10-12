@@ -317,6 +317,12 @@ typedef NS_ENUM(NSUInteger, BCOVTVIconType)
 
 @property (nonatomic, weak) id<BCOVTVAccessibilityDelegate> accessibilityDelegate;
 
+/**
+ * When enabled, this property will show the bumper controls during playback.
+ * Defaults to `YES`.
+ */
+@property (nonatomic, assign) BOOL showBumperControls;
+
 @end
 
 

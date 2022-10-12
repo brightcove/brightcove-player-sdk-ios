@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Attempts to preload content keys for FairPlay protected videos. Typically
  * a content key for a FairPlay protected video is processed when the video
  * begins playback. By preloading the content key you can improve the playback
- * startup experience for your users. 
+ * startup experience for your users.
  *
  * This is only applicable to online videos and will not have any effect on offline videos.
  *

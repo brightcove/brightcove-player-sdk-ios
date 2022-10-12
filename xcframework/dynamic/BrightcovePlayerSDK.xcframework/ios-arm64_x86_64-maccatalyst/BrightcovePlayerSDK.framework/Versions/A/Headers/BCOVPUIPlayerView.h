@@ -434,6 +434,12 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
  */
 @property (nonatomic, assign) UIViewContentMode contentModeForPosterImage;
 
+/**
+ * When enabled, this property will show the bumper controls during playback.
+ * Defaults to `YES`.
+ */
+@property (nonatomic, assign) BOOL showBumperControls;
+
 @end
 
 

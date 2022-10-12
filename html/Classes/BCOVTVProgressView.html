@@ -70,6 +70,12 @@
 		
 		<option value="//api/name/bufferTrackMarkerColor">bufferTrackMarkerColor</option>
 		
+		<option value="//api/name/bumperMaximumTrackTintColor">bumperMaximumTrackTintColor</option>
+		
+		<option value="//api/name/bumperMinimumTrackTintColor">bumperMinimumTrackTintColor</option>
+		
+		<option value="//api/name/bumperModeActive">bumperModeActive</option>
+		
 		<option value="//api/name/duration">duration</option>
 		
 		<option value="//api/name/maximumTrackAdMarkerColor">maximumTrackAdMarkerColor</option>
@@ -350,6 +356,58 @@ the TV Player UI at playerView.controlsView.progressView.</p>
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/bumperModeActive" title="bumperModeActive"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bumperModeActive">&nbsp;&nbsp;bumperModeActive</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set to YES to change the <a href="#//api/name/progress">progress</a> view&rsquo;s UI to the bumper mode.
+In bumper mode this hides the buffer indicator and markers,
+and sets the min/max track colors to <a href="#//api/name/bumperMinimumTrackTintColor">bumperMinimumTrackTintColor</a>
+and <a href="#//api/name/bumperMaximumTrackTintColor">bumperMaximumTrackTintColor</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) BOOL bumperModeActive</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Set to YES to change the <a href="#//api/name/progress">progress</a> view&rsquo;s UI to the bumper mode.
+In bumper mode this hides the buffer indicator and markers,
+and sets the min/max track colors to <a href="#//api/name/bumperMinimumTrackTintColor">bumperMinimumTrackTintColor</a>
+and <a href="#//api/name/bumperMaximumTrackTintColor">bumperMaximumTrackTintColor</a>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVProgressView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/advertisingMode" title="advertisingMode"></a>
 	<h3 class="method-title"><code><a href="#//api/name/advertisingMode">&nbsp;&nbsp;advertisingMode</a></code>
 </h3>
@@ -535,6 +593,102 @@ Set to nil to restore the default color.</p>
 				<p>The tint color used for the buffered area.
 The default buffer track color is white.
 Set to nil to restore the default color.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVProgressView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bumperMinimumTrackTintColor" title="bumperMinimumTrackTintColor"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bumperMinimumTrackTintColor">&nbsp;&nbsp;bumperMinimumTrackTintColor</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The tint color used for the minimum track area when in bumper mode.
+The default bumper minimum track color is purple.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) UIColor *bumperMinimumTrackTintColor</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The tint color used for the minimum track area when in bumper mode.
+The default bumper minimum track color is purple.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVProgressView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bumperMaximumTrackTintColor" title="bumperMaximumTrackTintColor"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bumperMaximumTrackTintColor">&nbsp;&nbsp;bumperMaximumTrackTintColor</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The tint color used for the maximum track area when in bumper mode.
+The default bumper minimum track color is dark gray.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) UIColor *bumperMaximumTrackTintColor</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The tint color used for the maximum track area when in bumper mode.
+The default bumper minimum track color is dark gray.</p>
 			</div>
 			
 
@@ -1218,14 +1372,12 @@ The default value (used when <a href="#//api/name/bufferTrackMarkerColor">buffer
 					
 
                     
-                    
-          
 				</main>
 
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2022 Brightcove. All rights reserved. Updated: 2022-07-07</p>
+						<p class="copyright">Copyright &copy; 2022 Brightcove. All rights reserved. Updated: 2022-10-12</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

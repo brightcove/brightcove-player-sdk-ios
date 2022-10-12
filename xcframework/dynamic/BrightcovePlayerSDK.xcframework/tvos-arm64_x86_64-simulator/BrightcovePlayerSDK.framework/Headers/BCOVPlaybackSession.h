@@ -135,6 +135,49 @@ extern NSString * const kBCOVPlaybackSessionLifecycleEventEndCastSession;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventError;
 
 /**
+ * A bumper video has started to play.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventBumperEnter;
+
+/**
+ * A bumper video has ended.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventBumperExit;
+
+/**
+ * The bumper video has been paused.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventBumperPause;
+
+/**
+ * The bumper video has been resumed.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventBumperResume;
+
+/**
+ * A progress event for the currently playing bumper.
+ * Information about the current bumper may be found in the properties dictionary.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventBumperProgress;
+
+/**
+ * The video failed during playback and was unable to recover, possibly due to a
+ * network error. The event properties will contain the underlying error keyed
+ * by kBCOVPlaybackSessionEventKeyError.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventBumperFailedToPlayToEndTime;
+
+/**
+ * The key for the bumper video in the Event properties.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventPropertiesKeyBumperVideo;
+
+/**
+ * The key for the bumper progress in the Event properties.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventPropertiesKeyBumperProgress;
+
+/**
  * The video has entered an ad sequenece.
  */
 extern NSString * const kBCOVPlaybackSessionLifecycleEventAdSequenceEnter;

@@ -29,6 +29,14 @@
 @property(nonatomic, readwrite) float bufferProgress;
 
 /**
+ * Set to YES to change the slider's UI to the bumper mode.
+ * In bumper mode this hides the buffering indicator,
+ * hides markers, and sets the min/max track colors to
+ * bumperMinimumTrackTintColor and bumperMaximumTrackTintColor.
+ */
+@property(nonatomic, readwrite) BOOL bumperModeActive;
+
+/**
  * Set to YES to change the slider's UI to the advertising mode.
  * In advertising mode this hides the buffering indicator,
  * hides markers, and sets the min/max track colors to
@@ -40,6 +48,18 @@
  * The tint color to be used for the buffered area.
  */
 @property(nonatomic) UIColor *bufferProgressTintColor;
+
+/**
+ * The tint color used for the minimum track area when in bumper mode.
+ * The default bumper minimum track color is purple.
+ */
+@property(nonatomic) UIColor *bumperMinimumTrackTintColor;
+
+/**
+ * The tint color used for the maximum track area when in bumper mode.
+ * The default bumper minimum track color is dark gray.
+ */
+@property(nonatomic) UIColor *bumperMaximumTrackTintColor;
 
 /**
  * The tint color used for the minimum track area when in advertising mode.

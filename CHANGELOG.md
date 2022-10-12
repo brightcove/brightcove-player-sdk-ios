@@ -1,3 +1,59 @@
+## Release 6.11.0
+
+#### 12 Oct 2022
+
+#### Additions and Improvements
+
+* SDK release 6.10.5 added support for Live HLSe License Keys Protection.
+
+* Adds support for Video Bumpers. Refer to the *Bumper Support* section of the [Core README](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/README.md#BumperSupport) for details.
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes a crash when `keepControlsVisible` is set to `YES` in `BCOVPUIPlayerViewOptions`.
+
+* Fixes an issue where calling `-setVideos:` was briefly blocking the main thread on iOS 15+ devices.
+
+* Fixes play/pause behavior during ad playback on Apple TV.
+
+* Fixes an issue which prevented customization of the progress slider tint color.
+
+* Fixes a crash which could occur when closing a player on devices running iOS 12.
+
+* Adds the `video_duration` field to `play_request` events for VOD content.
+
+* Fixes an issue where progress and duration values were not updated correctly between videos in a playlist.
+
+* Improves documentation and error reporting for preloading a FairPlay license in the context of video downloads. 
+
+### FreeWheel Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Improves the behavior of seeking around ads and Seek Without Ads.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Improves the behavior of seeking around ads and Seek Without Ads.
+
+### Pulse Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where Seek Without Ads did not skip the midrolls before the seek time.
+
+* Fixes an issue where Pause Ads were not displayed when using `automaticControlTypeSelection`.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Improves the behavior of seeking around ads and Seek Without Ads.
+
 ## Release 6.10.6
 
 #### 7 Jul 2022
@@ -9,8 +65,6 @@
 #### Additions and Improvements
 
 * Adds the TableViewPlayer sample projects in Objective-C and Swift to demonstrate a scrolling list of playing videos.
-
-* Fixes a crash in the BasicSSAIPlayer
 
 ### Brightcove Player SDK for iOS (Core)
 
@@ -53,6 +107,8 @@
 #### Additions and Improvements
 
 * Adds support for Swift Package Manager. Refer to the *Swift Package Manager* sections of the Core SDK and Plugin READMEs.
+
+* Adds support for Live HLSe License Keys Protection.
 
 * Adds sample code for customizing UI controls in the PlayerUI/PlayerUICustomization projects in the [ios-sample-projects](https://github.com/BrightcoveOS/ios-player-samples).
 

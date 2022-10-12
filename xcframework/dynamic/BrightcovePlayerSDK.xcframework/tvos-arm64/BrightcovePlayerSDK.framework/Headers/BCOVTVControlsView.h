@@ -28,6 +28,11 @@
 @property (nonatomic) BOOL showClockTime;
 
 /**
+ * Set to YES to change the control view's UI to the bumper state.
+ */
+@property (nonatomic, readwrite) BOOL bumperModeActive;
+
+/**
  * Set to YES to change the control view's UI to the advertising state.
  */
 @property(nonatomic, readwrite) BOOL advertisingMode;

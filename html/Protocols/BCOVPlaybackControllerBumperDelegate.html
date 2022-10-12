@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>BCOVPlaybackControllerBumperDelegate Protocol Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Brightcove Native Player for iOS </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Brightcove</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/playbackController:playbackSession:bumper:didProgressTo:">- playbackController:playbackSession:bumper:didProgressTo:</option>
+		
+		<option value="//api/name/playbackController:playbackSession:didEnterBumper:">- playbackController:playbackSession:didEnterBumper:</option>
+		
+		<option value="//api/name/playbackController:playbackSession:didExitBumper:">- playbackController:playbackSession:didExitBumper:</option>
+		
+		<option value="//api/name/playbackController:playbackSession:didPauseBumper:">- playbackController:playbackSession:didPauseBumper:</option>
+		
+		<option value="//api/name/playbackController:playbackSession:didResumeBumper:">- playbackController:playbackSession:didResumeBumper:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BCOVPlaybackControllerBumperDelegate Protocol Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Conforms to</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>BCOVPlaybackController.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/playbackController:playbackSession:didEnterBumper:" title="playbackController:playbackSession:didEnterBumper:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:playbackSession:didEnterBumper:">&ndash;&nbsp;playbackController:playbackSession:didEnterBumper:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when playback enters a bumper within a playback session.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em> didEnterBumper:(BCOVVideo *)<em>video</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller in which this transition occurred.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session within which the bumper transition occurred.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>video</code></th>
+						<td><p>The bumper being entered.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when playback enters a bumper within a playback session.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackController:playbackSession:didExitBumper:" title="playbackController:playbackSession:didExitBumper:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:playbackSession:didExitBumper:">&ndash;&nbsp;playbackController:playbackSession:didExitBumper:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when playback exits a bumper within a playback session.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em> didExitBumper:(BCOVVideo *)<em>video</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller in which this transition occurred.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session within which the bumper transition occurred.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>video</code></th>
+						<td><p>The bumper being exited.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when playback exits a bumper within a playback session.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackController:playbackSession:bumper:didProgressTo:" title="playbackController:playbackSession:bumper:didProgressTo:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:playbackSession:bumper:didProgressTo:">&ndash;&nbsp;playbackController:playbackSession:bumper:didProgressTo:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called with the playback session&rsquo;s bumper playback progress.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em> bumper:(BCOVVideo *)<em>video</em> didProgressTo:(NSTimeInterval)<em>progress</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller in which a bumper is progressing.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session within which the bumper transition occurred.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>video</code></th>
+						<td><p>The bumper that is progressing.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>progress</code></th>
+						<td><p>The progress time of the bumper.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called with the playback session&rsquo;s bumper playback progress.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackController:playbackSession:didPauseBumper:" title="playbackController:playbackSession:didPauseBumper:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:playbackSession:didPauseBumper:">&ndash;&nbsp;playbackController:playbackSession:didPauseBumper:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when a bumper paused.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em> didPauseBumper:(BCOVVideo *)<em>video</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller in which this transition occurred.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session within which the bumper transition occurred.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>video</code></th>
+						<td><p>The bumper being paused.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when a bumper paused.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackController:playbackSession:didResumeBumper:" title="playbackController:playbackSession:didResumeBumper:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:playbackSession:didResumeBumper:">&ndash;&nbsp;playbackController:playbackSession:didResumeBumper:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when a bumper resumed.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> playbackSession:(id&lt;BCOVPlaybackSession&gt;)<em>session</em> didResumeBumper:(BCOVVideo *)<em>video</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller in which this transition occurred.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>session</code></th>
+						<td><p>The playback session within which the bumper transition occurred.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>video</code></th>
+						<td><p>The bumper being resumed.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when a bumper resumed.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2022 Brightcove. All rights reserved. Updated: 2022-10-12</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
