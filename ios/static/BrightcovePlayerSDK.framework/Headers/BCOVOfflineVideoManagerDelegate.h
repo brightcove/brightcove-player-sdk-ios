@@ -8,7 +8,7 @@
 
 #import <BrightcovePlayerSDK/BCOVOfflineVideoManagerTypes.h>
 
-@class AVAssetDownloadTask;
+@class AVAssetDownloadTask, BCOVPlaybackService, BCOVVideo;
 
 /**
  * Conform to this protocol to receive information about each video and
@@ -127,6 +127,23 @@ didFinishDownloadWithError:(NSError *)error;
  * This method is called on the main thread.
  */
 - (void)offlineVideoStorageDidChange;
+
+/**
+ * Called when the TTL token for the current source's manifest has expired and needs to be refreshed.
+ * You will want to implement this delegate method if you are using a BCOVPlaybackService with
+ * a custom URL.
+ *
+ * If you are using the default initilaizer for BCOVPlaybackService, `initWithAccountId:policyKey:`
+ * you do not need to implement this delegate method.
+ *
+ * If you return `nil`, or do not implement this method, an instance of BCOVPlaybackService will be
+ * created internally with the `initWithAccountId:policyKey:` initializer.
+ *
+ * @param video The video that requires a TTL token refresh.
+ *
+ * @return An instance of BCOVPlaybackService that will be used to update the manifest TTL token.
+ */
+- (BCOVPlaybackService *)playbackServiceForManifestURLTTLUpdateForVideo:(BCOVVideo *)video;
 
 #endif
 

@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.11.0.2264
+# Brightcove Player SDK for iOS, version 6.11.1.2309
 
 
 ## Table of Contents
@@ -158,7 +158,7 @@ Since release 6.0.0, the Brightcove Native Player SDK allows you to download HLS
 
 ## Installation <a name="Installation"></a>
 
-The Brightcove Player SDK provides installation packages for iOS and tvOS as static and a dynamic libraries packaged as Frameworks and XCFrameworks. Deployment is supported on iOS 11 and above.
+The Brightcove Player SDK provides installation packages for iOS and tvOS as static and a dynamic libraries packaged as Frameworks and XCFrameworks. Deployment is supported on iOS 11.4 and above.
 
 ### CocoaPods <a name="CocoaPods"></a>
 
@@ -174,7 +174,7 @@ Specifying the default pod `Brightcove-Player-Core` will install the dynamic lib
 source 'https://github.com/CocoaPods/Specs'
 source 'https://github.com/brightcove/BrightcoveSpecs.git'
 
-platform :ios, '11.0'
+platform :ios, '11.4'
 use_frameworks!
 
 target 'MyVideoPlayer' do
@@ -188,7 +188,7 @@ end
 source 'https://github.com/CocoaPods/Specs'
 source 'https://github.com/brightcove/BrightcoveSpecs.git'
 
-platform :ios, '11.0'
+platform :ios, '11.4'
 use_frameworks!
 
 target 'MyVideoPlayer' do
@@ -204,7 +204,7 @@ The XCFramework can be installed by appending the `/XCFramework` subspec to the 
 source 'https://github.com/CocoaPods/Specs'
 source 'https://github.com/brightcove/BrightcoveSpecs.git'
 
-platform :ios, '11.0'
+platform :ios, '11.4'
 use_frameworks!
 
 target 'MyVideoPlayer' do
@@ -227,7 +227,7 @@ To add the Brightcove Player SDK to your project manually:
 1. (**Dynamic Framework** only) On the "General" tab of your application target, add 'BrightcovePlayerSDK.framework' to the "Embedded Binaries" section.
 1. (**Dynamic Framework** only) On the "Build Phases" tab, add a "Run Script" phase with the command `bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh`. Check "Run script only when installing". This will remove unneeded architectures from the build, which is important for App Store submission. This step is no longer necessary when using XCFramework.
 1. (**Static Framework** only) On the "Build Settings" tab of your application target, add `-ObjC` to the "Other Linker Flags" build setting.
-1. (**Static Framework** only) Locate the file `bcovpuiiconfont.ttf` within the `BrightcovePlayerSDK.framework` bundle and drag it directly into your project listing so that the font file becomes a part of your app. After dragging the file, be sure to add it to your app's build target when prompted to do so. Once your app is built, the font file should reside in the app bundle at the same level as the app's Info.plist file. The font file supplies some of the `BrightcovePlayerUI` interface elements, but it does not need to be listed in the plist itself. When using XCFramework, the `BrightcovePlayerSDK` can be found in the ios-arm64 folder.
+1. (**Static Framework** only) Locate the file `BCOVPUIResources.bundle` within the `BrightcovePlayerSDK.framework` and drag it directly into your project listing so that the bundle file becomes a part of your app. After dragging the file, be sure to add it to your app's build target when prompted to do so. Once your app is built, the bundle file should reside in the app at the same level as the app's Info.plist file. The bundle file includes the font file that supplies some of the `BrightcovePlayerUI` interface elements, but it does not need to be listed in the plist itself. When using XCFramework, the `BrightcovePlayerSDK` can be found in the ios-arm64 folder.
 1. (**Universal Framework** only) On the "Build Phases" tab, add a "Run Script" phase with the command `bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh`. Check "Run script only when installing". This will remove unneeded architectures from the build, which is important for App Store submission.
 1. (**Apple Silicon with Universal Framework** only) On the "Build Settings" tab of your application target:
     * Ensure that `arm64` has been added to your "Excluded Architectures" build setting for `Any iOS Simulator SDK`.

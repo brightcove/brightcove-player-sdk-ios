@@ -44,7 +44,7 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 6.11.0.2264</h1>
+						<h1>Brightcove Player SDK for iOS, version 6.11.1.2309</h1>
 
 <h2>Table of Contents</h2>
 
@@ -338,7 +338,7 @@
 
 <h2>Installation <a name="Installation"></a></h2>
 
-<p>The Brightcove Player SDK provides installation packages for iOS and tvOS as static and a dynamic libraries packaged as Frameworks and XCFrameworks. Deployment is supported on iOS 11 and above.</p>
+<p>The Brightcove Player SDK provides installation packages for iOS and tvOS as static and a dynamic libraries packaged as Frameworks and XCFrameworks. Deployment is supported on iOS 11.4 and above.</p>
 
 <h3>CocoaPods <a name="CocoaPods"></a></h3>
 
@@ -354,7 +354,7 @@
 source &lsquo;https://github.com/CocoaPods/Specs&rsquo;
 source &lsquo;https://github.com/brightcove/BrightcoveSpecs.git&rsquo;</p>
 
-<p>platform :ios, &lsquo;11.0&rsquo;
+<p>platform :ios, &lsquo;11.4&rsquo;
 use_frameworks!</p>
 
 <p>target &lsquo;MyVideoPlayer&rsquo; do
@@ -368,7 +368,7 @@ end
 source &lsquo;<a href="https://github.com/CocoaPods/Specs" title="">https://github.com/CocoaPods/Specs'</a>
 source &rsquo;<a href="https://github.com/brightcove/BrightcoveSpecs.git" title="">https://github.com/brightcove/BrightcoveSpecs.git'</a></p>
 
-<p>platform :ios, &lsquo;11.0&rsquo;
+<p>platform :ios, &lsquo;11.4&rsquo;
 use_frameworks!</p>
 
 <p>target &lsquo;MyVideoPlayer&rsquo; do
@@ -384,7 +384,7 @@ end
 source &lsquo;https://github.com/CocoaPods/Specs&rsquo;
 source &lsquo;https://github.com/brightcove/BrightcoveSpecs.git&rsquo;</p>
 
-<p>platform :ios, &lsquo;11.0&rsquo;
+<p>platform :ios, &lsquo;11.4&rsquo;
 use_frameworks!</p>
 
 <p>target &lsquo;MyVideoPlayer&rsquo; do
@@ -412,7 +412,7 @@ end
 <li>(<strong>Dynamic Framework</strong> only) On the &ldquo;General&rdquo; tab of your application target, add &lsquo;BrightcovePlayerSDK.framework&rsquo; to the &ldquo;Embedded Binaries&rdquo; section.</li>
 <li>(<strong>Dynamic Framework</strong> only) On the &ldquo;Build Phases&rdquo; tab, add a &ldquo;Run Script&rdquo; phase with the command <code>bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh</code>. Check &ldquo;Run script only when installing&rdquo;. This will remove unneeded architectures from the build, which is important for App Store submission. This step is no longer necessary when using XCFramework.</li>
 <li>(<strong>Static Framework</strong> only) On the &ldquo;Build Settings&rdquo; tab of your application target, add <code>-ObjC</code> to the &ldquo;Other Linker Flags&rdquo; build setting.</li>
-<li>(<strong>Static Framework</strong> only) Locate the file <code>bcovpuiiconfont.ttf</code> within the <code>BrightcovePlayerSDK.framework</code> bundle and drag it directly into your project listing so that the font file becomes a part of your app. After dragging the file, be sure to add it to your app&rsquo;s build target when prompted to do so. Once your app is built, the font file should reside in the app bundle at the same level as the app&rsquo;s Info.plist file. The font file supplies some of the <code>BrightcovePlayerUI</code> interface elements, but it does not need to be listed in the plist itself. When using XCFramework, the <code>BrightcovePlayerSDK</code> can be found in the ios-arm64 folder.</li>
+<li>(<strong>Static Framework</strong> only) Locate the file <code>BCOVPUIResources.bundle</code> within the <code>BrightcovePlayerSDK.framework</code> and drag it directly into your project listing so that the bundle file becomes a part of your app. After dragging the file, be sure to add it to your app&rsquo;s build target when prompted to do so. Once your app is built, the bundle file should reside in the app at the same level as the app&rsquo;s Info.plist file. The bundle file includes the font file that supplies some of the <code>BrightcovePlayerUI</code> interface elements, but it does not need to be listed in the plist itself. When using XCFramework, the <code>BrightcovePlayerSDK</code> can be found in the ios-arm64 folder.</li>
 <li>(<strong>Universal Framework</strong> only) On the &ldquo;Build Phases&rdquo; tab, add a &ldquo;Run Script&rdquo; phase with the command <code>bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh</code>. Check &ldquo;Run script only when installing&rdquo;. This will remove unneeded architectures from the build, which is important for App Store submission.</li>
 <li>(<strong>Apple Silicon with Universal Framework</strong> only) On the &ldquo;Build Settings&rdquo; tab of your application target:
 
@@ -2099,7 +2099,7 @@ BCOVPUIPlayerView *playerView = [[BCOVPUIPlayerView alloc] initWithPlaybackContr
 					<footer>
 						<div class="footer-copyright">
 							
-							<p class="copyright">Copyright &copy; 2022 Brightcove. All rights reserved. Updated: 2022-10-12</p>
+							<p class="copyright">Copyright &copy; 2022 Brightcove. All rights reserved. Updated: 2022-11-04</p>
 							
 							
 							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

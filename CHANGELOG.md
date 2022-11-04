@@ -1,3 +1,47 @@
+## Release 6.11.1
+
+#### 4 Nov 2022
+
+#### Breaking Changes
+
+* The minimum Deployment Target for all Brightcove Native Player for iOS frameworks is now iOS 11.4 and tvOS 11.4.
+
+#### Additions and Improvements
+
+* SDK release 6.8.6 fixed an issue where the `video_duration` value was not being passed with VOD `video_view` events.
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Breaking Changes
+
+* `bcovpuiiconfont.ttf` resource has been moved to `BCOVPUIResources.bundle` to comply with new code signing requirements. For manual installation with static XCFramework or Fat Framework (Universal Framework) refer to the *Manual Installation* section of the [Core README](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/README.md#ManualInstallation). The manual installation with dynamic XCFramework or Fat Framework (Universal Framework) or, installation with CocoaPods or Swift Package Manager has not changed.
+
+#### Additions and Improvements
+
+* Fixes code signing issues by repackaging resource files into Xcode Resource Bundles.
+
+* Fixes an issue where an expired TTL prevented DRM-protected offline videos from playing.
+
+* Corrects the behavior of the `BCOVPlaybackController` method, `–resumeVideoAtTime:withAutoPlay:`.
+
+* Fixes an issue with setting the thumb image of a `BCOVPlayerUI` progress slider.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes a crash which occurred when attempting to play a second video after playing a first video with ads.
+
+* Fixes an issue where while playing a playlist, an incorrect video began playback after a preroll ad.
+
+* Fixes an issue with calling `setVideos:` after receiving `kBCOVPlaybackSessionLifecycleEventEnd` when `enableBackgroundPlayback` is enabled on `IMASettings`.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvementss
+
+* `omsdk-v1.js` resource has been moved to `BCOVSSAIOMResources.bundle` to comply with new code signing requirements. The installation has not changed.
+
 ## Release 6.11.0
 
 #### 12 Oct 2022
@@ -463,6 +507,8 @@ ld: could not reparse object file in bitcode bundle: 'Invalid bitcode version (P
 ### Brightcove Player SDK for iOS (Core)
 
 #### Additions and Improvements
+
+* Fixes an issue where the `video_duration` value was not being passed with VOD `video_view` events.
 
 * Fixes an issue where calling `-setVideos:` twice with the same DRM-protected video failed to play the second time.
 
