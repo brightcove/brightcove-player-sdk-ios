@@ -1,3 +1,25 @@
+## Release 6.11.2
+
+#### 30 Nov 2022
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes an issue that could cause the playback button to be in the wrong state.
+
+* Fixes a crash that would occur when a text track did not have a label value.
+
+* Fixes an issue that would prevent playback of some DRM content.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where using a custom playback rate could result in ads not playing.
+
+* Fixes a timing accuracy issue with thumbnail seeking.
+
 ## Release 6.11.1
 
 #### 4 Nov 2022
@@ -38,7 +60,7 @@
 
 ### SSAI Plugin for Brightcove Player SDK for iOS
 
-#### Additions and Improvementss
+#### Additions and Improvements
 
 * `omsdk-v1.js` resource has been moved to `BCOVSSAIOMResources.bundle` to comply with new code signing requirements. The installation has not changed.
 
@@ -1168,7 +1190,7 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Reduces the file size of the dynamic framework by ~10MB, and ~20MB for the static framework.
+* Reduces the file size of the dynamic framework by ~10MB, and ~20MB for the static framework. 
 
 * Reduces CPU load up to 40% when playing video, decreases memory usage by up to 10%, and decreases energy usage by up to 30%.
 
@@ -1198,9 +1220,9 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Fixes an issue where the delegate method  `playbackController:playbackSession:didExitAd:` was not being triggered when an applicable IMA ad was skipped.
+* Fixes an issue where the delegate method  `playbackController:playbackSession:didExitAd:` was not being triggered when an applicable IMA ad was skipped. 
 
-* Fixes an issue where ads were not replayed when `ignoringPreviouslyProcessedCuePoints` on `BCOVCuePointProgressPolicy` was disabled.
+* Fixes an issue where ads were not replayed when `ignoringPreviouslyProcessedCuePoints` on `BCOVCuePointProgressPolicy` was disabled. 
 
 ## Release 6.5.0
 
