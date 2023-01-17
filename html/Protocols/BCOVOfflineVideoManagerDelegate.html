@@ -68,6 +68,10 @@
 		
 		<option value="//api/name/offlineVideoToken:aggregateDownloadTask:didProgressTo:forMediaSelection:">- offlineVideoToken:aggregateDownloadTask:didProgressTo:forMediaSelection:</option>
 		
+		<option value="//api/name/offlineVideoToken:assetDownloadTask:didProgressTo:">- offlineVideoToken:assetDownloadTask:didProgressTo:</option>
+		
+		<option value="//api/name/offlineVideoToken:assetDownloadTask:willDownloadVariants:">- offlineVideoToken:assetDownloadTask:willDownloadVariants:</option>
+		
 		<option value="//api/name/offlineVideoToken:didFinishDownloadWithError:">- offlineVideoToken:didFinishDownloadWithError:</option>
 		
 		<option value="//api/name/offlineVideoToken:didFinishMediaSelectionDownload:">- offlineVideoToken:didFinishMediaSelectionDownload:</option>
@@ -238,6 +242,145 @@ for this individual AVMediaSelection.</p></td>
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>If you want to pause/resume/cancel the task, you should use the methods available
 in the <a href="../Classes/BCOVOfflineVideoManager.html">BCOVOfflineVideoManager</a> to perform those actions.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManagerDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/offlineVideoToken:assetDownloadTask:didProgressTo:" title="offlineVideoToken:assetDownloadTask:didProgressTo:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/offlineVideoToken:assetDownloadTask:didProgressTo:">&ndash;&nbsp;offlineVideoToken:assetDownloadTask:didProgressTo:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Receive progress notification about track downloads in progress for a downloaded video.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)offlineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em> assetDownloadTask:(AVAssetDownloadTask *)<em>assetDownloadTask</em> didProgressTo:(NSTimeInterval)<em>progressPercent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>assetDownloadTask</code></th>
+						<td><p>The AVAssetDownloadTask for this set of video track downloads</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>progressPercent</code></th>
+						<td><p>How far along the download has progressed, expressed as a percentage,
+for this individual AVMediaSelection.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>If you want to pause/resume/cancel the task, you should use the methods available
+in the <a href="../Classes/BCOVOfflineVideoManager.html">BCOVOfflineVideoManager</a> to perform those actions. This delegate method will called when
+downloading with an AVAssetDownloadConfiguration.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVOfflineVideoManagerDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/offlineVideoToken:assetDownloadTask:willDownloadVariants:" title="offlineVideoToken:assetDownloadTask:willDownloadVariants:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/offlineVideoToken:assetDownloadTask:willDownloadVariants:">&ndash;&nbsp;offlineVideoToken:assetDownloadTask:willDownloadVariants:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Receive confirmation of which AVAssetVariants will be downloaded.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)offlineVideoToken:(BCOVOfflineVideoToken)<em>offlineVideoToken</em> assetDownloadTask:(AVAssetDownloadTask *)<em>assetDownloadTask</em> willDownloadVariants:(NSArray&lt;AVAssetVariant*&gt; *)<em>variants</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>offlineVideoToken</code></th>
+						<td><p>Offline video token used to identify the downloaded video.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>assetDownloadTask</code></th>
+						<td><p>The AVAssetDownloadTask for this set of video track downloads</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>variants</code></th>
+						<td><p>An array of AVAssetVariant objects that will be downloaded.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This delegate method will called when downloading with an AVAssetDownloadConfiguration.</p>
 			</div>
 			
 
@@ -652,7 +795,7 @@ created internally with the <code>initWithAccountId:policyKey:</code> initialize
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2022 Brightcove. All rights reserved. Updated: 2022-11-30</p>
+						<p class="copyright">Copyright &copy; 2023 Brightcove. All rights reserved. Updated: 2023-01-17</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

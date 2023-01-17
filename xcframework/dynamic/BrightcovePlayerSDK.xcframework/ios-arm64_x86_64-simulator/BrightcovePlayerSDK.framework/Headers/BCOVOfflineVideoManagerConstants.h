@@ -2,7 +2,7 @@
 // BCOVOfflineVideoManagerConstants.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2022 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2023 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -292,4 +292,12 @@ extern NSString * const kBCOVOfflineVideoRelativeFilePathPropertyKey;
  * the app is launched, so you should not store the full path.
  */
 extern NSString * const kBCOVOfflineVideoFilePathPropertyKey;
+
+/**
+ * kBCOVOfflineVideoMediaType
+ * The BCOVSourceMediaType of this offline video.
+ * Will either be BCOVSourceMediaTypeAudio or BCOVSourceMediaTypeAudioVideo
+ * and stored as an NSNumber.
+ */
+extern NSString * const kBCOVOfflineVideoMediaType;
 

@@ -1,3 +1,69 @@
+## Release 6.12.0
+
+#### 17 Jan 2023
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* The SDK now utilizes AVQueuePlayer over AVPlayer. Refer to the *Video Insertion* section of the [Core README](https://github.com/brightcove/brightcove-player-sdk-ios#video-insertion) for information on how to insert videos. AVQueuePlayer does not support calling `replaceCurrentItemWithPlayerItem:`, use `removeAllItems` instead if this behavior is needed.
+
+* Adds support for downloading content with `AVAssetDownloadConfiguration` for iOS 15+ devices. See the [OfflinePlayback README](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/OfflinePlayback.md) for more information.
+
+* Adds support for displaying the poster image for audio-only offline downloads.
+
+* Fixes an issue where the completion block for BCOVPlaybackService would be called on a background thread when requesting a bumper video.
+
+* Fixes a crash that could occur when using Generic Stream Concurrency.
+
+#### Breaking Changes
+
+* Support for `iFramePlaylistURL` has been removed. Use `thumbnailVTTURL` instead.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports Google Ads IMA SDK 3.18.1 for iOS and 4.6.1 for tvOS.
+
+* Adds XCFramework support for IMA Plugin.
+
+* Adds support for Swift Package Manager. Refer to the [*Swift Package Manager* section](https://github.com/brightcove/brightcove-player-sdk-ios-ima#swift-package-manager).
+
+#### Breaking Changes
+
+* The minimum Deployment Target for IMA Plugin for Brightcove Player SDK for iOS is iOS 12.0 and tvOS 12.0.
+
+* The static IMA podspec has been removed. Use `Brightcove-Player-IMA` or `Brightcove-Player-IMA/XCFramework` instead.
+
+### FreeWheel Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports version 6.52.0 of the FreeWheel AdManager framework for iOS and tvOS.
+
+#### Breaking Changes
+
+* The static FreeWheel podspec has been removed. Use `Brightcove-Player-FreeWheel` or `Brightcove-Player-FreeWheel/XCFramework` instead.
+
+### Pulse Plugin for Brightcove Player SDK for iOS
+
+#### Breaking Changes
+
+* The static Pulse podspec has been removed. Use `Brightcove-Player-Pulse` or `Brightcove-Player-Pulse/XCFramework` instead.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Breaking Changes
+
+* The static SSAI podspec has been removed. Use `Brightcove-Player-SSAI` or `Brightcove-Player-SSAI/XCFramework` instead.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where disabling captions on a Cast receiver wouldn't sync with the device when Casting ended.
+
 ## Release 6.11.2
 
 #### 30 Nov 2022
@@ -36,7 +102,7 @@
 
 #### Breaking Changes
 
-* `bcovpuiiconfont.ttf` resource has been moved to `BCOVPUIResources.bundle` to comply with new code signing requirements. For manual installation with static XCFramework or Fat Framework (Universal Framework) refer to the *Manual Installation* section of the [Core README](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/README.md#ManualInstallation). The manual installation with dynamic XCFramework or Fat Framework (Universal Framework) or, installation with CocoaPods or Swift Package Manager has not changed.
+* `bcovpuiiconfont.ttf` resource has been moved to `BCOVPUIResources.bundle` to comply with new code signing requirements. For manual installation with static XCFramework or Fat Framework (Universal Framework) refer to the *Manual Installation* section of the [Core README](https://github.com/brightcove/brightcove-player-sdk-ios#manual-installation). The manual installation with dynamic XCFramework or Fat Framework (Universal Framework) or, installation with CocoaPods or Swift Package Manager has not changed.
 
 #### Additions and Improvements
 
@@ -72,7 +138,7 @@
 
 * SDK release 6.10.5 added support for Live HLSe License Keys Protection.
 
-* Adds support for Video Bumpers. Refer to the *Bumper Support* section of the [Core README](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/README.md#BumperSupport) for details.
+* Adds support for Video Bumpers. Refer to the *Bumper Support* section of the [Core README](https://github.com/brightcove/brightcove-player-sdk-ios#bumper-support) for details.
 
 ### Brightcove Player SDK for iOS (Core)
 
@@ -258,11 +324,11 @@
 
 * Supports Low Latency HLS and Dolby Atmos playback.
 
-* Adds new audio-only playback control layouts for on demand, live and live-DVR audio. Refer to the *Audio-Only Support* section of the [Core README](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/README.md#AudioOnlySupport) for details.
+* Adds new audio-only playback control layouts for on demand, live and live-DVR audio. Refer to the *Audio-Only Support* section of the [Core README](https://github.com/brightcove/brightcove-player-sdk-ios#audio-only-support) for details.
 
 * Adds support for Mac Catalyst.
 
-* Adds support for the addition of custom localizations. Refer to the *Custom Localization* section of the [Core README](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/README.md#AudioOnlySupport) for details.
+* Adds support for the addition of custom localizations. Refer to the *Custom Localization* section of the [Core README](https://github.com/brightcove/brightcove-player-sdk-ios#custom-localization) for details.
 
 * Fixes an issue where thumbnail images failed to download for offline viewing when a network disconnect occurred during the download.
 
@@ -280,7 +346,7 @@
 
 * Fixes an issue where the player would sometimes fail to respond to the Apple TV Remote Menu button.
 
-* `Brightcove-Player-OpenMeasurement` is not supported by Mac Catalyst apps. See the *Open Measurement* section of the [SSAI README](https://github.com/brightcove/brightcove-player-sdk-ios-ssai/blob/master/README.md#OpenMeasurement) for details.
+* `Brightcove-Player-OpenMeasurement` is not supported by Mac Catalyst apps. See the *Open Measurement* section of the [SSAI README](https://github.com/brightcove/brightcove-player-sdk-ios-ssai#open-measurement) for details.
 
 ## Release 6.10.2 ##
 
@@ -346,7 +412,7 @@
 
 #### Additions and Improvements
 
-* Adds support for `interstitialTimeRanges` when using `AVPlayerViewController` on tvOS. See the *Advertising* sub-section of [Using an AVPlayerViewController with a BCOVPlaybackController ](https://github.com/brightcove/brightcove-player-sdk-ios#AVPlayerViewController)  for more information.
+* Adds support for `interstitialTimeRanges` when using `AVPlayerViewController` on tvOS. See the *Advertising* sub-section of [Using an AVPlayerViewController with a BCOVPlaybackController ](https://github.com/brightcove/brightcove-player-sdk-ios#using-an-avplayerviewcontroller-with-a-bcovplaybackcontroller)  for more information.
 
 * Adds two new keys, `kBCOVAdPropertyKeyClickthroughURLs` and `kBCOVAdPropertyKeyTrackingURLs`, for use with the BCOVAd's `properties` dictionary. The keys  `kBCOVAdPrivatePropertyKeyClickthroughURLs` and `kBCOVAdPrivatePropertyKeyTrackingURLs` will be removed from the `privateProperties` dictionary in a future SDK release.
 
@@ -392,7 +458,7 @@
 
 #### Additions and Improvements
 
-* Adds `playbackRate` to `BCOVPlaybackController` to customize the playback speed of AVPlayer. See the [Playback Rate](https://github.com/brightcove/brightcove-player-sdk-ios#PlaybackRate) section of the README for more information.
+* Adds `playbackRate` to `BCOVPlaybackController` to customize the playback speed of AVPlayer. See the [Playback Rate](https://github.com/brightcove/brightcove-player-sdk-ios#playback-rate) section of the README for more information.
 
 * Fixes an issue where the AirPlay button would not be visible when using `automaticControlTypeSelection` 
 
@@ -510,7 +576,7 @@ ld: could not reparse object file in bitcode bundle: 'Invalid bitcode version (P
 
 #### Additions and Improvements
 
-* Adds support for creating a `BCOVSource` from VMAP XML data. Refer to the _[Using VMAP XML data](https://github.com/brightcove/brightcove-player-sdk-ios-ssai/blob/master/README.md#using-vmap-xml-data)_ section of the SSAI _[README](https://github.com/brightcove/brightcove-player-sdk-ios-ssai/blob/master/README.md)_ for details.
+* Adds support for creating a `BCOVSource` from VMAP XML data. Refer to the _[Using VMAP XML data](https://github.com/brightcove/brightcove-player-sdk-ios-ssai#using-vmap-xml-data)_ section of the SSAI _[README](https://github.com/brightcove/brightcove-player-sdk-ios-ssai/blob/master/README.md)_ for details.
 
 * Fixes an issue with `seekWithoutAds` when using the FairPlay plugin with SSAI in which `seekWithoutAds` could fail to call the completion handler. 
 
@@ -1190,7 +1256,7 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Reduces the file size of the dynamic framework by ~10MB, and ~20MB for the static framework. 
+* Reduces the file size of the dynamic framework by ~10MB, and ~20MB for the static framework.
 
 * Reduces CPU load up to 40% when playing video, decreases memory usage by up to 10%, and decreases energy usage by up to 30%.
 
@@ -1220,9 +1286,9 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Fixes an issue where the delegate method  `playbackController:playbackSession:didExitAd:` was not being triggered when an applicable IMA ad was skipped. 
+* Fixes an issue where the delegate method  `playbackController:playbackSession:didExitAd:` was not being triggered when an applicable IMA ad was skipped.
 
-* Fixes an issue where ads were not replayed when `ignoringPreviouslyProcessedCuePoints` on `BCOVCuePointProgressPolicy` was disabled. 
+* Fixes an issue where ads were not replayed when `ignoringPreviouslyProcessedCuePoints` on `BCOVCuePointProgressPolicy` was disabled.
 
 ## Release 6.5.0
 

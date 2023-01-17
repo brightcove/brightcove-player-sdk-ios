@@ -2,7 +2,7 @@
 // BCOVOfflineVideoManager.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2022 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2023 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -102,6 +102,34 @@
              mediaSelections:(NSArray<AVMediaSelection *> *)mediaSelections
                   parameters:(NSDictionary *)parameters
                   completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler;
+
+/**
+ * @abstract Initiate a request for a video download.
+ *
+ * @discussion If you are using FairPlay videos with Video Cloud Dynamic Delivery, FairPlay
+ *  application certificates will be downloaded automatically and used as needed.
+ *  If you are using legacy Video Cloud FairPlay videos, you should add any
+ *  needed application certificates to the BCOVOfflineVideoManger before
+ *  initiating a download, using -[addFairPlayApplicationCertificate:identifier:].
+ *
+ *  @param downloadConfiguration Blah blah.
+ *
+ * @param video BCOVVideo to be downloaded. The video should have an HLS
+ *  source with an HTTPS scheme, and may use FairPlay encryption.
+ *
+ * @param parameters NSDictionary of parameters used in this download request.
+ *  May be nil. Valid parameters are:
+ *  kBCOVOfflineVideoManagerRequestedBitrateKey, kBCOVFairPlayLicensePurchaseKey,
+ *  kBCOVFairPlayLicenseRentalDurationKey.
+ *
+ * @param completionHandler A block that receives the new offlineVideoToken after the request
+ *  is successfully made. If there is an error, offlineVideoToken will
+ *  be nil, and error will report any NSError.
+ */
+- (void)requestVideoDownload:(BCOVVideo *)video
+             downloadConfiguration:(AVAssetDownloadConfiguration *)downloadConfiguration
+                  parameters:(NSDictionary *)parameters
+                  completion:(void (^)(BCOVOfflineVideoToken offlineVideoToken, NSError *error))completionHandler API_AVAILABLE(ios(15.0));
 
 /**
  * @abstract Returns an array of the status of all video downloads,

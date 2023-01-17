@@ -2,7 +2,7 @@
 // BCOVPlaybackController.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2022 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2023 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -76,7 +76,8 @@ typedef NS_ENUM(NSUInteger, BCOVVideoType) {
  */
 typedef NS_ENUM(NSUInteger, BCOVSourceMediaType)
 {
-    BCOVSourceMediaTypeAudio = 1,
+    BCOVSourceMediaTypeUndetermined = 0,
+    BCOVSourceMediaTypeAudio,
     BCOVSourceMediaTypeAudioVideo
 };
 
@@ -591,6 +592,15 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * with this playback controller.
  */
 - (void)pauseAd;
+
+/**
+ * This method is used to insert an additional `BCOVVideo` into the player queue
+ * for this playback controller.
+ *
+ * @param video The video to insert
+ * @param afterIndex The index of the video to insert after
+ */
+- (void)insertVideo:(BCOVVideo *)video afterVideoAtIndex:(NSUInteger)afterIndex;
 
 #pragma mark - FairPlay DRM
 
@@ -1125,6 +1135,27 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * @param session The playback session whose AVPlayer's currentItem's media option was changed
  */
 - (void)manifestTTLWasUpdatedWithError:(NSError *)error playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session;
+
+/**
+ * Called after a video has been successfully inserted into the player queue.
+ *
+ * @param controller The playback controller to which this instance serves as delegate.
+ * @param video The video that was inserted.
+ * @param index The index at which the newVideo was inserted.
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller didInsertVideo:(BCOVVideo *)video atIndex:(NSUInteger)index;
+
+/**
+ * Called if a video fails to be inserted into the player queue.
+ * Possible reasons are:
+ * - AVQueuePlayer returning false for `canInsertItem:afterItem`
+ * - Failure to pass in a valid `BCOVVideo` into the `insertVideo:afterVideoAtIndex:` method
+ * - The session created for the `BCOVVideo` resulted in a `BCOVErrorSession`
+ *
+ * @param controller The playback controller to which this instance serves as delegate.
+ * @param video The video that failed to be inserted.
+ */
+- (void)playbackController:(id<BCOVPlaybackController>)controller failedToInsertVideo:(BCOVVideo *)video;
 
 @end
 

@@ -2,7 +2,7 @@
 // BCOVOfflineVideoManagerDelegate.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2022 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2023 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -53,6 +53,38 @@
     aggregateDownloadTask:(AVAggregateAssetDownloadTask *)aggregateDownloadTask
             didProgressTo:(NSTimeInterval)progressPercent
         forMediaSelection:(AVMediaSelection *)mediaSelection;
+
+/**
+ * @abstract Receive progress notification about track downloads in progress for a downloaded video.
+ *
+ * @discussion If you want to pause/resume/cancel the task, you should use the methods available
+ *  in the BCOVOfflineVideoManager to perform those actions. This delegate method will called when
+ *  downloading with an AVAssetDownloadConfiguration.
+ *
+ * @param offlineVideoToken Offline video token used to identify the downloaded video.
+ *
+ * @param assetDownloadTask The AVAssetDownloadTask for this set of video track downloads
+ *
+ * @param progressPercent How far along the download has progressed, expressed as a percentage,
+ *  for this individual AVMediaSelection.
+ */
+- (void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
+        assetDownloadTask:(AVAssetDownloadTask *)assetDownloadTask
+            didProgressTo:(NSTimeInterval)progressPercent API_AVAILABLE(ios(15.0));
+/**
+ * @abstract Receive confirmation of which AVAssetVariants will be downloaded.
+ *
+ * @discussion This delegate method will called when downloading with an AVAssetDownloadConfiguration.
+ *
+ * @param offlineVideoToken Offline video token used to identify the downloaded video.
+ *
+ * @param assetDownloadTask The AVAssetDownloadTask for this set of video track downloads
+ *
+ * @param variants An array of AVAssetVariant objects that will be downloaded.
+ */
+- (void)offlineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken
+        assetDownloadTask:(AVAssetDownloadTask *)assetDownloadTask
+     willDownloadVariants:(NSArray<AVAssetVariant *> *)variants API_AVAILABLE(ios(15.0));
 
 /**
  * @abstract This method is called when an individual track download is complete.

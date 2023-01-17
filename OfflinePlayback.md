@@ -1,5 +1,5 @@
 
-# iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.11.2.2333
+# iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.12.0.2391
 
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -56,10 +56,13 @@ In your user interface, you should indicate if a video is eligible for download.
 
 ## Download a Video
 
-When a user requests a video download, call
+There are two approaches to download a video. The first utilizes an array of `AVMediaSelection` objects and the second utilizes `AVAssetDownloadConfiguration` which was introduced in iOS 15.
+
+### When downloading with AVMediaSelections
 
 ```
 [BCOVOfflineVideoManager.sharedManager requestVideoDownload:video
+                                            mediaSelections:nil
                                                  parameters:parameters
                                                  completion:^(BCOVOfflineVideoToken offlineVideoToken,
                                                               NSError *error) {
@@ -68,6 +71,21 @@ When a user requests a video download, call
 
 }];
 ```
+
+### When downloading with AVAssetDownloadConfiguration
+
+```
+[BCOVOfflineVideoManager.sharedManager requestVideoDownload:video
+                                      downloadConfiguration:downloadConfiguration
+                                                 parameters:parameters
+                                                 completion:^(BCOVOfflineVideoToken offlineVideoToken, NSError *error) {
+
+    // store offlineVideoToken or handle error
+
+}];
+```
+
+### Configuring the parameters for download
 
 The video parameter is a normal `BCOVVideo` object that you get by querying the `BCOVPlaybackService`. You should make sure that its `canBeDownloaded` property is `YES` before downloading.
 
@@ -131,6 +149,8 @@ If you plan to download multiple FairPlay-protected videos, it's a good idea to 
 ```
 An offline video token will be established for the download at this point. After the license has been acquired, you can then request the video download without any parameters:
 
+### When downloading with AVMediaSelections
+
 ```
 [BCOVOfflineVideoManager.sharedManager requestVideoDownload:video
                                             mediaSelections:nil
@@ -143,21 +163,51 @@ An offline video token will be established for the download at this point. After
 }];
 ```
 
+### When downloading with AVAssetDownloadConfiguration
+
+```
+[BCOVOfflineVideoManager.sharedManager requestVideoDownload:video
+                                      downloadConfiguration:downloadConfiguration
+                                                 parameters:nil
+                                                 completion:^(BCOVOfflineVideoToken offlineVideoToken, NSError *error) {
+
+    // returns the same offline video token here
+
+}];
+```
+
 At this point, the download will continue even if the user sends the app to the background. Keep in mind, however, that a FairPlay license rental duration begins from the time when the license is requested.
 
 ## Downloading Secondary Tracks
 
-When secondary tracks are to be included for offline viewing, they must be downloaded along with the video in the call to <nobr>`-requestVideoDownload:mediaSelections:parameters:completion:`</nobr>.
+Subtitle, caption and audio tracks for a language are known collectively as a Media Selection and are represented by Apple's `AVMediaSelection` class. A video can have multiple media selections, for example, English, French and Spanish. The language settings of the device determine the *preferred* media selection, for example, English.
 
-Subtitle, caption and audio tracks for a language are known collectively as a Media Selection and are represented by Apple's `AVMediaSelection` class. A video can have multiple media selections, for example, English, French and Spanish. The language settings of the device determine the *preferred* media selection, for example, English. Internally, the SDK manages the download of a video and its secondary tracks using a single `AVAggregateAssetDownloadTask`.
+Media Selection are properties of the `AVAsset` class. `BCOVOfflineVideoManager` provides the utility method `-[BCOVOfflineVideoManager urlAssetForVideo:error:]` to help you assemble `AVMediaSelection` objects of interest. Refer to the "*Finding Media Selections*" methods of `AVAsset`.
+
+### When downloading with AVMediaSelections
+
+Internally, the SDK manages the download of a video and its secondary tracks using a single `AVAggregateAssetDownloadTask`.
 
 Downloading for offline viewing involves these basic steps:
 
-1. Choose the media selections to be downloaded. Media Selection are properties of the `AVAsset` class. `BCOVOfflineVideoManager` provides the utility method `-[BCOVOfflineVideoManager urlAssetForVideo:error:]` to help you assemble `AVMediaSelection` objects of interest. Refer to the "*Finding Media Selections*" methods of `AVAsset`.
+1. Choose the media selections to be downloaded.
 1. Create an `NSArray<AVMediaSelection *>` of your media selections, and pass it to `-[BCOVOfflineVideoManager requestVideoDownload:mediaSelections:parameters:completion:]` or pass `nil` to automatically download the *preferred* `AVMediaSelection` objects.
-1. Track download progress using methods of the `BCOVOfflineVideoManagerDelegate` protocol. Note that when downloading additional media selections, progress callbacks are made for each downloaded item individually, with each ranging in progress from 0% to 100%.
+1. Track download progress using the `offlineVideoToken:aggregateDownloadTask:didProgressTo:forMediaSelection:` of the `BCOVOfflineVideoManagerDelegate` protocol. Note that when downloading additional media selections, progress callbacks are made for each downloaded item individually, with each ranging in progress from 0% to 100%.
 
 The [Discover how to download and play HLS offline](https://developer.apple.com/videos/play/wwdc2020/10655) session from **WWDC 2020** covers reccomended methods of gathering the media selections (4:55) you'd like to download in addition to handling download progress for an `AVAggregateAssetDownloadTask` (5:22).
+
+### When downloading with AVAssetDownloadConfiguration
+
+Internally, the SDK manages the download of a video and its secondary tracks using a single `AVAssetDownloadTask`.
+
+Downloading for offline viewing involves these basic steps:
+
+1. Choose the media selections to be downloaded.
+1. Create an `NSArray<AVMediaSelection *>` of your media selections, and set as the value for `primaryContentConfiguration.mediaSelections` on your `AVAssetDownloadConfiguration`
+1. You can use the `offlineVideoToken:assetDownloadTask:willDownloadVariants:` delegate method to verify which variants will be downloaded.
+1. Track download progress using the `offlineVideoToken:assetDownloadTask:didProgressTo:` of the `BCOVOfflineVideoManagerDelegate` protocol.
+
+The [Explore HLS variants in AVFoundation](https://developer.apple.com/videos/play/wwdc2021/10143/) session from **WWDC 2021** covers selecting primary and auxilary media selections on an `AVAssetDownloadConfiguration`.
 
 ## Displaying Sideband Subtitles
 
@@ -172,6 +222,8 @@ If the `kBCOVOfflineVideoUsesSidebandSubtitleKey` is missing or NO, you can assu
 If you downloaded Sideband Subtitles in iOS 10, and the device was subsequently upgraded to iOS 11, the Brightcove Native Player's PlayerUI controls will still detect that you are using Sideband Subtitles, and display properly.
 
 ## Specifying a Variant Bitrate
+
+### When downloading with AVMediaSelections
 
 If you do not specify a bitrate for your download, you will get the lowest rendition that has a video track. To pick a specific variant based on the bitrate or resolution, you can call:
 
@@ -215,6 +267,7 @@ parameters = @{
 };
 
 [BCOVOfflineVideoManager.sharedManager requestVideoDownload:video
+                                            mediaSelections:mediaSelections
                                                  parameters:parameters
                                                  completion:^(BCOVOfflineVideoToken offlineVideoToken,
                                                               NSError *error) {
@@ -222,6 +275,24 @@ parameters = @{
     // store offlineVideoToken or handle error
 
 }];
+```
+
+### When downloading with AVAssetDownloadConfiguration
+
+You can select a specific `AVAssetVariant` or can use an `NSPredicate` to pick an appropriate variant.
+
+```
+// Selecting a specific variant
+AVAssetVariantQualifier *desiredVariantQualifier = [AVAssetVariantQualifier assetVariantQualifierWithVariant:desiredVariant];
+AVAssetDownloadConfiguration *downloadConfiguration = [AVAssetDownloadConfiguration downloadConfigurationWithAsset:avURLAsset title:video.properties[kBCOVVideoPropertyKeyName]];
+downloadConfiguration.primaryContentConfiguration.variantQualifiers = @[desiredVariantQualifier];
+```
+
+```
+// Using an NSPredicate
+NSPredicate *peakBitRatePredicate = [NSPredicate predicateWithFormat:@"peakBitRate > 1268300"];
+AVAssetVariantQualifier *predicateQualifier = [AVAssetVariantQualifier assetVariantQualifierWithPredicate:peakBitRatePredicate];
+downloadConfiguration.primaryContentConfiguration.variantQualifiers = @[predicateQualifier];
 ```
 
 ## Check Download Size
@@ -533,6 +604,8 @@ Please note that iOS does not wake up your application from the background immed
 
 ## Playback During Download
 
+### When downloading with AVMediaSelections
+
 While a movie is downloading, you can play the movie by passing a `BCOVVideo` object created from the offline video token to the `BCOVPlaybackController` just like any other movie. We do this by using an internal reference stored in the currently active `AVAssetDownloadTask` (this is the method recommended by Apple to make the download and playback as efficient as possible).
 
 Doing this has several potentially unexpected side effects:
@@ -555,16 +628,31 @@ When possible, a better way to play the same video twice is to simply seek the s
 
 If this is not possible, and you still need to create another playback controller, another alternative is to remove the first `AVPlayer`'s current `AVPlayerItem` when you are done with the current session, and just before you destroy the playback controller. You can accomplish this with a single call:
 
-```objc
-	[session.player replaceCurrentItemWithPlayerItem:nil];
+```
+[session.player removeAllItems];
 ```
 
 ## Specifying the Download Display Name
 
-Users can directly examine and optionally delete downloaded videos using the Settings app. The displayed video name is taken from the "name" property of the `BCOVVideo` object. If the "name" property is not present, the offline video token's value will be used instead.
+Users can directly examine and optionally delete downloaded videos using the Settings app.
 
-To provide a more customized experience, you can set a display name for the video asset in the options dictionary passed to `-requestVideoDownload:parameters:completion:` (or when preloading the license). Use the `kBCOVOfflineVideoManagerDisplayNameKey` key to set an `NSString` as the new asset display name.
+### When downloading with AVMediaSelections
+
+The displayed video name is taken from the "name" property of the `BCOVVideo` object. If the "name" property is not present, the offline video token's value will be used instead.
+
+To provide a more customized experience, you can set a display name for the video asset in the options dictionary passed to `-requestVideoDownload:mediaSelections:parameters:completion:` (or when preloading the license). Use the `kBCOVOfflineVideoManagerDisplayNameKey` key to set an `NSString` as the new asset display name.
 
 Note that iOS uses the asset name string as part of the downloaded video's file path, so you should avoid characters that would not be valid in a POSIX path, like a "/" character.
 
 You may choose to replace these with more standardized names using the `kBCOVOfflineVideoManagerDisplayNameKey` option.
+
+### When downloading with AVAssetDownloadConfiguration
+
+The displayed video name is taken from value you use for `title` argument when initializing `AVAssetDownloadConfiguration`.
+
+You can also provide a value for the `artworkData` property on `AVAssetDownloadConfiguration`. This will display an image next to the video name in the Settings app.
+
+```
+NSURL *thumbnailURL = [NSURL URLWithString:video.properties[kBCOVVideoPropertyKeyThumbnail]];
+downloadConfiguration.artworkData = [NSData dataWithContentsOfURL:thumbnailURL];
+```

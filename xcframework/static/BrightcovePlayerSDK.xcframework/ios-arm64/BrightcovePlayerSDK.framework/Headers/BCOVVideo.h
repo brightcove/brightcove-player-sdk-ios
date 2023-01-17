@@ -2,7 +2,7 @@
 // BCOVVideo.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2022 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2023 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -119,11 +119,6 @@ extern NSString * _Nullable localizedLongDescriptionForLocale(BCOVVideo * _Nulla
 @property (nonatomic, readonly, copy, nullable) NSURL *thumbnailVTTURL;
 
 /**
- * The I-FRAME manifest URL to be used for thumbnail scrubbing.
- */
-@property (nonatomic, readonly, copy, nullable) NSURL *iFramePlaylistURL __attribute__((deprecated("Use `thumbnailVTTURL` instead.")));
-
-/**
  * Returns a modified version of this source. Because BCOVVideo objects
  * are immutable, an entirely new BCOVVideo must be created even if only
  * a single change is needed. Therefore, this method provides a convenient way
@@ -157,7 +152,6 @@ extern NSString * _Nullable localizedLongDescriptionForLocale(BCOVVideo * _Nulla
 @property (nonatomic, readwrite, copy, nullable) NSDictionary *properties;
 @property (nonatomic, readwrite, copy, nullable) NSArray *sources;
 @property (nonatomic, readwrite, copy, nullable) NSURL *thumbnailVTTURL;
-@property (nonatomic, readwrite, copy, nullable) NSURL *iFramePlaylistURL __attribute__((deprecated("Use `thumbnailVTTURL` instead.")));
 
 @end
 
@@ -206,8 +200,8 @@ extern NSString * _Nullable localizedLongDescriptionForLocale(BCOVVideo * _Nulla
  *  for proper functioning of the device.
  *
  *  On some versions of iOS `playableOffline` may return NO if the offline video is already
- *  loaded up in an instance of AVPlayer. Calling `replaceCurrentItemWithPlayerItem`
- *  on the current instance of `AVPlayer` with a `nil` value prior to checking
+ *  loaded up in an instance of AVPlayer. Calling `removeAllItems`
+ *  on the current instance of `AVQueuePlayer` prior to checking
  *  should result in the expected value of TRUE being returned.
  */
 @property (nonatomic, readonly) BOOL playableOffline;

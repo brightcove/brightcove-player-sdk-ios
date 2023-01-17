@@ -72,6 +72,10 @@
 		
 		<option value="//api/name/playbackController:didCompletePlaylist:">- playbackController:didCompletePlaylist:</option>
 		
+		<option value="//api/name/playbackController:didInsertVideo:atIndex:">- playbackController:didInsertVideo:atIndex:</option>
+		
+		<option value="//api/name/playbackController:failedToInsertVideo:">- playbackController:failedToInsertVideo:</option>
+		
 		<option value="//api/name/playbackController:noPlayableVideosFound:">- playbackController:noPlayableVideosFound:</option>
 		
 		<option value="//api/name/playbackController:playbackSession:determinedMediaType:">- playbackController:playbackSession:determinedMediaType:</option>
@@ -1469,6 +1473,145 @@ created internally with the <code>initWithAccountId:policyKey:</code> initialize
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackController:didInsertVideo:atIndex:" title="playbackController:didInsertVideo:atIndex:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:didInsertVideo:atIndex:">&ndash;&nbsp;playbackController:didInsertVideo:atIndex:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called after a video has been successfully inserted into the player queue.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> didInsertVideo:(BCOVVideo *)<em>video</em> atIndex:(NSUInteger)<em>index</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller to which this instance serves as delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>video</code></th>
+						<td><p>The video that was inserted.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>index</code></th>
+						<td><p>The index at which the newVideo was inserted.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called after a video has been successfully inserted into the player queue.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playbackController:failedToInsertVideo:" title="playbackController:failedToInsertVideo:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playbackController:failedToInsertVideo:">&ndash;&nbsp;playbackController:failedToInsertVideo:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called if a video fails to be inserted into the player queue.
+Possible reasons are:
+- AVQueuePlayer returning false for <code>canInsertItem:afterItem</code>
+- Failure to pass in a valid <a href="../Classes/BCOVVideo.html"><code>BCOVVideo</code></a> into the <code>insertVideo:afterVideoAtIndex:</code> method
+- The session created for the <a href="../Classes/BCOVVideo.html"><code>BCOVVideo</code></a> resulted in a <code>BCOVErrorSession</code></p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)playbackController:(id&lt;BCOVPlaybackController&gt;)<em>controller</em> failedToInsertVideo:(BCOVVideo *)<em>video</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>controller</code></th>
+						<td><p>The playback controller to which this instance serves as delegate.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>video</code></th>
+						<td><p>The video that failed to be inserted.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called if a video fails to be inserted into the player queue.
+Possible reasons are:
+- AVQueuePlayer returning false for <code>canInsertItem:afterItem</code>
+- Failure to pass in a valid <a href="../Classes/BCOVVideo.html"><code>BCOVVideo</code></a> into the <code>insertVideo:afterVideoAtIndex:</code> method
+- The session created for the <a href="../Classes/BCOVVideo.html"><code>BCOVVideo</code></a> resulted in a <code>BCOVErrorSession</code></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVPlaybackController.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -1484,7 +1627,7 @@ created internally with the <code>initWithAccountId:policyKey:</code> initialize
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2022 Brightcove. All rights reserved. Updated: 2022-11-30</p>
+						<p class="copyright">Copyright &copy; 2023 Brightcove. All rights reserved. Updated: 2023-01-17</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
