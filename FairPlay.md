@@ -1,4 +1,4 @@
-# Using FairPlay With The Brightcove Player SDK for iOS, version 6.12.0.2391
+# Using FairPlay With The Brightcove Player SDK for iOS, version 6.12.1.2421
 
 ## Quick Start
 
@@ -41,16 +41,19 @@ Here are the basic steps you need to follow:
     BCOVPlaybackService *playbackService = [[BCOVPlaybackService alloc] initWithAccountId:<account-id>
                                                                                 policyKey:<policy-key>];
     
-    [playbackService findVideoWithVideoID:<video-id>
-                               parameters:@{}
-                               completion:^(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error) {
+    NSDictionary *configuration = @{
+        kBCOVPlaybackServiceConfigurationKeyAssetID:<video-id>
+    };
+    [playbackService findVideoWithConfiguration:configuration
+                                queryParameters:@{}
+                                     completion:^(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error) {
                                    
-                                   if(video)
-                                   {
-                                       [self.playbackController setVideos:@[video]];
-                                   }
-                                   
-                               }];
+        if(video)
+        {
+            [self.playbackController setVideos:@[video]];
+        }
+
+    }];
 ```
 
 ## Legacy Video Cloud Workflow
@@ -90,16 +93,19 @@ This code shows basic setup and playback:
             BCOVPlaybackService *playbackService = [[BCOVPlaybackService alloc] initWithAccountId:<account-id>
                                                                                         policyKey:<policy-key>];
             
-            [playbackService findVideoWithVideoID:<video-id>
-                                       parameters:@{}
-                                       completion:^(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error) {
+            NSDictionary *configuration = @{
+                kBCOVPlaybackServiceConfigurationKeyAssetID:<video-id>
+            };
+            [playbackService findVideoWithConfiguration:configuration
+                                        queryParameters:@{}
+                                             completion:^(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error) {
                                            
-                                           if(video)
-                                           {
-                                               [playbackController setVideos:@[video]];
-                                           }
-                                           
-                                       }];
+                if(video)
+                {
+                    [playbackController setVideos:@[video]];
+                }
+
+            }];
         }
         
     }];
@@ -119,7 +125,7 @@ If you have questions or need help, we have a support forum for Brightcove's nat
 
 FairPlay license related errors will be passed through in a `kBCOVPlaybackSessionLifecycleEventError` lifecycleEvent. These can include license server request failures or AVContentKeySession errors. You can access the `NSError` object with the `kBCOVPlaybackSessionEventKeyError` in the lifecycleEvent's properties dictionary. 
 
-If the issue is releated to a license server request (which can include concurrency-limit errors) you'll be able to retrieve the response data from the userInfo dictionary on the `NSError` with the `kBCOVFPSAuthProxyResponseData` key. 
+If the issue is related to a license server request (which can include concurrency-limit and device-limit errors) you'll be able to retrieve the response data from the userInfo dictionary on the `NSError` with the `kBCOVFPSAuthProxyResponseData` key.
 
 Here is an example of logging errors from an `kBCOVPlaybackSessionLifecycleEventError` lifecycleEvent:
 
@@ -156,8 +162,12 @@ You may preload content keys for videos by calling  the `preloadContentKeysForVi
 
 ```
 static NSString * const kViewControllerVideoID = @"...";
+
+NSDictionary *configuration = @{
+    kBCOVPlaybackServiceConfigurationKeyAssetID:kViewControllerVideoID
+};
     
-[self.playbackService findVideoWithVideoID:kViewControllerVideoID parameters:nil completion:^(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error) {
+[self.playbackService findVideoWithConfiguration:configuration queryParameters:nil completion:^(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error) {
 
     if (video)
     {

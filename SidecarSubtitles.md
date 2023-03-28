@@ -1,4 +1,4 @@
-# Using Sidecar Subtitles With The Brightcove Player SDK for iOS, version 6.12.0.2391
+# Using Sidecar Subtitles With The Brightcove Player SDK for iOS, version 6.12.1.2421
 
 ## Introduction
 
@@ -31,16 +31,20 @@ If you are using legacy Video Cloud and need to make sure the captions you set u
 
         BCOVPlaybackService *playbackService = [[BCOVPlaybackService alloc] initWithAccountId:accoundId
                                                                                     policyKey:policyKey];
-    [2] [playbackService findVideoWithVideoID:videoID
-                                   parameters:nil
-                                   completion:^(BCOVVideo    *video,
-                                                NSDictionary *jsonResponse,
-                                                NSError      *error) {
 
-                                     [controller setVideos:@[ video ]];
-                                     [controller play];
+        NSDictionary *configuration = @{
+            kBCOVPlaybackServiceConfigurationKeyAssetID:videoID
+        };
+    [2] [playbackService findVideoWithConfiguration:configuration
+                                    queryParameters:nil
+                                         completion:^(BCOVVideo    *video,
+                                                      NSDictionary *jsonResponse,
+                                                      NSError      *error) {
 
-                                 }];
+            [controller setVideos:@[ video ]];
+            [controller play];
+
+        }];
 ```
 
 BCOVSidecarSubtitles adds some category methods to BCOVPlaybackManager. The first of these is `-createSidecarSubtitlesPlaybackControllerWithViewStrategy:`. Use this method to create your playback controller. Alternately (if you are using more than one session provider), you can create a BCOVSSSessionProvider and pass that to the manager method that creates a playback controller with upstream session providers.

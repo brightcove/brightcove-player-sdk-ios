@@ -97,6 +97,40 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
 - (instancetype)initWithAccountId:(NSString *)accountId policyKey:(NSString *)policyKey baseURLStr:(NSString *)baseURLStr  authBaseURLStr:(NSString *)authBaseURLStr gscBaseURLStr:(NSString *)gscBaseURLStr NS_DESIGNATED_INITIALIZER;
 
 /**
+ * Constructs a request for a playlist.
+ *
+ * @param configuration NSDictionary of configuration options used in this catalog request.
+ * Valid parameters are:
+ * kBCOVPlaybackServiceConfigurationKeyPlaylistID
+ * kBCOVPlaybackServiceConfigurationKeyPlaylistReferenceID
+ * kBCOVPlaybackServiceConfigurationKeyAuthToken
+ * kBCOVPlaybackServiceConfigurationKeyBumperID
+ *
+ * @param parameters parameters that will be added as URL parameters to the request.
+ * These parameters will override any default parameters that had been set.
+ *
+ * @return Built NSURLRequest that can be used to fetch the playlist.
+ */
+- (NSURLRequest *)requestForPlaylistWithConfiguration:(NSDictionary *)configuration parameters:(NSDictionary *)parameters;
+
+/**
+ * Constructs a request for a video.
+ *
+ * @param configuration NSDictionary of configuration options used in this catalog request.
+ * Valid parameters are:
+ * kBCOVPlaybackServiceConfigurationKeyVideoID
+ * kBCOVPlaybackServiceConfigurationKeyVideoReferenceID
+ * kBCOVPlaybackServiceConfigurationKeyAuthToken
+ * kBCOVPlaybackServiceConfigurationKeyBumperID
+ *
+ * @param parameters parameters that will be added as URL parameters to the request.
+ * These parameters will override any default parameters that had been set.
+ *
+ * @return Built NSURLRequest that can be used to fetch the playlist.
+ */
+- (NSURLRequest *)requestForVideoWithConfiguration:(NSDictionary *)configuration parameters:(NSDictionary *)parameters;
+
+/**
  * Constructs a request for a playlist by the playlist id.
  *
  * @param playlistId Id of the playlist to request.
@@ -104,7 +138,7 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
  * These parameters will override any default parameters that had been set.
  * @return Built NSURLRequest that can be used to fetch the playlist.
  */
-- (NSURLRequest *)requestForPlaylistWithPlaylistID:(NSString *)playlistId parameters:(NSDictionary *)parameters;
+- (NSURLRequest *)requestForPlaylistWithPlaylistID:(NSString *)playlistId parameters:(NSDictionary *)parameters __attribute__((deprecated("Use `requestForPlaylistWithConfiguration:parameters:` instead.")));
 
 /**
  * Constructs a request for a playlist by the playlist id.
@@ -115,7 +149,7 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
  * These parameters will override any default parameters that had been set.
  * @return Built NSURLRequest that can be used to fetch the playlist.
  */
-- (NSURLRequest *)requestForPlaylistWithPlaylistID:(NSString *)playlistId authToken:(NSString *)authToken parameters:(NSDictionary *)parameters;
+- (NSURLRequest *)requestForPlaylistWithPlaylistID:(NSString *)playlistId authToken:(NSString *)authToken parameters:(NSDictionary *)parameters __attribute__((deprecated("Use `requestForPlaylistWithConfiguration:parameters:` instead.")));
 
 /**
  * Constructs a request for a playlist by the reference id.
@@ -125,7 +159,7 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
  * These parameters will override any default parameters that had been set.
  * @return Built NSURLRequest that can be used to fetch the playlist.
  */
-- (NSURLRequest *)requestForPlaylistWithReferenceID:(NSString *)referenceId parameters:(NSDictionary *)parameters;
+- (NSURLRequest *)requestForPlaylistWithReferenceID:(NSString *)referenceId parameters:(NSDictionary *)parameters __attribute__((deprecated("Use `requestForPlaylistWithConfiguration:parameters:` instead.")));
 
 /**
  * Constructs a request for a playlist by the reference id.
@@ -136,7 +170,7 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
  * These parameters will override any default parameters that had been set.
  * @return Built NSURLRequest that can be used to fetch the playlist.
  */
-- (NSURLRequest *)requestForPlaylistWithReferenceID:(NSString *)referenceId authToken:(NSString *)authToken parameters:(NSDictionary *)parameters;
+- (NSURLRequest *)requestForPlaylistWithReferenceID:(NSString *)referenceId authToken:(NSString *)authToken parameters:(NSDictionary *)parameters __attribute__((deprecated("Use `requestForPlaylistWithConfiguration:parameters:` instead.")));
 
 /**
  * Constructs a request for a video by the video id.
@@ -146,7 +180,7 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
  * These parameters will override any default parameters that had been set.
  * @return Built NSURLRequest that can be used to fetch the video.
  */
-- (NSURLRequest *)requestForVideoWithVideoID:(NSString *)videoId parameters:(NSDictionary *)parameters;
+- (NSURLRequest *)requestForVideoWithVideoID:(NSString *)videoId parameters:(NSDictionary *)parameters __attribute__((deprecated("Use `requestForVideoWithConfiguration:parameters:` instead.")));
 
 /**
  * Constructs a request for a video by the video id.
@@ -157,7 +191,7 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
  * These parameters will override any default parameters that had been set.
  * @return Built NSURLRequest that can be used to fetch the video.
  */
-- (NSURLRequest *)requestForVideoWithVideoID:(NSString *)videoId authToken:(NSString *)authToken parameters:(NSDictionary *)parameters;
+- (NSURLRequest *)requestForVideoWithVideoID:(NSString *)videoId authToken:(NSString *)authToken parameters:(NSDictionary *)parameters __attribute__((deprecated("Use `requestForVideoWithConfiguration:parameters:` instead.")));
 
 /**
  * Constructs a request for a video by the reference id.
@@ -167,7 +201,7 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
  * These parameters will override any default parameters that had been set.
  * @return Built NSURLRequest that can be used to fetch the video.
  */
-- (NSURLRequest *)requestForVideoWithReferenceID:(NSString *)referenceId parameters:(NSDictionary *)parameters;
+- (NSURLRequest *)requestForVideoWithReferenceID:(NSString *)referenceId parameters:(NSDictionary *)parameters __attribute__((deprecated("Use `requestForVideoWithConfiguration:parameters:` instead.")));
 
 /**
  * Constructs a request for a video by the reference id.
@@ -178,6 +212,6 @@ extern NSString * const kBCOVEdgePlaybackAuthServiceBaseURL;
  * These parameters will override any default parameters that had been set.
  * @return Built NSURLRequest that can be used to fetch the video.
  */
-- (NSURLRequest *)requestForVideoWithReferenceID:(NSString *)referenceId authToken:(NSString *)authToken parameters:(NSDictionary *)parameters;
+- (NSURLRequest *)requestForVideoWithReferenceID:(NSString *)referenceId authToken:(NSString *)authToken parameters:(NSDictionary *)parameters __attribute__((deprecated("Use `requestForVideoWithConfiguration:parameters:` instead.")));
 
 @end

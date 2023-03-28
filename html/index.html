@@ -44,7 +44,7 @@
 					<div class="section section-overview index-overview">
 						
 						
-						<h1>Brightcove Player SDK for iOS, version 6.12.0.2391</h1>
+						<h1>Brightcove Player SDK for iOS, version 6.12.1.2421</h1>
 
 <h2>Table of Contents</h2>
 
@@ -125,7 +125,7 @@
 </ul>
 
 
-<p>The Core SDK is localized for Arabic (ar), English (en), French (fr), German (de), Japanese (ja), Korean (ko), Spanish (es), Simplified Chinese (zh-Hans) and Traditional Chinese (zh-Hant). To gain the benefit of a localization, your app must also be localized for the same language and locale. See the <a href="#CustomLocalization">Custom Localization</a> section for additional information.</p>
+<p>The Core SDK is localized for Arabic (ar), English (en), French (fr), German (de), Japanese (ja), Korean (ko), Spanish (es), Simplified Chinese (zh-Hans) and Traditional Chinese (zh-Hant). To gain the benefit of a localization, your app must also be localized for the same language and locale. See the <a href="#custom-localization">Custom Localization</a> section for additional information.</p>
 
 <h2>Noteworthy</h2>
 
@@ -398,27 +398,31 @@ end
 <tbody>
 <tr>
 <td>Brightcove-Player-Core </td>
-<td> <a href="https://github.com/brightcove/brightcove-player-sdk-ios/releases">https://github.com/brightcove/brightcove-player-sdk-ios/releases</a></td>
+<td> <a href="https://github.com/brightcove/brightcove-player-sdk-ios/tags">https://github.com/brightcove/brightcove-player-sdk-ios/tags</a></td>
 </tr>
 <tr>
 <td>Brightcove-Player-FreeWheel </td>
-<td> <a href="https://github.com/brightcove/brightcove-player-sdk-ios-fw/releases">https://github.com/brightcove/brightcove-player-sdk-ios-fw/releases</a></td>
+<td> <a href="https://github.com/brightcove/brightcove-player-sdk-ios-fw/tags">https://github.com/brightcove/brightcove-player-sdk-ios-fw/tags</a></td>
+</tr>
+<tr>
+<td>Brightcove-Player-GoogleCast </td>
+<td> <a href="https://github.com/brightcove/brightcove-player-sdk-ios-googlecast/tags">https://github.com/brightcove/brightcove-player-sdk-ios-googlecast/tags</a></td>
 </tr>
 <tr>
 <td>Brightcove-Player-IMA </td>
-<td> <a href="https://github.com/brightcove/brightcove-player-sdk-ios-ima/releases">https://github.com/brightcove/brightcove-player-sdk-ios-ima/releases</a></td>
+<td> <a href="https://github.com/brightcove/brightcove-player-sdk-ios-ima/tags">https://github.com/brightcove/brightcove-player-sdk-ios-ima/tags</a></td>
 </tr>
 <tr>
 <td>Brightcove-Player-Omniture </td>
-<td> <a href="https://github.com/brightcove/brightcove-player-sdk-ios-omniture/releases">https://github.com/brightcove/brightcove-player-sdk-ios-omniture/releases</a></td>
+<td> <a href="https://github.com/brightcove/brightcove-player-sdk-ios-omniture/tags">https://github.com/brightcove/brightcove-player-sdk-ios-omniture/tags</a></td>
 </tr>
 <tr>
 <td>Brightcove-Player-Pulse </td>
-<td> <a href="https://github.com/brightcove/brightcove-player-sdk-ios-pulse/releases">https://github.com/brightcove/brightcove-player-sdk-ios-pulse/releases</a></td>
+<td> <a href="https://github.com/brightcove/brightcove-player-sdk-ios-pulse/tags">https://github.com/brightcove/brightcove-player-sdk-ios-pulse/tags</a></td>
 </tr>
 <tr>
 <td>Brightcove-Player-SSAI </td>
-<td> <a href="https://github.com/brightcove/brightcove-player-sdk-ios-ssai/releases">https://github.com/brightcove/brightcove-player-sdk-ios-ssai/releases</a></td>
+<td> <a href="https://github.com/brightcove/brightcove-player-sdk-ios-ssai/tags">https://github.com/brightcove/brightcove-player-sdk-ios-ssai/tags</a></td>
 </tr>
 </tbody>
 </table>
@@ -468,16 +472,19 @@ self.controller = controller; // store this to a strong property
 
 BCOVPlaybackService *service = [[BCOVPlaybackService alloc] initWithAccountId:kAccountId
                                                                     policyKey:kPlaybackServicePolicyKey];
-[service findVideoWithVideoID:kViewControllerVideoID
-                   parameters:nil
-                   completion:^(BCOVVideo    *video,
-                                NSDictionary *jsonResponse,
-                                NSError      *error) {
+NSDictionary *configuration = @{
+    kBCOVPlaybackServiceConfigurationKeyAssetID:kViewControllerVideoID
+};
+[service findVideoWithConfiguration:configuration
+                    queryParameters:nil
+                         completion:^(BCOVVideo    *video,
+                                      NSDictionary *jsonResponse,
+                                      NSError      *error) {
 
-                                    [controller setVideos:@[ video ]];
-                                    [controller play];
+    [controller setVideos:@[ video ]];
+    [controller play];
 
-                                }];
+}];
 </code></pre>
 
 <p>You need to keep the controller from being automatically released at the end of the method. A common way to do this is to store a reference to the controller in a strong instance variable.</p>
@@ -519,12 +526,12 @@ self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAuto
 
 <h3>Auto Layout</h3>
 
-<p>Set the <code>translatesAutoresizingMaskIntoConstraints</code> on <a href="Classes/BCOVPUIPlayerView.html">BCOVPUIPlayerView</a> to <code>NO</code>.</p>
+<p>Set the <code>translatesAutoresizingMaskIntoConstraints</code> on BCOVPUIPlayerView to <code>NO</code>.</p>
 
 <pre><code>self.playerView.translatesAutoresizingMaskIntoConstraints = NO;
 </code></pre>
 
-<p>Then add the constraints for the layout; setting the top, right, left and bottom anchors of your <a href="Classes/BCOVPUIPlayerView.html">BCOVPUIPlayerView</a> to equal that of <code>videoView</code></p>
+<p>Then add the constraints for the layout; setting the top, right, left and bottom anchors of your BCOVPUIPlayerView to equal that of <code>videoView</code></p>
 
 <pre><code>[NSLayoutConstraint activateConstraints:@[
                                           [self.playerView.topAnchor constraintEqualToAnchor:self.videoView.topAnchor],
@@ -538,7 +545,7 @@ self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAuto
 
 <h2><a href="Classes/BCOVPUIPlayerViewOptions.html">BCOVPUIPlayerViewOptions</a></h2>
 
-<p>The <a href="Classes/BCOVPUIPlayerViewOptions.html"><code>BCOVPUIPlayerViewOptions</code></a> class allows you to customize some BCOVPlayerUI behavior at initialization. You can customize the following:</p>
+<p>The <code>BCOVPUIPlayerViewOptions</code> class allows you to customize some BCOVPlayerUI behavior at initialization. You can customize the following:</p>
 
 <ul>
 <li><code>jumpBackInterval</code> The time in seconds the player will seek back when the jump back button is pressed.</li>
@@ -547,10 +554,10 @@ self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAuto
 <li><code>showControlsAnimationDuration</code> The time in seconds it takes for the controls to animate to visible.</li>
 <li><code>learnMoreButtonBrowserStyle</code> Setting that determines if tapping the &ldquo;Learn More&rdquo; button on an ad will display the clickthrough link in an external browser (default setting) or an internal browser.</li>
 <li><code>presentingViewController</code> The UIViewController subclass to use for presenting other view controllers (like the closed caption selection view controller).</li>
-<li><code>automaticControlTypeSelection</code> Whether or not you want the <code>BCOVPUIPlayerView</code> to pick a <code>BCOVPUIBasicControlView</code> type automatically based on the media type. When this value is set to <code>YES</code> the <code>BCOVPUIBasicControlView</code> property passed into the <code>BCOVPUIPlayerView</code> initializer will be ignored.
+<li><p><code>automaticControlTypeSelection</code> Whether or not you want the <a href="Classes/BCOVPUIPlayerView.html"><code>BCOVPUIPlayerView</code></a> to pick a <a href="Classes/BCOVPUIBasicControlView.html"><code>BCOVPUIBasicControlView</code></a> type automatically based on the media type. When this value is set to <code>YES</code> the <a href="Classes/BCOVPUIBasicControlView.html"><code>BCOVPUIBasicControlView</code></a> property passed into the <a href="Classes/BCOVPUIPlayerView.html"><code>BCOVPUIPlayerView</code></a> initializer will be ignored.</p>
 
 <ul>
-<li><strong>Video + Audio Streams</strong>
+<li><p><strong>Video + Audio Streams</strong></p>
 
 <ul>
 <li>VOD streams will use <code>basicControlViewWithVODLayout</code></li>
@@ -558,7 +565,7 @@ self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAuto
 <li>Live DVR streams will use <code>basicControlViewWithLiveDVRLayout</code></li>
 </ul>
 </li>
-<li><strong>Audio-Only Streams</strong>
+<li><p><strong>Audio-Only Streams</strong></p>
 
 <ul>
 <li>VOD streams will use <code>basicControlViewWithAODLayout</code></li>
@@ -570,6 +577,8 @@ self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAuto
 </li>
 </ul>
 
+
+<p><strong>NOTE:</strong> <code>automaticControlTypeSelection</code> chooses layouts from those provided by BCOVPlayerUI, and so, custom controls and layouts will be overwritten; <code>automaticControlTypeSelection</code> and player UI customization are incompatible.</p>
 
 <p>Options can be set using the following method:</p>
 
@@ -587,23 +596,23 @@ self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAuto
 <p>Three layouts are provided to support different types of video:</p>
 
 <ul>
-<li><p><code></code>BCOVPUIControlLayout<code> basicVODControlLayout</code> is a basic layout for general on-demand video streams.</p></li>
-<li><p><code></code>BCOVPUIControlLayout<code> basicLiveControlLayout</code> is a layout for live video.</p></li>
-<li><p><code></code>BCOVPUIControlLayout<code> basicLiveDVRControlLayout</code> is a layout for live video streams with DVR controls.</p></li>
+<li><p><code>BCOVPUIControlLayout basicVODControlLayout</code> is a basic layout for general on-demand video streams.</p></li>
+<li><p><code>BCOVPUIControlLayout basicLiveControlLayout</code> is a layout for live video.</p></li>
+<li><p><code>BCOVPUIControlLayout basicLiveDVRControlLayout</code> is a layout for live video streams with DVR controls.</p></li>
 </ul>
 
 
-<p>You typically set a new layout immediatley after your <a href="Classes/BCOVPUIPlayerView.html"><code>BCOVPUIPlayerView</code></a> is created, but you can also set a new layout at any time. For example, you can set a new VOD layout like this:</p>
+<p>You typically set a new layout immediatley after your <code>BCOVPUIPlayerView</code> is created, but you can also set a new layout at any time. For example, you can set a new VOD layout like this:</p>
 
 <pre><code>playerView.controlsView.layout = [BCOVPUIControlLayout basicVODControlLayout]
 </code></pre>
 
 <h2>Custom Layouts</h2>
 
-<p>In addition to the default layouts, you can create your own highly customized layouts by instantiating a new <a href="Classes/BCOVPUIControlLayout.html"><code>BCOVPUIControlLayout</code></a> with your own design.</p>
+<p>In addition to the default layouts, you can create your own highly customized layouts by instantiating a new <code>BCOVPUIControlLayout</code> with your own design. <strong>Note</strong>, however, that <code>automaticControlTypeSelection</code> chooses layouts from those provided by BCOVPlayerUI, and so, custom controls and layouts will be overwritten; <code>automaticControlTypeSelection</code> and player UI customization are incompatible.</p>
 
 <ol>
-<li><p>First, create the controls that will go in your layout using <a href="Classes/BCOVPUIBasicControlView.html"><code>BCOVPUIBasicControlView</code></a> layoutViewWithControlFromTag:width:elasticity:<code>. Each control is packaged in a</code><a href="Classes/BCOVPUILayoutView.html"><code>BCOVPUILayoutView</code></a> that determines the control spacing.</p></li>
+<li><p>First, create the controls that will go in your layout using <code>BCOVPUIBasicControlView layoutViewWithControlFromTag:width:elasticity:</code>. Each control is packaged in a <code>BCOVPUILayoutView</code> that determines the control spacing.</p></li>
 <li><p>You can set the <code>width</code> of each layout view to the default width (which is based on the type of control), or you can specify your own width.</p></li>
 <li><p>Use the <code>elasticity</code> argument to determine how much the layout view containing the control reizes its width to fill the control bar.</p>
 
@@ -696,7 +705,7 @@ logoImageView1.frame = logoLayoutView1.frame;
         NSArray *compactLayoutLines = @[ compactLayoutLine1, compactLayoutLine2 ];
 </code></pre>
 
-<p>Finally, now that there are two layout configurations (one for full width, and one for compact width), you can create a new <a href="Classes/BCOVPUIControlLayout.html"><code>BCOVPUIControlLayout</code></a> object, and set it in the player&rsquo;s control view.</p>
+<p>Finally, now that there are two layout configurations (one for full width, and one for compact width), you can create a new <code>BCOVPUIControlLayout</code> object, and set it in the player&rsquo;s control view.</p>
 
 <pre><code>        BCOVPUIControlLayout *customLayout = [[BCOVPUIControlLayout alloc] initWithStandardControls:standardLayoutLines compactControls:compactLayoutLines];
         playerView.controlsView.layout = customLayout;
@@ -1061,16 +1070,21 @@ video2.properties = otherDictionary; // causes compiler error
 
     BCOVPlaybackService *playbackService = [[BCOVPlaybackService alloc] initWithAccountId:accoundId
                                                                                 policyKey:policyKey];
-    [playbackService findVideoWithVideoID:videoID
-                               parameters:nil
-                               completion:^(BCOVVideo *video,
-                                            NSDictionary *jsonResponse,
-                                            NSError      *error) {
 
-                                   [controller setVideos:@[ video ]];
-                                   [controller play];
+    NSDictionary *configuration = @{
+        kBCOVPlaybackServiceConfigurationKeyAssetID:videoID
+    };
 
-                               }];
+    [playbackService findVideoWithConfiguration:configuration
+                                queryParameters:nil
+                                     completion:^(BCOVVideo *video,
+                                                  NSDictionary *jsonResponse,
+                                                  NSError      *error) {
+
+        [controller setVideos:@[ video ]];
+        [controller play];
+
+    }];
 </code></pre>
 
 <ol>
@@ -1078,7 +1092,7 @@ video2.properties = otherDictionary; // causes compiler error
 </ol>
 
 
-<p>**NOTE: If you are using the Playback Authorization Service please review the <a href="#PlaybackAuthorizationService">section</a> of this README related to that feature.</p>
+<p>**NOTE: If you are using the Playback Authorization Service please review the <a href="#playback-authorization-service">section</a> of this README related to that feature.</p>
 
 <h3>Playlist Paging</h3>
 
@@ -1092,11 +1106,16 @@ video2.properties = otherDictionary; // causes compiler error
         @"offset": @10
     };
 
-    [playbackService findPlaylistWithPlaylistID:playlistID
-                                     parameters: parameters
-                                     completion:^(BCOVPlaylist *playlist,
-                                                  NSDictionary *jsonResponse,
-                                                  NSError      *error) {
+    NSDictionary *configuration =
+    @{
+        kBCOVPlaybackServiceConfigurationKeyAssetID: playlistID
+    };
+
+    [playbackService findPlaylistWithConfiguration:playlistID
+                                   queryParameters: parameters
+                                        completion:^(BCOVPlaylist *playlist,
+                                                     NSDictionary *jsonResponse,
+                                                     NSError      *error) {
 
         [controller setVideos: playlist];
         [controller play];
@@ -1551,15 +1570,27 @@ self.playbackController.options = mutableOptions;
 
 <h2>Playback Authorization Service</h2>
 
-<p>If you are using the Playback Authorization Service you will need to use the playback service methods that allow you to pass in an authorization token.</p>
+<p>If you are using the Playback Authorization Service you will need to use the playback service <code>kBCOVPlaybackServiceConfigurationKeyAuthToken</code> configuration key.</p>
 
-<pre><code>- (void)findPlaylistWithPlaylistID:(NSString *)playlistID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+<pre><code>// Video Request
+NSDictionary *configuration = @{
+    kBCOVPlaybackServiceConfigurationKeyAssetID: videoID,
+    kBCOVPlaybackServiceConfigurationKeyAuthToken: authToken
+};
 
-- (void)findPlaylistWithReferenceID:(NSString *)referenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+[self.playbackService findVideoWithConfiguration:configuration queryParameters:nil completion:^(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error) {
+    ...
+}];
 
-- (void)findVideoWithVideoID:(NSString *)videoID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+// Playlist Request
+NSDictionary *configuration = @{
+    kBCOVPlaybackServiceConfigurationKeyAssetID: playlistID,
+    kBCOVPlaybackServiceConfigurationKeyAuthToken: authToken
+};
 
-- (void)findVideoWithReferenceID:(NSString *)referenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+[self.playbackService findPlaylistWithConfiguration:configuration queryParameters:nil completion:^(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error) {
+    ...
+}];
 </code></pre>
 
 <p><strong>Note: In the case of playlists, all videos in the playlist must use the same token.  In a subsequent release, assigning a different token to each video in a playlist will be possible.  You will be responsible for maintaining the mapping between video id and token.</strong></p>
@@ -1639,7 +1670,7 @@ self.playerView.controlsView.progressSlider.accessibilityLabel = @"Timeline";
 
 <h2>AVAudioSession Configuration</h2>
 
-<p>Depending on how you need your application to perform when it comes to audio playback you can configure AVAudioSession to suit your specific needs. For example if you want to support AirPlay 2 and multiple audio routes see the <a href="#AirPlay">AirPlay</a> section of this README.</p>
+<p>Depending on how you need your application to perform when it comes to audio playback you can configure AVAudioSession to suit your specific needs. For example if you want to support AirPlay 2 and multiple audio routes see the <a href="#airplay">AirPlay</a> section of this README.</p>
 
 <p>A basic AVAudioSession can be configured like this:</p>
 
@@ -1768,36 +1799,36 @@ func setUpAudioSession() {
 
 <p>A Video Bumper is a short asset, usually 10 seconds or less, that plays before all other media and typically shows the brand or company that your video represents.  A player will request a bumper from the Playback API like any other video, and insert it before ads and content.</p>
 
-<p>Bumpers are a player-level feature, meaning a given player may only be associated with a single bumper. The playlists share the same bumper video. There will be two ways to configure a player to play a bumper video:</p>
+<p>Bumpers are a player-level feature, meaning a given player may only be associated with a single bumper. The playlists share the same bumper video. There are two ways to configure a player to play a bumper video:</p>
 
-<h4>1. Playback Service (BCOVPlaybackService) signatures.</h4>
+<h4>1. Playback Service (BCOVPlaybackService) methods.</h4>
 
 <ul>
 <li><code>bumperID</code>. The ID of the video to find.</li>
 </ul>
 
 
-<pre><code>- (void)findPlaylistWithPlaylistID:(NSString *)playlistID bumperID:(NSString *)bumperID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+<pre><code>// Using `bumperID`
+NSDictionary *configuration = @{
+    kBCOVPlaybackServiceConfigurationKeyAssetID: videoID,
+    kBCOVPlaybackServiceConfigurationKeyBumperID: bumperID
+};
 
-- (void)findPlaylistWithPlaylistID:(NSString *)playlistID bumperID:(NSString *)bumperID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+// Using `bumperReferenceID`
+NSDictionary *configuration = @{
+    kBCOVPlaybackServiceConfigurationKeyAssetID: videoID,
+    kBCOVPlaybackServiceConfigurationKeyBumperReferenceID: bumperReferenceID
+};
 
-- (void)findVideoWithVideoID:(NSString *)videoID bumperID:(NSString *)bumperID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+// With a Video Request
+[self.playbackService findVideoWithConfiguration:configuration queryParameters:nil completion:^(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error) {
+    ...
+}];
 
-- (void)findVideoWithVideoID:(NSString *)videoID bumperID:(NSString *)bumperID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
-</code></pre>
-
-<ul>
-<li><code>BumperRefID</code>. The reference ID of the video to find.</li>
-</ul>
-
-
-<pre><code>- (void)findPlaylistWithReferenceID:(NSString *)referenceID bumperReferenceID:(NSString *)bumperReferenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
-
-- (void)findPlaylistWithReferenceID:(NSString *)referenceID bumperReferenceID:(NSString *)bumperReferenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
-
-- (void)findVideoWithReferenceID:(NSString *)referenceID bumperReferenceID:(NSString *)bumperReferenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
-
-- (void)findVideoWithReferenceID:(NSString *)referenceID bumperReferenceID:(NSString *)bumperReferenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+// With a Playlist Request
+[self.playbackService findPlaylistWithConfiguration:configuration queryParameters:nil completion:^(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error) {
+    ...
+}];
 </code></pre>
 
 <h4>2. Custom Fields.</h4>
@@ -1849,7 +1880,7 @@ BCOVPUIPlayerView *playerView = [[BCOVPUIPlayerView alloc] initWithPlaybackContr
 
 <p>The API which controls whether an app emits audio in iOS apps is the <a href="https://developer.apple.com/Library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007875-CH1-SW1">AVAudioSession API</a>. An audio session is global to an app, which means that its configuration affects both the sounds that are emitted by the AVPlayers created by the Player SDK, as well as other sounds that an app may produce. Since the Player SDK cannot know how the app wants the audio session configured for those other sounds, it doesn&rsquo;t affect the audio session at all. This means that unless you explicitly configure your app&rsquo;s audio session otherwise, you inherit the default behavior of suppressing any and all audio when the device is muted, including audio emitted by AVPlayers. To conform to Apple&rsquo;s recommendations regarding audio playback, you (the app developer) must configure the audio session according to your app&rsquo;s specific needs.</p>
 
-<p>See our <a href="#AVAudioSessionConfig">AVAudioSession Configuration</a> section in this README for additional information.</p>
+<p>See our <a href="#avaudiosession-configuration">AVAudioSession Configuration</a> section in this README for additional information.</p>
 
 <h2>Support</h2>
 
@@ -2080,7 +2111,7 @@ BCOVPUIPlayerView *playerView = [[BCOVPUIPlayerView alloc] initWithPlaybackContr
 					<footer>
 						<div class="footer-copyright">
 							
-							<p class="copyright">Copyright &copy; 2023 Brightcove. All rights reserved. Updated: 2023-01-17</p>
+							<p class="copyright">Copyright &copy; 2023 Brightcove. All rights reserved. Updated: 2023-03-28</p>
 							
 							
 							<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

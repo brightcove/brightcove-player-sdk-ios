@@ -49,7 +49,6 @@ typedef NS_ENUM(NSInteger, BCOVPlaybackServiceErrorCode)
     BCOVPlaybackServiceErrorCodeAPIError
 };
 
-
 /**
  * Error domain for BCOVPlaybackService.
  */
@@ -75,7 +74,6 @@ extern NSString * const kBCOVPlaybackServiceErrorKeyAPIErrors;
  * returned by the API request.
  */
 extern NSString * const kBCOVPlaybackServiceErrorKeyAPIHTTPStatusCode;
-
 
 /**
  * Playlist Paging dictionary keys
@@ -122,6 +120,55 @@ extern NSString * const kBCOVPlaybackServiceParamaterKeyAdConfigId;
  */
 extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
 
+/**
+ * Configuration dictionary key for BCOVPlaybackService's `findVideoWithConfiguration:parameters:completion:`
+ * and `findPlaylistWithConfiguration:parameters:completion:` methods.
+ * The value for this key will be used to fetch a playlist using a playlist ID or a video using a video ID.
+ *
+ * Takes presedence over kBCOVPlaybackServiceConfigurationKeyAssetReferenceID if these
+ * keys are used together.
+ */
+extern NSString * const kBCOVPlaybackServiceConfigurationKeyAssetID;
+
+/**
+ * Configuration dictionary key for BCOVPlaybackService's `findVideoWithConfiguration:parameters:completion:`
+ * and `findPlaylistWithConfiguration:parameters:completion:` methods.
+ * The value for this key will be used to fetch a playlist using a playlist reference ID or a video using a video reference ID.
+ *
+ * Is ignored in favor of kBCOVPlaybackServiceConfigurationKeyAssetID if these
+ * keys are used together.
+ */
+extern NSString * const kBCOVPlaybackServiceConfigurationKeyAssetReferenceID;
+
+/**
+ * Configuration dictionary key for BCOVPlaybackService's `findVideoWithConfiguration:parameters:completion:`
+ * and `findPlaylistWithConfiguration:parameters:completion:` methods.
+ *
+ * The value for this key will be used to fetch a video or playlist using an auth token.
+ */
+extern NSString * const kBCOVPlaybackServiceConfigurationKeyAuthToken;
+
+/**
+ * Configuration dictionary key for BCOVPlaybackService's `findVideoWithConfiguration:parameters:completion:`
+ * and `findPlaylistWithConfiguration:parameters:completion:` methods.
+ *
+ * The value for this key will be used to fetch a bumper video for video or playlist using a video ID.
+ *
+ * Takes presedence over kBCOVPlaybackServiceConfigurationKeyBumperReferenceID if these
+ * keys are used together.
+ */
+extern NSString * const kBCOVPlaybackServiceConfigurationKeyBumperID;
+
+/**
+ * Configuration dictionary key for BCOVPlaybackService's `findVideoWithConfiguration:parameters:completion:`
+ * and `findPlaylistWithConfiguration:parameters:completion:` methods.
+ *
+ * The value for this key will be used to fetch a bumper video for video or playlist using a video reference ID.
+ *
+ * Is ignored in favor of kBCOVPlaybackServiceConfigurationKeyBumperID if these
+ * keys are used together.
+ */
+extern NSString * const kBCOVPlaybackServiceConfigurationKeyBumperReferenceID;
 
 /**
  * The BCOVPlaybackService class provides asynchronous methods for retrieving 
@@ -169,6 +216,50 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  *
  * If the completionHandler provides an NSError, the BCOVPlaylist will be nil.
  *
+ * @param configuration NSDictionary of configuration options used in this catalog request.
+ * Valid parameters are:
+ * kBCOVPlaybackServiceConfigurationKeyPlaylistID
+ * kBCOVPlaybackServiceConfigurationKeyPlaylistReferenceID
+ * kBCOVPlaybackServiceConfigurationKeyAuthToken
+ * kBCOVPlaybackServiceConfigurationKeyBumperID
+ *
+ * @param queryParameters Additional NSString query parameters to add to the Playback
+ * API requests. These values will override the default values if they conflict.
+ * Can use the kBCOVPlaybackServiceParameterKeyOffset and kBCOVPlaybackServiceParameterKeyLimit
+ * parameters. See "Playlist Paging" above.
+ *
+ * @param completionHandler block which will be invoked when the request
+ * finishes. Execution of the completionHandler will occur on the main thread.
+ */
+- (void)findPlaylistWithConfiguration:(NSDictionary *)configuration queryParameters:(NSDictionary *)queryParameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+/**
+ * Retrieves a BCOVVideo from the Playback API service by its video ID on a background
+ * queue.
+ *
+ * If the completionHandler provides an NSError, the BCOVVideo will be nil.
+ *
+ * @param configuration NSDictionary of configuration options used in this catalog request.
+ * Valid parameters are:
+ * kBCOVPlaybackServiceConfigurationKeyVideoID
+ * kBCOVPlaybackServiceConfigurationKeyVideoReferenceID
+ * kBCOVPlaybackServiceConfigurationKeyAuthToken
+ * kBCOVPlaybackServiceConfigurationKeyBumperID
+ *
+ * @param queryParameters Additional NSString query parameters to add to the Playback
+ * API requests. These values will override the default values if they conflict.
+ *
+ * @param completionHandler block which will be invoked when the request
+ * finishes. Execution of the completionHandler will occur on the main thread.
+ */
+- (void)findVideoWithConfiguration:(NSDictionary *)configuration queryParameters:(NSDictionary *)queryParameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+
+/**
+ * Retrieves a BCOVPlaylist from the Playback API service by its playlist ID on a
+ * background queue.
+ *
+ * If the completionHandler provides an NSError, the BCOVPlaylist will be nil.
+ *
  * @param playlistID The ID of the playlist to find.
  * @param parameters Additional NSString query parameters to add to the Playback
  * API requests. These values will override the default values if they conflict.
@@ -177,7 +268,7 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
-- (void)findPlaylistWithPlaylistID:(NSString *)playlistID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+- (void)findPlaylistWithPlaylistID:(NSString *)playlistID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler __attribute__((deprecated("Use `findPlaylistWithConfiguration:parameters:completion:` instead.")));
 
 /**
  * Retrieves a BCOVPlaylist from the Playback API service by its playlist ID on a
@@ -194,7 +285,7 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
-- (void)findPlaylistWithPlaylistID:(NSString *)playlistID bumperID:(NSString *)bumperID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+- (void)findPlaylistWithPlaylistID:(NSString *)playlistID bumperID:(NSString *)bumperID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler __attribute__((deprecated("Use `findPlaylistWithConfiguration:parameters:completion:` instead.")));
 
 /**
  * Retrieves a BCOVPlaylist from the Playback API service by its playlist ID on a
@@ -211,7 +302,7 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
-- (void)findPlaylistWithPlaylistID:(NSString *)playlistID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+- (void)findPlaylistWithPlaylistID:(NSString *)playlistID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler __attribute__((deprecated("Use `findPlaylistWithConfiguration:parameters:completion:` instead.")));
 
 /**
  * Retrieves a BCOVPlaylist from the Playback API service by its playlist ID on a
@@ -229,7 +320,7 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
-- (void)findPlaylistWithPlaylistID:(NSString *)playlistID bumperID:(NSString *)bumperID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+- (void)findPlaylistWithPlaylistID:(NSString *)playlistID bumperID:(NSString *)bumperID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler __attribute__((deprecated("Use `findPlaylistWithConfiguration:parameters:completion:` instead.")));
 
 /**
  * Retrieves a BCOVPlaylist from the Playback API service by its reference ID on a
@@ -245,7 +336,7 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
-- (void)findPlaylistWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+- (void)findPlaylistWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler __attribute__((deprecated("Use `findPlaylistWithConfiguration:parameters:completion:` instead.")));
 
 /**
  * Retrieves a BCOVPlaylist from the Playback API service by its reference ID on a
@@ -262,7 +353,7 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
-- (void)findPlaylistWithReferenceID:(NSString *)referenceID bumperReferenceID:(NSString *)bumperReferenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+- (void)findPlaylistWithReferenceID:(NSString *)referenceID bumperReferenceID:(NSString *)bumperReferenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler __attribute__((deprecated("Use `findPlaylistWithConfiguration:parameters:completion:` instead.")));
 
 /**
  * Retrieves a BCOVPlaylist from the Playback API service by its reference ID on a
@@ -279,7 +370,7 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
-- (void)findPlaylistWithReferenceID:(NSString *)referenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+- (void)findPlaylistWithReferenceID:(NSString *)referenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler __attribute__((deprecated("Use `findPlaylistWithConfiguration:parameters:completion:` instead.")));
 
 /**
  * Retrieves a BCOVPlaylist from the Playback API service by its reference ID on a
@@ -297,7 +388,7 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
-- (void)findPlaylistWithReferenceID:(NSString *)referenceID bumperReferenceID:(NSString *)bumperReferenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler;
+- (void)findPlaylistWithReferenceID:(NSString *)referenceID bumperReferenceID:(NSString *)bumperReferenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error))completionHandler __attribute__((deprecated("Use `findPlaylistWithConfiguration:parameters:completion:` instead.")));
 
 /**
  * Retrieves a BCOVVideo from the Playback API service by its video ID on a background
@@ -311,7 +402,7 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
-- (void)findVideoWithVideoID:(NSString *)videoID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+- (void)findVideoWithVideoID:(NSString *)videoID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler __attribute__((deprecated("Use `findVideoWithConfiguration:parameters:completion:` instead.")));
 
 /**
  * Retrieves a BCOVVideo from the Playback API service by its video ID on a background
@@ -326,7 +417,7 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
-- (void)findVideoWithVideoID:(NSString *)videoID bumperID:(NSString *)bumperID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+- (void)findVideoWithVideoID:(NSString *)videoID bumperID:(NSString *)bumperID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler __attribute__((deprecated("Use `findVideoWithConfiguration:parameters:completion:` instead.")));
 
 /**
  * Retrieves a BCOVVideo from the Playback API service by its video ID on a background
@@ -341,7 +432,7 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
-- (void)findVideoWithVideoID:(NSString *)videoID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+- (void)findVideoWithVideoID:(NSString *)videoID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler __attribute__((deprecated("Use `findVideoWithConfiguration:parameters:completion:` instead.")));
 
 /**
  * Retrieves a BCOVVideo from the Playback API service by its video ID on a background
@@ -357,7 +448,7 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
-- (void)findVideoWithVideoID:(NSString *)videoID bumperID:(NSString *)bumperID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+- (void)findVideoWithVideoID:(NSString *)videoID bumperID:(NSString *)bumperID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler __attribute__((deprecated("Use `findVideoWithConfiguration:parameters:completion:` instead.")));
 
 /**
  * Retrieves a BCOVVideo from the Playback API service by its reference ID on a background
@@ -371,7 +462,7 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
-- (void)findVideoWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+- (void)findVideoWithReferenceID:(NSString *)referenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler __attribute__((deprecated("Use `findVideoWithConfiguration:parameters:completion:` instead.")));
 
 /**
  * Retrieves a BCOVVideo from the Playback API service by its reference ID on a background
@@ -386,7 +477,7 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
-- (void)findVideoWithReferenceID:(NSString *)referenceID bumperReferenceID:(NSString *)bumperReferenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+- (void)findVideoWithReferenceID:(NSString *)referenceID bumperReferenceID:(NSString *)bumperReferenceID parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler __attribute__((deprecated("Use `findVideoWithConfiguration:parameters:completion:` instead.")));
 
 /**
  * Retrieves a BCOVVideo from the Playback API service by its reference ID on a background
@@ -401,7 +492,7 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
-- (void)findVideoWithReferenceID:(NSString *)referenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+- (void)findVideoWithReferenceID:(NSString *)referenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler __attribute__((deprecated("Use `findVideoWithConfiguration:parameters:completion:` instead.")));
 
 /**
  * Retrieves a BCOVVideo from the Playback API service by its reference ID on a background
@@ -417,7 +508,7 @@ extern NSString * const kBCOVPlaybackServiceParameterKeyDeliveryConfigId;
  * @param completionHandler block which will be invoked when the request
  * finishes. Execution of the completionHandler will occur on the main thread.
  */
-- (void)findVideoWithReferenceID:(NSString *)referenceID bumperReferenceID:(NSString *)bumperReferenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler;
+- (void)findVideoWithReferenceID:(NSString *)referenceID bumperReferenceID:(NSString *)bumperReferenceID authToken:(NSString *)authToken parameters:(NSDictionary *)parameters completion:(void (^)(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error))completionHandler __attribute__((deprecated("Use `findVideoWithConfiguration:parameters:completion:` instead.")));
 
 
 /**

@@ -1,3 +1,37 @@
+## Release 6.12.1
+
+#### 28 Mar 2023
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Breaking Changes
+
+* All existing `BCOVPlaybackService` `findVideo:` methods are now deprecated. Use the new `findVideoWithConfiguration:queryParameters:completion:` method going forward. See the [Core README](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/README.md) for more information.
+
+* All existing `BCOVPlaybackService` `findPlaylist:` methods are now deprecated. Use the new `findPlaylistWithConfiguration:queryParameters:completion:` method going forward. See the [Core README](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/README.md) for more information.
+
+#### Additions and Improvements
+
+* Fixes an issue where the progress of a completed video would continue to increment when AirPlay is active and no network connection is available.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Added support for SpringServe Macros.
+
+* Fixes an issue that would prevent playback when using an invalid adTagURL.
+
+* Fixes an issue where the player controls greyed out and disabled when Airplay is active after switch video.
+
+* Fixes an issue where the progress bar would jump back ~15 seconds after a post-roll ad completed when `enableBackgroundPlayback` is enabled on `IMASettings`.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where linear playback was not being enabled when Picture-in-Picture was active during an SSAI pre-roll.
+
 ## Release 6.12.0
 
 #### 17 Jan 2023
