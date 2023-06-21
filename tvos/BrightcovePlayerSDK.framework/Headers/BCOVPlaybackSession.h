@@ -12,7 +12,6 @@
 @class BCOVSessionProviderExtension;
 @class BCOVSource;
 @class BCOVVideo;
-@class BCOVAVPlayerItem;
 
 
 /**

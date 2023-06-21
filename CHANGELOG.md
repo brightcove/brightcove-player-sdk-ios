@@ -1,3 +1,21 @@
+## 6.12.2
+
+#### 21 June 2023
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes an issue with FairPlay license renewal when using AirPlay on iOS 16.
+
+* Fixes an issue where calling `setVideos:` a second time could result in playback failure.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Added documentation for [SSAI URL Variables](https://github.com/brightcove/brightcove-player-sdk-ios-ssai#ssai-url-variables).
+
 ## Release 6.12.1
 
 #### 28 Mar 2023
