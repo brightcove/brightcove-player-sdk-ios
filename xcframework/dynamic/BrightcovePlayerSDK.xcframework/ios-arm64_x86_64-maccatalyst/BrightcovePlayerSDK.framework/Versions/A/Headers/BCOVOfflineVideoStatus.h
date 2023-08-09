@@ -52,6 +52,13 @@
  */
 @property (nonatomic, readonly) AVAggregateAssetDownloadTask *aggregateDownloadTask __attribute__((availability(ios,introduced=11.0)));
 
+/**
+ * The AVAssetDownloadTask associated with the download.
+ * Will be set to nil once the download has completed.
+ *
+ */
+@property (nonatomic, readonly) AVAssetDownloadTask *assetDownloadTask;
+
 #else
 
 @property (nonatomic, readonly) id aggregateDownloadTask;

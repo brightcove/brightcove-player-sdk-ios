@@ -1,4 +1,48 @@
-## 6.12.2
+## Release 6.12.3
+
+#### 9 Aug 2023
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixed an issue that prevented pausing/resuming of offline downloads when using `requestVideoDownload:downloadConfiguration:parameters:completion:`.
+
+* Added the `downloadWasPausedForOfflineVideoToken:` delegate method to `BCOVOfflineVideoManagerDelegate`.
+
+* Adds support for `application_id`, `player` and `player_name` fields for Analytics.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports Google Ads IMA SDK 3.19.1 for iOS and 4.9.1 for tvOS.
+
+* The tvOS slices are part now of the BrightcoveIMA XCFramework.
+
+* Adds support for tvOS with SPM.
+
+#### Breaking Changes
+
+* The minimum Deployment Target for IMA Plugin for Brightcove Player SDK for iOS is iOS 14.0.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports Google Cast SDK 4.8.0.
+
+#### Breaking Changes
+
+* The minimum Deployment Target for Google Cast Plugin for Brightcove Player SDK for iOS for iOS is iOS 13.0.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where caling `resumeVideoAtTime:withAutoPlay:` would result in an incorrect video duration.
+
+## Release 6.12.2
 
 #### 21 June 2023
 
@@ -1308,7 +1352,7 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Reduces the file size of the dynamic framework by ~10MB, and ~20MB for the static framework.
+* Reduces the file size of the dynamic framework by ~10MB, and ~20MB for the static framework. 
 
 * Reduces CPU load up to 40% when playing video, decreases memory usage by up to 10%, and decreases energy usage by up to 30%.
 
@@ -1338,9 +1382,9 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Fixes an issue where the delegate method  `playbackController:playbackSession:didExitAd:` was not being triggered when an applicable IMA ad was skipped.
+* Fixes an issue where the delegate method  `playbackController:playbackSession:didExitAd:` was not being triggered when an applicable IMA ad was skipped. 
 
-* Fixes an issue where ads were not replayed when `ignoringPreviouslyProcessedCuePoints` on `BCOVCuePointProgressPolicy` was disabled.
+* Fixes an issue where ads were not replayed when `ignoringPreviouslyProcessedCuePoints` on `BCOVCuePointProgressPolicy` was disabled. 
 
 ## Release 6.5.0
 

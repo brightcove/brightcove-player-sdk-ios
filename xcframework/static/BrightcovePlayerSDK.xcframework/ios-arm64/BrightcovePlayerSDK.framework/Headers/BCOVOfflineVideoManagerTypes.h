@@ -44,25 +44,7 @@ typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
     BCOVOfflineVideoDownloadStateError = 5,
     
     /* License has been preloaded, but the video download has not yet been requested */
-    BCOVOfflineVideoDownloadLicensePreloaded = 6,
-    
-    /* Deprecated: Use BCOVOfflineVideoDownloadStateRequested instead.  */
-    BCOVOfflineVideoDownloadStateTracksRequested __attribute__((deprecated)) = 7,
-    
-    /*  Deprecated: Use BCOVOfflineVideoDownloadStateDownloading instead. */
-    BCOVOfflineVideoDownloadStateTracksDownloading __attribute__((deprecated)) = 8,
-    
-    /*  Deprecated: Use BCOVOfflineVideoDownloadStateSuspended instead. */
-    BCOVOfflineVideoDownloadStateTracksSuspended __attribute__((deprecated)) = 9,
-    
-    /*  Deprecated: Use BCOVOfflineVideoDownloadStateCancelled instead. */
-    BCOVOfflineVideoDownloadStateTracksCancelled __attribute__((deprecated)) = 10,
-    
-    /*  Deprecated: Use BCOVOfflineVideoDownloadStateCompleted instead. */
-    BCOVOfflineVideoDownloadStateTracksCompleted __attribute__((deprecated)) = 11,
-    
-    /*  Deprecated: Use BCOVOfflineVideoDownloadStateError instead. */
-    BCOVOfflineVideoDownloadStateTracksError __attribute__((deprecated)) = 12
+    BCOVOfflineVideoDownloadLicensePreloaded = 6
 };
 
 typedef void (^BCOVOfflineVideoLicenseCompletionCallback)(BCOVOfflineVideoToken, NSError *);

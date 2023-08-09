@@ -1211,4 +1211,24 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  */
 @property (nonatomic, assign, getter=isUniqueIdentifierEnabled) BOOL uniqueIdentifierEnabled;
 
+/**
+ * The authentication token used for analytics authorization.
+ */
+@property (nonatomic, copy) NSString *authToken;
+
+/**
+ * The application ID used for analytics.
+ */
+@property (nonatomic, copy) NSString *applicationId;
+
+/**
+ * The player ID used for analytics.
+ */
+@property (nonatomic, copy) NSString *player;
+
+/**
+ * The player name used for analytics.
+ */
+@property (nonatomic, copy) NSString *playerName;
+
 @end

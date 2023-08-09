@@ -110,6 +110,13 @@ didFinishMediaSelectionDownload:(AVMediaSelection *)mediaSelection;
 didFinishDownloadWithError:(NSError *)error;
 
 /**
+ * @abstract This method is called when a download is paused.
+ *
+ * @param offlineVideoToken Offline video token used to identify the downloaded video.
+ */
+- (void)downloadWasPausedForOfflineVideoToken:(BCOVOfflineVideoToken)offlineVideoToken;
+
+/**
  * @abstract This method is called when the static images (thumbnail and poster) associated
  * with a video are downloaded to storage.
  *
