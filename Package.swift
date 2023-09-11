@@ -7,7 +7,7 @@ import PackageDescription
 let BrightcovePlayerSDK = Package(
     name: "Brightcove Player SDK",
     platforms: [
-        .iOS(.v11), .tvOS(.v11)
+        .iOS(.v12), .tvOS(.v12)
     ],
     products: [
         .library(

@@ -1,3 +1,23 @@
+## Release 6.12.4
+
+#### 11 Sep 2023
+
+#### Breaking Changes
+
+* The minimum Deployment Target for all Brightcove Native Player for iOS frameworks is now iOS 12.0 and tvOS 12.0.
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes an issue where `playbackController:playbackSession:determinedMediaType:` would not be called.
+
+* Fixes an issue where a `kBCOVPlaybackSessionLifecycleEventError` lifecycle event could be triggered when using a Fairplay Session Provider on a non-DRM video.
+
+* Adds support for retaining a user's caption selection preference. This is enabled by default, see documentation for `enableCaptionPersistence` in `BCOVPlaybackController.h` for more information.
+
+* Adds support for downloading HDCP content.
+
 ## Release 6.12.3
 
 #### 9 Aug 2023
@@ -40,7 +60,7 @@
 
 #### Additions and Improvements
 
-* Fixes an issue where caling `resumeVideoAtTime:withAutoPlay:` would result in an incorrect video duration.
+* Fixes an issue where calling `resumeVideoAtTime:withAutoPlay:` would result in an incorrect video duration.
 
 ## Release 6.12.2
 
@@ -1352,7 +1372,7 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Reduces the file size of the dynamic framework by ~10MB, and ~20MB for the static framework. 
+* Reduces the file size of the dynamic framework by ~10MB, and ~20MB for the static framework.
 
 * Reduces CPU load up to 40% when playing video, decreases memory usage by up to 10%, and decreases energy usage by up to 30%.
 
@@ -1382,9 +1402,9 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Fixes an issue where the delegate method  `playbackController:playbackSession:didExitAd:` was not being triggered when an applicable IMA ad was skipped. 
+* Fixes an issue where the delegate method  `playbackController:playbackSession:didExitAd:` was not being triggered when an applicable IMA ad was skipped.
 
-* Fixes an issue where ads were not replayed when `ignoringPreviouslyProcessedCuePoints` on `BCOVCuePointProgressPolicy` was disabled. 
+* Fixes an issue where ads were not replayed when `ignoringPreviouslyProcessedCuePoints` on `BCOVCuePointProgressPolicy` was disabled.
 
 ## Release 6.5.0
 

@@ -1,5 +1,5 @@
 
-# iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.12.3.2490
+# iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 6.12.4
 
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -219,8 +219,6 @@ To present the subtitles for a particular language, set the `kBCOVOfflineVideoMa
 
 If the `kBCOVOfflineVideoUsesSidebandSubtitleKey` is missing or NO, you can assume that the video is using standard iOS subtitles, and you can set your media selection on the `AVPlayer` as always.
 
-If you downloaded Sideband Subtitles in iOS 10, and the device was subsequently upgraded to iOS 11, the Brightcove Native Player's PlayerUI controls will still detect that you are using Sideband Subtitles, and display properly.
-
 ## Specifying a Variant Bitrate
 
 ### When downloading with AVMediaSelections
@@ -432,7 +430,7 @@ When playing back the video, you can select the subtitle to present by setting i
 
 ## Play Offline Videos
 
-To play an offline video, convert the offline video token to a `BCOVVideo` object, and then play the video as you would any normal online video object. Since videos can be deleted without warning by iOS (or in iOS 11, the user), it's a good idea to check that the video is playable.
+To play an offline video, convert the offline video token to a `BCOVVideo` object, and then play the video as you would any normal online video object. Since videos can be deleted without warning by iOS, or the user, it's a good idea to check that the video is playable.
 
 Here's how you might create the playback controller in your setup code for playing FairPlay videos:
 
@@ -594,8 +592,6 @@ There are several ways to address this:
 - If allowing multiple concurrent downloads, inform the user that they should not move the app to the background until all the downloads have started to report progress. You could simply put up a "please wait" notice until you detect progress from all the downloads.
 
 You may want to limit the number of allowed concurrent downloads for practical reasons. The more downloads you begin at once, the longer it takes for them to begin and complete. You should test with your own videos to see what works best for your app.
-
-Prior to system version 11.3, iOS did not realiably handle pausing and resuming tasks when there were multiple videos downloading at the same time. Therefore, we do not recommend allowing concurrent downloads if you plan to use versions prior to iOS 11.3 and also allow pausing and resuming download tasks.
 
 **Sequential Downloads**
 

@@ -186,26 +186,6 @@
 - (void)deleteOfflineVideo:(BCOVOfflineVideoToken)offlineVideoToken;
 
 /**
- * @abstract Stop all download tasks in progress.
- *
- * @discussion This method forces all download tasks to terminate with an error
- *  by deleting their underlying download folder.
- *  Downloads that have already completed are not affected.
- *
- *  WARNING:
- *  This method should only be used in very specific cases.
- *  iOS 11.0.x and iOS 11.1.x have an issue where a download task will resume to
- *  completion if it was paused and then cancelled.
- *  In that case, you cannot cancel or delete the runaway task, so your best
- *  option is to delete all download tasks.
- *
- *  This method is not guaranteed to stop all download tasks.
- *
- *  In iOS 11.2 and later, you should cancel download tasks individually using -cancelVideoDownload:
- */
-- (void)forceStopAllDownloadTasks;
-
-/**
  * @abstract Estimate the size of a video download in megabytes.
  *
  * @discussion This method calls the completion handler with an estimate of the video size

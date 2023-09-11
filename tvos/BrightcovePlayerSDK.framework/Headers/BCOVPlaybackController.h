@@ -85,6 +85,8 @@ typedef NS_ENUM(NSUInteger, BCOVSourceMediaType)
 // Set to 75 degrees
 extern const CGFloat kBCOVVideo360BaseAngleOfView;
 
+// NSUserDefaults key for Closed Caption Persistence dictionary
+extern NSString * const kBCOVClosedCaptionPersistenceKey;
 
 // Position of virtual camera when viewing Video 360 streams
 @interface BCOVVideo360ViewProjection : NSObject
@@ -455,6 +457,26 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 @property (nonatomic, assign) float playbackRate;
 
 /**
+ * When enabled the SDK will store the localeIdentifier from the locale of the
+ * user's selected legible AVMediaSelectionOption.
+ *
+ * The SDK will attempt to match available AVMediaSelectionOptions using
+ * the stored localeIdentifier.
+ *
+ * Storage is via an NSString in NSUserDefaults using
+ * kBCOVClosedCaptionPersistenceKey as the key.
+ *
+ * When a user selects "Off" or "Auto" for the text track the value stored
+ * in NSUserDefaults is set to `nil`.
+ *
+ * You can subscribe to the NSUserDefaultsDidChangeNotification notification
+ * to be notified when a user has changed their preference.
+ *
+ * Defaults to `YES`
+ */
+@property (nonatomic, assign) BOOL enableCaptionPersistence;
+
+/**
  * Registers a session consumer with a container, to be notified of new
  * sessions. Added consumers will be retained by this container. If a session
  * already existed in the container at the time of subscription, the specified
@@ -812,7 +834,9 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 /**
  * Called when the media type of a source has been determined.
  *
- * MP4 sources will always be marked as BCOVSourceMediaTypeAudioVideo
+ * MP4 sources will always be marked as `BCOVSourceMediaTypeAudioVideo`.
+ * If the source URL does not have an m3u8 extension or can not be parsed then
+ * `BCOVSourceMediaTypeAudioVideo` will be used.
  *
  * @param session The playback session whose AVPlayer's currentItem's media option was changed
  * @param mediaType The media type that was determined

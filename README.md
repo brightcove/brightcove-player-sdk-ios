@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.12.3.2490
+# Brightcove Player SDK for iOS, version 6.12.4.2514
 
 
 ## Table of Contents
@@ -65,8 +65,8 @@ Brightcove provides active support for the latest iOS SDK on the latest public r
 
 Brightcove provides passive support for the following iOS versions:
 
- * iOS 11.4.1, 12.5.4
- * tvOS 11.4.1, 12.4.1
+ * iOS 12.5.4
+ * tvOS 12.4.1
 
 The Core SDK is localized for Arabic (ar), English (en), French (fr), German (de), Japanese (ja), Korean (ko), Spanish (es), Simplified Chinese (zh-Hans) and Traditional Chinese (zh-Hant). To gain the benefit of a localization, your app must also be localized for the same language and locale. See the [Custom Localization](#custom-localization) section for additional information.
 
@@ -149,7 +149,7 @@ Since release 6.0.0, the Brightcove Native Player SDK allows you to download HLS
 
 ## Installation
 
-The Brightcove Player SDK provides installation packages for iOS and tvOS as static and a dynamic libraries packaged as Frameworks and XCFrameworks. Deployment is supported on iOS 11.4 and above.
+The Brightcove Player SDK provides installation packages for iOS and tvOS as static and a dynamic libraries packaged as Frameworks and XCFrameworks. Deployment is supported on iOS 12.0 and above.
 
 ### CocoaPods
 
@@ -165,7 +165,7 @@ Specifying the default pod `Brightcove-Player-Core` will install the dynamic lib
 source 'https://github.com/CocoaPods/Specs'
 source 'https://github.com/brightcove/BrightcoveSpecs.git'
 
-platform :ios, '11.4'
+platform :ios, '12.0'
 use_frameworks!
 
 target 'MyVideoPlayer' do
@@ -179,7 +179,7 @@ end
 source 'https://github.com/CocoaPods/Specs'
 source 'https://github.com/brightcove/BrightcoveSpecs.git'
 
-platform :ios, '11.4'
+platform :ios, '12.0'
 use_frameworks!
 
 target 'MyVideoPlayer' do
@@ -195,7 +195,7 @@ The XCFramework can be installed by appending the `/XCFramework` subspec to the 
 source 'https://github.com/CocoaPods/Specs'
 source 'https://github.com/brightcove/BrightcoveSpecs.git'
 
-platform :ios, '11.4'
+platform :ios, '12.0'
 use_frameworks!
 
 target 'MyVideoPlayer' do
@@ -542,7 +542,7 @@ return MPRemoteCommandHandlerStatusSuccess;
 return MPRemoteCommandHandlerStatusSuccess;
 }];
 ```
-Devices that are running iOS 11 or later will take advantage of `AVRoutePickerView` which has two delegate methods. These delegate methods are passed through to `BCOVPUIPlayerViewDelegate`. The methods are:
+Devices will take advantage of `AVRoutePickerView` which has two delegate methods. These delegate methods are passed through to `BCOVPUIPlayerViewDelegate`. The methods are:
 
 ```
 - (void)routePickerViewWillBeginPresentingRoutes:(AVRoutePickerView *)routePickerView;
