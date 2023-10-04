@@ -1,3 +1,19 @@
+## Release 6.12.5
+
+#### 4 Oct 2023
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes an issue where after a playback session with captions, the next session remains showing the button for captions even if the video does not contain any caption.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue when using `resumeVideoAtTime:withAutoPlay:` during an ad break where the ad controls would remain active.
+
 ## Release 6.12.4
 
 #### 11 Sep 2023
