@@ -88,6 +88,7 @@ extern const CGFloat kBCOVVideo360BaseAngleOfView;
 // NSUserDefaults key for Closed Caption Persistence dictionary
 extern NSString * const kBCOVClosedCaptionPersistenceKey;
 
+#if !TARGET_OS_TV
 // Position of virtual camera when viewing Video 360 streams
 @interface BCOVVideo360ViewProjection : NSObject
 
@@ -131,6 +132,7 @@ extern NSString * const kBCOVClosedCaptionPersistenceKey;
 + (instancetype)viewProjection;
 
 @end
+#endif
 
 /**
  * BCOVPlaybackController's Options Dictionary Keys
@@ -424,6 +426,7 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
 
 @property (nonatomic, readwrite) NSTimeInterval shutterFadeTime;
 
+#if !TARGET_OS_TV
 /**
  * Position of virtual camera when viewing Video 360 streams
  * Default values are:
@@ -433,6 +436,7 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * roll: 0 degrees
  */
 @property (nonatomic, readwrite, copy) BCOVVideo360ViewProjection *viewProjection;
+#endif
 
 /**
  * The AVPictureInPictureController for this playback controller. May be nil if
@@ -1180,6 +1184,22 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * @param video The video that failed to be inserted.
  */
 - (void)playbackController:(id<BCOVPlaybackController>)controller failedToInsertVideo:(BCOVVideo *)video;
+
+/**
+ * Called when presenting the "Audio & Subtitles" UI.
+ * You can use this delegate method to provide a custom label for a legible AVMediaSelectionOption.
+ *
+ * @param mediaSelectionOption The AVMediaSelectionOption to return a title for.
+ */
+- (NSString *)titleForLegibleMediaSelectionOption:(AVMediaSelectionOption *)mediaSelectionOption;
+
+/**
+ * Called when presenting the "Audio & Subtitles" UI.
+ * You can use this delegate method to provide a custom label for a audible AVMediaSelectionOption.
+ *
+ * @param mediaSelectionOption The AVMediaSelectionOption to return a title for.
+ */
+- (NSString *)titleForAudibleMediaSelectionOption:(AVMediaSelectionOption *)mediaSelectionOption;
 
 @end
 

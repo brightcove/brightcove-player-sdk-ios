@@ -1,3 +1,19 @@
+## Release 6.12.6
+
+#### 30 Nov 2023
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+ * Adds support for custom labels for Audible and Legible tracks in the "Audio & Subtitles" UI. See `titleForLegibleMediaSelectionOption:` and `titleForAudibleMediaSelectionOption:` in `BCOVPlaybackController.h` for more information.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where using the same ad tag URL on multiple videos on the same `BCOVPlaybackController` could result in the ads not loading for subsequent videos.
+
 ## Release 6.12.5
 
 #### 4 Oct 2023
