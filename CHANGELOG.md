@@ -1,3 +1,13 @@
+## Release 6.12.7
+
+#### 3 Jan 2024
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes a memory leak for SSAI session which could cause a video to continue playing after its view controller had been dismissed while ad was playing.
+
 ## Release 6.12.6
 
 #### 30 Nov 2023

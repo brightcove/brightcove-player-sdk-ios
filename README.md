@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.12.6.2550
+# Brightcove Player SDK for iOS, version 6.12.7.2564
 
 
 ## Table of Contents
@@ -104,6 +104,7 @@ The BrightcoveGoogleCast plugin supports the `no-bluetooth` variant. As shown be
 |---|---|
 | Brightcove-Player-Core | Brightcove-Player-Core/Framework<br>Brightcove-Player-Core/XCFramework |
 | Brightcove-Player-Core-static | Brightcove-Player-Core-static/Framework<br>Brightcove-Player-Core-static/XCFramework |
+| Brightcove-Player-DAI | Brightcove-Player-DAI/Framework<br>Brightcove-Player-DAI/XCFramework |
 | Brightcove-Player-FreeWheel | Brightcove-Player-FreeWheel/Framework<br>Brightcove-Player-FreeWheel/XCFramework |
 | Brightcove-Player-GoogleCast | Brightcove-Player-GoogleCast/Bluetooth/Framework<br>Brightcove-Player-GoogleCast/No-Bluetooth/Framework<br>Brightcove-Player-GoogleCast/Bluetooth/XCFramework<br>Brightcove-Player-GoogleCast/No-Bluetooth/XCFramework |
 | Brightcove-Player-GoogleCast-static | Brightcove-Player-GoogleCast-static/Bluetooth/Framework<br>Brightcove-Player-GoogleCast-static/No-Bluetooth/Framework<br>Brightcove-Player-GoogleCast-static/Bluetooth/XCFramework<br>Brightcove-Player-GoogleCast-static/No-Bluetooth/XCFramework |
@@ -122,6 +123,7 @@ Podspec Name  |  Framework Type  |  Dependency
 ------------- | ------------- | -------------
 Brightcove-Player-Core | dynamic | -
 Brightcove-Player-Core-static | static  | -
+Brightcove-Player-DAI (available since 6.12.7) | dynamic | Brightcove-Player-Core
 Brightcove-Player-FreeWheel | dynamic | Brightcove-Player-Core for iOS,<br/>Brightcove-Player-Core for tvOS
 Brightcove-Player-GoogleCast | static | Brightcove-Player-Core
 Brightcove-Player-GoogleCast-static | static | Brightcove-Player-Core-static
@@ -228,6 +230,7 @@ For reference, here are all the SDK components and corresponding URLs to help yo
 Component  | URL
 --------------------------- | ----------------------------------------------
 Brightcove-Player-Core | <https://github.com/brightcove/brightcove-player-sdk-ios/tags>
+Brightcove-Player-DAI | <https://github.com/brightcove/brightcove-player-sdk-ios-dai/tags>
 Brightcove-Player-FreeWheel | <https://github.com/brightcove/brightcove-player-sdk-ios-fw/tags>
 Brightcove-Player-GoogleCast | <https://github.com/brightcove/brightcove-player-sdk-ios-googlecast/tags>
 Brightcove-Player-IMA | <https://github.com/brightcove/brightcove-player-sdk-ios-ima/tags>
