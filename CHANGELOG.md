@@ -1,3 +1,39 @@
+## Release 6.13.0
+
+#### 16 Apr 2024
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Breaking Changes
+
+* Adds a new UI experience for tvOS. See the [Migrating from BCOVTVTabBarItemView to UIViewController](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/TVPlayer.md#migrating-from-bcovtvtabbaritemview-to-uiviewcontroller) section of the TVPlayer README for migration information.
+
+* The deprecated `BCOVPlaybackService` `findVideo:` methods have been removed. Use `findVideoWithConfiguration:queryParameters:completion:` method going forward. See the [Core README](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/README.md) for more information.
+
+* The deprecated `BCOVPlaybackService` `findPlaylist:` methods have been removed. Use `findPlaylistWithConfiguration:queryParameters:completion:` method going forward. See the [Core README](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/README.md) for more information.
+
+#### Additions and Improvements
+
+* Adds a Privacy Manifest to the Core SDK.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where you could not fast-rewind past a mid-roll cue-point.
+
+### Pulse Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where the app crashes trying to load an invalid asset from the VAST response.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports Google Ads IMA SDK 3.22.0 for iOS and 4.12.0 for tvOS.
+
 ## Release 6.12.7
 
 #### 3 Jan 2024
@@ -1414,7 +1450,7 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Reduces the file size of the dynamic framework by ~10MB, and ~20MB for the static framework.
+* Reduces the file size of the dynamic framework by ~10MB, and ~20MB for the static framework. 
 
 * Reduces CPU load up to 40% when playing video, decreases memory usage by up to 10%, and decreases energy usage by up to 30%.
 
@@ -1444,9 +1480,9 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Fixes an issue where the delegate method  `playbackController:playbackSession:didExitAd:` was not being triggered when an applicable IMA ad was skipped.
+* Fixes an issue where the delegate method  `playbackController:playbackSession:didExitAd:` was not being triggered when an applicable IMA ad was skipped. 
 
-* Fixes an issue where ads were not replayed when `ignoringPreviouslyProcessedCuePoints` on `BCOVCuePointProgressPolicy` was disabled.
+* Fixes an issue where ads were not replayed when `ignoringPreviouslyProcessedCuePoints` on `BCOVCuePointProgressPolicy` was disabled. 
 
 ## Release 6.5.0
 

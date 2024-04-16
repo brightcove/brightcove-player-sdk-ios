@@ -130,10 +130,18 @@
 @property(nonatomic) UIColor *maximumTrackAdMarkerColor;
 
 /**
- * Marker color for the minimum track, the side of the progress view to the left of the current time indicator.
+ * Marker color for the minimum track, the side of the progress view to the left of the current time indicator
+ * when the progress view is focused.
  * The default value (used when minimumTrackMarkerColor is nil) is RGB(0.425, 0.075, 0.26).
  */
 @property(nonatomic) UIColor *minimumTrackMarkerColor;
+
+/**
+ * Marker color for the minimum track, the side of the progress view to the left of the current time indicator
+ * when the progress view is unfocused.
+ * The default value (used when minimumTrackMarkerUnfocusedColor is nil) is white with 0.25 alpha.
+ */
+@property(nonatomic) UIColor *minimumTrackMarkerUnfocusedColor;
 
 /**
  * Marker color for the buffer track.
@@ -176,5 +184,16 @@
  * Remove all ad markers from the progress view.
  */
 - (void)removeAdMarkers;
+
+/**
+ * Request that this BCOVTVProgressView becomes focused.
+ */
+- (void)requestFocus;
+
+/*
+ * Enabled after `controlsContainerView:controlsFadingViewDidFadeIn:`
+ * Disabled after `controlsContainerView:controlsFadingViewDidFadeOut:`
+ */
+@property (nonatomic, assign) BOOL visible;
 
 @end

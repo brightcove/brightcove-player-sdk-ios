@@ -6,14 +6,14 @@
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
-#import <UIKit/UIKit.h>
+#import <BrightcovePlayerSDK/BCOVPlaybackController.h>
 
-@class BCOVTVProgressView;
+@class BCOVTVProgressView, BCOVTVInfoViewController;
 
 /**
  * View that holds all the playback controls
  */
-@interface BCOVTVControlsView : UIView
+@interface BCOVTVControlsView : UIView<BCOVPlaybackSessionConsumer>
 
 /**
  * Amount by which the controls will be inset from the edge of the TV Player View.
@@ -62,8 +62,29 @@
 @property (nonatomic, weak, readonly) UILabel *timeRemainingLabel;
 
 /**
- *  UILabel that displays advertisement info, 360 Video, or a Live indicator.
+ *  UILabel that displays advertisement info or a Live indicator.
  */
-@property (nonatomic, weak, readonly) UILabel *descriptionLabel;
+@property (nonatomic, strong, readonly) UILabel *descriptionLabel;
+
+/**
+ * UILabel that displays the name of the video
+ */
+@property (nonatomic, strong, readonly) UILabel *videoNameLabel;
+
+/*
+ * Use this property to provide tabs for client-specific content in the playback UI.
+ * The order of the view controllers in the array is also the order in which they are inserted in the tab bar.
+ * The display tab titles will be taken from the view controllers.
+ * Implement -preferredContentSize to provide the desired view size (subject to maximum height constraints).
+ * Each view controller should adhere to the BCOVPlaybackSessionConsumer protocol.
+ */
+@property (nonatomic, strong) NSArray<UIViewController<BCOVPlaybackSessionConsumer> *> *customInfoViewControllers;
+
+/*
+ * A view controller that displays the video's poster image and metadata.
+ * Will always be presented as the first tab before any other tabs as part
+ * of customInfoViewControllers.
+ */
+@property (nonatomic, weak) BCOVTVInfoViewController *infoViewController;
 
 @end

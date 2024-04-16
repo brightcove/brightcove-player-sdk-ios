@@ -67,8 +67,6 @@
 #import <BrightcovePlayerSDK/BCOVTVControlsView.h>
 #import <BrightcovePlayerSDK/BCOVTVPlayerView.h>
 #import <BrightcovePlayerSDK/BCOVTVProgressView.h>
-#import <BrightcovePlayerSDK/BCOVTVSettingsView.h>
-#import <BrightcovePlayerSDK/BCOVTVTabBarItemView.h>
 #endif
 
 // Accessibility

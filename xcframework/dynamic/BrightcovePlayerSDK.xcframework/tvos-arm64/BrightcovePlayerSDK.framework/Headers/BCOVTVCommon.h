@@ -25,10 +25,16 @@
 + (UIColor *)progressViewMaximumTrackColor;
 
 /**
- * Default color used by the TV Player progress view minimum track.
+ * Default color used by the TV Player progress view minimum track when focused.
  * Red:0.85 green:0.15 blue:0.52 alpha:1.0
  */
 + (UIColor *)progressViewMinimumTrackColor;
+
+/**
+ * Default color used by the TV Player progress view minimum track when unfocused.
+ * Red:0.55 green:0.56 blue:0.55 alpha:1.0
+ */
++ (UIColor *)progressViewMinimumTrackUnfocusedColor;
 
 /**
  * Default color used by the TV Player progress view buffer track.
