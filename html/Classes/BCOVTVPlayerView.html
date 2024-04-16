@@ -80,10 +80,6 @@
 		
 		<option value="//api/name/playerType">playerType</option>
 		
-		<option value="//api/name/settingsControlFocusGuide">settingsControlFocusGuide</option>
-		
-		<option value="//api/name/settingsView">settingsView</option>
-		
 	</optgroup>
 	
 
@@ -99,8 +95,6 @@
 		<option value="//api/name/resetHideControlsIntervalTimer">- resetHideControlsIntervalTimer</option>
 		
 		<option value="//api/name/showControlsFadingView:completion:">- showControlsFadingView:completion:</option>
-		
-		<option value="//api/name/showTopTabBar:">- showTopTabBar:</option>
 		
 		<option value="//api/name/showView:">- showView:</option>
 		
@@ -670,54 +664,6 @@ Can be set manually to temporarily show or hide the controls.</p>
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/settingsView" title="settingsView"></a>
-	<h3 class="method-title"><code><a href="#//api/name/settingsView">&nbsp;&nbsp;settingsView</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>settingsView holds the Info, Audio, and Subtitles settings views
-in the top tab bar, and is a subview of the <a href="#//api/name/controlsStaticView">controlsStaticView</a> view.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) BCOVTVSettingsView *settingsView</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>settingsView holds the Info, Audio, and Subtitles settings views
-in the top tab bar, and is a subview of the <a href="#//api/name/controlsStaticView">controlsStaticView</a> view.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVTVPlayerView.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
 	<a name="//api/name/controlsView" title="controlsView"></a>
 	<h3 class="method-title"><code><a href="#//api/name/controlsView">&nbsp;&nbsp;controlsView</a></code>
 </h3>
@@ -729,7 +675,7 @@ in the top tab bar, and is a subview of the <a href="#//api/name/controlsStaticV
 			
 			
 			<div class="method-subsection brief-description">
-				<p>controlsView holds the playback progress controls, and is a subview of the
+				<p>controlsView holds the playback progress controls and info views. It is a subview of the
 <a href="#//api/name/controlsFadingView">controlsFadingView</a> view.</p>
 			</div>
 			
@@ -747,56 +693,8 @@ in the top tab bar, and is a subview of the <a href="#//api/name/controlsStaticV
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>controlsView holds the playback progress controls, and is a subview of the
+				<p>controlsView holds the playback progress controls and info views. It is a subview of the
 <a href="#//api/name/controlsFadingView">controlsFadingView</a> view.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVTVPlayerView.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/settingsControlFocusGuide" title="settingsControlFocusGuide"></a>
-	<h3 class="method-title"><code><a href="#//api/name/settingsControlFocusGuide">&nbsp;&nbsp;settingsControlFocusGuide</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>settingsControlFocusGuide a UIFocusGuide that allows VoiceOver users
-to navigate between the settings view to the controls view</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) UIFocusGuide *settingsControlFocusGuide</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>settingsControlFocusGuide a UIFocusGuide that allows VoiceOver users
-to navigate between the settings view to the controls view</p>
 			</div>
 			
 
@@ -960,7 +858,7 @@ to make the UI controls more visible.</p>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>viewType</code></th>
-						<td><p>Pass BCOVTVShowViewTypeNone to hide all control views. Pass BCOVTVShowViewTypeControls to display the progress view and its related controls. Pass BCOVTVShowViewTypeSettings to display the top tab bar and its related views.</p></td>
+						<td><p>Pass BCOVTVShowViewTypeNone to hide all control views. Pass BCOVTVShowViewTypeControls to display the progress view and its related controls.</p></td>
 					</tr>
 				
 				</table>
@@ -1057,64 +955,6 @@ If the view is made visible, it will be hidden automatically after a certain amo
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/showTopTabBar:" title="showTopTabBar:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/showTopTabBar:">&ndash;&nbsp;showTopTabBar:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Set the visibility of the top tab bar.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)showTopTabBar:(BOOL)<em>showTopTabBar</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>showTopTabBar</code></th>
-						<td><p>Set to YES to make the top tab bar visible.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Set the visibility of the top tab bar.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVTVPlayerView.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
 	<a name="//api/name/resetHideControlsIntervalTimer" title="resetHideControlsIntervalTimer"></a>
 	<h3 class="method-title"><code><a href="#//api/name/resetHideControlsIntervalTimer">&ndash;&nbsp;resetHideControlsIntervalTimer</a></code>
 </h3>
@@ -1177,7 +1017,7 @@ taps on them to prevent the controls from hiding too soon.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-01-03</p>
+						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-04-16</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

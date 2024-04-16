@@ -88,11 +88,15 @@
 		
 		<option value="//api/name/minimumTrackMarkerColor">minimumTrackMarkerColor</option>
 		
+		<option value="//api/name/minimumTrackMarkerUnfocusedColor">minimumTrackMarkerUnfocusedColor</option>
+		
 		<option value="//api/name/minimumTrackTintColor">minimumTrackTintColor</option>
 		
 		<option value="//api/name/progress">progress</option>
 		
 		<option value="//api/name/trackHeight">trackHeight</option>
+		
+		<option value="//api/name/visible">visible</option>
 		
 	</optgroup>
 	
@@ -111,6 +115,8 @@
 		<option value="//api/name/removeGenericMarkers">- removeGenericMarkers</option>
 		
 		<option value="//api/name/removeMarkerAtPosition:">- removeMarkerAtPosition:</option>
+		
+		<option value="//api/name/requestFocus">- requestFocus</option>
 		
 	</optgroup>
 	
@@ -963,7 +969,8 @@ The default value (used when <a href="#//api/name/bufferTrackMarkerColor">buffer
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Marker color for the minimum track, the side of the <a href="#//api/name/progress">progress</a> view to the left of the current time indicator.
+				<p>Marker color for the minimum track, the side of the <a href="#//api/name/progress">progress</a> view to the left of the current time indicator
+when the <a href="#//api/name/progress">progress</a> view is focused.
 The default value (used when minimumTrackMarkerColor is nil) is RGB(0.425, 0.075, 0.26).</p>
 			</div>
 			
@@ -981,8 +988,59 @@ The default value (used when minimumTrackMarkerColor is nil) is RGB(0.425, 0.075
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Marker color for the minimum track, the side of the <a href="#//api/name/progress">progress</a> view to the left of the current time indicator.
+				<p>Marker color for the minimum track, the side of the <a href="#//api/name/progress">progress</a> view to the left of the current time indicator
+when the <a href="#//api/name/progress">progress</a> view is focused.
 The default value (used when minimumTrackMarkerColor is nil) is RGB(0.425, 0.075, 0.26).</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVProgressView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/minimumTrackMarkerUnfocusedColor" title="minimumTrackMarkerUnfocusedColor"></a>
+	<h3 class="method-title"><code><a href="#//api/name/minimumTrackMarkerUnfocusedColor">&nbsp;&nbsp;minimumTrackMarkerUnfocusedColor</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Marker color for the minimum track, the side of the <a href="#//api/name/progress">progress</a> view to the left of the current time indicator
+when the <a href="#//api/name/progress">progress</a> view is unfocused.
+The default value (used when minimumTrackMarkerUnfocusedColor is nil) is white with 0.25 alpha.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) UIColor *minimumTrackMarkerUnfocusedColor</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Marker color for the minimum track, the side of the <a href="#//api/name/progress">progress</a> view to the left of the current time indicator
+when the <a href="#//api/name/progress">progress</a> view is unfocused.
+The default value (used when minimumTrackMarkerUnfocusedColor is nil) is white with 0.25 alpha.</p>
 			</div>
 			
 
@@ -1364,6 +1422,68 @@ The default value (used when <a href="#//api/name/bufferTrackMarkerColor">buffer
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/requestFocus" title="requestFocus"></a>
+	<h3 class="method-title"><code><a href="#//api/name/requestFocus">&ndash;&nbsp;requestFocus</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Request that this BCOVTVProgressView becomes focused.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)requestFocus</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Request that this BCOVTVProgressView becomes focused.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVTVProgressView.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/visible" title="visible"></a>
+	<h3 class="method-title"><code><a href="#//api/name/visible">&nbsp;&nbsp;visible</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) BOOL visible</code></div>
+
+		    
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -1377,7 +1497,7 @@ The default value (used when <a href="#//api/name/bufferTrackMarkerColor">buffer
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-01-03</p>
+						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-04-16</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

@@ -1,4 +1,4 @@
-# Using the TV Player UI With The Brightcove Player SDK for tvOS, version 6.12.7.2564
+# Using the TV Player UI With The Brightcove Player SDK for tvOS, version 6.13.0.2599
 
 ## Overview
 
@@ -62,9 +62,7 @@ The controls container view contains two immediate subviews to organize its cont
 
 The other view is the **controls fading view**, `controlsFadingView`. This view is shown on-demand and hidden after a set period by a timer.
 
-The **settings view**, `settingsView`, type `BCOVTVSettingsView`, is a subview of the controls static view. The settings view contains the top tab bar view, which is moved on/off screen as needed. The top tab bar item manages tab bar item views (`BCOVTVTabBarItemView`) which are also added to this view. These are the views that present the **Info**, **Subtitles**, and **Sound** panels.
-
-The **controls view**, `controlsView`, type `BCOVTVControlsView`, is a subview of the controls fading view. The controls view contains the progress view and its related labels. All of these controls are shown and hidden together, and generally remain in the same location.
+The **controls view**, `controlsView`, type `BCOVTVControlsView`, is a subview of the controls fading view. The controls view contains the progress view and its related labels and the Subtitles and Audio buttons. The controls view is also responsible for displaying the `BCOVTVInfoViewController` view controller and the views from `customInfoViewControllers`. All of these controls are shown and hidden together, and generally remain in the same location.
 
 ## Siri Remote and Gestures
 
@@ -79,8 +77,6 @@ Keep in mind that a "tap" is a touch on the Siri Remote trackpad, while a "click
 | Single Tap| Show/hide controls |Toggles the visibility of the TV Player view's  progress view and related controls. When the controls are visible, another single tap will switch to display the current time under the progress indicator, and the video end time in place of the video time remaining.|
 | Double Tap| Change video gravity        | Cycle through the three standard video gravity modes: AVLayerVideoGravityResizeAspect, AVLayerVideoGravityResizeAspectFill, and AVLayerVideoGravityResize. |
 | Single Click |Pause/resume playback|If video is playing, pause video and show controls. If video is paused, resume playback and hide controls.|
-| Swipe Down |Show top tab bar|Show the top tab bar and hide the progress view.|
-| Swipe Up | Hide top tab bar | If the top tab bar is visible, and focus is on the tab bar button, swiping up will hide the top tab bar. |
 | Play/Pause Button | Play/pause video | If the video is playing, this will pause the video and show the progress view. If the top tab bar was visible and the video was playing, it will resume playback and continue to show the top tab bar. If the video was paused, resume playback. Hide the progress view if it was visible. If the top tab bar was visible, continue to show it. |
 | Menu Button | Hide top tab bar, or perform default Menu button behavior |If the top tab bar is visible, hide the top tab bar. If the top tab bar is not visible, perform the default Menu button action (return to home screen if not otherwise overridden).|
 
@@ -98,128 +94,71 @@ Keep in mind that a "tap" is a touch on the Siri Remote trackpad, while a "click
 |:------------- |:---------------:| :-------------|
 | Single Click | Seek to Live Edge | Single click on the right quarter of the Siri v1 remote track pad, or the right arrow of the Siri v2 remote to seek to live edge. Seeking to live edge only works while the video is playing. |
 
-## Tab Bar Item Views
+## Custom Info View Controllers
 
-By default, the TV Player view contains a top tab bar with three default tab bar items:
+The Brightcove Native Player SDK provides the `BCOVTVInfoViewController` class which displays information about the current `BCOVVideo` including title, duration, description and poster image. The `BCOVTVInfoViewController` also includes a "From Beginning" button that seeks to the beginning of the video.
 
-- **Info**
-- **Subtitles**
--  **Audio**
+You can provide additional Info View Controllers using the `customInfoViewControllers` property on `BCOVTVControlsView`.
 
-Each tab bar item view is a subclass of `BCOVTVTabBarItemView`. For example, the Info view is of type `BCOVTVInfoTabBarItemView`, and contains various properties for its labels and image view.
-
-You can modify the text labels in the Info view to better describe your video. You can also resize the Info view and add your own items along the bottom of the view (such as chapter markers) using standard UIKit methods.
-
-### Creating Your Own Tab Bar Item Views
-
-In most cases, it is probably best to create your own subclass of `BCOVTVTabBarItemView` that contains exactly the controls, images, and views that you need. To do, this create a subclass of `BCOVTVTabBarItemView` that implements the following methods:
+For example:
 
 ```
-- (instancetype)initWithFrame:(CGRect)frame
-                   playerView:(BCOVTVPlayerView *)playerView;
-```
-The `initWithFrame:playerView:` initializer is a good place to set up your views and perform initial allocations. Although it can be set at any time, this is a good place to set the `title` property that determines how your view will be displayed in the top tab bar.
+let sample = SampleInfoViewController(playerView: _playerView)
+sample.title = "Sample"
+sample.preferredContentSize = CGSizeMake(0, 250)
 
-```
-- (void)tabBarItemViewDidAdvanceToPlaybackSession:(id<BCOVPlaybackSession>)session;
-```
-`tabBarItemViewDidAdvanceToPlaybackSession:` is called when a `BCOVPlaybackSession` is ready to begin playing a video. This is the best place to populate your view with data from the new session.
-
-The following four methods are similar to the methods called on a UIViewController when a UIView is about to be shown in a UIViewController. Unlike with UIKit, you do **not** need to call the corresponding `super` method inside each one.
-
-```
-/**
- * Notifies the view that it is about to be added to a view hierarchy.
- */
-- (void)tabBarItemViewWillAppear:(BOOL)animated;
-
-/**
- * Notifies the view that it was added to a view hierarchy.
- */
-- (void)tabBarItemViewDidAppear:(BOOL)animated;
-
-/**
- * Notifies the view that it is about to be removed from a view hierarchy.
- */
-- (void)tabBarItemViewWillDisappear:(BOOL)animated;
-
-/**
- * Notifies the view that it was removed from a view hierarchy.
- */
-- (void)tabBarItemViewDidDisappear:(BOOL)animated;
+_playerView.controlsView.customInfoViewControllers = [sample]
 ```
 
-You can implement these calls to modify your UI as necessary at those specific times.
+The value you set for the UIViewController's title will be used for the tab that will be used to display the UIViewController's view. You'll also need to set a value for `preferredContentSize` supplying a minimum height for your view (the width value will be ignored).
 
-In your user interface, you can create controls and assign your subclass instance as the receiver of the action when the control is triggered. Focus will be moved to your controls through user action, similar to any other tvOS user interface.
-
-If you need to close the top tab bar after an action has occurred, you can do the following:
-
-```
-    // Don't hide the tab bar in the middle of handling a button tap
-    dispatch_async(dispatch_get_main_queue(), ^{
-
-        [self.playerView showView:BCOVShowHandlerViewTypeNone];
-
-    });
-```
-
-As shown here, if you are in the middle of receiving an action, it's best to defer hiding the top tab bar until you have left the call stack of the current code by dispatching asynchronously to the main thread.
-
-1. To help the Focus Engine find your controls, the `BCOVTVTabBarItemView`'s superview has a focus guide running along its entire bottom edge. This focus guide moves focus to the `BCOVTVTabBarItemView`. This is particularly helpful if the top tab bar's button item is not directly above your `BCOVTVTabBarItemView`. You may still need focus guides within your own view if items are placed irregularly, and can't be reached with normal focus navigation.
-
-Since the `BCOVTVTabBarItemView`'s superview has a focus guide along the bottom edge, moving down from the last focusable control in your view will cause focus to move back to your default focusable item. If you want to prevent this, you can implement this `UIFocusEnvironment` protocol method in your subclass:
-
-```
-- (BOOL)shouldUpdateFocusInContext:(UIFocusUpdateContext *)context
-```
-
-You can compare `context.previouslyFocusedItem` and `context.nextFocusedItem` to the items in your view, returning `NO` if they result in wrapping from the bottom to the top of your view.
-
-### Using Your Own Tab Bar Item Views
-
-Once you have created your own `BCOVTVTabBarItemView` subclass instance, you can install it either by adding it to the current list of tab bar item views, or by replacing one of the existing views.
-
-The following Objective-C code shows how you might add a new subclass instance to the top tab bar. The list of tab bar item views is a simple array, so you can manipulate it as you would any other array.
-
-```
-    // Create new instance of your subclass
-    MyTabBarItemView *myTabBarItemView = [[MyTabBarItemView alloc] initWithFrame:CGRectMake(0, 0, 600, 480) playerView:self.playerView];
-
-    // Get copy of current tab bar item views
-    NSMutableArray *tabBarItemViews = self.playerView.settingsView.topTabBarItemViews.mutableCopy;
-
-    // Add your view to the end of the list of tab bar item views
-    [tabBarItemViews addObject:myTabBarItemView];
-
-    // Set the new arras in the TV Player View
-    self.playerView.settingsView.topTabBarItemViews = tabBarItemViews;
-```
-
-As an alternate approach, after creating your subclass instance, you can create new instances of the other standard tab bar item views, and pick the ones you want to appear in the top tab bar. One way to replace the default Info tab bar item view is shown here:
-
-
-```
-    // Create new instance of your subclass
-    MyTabBarItemView *myTabBarItemView = [[MyTabBarItemView alloc] initWithFrame:CGRectMake(0, 0, 600, 480) playerView:self.playerView];
-
-    // Create the standard "Subtitles" and "Audio" tab bar item views
-    BCOVTVTabBarItemView *subtitlesTabBarItemView = [BCOVTVSubtitlesTabBarItemView viewWithPlayerView:self];
-    BCOVTVTabBarItemView *audioTabBarItemView = [BCOVTVAudioTabBarItemView viewWithPlayerView:self];
-
-    // Create an array of tab bar item views, with your custom view
-    // in place of the normal "Info" tab bar item view
-    NSArray<BCOVTVTabBarItemView *> *topTabBarItemViews = @[ myTabBarItemView, subtitlesTabBarItemView, audioTabBarItemView ];
-
-    // Set the new array in the TV Player View
-    self.playerView.settingsView.topTabBarItemViews = topTabBarItemViews;
-```
-
-Once the array is installed, the new tab bar item views will automatically be presented, and the focus engine will send focus to your view according to user input.
+Your view controllers should adhere to the `BCOVPlaybackSessionConsumer` protocol so they can receive the associated delgate methods. You can find the `BCOVPlaybackSessionConsumer` protocol definition in `BCOVPlaybackController.h`.
 
 ### Sample Projects
 
-Please check out our sample apps to see the TV Player View in action, including modification of the default Info view, and the creation of a custom `BCOVTVTabBarItemView` subclass. Sample apps can be found in github at <https://github.com/BrightcoveOS/ios-player-samples>
+Please check out our sample apps to see the TV Player View in action, including creation of a custom Info View Controller. Sample apps can be found in github at <https://github.com/BrightcoveOS/ios-player-samples>
+
+## Migrating from BCOVTVTabBarItemView to UIViewController
+
+Brightcove Native Player SDK 6.12.8 introduced a new UI for tvOS. As part of this UI overhaul any usages of `BCOVTVTabBarItemView` need to be converted to a `UIViewController` in order to continue functioning.
+
+Fortunately this can be as easy as creating a new `UIViewController`, copying over any properties and custom methods to the new `UIViewController`. If your view was using the `tabBarItemViewDidAdvanceToPlaybackSession:` method you can use `didAdvanceToPlaybackSession:` instead. Any subviews being added can easily be changed from `addSubview:` to `self.view.addSubview:`.
+
+Similarly you can change `tabBarItemViewWillAppear:`, `tabBarItemViewDidAppear:`, `tabBarItemViewWillDisappear:` and `tabBarItemViewDidDisappear:` to the common `viewWillAppear:`, `viewDidAppear:`, `viewWillDisappear:` and `viewDidDisappear:` methods.
+
+If you did any setup in the `initWithFrame:playerView:` method you can change that to `viewDidLoad`, or if you require access to the `BCOVTVPlayerView` you can create your own `UIViewController` initializer like `init(playerView: BCOVTVPlayerView)`.
+
+Finally by default the view for your `UIViewController`, when displayed, will have a transparent background so you may wish to add a background view or a background color.
+
+Once your views are migrated to view controllers you can then set add them to the `customInfoViewControllers` array on `BCOVTVControlsView`.
+
+Thus the following code:
+```
+private func createSampleTabBarItemView() {
+    guard let playerView, var topTabBarItemViews = playerView.settingsView.topTabBarItemViews else {
+        return
+    }
+
+    let sampleTabBarItemView = SampleTabBarItemView(size: CGSize.init(width: 620, height: 200), playerView: playerView)
+
+    topTabBarItemViews.append(sampleTabBarItemView)
+    playerView.settingsView.topTabBarItemViews = topTabBarItemViews
+}
+```
+
+Becomes:
+```
+private func createSampleInfoViewControllers() {
+    guard let playerView else {
+        return
+    }
+
+    let sampleInfoVC = SampleInfoViewController(playerView: playerView)
+    sampleInfoVC.preferredContentSize = CGSizeMake(0, 200)
+
+    playerView.controlsView.customInfoViewControllers = [sampleInfoVC]
+}
+```
 
 ## Brightcove Server-Side Ad Insertion (SSAI)
 

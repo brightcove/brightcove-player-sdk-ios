@@ -13,7 +13,7 @@
 @class BCOVAd;
 @class BCOVTVControlsView;
 @class BCOVTVPlayerView;
-@class BCOVTVSettingsView;
+@class BCOVTVInfoViewController;
 @protocol BCOVTVAccessibilityDelegate;
 
 
@@ -38,15 +38,7 @@ typedef NS_ENUM(NSUInteger, BCOVTVShowViewType) {
      * This displays the progress view and its related labels,
      * and hides the top tab bar view.
      */
-    BCOVTVShowViewTypeControls,
-
-    /**
-     * Settings: used when hiding the controls view
-     * and showing the settings view.
-     * This displays the top tab bar and its related views,
-     * and hides the progress view and related labels.
-     */
-    BCOVTVShowViewTypeSettings
+    BCOVTVShowViewTypeControls
 };
 
 /**
@@ -323,6 +315,12 @@ typedef NS_ENUM(NSUInteger, BCOVTVIconType)
  */
 @property (nonatomic, assign) BOOL showBumperControls;
 
+/**
+ * When enabled, this property will show the video name label.
+ * Defaults to `YES`.
+ */
+@property (nonatomic, assign) BOOL displayVideoName;
+
 @end
 
 
@@ -392,23 +390,10 @@ typedef NS_ENUM(NSUInteger, BCOVTVIconType)
 @property (nonatomic, weak, readonly) UIView *overlayView;
 
 /**
- * settingsView holds the Info, Audio, and Subtitles settings views
- * in the top tab bar, and is a subview of the controlsStaticView view.
- */
-@property (nonatomic, readonly) BCOVTVSettingsView *settingsView;
-
-/**
- * controlsView holds the playback progress controls, and is a subview of the
+ * controlsView holds the playback progress controls and info views. It is a subview of the
  * controlsFadingView view.
  */
 @property (nonatomic, readonly) BCOVTVControlsView *controlsView;
-
-/**
- * settingsControlFocusGuide a UIFocusGuide that allows VoiceOver users
- * to navigate between the settings view to the controls view
- */
-@property (nonatomic, strong) UIFocusGuide *settingsControlFocusGuide;
-
 
 /**
  * Initialize a new BCOVTVPlayerView object
@@ -430,7 +415,7 @@ NS_DESIGNATED_INITIALIZER;
 /**
  * Display a specific set of views in the TV Player UI.
  *
- * @param viewType Pass BCOVTVShowViewTypeNone to hide all control views. Pass BCOVTVShowViewTypeControls to display the progress view and its related controls. Pass BCOVTVShowViewTypeSettings to display the top tab bar and its related views.
+ * @param viewType Pass BCOVTVShowViewTypeNone to hide all control views. Pass BCOVTVShowViewTypeControls to display the progress view and its related controls.
  */
 - (void)showView:(BCOVTVShowViewType)viewType;
 
@@ -442,13 +427,6 @@ NS_DESIGNATED_INITIALIZER;
  * @param completion Completion routine called when the fading animation has completed.
  */
 - (void)showControlsFadingView:(BOOL)show completion:(void (^)(void))completion;
-
-/**
- * Set the visibility of the top tab bar.
- *
- * @param showTopTabBar Set to YES to make the top tab bar visible.
- */
-- (void)showTopTabBar:(BOOL)showTopTabBar;
 
 /**
  * Resets the timer used to keep track of when to hide the controls.
