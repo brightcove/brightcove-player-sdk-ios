@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.13.0.2599
+# Brightcove Player SDK for iOS, version 6.13.1.2627
 
 
 ## Table of Contents

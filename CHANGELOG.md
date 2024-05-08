@@ -1,3 +1,51 @@
+## Release 6.13.1
+
+#### 8 May 2024
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* The BrightcovePlayerSDK XCFrameworks are now code signed.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* The BrightcoveSSAI and OMSDK_Brightcove XCFrameworks are now code signed.
+
+* Supports Open Measurement SDK 1.4.13 for iOS.
+
+### Pulse Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* The BrightcovePulse XCFramework is now code signed.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* The BrightcoveIMA XCFramework is now code signed.
+
+### FreeWheel Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* The BrightcoveFW XCFramework is now code signed.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* The BrightcoveGoogleCast XCFramework is now code signed.
+
+### Omniture Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* The BrightcoveAMC XCFramework is now code signed.
+
 ## Release 6.13.0
 
 #### 16 Apr 2024
@@ -1450,7 +1498,7 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Reduces the file size of the dynamic framework by ~10MB, and ~20MB for the static framework. 
+* Reduces the file size of the dynamic framework by ~10MB, and ~20MB for the static framework.
 
 * Reduces CPU load up to 40% when playing video, decreases memory usage by up to 10%, and decreases energy usage by up to 30%.
 
@@ -1480,9 +1528,9 @@ FOUNDATION_EXPORT const unsigned char BrightcovePlayerSDKVersionString[];
 
 #### Additions and Improvements
 
-* Fixes an issue where the delegate method  `playbackController:playbackSession:didExitAd:` was not being triggered when an applicable IMA ad was skipped. 
+* Fixes an issue where the delegate method  `playbackController:playbackSession:didExitAd:` was not being triggered when an applicable IMA ad was skipped.
 
-* Fixes an issue where ads were not replayed when `ignoringPreviouslyProcessedCuePoints` on `BCOVCuePointProgressPolicy` was disabled. 
+* Fixes an issue where ads were not replayed when `ignoringPreviouslyProcessedCuePoints` on `BCOVCuePointProgressPolicy` was disabled.
 
 ## Release 6.5.0
 

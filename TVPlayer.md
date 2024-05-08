@@ -1,4 +1,4 @@
-# Using the TV Player UI With The Brightcove Player SDK for tvOS, version 6.13.0.2599
+# Using the TV Player UI With The Brightcove Player SDK for tvOS, version 6.13.1.2627
 
 ## Overview
 
@@ -120,7 +120,7 @@ Please check out our sample apps to see the TV Player View in action, including 
 
 ## Migrating from BCOVTVTabBarItemView to UIViewController
 
-Brightcove Native Player SDK 6.12.8 introduced a new UI for tvOS. As part of this UI overhaul any usages of `BCOVTVTabBarItemView` need to be converted to a `UIViewController` in order to continue functioning.
+Brightcove Native Player SDK 6.13.0 introduced a new UI for tvOS. As part of this UI overhaul any usages of `BCOVTVTabBarItemView` need to be converted to a `UIViewController` in order to continue functioning.
 
 Fortunately this can be as easy as creating a new `UIViewController`, copying over any properties and custom methods to the new `UIViewController`. If your view was using the `tabBarItemViewDidAdvanceToPlaybackSession:` method you can use `didAdvanceToPlaybackSession:` instead. Any subviews being added can easily be changed from `addSubview:` to `self.view.addSubview:`.
 

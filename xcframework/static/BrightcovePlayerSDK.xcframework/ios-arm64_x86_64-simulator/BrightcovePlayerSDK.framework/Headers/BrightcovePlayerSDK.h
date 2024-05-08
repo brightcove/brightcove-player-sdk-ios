@@ -43,6 +43,7 @@
 #import <BrightcovePlayerSDK/BCOVPlaylist.h>
 #import <BrightcovePlayerSDK/BCOVSource.h>
 #import <BrightcovePlayerSDK/BCOVVideo.h>
+#import <BrightcovePlayerSDK/BCOVErrorTranslator.h>
 
 // Ads
 #import <BrightcovePlayerSDK/BCOVAdvertising.h>
