@@ -30,15 +30,16 @@
 VALID_ARCHS="arm64"
 
 # Signs a framework with the provided identity
-code_sign() {
+function code_sign()
+{
   # Use the current code_sign_identitiy
-  echo "Code Signing $1 with Identity ${EXPANDED_CODE_SIGN_IDENTITY_NAME}"
-  echo "/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} --preserve-metadata=identifier,entitlements $1"
-  /usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} --preserve-metadata=identifier,entitlements "$1"
+  echo "Code Signing $1 with Identity $EXPANDED_CODE_SIGN_IDENTITY_NAME"
+  echo "/usr/bin/codesign --force --sign $EXPANDED_CODE_SIGN_IDENTITY --preserve-metadata=identifier,entitlements $1"
+  /usr/bin/codesign --force --sign $EXPANDED_CODE_SIGN_IDENTITY --preserve-metadata=identifier,entitlements "$1"
 }
 
 echo "Stripping frameworks"
-cd "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}"
+cd "$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH"
 
 for file in $(find . -type f -perm +111); do
   # Skip non-dynamic libraries
@@ -46,10 +47,10 @@ for file in $(find . -type f -perm +111); do
     continue
   fi
   # Get architectures for current file
-  archs="$(lipo -info "${file}" | rev | cut -d ':' -f1 | rev)"
+  archs="$(lipo -info "$file" | rev | cut -d ':' -f1 | rev)"
   stripped=""
   for arch in $archs; do
-    if ! [[ "${VALID_ARCHS}" == *"$arch"* ]]; then
+    if ! [[ "$VALID_ARCHS" == *"$arch"* ]]; then
       # Strip non-valid architectures in-place
       lipo -remove "$arch" -output "$file" "$file" || exit 1
       stripped="$stripped $arch"
@@ -57,8 +58,8 @@ for file in $(find . -type f -perm +111); do
   done
   if [[ "$stripped" != "" ]]; then
     echo "Stripped $file of architectures:$stripped"
-    if [ "${CODE_SIGNING_REQUIRED}" == "YES" ]; then
-      code_sign "${file}"
+    if [ "$CODE_SIGNING_REQUIRED" == "YES" ]; then
+      code_sign "$file"
     fi
   fi
 done

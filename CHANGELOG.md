@@ -1,3 +1,37 @@
+## Release 6.13.2
+
+#### 1 July 2024
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fix for calling `insertVideo:afterVideoAtIndex:` after the current video has completed.
+* Fix for presenting `BCOVTVPlayerView` in a modal view causing the modal to automatically dismiss.
+* Fix for poster image for audio-only content being displayed during ad breaks.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports Google Cast SDK 4.8.1.
+
+#### Breaking Changes
+
+* The minimum Deployment Target for Google Cast Plugin for Brightcove Player SDK for iOS is iOS 14.0.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports Google Ads IMA SDK 3.23.0 for iOS and 4.13.0 for tvOS.
+
+### DAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports Google Ads IMA SDK 3.23.0 for iOS and 4.13.0 for tvOS.
+
 ## Release 6.13.1
 
 #### 8 May 2024
@@ -180,7 +214,7 @@
 
 #### Breaking Changes
 
-* The minimum Deployment Target for Google Cast Plugin for Brightcove Player SDK for iOS for iOS is iOS 13.0.
+* The minimum Deployment Target for Google Cast Plugin for Brightcove Player SDK for iOS is iOS 13.0.
 
 ### SSAI Plugin for Brightcove Player SDK for iOS
 
