@@ -72,3 +72,8 @@
 
 // Accessibility
 #import <BrightcovePlayerSDK/BCOVUILabel.h>
+
+// Interactivity
+#import <BrightcovePlayerSDK/BCOVInteractivityHandler.h>
+#import <BrightcovePlayerSDK/BCOVInteractivityProject.h>
+#import <BrightcovePlayerSDK/BCOVInteractivityControl.h>

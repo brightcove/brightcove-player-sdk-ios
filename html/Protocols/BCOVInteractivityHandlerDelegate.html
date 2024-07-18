@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>BCOVInteractivityHandlerDelegate Protocol Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Brightcove Native Player for iOS </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Brightcove</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/animationTimeForTransition:">- animationTimeForTransition:</option>
+		
+		<option value="//api/name/annotationWasTapped:">- annotationWasTapped:</option>
+		
+		<option value="//api/name/annotationWasTriggered:">- annotationWasTriggered:</option>
+		
+		<option value="//api/name/backgroundColorForTextAnnotation:">- backgroundColorForTextAnnotation:</option>
+		
+		<option value="//api/name/fontForTextAnnotation:">- fontForTextAnnotation:</option>
+		
+		<option value="//api/name/projectRequestFailed:">- projectRequestFailed:</option>
+		
+		<option value="//api/name/projectWasCreated:">- projectWasCreated:</option>
+		
+		<option value="//api/name/textColorForTextAnnotation:">- textColorForTextAnnotation:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">BCOVInteractivityHandlerDelegate Protocol Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Conforms to</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>BCOVInteractivityHandler.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/projectWasCreated:" title="projectWasCreated:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/projectWasCreated:">&ndash;&nbsp;projectWasCreated:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This delegate method is called if the GET request for fetching the
+Interactivity project is successful.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)projectWasCreated:(BCOVInteractivityProject *)<em>project</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>project</code></th>
+						<td><p>The <a href="../Classes/BCOVInteractivityProject.html"><code>BCOVInteractivityProject</code></a> that was created.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This delegate method is called if the GET request for fetching the
+Interactivity project is successful.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVInteractivityHandler.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/projectRequestFailed:" title="projectRequestFailed:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/projectRequestFailed:">&ndash;&nbsp;projectRequestFailed:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This delegate method is called if the GET request for fetching the
+Interactivity project fails.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)projectRequestFailed:(NSError *)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>The error that was returned.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This delegate method is called if the GET request for fetching the
+Interactivity project fails.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVInteractivityHandler.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/animationTimeForTransition:" title="animationTimeForTransition:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/animationTimeForTransition:">&ndash;&nbsp;animationTimeForTransition:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The animation timing for a given transition class.
+Currently only the &ldquo;Fade&rdquo; transition is supported.
+The default value is <code>0.35</code></p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (CGFloat)animationTimeForTransition:(BCOVInteractivityAnnotationTransition)<em>transition</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>transition</code></th>
+						<td><p>The transition type for the annotation.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The animation timing for a given transition class.
+Currently only the &ldquo;Fade&rdquo; transition is supported.
+The default value is <code>0.35</code></p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVInteractivityHandler.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/fontForTextAnnotation:" title="fontForTextAnnotation:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fontForTextAnnotation:">&ndash;&nbsp;fontForTextAnnotation:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The desired font for a text annotation.
+Unlike a web browser a UIFont size isn&rsquo;t uniform across iPhone, iPad and tvOS.
+We use <code>systemFontOfSize:weight:</code> with the font size being 0.018%
+of AVPlayerLayer&rsquo;s videoRect width and a weight of <code>UIFontWeightMedium</code></p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (UIFont *)fontForTextAnnotation:(BCOVInteractivityAnnotation *)<em>annotation</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>annotation</code></th>
+						<td><p>The Annotation to be styled.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The desired font for a text annotation.
+Unlike a web browser a UIFont size isn&rsquo;t uniform across iPhone, iPad and tvOS.
+We use <code>systemFontOfSize:weight:</code> with the font size being 0.018%
+of AVPlayerLayer&rsquo;s videoRect width and a weight of <code>UIFontWeightMedium</code></p>
+
+<p>You can use this delegate method to ovewrite the default UIFont.</p>
+
+<p>If using a custom font make sure to follow Apple&rsquo;s guidelines on embedding fonts.
+<a href="https://developer.apple.com/documentation/uikit/text">https://developer.apple.com/documentation/uikit/text</a>_display_and_fonts/adding_a_custom_font_to_your_app</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVInteractivityHandler.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/backgroundColorForTextAnnotation:" title="backgroundColorForTextAnnotation:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/backgroundColorForTextAnnotation:">&ndash;&nbsp;backgroundColorForTextAnnotation:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The desired background color for a text annotation.
+Currently we only support the &ldquo;MULLINS SPECIAL&rdquo; (black) and &ldquo;White&rdquo; themes.
+If any other theme is selected the styling for &ldquo;White&rdquo; will be used.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (UIColor *)backgroundColorForTextAnnotation:(BCOVInteractivityAnnotation *)<em>annotation</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>annotation</code></th>
+						<td><p>The Annotation to be styled.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The desired background color for a text annotation.
+Currently we only support the &ldquo;MULLINS SPECIAL&rdquo; (black) and &ldquo;White&rdquo; themes.
+If any other theme is selected the styling for &ldquo;White&rdquo; will be used.</p>
+
+<p>For &ldquo;MULLINS SPECIAL&rdquo; we use RBG(68, 68, 68) with an 0.4 alpha component.
+For &ldquo;White&rdquo; we use UIColor.white with an 0.5 alpha component.</p>
+
+<p>You can use this delegate method to set a custom background color for
+the text annotation.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVInteractivityHandler.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/textColorForTextAnnotation:" title="textColorForTextAnnotation:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/textColorForTextAnnotation:">&ndash;&nbsp;textColorForTextAnnotation:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The desired text color for a text annotation.
+Currently we only support the &ldquo;MULLINS SPECIAL&rdquo; (black) and &ldquo;White&rdquo; themes.
+If any other theme is selected the styling for &ldquo;White&rdquo; will be used.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (UIColor *)textColorForTextAnnotation:(BCOVInteractivityAnnotation *)<em>annotation</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>annotation</code></th>
+						<td><p>The Annotation to be styled.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The desired text color for a text annotation.
+Currently we only support the &ldquo;MULLINS SPECIAL&rdquo; (black) and &ldquo;White&rdquo; themes.
+If any other theme is selected the styling for &ldquo;White&rdquo; will be used.</p>
+
+<p>For &ldquo;MULLINS SPECIAL&rdquo; we use UIColor.whiteColor.
+For &ldquo;White&rdquo; we use UIColor.black.</p>
+
+<p>You can use this delegate method to set a custom text color for
+the text annotation.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVInteractivityHandler.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/annotationWasTapped:" title="annotationWasTapped:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/annotationWasTapped:">&ndash;&nbsp;annotationWasTapped:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This delegate method is called when a user taps the view of an <a href="../Classes/BCOVInteractivityAnnotation.html">BCOVInteractivityAnnotation</a>
+which has been configured with a command.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)annotationWasTapped:(BCOVInteractivityAnnotation *)<em>annotation</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>annotation</code></th>
+						<td><p>The Annotation that was tapped.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This delegate method is called when a user taps the view of an <a href="../Classes/BCOVInteractivityAnnotation.html">BCOVInteractivityAnnotation</a>
+which has been configured with a command.</p>
+
+<p>You can access the command and command data with the annotation&rsquo;s
+<code>command</code> and <code>commandData</code> properties.</p>
+
+<p>You can then use those values to add additional behavior.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVInteractivityHandler.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/annotationWasTriggered:" title="annotationWasTriggered:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/annotationWasTriggered:">&ndash;&nbsp;annotationWasTriggered:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This delegate method is called when a Time Triggered annotation becomes active</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)annotationWasTriggered:(BCOVInteractivityAnnotation *)<em>annotation</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>annotation</code></th>
+						<td><p>The Annotation that was triggered.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This delegate method is called when a Time Triggered annotation becomes active</p>
+
+<p>You can access the command and command data with the annotation&rsquo;s
+<code>command</code> and <code>commandData</code> properties.</p>
+
+<p>You can then use those values to add additional behavior.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BCOVInteractivityHandler.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-07-18</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

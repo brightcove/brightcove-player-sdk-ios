@@ -12,6 +12,7 @@
 
 @class BCOVCuePointCollection;
 @class BCOVSource;
+@class BCOVVideo;
 @protocol BCOVMutableVideo;
 
 // Economics field values
