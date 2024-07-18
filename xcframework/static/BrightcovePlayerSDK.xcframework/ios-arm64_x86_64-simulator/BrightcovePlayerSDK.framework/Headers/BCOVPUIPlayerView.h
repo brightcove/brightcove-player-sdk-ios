@@ -469,6 +469,11 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
 @property (nonatomic, weak, readonly) UIView *contentOverlayView;
 
 /**
+ * View intended to contain views related to interactivity projects.
+ */
+@property (nonatomic, weak, readonly) UIView *interactivityOverlayView;
+
+/**
  * View that contains all controls, static or fading.
  * Set this view's alpha to zero to hide all controls.
  */

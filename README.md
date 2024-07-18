@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.13.2.3
+# Brightcove Player SDK for iOS, version 6.13.3.8
 
 
 ## Table of Contents
@@ -47,6 +47,7 @@
 1. [AVAudioSession Configuration](#avaudiosession-configuration)
 1. [Audio-Only Support](#audio-only-support)
 1. [Bumper Support](#bumper-support)
+1. [Interactivity](#interactivity)
 1. [Frequently Asked Questions](#frequently-asked-questions)
 1. [Support](#support)
 
@@ -1648,6 +1649,10 @@ If the `automaticControlTypeSelection` option is set to `YES`, the layout for th
 - AirPlay and PiP depend on the playerView configuration
   - the AirPlay icon depends on the content (video/audio-only)
   - PiP is not allowed for audio-only content
+
+## Interactivity
+
+Support for Interactivity is integrated into the core _BrightcovePlayerSDK_ framework. For full details about using Interactivity with the Brightcove Native Player SDK, refer to the [Interactivity guide](Interactivity.md).
 
 ## Frequently Asked Questions
 

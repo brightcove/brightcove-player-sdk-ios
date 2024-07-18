@@ -1,3 +1,13 @@
+## Release 6.13.3
+
+#### 18 July 2024
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Released SDK Interactivity v1.0 - Please review the [Interactivity README](https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/Interactivity.md) for further information.
+
 ## Release 6.13.2
 
 #### 1 July 2024
