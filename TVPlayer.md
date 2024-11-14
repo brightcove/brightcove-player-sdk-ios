@@ -1,4 +1,4 @@
-# Using the TV Player UI With The Brightcove Player SDK for tvOS, version 6.13.3.8
+# Using the TV Player UI With The Brightcove Player SDK for tvOS, version 7.0.0.9
 
 ## Overview
 
@@ -14,36 +14,39 @@ The following Objective-C code shows how to set up and use the TV Player control
 
 1 - In your view controller, add a property to hold a reference to the TV Player view. The TV player view is a subclass of UIView that contains both the video player layer where the video is displayed, and the controls overlays.
 
+```swift
+var playerView: BCOVTVPlayerView?
 ```
-    @property (nonatomic) BCOVTVPlayerView *playerView;
+2 - In your UI setup code, create the default TV Player view options. You can configure various properties here, such as animation durations, the controls hiding delay, jump interval, and the presenting view controller. The presenting view controller is used to present additional view controllers, such as the view controller created when the Info view's description text is too long and has to be displayed in a new view.
 
-```
-2 - In your UI setup code, create the default TV Player view options. You can configure various properties here, such as animation durations, the controls hiding delay, jump interval, and the presenting view controller. The presenting view controller is used to present additional view controllers, such as the view controller created when the Info tab view's description text is too long and has to be displayed in a new view.
-
-```
-    BCOVTVPlayerViewOptions *options = [[BCOVTVPlayerViewOptions alloc] init];
-    options.presentingViewController = self;
+```swift
+let options = BCOVTVPlayerViewOptions()
+options.presentingViewController = self
 ```
 
 3 - Create the TV Player View object, and size it to its container's bounds (videoContainer is your own view). Then add it to the container as a subview.
 
+```swift
+if let playerView = BCOVTVPlayerView(options: options) {
+    playerView.frame = videoContainer.bounds
+
+    videoContainer.addSubview(playerView)
+
+    self.playerView = playerView
+}
 ```
-    self.playerView = [[BCOVTVPlayerView alloc] initWithOptions:options];
-    self.playerView.frame = self.videoContainer.bounds;
-	
-    [self.videoContainer addSubview:self.playerView];
-```
+
 Apple TV views typically aren't resized, so we don't worry about adding any size constraints.
 
 4 - Create your playback controller, configure it, and assign it to the TV Player view.
 
-```
-    id<BCOVPlaybackController> playbackController = [BCOVPlayerSDKManager.sharedManager createPlaybackController];
+```swift
+let playbackController = BCOVPlayerSDKManager.sharedManager().createPlaybackController()
 
-    playbackController.autoPlay = YES;
-    playbackController.delegate = self;
+playbackController.isAutoPlay = true
+playbackController.delegate = self
 
-    self.playerView.playbackController = playbackController;
+playerView?.playbackController = playbackController
 ```
 
 Assigning the playbackController links the playback controller to the TV Player view. You can re-use the TV Player view by creating new playback controllers and assigning them to the TV Player view's playbackController property at any time.
@@ -78,7 +81,7 @@ Keep in mind that a "tap" is a touch on the Siri Remote trackpad, while a "click
 | Double Tap| Change video gravity        | Cycle through the three standard video gravity modes: AVLayerVideoGravityResizeAspect, AVLayerVideoGravityResizeAspectFill, and AVLayerVideoGravityResize. |
 | Single Click |Pause/resume playback|If video is playing, pause video and show controls. If video is paused, resume playback and hide controls.|
 | Play/Pause Button | Play/pause video | If the video is playing, this will pause the video and show the progress view. If the top tab bar was visible and the video was playing, it will resume playback and continue to show the top tab bar. If the video was paused, resume playback. Hide the progress view if it was visible. If the top tab bar was visible, continue to show it. |
-| Menu Button | Hide top tab bar, or perform default Menu button behavior |If the top tab bar is visible, hide the top tab bar. If the top tab bar is not visible, perform the default Menu button action (return to home screen if not otherwise overridden).|
+| Menu Button | Hide info view, hide playback controls view, or perform default Menu button behavior | If the playback controls are visible and the info view is not visible, hide the controls view. If the info view is visible, hide the info view. If the the controls are not visible, perform the default Menu button action (return to home screen if not otherwise overridden).|
 
 ### Additional Controls and Gestures when using BCOVTVPlayerTypeVOD
 
@@ -102,12 +105,12 @@ You can provide additional Info View Controllers using the `customInfoViewContro
 
 For example:
 
-```
+```swift
 let sample = SampleInfoViewController(playerView: _playerView)
 sample.title = "Sample"
 sample.preferredContentSize = CGSizeMake(0, 250)
 
-_playerView.controlsView.customInfoViewControllers = [sample]
+playerView.controlsView.customInfoViewControllers = [sample]
 ```
 
 The value you set for the UIViewController's title will be used for the tab that will be used to display the UIViewController's view. You'll also need to set a value for `preferredContentSize` supplying a minimum height for your view (the width value will be ignored).
@@ -133,7 +136,8 @@ Finally by default the view for your `UIViewController`, when displayed, will ha
 Once your views are migrated to view controllers you can then set add them to the `customInfoViewControllers` array on `BCOVTVControlsView`.
 
 Thus the following code:
-```
+
+```swift
 private func createSampleTabBarItemView() {
     guard let playerView, var topTabBarItemViews = playerView.settingsView.topTabBarItemViews else {
         return
@@ -147,7 +151,8 @@ private func createSampleTabBarItemView() {
 ```
 
 Becomes:
-```
+
+```swift
 private func createSampleInfoViewControllers() {
     guard let playerView else {
         return

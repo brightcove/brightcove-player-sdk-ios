@@ -64,11 +64,13 @@
 	
 	<optgroup label="Class Methods">
 		
+		<option value="//api/name/SDKVersion">+ SDKVersion</option>
+		
+		<option value="//api/name/new">+ new</option>
+		
 		<option value="//api/name/sharedManager">+ sharedManager</option>
 		
 		<option value="//api/name/sharedManagerWithOptions:">+ sharedManagerWithOptions:</option>
-		
-		<option value="//api/name/version">+ version</option>
 		
 	</optgroup>
 	
@@ -94,9 +96,9 @@
 		
 		<option value="//api/name/createSidecarSubtitlesPlaybackControllerWithViewStrategy:">- createSidecarSubtitlesPlaybackControllerWithViewStrategy:</option>
 		
-		<option value="//api/name/createSidecarSubtitlesSessionProviderWithOptions:">- createSidecarSubtitlesSessionProviderWithOptions:</option>
-		
 		<option value="//api/name/createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:">- createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:</option>
+		
+		<option value="//api/name/init">- init</option>
 		
 		<option value="//api/name/registerComponent:">- registerComponent:</option>
 		
@@ -124,7 +126,7 @@
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>BCOVPlayerSDKManager.h</td>
+	<td>BrightcovePlayerSDK-Swift.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -138,12 +140,6 @@
 central registry, and diagnostics center in the Brightcove Player SDK for
 iOS. After obtaining an instance of the Manager, use it to obtain instances
 of other objects from the Player SDK ecosystem.</p>
-
-<p>@constant kBCOVSSTextTracksKeySourceTypeM3U8URL</p><p>This key/value pair is only necessary if the
-source URL refers to an M3U8 file, but does not use
-an &ldquo;.m3u8&rdquo; extension.</p>
-
-<p>Adds methods to BCOVPlayerSDKManager to create FairPlay players and session providers.</p>
 					</div>
 					
 					
@@ -159,8 +155,8 @@ an &ldquo;.m3u8&rdquo; extension.</p>
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/version" title="version"></a>
-	<h3 class="method-title"><code><a href="#//api/name/version">+&nbsp;version</a></code>
+	<a name="//api/name/sharedManager" title="sharedManager"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sharedManager">+&nbsp;sharedManager</a></code>
 </h3>
 
 	<div class="method-info">
@@ -170,21 +166,17 @@ an &ldquo;.m3u8&rdquo; extension.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Returns the SDK version.</p>
+				<p>returns:
+The Player SDK Manager singleton.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (NSString *)version</code></div>
+			<div class="method-subsection method-declaration"><code>+ (BCOVPlayerSDKManager *_Nonnull)sharedManager</code></div>
 
 		    
 			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>The SDK version</p>
-			</div>
 			
 
 			
@@ -192,7 +184,8 @@ an &ldquo;.m3u8&rdquo; extension.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns the SDK version.</p>
+				<p>returns:
+The Player SDK Manager singleton.</p>
 			</div>
 			
 
@@ -203,7 +196,103 @@ an &ldquo;.m3u8&rdquo; extension.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sharedManagerWithOptions:" title="sharedManagerWithOptions:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sharedManagerWithOptions:">+&nbsp;sharedManagerWithOptions:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>returns:
+The Player SDK Manager singleton.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BCOVPlayerSDKManager *_Nonnull)sharedManagerWithOptions:(NSDictionary *_Nullable)<em>options</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>returns:
+The Player SDK Manager singleton.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/SDKVersion" title="SDKVersion"></a>
+	<h3 class="method-title"><code><a href="#//api/name/SDKVersion">+&nbsp;SDKVersion</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>returns:
+The SDK version</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nonnull)SDKVersion</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>returns:
+The SDK version</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -223,12 +312,17 @@ an &ldquo;.m3u8&rdquo; extension.</p>
 			<div class="method-subsection brief-description">
 				<p>sessionID is a unique identifier associated with this instance
 of the application. This identifier is sent along with other
-analytics data to the Brightcove metrics servers.</p>
+analytics data to the Brightcove metrics servers.
+The sessionID can be useful when trying to track down problems with
+particular playback issues. For example, if you detect playback issues,
+you can send the sessionID and the video ID to your own error tracking
+server, and then report those two values to Brightcove service engineers
+to track down the source of the problem in the server logs.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, strong) NSString *sessionID</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSString *sessionID</code></div>
 
 		    
 			
@@ -242,9 +336,8 @@ analytics data to the Brightcove metrics servers.</p>
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>sessionID is a unique identifier associated with this instance
 of the application. This identifier is sent along with other
-analytics data to the Brightcove metrics servers.</p>
-
-<p>The sessionID can be useful when trying to track down problems with
+analytics data to the Brightcove metrics servers.
+The sessionID can be useful when trying to track down problems with
 particular playback issues. For example, if you detect playback issues,
 you can send the sessionID and the video ID to your own error tracking
 server, and then report those two values to Brightcove service engineers
@@ -259,7 +352,7 @@ to track down the source of the problem in the server logs.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -277,23 +370,17 @@ to track down the source of the problem in the server logs.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Creates and returns a playback controller configured with a basic session
-provider and a default view strategy (equivalent to calling
-<code>[BCOVPlayerSDKManager createPlaybackControllerWithViewStrategy:nil]</code>).</p>
+				<p>returns:
+A playback controller.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt;)createPlaybackController</code></div>
+			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt; _Nonnull)createPlaybackController</code></div>
 
 		    
 			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>A playback controller.</p>
-			</div>
 			
 
 			
@@ -301,9 +388,8 @@ provider and a default view strategy (equivalent to calling
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Creates and returns a playback controller configured with a basic session
-provider and a default view strategy (equivalent to calling
-<code>[BCOVPlayerSDKManager createPlaybackControllerWithViewStrategy:nil]</code>).</p>
+				<p>returns:
+A playback controller.</p>
 			</div>
 			
 
@@ -314,7 +400,7 @@ provider and a default view strategy (equivalent to calling
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -332,37 +418,17 @@ provider and a default view strategy (equivalent to calling
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Creates and returns a playback controller configured with a basic session
-provider and the specified view strategy. Passing <code>nil</code> as the view strategy
-will configure the returned playback controller&rsquo;s <code>view</code> property as a basic
-unadorned video view.</p>
+				<p>returns:
+A playback controller configured with the specified strategy.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt;)createPlaybackControllerWithViewStrategy:(BCOVPlaybackControllerViewStrategy)<em>viewStrategy</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt; _Nonnull)createPlaybackControllerWithViewStrategy:(BCOVPlaybackControllerViewStrategy _Nullable)<em>viewStrategy</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>viewStrategy</code></th>
-						<td><p>A view strategy that determines the view for the returned
-playback controller.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>A playback controller configured with the specified strategy.</p>
-			</div>
 			
 
 			
@@ -370,10 +436,8 @@ playback controller.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Creates and returns a playback controller configured with a basic session
-provider and the specified view strategy. Passing <code>nil</code> as the view strategy
-will configure the returned playback controller&rsquo;s <code>view</code> property as a basic
-unadorned video view.</p>
+				<p>returns:
+A playback controller configured with the specified strategy.</p>
 			</div>
 			
 
@@ -384,7 +448,7 @@ unadorned video view.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -402,41 +466,17 @@ unadorned video view.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Creates and returns a playback controller configured with the specified
-session provider and view strategy.</p>
+				<p>returns:
+A playback controller configured with the specified parameters.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt;)createPlaybackControllerWithSessionProvider:(id&lt;BCOVPlaybackSessionProvider&gt;)<em>provider</em> viewStrategy:(BCOVPlaybackControllerViewStrategy)<em>viewStrategy</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt; _Nonnull)createPlaybackControllerWithSessionProvider:(id&lt;BCOVPlaybackSessionProvider&gt; _Nullable)<em>provider</em> viewStrategy:(BCOVPlaybackControllerViewStrategy _Nullable)<em>viewStrategy</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>provider</code></th>
-						<td><p>A session provider that vends playback sessions to the
-returned playback controller.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>viewStrategy</code></th>
-						<td><p>A view strategy that determines the view for the
-returned playback controller.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>A playback controller configured with the specified parameters.</p>
-			</div>
 			
 
 			
@@ -444,8 +484,8 @@ returned playback controller.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Creates and returns a playback controller configured with the specified
-session provider and view strategy.</p>
+				<p>returns:
+A playback controller configured with the specified parameters.</p>
 			</div>
 			
 
@@ -456,7 +496,7 @@ session provider and view strategy.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -474,34 +514,17 @@ session provider and view strategy.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Returns a basic playback session provider with the specified options.</p>
+				<p>returns:
+A basic playback session provider configured with the specified options.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackSessionProvider&gt;)createBasicSessionProviderWithOptions:(BCOVBasicSessionProviderOptions *)<em>options</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackSessionProvider&gt; _Nonnull)createBasicSessionProviderWithOptions:(BCOVBasicSessionProviderOptions *_Nullable)<em>options</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>options</code></th>
-						<td><p>The options for the session provider to return.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>A basic playback session provider configured with the specified
-options.</p>
-			</div>
 			
 
 			
@@ -509,7 +532,8 @@ options.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns a basic playback session provider with the specified options.</p>
+				<p>returns:
+A basic playback session provider configured with the specified options.</p>
 			</div>
 			
 
@@ -520,7 +544,7 @@ options.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -536,61 +560,15 @@ options.</p>
 
 		<div class="method-info-container">
 			
-			
-			<div class="method-subsection brief-description">
-				<p>Registers the specified component object with the BCOVPlayerSDKManager. The
-component should implement the methods in the <a href="../Protocols/BCOVComponent.html"><code>BCOVComponent</code></a> protocol.
-Registering a component &ldquo;activates it&rdquo; for use, enabling its functionality.</p>
-			</div>
-			
-		    
 
-			<div class="method-subsection method-declaration"><code>- (void)registerComponent:(id&lt;BCOVComponent&gt;)<em>component</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)registerComponent:(id&lt;BCOVComponent&gt; _Nonnull)<em>component</em></code></div>
 
 		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>component</code></th>
-						<td><p>The object to be registered with the BCOVPlayerSDKManager.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Registers the specified component object with the BCOVPlayerSDKManager. The
-component should implement the methods in the <a href="../Protocols/BCOVComponent.html"><code>BCOVComponent</code></a> protocol.
-Registering a component &ldquo;activates it&rdquo; for use, enabling its functionality.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
-			</div>
-			
-			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/sharedManager" title="sharedManager"></a>
-	<h3 class="method-title"><code><a href="#//api/name/sharedManager">+&nbsp;sharedManager</a></code>
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="method-title"><code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
 </h3>
 
 	<div class="method-info">
@@ -598,50 +576,15 @@ Registering a component &ldquo;activates it&rdquo; for use, enabling its functio
 
 		<div class="method-info-container">
 			
-			
-			<div class="method-subsection brief-description">
-				<p>Returns the Player SDK Manager singleton.</p>
-			</div>
-			
-		    
 
-			<div class="method-subsection method-declaration"><code>+ (BCOVPlayerSDKManager *)sharedManager</code></div>
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)init</code></div>
 
 		    
-			
-
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>The Player SDK Manager singleton.</p>
-			</div>
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns the Player SDK Manager singleton.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
-			</div>
-			
-			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/sharedManagerWithOptions:" title="sharedManagerWithOptions:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/sharedManagerWithOptions:">+&nbsp;sharedManagerWithOptions:</a></code>
+	<a name="//api/name/new" title="new"></a>
+	<h3 class="method-title"><code><a href="#//api/name/new">+&nbsp;new</a></code>
 </h3>
 
 	<div class="method-info">
@@ -649,65 +592,18 @@ Registering a component &ldquo;activates it&rdquo; for use, enabling its functio
 
 		<div class="method-info-container">
 			
-			
-			<div class="method-subsection brief-description">
-				<p>Returns the Player SDK Manager singleton.</p>
-			</div>
-			
-		    
 
-			<div class="method-subsection method-declaration"><code>+ (BCOVPlayerSDKManager *)sharedManagerWithOptions:(NSDictionary *)<em>options</em></code></div>
+			<div class="method-subsection method-declaration"><code>+ (nonnull instancetype)new</code></div>
 
 		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>options</code></th>
-						<td><p>Set to nil. Reserved for future use.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>The Player SDK Manager singleton.</p>
-			</div>
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns the Player SDK Manager singleton.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlayerSDKManager.h</code></p>
-			</div>
-			
-			
 		</div>
 	</div>
 </div>
 						</div>
 						
 
-						<a title="BCOVSSAdditions Methods" name="task_BCOVSSAdditions Methods"></a>
-						<h2 class="task-title">BCOVSSAdditions Methods</h2>
+						<a title="SWIFT_EXTENSION Methods" name="task_SWIFT_EXTENSION Methods"></a>
+						<h2 class="task-title">SWIFT_EXTENSION Methods</h2>
 
 						<div class="task-list">
 							<div class="section-method">
@@ -722,36 +618,17 @@ Registering a component &ldquo;activates it&rdquo; for use, enabling its functio
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Creates and returns a new playback controller configured for sidecar subtitles
-with the specified view strategy.</p>
+				<p>returns:
+A <a href="#//api/name/new">new</a> playback controller configured for sidecar subtitles playbacksessions.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt;)createSidecarSubtitlesPlaybackControllerWithViewStrategy:(BCOVPlaybackControllerViewStrategy)<em>viewStrategy</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt; _Nonnull)createSidecarSubtitlesPlaybackControllerWithViewStrategy:(BCOVPlaybackControllerViewStrategy _Nullable)<em>viewStrategy</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>viewStrategy</code></th>
-						<td><p>A view strategy that determines the view for the returned
-playback controller.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>A new playback controller configured for sidecar subtitles playback
-sessions.</p>
-			</div>
 			
 
 			
@@ -759,8 +636,8 @@ sessions.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Creates and returns a new playback controller configured for sidecar subtitles
-with the specified view strategy.</p>
+				<p>returns:
+A <a href="#//api/name/new">new</a> playback controller configured for sidecar subtitles playbacksessions.</p>
 			</div>
 			
 
@@ -771,7 +648,7 @@ with the specified view strategy.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVSSComponent.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -789,34 +666,17 @@ with the specified view strategy.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Creates and returns a new sidecar subtitle session provider with the
-specified parameters.</p>
+				<p>returns:
+A <a href="#//api/name/new">new</a> session provider with the specified parameters.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackSessionProvider&gt;)createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:(id&lt;BCOVPlaybackSessionProvider&gt;)<em>provider</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackSessionProvider&gt; _Nonnull)createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:(id&lt;BCOVPlaybackSessionProvider&gt; _Nullable)<em>provider</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>provider</code></th>
-						<td><p>Optional upstream session provider.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>A new session provider with the specified parameters.</p>
-			</div>
 			
 
 			
@@ -824,8 +684,8 @@ specified parameters.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Creates and returns a new sidecar subtitle session provider with the
-specified parameters.</p>
+				<p>returns:
+A <a href="#//api/name/new">new</a> session provider with the specified parameters.</p>
 			</div>
 			
 
@@ -836,45 +696,13 @@ specified parameters.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVSSComponent.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
-</div>
-						</div>
-						
-
-						<a title="BCOVSSAdditionsDepricated Methods" name="task_BCOVSSAdditionsDepricated Methods"></a>
-						<h2 class="task-title">BCOVSSAdditionsDepricated Methods</h2>
-
-						<div class="task-list">
-							<div class="section-method">
-	<a name="//api/name/createSidecarSubtitlesSessionProviderWithOptions:" title="createSidecarSubtitlesSessionProviderWithOptions:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/createSidecarSubtitlesSessionProviderWithOptions:">&ndash;&nbsp;createSidecarSubtitlesSessionProviderWithOptions:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackSessionProvider&gt;)createSidecarSubtitlesSessionProviderWithOptions:(BCOVSSSessionProviderOption *)<em>options</em></code></div>
-
-		    
-		</div>
-	</div>
-</div>
-						</div>
-						
-
-						<a title="BCOVFPSAdditions Methods" name="task_BCOVFPSAdditions Methods"></a>
-						<h2 class="task-title">BCOVFPSAdditions Methods</h2>
-
-						<div class="task-list">
-							<div class="section-method">
+</div><div class="section-method">
 	<a name="//api/name/createFairPlayPlaybackControllerWithAuthorizationProxy:" title="createFairPlayPlaybackControllerWithAuthorizationProxy:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/createFairPlayPlaybackControllerWithAuthorizationProxy:">&ndash;&nbsp;createFairPlayPlaybackControllerWithAuthorizationProxy:</a></code>
 </h3>
@@ -886,38 +714,17 @@ specified parameters.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Creates and returns a FairPlay enabled playback controller.
-If you are using Video Cloud Dynamic Delivery, a Fairplay application certificate will
-automatically be retrieved from the <a href="../Classes/BCOVVideo.html">BCOVVideo</a> when you play a playlist.
-You can still supply an application certificate separately by calling
-<code>BCOVBasicPlaybackController addApplicationCertificate:identifier:</code>.</p>
+				<p>returns:
+A playback controller.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (nonnull id&lt;BCOVPlaybackController&gt;)createFairPlayPlaybackControllerWithAuthorizationProxy:(nonnull id&lt;BCOVFPSAuthorizationProxy&gt;)<em>proxy</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt; _Nonnull)createFairPlayPlaybackControllerWithAuthorizationProxy:(id&lt;BCOVFPSAuthorizationProxy&gt; _Nonnull)<em>proxy</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>proxy</code></th>
-						<td><p>The <a href="../Protocols/BCOVFPSAuthorizationProxy.html">BCOVFPSAuthorizationProxy</a> to use for this session provider.
-Must not be nil.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>A playback controller.</p>
-			</div>
 			
 
 			
@@ -925,11 +732,8 @@ Must not be nil.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Creates and returns a FairPlay enabled playback controller.
-If you are using Video Cloud Dynamic Delivery, a Fairplay application certificate will
-automatically be retrieved from the <a href="../Classes/BCOVVideo.html">BCOVVideo</a> when you play a playlist.
-You can still supply an application certificate separately by calling
-<code>BCOVBasicPlaybackController addApplicationCertificate:identifier:</code>.</p>
+				<p>returns:
+A playback controller.</p>
 			</div>
 			
 
@@ -940,7 +744,7 @@ You can still supply an application certificate separately by calling
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVFPSComponent.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -958,44 +762,17 @@ You can still supply an application certificate separately by calling
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Creates and returns a FairPlay session provider with the specified parameters.
-If you are using Video Cloud Dynamic Delivery, a Fairplay application certificate will
-automatically be retrieved from the <a href="../Classes/BCOVVideo.html">BCOVVideo</a> when you play a playlist.
-You can still supply an application certificate separately by calling
-<code>BCOVBasicPlaybackController addApplicationCertificate:identifier:</code>.</p>
+				<p>returns:
+A session provider.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (nonnull id&lt;BCOVPlaybackSessionProvider&gt;)createFairPlaySessionProviderWithAuthorizationProxy:(nonnull id&lt;BCOVFPSAuthorizationProxy&gt;)<em>proxy</em> upstreamSessionProvider:(nullable id&lt;BCOVPlaybackSessionProvider&gt;)<em>provider</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackSessionProvider&gt; _Nonnull)createFairPlaySessionProviderWithAuthorizationProxy:(id&lt;BCOVFPSAuthorizationProxy&gt; _Nonnull)<em>proxy</em> upstreamSessionProvider:(id&lt;BCOVPlaybackSessionProvider&gt; _Nullable)<em>provider</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>proxy</code></th>
-						<td><p>The <a href="../Protocols/BCOVFPSAuthorizationProxy.html">BCOVFPSAuthorizationProxy</a> to use for this session provider.
-Must not be nil.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>provider</code></th>
-						<td><p>And upstream session provider to link to. If nil, a <a href="../Classes/BCOVBasicSessionProvider.html">BCOVBasicSessionProvider</a>
-will be used.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>A session provider.</p>
-			</div>
 			
 
 			
@@ -1003,11 +780,8 @@ will be used.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Creates and returns a FairPlay session provider with the specified parameters.
-If you are using Video Cloud Dynamic Delivery, a Fairplay application certificate will
-automatically be retrieved from the <a href="../Classes/BCOVVideo.html">BCOVVideo</a> when you play a playlist.
-You can still supply an application certificate separately by calling
-<code>BCOVBasicPlaybackController addApplicationCertificate:identifier:</code>.</p>
+				<p>returns:
+A session provider.</p>
 			</div>
 			
 
@@ -1018,7 +792,7 @@ You can still supply an application certificate separately by calling
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVFPSComponent.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -1036,46 +810,17 @@ You can still supply an application certificate separately by calling
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Creates and returns a FairPlay enabled playback controller.</p>
+				<p>returns:
+A playback controller.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (nonnull id&lt;BCOVPlaybackController&gt;)createFairPlayPlaybackControllerWithApplicationCertificate:(nullable NSData *)<em>appCert</em> authorizationProxy:(nonnull id&lt;BCOVFPSAuthorizationProxy&gt;)<em>proxy</em> viewStrategy:(nullable BCOVPlaybackControllerViewStrategy)<em>viewStrategy</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackController&gt; _Nonnull)createFairPlayPlaybackControllerWithApplicationCertificate:(NSData *_Nullable)<em>appCert</em> authorizationProxy:(id&lt;BCOVFPSAuthorizationProxy&gt; _Nonnull)<em>proxy</em> viewStrategy:(BCOVPlaybackControllerViewStrategy _Nullable)<em>viewStrategy</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>appCert</code></th>
-						<td><p>The Fairplay Application Certificate for this session provider.
-If using Brightcove FPS Server, this can retrieved by
-<a href="../Classes/BCOVFPSBrightcoveAuthProxy.html">BCOVFPSBrightcoveAuthProxy</a>. Can be nil.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>proxy</code></th>
-						<td><p>The <a href="../Protocols/BCOVFPSAuthorizationProxy.html">BCOVFPSAuthorizationProxy</a> to use for this session provider.
-Must not be nil.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>viewStrategy</code></th>
-						<td><p>The view strategy to use.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>A playback controller.</p>
-			</div>
 			
 
 			
@@ -1083,7 +828,8 @@ Must not be nil.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Creates and returns a FairPlay enabled playback controller.</p>
+				<p>returns:
+A playback controller.</p>
 			</div>
 			
 
@@ -1094,7 +840,7 @@ Must not be nil.</p></td>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVFPSComponent.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -1112,47 +858,17 @@ Must not be nil.</p></td>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Creates and returns a FairPlay session provider with the specified parameters.</p>
+				<p>returns:
+A session provider.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (nonnull id&lt;BCOVPlaybackSessionProvider&gt;)createFairPlaySessionProviderWithApplicationCertificate:(nullable NSData *)<em>appCert</em> authorizationProxy:(nonnull id&lt;BCOVFPSAuthorizationProxy&gt;)<em>proxy</em> upstreamSessionProvider:(nullable id&lt;BCOVPlaybackSessionProvider&gt;)<em>provider</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (id&lt;BCOVPlaybackSessionProvider&gt; _Nonnull)createFairPlaySessionProviderWithApplicationCertificate:(NSData *_Nullable)<em>appCert</em> authorizationProxy:(id&lt;BCOVFPSAuthorizationProxy&gt; _Nonnull)<em>proxy</em> upstreamSessionProvider:(id&lt;BCOVPlaybackSessionProvider&gt; _Nullable)<em>provider</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>appCert</code></th>
-						<td><p>The FairPlay Application Certificate for this session provider.
-If using Brightcove FPS Server, this can retrieved by
-<a href="../Classes/BCOVFPSBrightcoveAuthProxy.html">BCOVFPSBrightcoveAuthProxy</a>. Can be nil.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>proxy</code></th>
-						<td><p>The <a href="../Protocols/BCOVFPSAuthorizationProxy.html">BCOVFPSAuthorizationProxy</a> to use for this session provider.
-Must not be nil.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>provider</code></th>
-						<td><p>And upstream session provider to link to. If nil, a <a href="../Classes/BCOVBasicSessionProvider.html">BCOVBasicSessionProvider</a>
-will be used.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>A session provider.</p>
-			</div>
 			
 
 			
@@ -1160,7 +876,8 @@ will be used.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Creates and returns a FairPlay session provider with the specified parameters.</p>
+				<p>returns:
+A session provider.</p>
 			</div>
 			
 
@@ -1171,7 +888,7 @@ will be used.</p></td>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVFPSComponent.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -1190,7 +907,7 @@ will be used.</p></td>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-07-18</p>
+						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-11-14</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

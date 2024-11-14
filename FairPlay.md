@@ -1,4 +1,4 @@
-# Using FairPlay With The Brightcove Player SDK for iOS, version 6.13.3.8
+# Using FairPlay With The Brightcove Player SDK for iOS, version 7.0.0.9
 
 ## Quick Start
 
@@ -18,42 +18,41 @@ When you use Video Cloud Dynamic Delivery, a reference to the FairPlay applicati
 
 Here are the basic steps you need to follow:
 
-```
-    @property (nonatomic, strong) id<BCOVPlaybackController> playbackController;
-    
-    -------
-    
-    // Create a BCOVFPSBrightcoveAuthProxy object.
-    // Use the built-in authorization proxy to take advantage of Dynamic Delivery.
- 	// The application id and publisher id are not needed with Dynamic Delivery.
- 	// You also don't need to worry about retrieving any application certificates.
-    BCOVFPSBrightcoveAuthProxy *proxy = [[BCOVFPSBrightcoveAuthProxy alloc] initWithPublisherId:nil
-                                                                                  applicationId:nil];
-                                             
-    BCOVPlayerSDKManager *sdkManager = [BCOVPlayerSDKManager sharedManager];
-    
-    // Brightcove FairPlay adds some category methods to BCOVPlaybackManager.
-    id<BCOVPlaybackController> playbackController = [sdkManager createFairPlayPlaybackControllerWithAuthorizationProxy:proxy];
-    playbackController.delegate = self;
-    self.playbackController = playbackController;
-    [self.view addSubview:playbackController.view];
-    
-    BCOVPlaybackService *playbackService = [[BCOVPlaybackService alloc] initWithAccountId:<account-id>
-                                                                                policyKey:<policy-key>];
-    
-    NSDictionary *configuration = @{
-        kBCOVPlaybackServiceConfigurationKeyAssetID:<video-id>
-    };
-    [playbackService findVideoWithConfiguration:configuration
-                                queryParameters:@{}
-                                     completion:^(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error) {
-                                   
-        if(video)
-        {
-            [self.playbackController setVideos:@[video]];
-        }
+```swift
+var playbackController: BCOVPlaybackController?
 
-    }];
+-------
+
+// Create a BCOVFPSBrightcoveAuthProxy object.
+// Use the built-in authorization proxy to take advantage of Dynamic Delivery.
+// The application id and publisher id are not needed with Dynamic Delivery.
+// You also don't need to worry about retrieving any application certificates.
+let proxy = BCOVFPSBrightcoveAuthProxy(withPublisherId: nil,
+                                       applicationId: nil)
+
+let sdkManager = BCOVPlayerSDKManager.sharedManager()
+
+// Brightcove FairPlay adds some category methods to BCOVPlaybackManager.
+let playbackController = sdkManager.createFairPlayPlaybackController(withAuthorizationProxy: proxy)
+playbackController.delegate = self
+self.playbackController = playbackController
+view.addSubview(playbackController.view)
+
+let playbackService = BCOVPlaybackService.init(withAccountId: "<account-id>",
+                                               policyKey: "<policy-key>")
+
+let configuration = [
+    BCOVPlaybackService.ConfigurationKeyAssetID: "<video-id>"
+]
+
+playbackService.findVideo(withConfiguration: configuration,
+                          queryParameters: nil) { (video: BCOVVideo?,
+                                                   jsonResponse: Any?,
+                                                   error: Error?) in
+    if let video {
+        self.playbackController?.setVideos([video])
+    }
+}
 ```
 
 ## Legacy Video Cloud Workflow
@@ -61,54 +60,53 @@ Here are the basic steps you need to follow:
 If you are using a legacy Video Cloud workflow, you need to retrieve a FairPlay certificate prior to playing your videos.
 This code shows basic setup and playback:
 
-```
-    @property (nonatomic, strong) id<BCOVPlaybackController> playbackController;
-	
-    -------
+```swift
+var playbackController: BCOVPlaybackController?
 
-    // Create a BCOVFPSBrightcoveAuthProxy object using the
-    // application id and publisher id used to register your
-    // FairPlay credentials with Brightcove.
-    BCOVFPSBrightcoveAuthProxy *proxy = [[BCOVFPSBrightcoveAuthProxy alloc] initWithPublisherId:<pub-id>
-                                                                                  applicationId:<app-id>];
+-------
+
+// Create a BCOVFPSBrightcoveAuthProxy object.
+// Use the built-in authorization proxy to take advantage of Dynamic Delivery.
+// The application id and publisher id are not needed with Dynamic Delivery.
+// You also don't need to worry about retrieving any application certificates.
+let proxy = BCOVFPSBrightcoveAuthProxy(withPublisherId: nil,
+                                       applicationId: nil)
+
+let sdkManager = BCOVPlayerSDKManager.sharedManager()
+
+// Brightcove FairPlay adds some category methods to BCOVPlaybackManager.
+let playbackController = sdkManager.createFairPlayPlaybackController(withAuthorizationProxy: proxy)
+playbackController.delegate = self
+self.playbackController = playbackController
+view.addSubview(playbackController.view)
+
+// Using the proxy, retrieve the FairPlay application certificate.
+// In a production app, you might want to do this as soon as the app starts up.
+proxy.retrieveApplicationCertificate { (applicationCetificate: Data?, error: Error?) in
     
-    BCOVPlayerSDKManager *sdkManager = [BCOVPlayerSDKManager sharedManager];
-    
-    // Create your FairPlay playback controller using the auth proxy.
-    id<BCOVPlaybackController> playbackController = [sdkManager createFairPlayPlaybackControllerWithAuthorizationProxy:proxy];
-    playbackController.delegate = self;
-    _playbackController = playbackController;
-    [self.view addSubview:playbackController.view];
-    
-    // Using the proxy, retrieve the FairPlay application certificate.
-    // In a production app, you might want to do this as soon as the app starts up.
-    [proxy retrieveApplicationCertificate:^(NSData * _Nullable applicationCertificate, NSError * _Nullable error) {
+    if let applicationCetificate {
+        // Add the application certificate to the playback controller
+        playbackController.addFairPlayApplicationCertificate(applicationCetificate,
+                                                             identifier: kBCOVDefaultFairPlayApplicationCertificateIdentifier)
         
-        if (applicationCertificate)
-        {
-            // Add the application certificate to the playback controller
-            [playbackController addFairPlayApplicationCertificate:applicationCertificate
-                                                       identifier:kBCOVDefaultFairPlayApplicationCertificateIdentifier];
-            
-            BCOVPlaybackService *playbackService = [[BCOVPlaybackService alloc] initWithAccountId:<account-id>
-                                                                                        policyKey:<policy-key>];
-            
-            NSDictionary *configuration = @{
-                kBCOVPlaybackServiceConfigurationKeyAssetID:<video-id>
-            };
-            [playbackService findVideoWithConfiguration:configuration
-                                        queryParameters:@{}
-                                             completion:^(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error) {
-                                           
-                if(video)
-                {
-                    [playbackController setVideos:@[video]];
-                }
+        let playbackService = BCOVPlaybackService.init(withAccountId: "<account-id>",
+                                                       policyKey: "<policy-key>")
+        
+        let configuration = [
+            BCOVPlaybackService.ConfigurationKeyAssetID: "<video-id>"
+        ]
 
-            }];
+        playbackService.findVideo(withConfiguration: configuration,
+                                  queryParameters: nil) { (video: BCOVVideo?,
+                                                           jsonResponse: Any?,
+                                                           error: Error?) in
+            if let video {
+                self.playbackController?.setVideos([video])
+            }
         }
-        
-    }];
+    }
+
+}
 
 ```
 
@@ -125,34 +123,37 @@ If you have questions or need help, we have a support forum for Brightcove's nat
 
 FairPlay license related errors will be passed through in a `kBCOVPlaybackSessionLifecycleEventError` lifecycleEvent. These can include license server request failures or AVContentKeySession errors. You can access the `NSError` object with the `kBCOVPlaybackSessionEventKeyError` in the lifecycleEvent's properties dictionary. 
 
-If the issue is related to a license server request (which can include concurrency-limit and device-limit errors) you'll be able to retrieve the response data from the userInfo dictionary on the `NSError` with the `kBCOVFPSAuthProxyResponseData` key.
+If the issue is related to a license server request (which can include concurrency-limit and device-limit errors) you'll be able to retrieve the response data from the userInfo dictionary on the `NSError` with the `BCOVFPSBrightcoveAuthProxy.ResponseData` key.
 
 Here is an example of logging errors from an `kBCOVPlaybackSessionLifecycleEventError` lifecycleEvent:
 
-```
-- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didReceiveLifecycleEvent:(BCOVPlaybackSessionLifecycleEvent *)lifecycleEvent
-{
-    if ([kBCOVPlaybackSessionLifecycleEventError isEqualToString:lifecycleEvent.eventType])
-    {
-        NSError *error = lifecycleEvent.properties[kBCOVPlaybackSessionEventKeyError];
-        NSData *responseData = error.userInfo[kBCOVFPSAuthProxyResponseData];
-        if (responseData)
-        {
-            NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-            NSLog(@"License Server Error: %@", responseString);
-        }
-        else
-        {
-            NSLog(@"Error: %@", error.localizedDescription);
+```swift
+func playbackController(_ controller: BCOVPlaybackController,
+                        playbackSession session: BCOVPlaybackSession,
+                        didReceive lifecycleEvent: BCOVPlaybackSessionLifecycleEvent) {
 
-            // Some errors may contain an underlying NSError
-            NSError *underlyingError = error.userInfo[NSUnderlyingErrorKey];
-            if (underlyingError)
-            {
-                NSLog(@"Underlying Error: %@", underlyingError.localizedDescription);
+    if kBCOVPlaybackSessionLifecycleEventError == lifecycleEvent.eventType {
+
+        if let error = lifecycleEvent.properties[kBCOVPlaybackSessionEventKeyError] as? NSError {
+
+            if let responseData = error.userInfo[BCOVFPSBrightcoveAuthProxy.ResponseData] as? Data,
+               let responseString = String(data: responseData, encoding: .utf8) {
+
+                print("License Server Error: \(responseString)")
+
+            } else {
+                print("Error: \(error.localizedDescription)")
+
+                // Some errors may contain an underlying NSError
+                if let underlyingError = error.userInfo[NSUnderlyingErrorKey] as? NSError {
+                    print("Underlying Error: \(underlyingError.localizedDescription)")
+                }
             }
+
         }
+
     }
+
 }
 ```
 
@@ -160,21 +161,24 @@ Here is an example of logging errors from an `kBCOVPlaybackSessionLifecycleEvent
 
 You may preload content keys for videos by calling  the `preloadContentKeysForVideos:` class method on `BCOVFairPlayManager`. Typically a content key for a FairPlay protected video is processed when the video begins playback. By preloading the content key you can improve the playback startup experience for your users. For example:
 
-```
-static NSString * const kViewControllerVideoID = @"...";
+```swift
+let configuration = [
+    BCOVPlaybackService.ConfigurationKeyAssetID: "<video-id>"
+]
 
-NSDictionary *configuration = @{
-    kBCOVPlaybackServiceConfigurationKeyAssetID:kViewControllerVideoID
-};
-    
-[self.playbackService findVideoWithConfiguration:configuration queryParameters:nil completion:^(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error) {
-
-    if (video)
-    {
-        [BCOVFairPlayManager preloadContentKeysForVideos:@[video]];
+playbackService.findVideo(withConfiguration: configuration,
+                          queryParameters: nil) { (video: BCOVVideo?,
+                                                   jsonResponse: Any?,
+                                                   error: Error?) in
+    if let video {
+        // The `preloadContentKeys:` method does not retain a reference
+        // to the videos array passed so you must hold on to the reference
+        // until, at least, `setVideos()` has been called on your `BCOVPlaybackController`
+        // which does retain the array.
+        self.video = video
+        BCOVFairPlayManager.preloadContentKeys(for: [video])
     }
-
-}];
+}
 ```
 
 ## Application Certificates
@@ -185,32 +189,28 @@ If you are using Video Cloud Dynamic Delivery, application certificates are down
 
 If you are using legacy Video Cloud services, you still need to retrieve an application certificate to pass in with your initialization methods. The `BCOVFPSBrightcoveAuthProxy` class offers a convenience method to retrieve this from fps.brightcove.com.
 
-If you store your own application certificate remotely, you can retrieve it with a normal `NSURLSessionDataTask` retrieving the certificate as an `NSData` object. Once received, you can add the certificate to your playback controller using `-[BCOVPlaybackController addFairPlayApplicationCertificate:identifier:]`. In most cases you would use `kBCOVDefaultFairPlayApplicationCertificateIdentifier` as the identifier.
+If you store your own application certificate remotely, you can retrieve it with a normal `NSURLSessionDataTask` retrieving the certificate as an `NSData` object. Once received, you can add the certificate to your playback controller using `playbackController?.addFairPlayApplicationCertificate(_,identifier:)`. In most cases you would use `kBCOVDefaultFairPlayApplicationCertificateIdentifier` as the identifier.
 
 ## Using a Third-Party FairPlay License Server
 
 The `BCOVFPSBrightcoveAuthProxy` is intended to work with `fps.brightcove.com`. If you need to use another FairPlay license server, you can either implement the `BCOVFPSAuthorizationProxy` protocol to handle the license communication, or if your needs are simple you can override a few of the `BCOVFPSAuthorizationProxy` properties:
 
-```
-	/**
-	 * The base url for FairPlay related license requests. The default URL points to
-	 * fps.brightcove.com.
-	 * If set to nil, the default NSURL pointing at fps.brightcove.com will be re-created.
-	 */
-	@property (nonatomic, strong, null_resettable) NSURL *fpsBaseURL;
+```swift
+/// The base url for FairPlay related license requests. The default URL points to
+/// fps.brightcove.com.
+/// If set to nil, the default URL pointing at fps.brightcove.com will be re-created.
+@objc public var fpsBaseURL: URL?
 	
-	/**
-	 * The key request URL for FairPlay related key requests.
-	 * Normally set to nil, in which case the key request URL
-	 * will be retrieved from the Video Cloud Playback API response.
-	 */
-	@property (nonatomic, strong, null_resettable) NSURL *keyRequestURL;
+/// The key request URL for FairPlay related key requests.
+/// Normally set to nil, in which case the key request URL
+/// will be retrieved from the Video Cloud Playback API response.
+@objc public var keyRequestURL: URL?
 ```
 
 The `fpsBaseURL` property is also used to set the base URL for application certificate requests. Certificates are requested as follows:
 
 ```
-    [fpsBaseURL]/application_certificate/[publisherID]/[applicationID]
+[fpsBaseURL]/application_certificate/[publisherID]/[applicationID]
 ```
 
 Whether using Video Cloud or your own server, your `BCOVVideo` object should contain a `BCOVSource` object whose URL points to some FairPlay-protected content. Unprotected video URLs will still play in a FairPlay workflow.

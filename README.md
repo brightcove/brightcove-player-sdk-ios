@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 6.13.3.8
+# Brightcove Player SDK for iOS, version 7.0.0.9
 
 
 ## Table of Contents
@@ -82,55 +82,39 @@ For projects using Xcode 12 on Apple Silicon M1 and Universal Frameworks (.frame
 ```
 *ld: building for iOS Simulator, but linking in dylib built for iOS, file for architecture arm64*
 ```
+
 To build for an arm64 simulator, ensure that `arm64` has been added to your "Excluded Architectures" build setting for `Any iOS Simulator SDK` in the "Build Settings" tab of your application target.
 
-### CocoaPods Podspec XCFramework Subspecs (since release 6.10.0)
+### CocoaPods Podspec XCFramework Subspecs (since release 7.0.0)
 
-Release 6.10.0 of the Brightcove Player SDK adds subspecs for core and each plugin to support XCFrameworks. The default value for each subspec is `/Framework`.
+Release 6.10.0 of the Brightcove Player SDK adds subspecs for core and each plugin to support XCFrameworks. The default value for each subspec is `/XCFramework`.
 
-The BrightcoveGoogleCast plugin supports the `no-bluetooth` variant. As shown below, the first subspec indicates the GoogleCast version to be used (bluetooth or no-bluetooth) and the second subspec indicates the distribution package of the plugin (Framework or XCFramework). Bluetooth and Framework are the default subspecs for BrightcoveGoogleCast.
-
-```bash
-  pod 'Brightcove-Player-GoogleCast'                          # Bluetooth and Framework
-  pod 'Brightcove-Player-GoogleCast/Bluetooth'                # Bluetooth and Framework
-  pod 'Brightcove-Player-GoogleCast/Bluetooth/Framework'      # Bluetooth and Framework
-  pod 'Brightcove-Player-GoogleCast/Bluetooth/XCFramework'    # Bluetooth and XCFramework
-  pod 'Brightcove-Player-GoogleCast/No-Bluetooth'             # No-Bluetooth and Framework
-  pod 'Brightcove-Player-GoogleCast/No-Bluetooth/Framework'   # No-Bluetooth and Framework
-  pod 'Brightcove-Player-GoogleCast/No-Bluetooth/XCFramework' # No-Bluetooth and XCFramework
-```
 <br/>
 
 | Podspec Name | Subspec Names |
 |---|---|
 | Brightcove-Player-Core | Brightcove-Player-Core/Framework<br>Brightcove-Player-Core/XCFramework |
-| Brightcove-Player-Core-static | Brightcove-Player-Core-static/Framework<br>Brightcove-Player-Core-static/XCFramework |
 | Brightcove-Player-DAI | Brightcove-Player-DAI/Framework<br>Brightcove-Player-DAI/XCFramework |
 | Brightcove-Player-FreeWheel | Brightcove-Player-FreeWheel/Framework<br>Brightcove-Player-FreeWheel/XCFramework |
-| Brightcove-Player-GoogleCast | Brightcove-Player-GoogleCast/Bluetooth/Framework<br>Brightcove-Player-GoogleCast/No-Bluetooth/Framework<br>Brightcove-Player-GoogleCast/Bluetooth/XCFramework<br>Brightcove-Player-GoogleCast/No-Bluetooth/XCFramework |
-| Brightcove-Player-GoogleCast-static | Brightcove-Player-GoogleCast-static/Bluetooth/Framework<br>Brightcove-Player-GoogleCast-static/No-Bluetooth/Framework<br>Brightcove-Player-GoogleCast-static/Bluetooth/XCFramework<br>Brightcove-Player-GoogleCast-static/No-Bluetooth/XCFramework |
+| Brightcove-Player-GoogleCast | Brightcove-Player-GoogleCast/Framework<br>Brightcove-Player-GoogleCast/XCFramework |
 | Brightcove-Player-IMA | Brightcove-Player-IMA/Framework<br>Brightcove-Player-IMA/XCFramework |
 | Brightcove-Player-Omniture | Brightcove-Player-Omniture/Framework<br>Brightcove-Player-Omniture/XCFramework |
-| Brightcove-Player-Omniture-static | Brightcove-Player-Omniture-static/Framework<br>Brightcove-Player-Omniture-static/XCFramework |
 | Brightcove-Player-Pulse | Brightcove-Player-Pulse/Framework<br>Brightcove-Player-Pulse/XCFramework |
 | Brightcove-Player-SSAI | Brightcove-Player-SSAI/Framework<br>Brightcove-Player-SSAI/XCFramework |
 | Brightcove-Player-OpenMeasurement | - |
 
-#### CocoaPods Podspec names (since release 6.12.0)
+#### CocoaPods Podspec names (since release 7.0.0)
 
-Release 6.12.0 of the Brightcove Player SDK updates the `Brightcove-Player-FreeWheel` and `Brightcove-Player-Omniture` podspecs to install the dynamic version of `BrightcovePlayerSDK`. A `-static` podspec is available some plugins which will install the static version of `BrightcovePlayerSDK` along with the static version of the plugin framework itself.
+Release 6.12.0 of the Brightcove Player SDK updates the `Brightcove-Player-FreeWheel` and `Brightcove-Player-Omniture` podspecs to install the dynamic version of `BrightcovePlayerSDK`.
 
 Podspec Name  |  Framework Type  |  Dependency
 ------------- | ------------- | -------------
 Brightcove-Player-Core | dynamic | -
-Brightcove-Player-Core-static | static  | -
 Brightcove-Player-DAI (available since 6.12.7) | dynamic | Brightcove-Player-Core
 Brightcove-Player-FreeWheel | dynamic | Brightcove-Player-Core for iOS,<br/>Brightcove-Player-Core for tvOS
 Brightcove-Player-GoogleCast | static | Brightcove-Player-Core
-Brightcove-Player-GoogleCast-static | static | Brightcove-Player-Core-static
 Brightcove-Player-IMA | dynamic | Brightcove-Player-Core
-Brightcove-Player-Omniture | static | Brightcove-Player-Core
-Brightcove-Player-Omniture-static | static | Brightcove-Player-Core-static
+Brightcove-Player-Omniture | dynamic | Brightcove-Player-Core
 Brightcove-Player-Pulse | dynamic | Brightcove-Player-Core
 Brightcove-Player-SSAI | dynamic | Brightcove-Player-Core,<br/>Brightcove-Player-OpenMeasurement (only for Open Measurement)
 Brightcove-Player-OpenMeasurement (available since 6.10.0) | dynamic | -
@@ -152,7 +136,7 @@ Since release 6.0.0, the Brightcove Native Player SDK allows you to download HLS
 
 ## Installation
 
-The Brightcove Player SDK provides installation packages for iOS and tvOS as static and a dynamic libraries packaged as Frameworks and XCFrameworks. Deployment is supported on iOS 12.0 and above.
+The Brightcove Player SDK provides installation packages for iOS and tvOS as dynamic libraries packaged as Frameworks and XCFrameworks. Deployment is supported on iOS 12.0 and above.
 
 ### CocoaPods
 
@@ -160,9 +144,9 @@ You can use [CocoaPods][cocoapods] to add the Brightcove Player SDK to your proj
 
 When using Brightcove CocoaPods in your project, add `source 'https://github.com/brightcove/BrightcoveSpecs.git'` to the start of your Podfile.
 
-Specifying the default pod `Brightcove-Player-Core` will install the dynamic library Framework. To install the static framework, append `-static` like this: `pod 'Brightcove-Player-Core-static'`. To install XCFrameworks, append the `/XCFramework` subspec to the pod name.
+name.
 
-#### Dynamic Framework example:
+#### XCFramework example:
 
 ```bash
 source 'https://github.com/CocoaPods/Specs'
@@ -176,7 +160,9 @@ target 'MyVideoPlayer' do
 end
 ```
 
-#### Static Framework example:
+#### Dynamic Framework example:
+
+The Framework can be installed by appending the `/Framework` subspec to the pod.
 
 ```bash
 source 'https://github.com/CocoaPods/Specs'
@@ -186,24 +172,7 @@ platform :ios, '12.0'
 use_frameworks!
 
 target 'MyVideoPlayer' do
-  pod 'Brightcove-Player-Core-static'
-end
-```
-
-#### XCFramework example:
-
-The XCFramework can be installed by appending the `/XCFramework` subspec to the pod.
-
-```bash
-source 'https://github.com/CocoaPods/Specs'
-source 'https://github.com/brightcove/BrightcoveSpecs.git'
-
-platform :ios, '12.0'
-use_frameworks!
-
-target 'MyVideoPlayer' do
-  pod 'Brightcove-Player-Core/XCFramework'
-  pod 'Brightcove-Player-Core-static/XCFramework'
+  pod 'Brightcove-Player-Core/Framework'
 end
 ```
 
@@ -213,15 +182,13 @@ When updating your installation, it's a good idea to refresh the local copy of y
 
 To add the Brightcove Player SDK to your project manually:
 
-1. Download the latest zipped release from our [release page][release].
+1. Download the latest zipped release from our [tags page][tags].
 1. Add `BrightcovePlayerSDK.framework` or `BrightcovePlayerSDK.xcframework` to your project. Be sure to use the version corresponding to your target, iOS or tvOS.
 1. On the "Build Settings" tab of your application target, ensure that the "Framework Search Paths" include the path to the framework. This should have been done automatically unless the framework is stored under a different root directory than your project.
 1. On the "General" tab of your application target, add the following to the "Frameworks, Libraries, Embedded Content" section:
     * `BrightcovePlayerSDK.framework`  / `BrightcovePlayerSDK.xcframework`
 1. (**Dynamic Framework** only) On the "General" tab of your application target, add 'BrightcovePlayerSDK.framework' to the "Embedded Binaries" section.
 1. (**Dynamic Framework** only) On the "Build Phases" tab, add a "Run Script" phase with the command `bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh`. Check "Run script only when installing". This will remove unneeded architectures from the build, which is important for App Store submission. This step is no longer necessary when using XCFramework.
-1. (**Static Framework** only) On the "Build Settings" tab of your application target, add `-ObjC` to the "Other Linker Flags" build setting.
-1. (**Static Framework** only) Locate the file `BCOVPUIResources.bundle` within the `BrightcovePlayerSDK.framework` and drag it directly into your project listing so that the bundle file becomes a part of your app. After dragging the file, be sure to add it to your app's build target when prompted to do so. Once your app is built, the bundle file should reside in the app at the same level as the app's Info.plist file. The bundle file includes the font file that supplies some of the `BrightcovePlayerUI` interface elements, but it does not need to be listed in the plist itself. When using XCFramework, the `BrightcovePlayerSDK` can be found in the ios-arm64 folder.
 1. (**Universal Framework** only) On the "Build Phases" tab, add a "Run Script" phase with the command `bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh`. Check "Run script only when installing". This will remove unneeded architectures from the build, which is important for App Store submission.
 1. (**Apple Silicon with Universal Framework** only) On the "Build Settings" tab of your application target:
     * Ensure that `arm64` has been added to your "Excluded Architectures" build setting for `Any iOS Simulator SDK`.
@@ -253,51 +220,46 @@ To add the Brightcove Player SDK to your project with Swift Package Manager:
 
 ### Imports
 
-The Brightcove Player SDK for iOS can be imported into code a few different ways:
+The Brightcove Player SDK for iOS can be imported using:
 
-```
-@import BrightcovePlayerSDK;
-
-// or...
-#import <BrightcovePlayerSDK/BrightcovePlayerSDK.h>
-
-// or...
-#import <BrightcovePlayerSDK/[specific-class].h>
+```swift
+import BrightcovePlayerSDK;
 ```
     
 [cocoapods]: https://cocoapods.org
 [podspecs]: https://github.com/brightcove/BrightcoveSpecs/tree/master/Brightcove-Player-Core
-[release]: https://github.com/brightcove/brightcove-player-sdk-ios/releases
+[tags]: https://github.com/brightcove/brightcove-player-sdk-ios/tags
 
 ## Quick Start
 
 Playing video with the Brightcove Player SDK for iOS:
 
-    // ** Customize these values with your own account information **
-    static NSString * const kViewControllerPlaybackServicePolicyKey = @"...";
-    static NSString * const kViewControllerAccountID = @"...";
-    static NSString * const kViewControllerVideoID = @"...";
-    
-    BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
-    id<BCOVPlaybackController> controller = [manager createPlaybackController];
-    self.controller = controller; // store this to a strong property
-    [self.view addSubview:controller.view];  
-     
-    BCOVPlaybackService *service = [[BCOVPlaybackService alloc] initWithAccountId:kAccountId
-                                                                        policyKey:kPlaybackServicePolicyKey];
-    NSDictionary *configuration = @{
-        kBCOVPlaybackServiceConfigurationKeyAssetID:kViewControllerVideoID
-    };
-    [service findVideoWithConfiguration:configuration
-                        queryParameters:nil
-                             completion:^(BCOVVideo    *video,
-                                          NSDictionary *jsonResponse,
-                                          NSError      *error) {
-                                    
-        [controller setVideos:@[ video ]];
-        [controller play];
+```swift
+// ** Customize these values with your own account information **
+let kAccountId = "..."
+let kPolicyKey = "..."
+let kVideoId = "..."
 
-    }];
+let sdkManager = BCOVPlayerSDKManager.sharedManager()
+let playbackController = sdkManager.createPlaybackController()
+self.playbackController = playbackController // store this to a strong property
+view.addSubview(playbackController.view)
+
+let playbackService = BCOVPlaybackService(withAccountId: kAccountId,
+                                          policyKey: kPolicyKey)
+let configuration = [
+    BCOVPlaybackService.ConfigurationKeyAssetID: kVideoId
+]
+playbackService.findVideo(withConfiguration: configuration,
+                          queryParameters: nil) { (video: BCOVVideo?,
+                                                   jsonResponse: Any?,
+                                                   error: Error?) in
+    if let video {
+        self.playbackController?.setVideos([video])
+        self.playbackController?.play()
+    }
+}
+```
 
 You need to keep the controller from being automatically released at the end of the method. A common way to do this is to store a reference to the controller in a strong instance variable.
 
@@ -313,16 +275,22 @@ Follow the guidelines below for setting up the PlayerUI controls.
 
 Create a property in your UIViewController to keep track of the BCOVPUIPlayerView. The BCOVPUIPlayerView will contain both the Playback Controller's view, and the controls view.
 
-    // PlayerUI's Player View
-    @property (nonatomic) BCOVPUIPlayerView *playerView;
+```swift
+// PlayerUI's Player View
+var playerView: BCOVPUIPlayerView?
+```
 
 Create the BCOVPUIBasicControlView, and then the BCOVPUIPlayerView. This is where we associate the Playback Controller (and thus all the videos it plays) with the controls.
 
-    // Create and configure Control View.
-    BCOVPUIBasicControlView *controlView = [BCOVPUIBasicControlView basicControlViewWithVODLayout];
-    self.playerView = [[BCOVPUIPlayerView alloc] initWithPlaybackController:self.playbackController options:nil controlsView:controlView];
-    // Add BCOVPUIPlayerView to your video view.
-    [self.videoView addSubview:self.playerView];
+```swift
+// Create and configure Control View.
+let controlView = BCOVPUIBasicControlView.withVODLayout()
+playerView = BCOVPUIPlayerView(playbackController: self.playbackController, options: nil)
+// Add BCOVPUIPlayerView to your video view.
+if let playerView {
+    videoView.addSubview(playerView)
+}
+```
 
 You'll need to set up the layout for the player view, you can do this with Auto Layout or the older Springs & Struts approach. 
 
@@ -330,25 +298,29 @@ You'll need to set up the layout for the player view, you can do this with Auto 
 
 Set the player view to match the video container from your layout (`videoView`) when it resizes.
 
-    self.playerView.frame = self.videoView.bounds;
-    self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;  
+```swift
+playerView.frame = videoView.bounds
+playerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+```
 
 ### Auto Layout
 
-Set the `translatesAutoresizingMaskIntoConstraints` on BCOVPUIPlayerView to `NO`.
+Set the `translatesAutoresizingMaskIntoConstraints` on BCOVPUIPlayerView to `false`.
 
-    self.playerView.translatesAutoresizingMaskIntoConstraints = NO;
+```swift
+playerView.translatesAutoresizingMaskIntoConstraints = false
+```
 
 Then add the constraints for the layout; setting the top, right, left and bottom anchors of your BCOVPUIPlayerView to equal that of `videoView` 
 
-    [NSLayoutConstraint activateConstraints:@[
-                                              [self.playerView.topAnchor constraintEqualToAnchor:self.videoView.topAnchor],
-                                              [self.playerView.rightAnchor constraintEqualToAnchor:self.videoView.rightAnchor],
-                                              [self.playerView.leftAnchor constraintEqualToAnchor:self.videoView.leftAnchor],
-                                              [self.playerView.bottomAnchor constraintEqualToAnchor:self.videoView.bottomAnchor],
-                                              ]];
-
-**Reminder:** The PlayerUI uses a small font file for various graphics. If you are installing the static framework, and not using CocoaPods, be sure to add the file `bcovpuiiconfont.ttf` from the `BrightcovePlayerSDK.framework` bundle directly to your project listing so that the font file is copied into the app bundle
+```swift
+NSLayoutConstraint.activate([
+    playerView.topAnchor.constraint(equalTo: videoView.topAnchor),
+    playerView.rightAnchor.constraint(equalTo: videoView.rightAnchor),
+    playerView.bottomAnchor.constraint(equalTo: videoView.bottomAnchor),
+    playerView.leftAnchor.constraint(equalTo: videoView.leftAnchor)
+])
+```
 
 ## BCOVPUIPlayerViewOptions
 
@@ -360,7 +332,7 @@ The `BCOVPUIPlayerViewOptions` class allows you to customize some BCOVPlayerUI b
 * `showControlsAnimationDuration` The time in seconds it takes for the controls to animate to visible.
 * `learnMoreButtonBrowserStyle` Setting that determines if tapping the "Learn More" button on an ad will display the clickthrough link in an external browser (default setting) or an internal browser.
 * `presentingViewController` The UIViewController subclass to use for presenting other view controllers (like the closed caption selection view controller).
-* `automaticControlTypeSelection` Whether or not you want the `BCOVPUIPlayerView` to pick a `BCOVPUIBasicControlView` type automatically based on the media type. When this value is set to `YES` the `BCOVPUIBasicControlView` property passed into the `BCOVPUIPlayerView` initializer will be ignored. 
+* `automaticControlTypeSelection` Whether or not you want the `BCOVPUIPlayerView` to pick a `BCOVPUIBasicControlView` type automatically based on the media type. When this value is set to `true` the `BCOVPUIBasicControlView` property passed into the `BCOVPUIPlayerView` initializer will be ignored.
 
     * **Video + Audio Streams**
         * VOD streams will use `basicControlViewWithVODLayout`
@@ -376,13 +348,16 @@ The `BCOVPUIPlayerViewOptions` class allows you to customize some BCOVPlayerUI b
 
 Options can be set using the following method:
 
-        BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
-        id<BCOVPlaybackController> controller = [manager createPlaybackController];
+```swift
+let manager = BCOVPlayerSDKManager.sharedManager()
+let playbackController = manager.createPlaybackController()
 
-        BCOVPUIPlayerViewOptions *options = [[BCOVPUIPlayerViewOptions alloc] init];
-        options.jumpBackInterval = 5;
+let options = BCOVPUIPlayerViewOptions()
+options.jumpBackInterval = 5
 
-        BCOVPUIPlayerView *playerView = [[BCOVPUIPlayerView alloc] initWithPlaybackController:playbackController options:options];
+let playerView = BCOVPUIPlayerView(playbackController: playbackController,
+                                   options: options)
+```
 
 ## Supplied Layouts
 
@@ -396,7 +371,9 @@ Three layouts are provided to support different types of video:
 
 You typically set a new layout immediatley after your `BCOVPUIPlayerView` is created, but you can also set a new layout at any time. For example, you can set a new VOD layout like this:
 
-	playerView.controlsView.layout = [BCOVPUIControlLayout basicVODControlLayout]
+```swift
+playerView?.controlsView.layout = BCOVPUIControlLayout.basicVOD()
+```
 
 ## Custom Layouts
 
@@ -412,92 +389,157 @@ In addition to the default layouts, you can create your own highly customized la
 
 Here are examples of creating a variety of basic controls.
 
-	// Create various standard layout views
-	// Standard play/pause button
-    BCOVPUILayoutView *playbackLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagButtonPlayback width:kBCOVPUILayoutUseDefaultValue elasticity:0.0];
+```swift
+// Create various standard layout views
+// Standard play/pause button
+let playbackLayoutView = BCOVPUIBasicControlView.layoutViewWithControl(from: BCOVPUIViewTag.buttonPlayback,
+                                                                       width: kBCOVPUILayoutUseDefaultValue,
+                                                                       elasticity: 0.0)
 
-	// Standard jump back button
-    BCOVPUILayoutView *jumpBackButtonLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagButtonJumpBack width:kBCOVPUILayoutUseDefaultValue elasticity:0.0];
+// Standard jump back button
+let jumpBackButtonLayoutView = BCOVPUIBasicControlView.layoutViewWithControl(from: BCOVPUIViewTag.buttonJumpBack,
+                                                                             width: kBCOVPUILayoutUseDefaultValue,
+                                                                             elasticity: 0.0)
 
-	// Current time indicator
-    BCOVPUILayoutView *currentTimeLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagLabelCurrentTime width:kBCOVPUILayoutUseDefaultValue elasticity:0.0];
+// Current time indicator
+let currentTimeLayoutView = BCOVPUIBasicControlView.layoutViewWithControl(from: BCOVPUIViewTag.labelCurrentTime,
+                                                                          width: kBCOVPUILayoutUseDefaultValue
+                                                                          elasticity: 0.0)
 
-	// Time separator - typically the '/' character
-    BCOVPUILayoutView *timeSeparatorLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagLabelTimeSeparator width:kBCOVPUILayoutUseDefaultValue elasticity:0.0];
+// Time separator - typically the '/' character
+let timeSeparatorLayoutView = BCOVPUIBasicControlView.layoutViewWithControl(from: BCOVPUIViewTag.labelTimeSeparator,
+                                                                            width: kBCOVPUILayoutUseDefaultValue,
+                                                                            elasticity: 0.0)
 
-	// Video duration label
-    BCOVPUILayoutView *durationLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagLabelDuration width:kBCOVPUILayoutUseDefaultValue elasticity:0.0];
+// Video duration label
+let durationLayoutView = BCOVPUIBasicControlView.layoutViewWithControl(from: BCOVPUIViewTag.labelDuration,
+                                                                       width: kBCOVPUILayoutUseDefaultValue,
+                                                                       elasticity: 0.0)
 
-	// Slider bar used for seeking through the video
-	// The elasticity is set to 1 so that it can resize to fill available space
-    BCOVPUILayoutView *progressLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagSliderProgress width:kBCOVPUILayoutUseDefaultValue elasticity:1.0];
+// Slider bar used for seeking through the video
+// The elasticity is set to 1 so that it can resize to fill available space
+let progressLayoutView = BCOVPUIBasicControlView.layoutViewWithControl(from: BCOVPUIViewTag.sliderProgress,
+                                                                       width: kBCOVPUILayoutUseDefaultValue,
+                                                                       elasticity: 1.0)
 
-	// Closed caption button
-    // This button is initially hidden ('removed'), and will be shown
-    // if closed captions or audio tracks are available.
-    BCOVPUILayoutView *closedCaptionLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagButtonClosedCaption width:kBCOVPUILayoutUseDefaultValue elasticity:0.0];
-    closedCaptionLayoutView.removed = YES;
+// Closed caption button
+// This button is initially hidden ('removed'), and will be shown
+// if closed captions or audio tracks are available.
+let closedCaptionLayoutView = BCOVPUIBasicControlView.layoutViewWithControl(from: BCOVPUIViewTag.buttonClosedCaption,
+                                                                            width: kBCOVPUILayoutUseDefaultValue,
+                                                                            elasticity: 0.0)
+closedCaptionLayoutView?.isRemoved = true
 
-    // The full-screen button
-    BCOVPUILayoutView *screenModeLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagButtonScreenMode width:kBCOVPUILayoutUseDefaultValue elasticity:0.0];
+// The full-screen button
+let screenModeLayoutView = BCOVPUIBasicControlView.layoutViewWithControl(from: BCOVPUIViewTag.buttonScreenMode,
+                                                                         width: kBCOVPUILayoutUseDefaultValue,
+                                                                         elasticity: 0.0)
 
-	// AirPlay button
-    // This button is initially hidden ('removed'), and will be shown
-    // if AirPlay devices are available.
-    BCOVPUILayoutView *externalRouteLayoutView = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagViewExternalRoute width:kBCOVPUILayoutUseDefaultValue elasticity:0.0];
-    externalRouteLayoutView.removed = YES;
+// AirPlay button
+// This button is initially hidden ('removed'), and will be shown
+// if AirPlay devices are available.
+let externalRouteLayoutView = BCOVPUIBasicControlView.layoutViewWithControl(from: BCOVPUIViewTag.viewExternalRoute,
+                                                                            width: kBCOVPUILayoutUseDefaultValue,
+                                                                            elasticity: 0.0)
+externalRouteLayoutView?.isRemoved = true
 
-	// Empty view - used as a spacer
-    BCOVPUILayoutView     *spacerLayoutView1 = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagViewEmpty width:1.0 elasticity:1.0];
+// Empty view - used as a spacer
+let spacerLayoutView1 = BCOVPUIBasicControlView.layoutViewWithControl(from: BCOVPUIViewTag.viewEmpty,
+                                                                      width: 1.0,
+                                                                      elasticity: 1.0)
 
-	// Empty view - used as a spacer
-    BCOVPUILayoutView *spacerLayoutView2 = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagViewEmpty width:1.0 elasticity:1.0];
+// Empty view - used as a spacer
+let spacerLayoutView2 = BCOVPUIBasicControlView.layoutViewWithControl(from: BCOVPUIViewTag.viewEmpty,
+                                                                      width: 1.0,
+                                                                      elasticity: 1.0)
 
-	// Empty view - will have a custom UIImageView added as a subview
-    BCOVPUILayoutView *logoLayoutView1 = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagViewEmpty width:80.0 elasticity:1.0];
+// Empty view - will have a custom UIImageView added as a subview
+let logoLayoutView1 = BCOVPUIBasicControlView.layoutViewWithControl(from: BCOVPUIViewTag.viewEmpty,
+                                                                    width: 88.0,
+                                                                    elasticity: 1.0)
 
-	// Empty view - will have a custom UIImageView added as a subview
-    BCOVPUILayoutView *logoLayoutView2 = [BCOVPUIBasicControlView layoutViewWithControlFromTag:BCOVPUIViewTagViewEmpty width:36.0 elasticity:0.0];
-
+// Empty view - will have a custom UIImageView added as a subview
+let logoLayoutView2 = BCOVPUIBasicControlView.layoutViewWithControl(from: BCOVPUIViewTag.viewEmpty,
+                                                                    width: 36.0,
+                                                                    elasticity: 1.0)
+```
 
 Note that you can also create an empty layout view, into which you can place your own view (logo, control, nothing, etc.). This code shows how to place a `UIImage` logo inside the logoLayoutView1 we created above.
 
-    // Create logo image inside an image view for display in control bar.
-    UIImage *logoImage1 = [UIImage imageNamed:@"myLogo"];
-    UIImageView *logoImageView1 = [[UIImageView alloc] initWithImage:logoImage1];
+```swift
+// Create logo image inside an image view for display in control bar.
+let logoImage1 = UIImage(named: "myLogo")
+let logoImageView1 = UIImageView(image: logoImage1)
 
-    logoImageView1.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    logoImageView1.contentMode = UIViewContentModeScaleAspectFit;
-    logoImageView1.frame = logoLayoutView1.frame;
+logoImageView1.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+logoImageView1.contentMode = .scaleAspectFit
+logoImageView1.frame = logoLayoutView1.frame
 
-    // Add image view to our empty layout view.
-    [logoLayoutView1 addSubview:logoImageView1];
+// Add image view to our empty layout view.
+logoLayoutView1.addSubview(logoImageView1)
+```
 
 Now that there are various controls packaged in layout views, they are ordered into arrays, each of wihch represents a single line of controls, i.e. a control bar. Note that you can have different layouts for portrait and landscape orientations, so you will typically set up two different arrays of control bars.
 
 In the standard layout for landscape orientation, controls are arranged in a single array, and then that array is stored in another array representing the entire set of controls.
 
-            NSArray *standardLayoutLine1 = @[ playbackLayoutView, jumpBackButtonLayoutView, currentTimeLayoutView, timeSeparatorLayoutView, durationLayoutView, progressLayoutView, spacerLayoutView1, logoLayoutView1, spacerLayoutView2, closedCaptionLayoutView, screenModeLayoutView, externalRouteLayoutView ];
-            NSArray *standardLayoutLines = @[ standardLayoutLine1 ];
+```swift
+let standardLayoutLine1 = [
+    playbackLayoutView,
+    jumpBackButtonLayoutView,
+    currentTimeLayoutView,
+    timeSeparatorLayoutView,
+    durationLayoutView,
+    progressLayoutView,
+    spacerLayoutView1,
+    logoLayoutView1,
+    spacerLayoutView2,
+    closedCaptionLayoutView,
+    screenModeLayoutView,
+    externalRouteLayoutView
+]
+let standardLayoutLines = [ standardLayoutLine1 ]
+```
 
 In the compact layout for portrait orientation, two arrays of controls are created, one for each line. These arrays are packaged into another array representing the compact layout.
 
 Note that the exact same objects are used for most of the controls in each layout. When this is done, and you switch between portrait and landscape orientations, the object will be moved to its new position using smooth animation.
 
-
-            NSArray *compactLayoutLine1 = @[ currentTimeLayoutView, progressLayoutView, durationLayoutView ];
-            NSArray *compactLayoutLine2 = @[ playbackLayoutView, jumpBackButtonLayoutView, spacerLayoutView1, closedCaptionLayoutView, screenModeLayoutView, externalRouteLayoutView, logoLayoutView2 ];
-            NSArray *compactLayoutLines = @[ compactLayoutLine1, compactLayoutLine2 ];
+```swift
+let compactLayoutLine1 = [
+    currentTimeLayoutView,
+    progressLayoutView,
+    durationLayoutView
+]
+let compactLayoutLine2 = [
+    playbackLayoutView,
+    jumpBackButtonLayoutView,
+    spacerLayoutView1,
+    closedCaptionLayoutView,
+    screenModeLayoutView,
+    externalRouteLayoutView,
+    logoLayoutView2
+]
+let compactLayoutLines = [
+    compactLayoutLine1,
+    compactLayoutLine2
+]
+```
 
 Finally, now that there are two layout configurations (one for full width, and one for compact width), you can create a new `BCOVPUIControlLayout` object, and set it in the player's control view.
 
-            BCOVPUIControlLayout *customLayout = [[BCOVPUIControlLayout alloc] initWithStandardControls:standardLayoutLines compactControls:compactLayoutLines];
-			playerView.controlsView.layout = customLayout;
+```swift
+let customLayout = BCOVPUIControlLayout.init(standardControls: standardLayoutLines,
+                                             compactControls: compactLayoutLines)
+playerView?.controlsView.layout = customLayout
+```
 
 If you have controls that you need to show or hide frequently, you can set the `removed` property on that control's layout view. When you have changed your controls, call `setNeedsLayout` on the playerView's controlView:
 
-		logoLayoutView1.removed = YES;
-	    [playerView.controlsView setNeedsLayout];
+```swift
+logoLayoutView1?.isRemoved = true
+playerView?.controlsView.setNeedsLayout()
+```
 
 You can also customize several general `BCOVPUIControlLayout` properties:
 
@@ -528,40 +570,41 @@ Currently, IMA is the only ad plugin that supports AirPlay and only when using p
 
 If you also want to support AirPlay 2 and allow for multiple devices to be selected for audio output you will have to do a few additional things. First, you'll need to configure AVAudioSession so that you can set the `routeSharingPolicy`. For example:
 
+```swift
+do {
+    try AVAudioSession.sharedInstance().setCategory(.playback, mode: .moviePlayback, policy: .longFormVideo)
+} catch {
+    print("Error setting AVAudioSession category")
+}
 ```
-[AVAudioSession.sharedInstance setCategory:AVAudioSessionCategoryPlayback mode:AVAudioSessionModeMoviePlayback routeSharingPolicy:AVAudioSessionRouteSharingPolicyLongForm options:0 error:nil];
-```
+
 You will also need to configure at least one playback command via `MPRemoteCommandCenter`. At the very least you'll want to configure both the `pauseCommand` and `playCommand`. For Example:
 
-```
-MPRemoteCommandCenter *center = MPRemoteCommandCenter.sharedCommandCenter;
+```swift
+let center = MPRemoteCommandCenter.shared()
+center.pauseCommand.addTarget { _ in
+    playbackController.pause()
+    return .success
+}
 
-[center.pauseCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
-[self.playbackController pause];
-return MPRemoteCommandHandlerStatusSuccess;
-}];
-
-[center.playCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
-[self.playbackController play];
-return MPRemoteCommandHandlerStatusSuccess;
-}];
+center.playCommand.addTarget { _ in
+    playbackController.play()
+    return .success
+}
 ```
+
 Devices will take advantage of `AVRoutePickerView` which has two delegate methods. These delegate methods are passed through to `BCOVPUIPlayerViewDelegate`. The methods are:
 
-```
-- (void)routePickerViewWillBeginPresentingRoutes:(AVRoutePickerView *)routePickerView;
-- (void)routePickerViewDidEndPresentingRoutes:(AVRoutePickerView *)routePickerView;
+```swift
+func routePickerViewDidEndPresentingRoutes(_ routePickerView: AVRoutePickerView)
+func routePickerViewWillBeginPresentingRoutes(_ routePickerView: AVRoutePickerView)
 ```
 
 The `AVRouteDetector` used to discover AirPlay routes is available on the `BCOVPUIBasicControlView` object so you can enable or disable its `routeDetectionEnabled` property as needed. 
 
 Per Apple's documentation: "*Route detection significantly increases power consumption and must be turned off when it's no longer needed.*"
 
-```
-// Objective-C
-self.playerView.controlsView.routeDetector.routeDetectionEnabled = NO;
-
-// Swift
+```swift
 playerView?.controlsView.routeDetector.isRouteDetectionEnabled = false
 ```
 
@@ -583,61 +626,53 @@ To provide the best user experience with the VR Goggles mode, you should use a `
 
 The following code shows how you could handle a forced orientation change when switching back and forth between a normal 360 view, and VR Goggles mode.
 
-```
-	// Set this to YES when displaying a VR goggles video
-	@property (nonatomic) BOOL landscapeOnly;
+```swift
+// Set this to YES when displaying a VR goggles video
+var landscapeOnly = false
 
-	// UIViewController override:
-   // Lets us control the orientation of the device
-	- (UIInterfaceOrientationMask)supportedInterfaceOrientations
-	{
-	    if (self.landscapeOnly)
-	    {
-	        return UIInterfaceOrientationMaskLandscape;
-	    }
-	
-	    return UIInterfaceOrientationMaskAll;
-	}
+// UIViewController override:
+// Lets us control the orientation of the device
+override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    get {
+        if landscapeOnly {
+            return .landscape
+        }
 
-    // BCOVPUIPlayerViewDelegate method
-	- (void)didSetVideo360NavigationMethod:(BCOVPUIVideo360NavigationMethod)navigationMethod
-	                       projectionStyle:(BCOVVideo360ProjectionStyle)projectionStyle
-	{
-	    switch (projectionStyle)
-	    {
-	        case BCOVVideo360ProjectionStyleNormal:
-	            NSLog(@"BCOVVideo360ProjectionStyleNormal");
-	            self.landscapeOnly = NO;
-	            break;
-	
-	        case BCOVVideo360ProjectionStyleVRGoggles:
-	            NSLog(@"BCOVPUIVideo360NavigationDeviceMotionTracking");
-	            
-	            self.landscapeOnly = YES;
-	            
-	            {
-	                UIDeviceOrientation currentDeviceOrientation = [UIDevice currentDevice].orientation;
-	                switch (currentDeviceOrientation)
-	                {
-	                    case UIDeviceOrientationLandscapeLeft:
-	                    case UIDeviceOrientationLandscapeRight:
-	                        // all good
-	                        break;
-	                    default:
-	                    {
-	                        // switch orientation
-	                        NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
-	                        [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
-	                        break;
-	                    }
-	                }
-	            }
-	            break;
-	    }
-	    
-	    [UIViewController attemptRotationToDeviceOrientation];
-	}
+        return .all
+    }
+}
+
+// BCOVPUIPlayerViewDelegate method
+func didSetVideo360NavigationMethod(_ navigationMethod: BCOVPUIVideo360NavigationMethod,
+                                    projectionStyle: BCOVVideo360ProjectionStyle) {
+    switch projectionStyle {
+        case .normal:
+            print("BCOVVideo360ProjectionStyleNormal")
+            landscapeOnly = false
+        case .vrGoggles:
+            print("BCOVPUIVideo360NavigationDeviceMotionTracking")
+            landscapeOnly = true
+
+            let currentDeviceOrientation = UIDevice.current.orientation
+            switch currentDeviceOrientation {
+                case .landscapeLeft,
+                     .landscapeRight:
+                    // all good
+                    break
+                default:
+                    // switch orientation
+                    UIDevice.current.setValue(UIInterfaceOrientation.landscapeLeft.rawValue, forKey: "orientation")
+                    break
+            }
+            break
+        default:
+            break
+    }
+
+    UIViewController.attemptRotationToDeviceOrientation()
+}
 ```
+
 The PlayerUI will install gestures to handle navigation around the 360 video, but if you are using your own controls you can set the view parameters of the virtual camera yourself. The `BCOVPlaybackController` protocol's `viewProjection` property lets you set these parameters. The property is a `BCOVVideo360ViewProjection` class with basic virtual camera settings like `pan`, `tilt`, and `zoom`. To change settings, make a copy of the current instance, change the settings on the new instance, and then assign it back to the `viewProjection` property.
 
 ## Architectural Overview
@@ -660,7 +695,7 @@ In addition to the playback functionality provided by the classes described abov
 
 ## Play, Pause, and Seek
 
-The Brightcove Player SDK for iOS provides play, pause, and seek methods on the `BCOVPlaybackController`. **It is important to use these methods instead of using the AVPlayer equivalent.** In their default implementations, these objects forward the calls directly to the corresponding method on the AVPlayer. However, if you are using plugins, they may override the default behavior to add functionality. For example, if using an advertising plugin, calling `[BCOVPlaybackController play]` the first time might cause pre-roll to play before starting the content. To find out more about how a plugin may override the default behavior, please refer to each plugin README.md or by checking for a category extension on `BCOVSessionProviderExtension` that the plugin may add.
+The Brightcove Player SDK for iOS provides play, pause, and seek methods on the `BCOVPlaybackController`. **It is important to use these methods instead of using the AVPlayer equivalent.** In their default implementations, these objects forward the calls directly to the corresponding method on the AVPlayer. However, if you are using plugins, they may override the default behavior to add functionality. For example, if using an advertising plugin, calling `playbackController.play()` the first time might cause pre-roll to play before starting the content. To find out more about how a plugin may override the default behavior, please refer to each plugin README.md or by checking for a category extension on `BCOVSessionProviderExtension` that the plugin may add.
 
 *Calling play, pause, or seek on the AVPlayer directly may cause undefined behavior.*
 
@@ -672,13 +707,15 @@ Attempting to set `playbackRate` to a value of 0 or below will result in the val
 
 If a custom value has been set for `playbackRate` the `audioTimePitchAlgorithm` for each `AVPlayerItem` will be set to `AVAudioTimePitchAlgorithmTimeDomain`. Alternatively you can set your own value for `audioTimePitchAlgorithm` like this:
 
-```
-- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didReceiveLifecycleEvent:(BCOVPlaybackSessionLifecycleEvent *)lifecycleEvent
-{
-    if ([lifecycleEvent.eventType isEqualToString:kBCOVPlaybackSessionLifecycleEventReady])
-    {
-        session.player.currentItem.audioTimePitchAlgorithm = AVAudioTimePitchAlgorithmVarispeed;
+```swift
+func playbackController(_ controller: BCOVPlaybackController,
+                        playbackSession session: BCOVPlaybackSession,
+                        didReceive lifecycleEvent: BCOVPlaybackSessionLifecycleEvent) {
+
+    if lifecycleEvent.eventType == kBCOVPlaybackSessionLifecycleEventReady {
+        session.player.currentItem?.audioTimePitchAlgorithm = .varispeed
     }
+
 }
 ```
 
@@ -686,12 +723,14 @@ You can read more about `audioTimePitchAlgorithm` [here](https://developer.apple
 
 ## Preloading Videos
 
-If desired you may choose to preload upcoming videos in a playlist. One possible approach is to double-buffer a list of videos using two playback controllers, for example:
+Since the 6.12.0 release the iOS SDK has utilized AVQueuePlayer which handles preloading the next video in the queue.
+
+However, you may want to have more control over preloading upcoming videos in a playlist. One possible approach is to double-buffer a list of videos using two playback controllers, for example:
 
 1. Initialize two playback controllers
 1. Set up your player view and assign one of the two playback controllers to the playerView's playbackController property (now your active playback controller)
 1. Once your playlist is ready assign the playlist (or just the videos array property) to a property as we'll need to access each video separately
-1. Get the first video in the videos array and give it to the active playback controller (`[self.playbackController1 setVideos:@[self.videos.firstObject]]`)
+1. Get the first video in the videos array and give it to the active playback controller (`playbackController1.setVideos([videos.firstObject])`)
 1. Utilizing the `playbackController:didProgressTo:` delegate method of the playback controller determine if the current video has progressed far enough to where you want to begin preloading the next video
 1. Once you determine it's time to preload get the next video in the videos array and set it on the alternate playback controller
 1. Once the current video has completed set the playbackController on the playerView to the alternate playback controller
@@ -707,29 +746,30 @@ The Brightcove Player SDK for iOS provides clients the ability to attach multipl
 
 Source selection can be overridden by creating a `BCOVBasicSessionProviderOptions` and using it to create a `BCOVBasicSessionProvider`. For example:
 
-    BCOVPlayerSDKManager *sdkManager = [BCOVPlayerSDKManager sharedManager];
-    
-    BCOVBasicSessionProviderOptions *options = [[BCOVBasicSessionProviderOptions alloc] init];    
-    options.sourceSelectionPolicy = <policy>
-    
-    id<BCOVPlaybackSessionProvider> provider = [sdkManager createBasicSessionProviderWithOptions:options];
-    id<BCOVPlaybackController> playbackController = [sdkManager createPlaybackControllerWithSessionProvider:provider viewStrategy:nil];
+```swift
+let sdkManager = BCOVPlayerSDKManager.sharedManager()
 
+let options = BCOVBasicSessionProviderOptions()
+options.sourceSelectionPolicy = <policy>
+
+let provider = sdkManager.createBasicSessionProvider(withOptions: options)
+let playbackController = sdkManager.createPlaybackController(withSessionProvider: provider, viewStrategy: nil)
+```
 
 If this default selection policy does not work for you, there are a few alternatives to selecting a source:
 
-* If retrieving videos from Video Cloud via the Playback Service, before calling `-[BCOVPlaybackController setVideos:]`, use the update method on the `BCOVVideo` to only contain the source you want (see the "Values" section for more info).
+* If retrieving videos from Video Cloud via the Playback Service, before calling `playbackController.setVideos()`, use the update method on the `BCOVVideo` to only contain the source you want (see the "Values" section for more info).
 
 * You can use the helper method `[BCOVBasicSourceSelectionPolicy sourceSelectionHLSWithScheme:scheme]` to create a policy that prefers a specific scheme. This is the method used to create the default source selection policy that prefers HTTPS.
 
 * Similar to updating the video object, you may also implement your own source selection block.
         
-        options.sourceSelectionPolicy = ^ BCOVSource *(BCOVVideo *video) {
-        
-           <Check video.sources for source>
-           <Return source>
-
-        };
+```swift
+options.sourceSelectionPolicy = { (video: BCOVVideo?) -> BCOVSource? in
+    <Check video.sources for source>
+    <Return source>
+}
+```
 
 Please be aware there are App Store limitations regarding the use of MP4 videos. Check the latest Apple Developer information for details.
 
@@ -741,8 +781,16 @@ The title for the menu is optional. The bitrate options are an array of NSDictio
 
 Here is an example:
 
-    BCOVPUIPlayerViewOptions *options = [[BCOVPUIPlayerViewOptions alloc] init];
-    options.preferredBitrateConfig = [BCOVPreferredBitrateConfig configWithMenuTitle:@"Select an Option" andBitrateOptions:@[@{@"Auto":@(0)}, @{@"Setting 1":@(aBitrateValue)}, @{@"Setting 2":@(aBitrateValue)}]];
+```swift
+let bitrates = [
+    ["Auto": NSNumber(0)],
+    ["Setting 1": NSNumber(518100)],
+    ["Setting 2": NSNumber(2596000)]
+]
+let options = BCOVPUIPlayerViewOptions()
+options.preferredBitrateConfig = BCOVPreferredBitrateConfig(menuTitle: "Select an Option",
+                                                            andBitrateOptions: bitrates)
+```
 
 When the end-user selects one of the options, the [preferredPeakBitRate] property of the current AVPlayerItem will be set to the option's value. If the video is in a playlist, the next video played will also have the preferredPeakBitRate value set. 
 
@@ -763,46 +811,46 @@ Please see Apple's documentation on [preferredPeakBitRate] for more information.
 
 The Brightcove Player SDK for iOS provides two mechanisms for obtaining playback information. The playback controller provides a delegate property that implements [`BCOVPlaybackControllerDelegate`][delegate]. A delegate can implement these optional methods to get notified of playback metadata like progress, duration changes, and other events. If an ad plugin is installed, it may also use this delegate to provide information about [ad playback][adplayback]. The [lifecycle event][lifecycle] delegate method provides events to signal changes in playback state. For example, when a player goes from the paused state to the playing state, the lifecycle event delegate method will be called with the `kBCOVPlaybackSessionLifecycleEventPlay` event. The default Lifecycle events are declared in [`BCOVPlaybackSession`][lifecycleevents]. Plugins provided by Brightcove add additional lifecycle events which are defined in each plugin.
 
-[adplayback]:https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVAdvertising.h#L120-L192
-[lifecycle]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L630-L641
-[lifecycleevents]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackSession.h
+[adplayback]:https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/BrightcovePlayerSDK.framework/Headers/BCOVAdvertising.h#L141-L213
+[lifecycle]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L813-L824
+[lifecycleevents]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackSession.h
 
 The playback controller allows for a single delegate. In many cases, this will be enough to retrieve information; the delegate implementations can disseminate values and events to different parts of the app as necessary. In cases where multiple delegates would be required, as is the case when developing a plugin, the [`BCOVPlaybackSessionConsumer`][consumer] delegates provide equivalent functionality to the [`BCOVPlaybackControllerDelegate`][delegate] methods, including [ad data][adconsumer].
 
-[consumer]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L538-L655
-[adconsumer]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVAdvertising.h#L195-L259
-[delegate]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/fd5e766693e533854f202f270d3d62e32ceaae04/ios/dynamic/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L667-L793
+[consumer]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L721-L851
+[adconsumer]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/BrightcovePlayerSDK.framework/Headers/BCOVAdvertising.h#L216-L280
+[delegate]: https://github.com/brightcove/brightcove-player-sdk-ios/blob/master/ios/BrightcovePlayerSDK.framework/Headers/BCOVPlaybackController.h#L915-L1204
 
 Here is an example of how one might use `BCOVPlaybackSessionConsumer` to create an analytics plugin:
 
-    @interface XYZAnalytics : NSObject <BCOVPlaybackSessionConsumer>
-    @end
+```swift
+class XYZAnalytics: NSObject, BCOVPlaybackSessionConsumer {
 
-    @implementation XYZAnalytics
-
-    - (void)playbackSession:(id<BCOVPlaybackSession>)session didProgressTo:(NSTimeInterval)progress
-    {
+    func playbackSession(_ session: BCOVPlaybackSession, didProgressTo progress: TimeInterval) {
         //react to progress event
     }
 
-    @end
+}
+```
 
 To use the plugin:
 
-    BCOVPlayerSDKManager *sdkManager = [BCOVPlayerSDKManager sharedManager];
-    id<BCOVPlaybackController> controller = [sdkManager createPlaybackController];
-    XYZAnalytics *analytics = [[XYZAnalytics alloc] init];
-    [controller addSessionConsumer:analytics];
-    
+```swift
+let sdkManager = BCOVPlayerSDKManager.sharedManager()
+let controller = sdkManager.createPlaybackController()
+let analytics = XYZAnalytics()
+controller.add(analytics)
+```
+
 ## Handling Network Interruptions and Slowdowns
 
 When the application experiences network interruptions, the `AVPlayer` used by the `BCOVPlaybackController` may stop attempting to recover if the interruption lasts too long. If this occurs, the lifecycle delegate method will be called with a `kBCOVPlaybackSessionLifecycleEventFailedToPlayToEndTime` event. When this event occurs, playback **will not** recover automatically. In order to recover from this event, you will need to detect when the network recovers in your client code.  
 
-Once you have determined that the network has recovered, you can use `- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:]` to re-initialize the player. You will need to keep track of where you want to resume to. The player will make its best effort to suppress lifecycle events and progress events, in order to prevent ads from replaying or from analytics being interfered with.
+Once you have determined that the network has recovered, you can use `playbackController.resumeVideo(at:withAutoPlay:)` to re-initialize the player. You will need to keep track of where you want to resume to. The player will make its best effort to suppress lifecycle events and progress events, in order to prevent ads from replaying or from analytics being interfered with.
 
-Upon calling `- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:]`, the player will send a lifecycle event of type `kBCOVPlaybackSessionLifecycleEventResumeBegin`. `kBCOVPlaybackSessionLifecycleEventResumeComplete` will be sent if this action succeeds, otherwise `kBCOVPlaybackSessionLifecycleEventResumeFail` will be sent.
+Upon calling `playbackController.resumeVideo(at:withAutoPlay:)`, the player will send a lifecycle event of type `kBCOVPlaybackSessionLifecycleEventResumeBegin`. `kBCOVPlaybackSessionLifecycleEventResumeComplete` will be sent if this action succeeds, otherwise `kBCOVPlaybackSessionLifecycleEventResumeFail` will be sent.
 
-You must wait before calling `- [BCOVPlaybackController resumeVideoAtTime:withAutoPlay:]` a second time until you have received either `kBCOVPlaybackSessionLifecycleEventResumeComplete` or `kBCOVPlaybackSessionLifecycleEventResumeFail` from the previous call. You may wish to impose a retry limit, before giving the user a message that their network is too unstable.
+You must wait before calling `playbackController.resumeVideo(at:withAutoPlay:)` a second time until you have received either `kBCOVPlaybackSessionLifecycleEventResumeComplete` or `kBCOVPlaybackSessionLifecycleEventResumeFail` from the previous call. You may wish to impose a retry limit, before giving the user a message that their network is too unstable.
 
 When the `AVPlayer` is still able to access the network, but the video stalls because the network is too slow, the lifecycle delegate method will be called with a `kBCOVPlaybackSessionLifecycleEventPlaybackStalled` event. When playback is able to resume, the lifecycle delegate method will be called with a `kBCOVPlaybackSessionLifecycleEventPlaybackRecovered` event. These events only cover the case where normal playback stopped and does not cover buffering that occurs during a seek or initial load of the video.
 
@@ -818,12 +866,16 @@ Also known as "model objects", these classes (`BCOVPlaylist`, `BCOVVideo`, `BCOV
 
 This is bad:
 
-    if (myVideo == session.video) // Could lead to bugs!
+```swift
+if myVideo == session.video // Could lead to bugs!
+```
     
 These are good (and functionally equivalent):
 
-    if ([myVideo isEqualToVideo:session.video])
-    if ([myVideo isEqual:session.video])
+```swift
+if myVideo.isEqual(session.video)
+if myVideo.isEqual(toVideo: session.video)
+```
 
 The internals of the Player SDK for iOS may do such things as memoize values or make defensive copies, so relying on the pointer address to check for equality will end up causing you pain.
 
@@ -831,20 +883,22 @@ Another quality of value classes in the Player SDK for iOS is that they are *imm
 
 Here is an example of using this method to create a "modified" version of an existing video object, but with different properties:
 
-    BCOVVideo *video1; // (properties include a key "foo" whose value is "bar")
-    BCOVVideo *video2 = [video1 update:^(id<BCOVMutableVideo> mutable) {
-        
-        mutable.properties = @{ @"foo": @"bar" };
-        
-    }];
-    
-	NSLog(@"foo is %@", video1.properties[@"foo"]); // prints "foo is bar"
-    NSLog(@"foo is %@", video2.properties[@"foo"]); // prints "foo is quux"
-    
-    // Both video1 and video2 are still immutable objects:
-    video1.properties = otherDictionary; // causes compiler error
-    video2.properties = otherDictionary; // causes compiler error
+```swift
+let video1: BCOVVideo // (properties include a key "foo" whose value is "bar")
+let video2 = video1.update { (mutableVideo: BCOVMutableVideo) in
+    mutableVideo.properties = [ "foo" : "quux" ]
+}
 
+if let foo1 = video1.properties["foo"],
+   let foo2 = video2.properties["foo"] {
+    print("foo is \(foo1)") // prints "foo is bar"
+    print("foo is \(foo2)") // prints "foo is quux"
+}
+
+// Both video1 and video2 are still immutable objects:
+video1.properties = ["foo":"fail"] // causes compiler error
+video2.properties = ["foo":"fail"] // causes compiler error
+```
 
 As you can see in the example, `video1` has not been changed by the `-update` method call. Instead, this method returns a copy of `video1`, except with the modifications made in the body of the block. You should never allow the mutable copy to escape the block (such as by assigning it to a `__block` variable), instead use the immutable object returned by the `-update` method after you have made your modifications.
 
@@ -852,66 +906,60 @@ As you can see in the example, `video1` has not been changed by the `-update` me
 
 The playback service class, `BCOVPlaybackService`, provides functionality for retrieving your Brightcove video assets and playlists via the [Brightcove Playback API][PlaybackAPI] , including rich metadata such as text tracks, previews, and thumbnails. The following example shows how to retrieve a video with a video ID. Methods for retrieving a video or playlist with that video's reference ID are also available.
 
-    [1] NSString *policyKey = <your-policy-key>;
-        NSString *accountId = <your-account-id>;
-        NSString *videoID = <your-video-id>;
+```swift
+[1] let kPolicyKey = "..."
+    let kAccountId = "..."
+    let kVideoId = "..."
 
-        BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
-        id<BCOVPlaybackController> controller = [manager createPlaybackControllerWithViewStrategy:nil];
-        [self.view addSubview:controller.view];  
-     
-        BCOVPlaybackService *playbackService = [[BCOVPlaybackService alloc] initWithAccountId:accoundId
-                                                                                    policyKey:policyKey];
+    let sdkManager = BCOVPlayerSDKManager.sharedManager()
+    let playbackController = sdkManager.createPlaybackController()
+    self.playbackController = playbackController
+    view.addSubview(playbackController.view)
 
-        NSDictionary *configuration = @{
-            kBCOVPlaybackServiceConfigurationKeyAssetID:videoID
-        };
-
-        [playbackService findVideoWithConfiguration:configuration
-                                    queryParameters:nil
-                                         completion:^(BCOVVideo *video,
-                                                      NSDictionary *jsonResponse,
-                                                      NSError      *error) {
-
-            [controller setVideos:@[ video ]];
-            [controller play];
-
-        }];
+    let playbackService = BCOVPlaybackService(withAccountId: kAccountId,
+                                              policyKey: kPolicyKey)
+    let configuration = [
+        BCOVPlaybackService.ConfigurationKeyAssetID: kVideoId
+    ]
+    playbackService.findVideo(withConfiguration: configuration,
+                              queryParameters: nil) { (video: BCOVVideo?,
+                                                       jsonResponse: Any?,
+                                                       error: Error?) in
+        if let video {
+            self.playbackController?.setVideos([video])
+            self.playbackController?.play()
+        }
+    }
+```
 
 1. The playback service requests **policy key** for authentication. To learn more about policy key and how to obtain one, please refer to the [policy key documentation][PolicyKey].
 
-**NOTE: If you are using the Playback Authorization Service please review the [section](#playback-authorization-service) of this README related to that feature.
+**NOTE: If you are using the Playback Authorization Service please review the [section](#playback-authorization-service) of this README related to that feature.**
 
 ### Playlist Paging
 
-For ``BCOVPlaybackService` methods that return a playlist, you can request a partial playlist, or "pages" from the playlist by specifying a limit and offset parameter in the parameters dictionary. The limit specifies the maximum number of videos that will be returned, and the offset specifies the index into the playlist at which videos will be returned.
+For `BCOVPlaybackService` methods that return a playlist, you can request a partial playlist, or "pages" from the playlist by specifying a limit and offset parameter in the parameters dictionary. The limit specifies the maximum number of videos that will be returned, and the offset specifies the index into the playlist at which videos will be returned.
 
 For example, if you have a playlist with 100 videos, you can request only 6 videos starting at video number 10 as follows:
 
+```swift
+let parameters = [
+    "limit": 6,
+    "offset": 10
+]
+let configuration = [
+    BCOVPlaybackService.ConfigurationKeyAssetID: kVideoId
+]
+playbackService.findVideo(withConfiguration: configuration,
+                          queryParameters: parameters) { (video: BCOVVideo?,
+                                                          jsonResponse: Any?,
+                                                          error: Error?) in
+    if let video {
+        self.playbackController?.setVideos([video])
+        self.playbackController?.play()
+    }
+}
 ```
-    NSDictionary *parameters =
-    @{
-        @"limit": @6,
-        @"offset": @10
-    };
-
-    NSDictionary *configuration =
-    @{
-        kBCOVPlaybackServiceConfigurationKeyAssetID: playlistID
-    };
-
-    [playbackService findPlaylistWithConfiguration:playlistID
-                                   queryParameters: parameters
-                                        completion:^(BCOVPlaylist *playlist,
-                                                     NSDictionary *jsonResponse,
-                                                     NSError      *error) {
-
-        [controller setVideos: playlist];
-        [controller play];
-
-    }];
-```
-
 
 [PlaybackAPI]: https://apis.support.brightcove.com/playback/getting-started/overview-playback-api.html
 [PolicyKey]: https://apis.support.brightcove.com/policy/getting-started/policy-keys.html
@@ -932,29 +980,33 @@ The first parameter is an UIView that contains the video layer, the UIView will 
 
 Example of a view strategy implementation:
 
-```objc
-BCOVPlaybackControllerViewStrategy viewStrategy = ^(UIView *videoView, id<BCOVPlaybackController> playbackController) {
-
+```swift
+let viewStrategy = { (videoView: UIView?, playbackController: BCOVPlaybackController?) in
+    guard let videoView,
+          let playbackController else {
+        return UIView()
+    }
     // Create some custom controls for the video view,
     // and compose both into a container view.
-    [1] UIView<BCOVPlaybackSessionConsumer> *myControlsView = [[MyControlsView alloc] init];
-    [2] UIView *controlsAndVideoView = [[UIView alloc] init];
-    [3] [controlsAndVideoView addSubview:videoView];
-        [controlsAndVideoView addSubview:myControlsView];
+    [1] let myControlsView = MyControlsView() // Conforms to BCOVPlaybackSessionConsumer
+    [2] let controlsAndVideoView = UIView()
+    [3] controlsAndVideoView.addSubview(videoView)
+        controlsAndVideoView.addSubview(myControlsView)
     // Compose the container with an advertising view
     // into another container view.
-    [4] UIView<BCOVPlaybackSessionConsumer> *adView = [[SomeAdPluginView alloc] init];
-    [5] UIView *adAndVideoView = [[UIView alloc] init];
-    [6] [adAndVideoView addSubview:controlsAndVideoView];
-        [adAndVideoView addSubview:adView];
-    [7] [playbackController addSessionConsumer:myControlsView];
-        [playbackController addSessionConsumer:adView];
+    [4] let adView = SomeAdPluginView() // Conforms to BCOVPlaybackSessionConsumer
+    [5] let adAndVideoView = UIView()
+    [6] adAndVideoView.addSubview(controlsAndVideoView)
+        adAndVideoView.addSubview(adView)
+    [7] playbackController.add(myControlsView)
+        playbackController.add(adView)
     // This container view will become `playbackController.view`.
-    return adAndVideoView;
-};
+    return adAndVideoView
+}
 ```
+
 Breaking the code down into steps:
-[1] Create a custom controls view that conforms to the `BCOVPlaybackSessionConsumer` protocol. `BCOVPlaybackSessionConsumer`protocol allows to receive basic playback information for each video in addition to advertising.
+[1] Create a custom controls view that conforms to the `BCOVPlaybackSessionConsumer` protocol. `BCOVPlaybackSessionConsumer` protocol allows to receive basic playback information for each video in addition to advertising.
 [2] Create a container view for the video view and custom controls.
 [3] Add as a subview the video container and the custom controls. The hierarchy is composed in the same order that views are added.
 [4] Create an ad controls view that conforms to the `BCOVPlaybackSessionConsumer` protocol.
@@ -966,11 +1018,11 @@ There is one caveat to using a view strategy: you must not access the playback c
 
 ## Playing Video In The Background
 
-By default, when an iOS application is sent to the background, or the device is locked, iOS will pause any video that is playing. To change this behavior, set the `allowsBackgroundAudioPlayback` property of the `BCOVPlaybackController` object to `YES`. (The default value is `NO`, indicating playback will pause in the background.)
+By default, when an iOS application is sent to the background, or the device is locked, iOS will pause any video that is playing. To change this behavior, set the `allowsBackgroundAudioPlayback` property of the `BCOVPlaybackController` object to `true`. (The default value is `false`, indicating playback will pause in the background.)
 
 You should also follow the guidelines set by Apple in [Technical Q&A QA1668][tqa1668] to set the proper background modes and audio session category for your app.
 
-It's important that the `AVPlayerLayer` be detached from the `AVPlayer` before the app is switched to the background (and reattached when the app returns to the foreground). The Brightcove Player SDK will handle this for you when `allowsBackgroundAudioPlayback` is set to `YES`.
+It's important that the `AVPlayerLayer` be detached from the `AVPlayer` before the app is switched to the background (and reattached when the app returns to the foreground). The Brightcove Player SDK will handle this for you when `allowsBackgroundAudioPlayback` is set to `true`.
 
 Finally, when playing background videos (and particularly when using playlists), you should use the iOS `MPRemoteCommandCenter` API to give the user playback control on the lock screen and in the control center.
 
@@ -978,24 +1030,24 @@ Finally, when playing background videos (and particularly when using playlists),
 
 ## Picture in Picture
 
-To enable Picture-in-Picture in your application, set the `showPictureInPictureButton` property of the `BCOVPUIPlayerViewOptions` object to `YES` when instantiating your `BCOVPUIPlayerView` object. The Picture-in-Picture button will then be displayed in the controls bar on any device that support it. 
+To enable Picture-in-Picture in your application, set the `showPictureInPictureButton` property of the `BCOVPUIPlayerViewOptions` object to `true` when instantiating your `BCOVPUIPlayerView` object. The Picture-in-Picture button will then be displayed in the controls bar on any device that support it.
 
 For Picture-in-Picture to work properly you will need to ensure that the `Audio, AirPlay, and Picture in Picture` mode is turned in the `Background Modes` section of the target Capabilities tab of your project. You should also follow the guidelines set by Apple in [Technical Q&A QA1668][tqa1668] to set the proper background modes and audio session category for your app.
 
 The `AVPictureInPictureControllerDelegate` methods are passed along via `BCOVPUIPlayerViewDelegate`. These methods are:
 
-```
-- (void)pictureInPictureControllerDidStartPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
-- (void)pictureInPictureControllerDidStopPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
-- (void)pictureInPictureControllerWillStartPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
-- (void)pictureInPictureControllerWillStopPictureInPicture:(AVPictureInPictureController *)pictureInPictureController;
-- (void)pictureInPictureController:(AVPictureInPictureController *)pictureInPictureController failedToStartPictureInPictureWithError:(NSError *)error
-- (void)pictureInPictureController:(AVPictureInPictureController *)pictureInPictureController restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(void (^)(BOOL))completionHandler;
+```swift
+func pictureInPictureControllerDidStartPicture(inPicture pictureInPictureController: AVPictureInPictureController)
+func pictureInPictureControllerDidStopPicture(inPicture pictureInPictureController: AVPictureInPictureController)
+func pictureInPictureControllerWillStartPicture(inPicture pictureInPictureController: AVPictureInPictureController)
+func pictureInPictureControllerWillStopPicture(inPicture pictureInPictureController: AVPictureInPictureController)
+func picture(_ pictureInPictureController: AVPictureInPictureController, failedToStartPictureInPictureWithError error: Error)
+func picture(_ pictureInPictureController: AVPictureInPictureController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: (Bool) -> Void)
 ```
 
 See Apple's [AVPictureInPictureControllerDelegate](https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate) documentation for more information.
 
-To implement your own Picture-in-Picture behavior, leave the `allowsBackgroundAudioPlayback` property of `BCOVPlaybackController` set to `false`, and keep the `pictureInPictureActive` property of `BCOVPlaybackController` updated with the Picture-in-Picture status. If you are using the `AVPictureInPictureController`, you can use the `pictureInPictureControllerDidStartPictureInPicture:` and `pictureInPictureControllerDidStopPictureInPicture:` delegate methods to update this property.
+To implement your own Picture-in-Picture behavior, leave the `allowsBackgroundAudioPlayback` property of `BCOVPlaybackController` set to `false`, and keep the `pictureInPictureActive` property of `BCOVPlaybackController` updated with the Picture-in-Picture status. If you are using the `AVPictureInPictureController`, you can use the `pictureInPictureControllerDidStartPicture(inPicture:)` and `pictureInPictureControllerDidStopPicture(inPicture:)` delegate methods to update this property.
 
 You can read more about implemeneting Picture-in-Picture in Apple's [Adopting Picture in Picture in a Custom Player](https://developer.apple.com/documentation/avkit/adopting_picture_in_picture_in_a_custom_player) documentation.
 
@@ -1011,67 +1063,65 @@ Thumbnail seeking allows users to drag the playhead along the timeline and view 
 
 This feature is also referred to by Apple as Trick Play, and is referenced in their [HLS Authoring Specification](https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices?language=objc).
 
-This feature is enabled by default. If you wish to disable thumbnail seeking you can do so by setting the `thumbnailSeekingEnabled` property on your `BCOVPlaybackController` to `NO`. 
+This feature is enabled by default. If you wish to disable thumbnail seeking you can do so by setting the `thumbnailSeekingEnabled` property on your `BCOVPlaybackController` to `false`.
 
-```
-self.playbackController.thumbnailSeekingEnabled = NO;
+```swift
+playbackController.thumbnailSeekingEnabled = false
 ```
 
 You can customize the layout of the thumbnail preview by making use of a delegate method with your `BCOVPUIPlayerView` or `BCOVTVPlayerView`. 
 
 On iOS you can adjust the height, width and vertical offset:
 
-```
-- (void)setupPlayerView
-{
-    BCOVPUIPlayerView *playerView = [[BCOVPUIPlayerView alloc] initWithPlaybackController:nil];
-    playerView.delegate = self;
+```swift
+func setUpPlayerView() {
+    let playerView = BCOVPUIPlayerView(playbackController: nil)
+    playerView?.delegate = self
     ...
 }
 
-#pragma mark - BCOVPUIPlayerViewDelegate
+// MARK: BCOVPUIPlayerViewDelegate
 
-- (CGRect)playerViewShouldDisplayThumbnailPreviewWithRect:(BCOVPUIPlayerView *)playerView
-{
-    CGFloat width = 100;
-    CGFloat height = 56;
-    CGFloat verticalOffset = -60;
-    CGFloat modifier = 1;
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
-        modifier = 2;
+func playerViewShouldDisplayThumbnailPreview(withRect playerView: BCOVPUIPlayerView) -> CGRect {
+    let width: CGFloat = 100
+    let height: CGFloat = 56
+    let verticalOffset: CGFloat = -60
+    var modifier: CGFloat = 1
+    if UIDevice.current.userInterfaceIdiom == .pad {
+        modifier = 2
     }
-    return CGRectMake(0, verticalOffset * modifier, width * modifier, height * modifier);
+    return CGRect(x: 0, y: verticalOffset * modifier, width: width * modifier, height: height * modifier)
 }
 ```
 
 On tvOS you can adjust the height and width:
 
-```
-- (void)setupPlayerView
-{
-    self.playerView = [[BCOVTVPlayerView alloc] initWithOptions:nil];    
-    self.playerView.delegate = self;
+```swift
+func setUpPlayerView() {
+    let playerView = BCOVTVPlayerView(options: nil)
+    playerView?.delegate = self
     ...
 }
 
-#pragma mark - BCOVTVPlayerViewDelegate
+// MARK: BCOVTVPlayerViewDelegate
 
-- (CGSize)playerViewShouldDisplayThumbnailPreviewWithSize:(BCOVTVPlayerView *)playerView
-{
-    CGSize size = self.view.frame.size;
-    size.width = size.width / 6;
-    size.height = size.height / 6;
-    return size;
+func playerViewShouldDisplayThumbnailPreview(withSize playerView: BCOVTVPlayerView) -> CGSize {
+    var size = self.view.frame.size
+    size.width = size.width / 6
+    size.height = size.height / 6
+    return size
 }
 ```
+
 If manually constructing a `BCOVVideo` object you can set the URL to be used for the Thumbnail WebVTT source:
 
-```
-BCOVVideo *video = [BCOVVideo videoWithURL:[NSURL URLWithString:@"https://mydomain.com/master.m3u8"]];
-video = [video update:^(id<BCOVMutableVideo> mutableVideo) {
-    mutableVideo.thumbnailVTTURL = [NSURL URLWithString:@"https://mydomain.com/thumbnail.webvtt"];
-}];
+```swift
+if let url = URL(string:"https://mydomain.com/master.m3u8") {
+    var video = BCOVVideo.video(withURL: url)
+    video = video.update({ (mutableVideo: BCOVMutableVideo) in
+        mutableVideo.thumbnailVTTURL = URL(string:"https://mydomain.com/thumbnail.webvtt")
+    })
+}
 ```
 
 Thumbnail seeking is only available for online videos; downloaded/offline videos do not support this feature. 
@@ -1082,38 +1132,39 @@ You can insert an additional BCOVVideo, after another BCOVVideo already in the q
 
 For example:
 
-```
+```swift
 // This will insert the new video after the first video in the queue
-[self.playbackController insertVideo:videoToInsert afterVideoAtIndex:0];
+playbackController.insert(videoToInsert, afterVideoAt: 0)
 ```
 
 There are two delegate methods you can utilize to be alerted of the success or failure of the request.
 
-* `- (void)playbackController:(id<BCOVPlaybackController>)controller didInsertVideo:(BCOVVideo *)video atIndex:(NSUInteger)index`
-* `- (void)playbackController:(id<BCOVPlaybackController>)controller failedToInsertVideo:(BCOVVideo *)video`
+* `func playbackController(_ controller: BCOVPlaybackController, didInsert video: BCOVVideo, at index: UInt)`
+* `func playbackController(_ controller: BCOVPlaybackController, failedToInsert video: BCOVVideo)`
 
 ## Generic Stream Concurrency
 
 Generic Stream Concurrency (GSC) is a service which determines whether playback is permitted based on the active playback sessions for the viewer and a preset concurrency limit. The service is requested through the Edge Playback Authorization (EPA) service. The same JWT used to retrieve the video is used here, and should include a `uid` claim, a `climit` claim and optionally, a `sid` claim. This feature must be enabled in your acccount.
 
-Generic Stream Concurrency is not enabled in the SDK by default. If you wish to enable it, set the `streamConcurrencyEnabled` property of your `BCOVPlaybackController` to `YES`.
+Generic Stream Concurrency is not enabled in the SDK by default. If you wish to enable it, set the `streamConcurrencyEnabled` property of your `BCOVPlaybackController` to `true`.
 
-```
-self.playbackController.streamConcurrencyEnabled = YES;
+```swift
+playbackController.streamConcurrencyEnabled = true
 ```
 
 The `sid` value can be included in the JWT or sent as a `BCOVPlaybackController` option, both of which are optional. The `sid` value in the JWT has precedence over the `BCOVPlaybackController` option.
 
-```
-self.playbackController.options[kBCOVAuthHeartbeatPropertyKeySessionId] = @"sessionId";
+```swift
+playbackController.options[kBCOVAuthHeartbeatPropertyKeySessionId] = "sessionId"
 ```
 
 A new delegate method has been added to `BCOVPlaybackControllerDelegate` to retrieve the active sessions when the concurrency limit has been reached.
 
-```
-- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didReachMaxConcurrency:(NSDictionary *)sessions
-{
-    NSLog(@"%@", sessions);
+```swift
+func playbackController(_ controller: BCOVPlaybackController,
+                        playbackSession session: BCOVPlaybackSession,
+                        didReachMaxConcurrency sessions: [AnyHashable : Any]) {
+    print("\(sessions)")
 }
 ```
 
@@ -1121,8 +1172,8 @@ A new delegate method has been added to `BCOVPlaybackControllerDelegate` to retr
 
 Playback errors are typically handled and reported through video playback events from the playback controller. If you need to dig deeper and track problems with particular videos or app sessions, you can take advantage of the Brightcove Player SDK's *session ID*. The session ID is a property of the `BCOVPlayerSDKManager` that you can retrieve like this:
 
-```
-NSString *sdkSessionID = BCOVPlayerSDKManager.sharedManager.sessionID;
+```swift
+let sdkSessionID = BCOVPlayerSDKManager.sharedManager().sessionID
 ```
 
 The session ID is a unique string that does not change during the app life cycle. This string is reported with various other analytics data to the Brightcove metrics servers. If you are having problems with a particular app instance, or video, you can record the session ID and send it back to your own company servers. Then you can send the session ID, video ID, and any other pertinent data to Brightcove service engineers to help diagnose any issues.
@@ -1132,43 +1183,38 @@ The session ID is a unique string that does not change during the app life cycle
 
 If you need to combine Player SDK plugins, for example to add subtitles to a DRM-protected video which plays ads managed by Google IMA, `BCOVSessionProviders` from each plugin are created and chained together and the chain is used to construct the `BCOVPlaybackController`.
 
-```
-BCOVPlayerSDKManager *sdkManager = [BCOVPlayerSDKManager sharedManager];
-        
-IMASettings *imaSettings = [[IMASettings alloc] init];
-imaSettings.ppid = kViewControllerIMAPublisherID;
-imaSettings.language = kViewControllerIMALanguage;
-        
-IMAAdsRenderingSettings *renderSettings = [[IMAAdsRenderingSettings alloc] init];
-renderSettings.webOpenerPresentingController = self;
-        
-BCOVIMAAdsRequestPolicy *adsRequestPolicy =
-    [BCOVIMAAdsRequestPolicy videoPropertiesVMAPAdTagUrlAdsRequestPolicy];
+```swift
+let sdkManager = BCOVPlayerSDKManager.sharedManager()
+
+let imaSettings = IMASettings()
+imaSettings.ppid = kIMAPublisherID
+if let languageCode = NSLocale.current.languageCode {
+    imaSettings.language = languageCode
+}
+
+let renderSettings = IMAAdsRenderingSettings()
+renderSettings.linkOpenerPresentingController = self
+
+let adsRequestPolicy = BCOVIMAAdsRequestPolicy.videoPropertiesVMAPAdTagUrl()
 
 // create the sidecar subtitles session provider. it has no upstream session provider.
-id<BCOVPlaybackSessionProvider> sidecarSessionProvider =
-    [sdkManager createSidecarSubtitlesSessionProviderWithUpstreamSessionProvider:nil];
+let sidecarSessionProvider = sdkManager.createSidecarSubtitlesSessionProvider(withUpstreamSessionProvider: nil)
 
 // create a fairplay session provider with the sidecar session provider as its upstream session
-id<BCOVFPSAuthorizationProxy> authProxy =
-    [[BCOVFPSBrightcoveAuthProxy alloc] initWithPublisherId:nil applicationId:nil];
-id<BCOVPlaybackSessionProvider> fairPlaySessionProvider =
-    [sdkManager createFairPlaySessionProviderWithAuthorizationProxy:authProxy upstreamSessionProvider:sidecarSessionProvider];
-    
-// create the IMA session provider with an upstream sidecar subtitles session provider.
-id<BCOVPlaybackSessionProvider> imaSessionProvider =
-    [sdkManager createIMASessionProviderWithSettings:imaSettings
-                                adsRenderingSettings:renderSettings
-                                    adsRequestPolicy:adsRequestPolicy
-                                         adContainer:self.playerView.contentOverlayView
-                                      viewController:self
-                                      companionSlots:nil
-                             upstreamSessionProvider:fairPlaySessionProvider];
+let authProxy = BCOVFPSBrightcoveAuthProxy(withPublisherId: nil,
+                                           applicationId: nil)
 
-// create the playback controller using the session provider chain.
-id<BCOVPlaybackController> playbackController =
-    [sdkManager createPlaybackControllerWithSessionProvider:imaSessionProvider
-                                               viewStrategy:nil];
+let fairPlaySessionProvider = sdkManager.createFairPlaySessionProvider(withAuthorizationProxy: authProxy,
+                                                                       upstreamSessionProvider: sidecarSessionProvider)
+
+// create the IMA session provider with an upstream sidecar subtitles session provider.
+let imaSessionProvider = sdkManager.createIMASessionProvider(with: imaSettings,
+                                                             adsRenderingSettings: renderSettings,
+                                                             adsRequestPolicy: adsRequestPolicy,
+                                                             adContainer: playerView?.contentOverlayView,
+                                                             viewController: self,
+                                                             companionSlots: nil,
+                                                             upstreamSessionProvider: fairPlaySessionProvider)
 ```
 
 ## Buffer Optimization
@@ -1191,18 +1237,20 @@ The Brightcove Native Player SDK addresses this problem by starting the video wi
 
 If you want to keep the default behavior of the Brightcove Native Player SDK, but modify the minimum and maximum values used for the buffer sizes, you can do the following when setting up the `BCOVPlaybackController`:
 
-    // Create mutable dictionary to hold new values
-    NSMutableDictionary *options = self.playbackController.options.mutableCopy;
-
+```swift
+// Create mutable dictionary to hold new values
+if var options = playbackController.options {
     // Set new values in dictionary
-    options[kBCOVBufferOptimizerMethodKey] = @(BCOVBufferOptimizerMethodDefault);
-    options[kBCOVBufferOptimizerMinimumDurationKey] = @(min);
-    options[kBCOVBufferOptimizerMaximumDurationKey] = @(max);
+    options[kBCOVBufferOptimizerMethodKey] = BCOVBufferOptimizerMethod.default.rawValue
+    options[kBCOVBufferOptimizerMinimumDurationKey] = minValue
+    options[kBCOVBufferOptimizerMaximumDurationKey] = maxValue
 
     // Set new dictionary in your playback controller
-    self.playbackController.options = options;
+    playbackController.options = options
+}
+```
 
-These options should be set before calling `-BCOVPlaybackController setVideos:`.
+These options should be set before calling `playbackController.setVideos()`.
 
 `min` and `max` values:
 
@@ -1217,42 +1265,42 @@ These options should be set before calling `-BCOVPlaybackController setVideos:`.
 
 If you do not want any buffer optimization active in your current playback session, you can use the same technique, but set the optimziation method to "None" as follows:
 
-    // Create mutable dictionary to hold new values
-    NSMutableDictionary *options = self.playbackController.options.mutableCopy;
-    
+```swift
+// Create mutable dictionary to hold new values
+if var options = playbackController.options {
     // Set new values in dictionary
-    options[kBCOVBufferOptimizerMethodKey] = @(BCOVBufferOptimizerMethodNone);
+    options[kBCOVBufferOptimizerMethodKey] = BCOVBufferOptimizerMethod.none
 
     // Set new dictionary in your playback controller
-    self.playbackController.options = options;
+    playbackController.options = options
+}
+```
 
-With the method set to “None”, iOS will maintain full control of the forward buffer size.
+With the method set to `.none`, iOS will maintain full control of the forward buffer size.
 
 ### Implementing Your Own Buffer Optimization Method
 
 If you want to set your own buffer size for playback, first turn off buffer optimization as described in the previous section. Then, you can implement the following `BCOVPlaybackController` delegate method:
 
-	- (void)playbackController:(id<BCOVPlaybackController>)controller didAdvanceToPlaybackSession:(id<BCOVPlaybackSession>)session
-	{
-	  // Make sure the property exists on the current AVPlayerItem.
-      if ([session.player.currentItem respondsToSelector:NSSelectorFromString(@"preferredForwardBufferDuration")])
-      {
+```swift
+func playbackController(_ controller: BCOVPlaybackController, didAdvanceTo session: BCOVPlaybackSession) {
+    if let currentItem = session.player.currentItem {
         // Set your preferredForwardBufferDuration value here.
-		 session.player.currentItem.preferredForwardBufferDuration = newPreferredForwardBufferDurationValue;
-      }
-	}
+        currentItem.preferredForwardBufferDuration = newPreferredForwardBufferDurationValue
+    }
+}
+```
 
 If you want to change the buffer size dynamically over time, you can set `session.player.currentItem.preferredForwardBufferDuration` in the `BCOVPlaybackController`'s progress delegate method in a similar fashion:
 
-	- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didProgressTo:(NSTimeInterval)progress
-	{
-	  // Make sure the property exists on the current AVPlayerItem.
-      if ([session.player.currentItem respondsToSelector:NSSelectorFromString(@"preferredForwardBufferDuration")])
-      {
-        // Set preferredForwardBufferDuration based on your own logic here
-		 session.player.currentItem.preferredForwardBufferDuration = newPreferredForwardBufferDurationValue;
-      }
-	}
+```swift
+func playbackController(_ controller: BCOVPlaybackController, playbackSession session: BCOVPlaybackSession, didProgressTo progress: TimeInterval) {
+    if let currentItem = session.player.currentItem {
+        // Set your preferredForwardBufferDuration value here.
+        currentItem.preferredForwardBufferDuration = newPreferredForwardBufferDurationValue
+    }
+}
+```
 
 Note: Apple specifically put "preferred" in `preferredForwardBufferDuration` because you can set any value you want, but generally speaking the `AVPlayer` player will use it only as a guideline. Also keep in mind that setting it to zero returns full control of the buffer size to the `AVPlayer`.
 
@@ -1264,20 +1312,23 @@ You can use the AVPlayerViewController instead of the AVPlayerLayer used by the 
 
 To use the AVPlayerViewController, you can set a BCOVPlaybackController dictionary property called `kBCOVAVPlayerViewControllerCompatibilityKey`:
 
-    BCOVPlayerSDKManager *sdkManager = [BCOVPlayerSDKManager sharedManager];
+```swift
+let sdkManager = BCOVPlayerSDKManager.sharedManager()
 
-    id<BCOVPlaybackController> playbackController;
+let playbackController = sdkManager.createPlaybackController()
 
-    NSMutableDictionary *mutableOptions = self.playbackController.options.mutableCopy;
+if var mutableOptions = playbackController.options {
     // To use the AVPlayerViewController
-    mutableOptions[kBCOVAVPlayerViewControllerCompatibilityKey] = @YES;
+    mutableOptions[kBCOVAVPlayerViewControllerCompatibilityKey] = true
 
     // To use the BCOVPlaybackSession's AVPlayerLayer
-    // mutableOptions[kBCOVAVPlayerViewControllerCompatibilityKey] = @NO;
+    // mutableOptions[kBCOVAVPlayerViewControllerCompatibilityKey] = false
 
-    self.playbackController.options = mutableOptions;
+    playbackController.options = mutableOptions
+}
+```
 
-The default value of kBCOVAVPlayerViewControllerCompatibilityKey is `@NO`, which means that a BCOVPlaybackController created without this dictionary property explicitly set will use the BCOVPlaybackSession's AVPlayerLayer by default.
+The default value of kBCOVAVPlayerViewControllerCompatibilityKey is `false`, which means that a BCOVPlaybackController created without this dictionary property explicitly set will use the BCOVPlaybackSession's AVPlayerLayer by default.
 
 ### Advertising
 
@@ -1285,15 +1336,17 @@ The Brightcove IMA, FreeWheel, Pulse and SSAI ad plugins are compatible when usi
 
 You may wish to hide/show the AVPlayerViewController's playback controls before and after ads play:
 
-```
-- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didEnterAdSequence:(BCOVAdSequence *)adSequence
-{
-    self.avpvc.showsPlaybackControls = NO;
+```swift
+func playbackController(_ controller: BCOVPlaybackController,
+                        playbackSession session: BCOVPlaybackSession,
+                        didEnter adSequence: BCOVAdSequence) {
+    avpvc.showsPlaybackControls = false
 }
 
-- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didExitAdSequence:(BCOVAdSequence *)adSequence
-{
-    self.avpvc.showsPlaybackControls = YES;
+func playbackController(_ controller: BCOVPlaybackController,
+                        playbackSession session: BCOVPlaybackSession,
+                        didExitAdSequence adSequence: BCOVAdSequence) {
+    avpvc.showsPlaybackControls = true
 }
 ```
 
@@ -1303,50 +1356,43 @@ When using an AVPlayerViewController with the Brightcove IMA plugin and ads with
 
 If using the IMA, FreeWheel, Pulse or SSAI plugins on tvOS an array of `AVInterstitialTimeRange` will be created for each ad cue point and set on the `interstitialTimeRanges` of the associated `AVPlayerItem`. For the IMA, FreeWheel and Pulse plugins you will want to create a play/pause gesture so that when an ad is active you can correctly pause and resume the ad and not affect playback of the video itself. Here is an example:
 
-```
-- (void)setUpAdPlayPauseGesture
-{
-    self.playPauseGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playPauseAd:)];
-    self.playPauseGesture.allowedPressTypes = @[@(UIPressTypePlayPause)];
-    [self.avpvc.view addGestureRecognizer:self.playPauseGesture];
+```swift
+func setUpAdPlayPauseGesture() {
+    let playPauseGesture = UITapGestureRecognizer(target: self, action: #selector(playPauseAd(_:)))
+    playPauseGesture.allowedPressTypes = [NSNumber(value: UIPress.PressType.playPause.rawValue)]
+    avpvc.view.addGestureRecognizer(playPauseGesture)
+    self.playPauseGesture = playPauseGesture
 }
 
-- (void)playPauseAd:(UITapGestureRecognizer *)gesture
-{
-    if (self.insideAdSequence)
-    {
-        if (self.adPlaying)
-        {
-            [self.playbackController resumeAd];
-            self.adPlaying = NO;
+@objc
+func playPauseAd(_ gesture: UITapGestureRecognizer) {
+    if insideAdSequence {
+        if adPlaying {
+            playbackController?.resumeAd()
+            adPlaying = false
+        } else {
+            playbackController?.pauseAd()
+            adPlaying = true
         }
-        else
-        {
-            [self.playbackController pauseAd];
-            self.adPlaying = YES;
-        }
-    }
-    else
-    {
-        if (self.avpvc.player.rate == 0)
-        {
-            [self.playbackController play];
-        }
-        else
-        {
-            [self.playbackController pause];
+    } else {
+        if avpvc.player?.rate == 0 {
+            playbackController?.play()
+        } else {
+            playbackController?.pause()
         }
     }
 }
 
-- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didEnterAdSequence:(BCOVAdSequence *)adSequence
-{
-    self.insideAdSequence = YES;
+func playbackController(_ controller: BCOVPlaybackController,
+                        playbackSession session: BCOVPlaybackSession,
+                        didEnterAdSequence adSequence: BCOVAdSequence) {
+    insideAdSequence = true
 }
 
-- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didExitAdSequence:(BCOVAdSequence *)adSequence
-{
-    self.insideAdSequence = NO;
+func playbackController(_ controller: BCOVPlaybackController,
+                        playbackSession session: BCOVPlaybackSession,
+                        didExitAdSequence adSequence: BCOVAdSequence) {
+    insideAdSequence = false
 }
 ```
 
@@ -1367,29 +1413,34 @@ When using the AVPlayerViewController, the video_engagement events sent to the B
 
 ## Playback Authorization Service
 
-If you are using the Playback Authorization Service you will need to use the playback service `kBCOVPlaybackServiceConfigurationKeyAuthToken` configuration key.
+If you are using the Playback Authorization Service you will need to use the playback service `BCOVPlaybackService.ConfigurationKeyAuthToken` configuration key.
 
-```
+```swift
 // Video Request
-NSDictionary *configuration = @{
-    kBCOVPlaybackServiceConfigurationKeyAssetID: videoID,
-    kBCOVPlaybackServiceConfigurationKeyAuthToken: authToken
-};
+let configuration = [
+    BCOVPlaybackService.ConfigurationKeyAssetID: videoID,
+    BCOVPlaybackService.ConfigurationKeyAuthToken: authToken
+]
 
-[self.playbackService findVideoWithConfiguration:configuration queryParameters:nil completion:^(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error) {
+playbackService.findVideo(withConfiguration: configuration,
+                          queryParameters: nil) { (video: BCOVVideo?,
+                                                   jsonResponse: Any?,
+                                                   error: Error?) in
     ...
-}];
+}
 
 // Playlist Request
-NSDictionary *configuration = @{
-    kBCOVPlaybackServiceConfigurationKeyAssetID: playlistID,
-    kBCOVPlaybackServiceConfigurationKeyAuthToken: authToken
-};
+let configuration = [
+    BCOVPlaybackService.ConfigurationKeyAssetID: playlistID,
+    BCOVPlaybackService.ConfigurationKeyAuthToken: authToken
+]
 
-[self.playbackService findPlaylistWithConfiguration:configuration queryParameters:nil completion:^(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error) {
+playbackService.findPlaylist(withConfiguration: configuration,
+                             queryParameters: nil) { (playlist: BCOVPlaylist?,
+                                                      jsonResponse: Any?,
+                                                      error: Error?) in
     ...
-}];
-
+}
 ```
 
 **Note: In the case of playlists, all videos in the playlist must use the same token.  In a subsequent release, assigning a different token to each video in a playlist will be possible.  You will be responsible for maintaining the mapping between video id and token.**
@@ -1400,42 +1451,49 @@ VoiceOver is supported out-of-the-box for the playback controls. By default, if 
 
 To change the `accessibilityLabel` values of any of the buttons in the control view you must set an object to be a `BCOVPUIButtonAccessibilityDelegate` like this:
 
-    [self.playerView.controlsView setButtonsAccessibilityDelegate:self];
+```swift
+playerView.controlsView.setButtonsAccessibilityDelegate(self)
+```
 
 You must then have that object conform to the `BCOVPUIButtonAccessibilityDelegate` protocol by implmenting the `- (NSString *)accessibilityLabelForButton:(BCOVPUIButton *)button isPrimaryState:(BOOL)isPrimaryState` method similar to this:
 
-    - (NSString *)accessibilityLabelForButton:(BCOVPUIButton *)button isPrimaryState:(BOOL)isPrimaryState
-    {
-        switch (button.tag)
-        {
-            case BCOVPUIViewTagButtonPlayback:
-                return isPrimaryState ? NSLocalizedString(@"Start Playback", nil) : NSLocalizedString(@"Stop PLayback", nil);
-            case BCOVPUIViewTagButtonScreenMode:
-                return isPrimaryState ? NSLocalizedString(@"Enter Fullscreen", nil) : NSLocalizedString(@"Exit Fullscreen", nil);
-            case BCOVPUIViewTagButtonJumpBack:
-                return nil;
-            case BCOVPUIViewTagButtonClosedCaption:
-                return nil;
-            case BCOVPUIViewTagButtonVideo360:
-                return nil;
-            case BCOVPUIViewTagButtonPreferredBitrate:
-                return nil;
-            default:
-                return nil;
-        }
+```swift
+func accessibilityLabel(for button: BCOVPUIButton,
+                        isPrimaryState: Bool) -> String? {
+    switch button.tag {
+    case BCOVPUIViewTag.buttonPlayback.rawValue:
+        return isPrimaryState ? NSLocalizedString("Start Playback", comment: "playback button") : NSLocalizedString("Pause Playback", comment: "playback button")
+    case BCOVPUIViewTag.buttonScreenMode.rawValue:
+        return isPrimaryState ? NSLocalizedString("Enter Fullscreen", comment: "screenmode button") : NSLocalizedString("Exit Fullscreen", comment: "screenmode button")
+    case BCOVPUIViewTag.buttonJumpBack.rawValue:
+        return nil
+    case BCOVPUIViewTag.buttonClosedCaption.rawValue:
+        return nil
+    case BCOVPUIViewTag.buttonVideo360.rawValue:
+        return nil
+    case BCOVPUIViewTag.buttonPreferredBitrate.rawValue:
+        return nil
+    default:
+        return nil
     }
+}
+```
 
 If a `nil` value is returned the default value will be used.
 
 Setting the `accessibilityHint` on the playback controller can be done like this:
 
-    self.playbackController.view.accessibilityHint = @"Double tap to show or hide controls";
+```swift
+playbackController.view.accessibilityHint = "Double tap to show or hide controls"
+```
 
 Similarly you can set the `accessibilityLabel` on the current time and duration labels, along with the progress slider, like this:
 
-    self.playerView.controlsView.durationLabel.accessibilityLabelPrefix = @"Total Time";
-    self.playerView.controlsView.currentTimeLabel.accessibilityLabelPrefix = @"Current Time";
-    self.playerView.controlsView.progressSlider.accessibilityLabel = @"Timeline";
+```swift
+playerView.controlsView.durationLabel.accessibilityLabelPrefix = "Total Time"
+playerView.controlsView.currentTimeLabel.accessibilityLabelPrefix = "Current Time"
+playerView.controlsView.progressSlider.accessibilityLabel = "Timeline"
+```
 
 ## Custom Localization
 
@@ -1455,8 +1513,8 @@ You can provide additional language localizations that the Brightcove iOS SDK do
 
 To define a proxy domain for playback services, metrics and analytics servers in China, set the `chinaProxyDomain` property of the `BCOVGlobalConfiguration` singleton to a fully qualified domain name. For example:
 
-```
-BCOVGlobalConfiguration.sharedConfig.chinaProxyDomain = @"host.mydomain.com";
+```swift
+BCOVGlobalConfiguration.sharedConfig.chinaProxyDomain = "host.mydomain.com"
 ```
 
 Be sure to set the proxy domain name before using any other services of the Native Player SDK. Refer to the [_BCOVGlobalConfiguration Class Reference_](https://docs.brightcove.com/ios-sdk/Classes/BCOVGlobalConfiguration.html#//api/name/chinaProxyDomain) for details.
@@ -1467,20 +1525,7 @@ Depending on how you need your application to perform when it comes to audio pla
 
 A basic AVAudioSession can be configured like this:
 
-```
-//  Obj-C
-NSError *categoryError = nil;
-// see https://developer.apple.com/documentation/avfoundation/avaudiosessioncategoryplayback
-BOOL success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&categoryError];
-
-if (!success)
-{
-    // Handle error
-}
-```
-
-```
-// Swift
+```swift
 var categoryError :NSError?
 var success: Bool
 do {
@@ -1499,8 +1544,7 @@ if !success {
 
 This configuration can typically be done in your AppDelegate's `application:didFinishLaunchingWithOptions:` method. There may be situations where you need a more sophisticated AVAudioSession configuration, for example if you want to allow audio from other apps to be heard when the audio in your app is muted. In this situation you can configure the AVAudioSession in the view controller that has access to your current AVPlayer. For example:
 
-```
-// Swift
+```swift
 func setUpAudioSession() {
     var categoryError :NSError?
     var success: Bool
@@ -1530,31 +1574,7 @@ func setUpAudioSession() {
     }
 }
 ```
-```
-// Objc-C
-- (void)setUpAudioSession
-{
-    NSError *categoryError = nil;
-    BOOL success;
-    
-    // If the player is muted, then allow mixing.
-    // Ensure other apps can have their background audio
-    // active when this app is in foreground
-    if (self.currentPlayer.isMuted)
-    {
-        success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:&categoryError];
-    }
-    else
-    {
-        success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:0 error:&categoryError];
-    }
-    
-    if (!success)
-    {
-        NSLog(@"AppDelegate Debug - Error setting AVAudioSession category.  Because of this, there may be no sound. `%@`", categoryError);
-    }
-}
-```
+
 Sample code can be found in our [VideoCloudBasicPlayer](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/VideoCloudBasicPlayer) sample project.
 
 You can read more about AVAudioSession [here](https://developer.apple.com/documentation/avfoundation/avaudiosession). 
@@ -1574,17 +1594,17 @@ There are three pre-configured audio-only `BCOVPUIBasicControlView` layouts you 
 
 You can also be notified if a stream is audio-only or video+audio with the `playbackController:playbackSession:determinedMediaType` delegate method:
 
-```
-- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session determinedMediaType:(BCOVSourceMediaType)mediaType
-{
-    switch (mediaType)
-    {
-        case BCOVSourceMediaTypeAudio:
-            NSLog(@"Source is Audio Only");
-            break;
-        case BCOVSourceMediaTypeAudioVideo:
-            NSLog(@"Source is Audio and Video");
-            break;
+```swift
+func playbackController(_ controller: BCOVPlaybackController,
+                        playbackSession session: BCOVPlaybackSession,
+                        determinedMediaType mediaType: BCOVSourceMediaType) {
+    switch mediaType {
+        case BCOVSourceMediaType.audio:
+            print("Source is Audio Only")
+        case BCOVSourceMediaType.audioVideo:
+            print("Source is Audio and Video")
+        default:
+            break
     }
 }
 ```
@@ -1601,28 +1621,34 @@ Bumpers are a player-level feature, meaning a given player may only be associate
 
 - `bumperID`. The ID of the video to find.
 
-```
+```swift
 // Using `bumperID`
-NSDictionary *configuration = @{
-    kBCOVPlaybackServiceConfigurationKeyAssetID: videoID,
-    kBCOVPlaybackServiceConfigurationKeyBumperID: bumperID
-};
+let configuration = [
+    BCOVPlaybackService.ConfigurationKeyAssetID: videoID,
+    BCOVPlaybackService.ConfigurationKeyBumperID: bumperID
+]
 
 // Using `bumperReferenceID`
-NSDictionary *configuration = @{
-    kBCOVPlaybackServiceConfigurationKeyAssetID: videoID,
-    kBCOVPlaybackServiceConfigurationKeyBumperReferenceID: bumperReferenceID
-};
+let configuration = [
+    BCOVPlaybackService.ConfigurationKeyAssetID: playlistID,
+    BCOVPlaybackService.ConfigurationKeyBumperReferenceID: bumperReferenceID
+]
 
 // With a Video Request
-[self.playbackService findVideoWithConfiguration:configuration queryParameters:nil completion:^(BCOVVideo *video, NSDictionary *jsonResponse, NSError *error) {
+playbackService.findVideo(withConfiguration: configuration,
+                          queryParameters: nil) { (video: BCOVVideo?,
+                                                   jsonResponse: Any?,
+                                                   error: Error?) in
     ...
-}];
+}
 
 // With a Playlist Request
-[self.playbackService findPlaylistWithConfiguration:configuration queryParameters:nil completion:^(BCOVPlaylist *playlist, NSDictionary *jsonResponse, NSError *error) {
+playbackService.findPlaylist(withConfiguration: configuration,
+                             queryParameters: nil) { (playlist: BCOVPlaylist?,
+                                                      jsonResponse: Any?,
+                                                      error: Error?) in
     ...
-}];
+}
 ```
 
 #### 2. Custom Fields.
@@ -1633,14 +1659,14 @@ The `bumper_id` field can be defined in Custom Fields in VideoCloud/Studio. The 
 
 Playback controls can be hidden while the bumper is playing.
 
-```
-BCOVPUIPlayerViewOptions *options = [BCOVPUIPlayerViewOptions new];
-options.automaticControlTypeSelection = YES;
-options.showBumperControls = NO;
-BCOVPUIPlayerView *playerView = [[BCOVPUIPlayerView alloc] initWithPlaybackController:nil options:options controlsView:nil];
+```swift
+let options = BCOVPUIPlayerViewOptions()
+options.automaticControlTypeSelection = true
+options.showBumperControls = false
+let playerView = BCOVPUIPlayerView(playbackController: nil, options: options, controlsView: nil)
 ```
 
-If the `automaticControlTypeSelection` option is set to `YES`, the layout for the bumper will adapt to the content (video or audio only). `basicControlViewWithVODLayout` and `basicControlViewWithAODLayout` layouts are designed for bumpers, `Live` or `LiveDRV` layouts are not available. Playback controls have a unique appearance when a bumper active:
+If the `automaticControlTypeSelection` option is set to `true`, the layout for the bumper will adapt to the content (video or audio only). `basicControlViewWithVODLayout` and `basicControlViewWithAODLayout` layouts are designed for bumpers, `Live` or `LiveDVR` layouts are not available. Playback controls have a unique appearance when a bumper active:
 
 - The Progress Bar is purple
 - Buffering is not reflected in the progress bar

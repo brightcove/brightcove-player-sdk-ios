@@ -1,3 +1,66 @@
+## Release 7.0.0
+
+#### 13 Nov 2024
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Breaking Changes
+
+* Support for the static Framework and static XCFramework has deprecated.
+* The format for BCOVVideoErrorCodes constants has change. For example `kBCOVVideoErrorCodeBadRequest` is now `BCOVVideoErrorCode.BadRequest`.
+* The format for Sidecar Subtitle constants has changed. For example `kBCOVSSVideoPropertiesKeyTextTracks` is now `BCOVSSConstants.VideoPropertiesKeyTextTracks`.
+* The `shared` singleton for `BCOVPlayerSDKManager` has been changed to`sharedManager` and is no longer nullable. You no longer need to treat it as an optional in Swift.
+* The `BCOVPlayerSDKManager` method `createPlaybackController(with:viewStrategy:)` has been changed to `createPlaybackController(withSessionProvider:viewStrategy:)` and no longer returns and optional value.
+* The `BCOVPlayerSDKManager` method `createFairPlaySessionProvider(with:upstreamSessionProvider:)` has been changed to `createFairPlaySessionProvider(withAuthorizationProxy:upstreamSessionProvider:)`
+* The format for `BCOVPlaybackService` constants has changed. For example `kBCOVPlaybackServiceConfigurationKeyAssetID` is now `BCOVPlaybackService.ConfigurationKeyAssetID`.
+* The closures for the `BCOVPlaybackService` methods `findVideo(withConfiguration:queryParameters:completion)` and `findPlaylist(withConfiguration:queryParameters:completion)` have changed. The `jsonResponse: [AnyHashable:Any]?` type is now `jsonResponse: Any?`.
+* The `BCOVPlaybackService` method `BCOVPlaybackService(accountId:policyKey:)` has been changed to `BCOVPlaybackService(withAccountId:policyKey:)`.
+* The `BCOVPlaybackService` method `BCOVPlaybackService(requestFactory:)` has been changed to `BCOVPlaybackService(withRequestFactory:)`.
+* The `BCOVPlaybackRequestFactory` method `BCOVPlaybackServiceRequestFactory(accountId:, policyKey:)` has been changed to `BCOVPlaybackServiceRequestFactory(withAccountId:, policyKey:)`.
+* The `sharedConfig()` singleton for `BCOVGlobalConfiguration` has been changed to `sharedConfig`.
+* The `BCOVMutableSource` protocol has been replaced with the `BCOVMutableSource` class. This primarily affects the `update:` method on `BCOVSource` in which a `BCOVMutableSource` object is now returned.
+* The `properties` dictionary on `BCOVSource` is no longer nullable. You no longer need to treat it as an optional in Swift.
+* The format for `BCOVSource` constants has changed. For example `kBCOVSourceURLSchemeHTTPS` is now `BCOVSource.URLSchemeHTTPS`.
+* The `BCOVFPSBrightcoveAuthProxy` method `BCOVFPSBrightcoveAuthProxy(publisherId:applicationId:)` has been changed to `BCOVFPSBrightcoveAuthProxy(withPublisherId:applicationId:)` and is no longer nullable. You no longer need to treat it as an optional in Swift.
+* The format for `BCOVVideo` constants has changed. For example `kBCOVVideoPropertyKeyName` is now `BCOVVideo.PropertyKeyName`.
+* The C-Style functions `NSString * localizedNameForLocale(BCOVVideo, NSLocale)`, `NSString * localizedShortDescriptionForLocale(BCOVVideo, NSLocale)` and `NSString * localizedLongDescriptionForLocale(BCOVVideo, NSLocale)` are now `BCOVVideo` instance methods. For example `video.localizedName(forLocale: locale)`.
+* The `BCOVMutableVideo` protocol has been replaced with the `BCOVMutableVideo` class. This primarily affects the `update:` method on `BCOVVideo` in which a `BCOVMutableVideo` object is now returned.
+* The `variantForPreferredLanguage:` method on `BCOVVideo` has been changed to `variantForPreferredLanguages:`.
+* The `properties` dictionary on `BCOVVideo` is no longer nullable. You no longer need to treat it as an optional in Swift.
+* The `setVideos:` method on `BCOVPlaybackController` now requires an array of `BCOVVideo` objects. This removes the need in Swift to cast an array `as NSFastEnumeration`.
+* The `BCOVPlaybackSessionBasicConsumer` `didCompletePlaylist:` delegate method now returns an array of `BCOVVideo` objects.
+* The `BCOVPlaybackControllerBasicDelegate` `playbackController:didCompletePlaylist:` and `playbackController:noPlayableVideosFound:` delegate methods now return an array of `BCOVVideo` objects.
+* The `videos` array on `BCOVPlaylist` is no longer nullable. You no longer need to treat it as an optional in Swift.
+* The format for `BCOVPlaylist` constants has changed. For example `kBCOVPlaylistPropertiesKeyAccountId` is now `BCOVPlaylist.PropertiesKeyAccountId`.
+
+#### Additions and Improvements
+
+* Adds Thumbnail Seeking support for [ReactNative](https://github.com/BrightcoveOS/ios-player-samples/tree/master/PlayerUI/ReactNative) and [Flutter](https://github.com/BrightcoveOS/ios-player-samples/tree/master/PlayerUI/Flutter) sample projects.
+* Fixes an issue where the thumbnail image is not always displayed as expected after moving the playhead position in the progress bar.
+* Fixes an issue where the "From Beginning" button in the tvOS Info Tab View was visible for Live content.
+* Added the `titleForInfoViewForVideo:` delegate method to `BCOVTVPlayerViewDelegate` that allows customization of the title displayed in the tvOS Info Tab View.
+* Fixes an issue where the player controls would not be hidden when pressing on the Menu button on the Siri remote.
+* Fixes an issue where the Menu button on the Siri remote would not perform the default behavior if the playback controls were hidden.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Breaking Changes
+
+* The Google Cast Plugin Framework and XCFramework are now dynamic instead of static.
+* The "No-Bluetooth" podspec variation has been removed. We are targeting Google Cast SDK 4.8.1 and at this time there is not a 4.8.1 version of the "No-Bluetooth" Google Cast SDK. If you require the "No-Bluetooth" option you can manually install our Google Cast Plugin and add the `google-cast-sdk-no-bluetooth` pod to your podfile which will install Google Cast SDK 4.8.0.
+
+### Omniture Plugin for Brightcove Player SDK for iOS
+
+#### Breaking Changes
+
+* The Omnigure Plugin Framework and XCFramework are now dynamic instead of static.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds IMA Plugin support for [SwiftUI](https://github.com/BrightcoveOS/ios-player-samples/tree/master/SwiftUI/CustomControls-iOS), [ReactNative](https://github.com/BrightcoveOS/ios-player-samples/tree/master/PlayerUI/ReactNative) and [Flutter](https://github.com/BrightcoveOS/ios-player-samples/tree/master/PlayerUI/Flutter) sample projects.
+
 ## Release 6.13.3
 
 #### 18 July 2024

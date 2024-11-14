@@ -66,6 +66,14 @@
 	
 
 	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/copyWithZone:">- copyWithZone:</option>
+		
+		<option value="//api/name/init">- init</option>
+		
+	</optgroup>
+	
 	
 </select>
 						</label>
@@ -91,7 +99,7 @@
 	<td>NSCopying</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>BCOVBasicSessionProvider.h</td>
+	<td>BrightcovePlayerSDK-Swift.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -101,8 +109,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>The basic source selection policy decides
-which source to select from a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object.</p>
+						<p>The basic source selection policy decides which source to select from a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> object.</p>
 					</div>
 					
 					
@@ -129,37 +136,17 @@ which source to select from a <a href="../Classes/BCOVVideo.html">BCOVVideo</a> 
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Select the first video in HLS with the specified scheme.
-If no such source is found, the first HLS source with any scheme is returned.
-If no HLS sources are present, the first MP4 is returned.
-If none of the above is found, the first source of any kind is returned.</p>
+				<p>returns:
+A source selection policy that prefers HLS with the specified scheme.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (BCOVBasicSessionProviderSourceSelectionPolicy)sourceSelectionHLSWithScheme:(NSString *)<em>scheme</em></code></div>
+			<div class="method-subsection method-declaration"><code>+ (BCOVBasicSessionProviderSourceSelectionPolicy _Nonnull)sourceSelectionHLSWithScheme:(NSString *_Nonnull)<em>scheme</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>scheme</code></th>
-						<td><p>The preferred scheme (kBCOVSourceURLSchemeHTTP or
-kBCOVSourceURLSchemeHTTPS) of the source URL.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>A source selection policy that prefers HLS with the specified scheme.</p>
-			</div>
 			
 
 			
@@ -167,13 +154,8 @@ kBCOVSourceURLSchemeHTTPS) of the source URL.</p></td>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Select the first video in HLS with the specified scheme.
-If no such source is found, the first HLS source with any scheme is returned.
-If no HLS sources are present, the first MP4 is returned.
-If none of the above is found, the first source of any kind is returned.</p>
-
-<p>This is the default source selection policy (using kBCOVSourceURLSchemeHTTPS
-as the scheme).</p>
+				<p>returns:
+A source selection policy that prefers HLS with the specified scheme.</p>
 			</div>
 			
 
@@ -184,7 +166,7 @@ as the scheme).</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVBasicSessionProvider.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -202,23 +184,17 @@ as the scheme).</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Select the first video in HLS, regardless of scheme.
-If no HLS source is found, select the first source with a deliveryType of
-&ldquo;MP4&rdquo;. If neither is found, the first source of any kind is returned.</p>
+				<p>returns:
+A source selection policy that prefers HLS over MP4.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (BCOVBasicSessionProviderSourceSelectionPolicy)sourceSelectionHLS</code></div>
+			<div class="method-subsection method-declaration"><code>+ (BCOVBasicSessionProviderSourceSelectionPolicy _Nonnull)sourceSelectionHLS</code></div>
 
 		    
 			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>A source selection policy that prefers HLS over MP4.</p>
-			</div>
 			
 
 			
@@ -226,9 +202,8 @@ If no HLS source is found, select the first source with a deliveryType of
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Select the first video in HLS, regardless of scheme.
-If no HLS source is found, select the first source with a deliveryType of
-&ldquo;MP4&rdquo;. If neither is found, the first source of any kind is returned.</p>
+				<p>returns:
+A source selection policy that prefers HLS over MP4.</p>
 			</div>
 			
 
@@ -239,10 +214,42 @@ If no HLS source is found, select the first source with a deliveryType of
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVBasicSessionProvider.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/copyWithZone:" title="copyWithZone:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/copyWithZone:">&ndash;&nbsp;copyWithZone:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (id _Nonnull)copyWithZone:(struct _NSZone *_Nullable)<em>zone</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="method-title"><code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)init</code></div>
+
+		    
 		</div>
 	</div>
 </div>
@@ -258,7 +265,7 @@ If no HLS source is found, select the first source with a deliveryType of
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-07-18</p>
+						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-11-14</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

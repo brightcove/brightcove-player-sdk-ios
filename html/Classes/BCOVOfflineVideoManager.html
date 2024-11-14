@@ -378,7 +378,7 @@ and videos that were cancelled, paused, or failed.</p>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>options</code></th>
-						<td><p>An NSDictionary of options.  The only valid dictionary entries are
+						<td><p>An <a href="../Classes/NSDictionary.html">NSDictionary</a> of options.  The only valid dictionary entries are
 kBCOVOfflineVideoManagerAllowsCellularDownloadKey,
 kBCOVOfflineVideoManagerAllowsCellularPlaybackKey,
 kBCOVOfflineVideoManagerAllowsCellularAnalyticsKey, and
@@ -458,7 +458,7 @@ Additional tracks cannot be downloaded later.</p></td>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>NSDictionary of parameters used in this download request.
+						<td><p><a href="../Classes/NSDictionary.html">NSDictionary</a> of parameters used in this download request.
 May be nil if the license was preloaded using the <code>preloadFairPlayLicense:parameters:completion</code> method.
 Valid parameters are:
 kBCOVOfflineVideoManagerRequestedBitrateKey, kBCOVFairPlayLicensePurchaseKey,
@@ -542,7 +542,7 @@ source with an HTTPS scheme, and may use FairPlay encryption.</p></td>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>NSDictionary of parameters used in this download request.
+						<td><p><a href="../Classes/NSDictionary.html">NSDictionary</a> of parameters used in this download request.
 May be nil. Valid parameters are:
 kBCOVOfflineVideoManagerRequestedBitrateKey, kBCOVFairPlayLicensePurchaseKey,
 kBCOVFairPlayLicenseRentalDurationKey.</p></td>
@@ -949,7 +949,7 @@ contain a valid HLS source.</p></td>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>options</code></th>
-						<td><p>NSDictionary of options used in this request. Use the
+						<td><p><a href="../Classes/NSDictionary.html">NSDictionary</a> of options used in this request. Use the
 kBCOVOfflineVideoManagerRequestedBitrateKey to specify the bitrate you plan to download.</p></td>
 					</tr>
 				
@@ -1051,7 +1051,7 @@ for playback on iOS. Do not use this method in the context of online playback.</
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Retrieve an array of NSDictionary objects, one for each variant stream
+				<p>Retrieve an array of <a href="../Classes/NSDictionary.html">NSDictionary</a> objects, one for each variant stream
 in the specified online HLS video.</p>
 			</div>
 			
@@ -1074,7 +1074,7 @@ contain a valid online HLS source.</p></td>
 					<tr>
 						<th scope="row" class="argument-name"><code>completionHandler</code></th>
 						<td><p>Block that receives the array of variant attributes
-NSDictionary objects if the request is successfully made. If there is an error,
+<a href="../Classes/NSDictionary.html">NSDictionary</a> objects if the request is successfully made. If there is an error,
 <code>variantAttributesDictionariesArray</code> will be nil, and <code>error</code> will report any NSError.</p>
 
 <p>The completion handler is not called on any specific thread. You should switch to
@@ -1127,7 +1127,7 @@ If all you need are the bitrate values, use -[variantBitratesForVideo:completion
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Retrieve an array of NSDictionary objects, one for each alternative rendition
+				<p>Retrieve an array of <a href="../Classes/NSDictionary.html">NSDictionary</a> objects, one for each alternative rendition
 in the specified online HLS video. Alternative renditions include captions,
 subtitles, and secondary audio tracks.</p>
 			</div>
@@ -1150,7 +1150,7 @@ a valid online HLS source.</p></td>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>completionHandler</code></th>
-						<td><p>A block that receives the array of rendition attributes NSDictionary
+						<td><p>A block that receives the array of rendition attributes <a href="../Classes/NSDictionary.html">NSDictionary</a>
 objects if the request is successfully made. If there is an error,
 <code>alternativeRenditionAttributesDictionariesArray</code> will be nil, and <code>error</code>
 will report any NSError.</p>
@@ -1410,7 +1410,7 @@ that uses FairPlay encryption and the HTTPS scheme.</p></td>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>NSDictionary of parameters used in this download request.
+						<td><p><a href="../Classes/NSDictionary.html">NSDictionary</a> of parameters used in this download request.
 Valid parameters are:
 kBCOVFairPlayLicensePurchaseKey, kBCOVFairPlayLicenseRentalDurationKey.</p></td>
 					</tr>
@@ -1492,7 +1492,7 @@ or the <a href="../Classes/BCOVPlaybackService.html">BCOVPlaybackService</a> cla
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>NSDictionary of parameters used in this license renewal request.
+						<td><p><a href="../Classes/NSDictionary.html">NSDictionary</a> of parameters used in this license renewal request.
 May be nil. Valid parameters are: kBCOVFairPlayLicensePurchaseKey,
 kBCOVFairPlayLicenseRentalDurationKey.</p></td>
 					</tr>
@@ -1588,7 +1588,7 @@ or the <a href="../Classes/BCOVPlaybackService.html">BCOVPlaybackService</a> cla
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>NSDictionary of parameters used in this license renewal request.
+						<td><p><a href="../Classes/NSDictionary.html">NSDictionary</a> of parameters used in this license renewal request.
 May be nil. Valid parameters are: kBCOVFairPlayLicensePurchaseKey,
 kBCOVFairPlayLicenseRentalDurationKey.</p></td>
 					</tr>
@@ -2000,7 +2000,7 @@ Supported values are AVMediaCharacteristicAudible and AVMediaCharacteristicLegib
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-07-18</p>
+						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-11-14</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

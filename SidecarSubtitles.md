@@ -1,4 +1,4 @@
-# Using Sidecar Subtitles With The Brightcove Player SDK for iOS, version 6.13.3.8
+# Using Sidecar Subtitles With The Brightcove Player SDK for iOS, version 7.0.0.9
 
 ## Introduction
 
@@ -20,34 +20,29 @@ Still, if you are using Dynamic Delivery and need to add additional subtitle fil
 
 If you are using legacy Video Cloud and need to make sure the captions you set up on the server are inserted into the manifest, then all you need to do is make sure that you are using a Sidecar Subtitles playback controller or session provider:
 
-```
-        NSString *policyKey = <your-policy-key>;
-        NSString *accountId = <your-account-id>;
-        NSString *videoID = <your-video-id>;
+```swift
+    let policyKey = "<your-policy-key>"
+    let accountID = "<your-account-id>"
+    let videoID = "<your-video-id>"
 
-        BCOVPlayerSDKManager *manager = [BCOVPlayerSDKManager sharedManager];
-    [1] id<BCOVPlaybackController> controller = [playbackManager createSidecarSubtitlesPlaybackControllerWithViewStrategy:nil];
-        [self.view addSubview:controller.view];
+    let sdkManager = BCOVPlayerSDKManager.sharedManager()
+[1] let controller = sdkManager.createSidecarSubtitlesPlaybackController(withViewStrategy: nil)
+    view.addSubview(controller.view)
 
-        BCOVPlaybackService *playbackService = [[BCOVPlaybackService alloc] initWithAccountId:accoundId
-                                                                                    policyKey:policyKey];
+    let playbackService = BCOVPlaybackService(withAccountId: accountID,
+                                          policyKey: policyKey)
 
-        NSDictionary *configuration = @{
-            kBCOVPlaybackServiceConfigurationKeyAssetID:videoID
-        };
-    [2] [playbackService findVideoWithConfiguration:configuration
-                                    queryParameters:nil
-                                         completion:^(BCOVVideo    *video,
-                                                      NSDictionary *jsonResponse,
-                                                      NSError      *error) {
-
-            [controller setVideos:@[ video ]];
-            [controller play];
-
-        }];
+    let configuration = [
+        BCOVPlaybackService.ConfigurationKeyAssetID: videoID
+    ]
+[2] playbackService.findVideo(withConfiguration: configuration, queryParameters: nil) { (video: BCOVVideo?, jsonResponse: Any?, error: Error?) in
+        if let video {
+            controller.setVideos([video])
+        }
+    }
 ```
 
-BCOVSidecarSubtitles adds some category methods to BCOVPlaybackManager. The first of these is `-createSidecarSubtitlesPlaybackControllerWithViewStrategy:`. Use this method to create your playback controller. Alternately (if you are using more than one session provider), you can create a BCOVSSSessionProvider and pass that to the manager method that creates a playback controller with upstream session providers.
+BCOVSidecarSubtitles adds some category methods to BCOVPlaybackManager. The first of these is `createSidecarSubtitlesPlaybackController(withViewStrategy:)`. Use this method to create your playback controller. Alternately (if you are using more than one session provider), you can create a BCOVSSSessionProvider and pass that to the manager method that creates a playback controller with upstream session providers.
 
 * If you are developing for tvOS, the viewStrategy passed to createSidecarSubtitlesPlaybackControllerWithViewStrategy must be nil.
 
@@ -61,42 +56,55 @@ The code snippet above presents a video player without any controls. You can add
 
 Add a property to keep track of the `BCOVPUIPlayerView`:
 
-    // PlayerUI's Player View
-    @property (nonatomic) BCOVPUIPlayerView *playerView;
+```swift
+// PlayerUI's Player View
+var playerView: BCOVPUIPlayerView?
+```
 
 Create the `BCOVPUIBasicControlView`, and then the `BCOVPUIPlayerView`. This is where we associate the Playback Controller (and thus all the videos it plays) with the controls. You'll need to set up the layout for the player view, you can do this with Auto Layout or the older Springs & Struts approach.
 
-    BCOVPUIBasicControlView *controlView = [BCOVPUIBasicControlView basicControlViewWithVODLayout];
-    self.playerView = [[BCOVPUIPlayerView alloc] initWithPlaybackController:controller options:nil controlsView:controlView];
-// Add BCOVPUIPlayerView to your video view.
-    [self.yourVideoView addSubview:self.playerView];
+```swift
+let controlView = BCOVPUIBasicControlView.withVODLayout()
+if let playerView = BCOVPUIPlayerView(playbackController: playbackController, options: nil, controlsView: controlView) {
+    self.playerView = playerView
+    // Add BCOVPUIPlayerView to your video view.
+    videoView.addSubview(playerView)
+}
+```
 
 ### Springs and Struts
 
 Set the player view to match the video container from your layout (`yourVideoView`) when it resizes.
 
-    // Match parent view size
-    self.playerView.frame = self.yourVideoView.bounds;
-    self.playerView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+```swift
+playerView.frame = videoView.bounds
+playerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+```
 
 ### Auto Layout
 
-    self.playerView.translatesAutoresizingMaskIntoConstraints = NO;
+```swift
+playerView.translatesAutoresizingMaskIntoConstraints = false
 
-    [NSLayoutConstraint activateConstraints:@[
-                                              [self.playerView.topAnchor constraintEqualToAnchor:self.yourVideoView.topAnchor],
-                                              [self.playerView.rightAnchor constraintEqualToAnchor:self.yourVideoView.rightAnchor],
-                                              [self.playerView.leftAnchor constraintEqualToAnchor:self.yourVideoView.leftAnchor],
-                                              [self.playerView.bottomAnchor constraintEqualToAnchor:self.yourVideoView.bottomAnchor],
-                                              ]];
+NSLayoutConstraint.activate([
+    playerView.topAnchor.constraint(equalTo: videoView.topAnchor),
+    playerView.rightAnchor.constraint(equalTo: videoView.rightAnchor),
+    playerView.bottomAnchor.constraint(equalTo: videoView.bottomAnchor),
+    playerView.leftAnchor.constraint(equalTo: videoView.leftAnchor)
+])
+```
 
 If you use the BCOVPUIPlayerView, you also need to remove one line above:
 
-    [self.view addSubview:controller.view]; // no longer needed when using PlayerUI
+```swift
+view.addSubview(playbackController.view) // no longer needed when using PlayerUI
+```
     
 If you want to reuse the player with with another playback controller, you can simply make a new assignment:
 
-    self.playerView.playbackController = anotherPlaybackController;
+```swift
+playerView.playbackController = anotherPlaybackController
+```
 
 The player view will automatically add the playback controller's view to its own view hierarchy.
 
@@ -108,88 +116,89 @@ If you have questions or need help, visit the [Brightcove Native Player SDK supp
 
 Whether using legacy Video Cloud, or Video Cloud with Dynamic delivery, you can add your own WebVTT captions files at runtime.
 
-The BCOVSidecarSubtitle extension will look for the presence of an array of subtitle metadata in the `BCOVVideo` object properties, keyed by `kBCOVSSVideoPropertiesKeyTextTracks`. If you are using `BCOVPlaybackService` to retrieve videos and those videos have text tracks associated with them, this will be populated automatically.
+The BCOVSidecarSubtitle extension will look for the presence of an array of subtitle metadata in the `BCOVVideo` object properties, keyed by `VideoPropertiesKeyTextTracks`. If you are using `BCOVPlaybackService` to retrieve videos and those videos have text tracks associated with them, this will be populated automatically.
 
 If you are providing your own videos or are using Brightcove Player without Video Cloud, you will need to structure the data as shown below:
 
-```
-    NSArray *subtitles = @[
-    @{
-        kBCOVSSTextTracksKeySource: kBCOVSSTextTracksKindSubtitles or kBCOVSSTextTrackKindCaptions, // required
-        kBCOVSSTextTracksKeySourceLanguage: ..., // required language code
-        kBCOVSSTextTracksKeyLabel: ..., // required display name
+```swift
+let subtitles: [[AnyHashable:Any]] = [
+    [
+        BCOVSSConstants.TextTracksKeySource: BCOVSSConstants.TextTracksKindSubtitles or BCOVSSConstants.TextTrackKindCaptions // required
+        BCOVSSConstants.TextTracksKeySourceLanguage: "...", // required language code
+        BCOVSSConstants.TextTracksKeyLabel: "...", // required display name
 
         // duration is required for WebVTT URLs (ending in ".vtt");
         // optional for WebVTT playlists (ending in ".m3u8")
-        kBCOVSSTextTracksKeyDuration: ..., // seconds as NSNumber
+        BCOVSSConstants.TextTracksKeyDuration: "...", // seconds as NSNumber
 
-        kBCOVSSTextTracksKeyKind: kBCOVSSTextTracksKindSubtitles or kBCOVSSTextTracksKindCaptions, // required
-        kBCOVSSTextTracksKeyDefault: ..., // optional BOOL as NSNumber
-        kBCOVSSTextTracksKeyMIMEType: ..., // optional NSString; @"text/vtt" for example
+        BCOVSSConstants.TextTracksKeyKind: BCOVSSConstants.TextTracksKindSubtitles or BCOVSSConstants.TextTracksKindCaptions // required
+        BCOVSSConstants.TextTracksKeyDefault: "...", // optional BOOL as NSNumber
+        BCOVSSConstants.TextTracksKeyMIMEType: "...", // optional NSString; "text/vtt" for example
 
         // only needed if the URL does not end in .vtt or .m3u8:
-        kBCOVSSTextTracksKeySourceType: kBCOVSSTextTracksKeySourceTypeWebVTTURL or kBCOVSSTextTracksKeySourceTypeM3U8URL
-    },
-    @{...}, // second text track dictionary
-    @{...}, // third text track dictionary
-    ];
+        BCOVSSConstants.TextTracksKeySourceType: BCOVSSConstants.TextTracksKeySourceTypeWebVTTURL or BCOVSSConstants.TextTracksKeySourceTypeM3U8URL
+    ],
+    [:], // second text track dictionary
+    [:], // third text track dictionary
+]
 
-    BCOVVideo *video = [BCOVVideo alloc] initWithSource:<source>
-                                              cuePoints:<cuepoints>
-                                             properties:@{ kBCOVSSVideoPropertiesKeyTextTracks:subtitles }];
+let video = BCOVVideo(withSource: source,
+                      cuePoints: cuepoints,
+                      properties: [BCOVSSConstants.VideoPropertiesKeyTextTracks: subtitles])
 ```
 
-The `kBCOVSSTextTracksKeySource` key holds the source URL of your subtitle track, and can be supplied as either a WebVTT URL or an M3U8 playlist URL.
+The `BCOVSSConstants.TextTracksKeySource` key holds the source URL of your subtitle track, and can be supplied as either a WebVTT URL or an M3U8 playlist URL.
 
-WebVTT files should have a ".vtt" extension, and M3U8 files should have an ".M3U8" extension. If you cannot follow these conventions, you must include a `kBCOVSSTextTracksKeySourceType` key, and specify either `kBCOVSSTextTracksKeySourceTypeWebVTTURL` or `kBCOVSSTextTracksKeySourceTypeM3U8URL` to indicate the type of file referred to by the URL.
+WebVTT files should have a ".vtt" extension, and M3U8 files should have an ".M3U8" extension. If you cannot follow these conventions, you must include a `BCOVSSConstants.TextTracksKeySourceType` key, and specify either `BCOVSSConstants.TextTracksKeySourceTypeWebVTTURL` or `BCOVSSConstants.TextTracksKeySourceTypeM3U8URL` to indicate the type of file referred to by the URL.
 
 If you are supplying tracks to a video retrieved from Video Cloud, you should **add** your subtitles to any existing tracks rather than **overwriting** them. This code shows how you can add tracks to an existing video:
 
-```
-    BCOVVideo *updatedVideo = [video update:^(id<BCOVMutableVideo> mutableVideo) {
+```swift
+let updatedVideo = video.update { (mutableVideo: BCOVMutableVideo?) in
 
-        // Save the current tracks
-        NSArray *originalTracks = video.properties[kBCOVSSVideoPropertiesKeyTextTracks];
+    guard let mutableVideo else {
+        return
+    }
 
-        // Create an array of your text track dictionaries
-        NSArray *subtitles = @[
-        @{
-            kBCOVSSTextTracksKeySource: kBCOVSSTextTracksKindSubtitles or kBCOVSSTextTrackKindCaptions, // required
-            kBCOVSSTextTracksKeySourceLanguage: ..., // required language code
-            kBCOVSSTextTracksKeyLabel: ..., // required display name
+    let subtitles: [[AnyHashable:Any]] = [
+        [
+            BCOVSSConstants.TextTracksKeySource: BCOVSSConstants.TextTracksKindSubtitles, // or BCOVSSConstants.TextTrackKindCaptions | required
+            BCOVSSConstants.TextTracksKeySourceLanguage: "...", // required language code
+            BCOVSSConstants.TextTracksKeyLabel: "...", // required display name
 
             // duration is required for WebVTT URLs (ending in ".vtt");
             // optional for WebVTT playlists (ending in ".m3u8")
-            kBCOVSSTextTracksKeyDuration: ..., // seconds as NSNumber
+            BCOVSSConstants.TextTracksKeyDuration: "...", // seconds as NSNumber
 
-            kBCOVSSTextTracksKeyKind: kBCOVSSTextTracksKindSubtitles or kBCOVSSTextTracksKindCaptions, // required
-            kBCOVSSTextTracksKeyDefault: ..., // optional BOOL as NSNumber
-            kBCOVSSTextTracksKeyMIMEType: ..., // optional NSString; @"text/vtt" for example
+            BCOVSSConstants.TextTracksKeyKind: BCOVSSConstants.TextTracksKindSubtitles, // or BCOVSSConstants.TextTracksKindCaptions | required
+            BCOVSSConstants.TextTracksKeyDefault: "...", // optional BOOL as NSNumber
+            BCOVSSConstants.TextTracksKeyMIMEType: "...", // optional NSString; "text/vtt" for example
 
             // only needed if the URL does not end in .vtt or .m3u8:
-            kBCOVSSTextTracksKeySourceType: kBCOVSSTextTracksKeySourceTypeWebVTTURL or kBCOVSSTextTracksKeySourceTypeM3U8URL
-        },
-        @{...}, // second text track dictionary
-        @{...}, // third text track dictionary
-        ];
+            BCOVSSConstants.TextTracksKeySourceType: BCOVSSConstants.TextTracksKeySourceTypeWebVTTURL // or BCOVSSConstants.TextTracksKeySourceTypeM3U8URL
+        ],
+        [:], // second text track dictionary
+        [:], // third text track dictionary
+    ]
 
-        // Append new tracks to the original tracks, if any
-        NSArray *combinedTextTracks = ((originalTracks != nil)
-                                        ? [originalTracks arrayByAddingObjectsFromArray:subtitles]
-                                        : subtitles);
+    var combinedTextTracks = subtitles
 
-        // Update the current dictionary (we don't want to lose the properties already in there)
-        NSMutableDictionary *updatedDictionary = [mutableVideo.properties mutableCopy];
+    // Append original tracks to the new tracks, if any
+    if let originalTracks = video.properties[BCOVVideo.PropertyKeyTextTracks] as? [[AnyHashable:Any]] {
+        combinedTextTracks.append(contentsOf: originalTracks)
+    }
 
-        // Store text tracks in the text tracks property
-        updatedDictionary[kBCOVSSVideoPropertiesKeyTextTracks] = combinedTextTracks;
+    // Update the current dictionary (we don't want to lose the properties already in there)
+    var updatedDictionary = mutableVideo.properties
 
-        mutableVideo.properties = updatedDictionary;
+    // Store text tracks in the text tracks property
+    updatedDictionary[BCOVSSConstants.VideoPropertiesKeyTextTracks] = combinedTextTracks
 
-    }];
+    mutableVideo.properties = updatedDictionary
+}
 ```
 
-Please refer to the code documentation in the BCOVSSComponent.h header file for more information on usage of these keys.
+Please refer to the code documentation for BCOVSSComponent for more information on usage of these keys.
 
 ## Known Issues
 

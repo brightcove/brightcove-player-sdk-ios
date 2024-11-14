@@ -17,7 +17,7 @@ let BrightcovePlayerSDK = Package(
     targets: [
         .binaryTarget(
                 name: "BrightcovePlayerSDK",
-                path: "xcframework/dynamic/BrightcovePlayerSDK.xcframework"
+                path: "xcframework/BrightcovePlayerSDK.xcframework"
             )
     ]
 )

@@ -90,7 +90,7 @@
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>BCOVFPSAuthorizationProxy.h</td>
+	<td>BrightcovePlayerSDK-Swift.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -127,35 +127,15 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Optional method.
-This method is only called when downloading a video when the license has not
-been preloaded prior to downloading.
-Implement this method to handle retrieving the content identifier from the loading request.
-This is called for each asset.
-No guarantee is made as to the thread that this is called on.
-You should return the content identifier corresponding to this loading request.
-This is typically extracted from the &ldquo;skd://&hellip;&rdquo; URL in loadingRequest.request.URL.
-The content identifier will be passed to [AVAssetResourceLoadingRequest streamingContentKeyRequestDataForApp:contentIdentifier:options:error:]
-to retrieve the SPC.</p>
+				<p>returns:
+The content identifier in a Data object.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (nullable NSData *)contentIdentifierFromLoadingRequest:(nonnull AVAssetResourceLoadingRequest *)<em>loadingRequest</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (NSData *_Nullable)contentIdentifierFromLoadingRequest:(AVAssetResourceLoadingRequest *_Nonnull)<em>loadingRequest</em></code></div>
 
 		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>loadingRequest</code></th>
-						<td><p>The skd:// loading request made for the asset.</p></td>
-					</tr>
-				
-				</table>
-			</div>
 			
 
 			
@@ -165,19 +145,8 @@ to retrieve the SPC.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Optional method.
-This method is only called when downloading a video when the license has not
-been preloaded prior to downloading.
-Implement this method to handle retrieving the content identifier from the loading request.
-This is called for each asset.
-No guarantee is made as to the thread that this is called on.
-You should return the content identifier corresponding to this loading request.
-This is typically extracted from the &ldquo;skd://&hellip;&rdquo; URL in loadingRequest.request.URL.
-The content identifier will be passed to [AVAssetResourceLoadingRequest streamingContentKeyRequestDataForApp:contentIdentifier:options:error:]
-to retrieve the SPC.</p>
-
-<p>If this method is not provided, the default method will be used. The default method
-removes &ldquo;skd://&rdquo; from loadingRequest.request.URL to generate the content identifier.</p>
+				<p>returns:
+The content identifier in a Data object.</p>
 			</div>
 			
 
@@ -188,7 +157,7 @@ removes &ldquo;skd://&rdquo; from loadingRequest.request.URL to generate the con
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVFPSAuthorizationProxy.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -206,33 +175,15 @@ removes &ldquo;skd://&rdquo; from loadingRequest.request.URL to generate the con
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Implement this method to handle retrieving the content identifier from the content key request.
-This is called for each asset.
-No guarantee is made as to the thread that this is called on.
-You should return the content identifier corresponding to this content key request.
-This is typically extracted from the &ldquo;skd://&hellip;&rdquo; value in keyRequest.identifier.
-The content identifier will be passed to [AVContentKeySession makeStreamingContentKeyRequestDataForApp:
-contentIdentifier:options:completionHandler]
-to retrieve the SPC.</p>
+				<p>returns:
+The content identifier in a Data object.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (nullable NSData *)contentIdentifierFromKeyRequest:(nullable AVContentKeyRequest *)<em>keyRequest</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (NSData *_Nullable)contentIdentifierFromKeyRequest:(AVContentKeyRequest *_Nullable)<em>keyRequest</em></code></div>
 
 		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>keyRequest</code></th>
-						<td><p>The AVContentKeyRequest for the asset.</p></td>
-					</tr>
-				
-				</table>
-			</div>
 			
 
 			
@@ -242,14 +193,8 @@ to retrieve the SPC.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Implement this method to handle retrieving the content identifier from the content key request.
-This is called for each asset.
-No guarantee is made as to the thread that this is called on.
-You should return the content identifier corresponding to this content key request.
-This is typically extracted from the &ldquo;skd://&hellip;&rdquo; value in keyRequest.identifier.
-The content identifier will be passed to [AVContentKeySession makeStreamingContentKeyRequestDataForApp:
-contentIdentifier:options:completionHandler]
-to retrieve the SPC.</p>
+				<p>returns:
+The content identifier in a Data object.</p>
 			</div>
 			
 
@@ -260,7 +205,7 @@ to retrieve the SPC.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVFPSAuthorizationProxy.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -276,76 +221,10 @@ to retrieve the SPC.</p>
 
 		<div class="method-info-container">
 			
-			
-			<div class="method-subsection brief-description">
-				<p>Implement this method to handle retrieving the content key for a video that
-is being downloaded for offline playback. This is called for each asset.
-No guarantee is made as to the thread that this is called on.</p>
-			</div>
-			
-		    
 
-			<div class="method-subsection method-declaration"><code>- (void)encryptedContentKeyForContentKeyIdentifier:(nonnull NSString *)<em>contentKeyIdentifier</em> contentKeyRequest:(nonnull NSData *)<em>keyRequest</em> source:(nonnull BCOVSource *)<em>source</em> options:(nullable NSDictionary *)<em>options</em> completionHandler:(nonnull void ( ^ ) ( NSURLResponse *__nullable response , NSData *__nullable contentKey , NSDate *__nullable expirationDate , NSError *__nullable error ))<em>completionHandler</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)encryptedContentKeyForContentKeyIdentifier:(NSString *_Nonnull)<em>contentKeyIdentifier</em> contentKeyRequest:(NSData *_Nonnull)<em>keyRequest</em> source:(BCOVSource *_Nonnull)<em>source</em> options:(NSDictionary *_Nullable)<em>options</em> completionHandler:(void ( ^ _Nonnull ) ( NSURLResponse *_Nullable , NSData *_Nullable , NSDate *_Nullable , NSError *_Nullable ))<em>completionHandler</em></code></div>
 
 		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>contentKeyIdentifier</code></th>
-						<td><p>The &ldquo;skd://&hellip;&rdquo; loading request URL string made for the asset.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>keyRequest</code></th>
-						<td><p>The key request data returned by [AVAssetResourceLoadingRequest streamingContentKeyRequestDataForApp:contentIdentifier:options:error:].</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>source</code></th>
-						<td><p>The <a href="../Classes/BCOVSource.html">BCOVSource</a> used to make this request</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>options</code></th>
-						<td><p>The parameters originally passed to <code>-</code>BCOVOfflineVideoManager<code> requestVideoDownload:mediaSelections:parameters:completion:</code></p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>completionHandler</code></th>
-						<td><p>The completion handler to return the content key. If returning an error, you must leave the contentkey and response parameters nil.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Implement this method to handle retrieving the content key for a video that
-is being downloaded for offline playback. This is called for each asset.
-No guarantee is made as to the thread that this is called on.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVFPSAuthorizationProxy.h</code></p>
-			</div>
-			
-			
 		</div>
 	</div>
 </div>
@@ -361,7 +240,7 @@ No guarantee is made as to the thread that this is called on.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-07-18</p>
+						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-11-14</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

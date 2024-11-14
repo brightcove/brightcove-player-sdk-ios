@@ -60,6 +60,8 @@
 		
 		<option value="//api/name/chinaProxyDomain">chinaProxyDomain</option>
 		
+		<option value="//api/name/sharedConfig">sharedConfig</option>
+		
 	</optgroup>
 	
 
@@ -102,7 +104,7 @@
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>BCOVGlobalConfiguration.h</td>
+	<td>BrightcovePlayerSDK-Swift.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -115,7 +117,9 @@
 						<p>The Global Configuration contains properties which are utilized throughout
 the Native Player SDK. If your app requires custom configuration,
 set the necessary properties of the Global Configuration BEFORE using any
-of the services of the Native Player SDK.</p>
+of the services of the Native Player SDK.
+BCOVGlobalConfiguration is a global singleton object. Reference it using:
+let config = BCOVGlobalConfiguration.shareConfig</p>
 					</div>
 					
 					
@@ -131,8 +135,8 @@ of the services of the Native Player SDK.</p>
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/new" title="new"></a>
-	<h3 class="method-title"><code><a href="#//api/name/new">+&nbsp;new</a></code>
+	<a name="//api/name/sharedConfig" title="sharedConfig"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sharedConfig">&nbsp;&nbsp;sharedConfig</a></code>
 </h3>
 
 	<div class="method-info">
@@ -142,12 +146,12 @@ of the services of the Native Player SDK.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>BCOVGlobalConfiguration is a global singleton object. Reference it using:</p>
+				<p>Returns the shared Global Configuration singleton.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (BCOVGlobalConfiguration *)new</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, class, readonly, strong) BCOVGlobalConfiguration *sharedConfig</code></div>
 
 		    
 			
@@ -159,9 +163,7 @@ of the services of the Native Player SDK.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>BCOVGlobalConfiguration is a global singleton object. Reference it using:</p>
-
-<p>BCOVGlobalConfiguration *config = <a href="#//api/name/sharedConfig">[BCOVGlobalConfiguration sharedConfig]</a>;</p>
+				<p>Returns the shared Global Configuration singleton.</p>
 			</div>
 			
 
@@ -172,26 +174,10 @@ of the services of the Native Player SDK.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVGlobalConfiguration.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/init" title="init"></a>
-	<h3 class="method-title"><code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (BCOVGlobalConfiguration *)init</code></div>
-
-		    
 		</div>
 	</div>
 </div><div class="section-method">
@@ -204,40 +190,10 @@ of the services of the Native Player SDK.</p>
 
 		<div class="method-info-container">
 			
-			
-			<div class="method-subsection brief-description">
-				<p>Returns the shared Global Configuration singleton.</p>
-			</div>
-			
-		    
 
-			<div class="method-subsection method-declaration"><code>+ (BCOVGlobalConfiguration *)sharedConfig</code></div>
+			<div class="method-subsection method-declaration"><code>+ (BCOVGlobalConfiguration *_Nonnull)sharedConfig</code></div>
 
 		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns the shared Global Configuration singleton.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVGlobalConfiguration.h</code></p>
-			</div>
-			
-			
 		</div>
 	</div>
 </div><div class="section-method">
@@ -252,12 +208,17 @@ of the services of the Native Player SDK.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Allow playback when device is on cellular data.</p>
+				<p>Allow playback when device is on cellular data.
+Changing this value during playback will not stop playback of the current video
+if the device changes over to cellular data.
+Example Usage:
+BCOVGlobalConfiguration.<a href="#//api/name/sharedConfig">sharedConfig</a>.allowsCellularPlayback = false;
+Default value is true.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, readwrite) BOOL allowsCellularPlayback</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL allowsCellularPlayback</code></div>
 
 		    
 			
@@ -269,15 +230,12 @@ of the services of the Native Player SDK.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Allow playback when device is on cellular data.</p>
-
-<p>Changing this value during playback will not stop playback of the current video
-if the device changes over to cellular data.</p>
-
-<p>Example Usage:
-BCOVGlobalConfiguration.<a href="#//api/name/sharedConfig">sharedConfig</a>.allowsCellularPlayback = NO;</p>
-
-<p>Default value is YES.</p>
+				<p>Allow playback when device is on cellular data.
+Changing this value during playback will not stop playback of the current video
+if the device changes over to cellular data.
+Example Usage:
+BCOVGlobalConfiguration.<a href="#//api/name/sharedConfig">sharedConfig</a>.allowsCellularPlayback = false;
+Default value is true.</p>
 			</div>
 			
 
@@ -288,7 +246,7 @@ BCOVGlobalConfiguration.<a href="#//api/name/sharedConfig">sharedConfig</a>.allo
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVGlobalConfiguration.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -314,7 +272,7 @@ Setting this property in any other situation will result in unknown behavior.</p
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, nullable) NSString *chinaProxyDomain</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSString *chinaProxyDomain</code></div>
 
 		    
 			
@@ -340,10 +298,42 @@ Setting this property in any other situation will result in unknown behavior.</p
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVGlobalConfiguration.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="method-title"><code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)init</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/new" title="new"></a>
+	<h3 class="method-title"><code><a href="#//api/name/new">+&nbsp;new</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (nonnull instancetype)new</code></div>
+
+		    
 		</div>
 	</div>
 </div>
@@ -359,7 +349,7 @@ Setting this property in any other situation will result in unknown behavior.</p
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-07-18</p>
+						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-11-14</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

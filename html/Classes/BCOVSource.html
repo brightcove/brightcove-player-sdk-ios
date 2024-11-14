@@ -54,17 +54,105 @@
 
 	
 	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/DeliveryBoltSSAI">DeliveryBoltSSAI</option>
+		
+		<option value="//api/name/DeliveryDASH">DeliveryDASH</option>
+		
+		<option value="//api/name/DeliveryHLS">DeliveryHLS</option>
+		
+		<option value="//api/name/DeliveryMP4">DeliveryMP4</option>
+		
+		<option value="//api/name/DeliveryOnce">DeliveryOnce</option>
+		
+		<option value="//api/name/PropertyFairPlayV1">PropertyFairPlayV1</option>
+		
+		<option value="//api/name/PropertyKeyAuthToken">PropertyKeyAuthToken</option>
+		
+		<option value="//api/name/PropertyKeyEXTXVersion">PropertyKeyEXTXVersion</option>
+		
+		<option value="//api/name/PropertyKeyRequestURL">PropertyKeyRequestURL</option>
+		
+		<option value="//api/name/PropertyKeyRequestURLs">PropertyKeyRequestURLs</option>
+		
+		<option value="//api/name/PropertyKeySystems">PropertyKeySystems</option>
+		
+		<option value="//api/name/PropertyKeyType">PropertyKeyType</option>
+		
+		<option value="//api/name/PropertyKeyVMAP">PropertyKeyVMAP</option>
+		
+		<option value="//api/name/URLSchemeHTTP">URLSchemeHTTP</option>
+		
+		<option value="//api/name/URLSchemeHTTPS">URLSchemeHTTPS</option>
+		
+		<option value="//api/name/deliveryMethod">deliveryMethod</option>
+		
+		<option value="//api/name/description">description</option>
+		
+		<option value="//api/name/hash">hash</option>
+		
+		<option value="//api/name/properties">properties</option>
+		
+		<option value="//api/name/url">url</option>
+		
+	</optgroup>
+	
 
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/DeliveryBoltSSAI">+ DeliveryBoltSSAI</option>
+		
+		<option value="//api/name/DeliveryDASH">+ DeliveryDASH</option>
+		
+		<option value="//api/name/DeliveryHLS">+ DeliveryHLS</option>
+		
+		<option value="//api/name/DeliveryMP4">+ DeliveryMP4</option>
+		
+		<option value="//api/name/DeliveryOnce">+ DeliveryOnce</option>
+		
+		<option value="//api/name/PropertyFairPlayV1">+ PropertyFairPlayV1</option>
+		
+		<option value="//api/name/PropertyKeyAuthToken">+ PropertyKeyAuthToken</option>
+		
+		<option value="//api/name/PropertyKeyEXTXVersion">+ PropertyKeyEXTXVersion</option>
+		
+		<option value="//api/name/PropertyKeyRequestURL">+ PropertyKeyRequestURL</option>
+		
+		<option value="//api/name/PropertyKeyRequestURLs">+ PropertyKeyRequestURLs</option>
+		
+		<option value="//api/name/PropertyKeySystems">+ PropertyKeySystems</option>
+		
+		<option value="//api/name/PropertyKeyType">+ PropertyKeyType</option>
+		
+		<option value="//api/name/PropertyKeyVMAP">+ PropertyKeyVMAP</option>
+		
+		<option value="//api/name/URLSchemeHTTP">+ URLSchemeHTTP</option>
+		
+		<option value="//api/name/URLSchemeHTTPS">+ URLSchemeHTTPS</option>
+		
+	</optgroup>
 	
 
 	
 	<optgroup label="Instance Methods">
 		
+		<option value="//api/name/copyWithZone:">- copyWithZone:</option>
+		
+		<option value="//api/name/init">- init</option>
+		
 		<option value="//api/name/initWithURL:">- initWithURL:</option>
 		
 		<option value="//api/name/initWithURL:deliveryMethod:properties:">- initWithURL:deliveryMethod:properties:</option>
 		
+		<option value="//api/name/isEqual:">- isEqual:</option>
+		
 		<option value="//api/name/isEqualToSource:">- isEqualToSource:</option>
+		
+		<option value="//api/name/mutableCopyWithZone:">- mutableCopyWithZone:</option>
+		
+		<option value="//api/name/update:">- update:</option>
 		
 	</optgroup>
 	
@@ -90,10 +178,10 @@
 	<td>NSObject</td>
 </tr><tr>
 	<th>Conforms to</th>
-	<td><a href="../Protocols/BCOVSource.html">BCOVSource</a><br />NSCopying</td>
+	<td><a href="../Protocols/BCOVSourceProtocol.html">BCOVSourceProtocol</a><br />NSCopying<br />NSMutableCopying</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>BCOVSource.h</td>
+	<td>BrightcovePlayerSDK-Swift.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -103,7 +191,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Implementation of the BCOVSource protocol.</p>
+						<p>Implementation of  <a href="../Protocols/BCOVSourceProtocol.html">BCOVSourceProtocol</a>.</p>
 					</div>
 					
 					
@@ -119,6 +207,836 @@
 
 						<div class="task-list">
 							<div class="section-method">
+	<a name="//api/name/URLSchemeHTTP" title="URLSchemeHTTP"></a>
+	<h3 class="method-title"><code><a href="#//api/name/URLSchemeHTTP">&nbsp;&nbsp;URLSchemeHTTP</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The URL scheme for HTTP.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, class, readonly, copy) NSString *URLSchemeHTTP</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The URL scheme for HTTP.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/URLSchemeHTTP" title="URLSchemeHTTP"></a>
+	<h3 class="method-title"><code><a href="#//api/name/URLSchemeHTTP">+&nbsp;URLSchemeHTTP</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nonnull)URLSchemeHTTP</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/URLSchemeHTTPS" title="URLSchemeHTTPS"></a>
+	<h3 class="method-title"><code><a href="#//api/name/URLSchemeHTTPS">&nbsp;&nbsp;URLSchemeHTTPS</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The URL scheme for HTTPS.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, class, readonly, copy) NSString *URLSchemeHTTPS</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The URL scheme for HTTPS.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/URLSchemeHTTPS" title="URLSchemeHTTPS"></a>
+	<h3 class="method-title"><code><a href="#//api/name/URLSchemeHTTPS">+&nbsp;URLSchemeHTTPS</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nonnull)URLSchemeHTTPS</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/DeliveryHLS" title="DeliveryHLS"></a>
+	<h3 class="method-title"><code><a href="#//api/name/DeliveryHLS">&nbsp;&nbsp;DeliveryHLS</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The delivery method for HLS (HTTP Live Streaming) media.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, class, readonly, copy) NSString *DeliveryHLS</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The delivery method for HLS (HTTP Live Streaming) media.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/DeliveryHLS" title="DeliveryHLS"></a>
+	<h3 class="method-title"><code><a href="#//api/name/DeliveryHLS">+&nbsp;DeliveryHLS</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nonnull)DeliveryHLS</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/DeliveryMP4" title="DeliveryMP4"></a>
+	<h3 class="method-title"><code><a href="#//api/name/DeliveryMP4">&nbsp;&nbsp;DeliveryMP4</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The delivery method for MP4 (typically progressive download) media.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, class, readonly, copy) NSString *DeliveryMP4</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The delivery method for MP4 (typically progressive download) media.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/DeliveryMP4" title="DeliveryMP4"></a>
+	<h3 class="method-title"><code><a href="#//api/name/DeliveryMP4">+&nbsp;DeliveryMP4</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nonnull)DeliveryMP4</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/DeliveryDASH" title="DeliveryDASH"></a>
+	<h3 class="method-title"><code><a href="#//api/name/DeliveryDASH">&nbsp;&nbsp;DeliveryDASH</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The delivery method for DASH media.
+DASH is not a supported playback format on iOS.
+This constant can help you identify DASH sources if you need to
+parse JSON responses from the Playback API manually.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, class, readonly, copy) NSString *DeliveryDASH</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The delivery method for DASH media.
+DASH is not a supported playback format on iOS.
+This constant can help you identify DASH sources if you need to
+parse JSON responses from the Playback API manually.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/DeliveryDASH" title="DeliveryDASH"></a>
+	<h3 class="method-title"><code><a href="#//api/name/DeliveryDASH">+&nbsp;DeliveryDASH</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nonnull)DeliveryDASH</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/DeliveryOnce" title="DeliveryOnce"></a>
+	<h3 class="method-title"><code><a href="#//api/name/DeliveryOnce">&nbsp;&nbsp;DeliveryOnce</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The delivery method for Once media.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, class, readonly, copy) NSString *DeliveryOnce</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The delivery method for Once media.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/DeliveryOnce" title="DeliveryOnce"></a>
+	<h3 class="method-title"><code><a href="#//api/name/DeliveryOnce">+&nbsp;DeliveryOnce</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nonnull)DeliveryOnce</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/DeliveryBoltSSAI" title="DeliveryBoltSSAI"></a>
+	<h3 class="method-title"><code><a href="#//api/name/DeliveryBoltSSAI">&nbsp;&nbsp;DeliveryBoltSSAI</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The delivery method for Bolt + SSAI.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, class, readonly, copy) NSString *DeliveryBoltSSAI</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The delivery method for Bolt + SSAI.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/DeliveryBoltSSAI" title="DeliveryBoltSSAI"></a>
+	<h3 class="method-title"><code><a href="#//api/name/DeliveryBoltSSAI">+&nbsp;DeliveryBoltSSAI</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nonnull)DeliveryBoltSSAI</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/PropertyKeySystems" title="PropertyKeySystems"></a>
+	<h3 class="method-title"><code><a href="#//api/name/PropertyKeySystems">&nbsp;&nbsp;PropertyKeySystems</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The key used in the source <a href="#//api/name/properties">properties</a> to declare the DRM type of this source.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, class, readonly, copy) NSString *PropertyKeySystems</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The key used in the source <a href="#//api/name/properties">properties</a> to declare the DRM type of this source.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/PropertyKeySystems" title="PropertyKeySystems"></a>
+	<h3 class="method-title"><code><a href="#//api/name/PropertyKeySystems">+&nbsp;PropertyKeySystems</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nonnull)PropertyKeySystems</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/PropertyFairPlayV1" title="PropertyFairPlayV1"></a>
+	<h3 class="method-title"><code><a href="#//api/name/PropertyFairPlayV1">&nbsp;&nbsp;PropertyFairPlayV1</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The key system used by a FairPlay source, if retrieved through Brightcove Player API.
+BCOVSource.properties:
+…
+key_systems: {
+“com.apple.fps.1_0”: {
+“key_request_url”: “<a href="https://fps.brightcove.com/v1/fairplay">https://fps.brightcove.com/v1/fairplay</a><em>session</em>”
+}
+}</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, class, readonly, copy) NSString *PropertyFairPlayV1</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The key system used by a FairPlay source, if retrieved through Brightcove Player API.
+BCOVSource.properties:
+…
+key_systems: {
+“com.apple.fps.1_0”: {
+“key_request_url”: “<a href="https://fps.brightcove.com/v1/fairplay">https://fps.brightcove.com/v1/fairplay</a><em>session</em>”
+}
+}</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/PropertyFairPlayV1" title="PropertyFairPlayV1"></a>
+	<h3 class="method-title"><code><a href="#//api/name/PropertyFairPlayV1">+&nbsp;PropertyFairPlayV1</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nonnull)PropertyFairPlayV1</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/PropertyKeyRequestURL" title="PropertyKeyRequestURL"></a>
+	<h3 class="method-title"><code><a href="#//api/name/PropertyKeyRequestURL">&nbsp;&nbsp;PropertyKeyRequestURL</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The key for the key request URL used by a FairPlay source, if retrieved through Brightcove Player API.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, class, readonly, copy) NSString *PropertyKeyRequestURL</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The key for the key request URL used by a FairPlay source, if retrieved through Brightcove Player API.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/PropertyKeyRequestURL" title="PropertyKeyRequestURL"></a>
+	<h3 class="method-title"><code><a href="#//api/name/PropertyKeyRequestURL">+&nbsp;PropertyKeyRequestURL</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nonnull)PropertyKeyRequestURL</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/PropertyKeyRequestURLs" title="PropertyKeyRequestURLs"></a>
+	<h3 class="method-title"><code><a href="#//api/name/PropertyKeyRequestURLs">&nbsp;&nbsp;PropertyKeyRequestURLs</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The key for the key request URLs used by a FairPlay source, if retrieved through Brightcove Player API.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, class, readonly, copy) NSString *PropertyKeyRequestURLs</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The key for the key request URLs used by a FairPlay source, if retrieved through Brightcove Player API.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/PropertyKeyRequestURLs" title="PropertyKeyRequestURLs"></a>
+	<h3 class="method-title"><code><a href="#//api/name/PropertyKeyRequestURLs">+&nbsp;PropertyKeyRequestURLs</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nonnull)PropertyKeyRequestURLs</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/PropertyKeyEXTXVersion" title="PropertyKeyEXTXVersion"></a>
+	<h3 class="method-title"><code><a href="#//api/name/PropertyKeyEXTXVersion">&nbsp;&nbsp;PropertyKeyEXTXVersion</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, class, readonly, copy) NSString *PropertyKeyEXTXVersion</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/PropertyKeyEXTXVersion" title="PropertyKeyEXTXVersion"></a>
+	<h3 class="method-title"><code><a href="#//api/name/PropertyKeyEXTXVersion">+&nbsp;PropertyKeyEXTXVersion</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nonnull)PropertyKeyEXTXVersion</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/PropertyKeyType" title="PropertyKeyType"></a>
+	<h3 class="method-title"><code><a href="#//api/name/PropertyKeyType">&nbsp;&nbsp;PropertyKeyType</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, class, readonly, copy) NSString *PropertyKeyType</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/PropertyKeyType" title="PropertyKeyType"></a>
+	<h3 class="method-title"><code><a href="#//api/name/PropertyKeyType">+&nbsp;PropertyKeyType</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nonnull)PropertyKeyType</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/PropertyKeyVMAP" title="PropertyKeyVMAP"></a>
+	<h3 class="method-title"><code><a href="#//api/name/PropertyKeyVMAP">&nbsp;&nbsp;PropertyKeyVMAP</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, class, readonly, copy) NSString *PropertyKeyVMAP</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/PropertyKeyVMAP" title="PropertyKeyVMAP"></a>
+	<h3 class="method-title"><code><a href="#//api/name/PropertyKeyVMAP">+&nbsp;PropertyKeyVMAP</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nonnull)PropertyKeyVMAP</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/PropertyKeyAuthToken" title="PropertyKeyAuthToken"></a>
+	<h3 class="method-title"><code><a href="#//api/name/PropertyKeyAuthToken">&nbsp;&nbsp;PropertyKeyAuthToken</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, class, readonly, copy) NSString *PropertyKeyAuthToken</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/PropertyKeyAuthToken" title="PropertyKeyAuthToken"></a>
+	<h3 class="method-title"><code><a href="#//api/name/PropertyKeyAuthToken">+&nbsp;PropertyKeyAuthToken</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nonnull)PropertyKeyAuthToken</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/initWithURL:" title="initWithURL:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/initWithURL:">&ndash;&nbsp;initWithURL:</a></code>
 </h3>
@@ -130,33 +1048,17 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Constructs a new source with the specified URL.</p>
+				<p>returns:
+A new source with the specified URL</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (instancetype)initWithURL:(NSURL *)<em>url</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)initWithURL:(NSURL *_Nullable)<em>url</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>url</code></th>
-						<td><p>The URL at which the new source&rsquo;s media can be accessed.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>A new source with the specified URL.</p>
-			</div>
 			
 
 			
@@ -164,7 +1066,8 @@
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Constructs a new source with the specified URL.</p>
+				<p>returns:
+A new source with the specified URL</p>
 			</div>
 			
 
@@ -175,7 +1078,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVSource.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -193,44 +1096,17 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Constructs a new source with the specified URL, delivery method, and
-properties.</p>
+				<p>returns:
+A new source with the specified URL, delivery method, and <a href="#//api/name/properties">properties</a>.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (instancetype)initWithURL:(NSURL *)<em>url</em> deliveryMethod:(NSString *)<em>deliveryMethod</em> properties:(NSDictionary *)<em>properties</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)initWithURL:(NSURL *_Nullable)<em>url</em> deliveryMethod:(NSString *_Nullable)<em>deliveryMethod</em> properties:(NSDictionary *_Nullable)<em>properties</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>url</code></th>
-						<td><p>The URL at which the new source&rsquo;s media can be accessed.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>deliveryMethod</code></th>
-						<td><p>The delivery method of the new source.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>properties</code></th>
-						<td><p>The metadata or properties related to the new source.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>A new source with the specified URL, delivery method, and properties.</p>
-			</div>
 			
 
 			
@@ -238,8 +1114,8 @@ properties.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Constructs a new source with the specified URL, delivery method, and
-properties.</p>
+				<p>returns:
+A new source with the specified URL, delivery method, and <a href="#//api/name/properties">properties</a>.</p>
 			</div>
 			
 
@@ -250,7 +1126,7 @@ properties.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVSource.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -268,33 +1144,17 @@ properties.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Returns YES if <code>source</code> is equivalent to this instance.</p>
+				<p>returns:
+Whether <code>source</code> is equivalent to this instance.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (BOOL)isEqualToSource:(BCOVSource *)<em>source</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (BOOL)isEqualToSource:(BCOVSource *_Nullable)<em>source</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>source</code></th>
-						<td><p>The source to test for equivalence with this instance.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>Whether <code>source</code> is equivalent to this instance.</p>
-			</div>
 			
 
 			
@@ -302,7 +1162,8 @@ properties.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns YES if <code>source</code> is equivalent to this instance.</p>
+				<p>returns:
+Whether <code>source</code> is equivalent to this instance.</p>
 			</div>
 			
 
@@ -313,7 +1174,262 @@ properties.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVSource.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="method-title"><code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)init</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isEqual:" title="isEqual:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isEqual:">&ndash;&nbsp;isEqual:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isEqual:(id _Nullable)<em>object</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/description" title="description"></a>
+	<h3 class="method-title"><code><a href="#//api/name/description">&nbsp;&nbsp;description</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSString *description</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/hash" title="hash"></a>
+	<h3 class="method-title"><code><a href="#//api/name/hash">&nbsp;&nbsp;hash</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSUInteger hash</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/copyWithZone:" title="copyWithZone:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/copyWithZone:">&ndash;&nbsp;copyWithZone:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (id _Nonnull)copyWithZone:(struct _NSZone *_Nullable)<em>zone</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/mutableCopyWithZone:" title="mutableCopyWithZone:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/mutableCopyWithZone:">&ndash;&nbsp;mutableCopyWithZone:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (id _Nonnull)mutableCopyWithZone:(struct _NSZone *_Nullable)<em>zone</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/url" title="url"></a>
+	<h3 class="method-title"><code><a href="#//api/name/url">&nbsp;&nbsp;url</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSURL *url</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deliveryMethod" title="deliveryMethod"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deliveryMethod">&nbsp;&nbsp;deliveryMethod</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSString *deliveryMethod</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/properties" title="properties"></a>
+	<h3 class="method-title"><code><a href="#//api/name/properties">&nbsp;&nbsp;properties</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSDictionary *properties</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/update:" title="update:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/update:">&ndash;&nbsp;update:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>returns:
+The copy of this source modified by <code>updateBlock</code>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BCOVSource *_Nonnull)update:(SWIFT_NOESCAPE void ( ^ _Nonnull ) ( BCOVMutableSource *_Nonnull ))<em>updateBlock</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>returns:
+The copy of this source modified by <code>updateBlock</code>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -332,7 +1448,7 @@ properties.</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-07-18</p>
+						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-11-14</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

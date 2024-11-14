@@ -70,9 +70,17 @@
 	
 
 	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/new">+ new</option>
+		
+	</optgroup>
+	
 
 	
 	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/init">- init</option>
 		
 		<option value="//api/name/initWithAccountId:policyKey:">- initWithAccountId:policyKey:</option>
 		
@@ -110,7 +118,7 @@
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>BCOVPlaybackServiceRequestFactory.h</td>
+	<td>BrightcovePlayerSDK-Swift.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -120,8 +128,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>The BCOVPlaybackServiceRequestFactory class provides methods for creating
-requests for videos from Brightcove’s Playback API.</p>
+						<p>The BCOVPlaybackServiceRequestFactory class provides methods for creating requests for videos from Brightcove’s Playback API.</p>
 					</div>
 					
 					
@@ -153,7 +160,7 @@ requests for videos from Brightcove’s Playback API.</p>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *accountId</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSString *accountId</code></div>
 
 		    
 			
@@ -176,7 +183,7 @@ requests for videos from Brightcove’s Playback API.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlaybackServiceRequestFactory.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -199,7 +206,7 @@ requests for videos from Brightcove’s Playback API.</p>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *policyKey</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSString *policyKey</code></div>
 
 		    
 			
@@ -222,7 +229,7 @@ requests for videos from Brightcove’s Playback API.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlaybackServiceRequestFactory.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -238,10 +245,40 @@ requests for videos from Brightcove’s Playback API.</p>
 
 		<div class="method-info-container">
 			
+			
+			<div class="method-subsection brief-description">
+				<p>Auth Token for EPA/PAS</p>
+			</div>
+			
+		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *authToken</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSString *authToken</code></div>
 
 		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Auth Token for EPA/PAS</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
 		</div>
 	</div>
 </div><div class="section-method">
@@ -254,10 +291,40 @@ requests for videos from Brightcove’s Playback API.</p>
 
 		<div class="method-info-container">
 			
+			
+			<div class="method-subsection brief-description">
+				<p>Base URL for Generic Stream Concurrency</p>
+			</div>
+			
+		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *gscBaseURLStr</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly, copy) NSString *gscBaseURLStr</code></div>
 
 		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Base URL for Generic Stream Concurrency</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
+			</div>
+			
+			
 		</div>
 	</div>
 </div><div class="section-method">
@@ -272,7 +339,7 @@ requests for videos from Brightcove’s Playback API.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>NSDictionary of additional HTTP request headers set on each NSURLRequest.
+				<p><a href="../Classes/NSDictionary.html">NSDictionary</a> of additional HTTP request headers set on each NSURLRequest.
 The dictionary key defines the header field name.
 Header field names are case-insensitive.
 Both keys and values should be NSStrings.
@@ -281,7 +348,7 @@ Defaults to nil.</p>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readwrite) NSDictionary *additionalHTTPRequestHeaders</code></div>
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) NSDictionary *additionalHTTPRequestHeaders</code></div>
 
 		    
 			
@@ -293,7 +360,7 @@ Defaults to nil.</p>
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>NSDictionary of additional HTTP request headers set on each NSURLRequest.
+				<p><a href="../Classes/NSDictionary.html">NSDictionary</a> of additional HTTP request headers set on each NSURLRequest.
 The dictionary key defines the header field name.
 Header field names are case-insensitive.
 Both keys and values should be NSStrings.
@@ -308,7 +375,7 @@ Defaults to nil.</p>
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlaybackServiceRequestFactory.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -326,39 +393,17 @@ Defaults to nil.</p>
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Returns an initialized instance with the specified policy. The base URL
-string used by the returned instance is <a href="https://edge.api.brightcove.com/playback/v1">https://edge.api.brightcove.com/playback/v1</a> .</p>
+				<p>returns:
+The initialized BCOVPlaybackServiceRequestFactory.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (instancetype)initWithAccountId:(NSString *)<em>accountId</em> policyKey:(NSString *)<em>policyKey</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)initWithAccountId:(NSString *_Nonnull)<em>accountId</em> policyKey:(NSString *_Nullable)<em>policyKey</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>accountId</code></th>
-						<td><p>A Video Cloud account. Must not be nil.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>policyKey</code></th>
-						<td><p>A Video Cloud CMS policy. Must not be nil.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>The initialized BCOVPlaybackServiceRequestFactory.</p>
-			</div>
 			
 
 			
@@ -366,10 +411,8 @@ string used by the returned instance is <a href="https://edge.api.brightcove.com
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns an initialized instance with the specified policy. The base URL
-string used by the returned instance is <a href="https://edge.api.brightcove.com/playback/v1">https://edge.api.brightcove.com/playback/v1</a> .</p>
-
-<p>If using the Edge Playback Service, the <a href="#//api/name/policyKey">policyKey</a> value should be nil</p>
+				<p>returns:
+The initialized BCOVPlaybackServiceRequestFactory.</p>
 			</div>
 			
 
@@ -380,7 +423,7 @@ string used by the returned instance is <a href="https://edge.api.brightcove.com
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlaybackServiceRequestFactory.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -398,43 +441,17 @@ string used by the returned instance is <a href="https://edge.api.brightcove.com
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Returns an initialized instance with the specified token, account, and base URL string.</p>
+				<p>returns:
+The initialized BCOVPlaybackServiceRequestFactory.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (instancetype)initWithAccountId:(NSString *)<em>accountId</em> policyKey:(NSString *)<em>policyKey</em> baseURLStr:(NSString *)<em>baseURLStr</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)initWithAccountId:(NSString *_Nonnull)<em>accountId</em> policyKey:(NSString *_Nullable)<em>policyKey</em> baseURLStr:(NSString *_Nullable)<em>baseURLStr</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>accountId</code></th>
-						<td><p>A Video Cloud account.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>policyKey</code></th>
-						<td><p>A Video Cloud CMS policy.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>baseURLStr</code></th>
-						<td><p>A string URL to the API.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>The initialized BCOVPlaybackServiceRequestFactory.</p>
-			</div>
 			
 
 			
@@ -442,9 +459,8 @@ string used by the returned instance is <a href="https://edge.api.brightcove.com
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns an initialized instance with the specified token, account, and base URL string.</p>
-
-<p>If using the Edge Playback Service, the <a href="#//api/name/policyKey">policyKey</a> value should be nil</p>
+				<p>returns:
+The initialized BCOVPlaybackServiceRequestFactory.</p>
 			</div>
 			
 
@@ -455,7 +471,7 @@ string used by the returned instance is <a href="https://edge.api.brightcove.com
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlaybackServiceRequestFactory.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -473,48 +489,17 @@ string used by the returned instance is <a href="https://edge.api.brightcove.com
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Returns an initialized instance with the specified token, account, and base URL string.</p>
+				<p>returns:
+The initialized BCOVPlaybackServiceRequestFactory.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (instancetype)initWithAccountId:(NSString *)<em>accountId</em> policyKey:(NSString *)<em>policyKey</em> baseURLStr:(NSString *)<em>baseURLStr</em> authBaseURLStr:(NSString *)<em>authBaseURLStr</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)initWithAccountId:(NSString *_Nonnull)<em>accountId</em> policyKey:(NSString *_Nullable)<em>policyKey</em> baseURLStr:(NSString *_Nullable)<em>baseURLStr</em> authBaseURLStr:(NSString *_Nullable)<em>authBaseURLStr</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>accountId</code></th>
-						<td><p>A Video Cloud account.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>policyKey</code></th>
-						<td><p>A Video Cloud CMS policy.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>baseURLStr</code></th>
-						<td><p>A string URL to the API.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>authBaseURLStr</code></th>
-						<td><p>A string URL to the API that will be used for EPA/PAS requests.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>The initialized BCOVPlaybackServiceRequestFactory.</p>
-			</div>
 			
 
 			
@@ -522,9 +507,8 @@ string used by the returned instance is <a href="https://edge.api.brightcove.com
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns an initialized instance with the specified token, account, and base URL string.</p>
-
-<p>If using the Edge Playback Service, the <a href="#//api/name/policyKey">policyKey</a> value should be nil</p>
+				<p>returns:
+The initialized BCOVPlaybackServiceRequestFactory.</p>
 			</div>
 			
 
@@ -535,7 +519,7 @@ string used by the returned instance is <a href="https://edge.api.brightcove.com
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlaybackServiceRequestFactory.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -553,53 +537,17 @@ string used by the returned instance is <a href="https://edge.api.brightcove.com
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Returns an initialized instance with the specified token, account, and base URL string.</p>
+				<p>returns:
+The initialized BCOVPlaybackServiceRequestFactory.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (instancetype)initWithAccountId:(NSString *)<em>accountId</em> policyKey:(NSString *)<em>policyKey</em> baseURLStr:(NSString *)<em>baseURLStr</em> authBaseURLStr:(NSString *)<em>authBaseURLStr</em> gscBaseURLStr:(NSString *)<em>gscBaseURLStr</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)initWithAccountId:(NSString *_Nonnull)<em>accountId</em> policyKey:(NSString *_Nullable)<em>policyKey</em> baseURLStr:(NSString *_Nullable)<em>baseURLStr</em> authBaseURLStr:(NSString *_Nullable)<em>authBaseURLStr</em> gscBaseURLStr:(NSString *_Nullable)<em>gscBaseURLStr</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>accountId</code></th>
-						<td><p>A Video Cloud account.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>policyKey</code></th>
-						<td><p>A Video Cloud CMS policy.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>baseURLStr</code></th>
-						<td><p>A string URL to the API.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>authBaseURLStr</code></th>
-						<td><p>A string URL to the API that will be used for EPA/PAS requests.</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>gscBaseURLStr</code></th>
-						<td><p>A String URL to the API that will be used for Generic Stream Concurrency requests.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>The initialized BCOVPlaybackServiceRequestFactory.</p>
-			</div>
 			
 
 			
@@ -607,9 +555,8 @@ string used by the returned instance is <a href="https://edge.api.brightcove.com
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Returns an initialized instance with the specified token, account, and base URL string.</p>
-
-<p>If using the Edge Playback Service, the <a href="#//api/name/policyKey">policyKey</a> value should be nil</p>
+				<p>returns:
+The initialized BCOVPlaybackServiceRequestFactory.</p>
 			</div>
 			
 
@@ -620,7 +567,7 @@ string used by the returned instance is <a href="https://edge.api.brightcove.com
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlaybackServiceRequestFactory.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -638,44 +585,17 @@ string used by the returned instance is <a href="https://edge.api.brightcove.com
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Constructs a request for a playlist.</p>
+				<p>returns:
+Built URLRequest that can be used to fetch the playlist.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (NSURLRequest *)requestForPlaylistWithConfiguration:(NSDictionary *)<em>configuration</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (NSURLRequest *_Nullable)requestForPlaylistWithConfiguration:(NSDictionary&lt;NSString*,id&gt; *_Nonnull)<em>configuration</em> parameters:(NSDictionary&lt;NSString*,id&gt; *_Nullable)<em>parameters</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>configuration</code></th>
-						<td><p>NSDictionary of configuration options used in this catalog request.
-Valid parameters are:
-kBCOVPlaybackServiceConfigurationKeyPlaylistID
-kBCOVPlaybackServiceConfigurationKeyPlaylistReferenceID
-kBCOVPlaybackServiceConfigurationKeyAuthToken
-kBCOVPlaybackServiceConfigurationKeyBumperID</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>parameters that will be added as URL parameters to the request.
-These parameters will override any default parameters that had been set.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>Built NSURLRequest that can be used to fetch the playlist.</p>
-			</div>
 			
 
 			
@@ -683,7 +603,8 @@ These parameters will override any default parameters that had been set.</p></td
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Constructs a request for a playlist.</p>
+				<p>returns:
+Built URLRequest that can be used to fetch the playlist.</p>
 			</div>
 			
 
@@ -694,7 +615,7 @@ These parameters will override any default parameters that had been set.</p></td
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlaybackServiceRequestFactory.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
@@ -712,44 +633,17 @@ These parameters will override any default parameters that had been set.</p></td
 			
 			
 			<div class="method-subsection brief-description">
-				<p>Constructs a request for a video.</p>
+				<p>returns:
+Built URLRequest that can be used to fetch the playlist.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (NSURLRequest *)requestForVideoWithConfiguration:(NSDictionary *)<em>configuration</em> parameters:(NSDictionary *)<em>parameters</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (NSURLRequest *_Nullable)requestForVideoWithConfiguration:(NSDictionary&lt;NSString*,id&gt; *_Nonnull)<em>configuration</em> parameters:(NSDictionary&lt;NSString*,id&gt; *_Nullable)<em>parameters</em></code></div>
 
 		    
 			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>configuration</code></th>
-						<td><p>NSDictionary of configuration options used in this catalog request.
-Valid parameters are:
-kBCOVPlaybackServiceConfigurationKeyVideoID
-kBCOVPlaybackServiceConfigurationKeyVideoReferenceID
-kBCOVPlaybackServiceConfigurationKeyAuthToken
-kBCOVPlaybackServiceConfigurationKeyBumperID</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>parameters</code></th>
-						<td><p>parameters that will be added as URL parameters to the request.
-These parameters will override any default parameters that had been set.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
 
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>Built NSURLRequest that can be used to fetch the playlist.</p>
-			</div>
 			
 
 			
@@ -757,7 +651,8 @@ These parameters will override any default parameters that had been set.</p></td
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>Constructs a request for a video.</p>
+				<p>returns:
+Built URLRequest that can be used to fetch the playlist.</p>
 			</div>
 			
 
@@ -768,10 +663,42 @@ These parameters will override any default parameters that had been set.</p></td
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">BCOVPlaybackServiceRequestFactory.h</code></p>
+				<p><code class="declared-in-ref">BrightcovePlayerSDK-Swift.h</code></p>
 			</div>
 			
 			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="method-title"><code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (nonnull instancetype)init</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/new" title="new"></a>
+	<h3 class="method-title"><code><a href="#//api/name/new">+&nbsp;new</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (nonnull instancetype)new</code></div>
+
+		    
 		</div>
 	</div>
 </div>
@@ -787,7 +714,7 @@ These parameters will override any default parameters that had been set.</p></td
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-07-18</p>
+						<p class="copyright">Copyright &copy; 2024 Brightcove. All rights reserved. Updated: 2024-11-14</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

@@ -1,4 +1,4 @@
-# Using Interactivity With The Brightcove Player SDK for iOS, version 6.13.3.8
+# Using Interactivity With The Brightcove Player SDK for iOS, version 7.0.0.9
 
 The Brightcove Player SDK currently supports Interactivity in a limited capacity.
 
@@ -26,14 +26,7 @@ The Brightcove Player SDK currently supports Interactivity in a limited capacity
 
 Here is an example of adding Interactivity to your project:
 
-```
-// Obj-C
-self.interactivityHandler = [[BCOVInteractivityHandler alloc] initWithAccountId:kViewControllerAccountID projectId:kViewControllerProjectId containerView:self.playerView.interactivityOverlayView playbackController:self.playbackController];
-self.interactivityHandler.delegate = self;
-```
-
-```
-// Swift
+```swift
 if let interactivityOverlayView = playerView.interactivityOverlayView, let playbackController = playbackController {
     interactivityHandler = BCOVInteractivityHandler(accountId: playbackConfig.accountID, projectId: playbackConfig.interactivityProjectID, containerView: interactivityOverlayView,  playbackController: playbackController)
     interactivityHandler?.delegate = self
@@ -44,13 +37,13 @@ if let interactivityOverlayView = playerView.interactivityOverlayView, let playb
 
 The following delegate methods are available for customizing annotations:
 
-```
-- (CGFloat)animationTimeForTransition:(BCOVInteractivityAnnotationTransition)transition;
-- (UIFont *)fontForTextAnnotation:(BCOVInteractivityAnnotation *)annotation;
-- (UIColor *)backgroundColorForTextAnnotation:(BCOVInteractivityAnnotation *)annotation;
-- (UIColor *)textColorForTextAnnotation:(BCOVInteractivityAnnotation *)annotation;
-- (void)annotationWasTapped:(BCOVInteractivityAnnotation *)annotation; // iOS Only
-- (void)annotationWasTriggered:(BCOVInteractivityAnnotation *)annotation;
+```swift
+func animationTime(for transition: BCOVInteractivityAnnotationTransition) -> CGFloat
+func font(forTextAnnotation annotation: BCOVInteractivityAnnotation) -> UIFont
+func backgroundColor(forTextAnnotation annotation: BCOVInteractivityAnnotation) -> UIColor
+func textColor(forTextAnnotation annotation: BCOVInteractivityAnnotation) -> UIColor
+func annotationWasTapped(_ annotation: BCOVInteractivityAnnotation)
+func annotationWasTriggered(_ annotation: BCOVInteractivityAnnotation)
 ```
 
 Detailed information for each method can be found in `BCOVInteractivityHandler.h`.
@@ -65,53 +58,7 @@ You may also configure additional behavior on iOS by giving the annotation a Com
 
 Here's an example of displaying a Chapters menu using an `UIAlertController`:
 
-```
-// Obj-C
-- (void)annotationWasTapped:(BCOVInteractivityAnnotation *)annotation
-{
-    NSString *command = annotation.command;
-    NSDictionary *commandData = annotation.commandData;
-
-    if ([command isEqualToString:@"my-command"])
-    {
-        NSArray *sortedKeys = [commandData keysSortedByValueUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-            return [obj1 compare:obj2];
-        }];
-
-        NSMutableArray *sortedChapters = @[].mutableCopy;
-        for (NSString *key in sortedKeys)
-        {
-            NSNumber *time = commandData[key];
-            NSDictionary *chapter = @{
-                @"title": key,
-                @"time": time
-            };
-            [sortedChapters addObject:chapter];
-        }
-
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Interactivity" message:@"Chapter Selection" preferredStyle:UIAlertControllerStyleActionSheet];
-
-        for (NSDictionary *chapter in sortedChapters)
-        {
-            NSNumber *timeNum = chapter[@"time"];
-            NSString *title = chapter[@"title"];
-            CMTime time = CMTimeMake(timeNum.longLongValue, 1);
-            [alert addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [self.playbackController seekToTime:time completionHandler:nil];
-            }]];
-        }
-
-        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
-
-        alert.popoverPresentationController.sourceView = annotation.annotationView;
-
-        [self presentViewController:alert animated:YES completion:nil];
-    }
-}
-```
-
-```
-// Swift
+```swift
 func annotationWasTapped(_ annotation: BCOVInteractivityAnnotation) {
     guard let command = annotation.command, let commandData = annotation.commandData else {
         return
@@ -158,20 +105,21 @@ func annotationWasTapped(_ annotation: BCOVInteractivityAnnotation) {
 
 You can set up preconditions for your annotations to show and hide them on demand. Here is an example of hiding an annotation when playback begins and showing it five seconds after pause:
 
-```
-- (void)playbackController:(id<BCOVPlaybackController>)controller playbackSession:(id<BCOVPlaybackSession>)session didReceiveLifecycleEvent:(BCOVPlaybackSessionLifecycleEvent *)lifecycleEvent
-{
-    if ([lifecycleEvent.eventType isEqualToString:kBCOVPlaybackSessionLifecycleEventPause])
-    {
-        self.xRayTimer = [NSTimer scheduledTimerWithTimeInterval:5 repeats:NO block:^(NSTimer * _Nonnull timer) {
-            [self.interactivityHandler enablePrecondition:@"xRay"];
-        }];
+```swift
+func playbackController(_ controller: BCOVPlaybackController,
+                        playbackSession session: BCOVPlaybackSession,
+                        didReceive lifecycleEvent: BCOVPlaybackSessionLifecycleEvent) {
+
+    if kBCOVPlaybackSessionLifecycleEventPause == lifecycleEvent.eventType {
+        xRayTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { [weak self] (timer: Timer) in
+            self?.interactivityHandler?.enablePrecondition("xRay")
+        })
     }
 
-    if ([lifecycleEvent.eventType isEqualToString:kBCOVPlaybackSessionLifecycleEventPlay])
-    {
-        [self.xRayTimer invalidate];
-        [self.interactivityHandler disablePrecondition:@"xRay"];
+    if kBCOVPlaybackSessionLifecycleEventPlay == lifecycleEvent.eventType {
+        xRayTimer?.invalidate()
+        interactivityHandler?.disablePrecondition("xRay")
     }
+
 }
 ```

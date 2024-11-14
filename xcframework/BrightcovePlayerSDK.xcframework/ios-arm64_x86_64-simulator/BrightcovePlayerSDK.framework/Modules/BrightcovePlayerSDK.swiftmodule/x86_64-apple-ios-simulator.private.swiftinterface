@@ -1,0 +1,518 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0.2 effective-5.10 (swiftlang-6.0.2.1.2 clang-1600.0.26.4)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name BrightcovePlayerSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+@_exported import BrightcovePlayerSDK
+import Foundation
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class BCOVPlaybackServiceRequestFactory : ObjectiveC.NSObject {
+  @objc public var accountId: Swift.String? {
+    get
+  }
+  @objc public var policyKey: Swift.String? {
+    get
+  }
+  @objc public var authToken: Swift.String? {
+    get
+  }
+  @objc public var gscBaseURLStr: Swift.String {
+    @objc get
+  }
+  @objc public var additionalHTTPRequestHeaders: [Swift.AnyHashable : Any]?
+  @objc convenience public init(withAccountId accountId: Swift.String, policyKey: Swift.String?)
+  @objc convenience public init(withAccountId accountId: Swift.String, policyKey: Swift.String?, baseURLStr: Swift.String?)
+  @objc convenience public init(withAccountId accountId: Swift.String, policyKey: Swift.String?, baseURLStr: Swift.String?, authBaseURLStr: Swift.String?)
+  @objc public init(withAccountId accountId: Swift.String, policyKey: Swift.String?, baseURLStr: Swift.String?, authBaseURLStr: Swift.String?, gscBaseURLStr: Swift.String?)
+  @objc public func requestForPlaylist(withConfiguration configuration: [Swift.String : Any], parameters: [Swift.String : Any]?) -> Foundation.URLRequest?
+  @objc public func requestForVideo(withConfiguration configuration: [Swift.String : Any], parameters: [Swift.String : Any]?) -> Foundation.URLRequest?
+  @objc deinit
+}
+@objc public class BCOVBasicSessionProvider : ObjectiveC.NSObject, BrightcovePlayerSDK.BCOVPlaybackSessionProvider {
+  @objc public init(withOptions options: BrightcovePlayerSDK.BCOVBasicSessionProviderOptions?)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class BCOVBasicSourceSelectionPolicy : ObjectiveC.NSObject, Foundation.NSCopying {
+  @objc public class func sourceSelectionHLS(withScheme scheme: Swift.String) -> BrightcovePlayerSDK.BCOVBasicSessionProviderSourceSelectionPolicy
+  @objc public class func sourceSelectionHLS() -> BrightcovePlayerSDK.BCOVBasicSessionProviderSourceSelectionPolicy
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class BCOVBasicSessionProviderOptions : ObjectiveC.NSObject {
+  @objc public var sourceSelectionPolicy: ((BrightcovePlayerSDK.BCOVVideo?) -> BrightcovePlayerSDK.BCOVSource?)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum BCOVPlaybackServiceErrorCode : Swift.Int {
+  case NoError = 0
+  case ConnectionError = 1
+  case JSONDeserializationError = 2
+  case APIError = 3
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class BCOVPlaybackService : ObjectiveC.NSObject {
+  @objc public static let ErrorDomain: Swift.String
+  @objc public static let ErrorKeyRawResponseData: Swift.String
+  @objc public static let ErrorKeyAPIErrors: Swift.String
+  @objc public static let ErrorKeyAPIHTTPStatusCode: Swift.String
+  @objc public static let ParameterKeyLimit: Swift.String
+  @objc public static let ParameterKeyOffset: Swift.String
+  @objc public static let ParamaterKeyAdConfigId: Swift.String
+  @objc public static let ParameterKeyDeliveryConfigId: Swift.String
+  @objc public static let ConfigurationKeyAssetID: Swift.String
+  @objc public static let ConfigurationKeyAssetReferenceID: Swift.String
+  @objc public static let ConfigurationKeyAuthToken: Swift.String
+  @objc public static let ConfigurationKeyBumperID: Swift.String
+  @objc public static let ConfigurationKeyBumperReferenceID: Swift.String
+  @objc public var sharedURLSession: Foundation.URLSession
+  @objc public var watermarkingToken: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc convenience public init(withAccountId accountId: Swift.String, policyKey: Swift.String?)
+  @objc public init(withRequestFactory requestFactory: BrightcovePlayerSDK.BCOVPlaybackServiceRequestFactory)
+  @objc public func findPlaylist(withConfiguration configuration: [Swift.String : Any], queryParameters: [Swift.String : Any]?, completion: @escaping (_ playlist: BrightcovePlayerSDK.BCOVPlaylist?, _ jsonResponse: Any?, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc public func findVideo(withConfiguration configuration: [Swift.String : Any], queryParameters: [Swift.String : Any]?, completion: @escaping (_ video: BrightcovePlayerSDK.BCOVVideo?, _ jsonResponse: Any?, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc public class func sourceFromJSONDictionary(_ json: Any?) -> BrightcovePlayerSDK.BCOVSource?
+  @objc public class func cuePointFromJSONDictionary(_ json: [Swift.String : Any]) -> BrightcovePlayerSDK.BCOVCuePoint?
+  @objc public class func playlistFromJSONDictionary(_ json: Any) -> BrightcovePlayerSDK.BCOVPlaylist?
+  @objc public class func videoFromJSONDictionary(_ json: Any) -> BrightcovePlayerSDK.BCOVVideo?
+  @objc deinit
+}
+@objc public enum BCOVFPSErrorCode : Swift.Int {
+  case StreamingContentKeyRequest = 69401
+  case ApplicationCertificateRequest = 69404
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class BCOVFPSConstants : ObjectiveC.NSObject {
+  @objc public static let ErrorDomain: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public protocol BCOVFPSAuthorizationProxy : ObjectiveC.NSObjectProtocol {
+  @objc optional func contentIdentifier(fromLoadingRequest loadingRequest: AVFoundation.AVAssetResourceLoadingRequest) -> Foundation.Data?
+  @objc func contentIdentifier(fromKeyRequest keyRequest: AVFoundation.AVContentKeyRequest?) -> Foundation.Data?
+  @objc func encryptedContentKey(forContentKeyIdentifier contentKeyIdentifier: Swift.String, contentKeyRequest keyRequest: Foundation.Data, source: BrightcovePlayerSDK.BCOVSource, options: [Swift.AnyHashable : Any]?, completionHandler: @escaping (_ response: Foundation.URLResponse?, _ contentKey: Foundation.Data?, _ expirationDate: Foundation.Date?, _ error: (any Swift.Error)?) -> Swift.Void)
+}
+@objc public enum BCOVEconomics : Swift.Int {
+  case AdSupported = 0
+  case Free
+  case PublisherPays
+  case PayMedia
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public protocol BCOVVideoProtocol : ObjectiveC.NSObjectProtocol {
+  @objc var cuePoints: BrightcovePlayerSDK.BCOVCuePointCollection? { get }
+  @objc var properties: [Swift.AnyHashable : Any] { get }
+  @objc var economics: BrightcovePlayerSDK.BCOVEconomics { get }
+  @objc var sources: [BrightcovePlayerSDK.BCOVSource] { get }
+  @objc var thumbnailVTTURL: Foundation.URL? { get }
+  @objc func update(_ updateBlock: (BrightcovePlayerSDK.BCOVMutableVideo) -> Swift.Void) -> BrightcovePlayerSDK.BCOVVideo
+}
+@objc public class BCOVVideo : ObjectiveC.NSObject, BrightcovePlayerSDK.BCOVVideoProtocol, Foundation.NSCopying, Foundation.NSMutableCopying {
+  @objc public static let PropertyKeyAccountId: Swift.String
+  @objc public static let PropertyKeyDescription: Swift.String
+  @objc public static let PropertyKeyDuration: Swift.String
+  @objc public static let PropertyKeyEconomics: Swift.String
+  @objc public static let PropertyKeyId: Swift.String
+  @objc public static let PropertyKeyLongDescription: Swift.String
+  @objc public static let PropertyKeyName: Swift.String
+  @objc public static let PropertyKeyPoster: Swift.String
+  @objc public static let PropertyKeyPosterSources: Swift.String
+  @objc public static let PropertyKeyProjection: Swift.String
+  @objc public static let PropertyKeyReferenceId: Swift.String
+  @objc public static let PropertyKeyTags: Swift.String
+  @objc public static let PropertyKeyTextTracks: Swift.String
+  @objc public static let PropertyKeyThumbnail: Swift.String
+  @objc public static let PropertyKeyThumbnailSources: Swift.String
+  @objc public static let PropertyKeyVariants: Swift.String
+  @objc public static let PropertyKeyManifestURLTTL: Swift.String
+  @objc public static let PropertyKeyPolicyKey: Swift.String
+  @objc public static let PropertyKeyCatalogResponseTime: Swift.String
+  @objc public var cuePoints: BrightcovePlayerSDK.BCOVCuePointCollection? {
+    @objc get
+  }
+  @objc public var properties: [Swift.AnyHashable : Any] {
+    @objc get
+  }
+  @objc public var sources: [BrightcovePlayerSDK.BCOVSource] {
+    @objc get
+  }
+  @objc public var thumbnailVTTURL: Foundation.URL? {
+    @objc get
+  }
+  @objc public var economics: BrightcovePlayerSDK.BCOVEconomics
+  @objc public var canBeDownloaded: Swift.Bool {
+    @objc get
+  }
+  @objc public var usesFairPlay: Swift.Bool {
+    @objc get
+  }
+  @objc public var offline: Swift.Bool {
+    @objc get
+  }
+  @objc public var playableOffline: Swift.Bool {
+    @objc get
+  }
+  @objc public var errorCode: Swift.String? {
+    get
+  }
+  @objc public var errorSubCode: Swift.String? {
+    get
+  }
+  @objc public var errorMessage: Swift.String? {
+    get
+  }
+  @objc public var hasError: Swift.Bool {
+    @objc get
+  }
+  @objc required public init(withSources sources: [BrightcovePlayerSDK.BCOVSource]?, cuePoints: BrightcovePlayerSDK.BCOVCuePointCollection?, properties: [Swift.AnyHashable : Any]?)
+  @objc required convenience public init(withSource source: BrightcovePlayerSDK.BCOVSource?, cuePoints: BrightcovePlayerSDK.BCOVCuePointCollection?, properties: [Swift.AnyHashable : Any]?)
+  @objc required public init(withErrorCode errorCode: Swift.String?, errorSubCode: Swift.String?, errorMessage: Swift.String?, properties: [Swift.AnyHashable : Any]?)
+  @objc public func isEqual(toVideo video: BrightcovePlayerSDK.BCOVVideo?) -> Swift.Bool
+  @objc public class func video(withURL url: Foundation.URL) -> BrightcovePlayerSDK.BCOVVideo
+  @objc public class func video(withHLSSourceURL url: Foundation.URL) -> BrightcovePlayerSDK.BCOVVideo
+  @objc public class func video(withURL url: Foundation.URL, deliveryMethod: Swift.String?) -> BrightcovePlayerSDK.BCOVVideo
+  @objc public func update(_ updateBlock: (BrightcovePlayerSDK.BCOVMutableVideo) -> Swift.Void) -> BrightcovePlayerSDK.BCOVVideo
+  @objc public func localizedName(forLocale locale: Foundation.NSLocale?) -> Swift.String?
+  @objc public func localizedShortDescription(forLocale locale: Foundation.NSLocale?) -> Swift.String?
+  @objc public func localizedLongDescription(forLocale locale: Foundation.NSLocale?) -> Swift.String?
+  @objc public func variant(forPreferredLanguages preferredLanguages: [Swift.String]) -> [Swift.AnyHashable : Any]?
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public var hash: Swift.Int {
+    @objc get
+  }
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc public func mutableCopy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class BCOVMutableVideo : BrightcovePlayerSDK.BCOVVideo {
+  @objc override public var cuePoints: BrightcovePlayerSDK.BCOVCuePointCollection? {
+    @objc get
+    @objc set
+  }
+  @objc override public var properties: [Swift.AnyHashable : Any] {
+    @objc get
+    @objc set
+  }
+  @objc override public var sources: [BrightcovePlayerSDK.BCOVSource] {
+    @objc get
+    @objc set
+  }
+  @objc override public var thumbnailVTTURL: Foundation.URL? {
+    @objc get
+    @objc set
+  }
+  @objc required public init(withSources sources: [BrightcovePlayerSDK.BCOVSource]?, cuePoints: BrightcovePlayerSDK.BCOVCuePointCollection?, properties: [Swift.AnyHashable : Any]?)
+  @objc required public init(withErrorCode errorCode: Swift.String?, errorSubCode: Swift.String?, errorMessage: Swift.String?, properties: [Swift.AnyHashable : Any]?)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class BCOVErrorTranslator : ObjectiveC.NSObject {
+  @objc public class func readableErrorCode(forError error: Foundation.NSError) -> Foundation.NSString?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor @preconcurrency public class BCOVInteractivityControl : UIKit.UIControl {
+  @objc @_Concurrency.MainActor @preconcurrency weak public var annotation: BrightcovePlayerSDK.BCOVInteractivityAnnotation?
+  @objc @_Concurrency.MainActor @preconcurrency public var imageView: UIKit.UIImageView?
+  @objc @_Concurrency.MainActor @preconcurrency public var textLabel: UIKit.UILabel?
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc public protocol BCOVSourceProtocol : ObjectiveC.NSObjectProtocol {
+  @objc var url: Foundation.URL? { get }
+  @objc var deliveryMethod: Swift.String? { get }
+  @objc var properties: [Swift.AnyHashable : Any] { get }
+  @objc func update(_ updateBlock: (BrightcovePlayerSDK.BCOVMutableSource) -> Swift.Void) -> BrightcovePlayerSDK.BCOVSource
+}
+@_inheritsConvenienceInitializers @objc public class BCOVSource : ObjectiveC.NSObject, BrightcovePlayerSDK.BCOVSourceProtocol, Foundation.NSCopying, Foundation.NSMutableCopying {
+  @objc public static let URLSchemeHTTP: Swift.String
+  @objc public static let URLSchemeHTTPS: Swift.String
+  @objc public static let DeliveryHLS: Swift.String
+  @objc public static let DeliveryMP4: Swift.String
+  @objc public static let DeliveryDASH: Swift.String
+  @objc public static let DeliveryOnce: Swift.String
+  @objc public static let DeliveryBoltSSAI: Swift.String
+  @objc public static let PropertyKeySystems: Swift.String
+  @objc public static let PropertyFairPlayV1: Swift.String
+  @objc public static let PropertyKeyRequestURL: Swift.String
+  @objc public static let PropertyKeyRequestURLs: Swift.String
+  @objc public static let PropertyKeyEXTXVersion: Swift.String
+  @objc public static let PropertyKeyType: Swift.String
+  @objc public static let PropertyKeyVMAP: Swift.String
+  @objc public static let PropertyKeyAuthToken: Swift.String
+  @objc convenience public init(withURL url: Foundation.URL?)
+  @objc public init(withURL url: Foundation.URL?, deliveryMethod: Swift.String?, properties: [Swift.AnyHashable : Any]?)
+  @objc public func isEqual(toSource source: BrightcovePlayerSDK.BCOVSource?) -> Swift.Bool
+  @available(*, unavailable)
+  @objc override dynamic public init()
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public var hash: Swift.Int {
+    @objc get
+  }
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc public func mutableCopy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc public var url: Foundation.URL? {
+    @objc get
+  }
+  @objc public var deliveryMethod: Swift.String? {
+    @objc get
+  }
+  @objc public var properties: [Swift.AnyHashable : Any] {
+    @objc get
+  }
+  @objc public func update(_ updateBlock: (BrightcovePlayerSDK.BCOVMutableSource) -> Swift.Void) -> BrightcovePlayerSDK.BCOVSource
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class BCOVMutableSource : BrightcovePlayerSDK.BCOVSource {
+  @objc override public var url: Foundation.URL? {
+    @objc get
+    @objc set
+  }
+  @objc override public var deliveryMethod: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc override public var properties: [Swift.AnyHashable : Any] {
+    @objc get
+    @objc set
+  }
+  @objc override public init(withURL url: Foundation.URL?, deliveryMethod: Swift.String?, properties: [Swift.AnyHashable : Any]?)
+  @objc deinit
+}
+@objc extension Foundation.NSDictionary {
+  @objc dynamic public func bcov_UTF8EncodedRequestParameterString() -> Swift.String
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class BCOVGlobalConfiguration : ObjectiveC.NSObject {
+  @objc public static let sharedConfig: BrightcovePlayerSDK.BCOVGlobalConfiguration
+  @objc public var allowsCellularPlayback: Swift.Bool
+  @objc public var chinaProxyDomain: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class BCOVPlayerSDKManager : ObjectiveC.NSObject {
+  @objc public class func sharedManager() -> BrightcovePlayerSDK.BCOVPlayerSDKManager
+  @objc public static func sharedManager(options: [Swift.AnyHashable : Any]?) -> BrightcovePlayerSDK.BCOVPlayerSDKManager
+  @objc public class func SDKVersion() -> Swift.String
+  @objc public var sessionID: Swift.String {
+    @objc get
+  }
+  @objc public func createPlaybackController() -> any BrightcovePlayerSDK.BCOVPlaybackController
+  @objc public func createPlaybackController(withViewStrategy viewStrategy: BrightcovePlayerSDK.BCOVPlaybackControllerViewStrategy?) -> any BrightcovePlayerSDK.BCOVPlaybackController
+  @objc public func createPlaybackController(withSessionProvider provider: (any BrightcovePlayerSDK.BCOVPlaybackSessionProvider)?, viewStrategy: BrightcovePlayerSDK.BCOVPlaybackControllerViewStrategy?) -> any BrightcovePlayerSDK.BCOVPlaybackController
+  @objc public func createBasicSessionProvider(withOptions options: BrightcovePlayerSDK.BCOVBasicSessionProviderOptions?) -> any BrightcovePlayerSDK.BCOVPlaybackSessionProvider
+  @objc public func registerComponent(_ component: any BrightcovePlayerSDK.BCOVComponent)
+  @objc deinit
+}
+@objc public protocol BCOVComponentIdentity : ObjectiveC.NSObjectProtocol {
+  @objc var componentClass: Swift.AnyClass { get }
+  @objc var versionIdentifier: Swift.String { get }
+}
+@objc public protocol BCOVComponent : ObjectiveC.NSObjectProtocol {
+  @objc var bcov_componentIdentity: any BrightcovePlayerSDK.BCOVComponentIdentity { get }
+  @objc optional func bcov_setComponentContext(_ componentContext: [Swift.AnyHashable : Any])
+}
+@objc public protocol BCOVPlaylistProtocol : ObjectiveC.NSObjectProtocol {
+  @objc var videos: [BrightcovePlayerSDK.BCOVVideo] { get }
+  @objc var properties: [Swift.AnyHashable : Any] { get }
+  @objc var allPlayableVideos: [BrightcovePlayerSDK.BCOVVideo] { get }
+  @objc var allFailedVideos: [BrightcovePlayerSDK.BCOVVideo] { get }
+  @objc func update(_ updateBlock: (BrightcovePlayerSDK.BCOVMutablePlaylist) -> Swift.Void) -> BrightcovePlayerSDK.BCOVPlaylist
+  @objc static func allPlayableVideos(from videos: [BrightcovePlayerSDK.BCOVVideo]) -> [BrightcovePlayerSDK.BCOVVideo]
+  @objc static func allFailedVideos(from videos: [BrightcovePlayerSDK.BCOVVideo]) -> [BrightcovePlayerSDK.BCOVVideo]
+}
+@_inheritsConvenienceInitializers @objc public class BCOVPlaylist : ObjectiveC.NSObject, BrightcovePlayerSDK.BCOVPlaylistProtocol, Foundation.NSCopying, Foundation.NSMutableCopying {
+  @objc public static let PropertiesKeyAccountId: Swift.String
+  @objc public static let PropertiesKeyDescription: Swift.String
+  @objc public static let PropertiesKeyId: Swift.String
+  @objc public static let PropertiesKeyName: Swift.String
+  @objc public static let PropertiesKeyReferenceId: Swift.String
+  @objc public static let PropertiesKeyType: Swift.String
+  @objc public var videos: [BrightcovePlayerSDK.BCOVVideo] {
+    @objc get
+  }
+  @objc public var properties: [Swift.AnyHashable : Any] {
+    @objc get
+  }
+  @objc public var allPlayableVideos: [BrightcovePlayerSDK.BCOVVideo] {
+    @objc get
+  }
+  @objc public var allFailedVideos: [BrightcovePlayerSDK.BCOVVideo] {
+    @objc get
+  }
+  @available(*, unavailable)
+  @objc override dynamic public init()
+  @objc public init(withVideos videos: [BrightcovePlayerSDK.BCOVVideo], properties: [Swift.AnyHashable : Any]?)
+  @objc convenience public init(withVideos videos: [BrightcovePlayerSDK.BCOVVideo])
+  @objc convenience public init(withVideo video: BrightcovePlayerSDK.BCOVVideo, properties: [Swift.AnyHashable : Any])
+  @objc convenience public init(withVideo video: BrightcovePlayerSDK.BCOVVideo)
+  @objc public func object(atIndexedSubscript index: Swift.Int) -> BrightcovePlayerSDK.BCOVVideo?
+  @objc public func isEqual(toPlaylist playlist: BrightcovePlayerSDK.BCOVPlaylist) -> Swift.Bool
+  @objc public var count: Swift.Int {
+    @objc get
+  }
+  @objc public class func allPlayableVideos(from videos: [BrightcovePlayerSDK.BCOVVideo]) -> [BrightcovePlayerSDK.BCOVVideo]
+  @objc public class func allFailedVideos(from videos: [BrightcovePlayerSDK.BCOVVideo]) -> [BrightcovePlayerSDK.BCOVVideo]
+  @objc public func update(_ updateBlock: (BrightcovePlayerSDK.BCOVMutablePlaylist) -> Swift.Void) -> BrightcovePlayerSDK.BCOVPlaylist
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public var hash: Swift.Int {
+    @objc get
+  }
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc public func mutableCopy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class BCOVMutablePlaylist : BrightcovePlayerSDK.BCOVPlaylist {
+  @objc override public var videos: [BrightcovePlayerSDK.BCOVVideo] {
+    @objc get
+    @objc set
+  }
+  @objc override public var properties: [Swift.AnyHashable : Any] {
+    @objc get
+    @objc set
+  }
+  @objc override public init(withVideos videos: [BrightcovePlayerSDK.BCOVVideo], properties: [Swift.AnyHashable : Any]?)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class BCOVVideoErrorCode : ObjectiveC.NSObject {
+  @objc public static let BadRequest: Swift.String
+  @objc public static let DuplicateParameters: Swift.String
+  @objc public static let AccessDenied: Swift.String
+  @objc public static let TokenRequired: Swift.String
+  @objc public static let TokenValidation: Swift.String
+  @objc public static let Forbidden: Swift.String
+  @objc public static let AccountID: Swift.String
+  @objc public static let ClientGeo: Swift.String
+  @objc public static let ClientIP: Swift.String
+  @objc public static let Domain: Swift.String
+  @objc public static let Offers: Swift.String
+  @objc public static let Tags: Swift.String
+  @objc public static let VideoNotPlayable: Swift.String
+  @objc public static let NotFound: Swift.String
+  @objc public static let VideoNotFound: Swift.String
+  @objc public static let PlaylistNotFound: Swift.String
+  @objc public static let MethodNotAllowed: Swift.String
+  @objc public static let ServerError: Swift.String
+  @objc public static let AccountRetrieveFailure: Swift.String
+  @objc public static let VideoRetieveFailure: Swift.String
+  @objc public static let VideoUrlsRetrieveFailure: Swift.String
+  @objc public static let PlaylistRetrieveFailure: Swift.String
+  @objc public static let PlaybackRightRetrieveFailure: Swift.String
+  @objc public static let PlaylistVideosRetrieveFailure: Swift.String
+  @objc public static let LicenseRetreiveFailure: Swift.String
+  @objc public static let OffersRetreiveFailure: Swift.String
+  @objc public static let RightsRetrieveFailure: Swift.String
+  @objc public static let ServiceUnavailable: Swift.String
+  @objc public static let ServerTimeout: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor @preconcurrency public class BCOVUILabel : UIKit.UILabel {
+  @objc @_Concurrency.MainActor @preconcurrency public var accessibilityLabelPrefix: Swift.String?
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var accessibilityLabel: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class BCOVSSConstants : ObjectiveC.NSObject {
+  @objc public static let VideoPropertiesKeyTextTracks: Swift.String
+  @objc public static let TextTracksKeySource: Swift.String
+  @objc public static let TextTracksKeySourceLanguage: Swift.String
+  @objc public static let TextTracksKeyLabel: Swift.String
+  @objc public static let TextTracksKeyDuration: Swift.String
+  @objc public static let TextTracksKeyDefault: Swift.String
+  @objc public static let TextTracksKeyMIMEType: Swift.String
+  @objc public static let TextTracksKeyKind: Swift.String
+  @objc public static let TextTracksKindSubtitles: Swift.String
+  @objc public static let TextTracksKindCaptions: Swift.String
+  @objc public static let TextTracksKeySourceType: Swift.String
+  @objc public static let TextTracksKeySourceTypeWebVTTURL: Swift.String
+  @objc public static let TextTracksKeySourceTypeM3U8URL: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension BrightcovePlayerSDK.BCOVPlayerSDKManager {
+  @objc dynamic public func createSidecarSubtitlesPlaybackController(withViewStrategy viewStrategy: BrightcovePlayerSDK.BCOVPlaybackControllerViewStrategy?) -> any BrightcovePlayerSDK.BCOVPlaybackController
+  @objc dynamic public func createSidecarSubtitlesSessionProvider(withUpstreamSessionProvider provider: (any BrightcovePlayerSDK.BCOVPlaybackSessionProvider)?) -> any BrightcovePlayerSDK.BCOVPlaybackSessionProvider
+}
+@objc public enum BCOVFPSAuthProxyErrorCode : Swift.Int {
+  case ApplicationCertificateRequestFailed = 69401
+  case ContentKeyRequestFailed = 69402
+  case ContentKeyGenerationFailed = 69403
+  case NoKeyRequestURLForRendition = 69404
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class BCOVFPSBrightcoveAuthProxy : ObjectiveC.NSObject, BrightcovePlayerSDK.BCOVFPSAuthorizationProxy {
+  @objc public static let ErrorDomain: Swift.String
+  @objc public static let ResponseData: Swift.String
+  @objc public var fpsBaseURL: Foundation.URL? {
+    @objc get
+    @objc set
+  }
+  @objc public var keyRequestURL: Foundation.URL?
+  @objc public var sharedURLSession: Foundation.URLSession? {
+    @objc get
+    @objc set
+  }
+  @objc public init(withPublisherId pubId: Swift.String?, applicationId appId: Swift.String?)
+  @objc public func retrieveApplicationCertificate(_ completionHandler: @escaping (_ applicationCetificate: Foundation.Data?, _ error: Foundation.NSError?) -> Swift.Void)
+  @objc deinit
+}
+extension BrightcovePlayerSDK.BCOVFPSBrightcoveAuthProxy {
+  @objc dynamic public func contentIdentifier(fromLoadingRequest loadingRequest: AVFoundation.AVAssetResourceLoadingRequest) -> Foundation.Data?
+  @objc dynamic public func contentIdentifier(fromKeyRequest keyRequest: AVFoundation.AVContentKeyRequest?) -> Foundation.Data?
+  @objc dynamic public func encryptedContentKey(forContentKeyIdentifier contentKeyIdentifier: Swift.String, contentKeyRequest keyRequest: Foundation.Data, source: BrightcovePlayerSDK.BCOVSource?, options: [Swift.AnyHashable : Any]? = nil, completionHandler: @escaping (Foundation.URLResponse?, Foundation.Data?, Foundation.Date?, (any Swift.Error)?) -> Swift.Void)
+}
+extension BrightcovePlayerSDK.BCOVPlayerSDKManager {
+  @objc dynamic public func createFairPlayPlaybackController(withAuthorizationProxy proxy: any BrightcovePlayerSDK.BCOVFPSAuthorizationProxy) -> any BrightcovePlayerSDK.BCOVPlaybackController
+  @objc dynamic public func createFairPlaySessionProvider(withAuthorizationProxy proxy: any BrightcovePlayerSDK.BCOVFPSAuthorizationProxy, upstreamSessionProvider provider: (any BrightcovePlayerSDK.BCOVPlaybackSessionProvider)?) -> any BrightcovePlayerSDK.BCOVPlaybackSessionProvider
+  @objc dynamic public func createFairPlayPlaybackController(withApplicationCertificate appCert: Foundation.Data?, authorizationProxy proxy: any BrightcovePlayerSDK.BCOVFPSAuthorizationProxy, viewStrategy: BrightcovePlayerSDK.BCOVPlaybackControllerViewStrategy?) -> any BrightcovePlayerSDK.BCOVPlaybackController
+  @objc dynamic public func createFairPlaySessionProvider(withApplicationCertificate appCert: Foundation.Data?, authorizationProxy proxy: any BrightcovePlayerSDK.BCOVFPSAuthorizationProxy, upstreamSessionProvider provider: (any BrightcovePlayerSDK.BCOVPlaybackSessionProvider)?) -> any BrightcovePlayerSDK.BCOVPlaybackSessionProvider
+}
+extension BrightcovePlayerSDK.BCOVPlaybackServiceErrorCode : Swift.Equatable {}
+extension BrightcovePlayerSDK.BCOVPlaybackServiceErrorCode : Swift.Hashable {}
+extension BrightcovePlayerSDK.BCOVPlaybackServiceErrorCode : Swift.RawRepresentable {}
+extension BrightcovePlayerSDK.BCOVFPSErrorCode : Swift.Equatable {}
+extension BrightcovePlayerSDK.BCOVFPSErrorCode : Swift.Hashable {}
+extension BrightcovePlayerSDK.BCOVFPSErrorCode : Swift.RawRepresentable {}
+extension BrightcovePlayerSDK.BCOVEconomics : Swift.Equatable {}
+extension BrightcovePlayerSDK.BCOVEconomics : Swift.Hashable {}
+extension BrightcovePlayerSDK.BCOVEconomics : Swift.RawRepresentable {}
+extension BrightcovePlayerSDK.BCOVFPSAuthProxyErrorCode : Swift.Equatable {}
+extension BrightcovePlayerSDK.BCOVFPSAuthProxyErrorCode : Swift.Hashable {}
+extension BrightcovePlayerSDK.BCOVFPSAuthProxyErrorCode : Swift.RawRepresentable {}
