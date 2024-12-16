@@ -219,6 +219,11 @@ extern NSString * const kBCOVPlaybackSessionLifecycleEventAdResume;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventAdSkipped;
 
 /**
+ * Sent when the content video will be paused to play back an ad.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventWillPauseForAd;
+
+/**
  * The thumbnail seeking asset failed to load. The event properties may contain the underlying
  * error keyed by kBCOVPlaybackSessionEventKeyError.
  */

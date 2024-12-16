@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class BCOVInteractivityProject;
+@class BCOVInteractivityProject, BCOVInteractivityAnnotation;
 
 @protocol BCOVInteractivityHandlerDelegate <NSObject>
 

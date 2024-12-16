@@ -1,3 +1,30 @@
+## Release 7.0.1
+
+#### 16 Dec 2024
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes a crash in BCOVTVPlayerView related to invalid CGRect values.
+* Fixes an issue in BCOVTVPlayerView wherethe thumbnail preview would briefly show when resuming playback during scrubbing.
+* On tvOS the BCOVTVPlayerView UI will no longer display a thumbnail preview by default when playback is paused using the Play/Pause button on the remote. You can enable the new `displayThumbnailOnPause` property on `BCOVTVPlayerViewOptions` to restore this behavior.
+* Fixes an issue in BCOVUIPlayerView that would cause the thumbnail preview to fade out while seeking.
+
+#### Breaking Changes
+
+* The `BCOVFairPlayManager` method `preloadContentKeys(for:)` has been change to `preloadContentKeys(forVideos:)`
+* The format for `BCOVAd` constants has changed. For example `kBCOVAdPropertyKeySkippable` is now `BCOVAd.PropertyKeySkippable`.
+* The `BCOVPlaybackControllerAdsDelegate` method for entering an ad sequence is now `playbackController(controller:playbackSession:didEnterAdSequence:)`
+* The `BCOVPlaybackControllerAdsDelegate` method for entering an ad is now `playbackController(controller:playbackSession:didEnterAd:)`
+* The `BCOVPlaybackControllerAdsDelegate` method for pausing an ad is now `playbackController(controller:playbackSession:didPauseAd:)`
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* The kBCOVCAFReceiverApplicationID constant has been changed to `C179578D` in order to target the v3 Brighcove CAF Receiver.
+
 ## Release 7.0.0
 
 #### 13 Nov 2024

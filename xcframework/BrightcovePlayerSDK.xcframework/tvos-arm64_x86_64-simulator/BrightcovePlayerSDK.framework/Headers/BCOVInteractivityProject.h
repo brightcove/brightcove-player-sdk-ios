@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <BrightcovePlayerSDK/BCOVInteractivityAnnotation.h>
 #import <BrightcovePlayerSDK/BCOVInteractivityHandler.h>
+
+@class BCOVInteractivityAnnotation;
 
 NS_ASSUME_NONNULL_BEGIN
 

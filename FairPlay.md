@@ -1,4 +1,4 @@
-# Using FairPlay With The Brightcove Player SDK for iOS, version 7.0.0.9
+# Using FairPlay With The Brightcove Player SDK for iOS, version 7.0.1.10
 
 ## Quick Start
 
@@ -176,7 +176,7 @@ playbackService.findVideo(withConfiguration: configuration,
         // until, at least, `setVideos()` has been called on your `BCOVPlaybackController`
         // which does retain the array.
         self.video = video
-        BCOVFairPlayManager.preloadContentKeys(for: [video])
+        BCOVFairPlayManager.preloadContentKeys(forVideos: [video])
     }
 }
 ```

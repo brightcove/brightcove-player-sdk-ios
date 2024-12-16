@@ -1,4 +1,4 @@
-# Using the TV Player UI With The Brightcove Player SDK for tvOS, version 7.0.0.9
+# Using the TV Player UI With The Brightcove Player SDK for tvOS, version 7.0.1.10
 
 ## Overview
 

@@ -10,7 +10,6 @@
 #import <CoreMedia/CoreMedia.h>
 #import <UIKit/UIKit.h>
 
-#import <BrightcovePlayerSDK/BCOVAdvertising.h>
 #import <BrightcovePlayerSDK/BCOVOfflineVideoManagerTypes.h>
 #import <BrightcovePlayerSDK/BCOVOfflineVideoManagerConstants.h>
 #import <BrightcovePlayerSDK/BCOVOfflineVideoManagerDelegate.h>

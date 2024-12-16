@@ -280,7 +280,9 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import AVFoundation;
 @import CoreFoundation;
+@import CoreMedia;
 @import Foundation;
 @import ObjectiveC;
 @import UIKit;
@@ -307,6 +309,99 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
+@class NSString;
+
+/// This object represents an ad.
+SWIFT_CLASS("_TtC19BrightcovePlayerSDK6BCOVAd")
+@interface BCOVAd : NSObject
+/// Is this ad skippable. Boolean NSNumber.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull PropertyKeySkippable;)
++ (NSString * _Nonnull)PropertyKeySkippable SWIFT_WARN_UNUSED_RESULT;
+/// Skip time. NSNumber seconds after which you can skip the ad.
+/// Ignored unless kBCOVAdPropertyKeySkippable is “YES”.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull PropertyKeySkipTime;)
++ (NSString * _Nonnull)PropertyKeySkipTime SWIFT_WARN_UNUSED_RESULT;
+/// Array of NSStrings representing Clickthrough URLs
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull PropertyKeyClickthroughURLs;)
++ (NSString * _Nonnull)PropertyKeyClickthroughURLs SWIFT_WARN_UNUSED_RESULT;
+/// Array of NSStrings representing Tracking URLs
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull PropertyKeyTrackingURLs;)
++ (NSString * _Nonnull)PropertyKeyTrackingURLs SWIFT_WARN_UNUSED_RESULT;
+/// The title of the ad.
+@property (nonatomic, readonly, copy) NSString * _Nonnull title;
+/// The id of the ad.
+@property (nonatomic, readonly, copy) NSString * _Nonnull adId;
+/// The begin time of the ad.
+@property (nonatomic, readonly) CMTime beginTime;
+/// The duration of the ad.
+@property (nonatomic, readonly) CMTime duration;
+/// The properties of the ad.
+@property (nonatomic, readonly, copy) NSDictionary * _Nonnull properties;
+/// This is the designated initializer. It creates an ad.
+/// \param title The title of the ad.
+///
+/// \param adId The id of the ad.
+///
+/// \param beginTime The time in the video in which the ad will play.
+///
+/// \param duration The duration of the ad.
+///
+/// \param properties The properties of the ad.
+///
+///
+/// returns:
+/// An initialized ad.
+- (nonnull instancetype)initWithTitle:(NSString * _Nonnull)title adId:(NSString * _Nonnull)adId beginTime:(CMTime)beginTime duration:(CMTime)duration properties:(NSDictionary * _Nonnull)properties OBJC_DESIGNATED_INITIALIZER;
+/// Returns true if <code>ad</code> is equivalent to this instance.
+/// \param ad The ad to test for equivalence with this instance.
+///
+///
+/// returns:
+/// Whether <code>ad</code> is equivalent to this instance.
+- (BOOL)isEqualToAd:(BCOVAd * _Nonnull)ad SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
+@property (nonatomic, readonly) NSUInteger hash;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// This object represents a sequence of ads intended to be viewed in sequence,
+/// at the same point in the video.
+SWIFT_CLASS("_TtC19BrightcovePlayerSDK14BCOVAdSequence")
+@interface BCOVAdSequence : NSObject
+/// The begin time of the sequence.
+@property (nonatomic, readonly) CMTime beginTime;
+/// The duration of the sequence.
+@property (nonatomic, readonly) CMTime duration;
+/// /The ads that make up the sequence.
+@property (nonatomic, readonly, copy) NSArray<BCOVAd *> * _Nonnull ads;
+/// The properties of the sequence.
+@property (nonatomic, readonly, copy) NSDictionary * _Nonnull properties;
+/// This is the designated initializer. It creates an ad sequence.
+/// \param ads The ads that make up the sequence.
+///
+/// \param properties The properties of the ad sequence.
+///
+///
+/// returns:
+/// An initialized ad sequence.
+- (nonnull instancetype)initWithAds:(NSArray<BCOVAd *> * _Nonnull)ads properties:(NSDictionary * _Nonnull)properties OBJC_DESIGNATED_INITIALIZER;
+/// Returns true  if <code>adSequence</code> is equivalent to this instance.
+/// \param adSequence The ad sequence to test for equivalence with this instance.
+///
+///
+/// returns:
+/// Whether <code>adSequence</code> is equivalent to this instance.
+- (BOOL)isEqualToAdSequence:(BCOVAdSequence * _Nonnull)adSequence SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
+@property (nonatomic, readonly) NSUInteger hash;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 @class BCOVBasicSessionProviderOptions;
 
 /// The basic playback session provider provides core functionality to yield
@@ -337,7 +432,6 @@ SWIFT_CLASS("_TtC19BrightcovePlayerSDK31BCOVBasicSessionProviderOptions")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class NSString;
 
 /// The basic source selection policy decides which source to select from a BCOVVideo object.
 SWIFT_CLASS("_TtC19BrightcovePlayerSDK30BCOVBasicSourceSelectionPolicy")
@@ -485,7 +579,7 @@ SWIFT_PROTOCOL("_TtP19BrightcovePlayerSDK25BCOVFPSAuthorizationProxy_")
 ///
 /// \param completionHandler The completion handler to return the content key. If returning an error, you must leave the contentkey and response parameters nil.
 ///
-- (void)encryptedContentKeyForContentKeyIdentifier:(NSString * _Nonnull)contentKeyIdentifier contentKeyRequest:(NSData * _Nonnull)keyRequest source:(BCOVSource * _Nonnull)source options:(NSDictionary * _Nullable)options completionHandler:(void (^ _Nonnull)(NSURLResponse * _Nullable, NSData * _Nullable, NSDate * _Nullable, NSError * _Nullable))completionHandler;
+- (void)encryptedContentKeyForContentKeyIdentifier:(NSString * _Nonnull)contentKeyIdentifier contentKeyRequest:(NSData * _Nullable)keyRequest source:(BCOVSource * _Nullable)source options:(NSDictionary * _Nullable)options completionHandler:(void (^ _Nonnull)(NSURLResponse * _Nullable, NSData * _Nullable, NSDate * _Nullable, NSError * _Nullable))completionHandler;
 @end
 
 @class NSURL;
@@ -538,7 +632,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @interface BCOVFPSBrightcoveAuthProxy (SWIFT_EXTENSION(BrightcovePlayerSDK))
 - (NSData * _Nullable)contentIdentifierFromLoadingRequest:(AVAssetResourceLoadingRequest * _Nonnull)loadingRequest SWIFT_WARN_UNUSED_RESULT;
 - (NSData * _Nullable)contentIdentifierFromKeyRequest:(AVContentKeyRequest * _Nullable)keyRequest SWIFT_WARN_UNUSED_RESULT;
-- (void)encryptedContentKeyForContentKeyIdentifier:(NSString * _Nonnull)contentKeyIdentifier contentKeyRequest:(NSData * _Nonnull)keyRequest source:(BCOVSource * _Nullable)source options:(NSDictionary * _Nullable)options completionHandler:(void (^ _Nonnull)(NSURLResponse * _Nullable, NSData * _Nullable, NSDate * _Nullable, NSError * _Nullable))completionHandler;
+- (void)encryptedContentKeyForContentKeyIdentifier:(NSString * _Nonnull)contentKeyIdentifier contentKeyRequest:(NSData * _Nullable)keyRequest source:(BCOVSource * _Nullable)source options:(NSDictionary * _Nullable)options completionHandler:(void (^ _Nonnull)(NSURLResponse * _Nullable, NSData * _Nullable, NSDate * _Nullable, NSError * _Nullable))completionHandler;
 @end
 
 
@@ -556,6 +650,41 @@ typedef SWIFT_ENUM(NSInteger, BCOVFPSErrorCode, closed) {
 /// Error occured requesting application certificate.
   BCOVFPSErrorCodeApplicationCertificateRequest = 69404,
 };
+
+
+SWIFT_CLASS("_TtC19BrightcovePlayerSDK19BCOVFairPlayManager")
+@interface BCOVFairPlayManager : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull ErrorDomain;)
++ (NSString * _Nonnull)ErrorDomain SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// Attempts to preload content keys for FairPlay protected videos. Typically
+/// a content key for a FairPlay protected video is processed when the video
+/// begins playback. By preloading the content key you can improve the playback
+/// startup experience for your users.
+/// This is only applicable to online videos and will not have any effect on offline videos.
+/// \param videos The source of BCOVVideo objects for which content keys
+/// will be processed.
+///
++ (void)preloadContentKeysForVideos:(NSArray<BCOVVideo *> * _Nonnull)videos;
+@end
+
+
+
+SWIFT_CLASS("_TtC19BrightcovePlayerSDK31BCOVFairPlayOnlineLicenseHelper")
+@interface BCOVFairPlayOnlineLicenseHelper : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class AVContentKeySession;
+
+@interface BCOVFairPlayOnlineLicenseHelper (SWIFT_EXTENSION(BrightcovePlayerSDK)) <AVContentKeySessionDelegate>
+- (void)contentKeySession:(AVContentKeySession * _Nonnull)session didProvideContentKeyRequest:(AVContentKeyRequest * _Nonnull)keyRequest;
+- (void)contentKeySession:(AVContentKeySession * _Nonnull)session didProvideRenewingContentKeyRequest:(AVContentKeyRequest * _Nonnull)keyRequest;
+- (BOOL)contentKeySession:(AVContentKeySession * _Nonnull)session shouldRetryContentKeyRequest:(AVContentKeyRequest * _Nonnull)keyRequest reason:(AVContentKeyRequestRetryReason _Nonnull)retryReason SWIFT_WARN_UNUSED_RESULT;
+- (void)contentKeySession:(AVContentKeySession * _Nonnull)session contentKeyRequest:(AVContentKeyRequest * _Nonnull)keyRequest didFailWithError:(NSError * _Nonnull)err;
+@end
 
 
 /// The Global Configuration contains properties which are utilized throughout
@@ -585,7 +714,39 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) BCOVGlobalCo
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class BCOVInteractivityAnnotation;
+@class UIView;
+
+SWIFT_CLASS("_TtC19BrightcovePlayerSDK27BCOVInteractivityAnnotation")
+@interface BCOVInteractivityAnnotation : NSObject
+@property (nonatomic, strong) UIView * _Nullable annotationView;
+@property (nonatomic) BCOVInteractivityAnnotationType type;
+@property (nonatomic) BCOVInteractivityAnnotationState state;
+@property (nonatomic) BCOVInteractivityAnnotationTransition transition;
+/// Properties from API
+@property (nonatomic, copy) NSString * _Nullable annotationId;
+@property (nonatomic) NSTimeInterval startTime;
+@property (nonatomic) NSTimeInterval duration;
+@property (nonatomic, copy) NSString * _Nullable rawType;
+@property (nonatomic, copy) NSString * _Nullable text;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable left;
+@property (nonatomic, copy) NSString * _Nullable top;
+@property (nonatomic, copy) NSString * _Nullable width;
+@property (nonatomic, copy) NSString * _Nullable height;
+@property (nonatomic, copy) NSString * _Nullable url;
+@property (nonatomic, copy) NSString * _Nullable precondition;
+@property (nonatomic, copy) NSString * _Nullable command;
+@property (nonatomic, copy) NSString * _Nullable mode;
+@property (nonatomic, copy) NSDictionary * _Nullable commandData;
+@property (nonatomic, copy) NSDictionary * _Nullable onClick;
+@property (nonatomic, copy) NSString * _Nullable gotoTrack;
+@property (nonatomic, copy) NSString * _Nullable backgroundColor;
++ (NSArray<BCOVInteractivityAnnotation *> * _Nonnull)annotationsFromJSONArray:(NSArray<NSDictionary *> * _Nonnull)jsonArray SWIFT_WARN_UNUSED_RESULT;
++ (BCOVInteractivityAnnotation * _Nonnull)initWithJSON:(NSDictionary * _Nonnull)json SWIFT_METHOD_FAMILY(none) SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, readonly) NSUInteger hash;
+@end
+
 @class UIImageView;
 @class UILabel;
 @class NSCoder;
@@ -600,6 +761,49 @@ SWIFT_CLASS("_TtC19BrightcovePlayerSDK24BCOVInteractivityControl")
 @property (nonatomic, strong) UILabel * _Nullable textLabel;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// When these properties are modified, the changes will take effect on the next
+/// delivered session. To apply these properties to all sessions, modify them before
+/// the call to -[BCOVPlaybackController setVideos:].
+SWIFT_PROTOCOL("_TtP19BrightcovePlayerSDK20BCOVMutableAnalytics_")
+@protocol BCOVMutableAnalytics <NSObject>
+/// When these properties are modified, the changes will take effect on the next
+/// delivered session. To apply these properties to all sessions, modify them before
+/// the call to -[BCOVPlaybackController setVideos:].
+@property (nonatomic, copy) NSString * _Nullable account;
+/// This property must be a URI with a valid structure and must contain
+/// an authority.
+/// The default value for this property, if it is not overridden, will be
+/// “bcsdk://” followed by the bundle identifier.
+/// Refer to http://en.wikipedia.org/wiki/URI_scheme#Generic_syntax
+/// for more information on and examples of URI syntax.
+/// In particular, a destination without a hierarchical part (e.g. just a scheme)
+/// is considered invalid, as is any value without a scheme.
+@property (nonatomic, copy) NSString * _Nullable destination;
+/// This property must be a URI with a valid structure and must contain an
+/// authority.
+/// The default value is nil.
+/// Refer to http://en.wikipedia.org/wiki/URI_scheme#Generic_syntax
+/// for more information on and examples of URI syntax.
+/// In particular, a source without a hierarchical part (e.g. just a scheme)
+/// is considered invalid, as is any value without a scheme.
+@property (nonatomic, copy) NSString * _Nullable source;
+/// This property toggles client side unique identifier generation. If enabled,
+/// the sdk will identify uniques using the device’s vendor identifier. If
+/// disabled, the sdk will provide no uniques value and analytics will rely on
+/// server-side driven heuristics to determine uniques.
+/// The default value is <code>true</code>.
+@property (nonatomic) BOOL uniqueIdentifierEnabled;
+/// The authentication token used for analytics authorization.
+@property (nonatomic, copy) NSString * _Nullable authToken;
+/// The application ID used for analytics.
+@property (nonatomic, copy) NSString * _Nullable applicationId;
+/// The player ID used for analytics.
+@property (nonatomic, copy) NSString * _Nullable player;
+/// The player name used for analytics.
+@property (nonatomic, copy) NSString * _Nullable playerName;
 @end
 
 @class BCOVMutablePlaylist;
@@ -1148,6 +1352,86 @@ SWIFT_CLASS("_TtC19BrightcovePlayerSDK16BCOVMutableVideo")
 - (nonnull instancetype)initWithErrorCode:(NSString * _Nullable)errorCode errorSubCode:(NSString * _Nullable)errorSubCode errorMessage:(NSString * _Nullable)errorMessage properties:(NSDictionary * _Nullable)properties OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@protocol BCOVPlaybackController;
+@protocol BCOVPlaybackSession;
+
+/// Conform to this protocol to receive basic ad information for each session.
+SWIFT_PROTOCOL("_TtP19BrightcovePlayerSDK33BCOVPlaybackControllerAdsDelegate_")
+@protocol BCOVPlaybackControllerAdsDelegate <NSObject>
+@optional
+/// Called when playback enters a new ad sequence within a playback session.
+/// \param controller The playback controller in which this transition occurred.
+///
+/// \param session The playback session within which the ad transition occurred.
+///
+/// \param adSequence The ad sequence being entered.
+///
+- (void)playbackController:(id <BCOVPlaybackController> _Nonnull)controller playbackSession:(id <BCOVPlaybackSession> _Nonnull)session didEnterAdSequence:(BCOVAdSequence * _Nonnull)adSequence;
+/// Called when playback exits an ad sequence within a playback session.
+/// \param controller The playback controller in which this transition occurred.
+///
+/// \param session The playback session within which the ad transition occurred.
+///
+/// \param adSequence The ad sequence being exited.
+///
+- (void)playbackController:(id <BCOVPlaybackController> _Nonnull)controller playbackSession:(id <BCOVPlaybackSession> _Nonnull)session didExitAdSequence:(BCOVAdSequence * _Nonnull)adSequence;
+/// Called when playback enters a new ad within a playback session.
+/// \param controller The playback controller in which this transition occurred.
+///
+/// \param session The playback session within which the ad transition occurred.
+///
+/// \param ad The ad being entered.
+///
+- (void)playbackController:(id <BCOVPlaybackController> _Nonnull)controller playbackSession:(id <BCOVPlaybackSession> _Nonnull)session didEnterAd:(BCOVAd * _Nonnull)ad;
+/// Called when playback exits an ad within a playback session.
+/// \param controller The playback controller in which this transition occurred.
+///
+/// \param session The playback session within which the ad transition occurred.
+///
+/// \param ad The ad being exited.
+///
+- (void)playbackController:(id <BCOVPlaybackController> _Nonnull)controller playbackSession:(id <BCOVPlaybackSession> _Nonnull)session didExitAd:(BCOVAd * _Nonnull)ad;
+/// Called with the playback session’s ad playback progress.
+/// \param controller The playback controller in which an ad is progressing.
+///
+/// \param session The playback session within which the ad transition occurred.
+///
+/// \param ad The ad that is progressing.
+///
+/// \param progress The progress time of the ad.
+///
+- (void)playbackController:(id <BCOVPlaybackController> _Nonnull)controller playbackSession:(id <BCOVPlaybackSession> _Nonnull)session ad:(BCOVAd * _Nonnull)ad didProgressTo:(NSTimeInterval)progress;
+/// Called when an ad paused.
+/// \param controller The playback controller in which this transition occurred.
+///
+/// \param session The playback session within which the ad transition occurred.
+///
+/// \param ad The ad being paused.
+///
+- (void)playbackController:(id <BCOVPlaybackController> _Nonnull)controller playbackSession:(id <BCOVPlaybackSession> _Nonnull)session didPauseAd:(BCOVAd * _Nonnull)ad;
+/// Called when an ad resumed.
+/// – Parameters:
+/// <ul>
+///   <li>
+///     controller The playback controller in which this transition occurred.
+///   </li>
+///   <li>
+///     session The playback session within which the ad transition occurred.
+///   </li>
+///   <li>
+///     ad The ad being resumed.
+///   </li>
+/// </ul>
+- (void)playbackController:(id <BCOVPlaybackController> _Nonnull)controller playbackSession:(id <BCOVPlaybackSession> _Nonnull)session didResumeAd:(BCOVAd * _Nonnull)ad;
+@end
+
+
+/// Conform to this protocol to receive basic playback information for each video in
+/// addition to advertising.
+SWIFT_PROTOCOL("_TtP19BrightcovePlayerSDK30BCOVPlaybackControllerDelegate_")
+@protocol BCOVPlaybackControllerDelegate <BCOVPlaybackControllerAdsDelegate, BCOVPlaybackControllerBasicDelegate, BCOVPlaybackControllerBumperDelegate>
+@end
+
 @class BCOVPlaybackServiceRequestFactory;
 @class BCOVCuePoint;
 
@@ -1518,7 +1802,79 @@ SWIFT_CLASS("_TtC19BrightcovePlayerSDK33BCOVPlaybackServiceRequestFactory")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@protocol BCOVPlaybackController;
+
+/// Conform to this protocol to receive basic ad information for each session.
+SWIFT_PROTOCOL("_TtP19BrightcovePlayerSDK30BCOVPlaybackSessionAdsConsumer_")
+@protocol BCOVPlaybackSessionAdsConsumer <NSObject>
+@optional
+/// Called when playback enters a new ad sequence within a playback session.
+/// \param session The playback session within which the ad transition occurred.
+///
+/// \param adSequence The ad sequence being entered.
+///
+- (void)playbackSession:(id <BCOVPlaybackSession> _Nonnull)session didEnterAdSequence:(BCOVAdSequence * _Nonnull)adSequence;
+/// Called when playback exits an ad sequence within a playback session.
+/// \param session The playback session within which the ad transition occurred.
+///
+/// \param adSequence The ad sequence being exited.
+///
+- (void)playbackSession:(id <BCOVPlaybackSession> _Nonnull)session didExitAdSequence:(BCOVAdSequence * _Nonnull)adSequence;
+/// Called when playback exists an ad within a playback session.
+/// \param session The playback session within which the ad transition occurred.
+///
+/// \param ad The ad being entered.
+///
+- (void)playbackSession:(id <BCOVPlaybackSession> _Nonnull)session didEnterAd:(BCOVAd * _Nonnull)ad;
+/// Called when playback enters a new ad within a playback session.
+/// \param session The playback session within which the ad transition occurred.
+///
+/// \param ad The ad being exited.
+///
+- (void)playbackSession:(id <BCOVPlaybackSession> _Nonnull)session didExitAd:(BCOVAd * _Nonnull)ad;
+/// Called with the playback session’s ad playback progress.
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     session The playback session within which the ad transition occurred.
+///   </li>
+///   <li>
+///     ad The ad that is progressing.
+///   </li>
+///   <li>
+///     progress The progress time of the ad.
+///   </li>
+/// </ul>
+- (void)playbackSession:(id <BCOVPlaybackSession> _Nonnull)session ad:(BCOVAd * _Nonnull)ad didProgressTo:(NSTimeInterval)progress;
+/// Called when an ad paused.
+/// \param session The playback session within which the ad transition occurred.
+///
+/// \param ad The ad being paused.
+///
+- (void)playbackSession:(id <BCOVPlaybackSession> _Nonnull)session didPauseAd:(BCOVAd * _Nonnull)ad;
+/// Called when an ad resumed.
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     session The playback session within which the ad transition occurred.
+///   </li>
+///   <li>
+///     ad The ad being resumed.
+///   </li>
+/// </ul>
+- (void)playbackSession:(id <BCOVPlaybackSession> _Nonnull)session didResumeAd:(BCOVAd * _Nonnull)ad;
+@end
+
+
+/// Conform to this protocol to receive basic playback information for each video in
+/// addition to advertising.
+SWIFT_PROTOCOL("_TtP19BrightcovePlayerSDK27BCOVPlaybackSessionConsumer_")
+@protocol BCOVPlaybackSessionConsumer <BCOVPlaybackSessionAdsConsumer, BCOVPlaybackSessionBasicConsumer, BCOVPlaybackSessionBumperConsumer>
+@end
+
 
 /// The Player SDK Manager is a singleton instance that acts as a factory,
 /// central registry, and diagnostics center in the Brightcove Player SDK for

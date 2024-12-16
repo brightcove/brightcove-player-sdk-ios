@@ -327,6 +327,13 @@ typedef NS_ENUM(NSUInteger, BCOVTVIconType)
  */
 @property (nonatomic, assign) BOOL displayVideoName;
 
+/**
+ * When enabled a thumbnail preview of the current video frame
+ * will be displayed when the Play/Pause button on the Siri remote
+ * is used to pause the video.
+ */
+@property (nonatomic, assign) BOOL displayThumbnailOnPause;
+
 @end
 
 

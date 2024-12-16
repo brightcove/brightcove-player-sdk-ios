@@ -19,15 +19,9 @@
 #import <BrightcovePlayerSDK/BCOVPlaybackSession.h>
 #import <BrightcovePlayerSDK/BCOVPlaybackSessionProvider.h>
 
-// FairPlay
-#import <BrightcovePlayerSDK/BCOVFairPlayManager.h>
-
 // Values
 #import <BrightcovePlayerSDK/BCOVCuePoint.h>
 #import <BrightcovePlayerSDK/BCOVCuePointCollection.h>
-
-// Ads
-#import <BrightcovePlayerSDK/BCOVAdvertising.h>
 
 // Player UI
 #if !TARGET_OS_TV

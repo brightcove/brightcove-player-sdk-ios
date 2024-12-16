@@ -10,24 +10,8 @@
 #import <CoreMedia/CoreMedia.h>
 #import <UIKit/UIKit.h>
 
-#import <BrightcovePlayerSDK/BCOVAdvertising.h>
-
-@class BCOVPlaybackSessionLifecycleEvent;
-@class BCOVPlaylist;
-@class BCOVSource;
-@class BCOVVideo;
-@class AVPictureInPictureController;
-@class BCOVPlaybackService;
-
-@protocol BCOVMutableAnalytics;
-@protocol BCOVPlaybackController;
-@protocol BCOVPlaybackControllerBasicDelegate;
-@protocol BCOVPlaybackControllerBumperDelegate;
-@protocol BCOVPlaybackControllerDelegate;
-@protocol BCOVPlaybackSession;
-@protocol BCOVPlaybackSessionBasicConsumer;
-@protocol BCOVPlaybackSessionBumperConsumer;
-@protocol BCOVPlaybackSessionConsumer;
+@protocol BCOVPlaybackSession, BCOVPlaybackController, BCOVPlaybackSessionConsumer, BCOVMutableAnalytics, BCOVPlaybackControllerDelegate;
+@class BCOVVideo, BCOVPlaybackSessionLifecycleEvent, BCOVPlaybackService, AVPictureInPictureController;
 
 /**
  * Enumeration defining the valid values that may be set for the
@@ -256,7 +240,6 @@ extern NSString * const kBCOVDefaultFairPlayApplicationCertificateIdentifier;
  * @return The UIView which the playback controller should use as its `view`.
  */
 typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlaybackController> playbackController);
-
 
 /**
  * Protocol adopted by objects that provide playback functionality.
@@ -580,12 +563,12 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * no current session, this method has no effect. Once this method is called,
  * it will send the kBCOVPlaybackSessionLifecycleEventResumeBegin event to
  * indicate reinitializing has begun. If an error occurs anywhere
- * during the reinitialization, this method will send the 
+ * during the reinitialization, this method will send the
  * kBCOVPlaybackSessionLifecycleEventResumeFail event. If the reinitialization
  * succeeds, the kBCOVPlaybackSessionLifecycleEventResumeComplete will be
  * sent.
  *
- * Do not call this method a second time until you have received either 
+ * Do not call this method a second time until you have received either
  * kBCOVPlaybackSessionLifecycleEventResumeFail or kBCOVPlaybackSessionLifecycleEventResumeComplete
  * from the first call.
  *
@@ -660,16 +643,6 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
                                identifier:(NSString *)identifier;
 
 @end
-
-
-/**
- * Conform to this protocol to receive basic playback information for each video in
- * addition to advertising.
- */
-@protocol BCOVPlaybackSessionConsumer <BCOVPlaybackSessionBumperConsumer, BCOVPlaybackSessionBasicConsumer, BCOVPlaybackSessionAdsConsumer>
-
-@end
-
 
 @protocol BCOVPlaybackSessionBumperConsumer <NSObject>
 @optional
@@ -847,15 +820,6 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  */
 - (void)playbackSession:(id<BCOVPlaybackSession>)session determinedMediaType:(BCOVSourceMediaType)mediaType;
 
-
-@end
-
-
-/**
- * Conform to this protocol to receive basic playback information for each video in
- * addition to advertising.
- */
-@protocol BCOVPlaybackControllerDelegate <BCOVPlaybackControllerBumperDelegate, BCOVPlaybackControllerBasicDelegate, BCOVPlaybackControllerAdsDelegate>
 
 @end
 
@@ -1200,79 +1164,5 @@ typedef UIView *(^BCOVPlaybackControllerViewStrategy)(UIView *view, id<BCOVPlayb
  * @param mediaSelectionOption The AVMediaSelectionOption to return a title for.
  */
 - (NSString *)titleForAudibleMediaSelectionOption:(AVMediaSelectionOption *)mediaSelectionOption;
-
-@end
-
-
-/**
- * When these properties are modified, the changes will take effect on the next
- * delivered session. To apply these properties to all sessions, modify them before
- * the call to -[BCOVPlaybackController setVideos:].
- */
-@protocol BCOVMutableAnalytics <NSObject>
-
-/**
- * This property will set the Account ID value for Brightcove Analytics.
- * Setting this property will also replace the accountId value on any video that is 
- * retrieved through a Brightcove Media API request.
- */
-@property (nonatomic, copy) NSString *account;
-
-/**
- * This property must be a URI with a valid structure and must contain
- * an authority.
- * The default value for this property, if it is not overridden, will be
- * "bcsdk://" followed by the bundle identifier.
- *
- * Refer to http://en.wikipedia.org/wiki/URI_scheme#Generic_syntax
- * for more information on and examples of URI syntax.
- *
- * In particular, a destination without a hierarchical part (e.g. just a scheme)
- * is considered invalid, as is any value without a scheme.
- */
-@property (nonatomic, copy) NSString *destination;
-
-/**
- * This property must be a URI with a valid structure and must contain an
- * authority.
- * The default value is nil.
- *
- * Refer to http://en.wikipedia.org/wiki/URI_scheme#Generic_syntax
- * for more information on and examples of URI syntax.
- *
- * In particular, a source without a hierarchical part (e.g. just a scheme)
- * is considered invalid, as is any value without a scheme.
- */
-@property (nonatomic, copy) NSString *source;
-
-/**
- * This property toggles client side unique identifier generation. If enabled,
- * the sdk will identify uniques using the device's vendor identifier. If 
- * disabled, the sdk will provide no uniques value and analytics will rely on
- * server-side driven heuristics to determine uniques.
- *
- * The default value is YES.
- */
-@property (nonatomic, assign, getter=isUniqueIdentifierEnabled) BOOL uniqueIdentifierEnabled;
-
-/**
- * The authentication token used for analytics authorization.
- */
-@property (nonatomic, copy) NSString *authToken;
-
-/**
- * The application ID used for analytics.
- */
-@property (nonatomic, copy) NSString *applicationId;
-
-/**
- * The player ID used for analytics.
- */
-@property (nonatomic, copy) NSString *player;
-
-/**
- * The player name used for analytics.
- */
-@property (nonatomic, copy) NSString *playerName;
 
 @end
