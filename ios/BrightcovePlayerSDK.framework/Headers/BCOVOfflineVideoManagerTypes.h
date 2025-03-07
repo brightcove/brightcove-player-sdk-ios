@@ -2,7 +2,7 @@
 // BCOVOfflineVideoManagerTypes.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2024 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2025 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -44,7 +44,7 @@ typedef NS_ENUM(NSInteger, BCOVOfflineVideoDownloadState) {
     BCOVOfflineVideoDownloadStateError = 5,
     
     /* License has been preloaded, but the video download has not yet been requested */
-    BCOVOfflineVideoDownloadLicensePreloaded = 6
+    BCOVOfflineVideoDownloadStateLicensePreloaded = 6
 };
 
 typedef void (^BCOVOfflineVideoLicenseCompletionCallback)(BCOVOfflineVideoToken, NSError *);

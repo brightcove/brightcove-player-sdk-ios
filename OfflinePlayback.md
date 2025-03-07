@@ -1,5 +1,5 @@
 
-# iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 7.0.1.10
+# iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 7.0.2.12
 
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -28,8 +28,8 @@ By default, downloads are only allowed over WiFi connections, but this can be ch
 The `BCOVOfflineVideoManager` is a singleton class that manages all video downloads. Before using any `BCOVOfflineVideoManager` methods, you should call
 
 ```swift
-BCOVOfflineVideoManager.initializeOfflineVideoManager(with: self,
-                                                      options: [kBCOVOfflineVideoManagerAllowsCellularDownloadKey : true])
+BCOVOfflineVideoManager.initializeOfflineVideoManager(withDelegate: self,
+                                                      options: [BCOVOfflineVideoManager.AllowsCellularDownloadKey : true])
 ```
 
 The options dictionary may be nil, but this example shows how to allow downloads over cellular networks.
@@ -43,12 +43,12 @@ As part of setup, you also need to create and assign an authorization proxy to h
 authProxy = BCOVFPSBrightcoveAuthProxy(withPublisherId: nil,
                                             applicationId: nil)
 
-BCOVOfflineVideoManager.shared().authProxy = authProxy
+BCOVOfflineVideoManager.sharedManager?.authProxy = authProxy
 ```
 
-If you want to change the `kBCOVOfflineVideoManagerAllowsCellularDownloadKey` value later on in your app to allow or disallow cellular access, you can call `BCOVOfflineVideoManager.initializeOfflineVideoManager(with:options:)` again with a new options dictionary and/or delegate.
+If you want to change the `BCOVOfflineVideoManager.AllowsCellularDownloadKey` value later on in your app to allow or disallow cellular access, you can call `BCOVOfflineVideoManager.initializeOfflineVideoManager(withDelegate:options:)` again with a new options dictionary and/or delegate.
 
-**NOTE: Changing the value of `kBCOVOfflineVideoManagerAllowsCellularDownloadKey` will not have an effect on active downloads, only downloads initialized after the value has been changed.**
+**NOTE: Changing the value of `BCOVOfflineVideoManager.AllowsCellularDownloadKey` will not have an effect on active downloads, only downloads initialized after the value has been changed.**
 
 ## Check Whether a Video Can Be Downloaded
 
@@ -61,7 +61,7 @@ There are two approaches to download a video. The first utilizes an array of `AV
 ### When downloading with AVMediaSelections
 
 ```swift
-BCOVOfflineVideoManager.shared()?.requestVideoDownload(video,
+BCOVOfflineVideoManager.sharedManager?.requestVideoDownload(video,
                                                        mediaSelections: nil,
                                                        parameters: parameters,
                                                        completion: { (offlineVideoToken: String?,
@@ -73,7 +73,7 @@ BCOVOfflineVideoManager.shared()?.requestVideoDownload(video,
 ### When downloading with AVAssetDownloadConfiguration
 
 ```swift
-BCOVOfflineVideoManager.shared()?.requestVideoDownload(video,
+BCOVOfflineVideoManager.sharedManager?.requestVideoDownload(video,
                                                        downloadConfiguration: downloadConfiguration,
                                                        parameters: parameters,
                                                        completion: { (offlineVideoToken: String?,
@@ -90,20 +90,20 @@ The parameters argument is an `NSDictionary` in which you specify the terms for 
 
 The following are the valid parameter keys that you may use when requesting a video download:
 
-* kBCOVFairPlayLicensePlayDurationKey
-* kBCOVFairPlayLicensePurchaseKey
-* kBCOVFairPlayLicenseRentalDurationKey
-* kBCOVOfflineVideoManagerRequestedBitrateKey
+* BCOVFairPlayLicense.PlayDurationKey
+* BCOVFairPlayLicense.PurchaseKey
+* BCOVFairPlayLicense.RentalDurationKey
+* BCOVOfflineVideoManager.RequestedBitrateKey
 
 Here are some examples of video download parameters for common license-types:
 
 ```swift
 // A purchased video download
-// In this case only `kBCOVFairPlayLicensePurchaseKey` is required
+// In this case only `BCOVFairPlayLicense.PurchaseKey` is required
 // but you may also specify the bitrate you'd like to download
 let parameters: [String:Any] = [
-    kBCOVFairPlayLicensePurchaseKey: true,
-    // kBCOVOfflineVideoManagerRequestedBitrateKey: 1000000
+    BCOVFairPlayLicense.PurchaseKey: true,
+    // BCOVOfflineVideoManager.RequestedBitrateKey: 1000000
 ]
 ```
 
@@ -112,7 +112,7 @@ let parameters: [String:Any] = [
 // You could also specify the bitrate as in the purchased video example
 let parameters: [String:Any] = [
     // 30 days in seconds
-    kBCOVFairPlayLicenseRentalDurationKey: (60 * 60 * 24 * 30)
+    BCOVFairPlayLicense.RentalDurationKey: (60 * 60 * 24 * 30)
 ]
 ```
 
@@ -122,9 +122,9 @@ let parameters: [String:Any] = [
 // You could also specify the bitrate as in the purchased video example
 let parameters: [String:Any] = [
     // 30 days in seconds
-    kBCOVFairPlayLicenseRentalDurationKey: (60 * 60 * 24 * 30),
+    BCOVFairPlayLicense.RentalDurationKey: (60 * 60 * 24 * 30),
     // 24 hours in seconds
-    kBCOVFairPlayLicensePlayDurationKey: (60 * 60 * 24)
+    BCOVFairPlayLicense.PlayDurationKey: (60 * 60 * 24)
 ]
 ```
 
@@ -137,7 +137,7 @@ The completion handler is where you asynchronously receive the offline video tok
 If you plan to download multiple FairPlay-protected videos, it's a good idea to preload all the FairPlay licenses beforehand, because FairPlay license exchange cannot happen while the app is in the background. Preload a FairPlay license with a similar call:
 
 ```swift
-BCOVOfflineVideoManager.shared()?.preloadFairPlayLicense(video,
+BCOVOfflineVideoManager.sharedManager?.preloadFairPlayLicense(video,
                                                          parameters: parameters,
                                                          completion: { (offlineVideoToken: String?,
                                                                         error: Error?) in
@@ -149,7 +149,7 @@ An offline video token will be established for the download at this point. After
 ### When downloading with AVMediaSelections
 
 ```swift
-BCOVOfflineVideoManager.shared()?.requestVideoDownload(video,
+BCOVOfflineVideoManager.sharedManager?.requestVideoDownload(video,
                                                        mediaSelections: nil,
                                                        parameters: nil,
                                                        completion: { (offlineVideoToken: String?,
@@ -161,7 +161,7 @@ BCOVOfflineVideoManager.shared()?.requestVideoDownload(video,
 ### When downloading with AVAssetDownloadConfiguration
 
 ```swift
-BCOVOfflineVideoManager.shared()?.requestVideoDownload(video,
+BCOVOfflineVideoManager.sharedManager?.requestVideoDownload(video,
                                                        downloadConfiguration: downloadConfiguration,
                                                        parameters: nil,
                                                        completion: { (offlineVideoToken: String?,
@@ -176,7 +176,7 @@ At this point, the download will continue even if the user sends the app to the 
 
 Subtitle, caption and audio tracks for a language are known collectively as a Media Selection and are represented by Apple's `AVMediaSelection` class. A video can have multiple media selections, for example, English, French and Spanish. The language settings of the device determine the *preferred* media selection, for example, English.
 
-Media Selection are properties of the `AVAsset` class. `BCOVOfflineVideoManager` provides the utility method `BCOVOfflineVideoManager.shared().urlAsset(for:)` to help you assemble `AVMediaSelection` objects of interest. Refer to the "*Finding Media Selections*" methods of `AVAsset`.
+Media Selection are properties of the `AVAsset` class. `BCOVOfflineVideoManager` provides the utility method `BCOVOfflineVideoManager.sharedManager?.urlAsset(forVideo:)` to help you assemble `AVMediaSelection` objects of interest. Refer to the "*Finding Media Selections*" methods of `AVAsset`.
 
 ### When downloading with AVMediaSelections
 
@@ -185,7 +185,7 @@ Internally, the SDK manages the download of a video and its secondary tracks usi
 Downloading for offline viewing involves these basic steps:
 
 1. Choose the media selections to be downloaded.
-1. Create an `[AVMediaSelection]` array of your media selections, and pass it to `BCOVOfflineVideoManager.shared().requestVideoDownload(_,mediaSelections:parameters:)` or pass `nil` to automatically download the *preferred* `AVMediaSelection` objects.
+1. Create an `[AVMediaSelection]` array of your media selections, and pass it to `BCOVOfflineVideoManager.sharedManager?.requestVideoDownload(_:mediaSelections:parameters:)` or pass `nil` to automatically download the *preferred* `AVMediaSelection` objects.
 1. Track download progress using the `offlineVideoToken:aggregateDownloadTask:didProgressTo:forMediaSelection:` of the `BCOVOfflineVideoManagerDelegate` protocol. Note that when downloading additional media selections, progress callbacks are made for each downloaded item individually, with each ranging in progress from 0% to 100%.
 
 The [Discover how to download and play HLS offline](https://developer.apple.com/videos/play/wwdc2020/10655) session from **WWDC 2020** covers reccomended methods of gathering the media selections (4:55) you'd like to download in addition to handling download progress for an `AVAggregateAssetDownloadTask` (5:22).
@@ -203,16 +203,6 @@ Downloading for offline viewing involves these basic steps:
 
 The [Explore HLS variants in AVFoundation](https://developer.apple.com/videos/play/wwdc2021/10143/) session from **WWDC 2021** covers selecting primary and auxilary media selections on an `AVAssetDownloadConfiguration`.
 
-## Displaying Sideband Subtitles
-
-The PlayerUI built-in controls will automatically detect and present your available Sideband Subtitles in the same, familiar closed caption control for you, so don't need to do anything if you are using a standard `BCOVPUIPlayerView`.
-
-If you are creating your own user interface, you should check the downloaded `BCOVVideo` for a `kBCOVOfflineVideoUsesSidebandSubtitleKey` property. If set to YES, you should then get the available subtitle languages from the `kBCOVOfflineVideoManagerSubtitleLanguagesKey`. This is an array of standard language codes that can be converted to display format to the end user.
-
-To present the subtitles for a particular language, set the `kBCOVOfflineVideoManagerPlaybackSubtitleLanguageKey` in the active `BCOVPlaybackController`'s options dictionary with your selected language as the value.
-
-If the `kBCOVOfflineVideoUsesSidebandSubtitleKey` is missing or NO, you can assume that the video is using standard iOS subtitles, and you can set your media selection on the `AVPlayer` as always.
-
 ## Specifying a Variant Bitrate
 
 ### When downloading with AVMediaSelections
@@ -220,7 +210,7 @@ If the `kBCOVOfflineVideoUsesSidebandSubtitleKey` is missing or NO, you can assu
 If you do not specify a bitrate for your download, you will get the lowest rendition that has a video track. To pick a specific variant based on the bitrate or resolution, you can call:
 
 ```swift
-BCOVOfflineVideoManager.shared().variantAttributesDictionaries(for: video) { (variantAttributesDictionariesArray: [[AnyHashable : Any]]?,
+BCOVOfflineVideoManager.sharedManager?.variantAttributesDictionaries(forVideo: video) { (variantAttributesDictionariesArray: [[AnyHashable : Any]]?,
                                                                               error: Error?) in
     // Check attributes of each variant
 }
@@ -235,25 +225,25 @@ Once you have chosen the best variant, you can use its "BANDWIDTH" value as your
 If all you need are the available bitrates for a video, you can call:
 
 ```swift
-BCOVOfflineVideoManager.shared().variantBitrates(for: video) { (bitrates: [NSNumber]?,
+BCOVOfflineVideoManager.sharedManager?.variantBitrates(forVideo: video) { (bitrates: [Int]?,
                                                                 error: Error?) in
     // Check list of available bitrates
 }
 ```
 
-Then you can pass your preferred bitrate as the value for the `kBCOVOfflineVideoManagerRequestedBitrateKey` key.
+Then you can pass your preferred bitrate as the value for the `BCOVOfflineVideoManager.RequestedBitrateKey` key.
 
 ```swift
 let preferredBitrate = 1996500 // value in bits per second
 var parameters: [String:Any] = [
     // Purchase license
-    kBCOVFairPlayLicensePurchaseKey: true,
+    BCOVFairPlayLicense.PurchaseKey: true,
 
     // Specify variant using the bitrate
-    kBCOVOfflineVideoManagerRequestedBitrateKey: preferredBitrate
+    BCOVOfflineVideoManager.RequestedBitrateKey: preferredBitrate
 ]
 
-BCOVOfflineVideoManager.shared().requestVideoDownload(video,
+BCOVOfflineVideoManager.sharedManager?.requestVideoDownload(video,
                                                       mediaSelections: mediaSelections,
                                                       parameters: parameters) { (offlineVideoToken: String?,
                                                                                  error: Error?) in
@@ -284,7 +274,7 @@ downloadConfiguration.primaryContentConfiguration.variantQualifiers = [predicate
 
 Before a download is requested, it's a good idea to make sure there is enough space in device storage for the download.
 
-The method `BCOVOfflineVideoManager.shared().estimateDownloadSize(_,options:completion:)` can be used to get an estimate of how much space, in megabytes, the download will require. If there is not enough space for a download, it will result in an error.
+The method `BCOVOfflineVideoManager.sharedManager?.estimateDownloadSize(_:options:completion:)` can be used to get an estimate of how much space, in megabytes, the download will require. If there is not enough space for a download, it will result in an error.
 
 iOS needs a cushion to run properly, so you should not allow downloads to fill up all the free space on the device. If you use up all the free storage, the system may start deleting cached data in other apps, and may eventually remove a downloaded video from your own app.
 
@@ -296,7 +286,7 @@ The `BCOVOfflineVideoManager` has an `offlineVideoTokens` property that returns 
 
 ## Get the Status of Downloads
 
-For any given offline video token, you can determine its status by calling `BCOVOfflineVideoManager.shared().offlineVideoStatus(forToken:)`. This method returns a `BCOVOfflineVideoStatus` object that contains various bits of useful data about the download:
+For any given offline video token, you can determine its status by calling `BCOVOfflineVideoManager.sharedManager?.offlineVideoStatus(forToken:)`. This method returns a `BCOVOfflineVideoStatus` object that contains various bits of useful data about the download:
 
 - Download state (requested, started, suspended, completed, canceled, or failed)
 - License request time
@@ -314,7 +304,7 @@ To get information about the status of all offline videos at once, use the `BCOV
 You can find out when the FairPlay license for an offline video expires by querying the Offline Video Manager as follows:
 
 ```swift
-let licenseExpirationDate: Date = BCOVOfflineVideoManager.shared().fairPlayLicenseExpiration(offlineVideoToken)
+let licenseExpirationDate: Date = BCOVOfflineVideoManager.sharedManager?.fairPlayLicenseExpiration(offlineVideoToken)
 ```
 
 The method returns the expiration of the FairPlay license as an `NSDate` object. If the FairPlay license is a purchase license, or the video is not encrypted with FairPlay, `NSDate.distantFuture` is returned. If the FairPlay license is missing, `nil` is returned.
@@ -326,19 +316,19 @@ The method returns the expiration of the FairPlay license as an `NSDate` object.
 This example shows how to get the file path to the offline poster image associated with the downloaded video token:
 
 ```swift
-let video = BCOVOfflineVideoManager.shared().videoObject(fromOfflineVideoToken: offlineVideoToken)
-if let posterPathString = video.properties[kBCOVOfflineVideoPosterFilePathPropertyKey] as? String {
+let video = BCOVOfflineVideoManager.sharedManager?.videoObject(fromOfflineVideoToken: offlineVideoToken)
+if let posterPathString = video.properties[BCOVOfflineVideo.PosterFilePathPropertyKey] as? String {
     let posterImage = UIImage(contentsOfFile: posterPathString)
 }
 ```
 
 Here are some of the more useful dictionary keys for the offline-specific properties from the `BCOVVideo`'s properties dictionary:
 
-**`kBCOVOfflineVideoTokenPropertyKey`**
+**`BCOVOfflineVideo.TokenPropertyKey`**
 
 Offline video token for this video.
 
-**`kBCOVOfflineVideoLicenseRequestTimePropertyKey`**
+**`BCOVOfflineVideo.LicenseRequestTimePropertyKey`**
 
 Time that the FairPlay license was requested.
 
@@ -346,7 +336,7 @@ This time is stored as an NSNumber representing the of seconds since the standar
 You can generate an `Date` object from this number with: `Date.init(timeIntervalSinceReferenceDate:)`.
 
 
-**`kBCOVOfflineVideoDownloadStartTimePropertyKey`**
+**`BCOVOfflineVideo.DownloadStartTimePropertyKey`**
 
 Time that the offline video download was requested.
 
@@ -354,67 +344,61 @@ This time is stored as an NSNumber representing the number of seconds since the 
 This value is useful when sorting by the time each download process started.
 You can generate an `Date` object from this number with: `Date.init(timeIntervalSinceReferenceDate:)`.
 
-**`kBCOVOfflineVideoDownloadEndTimePropertyKey`**
+**`BCOVOfflineVideo.DownloadEndTimePropertyKey`**
 
 Time that the offline video download completed (whether normally, cancelled, or failed).
 
 This time is stored as an NSNumber representing the number of seconds since the standard `Date` reference date. This value is useful when sorting by the time each download completes. This value is not set until the download completes.
 You can generate an `Date` object from this number with: `Date.init(timeIntervalSinceReferenceDate:)`.
 
-**`kBCOVOfflineVideoLicenseAbsoluteExpirationTimePropertyKey`**
+**`BCOVOfflineVideo.LicenseAbsoluteExpirationTimePropertyKey`**
 
 Time that the offline video download will expire if using a FairPlay license. This value is only stored with version 6.2.2 and later of the iOS Native Player SDK.
 
 This time is stored as an NSNumber representing the number of seconds since the standard `NSDate` reference date. This value is set every time a FairPlay license is acquired.
 You can generate an `Date` object from this number with: `Date.init(timeIntervalSinceReferenceDate:)`.
 
-**`kBCOVOfflineVideoOnlineSourceURLPropertyKey`**
+**`BCOVOfflineVideo.OnlineSourceURLPropertyKey`**
 
-URL of the original online video that was downloaded to storage for this `BCOVVideo` object, as an `NSString`.
+URL of the original online video that was downloaded to storage for this `BCOVVideo` object, as an `String`.
 
 Note that this URL may have expired, so this is primarily useful as a reference.
 
-**`kBCOVOfflineVideoThumbnailNamePropertyKey`**
+**`BCOVOfflineVideo.ThumbnailNamePropertyKey`**
 
-Name of the downloaded thumbnail image file in device storage, as an `NSString`.
+Name of the downloaded thumbnail image file in device storage, as an `String`.
 
 This name is used to generate the full path of the file at runtime.
 
-**`kBCOVOfflineVideoThumbnailFilePathPropertyKey`**
+**`BCOVOfflineVideo.ThumbnailFilePathPropertyKey`**
 
-Full path to the downloaded thumbnail image file in device storage, as an `NSString`.
+Full path to the downloaded thumbnail image file in device storage, as an `String`.
 
 Even if the path is present, the image file may not be present. Due to app sandboxing, this path may change when the app is launched, so you should not store the full path.
 
-**`kBCOVOfflineVideoPosterNamePropertyKey`**
+**`BCOVOfflineVideo.PosterNamePropertyKey`**
 
-Name of the downloaded poster image file in device storage, as an `NSString`.
+Name of the downloaded poster image file in device storage, as an `String`.
 
 This name is used to generate the full path of the file at runtime.
 
-**`kBCOVOfflineVideoPosterFilePathPropertyKey`**
+**`BCOVOfflineVideo.PosterFilePathPropertyKey`**
 
-Full path to the downloaded poster image file in device storage, as an `NSString`.
+Full path to the downloaded poster image file in device storage, as an `String`.
 
 Even if the path is present, the image file may not be present. Due to app sandboxing, this path may change when the app is launched, so you should not store the full path.
 
-**`kBCOVOfflineVideoRelativeFilePathPropertyKey`**
+**`BCOVOfflineVideo.RelativeFilePathPropertyKey`**
 
-Relative file path of the downloaded FairPlay video bundle in device storage, as an `NSString`.
+Relative file path of the downloaded FairPlay video bundle in device storage, as an `String`.
 
 This name is used to generate the full path of the file at runtime.
 
-**`kBCOVOfflineVideoFilePathPropertyKey`**
+**`BCOVOfflineVideo.FilePathPropertyKey`**
 
-Full path to the downloaded FairPlay video bundle in device storage, as an `NSString`.
+Full path to the downloaded FairPlay video bundle in device storage, as an `String`.
 
 Due to app sandboxing, this path may change when the app is launched, so you should not store the full path.
-
-**`kBCOVOfflineVideoUsesSidebandSubtitleKey`**
-
-Boolean value, stored as an NSNumber, that is set to YES when this video is using Sideband Subtitles.
-When using Sideband Subtitles, you can get the array of downloaded languages from the `kBCOVOfflineVideoManagerSubtitleLanguagesKey` property.
-When playing back the video, you can select the subtitle to present by setting it as the value for the `kBCOVOfflineVideoManagerPlaybackSubtitleLanguageKey` key in the `BCOVPlaybackController`'s options property.
 
 ## Play Offline Videos
 
@@ -449,7 +433,7 @@ self.playbackController = playbackController
 Then, to play the video, convert the token to a `BCOVVideo` object, check its availability, and pass to the playback controller:
 
 ```swift
-if let video = BCOVOfflineVideoManager.shared().videoObject(fromOfflineVideoToken: offlineVideoToken) {
+if let video = BCOVOfflineVideoManager.sharedManager?.videoObject(fromOfflineVideoToken: offlineVideoToken) {
 
     if video.playableOffline {
         playbackController?.setVideos([video])
@@ -466,9 +450,9 @@ Note that `video.playableOffline` indicates whether a video is fully downloaded 
 
 When a video is being downloaded, you can pause, resume, or cancel the download using the following `BCOVOfflineVideoManager` methods:
 
-- `offlineVideoManager.pauseVideoDownload(_)`
-- `offlineVideoManager.resumeVideoDownload(_)`
-- `offlineVideoManager.cancelVideoDownload(_)`
+- `offlineVideoManager.pauseVideoDownload(_:)`
+- `offlineVideoManager.resumeVideoDownload(_:)`
+- `offlineVideoManager.cancelVideoDownload(_:)`
 
 You should use these methods rather than operating on the internal `AVAssetDownloadTask` itself.
 
@@ -476,7 +460,7 @@ You should use these methods rather than operating on the internal `AVAssetDownl
 
 Starting with version 6.2.2 of the iOS Native Player SDK, you can renew the FairPlay license for a downloaded video without re-downloading the video. The device must be online for license renewal to succeed.
 
-To renew a license, call `-renewFairPlayLicense:video:parameters:completion:` with the offline video token for your previously-downloaded video, and a parameter dictionary specifying the new license terms. The parameter dictionary must not contain bitrate or subtitle language information.
+To renew a license, call `renewFairPlayLicense(_:video:parameters:completion:)` with the offline video token for your previously-downloaded video, and a parameter dictionary specifying the new license terms. The parameter dictionary must not contain bitrate or subtitle language information.
 
 You should also specify a `BCOVVideo` object for the `video` argument. This video object should be the same video that you originally downloaded, but freshly retrieved from the Playback API, either directly, or through the `BCOVPlaybackService` class. This video object's data are not re-downloaded; the object is used to refresh your license exchange URLs in case the original ones used to download the video have expired. If the referenced video is no longer available through the Playback API, you can use a substantially similar video, meaning the video should be from the same account, and also have the same FairPlay configuration.
 
@@ -495,11 +479,11 @@ playbackService.findVideo(withConfiguration: configuration,
     if let video {
         let parameters = [
             // Renew license with a 30-day rental
-            kBCOVFairPlayLicenseRentalDurationKey: ( 30 * 24 * 60 * 60 ) // 30 days in seconds
+            BCOVFairPlayLicense.RentalDurationKey: ( 30 * 24 * 60 * 60 ) // 30 days in seconds
         ]
 
         // Request license renewal
-        BCOVOfflineVideoManager.shared().renewFairPlayLicense(offlineVideoToken,
+        BCOVOfflineVideoManager.sharedManager?.renewFairPlayLicense(offlineVideoToken,
                                                               video: video,
                                                               parameters: parameters) { (offlineVideoToken: String?,
                                                                                          error: Error?) in
@@ -513,7 +497,7 @@ If you are using the Playback Authorization Service you'll need to use the renew
 
 ```swift
 // Request license renewal
-BCOVOfflineVideoManager.shared().renewFairPlayLicense(offlineVideoToken,
+BCOVOfflineVideoManager.sharedManager?.renewFairPlayLicense(offlineVideoToken,
                                                       video: video,
                                                       authToken: authToken,
                                                       parameters: parameters) { (offlineVideoToken: String?,
@@ -549,7 +533,7 @@ The SDK can't recover downloads in progress when:
 - Termination via the App Switcher (e.g., on devices with a home button, a double-home-press and slide up)
 - Termination while the app is suspended and the device reboots
 
-Downloads are restored once during the call to `initializeOfflineVideoManagerWithDelegate:options:`. Downloads that cannot be recovered will be reported immediately through the normal delegate methods; at this point you can delete them like any other video.
+Downloads are restored once during the call to `initializeOfflineVideoManager(withDelegate:options:)`. Downloads that cannot be recovered will be reported immediately through the normal delegate methods; at this point you can delete them like any other video.
 
 ## Downloading Multiple Videos
 
@@ -620,11 +604,11 @@ Users can directly examine and optionally delete downloaded videos using the Set
 
 The displayed video name is taken from the "name" property of the `BCOVVideo` object. If the "name" property is not present, the offline video token's value will be used instead.
 
-To provide a more customized experience, you can set a display name for the video asset in the options dictionary passed to `-requestVideoDownload:mediaSelections:parameters:completion:` (or when preloading the license). Use the `kBCOVOfflineVideoManagerDisplayNameKey` key to set an `NSString` as the new asset display name.
+To provide a more customized experience, you can set a display name for the video asset in the options dictionary passed to `requestVideoDownload(_:mediaSelections:parameters:completion:)` (or when preloading the license). Use the `BCOVOfflineVideoManager.DisplayNameKey` key to set an `NSString` as the new asset display name.
 
 Note that iOS uses the asset name string as part of the downloaded video's file path, so you should avoid characters that would not be valid in a POSIX path, like a "/" character.
 
-You may choose to replace these with more standardized names using the `kBCOVOfflineVideoManagerDisplayNameKey` option.
+You may choose to replace these with more standardized names using the `BCOVOfflineVideoManager.DisplayNameKey` option.
 
 ### When downloading with AVAssetDownloadConfiguration
 

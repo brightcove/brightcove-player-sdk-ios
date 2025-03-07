@@ -1,3 +1,37 @@
+## Release 7.0.2
+
+#### 6 Mar 2025
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Added the `BCOVPlaybackService.ParameterKeyLivePlaybackToken` constant for Live 2.0 playback support.
+* Fixes an issue where Interactivity annotations would be visible during ad sequences on tvOS.
+
+#### Breaking Changes
+
+* The `BCOVInteractivityManager` method `BCOVInteractivityHandler(accountId:projectId:containerView:playbackController:)` has been changed to `BCOVInteractivityHandler(withAccountId:projectId:containerView:playbackController:)`.
+* The `BCOVInteractivityManagerDelegate` method `animationTime(forTransition:)` now expects a `TimeInterval` value rather than a `CGFloat`.
+* The 'video', 'source', 'player' and 'providerExtension' properties on an `BCOVPlaybackSession` object are now optionals in Swift.
+* The format for `BCOVCuePoint` constants has changed. For example `kBCOVCuePointTypeAdSlot` is now `BCOVCuePoint.TypeAdSlot`.
+* The `BCOVMutableCuePoint` protocol has been replaced with the `BCOVMutableCuePoint` class. This primarily affects the `update:` method on `BCOVCuePoint` in which a `BCOVMutableCuePoint` object is now returned.
+* The `shared` singleton for `BCOVOfflineVideoManager` has been changed to`sharedManager`.
+* The `BCOVOfflineVideoManager` method `initializeOfflineVideoManager(with:options:)` has been changed to `initializeOfflineVideoManager(withDelegate:options:)`.
+* The `BCOVOfflineVideoManager` method `urlAsset(for:)` has been changed to `urlAsset(forVideo:)`.
+* The `BCOVOfflineVideoManager` method `variantAttributesDictionaries(for:)` has been changed to `variantAttributesDictionaries(forVideo:)`.
+* The `BCOVOfflineVideoManager` method `variantBitrates(for:)` has been changed to `variantBitrates(forVideo:)` along with its completionHandler from `([NSNumber]?,Error?)->Void` to `([Int]?,Error?)->Void`
+* The format for `kBCOVOfflineVideo` related constants i.e `kBCOVOfflineVideoTokenPropertyKey` has changed. For example `kBCOVOfflineVideoTokenPropertyKey` is now `BCOVOfflineVideo.TokenPropertyKey`.
+* The format for `BCOVOfflineVideoManager` constants has changed. For example `kBCOVOfflineVideoManagerAllowsCellularPlaybackKey` is now `BCOVOfflineVideoManager.AllowsCellularPlaybackKey`.
+* The format for `BCOVFairPlayLicense` constants has changed. For example `kBCOVFairPlayLicensePlayDurationKey` is now `BCOVFairPlayLicense.PlayDurationKey`.
+* The `removed` property on the `BCOVPUILayoutView` class has been renamed to `isRemoved`.
+* The `BCOVOfflineVideoManagerDelegate` method that receives progress notification about track downloads is now `offlineVideoToken(_:aggregateDownloadTask:didProgressTo:forMediaSelection:)`.
+* The `BCOVOfflineVideoManagerDelegate` method when a download is paused is now `downloadWasPaused(forOfflineVideoToken:)`.
+* The `BCOVOfflineVideoManagerDelegate` method when the TTL token for the current source's manifest has expired is now `playbackServiceForManifestURLTTLUpdate(forVideo:)`.
+* The `BCOVOfflineVideoDownloadLicensePreloaded` option from the `BCOVOfflineVideoDownloadState` enumeration has been changed to `BCOVOfflineVideoDownloadStateLicensePreloaded`.
+* The `BCOVOfflineVideoDownloadState` enumeration has been changed from `.stateDownloading` to `.downloading` for all of cases.
+
+
 ## Release 7.0.1
 
 #### 16 Dec 2024

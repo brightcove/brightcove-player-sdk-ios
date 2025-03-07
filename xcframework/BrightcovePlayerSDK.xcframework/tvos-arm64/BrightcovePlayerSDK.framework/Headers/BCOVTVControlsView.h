@@ -2,7 +2,7 @@
 // BCOVTVControlsView.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2024 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2025 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -13,7 +13,10 @@
 /**
  * View that holds all the playback controls
  */
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Weverything"
 @interface BCOVTVControlsView : UIView<BCOVPlaybackSessionConsumer>
+#pragma clang diagnostic pop
 
 /**
  * Amount by which the controls will be inset from the edge of the TV Player View.

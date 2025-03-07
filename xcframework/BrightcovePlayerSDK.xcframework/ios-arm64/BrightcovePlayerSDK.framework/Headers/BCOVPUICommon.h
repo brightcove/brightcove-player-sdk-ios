@@ -2,13 +2,9 @@
 // BCOVPUICommon.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2024 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2025 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
-
-#import <UIKit/UIKit.h>
-#import <CoreMedia/CoreMedia.h>
-
 
 /**
  * Enumerations and values used throughout the PlayerUI.
@@ -115,102 +111,3 @@ typedef NS_ENUM(NSUInteger, BCOVPUIButtonIcon) {
     /** Reserved icon. */
     BCOVPUIButtonIconReserved,
 };
-
-
-@interface BCOVPUICommon : NSObject
-
-/**
- * Icon font used by the PlayerUI.
- */
-+ (UIFont *)iconFont;
-
-/**
- * Icon font used by the PlayerUI at specified font size.
- *
- * @param fontSize Size of font to return.
- *
- * @return Font at specified size.
- */
-+ (UIFont *)iconFontWithSize:(CGFloat)fontSize;
-
-/**
- * Returns the unicode to be used with +iconFont or +iconFontWithSize:
- * for the given icon.
- *
- * @param buttonIcon The icon to return unicode for.
- *
- * @return Unicode string for the icon.
- */
-+ (NSString *)fontUnicodeForButtonIcon:(BCOVPUIButtonIcon)buttonIcon;
-
-/**
- * Color used by the playback controls in their normal state, UIControlStateNormal.
- * Red:255.0/255.0 green:255/255.0 blue:255.0/255.0 alpha:1.0
- */
-+ (UIColor *)controlColorForNormalState;
-
-/**
- * Color used by the playback controls in their normal state, UIControlStateSelected.
- * Red:255.0/255.0 green:255/255.0 blue:255.0/255.0 alpha:1.0
- */
-+ (UIColor *)controlColorForSelectedState;
-
-/**
- * Color used by the playback controls in their normal state, UIControlStateHighlighted.
- * Red:128.0/255.0 green:128/255.0 blue:128.0/255.0 alpha:1.0
- */
-+ (UIColor *)controlColorForHighlightedState;
-
-/**
- * Color used by the playback controls in their normal state, UIControlStateDisabled.
- * Red:128.0/255.0 green:128/255.0 blue:128.0/255.0 alpha:0.8
- */
-+ (UIColor *)controlColorForDisabledState;
-
-/**
- * Color used by the Live button to indicate the stream is currently live.
- * Red:85.0/255.0 green:154.0/255.0 blue:66.0/255.0 alpha:1.0
- */
-+ (UIColor *)liveViewTitleColorForLive;
-
-/**
- * Color used by the progress slider maximum track tint.
- * Red:140.0/255.0 green:143.0/255.0 blue:140.0/255.0 alpha:1.0
- */
-+ (UIColor *)progressSliderMaximumTrackTintColor;
-
-/**
- * Color used by the progress slider minimum track tint.
- * Red:214.0/255.0 green:36.0/255.0 blue:133.0/255.0 alpha:1.0
- */
-+ (UIColor *)progressSliderMinimumTrackTintColor;
-
-/**
- * Color used by the progress slider buffered tint.
- * Red:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:0.8
- */
-+ (UIColor *)progressSliderBufferProgressTintColor;
-
-/**
- * Returns the default image for the volume view.
- *
- * @param fontSize The size of the font to create the image with.
- * @param color The color to use.
- *
- * @return The image.
- */
-+ (UIImage *)imageForVolumeViewWithFontSize:(CGFloat)fontSize color:(UIColor *)color;
-
-/**
- * Default font size used by labels.
- * 16.
- */
-+ (CGFloat)defaultFontSizeForLabel;
-
-/**
- * Default font size used by buttons.
- * 22.
- */
-+ (CGFloat)defaultFontSizeForButton;
-
-@end

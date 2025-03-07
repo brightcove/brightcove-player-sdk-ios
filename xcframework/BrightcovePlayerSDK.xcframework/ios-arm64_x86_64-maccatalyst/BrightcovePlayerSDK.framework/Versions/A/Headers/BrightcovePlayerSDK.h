@@ -2,7 +2,7 @@
 // BrightcovePlayerSDK.h
 // BrightcovePlayerSDK
 //
-// Copyright (c) 2024 Brightcove, Inc. All rights reserved.
+// Copyright (c) 2025 Brightcove, Inc. All rights reserved.
 // License: https://accounts.brightcove.com/en/terms-and-conditions
 //
 
@@ -14,27 +14,22 @@
 
 // Playback
 #import <BrightcovePlayerSDK/BCOVBasicSessionProvider.h>
+#import <BrightcovePlayerSDK/BCOVSessionProviderExtension.h>
 #import <BrightcovePlayerSDK/BCOVCuePointProgressPolicy.h>
 #import <BrightcovePlayerSDK/BCOVPlaybackController.h>
-#import <BrightcovePlayerSDK/BCOVPlaybackSession.h>
 #import <BrightcovePlayerSDK/BCOVPlaybackSessionProvider.h>
 
 // Values
-#import <BrightcovePlayerSDK/BCOVCuePoint.h>
-#import <BrightcovePlayerSDK/BCOVCuePointCollection.h>
+#import <BrightcovePlayerSDK/BCOVPlaybackSessionConstants.h>
 
 // Player UI
 #if !TARGET_OS_TV
 #import <BrightcovePlayerSDK/BCOVPUIAdControlView.h>
 #import <BrightcovePlayerSDK/BCOVPUIBasicControlView.h>
-#import <BrightcovePlayerSDK/BCOVPUIButton.h>
-#import <BrightcovePlayerSDK/BCOVPUICommon.h>
-#import <BrightcovePlayerSDK/BCOVPUILayoutView.h>
 #import <BrightcovePlayerSDK/BCOVPUIPlayerView.h>
-#import <BrightcovePlayerSDK/BCOVPUISlider.h>
 
 // Offline Video Management
-#import <BrightcovePlayerSDK/BCOVOfflineVideoManager.h>
+#import <BrightcovePlayerSDK/BCOVOfflineVideoManagerTypes.h>
 #endif
 
 // TV UI
@@ -46,6 +41,5 @@
 #endif
 
 // Interactivity
-#import <BrightcovePlayerSDK/BCOVInteractivityHandler.h>
-#import <BrightcovePlayerSDK/BCOVInteractivityProject.h>
+#import <BrightcovePlayerSDK/BCOVInteractivityAnnotation.h>
 

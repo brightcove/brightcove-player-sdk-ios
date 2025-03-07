@@ -1,15 +1,93 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.0.2 effective-5.10 (swiftlang-6.0.2.1.2 clang-1600.0.26.4)
+// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
 // swift-module-flags: -target arm64-apple-ios13.1-macabi -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name BrightcovePlayerSDK
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import AVKit
 @_exported import BrightcovePlayerSDK
 import CoreMedia
+import CoreText
 import Foundation
 import Swift
 import UIKit
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
+@objc public enum BCOVOfflineVideoManagerErrorCode : Swift.Int {
+  case InvalidParameter = 69300
+  case Unsupported = 69301
+  case DownloadFailure = 69302
+  case ExpiredLicense = 69303
+  case InvalidLicense = 69304
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class BCOVOfflineVideoManager : ObjectiveC.NSObject {
+  @objc public static let ErrorDomain: Swift.String
+  @objc public static let AnalyticsStorageFullWarningNotification: Swift.String
+  @objc public static let AllowsCellularDownloadKey: Swift.String
+  @objc public static let AllowsCellularPlaybackKey: Swift.String
+  @objc public static let AllowsCellularAnalyticsKey: Swift.String
+  @objc public static let AnalyticsStorageLimitKey: Swift.String
+  @objc public static let RequestedBitrateKey: Swift.String
+  @objc public static let DisplayNameKey: Swift.String
+  @objc public var authProxy: any BrightcovePlayerSDK.BCOVFPSAuthorizationProxy
+  @objc public var delegate: (any BrightcovePlayerSDK.BCOVOfflineVideoManagerDelegate)?
+  @objc public var offlineVideoTokens: [BrightcovePlayerSDK.BCOVOfflineVideoToken] {
+    @objc get
+  }
+  @objc public static var sharedManager: BrightcovePlayerSDK.BCOVOfflineVideoManager? {
+    @objc get
+  }
+  @objc public class func initializeOfflineVideoManager(withDelegate delegate: any BrightcovePlayerSDK.BCOVOfflineVideoManagerDelegate, options: [Swift.AnyHashable : Any]?)
+  @objc public func requestVideoDownload(_ video: BrightcovePlayerSDK.BCOVVideo, mediaSelections: [AVFoundation.AVMediaSelection]?, parameters: [Swift.AnyHashable : Any]?, completion completionHandler: @escaping (Swift.String?, (any Swift.Error)?) -> Swift.Void)
+  @available(iOS 15.0, *)
+  @objc public func requestVideoDownload(_ video: BrightcovePlayerSDK.BCOVVideo, downloadConfiguration: AVFoundation.AVAssetDownloadConfiguration, parameters inParameters: [Swift.AnyHashable : Any]?, completion completionHandler: @escaping (Swift.String?, (any Swift.Error)?) -> Swift.Void)
+  @objc public func offlineVideoStatus() -> [BrightcovePlayerSDK.BCOVOfflineVideoStatus]
+  @objc public func offlineVideoStatus(forToken offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken) -> BrightcovePlayerSDK.BCOVOfflineVideoStatus?
+  @objc public func pauseVideoDownload(_ offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken)
+  @objc public func resumeVideoDownload(_ offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken)
+  @objc public func cancelVideoDownload(_ offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken)
+  @objc public func deleteOfflineVideo(_ offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken)
+  @objc public func estimateDownloadSize(_ video: BrightcovePlayerSDK.BCOVVideo, options: [Swift.AnyHashable : Any], completion completionHandler: @escaping (Swift.Double, (any Swift.Error)?) -> Swift.Void)
+  #if compiler(>=5.3) && $TypedThrows
+  @objc public func urlAsset(forVideo video: BrightcovePlayerSDK.BCOVVideo) throws -> AVFoundation.AVURLAsset
+  #endif
+  @objc public func variantAttributesDictionaries(forVideo video: BrightcovePlayerSDK.BCOVVideo, completion completionHandler: @escaping ([[Swift.AnyHashable : Any]]?, (any Swift.Error)?) -> Swift.Void)
+  @objc public func alternativeRenditionAttributesDictionaries(forVideo video: BrightcovePlayerSDK.BCOVVideo, completion completionHandler: @escaping ([[Swift.AnyHashable : Any]]?, (any Swift.Error)?) -> Swift.Void)
+  @objc public func variantBitrates(forVideo video: BrightcovePlayerSDK.BCOVVideo, completion completionHandler: @escaping ([Swift.Int]?, (any Swift.Error)?) -> Swift.Void)
+  @objc public func videoObject(fromOfflineVideoToken offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken) -> BrightcovePlayerSDK.BCOVVideo?
+  @objc public func clearOfflineVideoCache()
+  @objc public func preloadFairPlayLicense(_ video: BrightcovePlayerSDK.BCOVVideo, parameters: [Swift.AnyHashable : Any], completion completionHandler: @escaping (Swift.String?, (any Swift.Error)?) -> Swift.Void)
+  @objc public func renewFairPlayLicense(_ offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken, video onlineVideo: BrightcovePlayerSDK.BCOVVideo?, parameters: [Swift.AnyHashable : Any], completion completionHandler: @escaping (BrightcovePlayerSDK.BCOVOfflineVideoToken?, (any Swift.Error)?) -> Swift.Void)
+  @objc public func renewFairPlayLicense(_ offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken, video: BrightcovePlayerSDK.BCOVVideo, authToken: Swift.String?, parameters: [Swift.AnyHashable : Any], completion completionHandler: @escaping (BrightcovePlayerSDK.BCOVOfflineVideoToken?, (any Swift.Error)?) -> Swift.Void)
+  @objc public func addFairPlayApplicationCertificate(_ applicationCertificateData: Foundation.Data?, identifier: Swift.String)
+  @objc public func invalidateFairPlayLicense(_ offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken)
+  @objc public func fairPlayLicenseExpiration(_ offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken) -> Foundation.Date?
+  @objc public func mediaSelectionGroup(forMediaCharacteristic mediaCharacteristic: AVFoundation.AVMediaCharacteristic, offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken) -> AVFoundation.AVMediaSelectionGroup?
+  @objc public func downloadedMediaSelectionOptions(forMediaCharacteristic mediaCharacteristic: AVFoundation.AVMediaCharacteristic, offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken) -> [AVFoundation.AVMediaSelectionOption]?
+  @objc deinit
+}
+extension BrightcovePlayerSDK.BCOVOfflineVideoManager : Foundation.URLSessionDelegate {
+  @objc dynamic public func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didCompleteWithError error: (any Swift.Error)?)
+}
+extension BrightcovePlayerSDK.BCOVOfflineVideoManager : AVFoundation.AVContentKeySessionDelegate {
+  @objc dynamic public func contentKeySession(_ session: AVFoundation.AVContentKeySession, didProvide keyRequest: AVFoundation.AVContentKeyRequest)
+  @objc dynamic public func contentKeySession(_ session: AVFoundation.AVContentKeySession, contentKeyRequest keyRequest: AVFoundation.AVContentKeyRequest, didFailWithError err: any Swift.Error)
+  @objc dynamic public func contentKeySession(_ session: AVFoundation.AVContentKeySession, didProvide keyRequest: AVFoundation.AVPersistableContentKeyRequest)
+}
+extension BrightcovePlayerSDK.BCOVOfflineVideoManager : AVFoundation.AVAssetDownloadDelegate {
+  @objc dynamic public func urlSession(_ session: Foundation.URLSession, aggregateAssetDownloadTask: AVFoundation.AVAggregateAssetDownloadTask, willDownloadTo location: Foundation.URL)
+  @objc dynamic public func urlSession(_ session: Foundation.URLSession, aggregateAssetDownloadTask: AVFoundation.AVAggregateAssetDownloadTask, didCompleteFor mediaSelection: AVFoundation.AVMediaSelection)
+  @objc dynamic public func urlSession(_ session: Foundation.URLSession, aggregateAssetDownloadTask: AVFoundation.AVAggregateAssetDownloadTask, didLoad timeRange: CoreMedia.CMTimeRange, totalTimeRangesLoaded loadedTimeRanges: [Foundation.NSValue], timeRangeExpectedToLoad: CoreMedia.CMTimeRange, for mediaSelection: AVFoundation.AVMediaSelection)
+  @objc dynamic public func urlSession(_ session: Foundation.URLSession, assetDownloadTask: AVFoundation.AVAssetDownloadTask, didFinishDownloadingTo location: Foundation.URL)
+  @objc dynamic public func urlSession(_ session: Foundation.URLSession, assetDownloadTask: AVFoundation.AVAssetDownloadTask, didLoad timeRange: CoreMedia.CMTimeRange, totalTimeRangesLoaded loadedTimeRanges: [Foundation.NSValue], timeRangeExpectedToLoad: CoreMedia.CMTimeRange)
+  @available(iOS 15.0, *)
+  @objc dynamic public func urlSession(_ session: Foundation.URLSession, assetDownloadTask: AVFoundation.AVAssetDownloadTask, willDownloadVariants variants: [AVFoundation.AVAssetVariant])
+  @objc dynamic public func urlSessionDidFinishEvents(forBackgroundURLSession session: Foundation.URLSession)
+}
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class BCOVPlaybackServiceRequestFactory : ObjectiveC.NSObject {
   @objc public var accountId: Swift.String? {
     get
@@ -92,7 +170,7 @@ import _SwiftConcurrencyShims
   @objc public var properties: [Swift.AnyHashable : Any] {
     get
   }
-  @objc public init(title: Swift.String, adId: Swift.String, beginTime: CoreMedia.CMTime, duration: CoreMedia.CMTime, properties: [Swift.AnyHashable : Any])
+  @objc public init(title: Swift.String, adId: Swift.String, beginTime: CoreMedia.CMTime, duration: CoreMedia.CMTime, properties: [Swift.AnyHashable : Any]?)
   @objc public func isEqual(toAd ad: BrightcovePlayerSDK.BCOVAd) -> Swift.Bool
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
   @objc override dynamic public var description: Swift.String {
@@ -121,7 +199,7 @@ import _SwiftConcurrencyShims
   @objc optional func playbackSession(_ session: any BrightcovePlayerSDK.BCOVPlaybackSession, didPauseAd ad: BrightcovePlayerSDK.BCOVAd)
   @objc optional func playbackSession(_ session: any BrightcovePlayerSDK.BCOVPlaybackSession, didResumeAd ad: BrightcovePlayerSDK.BCOVAd)
 }
-@objc @_inheritsConvenienceInitializers @objcMembers public class BCOVInteractivityAnnotation : ObjectiveC.NSObject {
+@objc @_inheritsConvenienceInitializers @objcMembers public class BCOVInteractivityAnnotation : ObjectiveC.NSObject, Swift.Comparable {
   @objc public var annotationView: UIKit.UIView? {
     @objc get
     @objc set
@@ -135,10 +213,10 @@ import _SwiftConcurrencyShims
   @objc public var rawType: Swift.String?
   @objc public var text: Swift.String?
   @objc public var title: Swift.String?
-  @objc public var left: Swift.String?
-  @objc public var top: Swift.String?
-  @objc public var width: Swift.String?
-  @objc public var height: Swift.String?
+  @objc public var left: Swift.String
+  @objc public var top: Swift.String
+  @objc public var width: Swift.String
+  @objc public var height: Swift.String
   @objc public var url: Swift.String?
   @objc public var precondition: Swift.String?
   @objc public var command: Swift.String?
@@ -150,6 +228,7 @@ import _SwiftConcurrencyShims
   @objc public class func annotations(fromJSONArray jsonArray: [[Swift.AnyHashable : Any]]) -> [BrightcovePlayerSDK.BCOVInteractivityAnnotation]
   @objc public class func initWithJSON(_ json: [Swift.AnyHashable : Any]) -> BrightcovePlayerSDK.BCOVInteractivityAnnotation
   @objc override dynamic public init()
+  public static func < (lhs: BrightcovePlayerSDK.BCOVInteractivityAnnotation, rhs: BrightcovePlayerSDK.BCOVInteractivityAnnotation) -> Swift.Bool
   @objc override dynamic public var hash: Swift.Int {
     @objc get
   }
@@ -174,6 +253,7 @@ import _SwiftConcurrencyShims
   @objc public static let ParameterKeyLimit: Swift.String
   @objc public static let ParameterKeyOffset: Swift.String
   @objc public static let ParamaterKeyAdConfigId: Swift.String
+  @objc public static let ParameterKeyLivePlaybackToken: Swift.String
   @objc public static let ParameterKeyDeliveryConfigId: Swift.String
   @objc public static let ConfigurationKeyAssetID: Swift.String
   @objc public static let ConfigurationKeyAssetReferenceID: Swift.String
@@ -339,10 +419,21 @@ import _SwiftConcurrencyShims
   @objc override dynamic public init()
   @objc deinit
 }
-@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor @preconcurrency public class BCOVInteractivityControl : UIKit.UIControl {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor @preconcurrency public class BCOVInteractivityControl : UIKit.UIControl {
   @objc @_Concurrency.MainActor @preconcurrency weak public var annotation: BrightcovePlayerSDK.BCOVInteractivityAnnotation?
   @objc @_Concurrency.MainActor @preconcurrency public var imageView: UIKit.UIImageView?
   @objc @_Concurrency.MainActor @preconcurrency public var textLabel: UIKit.UILabel?
+  @objc @_Concurrency.MainActor @preconcurrency public var floatingView: UIKit.UIView?
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var canBecomeFocused: Swift.Bool {
+    @objc get
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func didUpdateFocus(in context: UIKit.UIFocusUpdateContext, with coordinator: UIKit.UIFocusAnimationCoordinator)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers @_Concurrency.MainActor @preconcurrency public class BCOVPUILayoutView : UIKit.UIView {
+  @objc @_Concurrency.MainActor @preconcurrency public var minimumWidth: Swift.Float
+  @objc @_Concurrency.MainActor @preconcurrency public var elasticity: Swift.Float
+  @objc @_Concurrency.MainActor @preconcurrency public var isRemoved: Swift.Bool
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
@@ -411,8 +502,122 @@ import _SwiftConcurrencyShims
   @objc override public init(withURL url: Foundation.URL?, deliveryMethod: Swift.String?, properties: [Swift.AnyHashable : Any]?)
   @objc deinit
 }
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class BCOVOfflineVideoStatus : ObjectiveC.NSObject, Foundation.NSCopying {
+  @objc public var offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken? {
+    get
+  }
+  @objc public var downloadState: BrightcovePlayerSDK.BCOVOfflineVideoDownloadState {
+    get
+  }
+  @objc public var downloadStartTime: Foundation.Date? {
+    get
+  }
+  @objc public var downloadEndTime: Foundation.Date? {
+    get
+  }
+  @objc public var downloadPercent: Swift.Double {
+    get
+  }
+  @objc public var aggregateDownloadTask: AVFoundation.AVAggregateAssetDownloadTask? {
+    get
+  }
+  @objc public var assetDownloadTask: AVFoundation.AVAssetDownloadTask? {
+    get
+  }
+  @objc public var error: (any Swift.Error)? {
+    get
+  }
+  @objc public init(withOfflineVideoToken offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken, downloadTask: AVFoundation.AVAssetDownloadTask?, licenseRequestTime: Foundation.Date, startTime: Foundation.Date?)
+  @objc public class func create(fromOfflineVideoToken offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken) -> BrightcovePlayerSDK.BCOVOfflineVideoStatus?
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class BCOVPUICommon : ObjectiveC.NSObject {
+  @objc public class func iconFont() -> UIKit.UIFont?
+  @objc public class func iconFont(withSize fontSize: CoreFoundation.CGFloat) -> UIKit.UIFont?
+  @objc public class func fontUnicode(forButtonIcon buttonIcon: BrightcovePlayerSDK.BCOVPUIButtonIcon) -> Swift.String?
+  @objc public class func controlColorForNormalState() -> UIKit.UIColor
+  @objc public class func controlColorForSelectedState() -> UIKit.UIColor
+  @objc public class func controlColorForHighlightedState() -> UIKit.UIColor
+  @objc public class func controlColorForDisabledState() -> UIKit.UIColor
+  @objc public class func liveViewTitleColorForLive() -> UIKit.UIColor
+  @objc public class func progressSliderMaximumTrackTintColor() -> UIKit.UIColor
+  @objc public class func progressSliderMinimumTrackTintColor() -> UIKit.UIColor
+  @objc public class func progressSliderBufferProgressTintColor() -> UIKit.UIColor
+  @objc public class func imageForVolumeView(withFontSize fontSize: CoreFoundation.CGFloat, color: UIKit.UIColor) -> UIKit.UIImage?
+  @objc public class func defaultFontSizeForLabel() -> CoreFoundation.CGFloat
+  @objc public class func defaultFontSizeForButton() -> CoreFoundation.CGFloat
+  @objc public class func createContainerView(withSuperview superview: UIKit.UIView) -> UIKit.UIView
+  @objc public class func createOverlayView(withSuperview superview: UIKit.UIView) -> UIKit.UIView
+  @objc public class func formatTimeForDisplay(_ time: CoreMedia.CMTime) -> Swift.String?
+  @objc public class func image(forString string: Swift.String, font: UIKit.UIFont, color: UIKit.UIColor) -> UIKit.UIImage?
+  @objc public class func actionSelector(from controlEvent: UIKit.UIControl.Event) -> ObjectiveC.Selector?
+  @objc override dynamic public init()
+  @objc deinit
+}
 @objc extension Foundation.NSDictionary {
   @objc dynamic public func bcov_UTF8EncodedRequestParameterString() -> Swift.String
+}
+@objc public protocol BCOVPlaybackSession : ObjectiveC.NSObjectProtocol {
+  @objc var video: BrightcovePlayerSDK.BCOVVideo? { get }
+  @objc var source: BrightcovePlayerSDK.BCOVSource? { get }
+  @objc var player: AVFoundation.AVQueuePlayer? { get }
+  @objc var playerLayer: AVFoundation.AVPlayerLayer { get }
+  @objc var audibleMediaSelectionGroup: AVFoundation.AVMediaSelectionGroup? { get }
+  @objc var selectedAudibleMediaOption: AVFoundation.AVMediaSelectionOption? { get set }
+  @objc var legibleMediaSelectionGroup: AVFoundation.AVMediaSelectionGroup? { get }
+  @objc var selectedLegibleMediaOption: AVFoundation.AVMediaSelectionOption? { get set }
+  @objc var providerExtension: BrightcovePlayerSDK.BCOVSessionProviderExtension? { get }
+  @objc func selectAudibleMediaOptionAutomatically()
+  @objc func selectLegibleMediaOptionAutomatically()
+  @objc func displayNameFromAudibleMediaSelectionOption(_ option: AVFoundation.AVMediaSelectionOption) -> Swift.String?
+  @objc func displayNameFromLegibleMediaSelectionOption(_ option: AVFoundation.AVMediaSelectionOption) -> Swift.String?
+  @objc func terminate()
+}
+@objc @objcMembers public class BCOVPlaybackSessionLifecycleEvent : ObjectiveC.NSObject, Foundation.NSCopying {
+  @objc public var eventType: Swift.String {
+    get
+  }
+  @objc public var properties: [Swift.AnyHashable : Any] {
+    get
+  }
+  @objc required public init(withEventType eventType: Swift.String, properties: [Swift.AnyHashable : Any]?)
+  @objc public func isEqual(toPlaybackSessionLifecycleEvent event: BrightcovePlayerSDK.BCOVPlaybackSessionLifecycleEvent?) -> Swift.Bool
+  @objc public class func event(withType eventType: Swift.String) -> BrightcovePlayerSDK.BCOVPlaybackSessionLifecycleEvent
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public var hash: Swift.Int {
+    @objc get
+  }
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class BCOVFairPlayLicense : ObjectiveC.NSObject {
+  @objc public static let PurchaseKey: Swift.String
+  @objc public static let RentalDurationKey: Swift.String
+  @objc public static let PlayDurationKey: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class BCOVOfflineVideo : ObjectiveC.NSObject {
+  @objc public static let TokenPropertyKey: Swift.String
+  @objc public static let LicenseRequestTimePropertyKey: Swift.String
+  @objc public static let LicenseAbsoluteExpirationTimePropertyKey: Swift.String
+  @objc public static let InitialPlaybackTimeKey: Swift.String
+  @objc public static let DownloadStartTimePropertyKey: Swift.String
+  @objc public static let DownloadEndTimePropertyKey: Swift.String
+  @objc public static let OnlineSourceURLPropertyKey: Swift.String
+  @objc public static let ThumbnailNamePropertyKey: Swift.String
+  @objc public static let ThumbnailFilePathPropertyKey: Swift.String
+  @objc public static let PosterNamePropertyKey: Swift.String
+  @objc public static let PosterFilePathPropertyKey: Swift.String
+  @objc public static let RelativeFilePathPropertyKey: Swift.String
+  @objc public static let FilePathPropertyKey: Swift.String
+  @objc public static let MediaType: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class BCOVGlobalConfiguration : ObjectiveC.NSObject {
   @objc public static let sharedConfig: BrightcovePlayerSDK.BCOVGlobalConfiguration
@@ -444,6 +649,73 @@ import _SwiftConcurrencyShims
 @objc public protocol BCOVComponent : ObjectiveC.NSObjectProtocol {
   @objc var bcov_componentIdentity: any BrightcovePlayerSDK.BCOVComponentIdentity { get }
   @objc optional func bcov_setComponentContext(_ componentContext: [Swift.AnyHashable : Any])
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers @_Concurrency.MainActor @preconcurrency public class BCOVPUISlider : UIKit.UISlider {
+  @objc @_Concurrency.MainActor @preconcurrency public var trackHeight: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var bufferProgress: Swift.Float {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var bumperModeActive: Swift.Bool
+  @objc @_Concurrency.MainActor @preconcurrency public var advertisingMode: Swift.Bool
+  @objc @_Concurrency.MainActor @preconcurrency public var bufferProgressTintColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var bumperMinimumTrackTintColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var bumperMaximumTrackTintColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var advertisingMinimumTrackTintColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var advertisingMaximumTrackTintColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var markerTickColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var duration: Swift.Double
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc @_Concurrency.MainActor @preconcurrency public func addMarkerAt(_ position: Swift.Double, duration: Swift.Double, isAd: Swift.Bool, image: UIKit.UIImage?)
+  @objc @_Concurrency.MainActor @preconcurrency public func setCustomMinimumTrackImage(_ image: UIKit.UIImage?, forState state: UIKit.UIControl.State)
+  @objc @_Concurrency.MainActor @preconcurrency public func setCustomMaximumTrackImage(_ image: UIKit.UIImage?, forState state: UIKit.UIControl.State)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func draw(_ rect: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func trackRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var isEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var minimumTrackTintColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var maximumTrackTintColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func addTarget(_ target: Any?, action: ObjectiveC.Selector, for controlEvents: UIKit.UIControl.Event)
+  @objc @_Concurrency.MainActor @preconcurrency public func removeMarker(atPosition position: Swift.Double)
+  @objc @_Concurrency.MainActor @preconcurrency public func removeAllMarkers()
+  @objc @_Concurrency.MainActor @preconcurrency public func removeGenericMarkers()
+  @objc @_Concurrency.MainActor @preconcurrency public func removeAdMarkers()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func setThumbImage(_ image: UIKit.UIImage?, for state: UIKit.UIControl.State)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var thumbTintColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change: [Foundation.NSKeyValueChangeKey : Any]?, context: Swift.UnsafeMutableRawPointer?)
+  @objc deinit
 }
 @objc public protocol BCOVPlaylistProtocol : ObjectiveC.NSObjectProtocol {
   @objc var videos: [BrightcovePlayerSDK.BCOVVideo] { get }
@@ -557,6 +829,33 @@ import _SwiftConcurrencyShims
   @objc override dynamic public init()
   @objc deinit
 }
+@objc @objcMembers public class BCOVInteractivityHandler : ObjectiveC.NSObject {
+  @objc weak public var delegate: (any BrightcovePlayerSDK.BCOVInteractivityHandlerDelegate)?
+  @objc public var interactivityProject: BrightcovePlayerSDK.BCOVInteractivityProject? {
+    get
+  }
+  @objc public init(withAccountId accountId: Swift.String, projectId: Swift.String, containerView: UIKit.UIView, playbackController: any BrightcovePlayerSDK.BCOVPlaybackController)
+  @objc public func enablePrecondition(_ precondition: Swift.String)
+  @objc public func disablePrecondition(_ precondition: Swift.String)
+  @objc override dynamic public func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change: [Foundation.NSKeyValueChangeKey : Any]?, context: Swift.UnsafeMutableRawPointer?)
+  @objc deinit
+}
+extension BrightcovePlayerSDK.BCOVInteractivityHandler : BrightcovePlayerSDK.BCOVPlaybackSessionConsumer {
+  @objc dynamic public func didAdvance(to session: any BrightcovePlayerSDK.BCOVPlaybackSession)
+  @objc dynamic public func playbackSession(_ session: any BrightcovePlayerSDK.BCOVPlaybackSession, didProgressTo progress: Foundation.TimeInterval)
+  @objc dynamic public func playbackSession(_ session: any BrightcovePlayerSDK.BCOVPlaybackSession, didReceive lifecycleEvent: BrightcovePlayerSDK.BCOVPlaybackSessionLifecycleEvent)
+}
+@objc public protocol BCOVInteractivityHandlerDelegate : ObjectiveC.NSObjectProtocol {
+  @objc optional func projectWasCreated(_ project: BrightcovePlayerSDK.BCOVInteractivityProject)
+  @objc optional func projectRequestFailed(_ error: any Swift.Error)
+  @objc optional func animationTime(forTransition transition: BrightcovePlayerSDK.BCOVInteractivityAnnotationTransition) -> Foundation.TimeInterval
+  @objc optional func font(forTextAnnotation annotation: BrightcovePlayerSDK.BCOVInteractivityAnnotation) -> UIKit.UIFont
+  @objc optional func backgroundColor(forTextAnnotation annotation: BrightcovePlayerSDK.BCOVInteractivityAnnotation) -> UIKit.UIColor
+  @objc optional func textColor(forTextAnnotation annotation: BrightcovePlayerSDK.BCOVInteractivityAnnotation) -> UIKit.UIColor
+  @available(iOS 12, *)
+  @objc optional func annotationWasTapped(_ annotation: BrightcovePlayerSDK.BCOVInteractivityAnnotation)
+  @objc optional func annotationWasTriggered(_ annotation: BrightcovePlayerSDK.BCOVInteractivityAnnotation)
+}
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class BCOVFairPlayOnlineLicenseHelper : ObjectiveC.NSObject {
   @objc deinit
 }
@@ -566,9 +865,82 @@ extension BrightcovePlayerSDK.BCOVFairPlayOnlineLicenseHelper : AVFoundation.AVC
   @objc dynamic public func contentKeySession(_ session: AVFoundation.AVContentKeySession, shouldRetry keyRequest: AVFoundation.AVContentKeyRequest, reason retryReason: AVFoundation.AVContentKeyRequest.RetryReason) -> Swift.Bool
   @objc dynamic public func contentKeySession(_ session: AVFoundation.AVContentKeySession, contentKeyRequest keyRequest: AVFoundation.AVContentKeyRequest, didFailWithError err: any Swift.Error)
 }
+@objc public protocol BCOVOfflineVideoManagerDelegate : ObjectiveC.NSObjectProtocol {
+  @objc optional func didCreateSharedBackgroundSesssionConfiguration(_ backgroundSessionConfiguration: Foundation.URLSessionConfiguration)
+  @objc optional func offlineVideoToken(_ offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken, aggregateDownloadTask: AVFoundation.AVAggregateAssetDownloadTask, didProgressTo progressPercent: Foundation.TimeInterval, forMediaSelection mediaSelection: AVFoundation.AVMediaSelection)
+  @available(iOS 15.0, *)
+  @objc optional func offlineVideoToken(_ offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken, assetDownloadTask: AVFoundation.AVAssetDownloadTask, didProgressTo progressPercent: Foundation.TimeInterval)
+  @available(iOS 15.0, *)
+  @objc optional func offlineVideoToken(_ offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken, assetDownloadTask: AVFoundation.AVAssetDownloadTask, willDownloadVariants variants: [AVFoundation.AVAssetVariant])
+  @objc optional func offlineVideoToken(_ offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken, didFinishMediaSelectionDownload mediaSelection: AVFoundation.AVMediaSelection)
+  @objc optional func offlineVideoToken(_ offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken, didFinishDownloadWithError error: (any Swift.Error)?)
+  @objc optional func downloadWasPaused(forOfflineVideoToken offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken)
+  @objc optional func didDownloadStaticImages(withOfflineVideoToken offlineVideoToken: BrightcovePlayerSDK.BCOVOfflineVideoToken)
+  @objc optional func shouldDeleteVideoPackage(_ videoPackagePath: Swift.String) -> Swift.Bool
+  @objc optional func offlineVideoStorageDidChange()
+  @objc optional func playbackServiceForManifestURLTTLUpdate(forVideo video: BrightcovePlayerSDK.BCOVVideo) -> BrightcovePlayerSDK.BCOVPlaybackService?
+}
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class BCOVFairPlayManager : ObjectiveC.NSObject {
   @objc public static let ErrorDomain: Swift.String
   @objc public class func preloadContentKeys(forVideos videos: [BrightcovePlayerSDK.BCOVVideo])
+  @objc deinit
+}
+@objc public protocol BCOVCuePointProtocol : ObjectiveC.NSObjectProtocol {
+  @objc var position: CoreMedia.CMTime { get }
+  @objc var type: Swift.String? { get }
+  @objc var properties: [Swift.String : Swift.AnyHashable] { get }
+  @objc func update(_ updateBlock: (BrightcovePlayerSDK.BCOVMutableCuePoint) -> Swift.Void) -> BrightcovePlayerSDK.BCOVCuePoint
+}
+@objc @objcMembers public class BCOVCuePoint : ObjectiveC.NSObject, BrightcovePlayerSDK.BCOVCuePointProtocol, Foundation.NSCopying, Foundation.NSMutableCopying {
+  @objc public static let TypeAdSlot: Swift.String
+  @objc public static let TypeAdCompanion: Swift.String
+  @objc public static let PropertyKeyName: Swift.String
+  @objc public var type: Swift.String? {
+    @objc get
+  }
+  @objc public var position: CoreMedia.CMTime {
+    @objc get
+  }
+  @objc public var properties: [Swift.String : Swift.AnyHashable] {
+    @objc get
+  }
+  @objc public static let PositionTypeBefore: CoreMedia.CMTime
+  @objc public static let PositionTypeAfter: CoreMedia.CMTime
+  @objc public init(withType type: Swift.String, position: CoreMedia.CMTime)
+  @objc public init(withType type: Swift.String?, position: CoreMedia.CMTime, properties: [Swift.String : Swift.AnyHashable]?)
+  @objc public func update(_ updateBlock: (BrightcovePlayerSDK.BCOVMutableCuePoint) -> Swift.Void) -> BrightcovePlayerSDK.BCOVCuePoint
+  @objc public func compare(_ cuePoint: BrightcovePlayerSDK.BCOVCuePoint) -> Foundation.ComparisonResult
+  @objc public func hasPosition(_ position: CoreMedia.CMTime) -> Swift.Bool
+  @objc public func isEqual(toCuePoint cuePoint: BrightcovePlayerSDK.BCOVCuePoint?) -> Swift.Bool
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc public func mutableCopy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public var hash: Swift.Int {
+    @objc get
+  }
+  @objc public class func afterCuePoint(ofType type: Swift.String?, properties: [Swift.String : Swift.AnyHashable]?) -> BrightcovePlayerSDK.BCOVCuePoint
+  @objc public class func beforeCuePoint(ofType type: Swift.String?, properties: [Swift.String : Swift.AnyHashable]?) -> BrightcovePlayerSDK.BCOVCuePoint
+  @objc public class func cuePoint(withType type: Swift.String?, positionInSeconds: Foundation.TimeInterval, properties: [Swift.String : Swift.AnyHashable]?) -> BrightcovePlayerSDK.BCOVCuePoint?
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class BCOVMutableCuePoint : BrightcovePlayerSDK.BCOVCuePoint {
+  @objc override public var type: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc override public var position: CoreMedia.CMTime {
+    @objc get
+    @objc set
+  }
+  @objc override public var properties: [Swift.String : Swift.AnyHashable] {
+    @objc get
+    @objc set
+  }
+  @objc override public init(withType type: Swift.String, position: CoreMedia.CMTime)
+  @objc override public init(withType type: Swift.String?, position: CoreMedia.CMTime, properties: [Swift.String : Swift.AnyHashable]?)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc @_Concurrency.MainActor @preconcurrency public class BCOVUILabel : UIKit.UILabel {
@@ -602,6 +974,65 @@ extension BrightcovePlayerSDK.BCOVPlayerSDKManager {
   @objc dynamic public func createSidecarSubtitlesPlaybackController(withViewStrategy viewStrategy: BrightcovePlayerSDK.BCOVPlaybackControllerViewStrategy?) -> any BrightcovePlayerSDK.BCOVPlaybackController
   @objc dynamic public func createSidecarSubtitlesSessionProvider(withUpstreamSessionProvider provider: (any BrightcovePlayerSDK.BCOVPlaybackSessionProvider)?) -> any BrightcovePlayerSDK.BCOVPlaybackSessionProvider
 }
+@objc public protocol BCOVPUIButtonAccessibilityDelegate : ObjectiveC.NSObjectProtocol {
+  @objc func accessibilityLabelForButton(_ button: BrightcovePlayerSDK.BCOVPUIButton, isPrimaryState: Swift.Bool) -> Swift.String?
+}
+@objc @_inheritsConvenienceInitializers @objcMembers @_Concurrency.MainActor @preconcurrency public class BCOVPUIButton : UIKit.UIButton {
+  @objc @_Concurrency.MainActor @preconcurrency public var primaryTitle: Swift.String?
+  @objc @_Concurrency.MainActor @preconcurrency public var secondaryTitle: Swift.String?
+  @objc @_Concurrency.MainActor @preconcurrency public var accessibilityDelegate: (any BrightcovePlayerSDK.BCOVPUIButtonAccessibilityDelegate)? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public init()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func addTarget(_ target: Any?, action: ObjectiveC.Selector, for controlEvents: UIKit.UIControl.Event)
+  @objc @_Concurrency.MainActor @preconcurrency public func showPrimaryTitle(_ primary: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change: [Foundation.NSKeyValueChangeKey : Any]?, context: Swift.UnsafeMutableRawPointer?)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class BCOVCuePointCollection : ObjectiveC.NSObject {
+  @objc convenience public init(withArray cuePoints: [BrightcovePlayerSDK.BCOVCuePoint]?)
+  @objc convenience public init(withCuePoint cuePoint: BrightcovePlayerSDK.BCOVCuePoint?)
+  @objc deinit
+  @objc public var array: [BrightcovePlayerSDK.BCOVCuePoint] {
+    get
+  }
+  @objc public var count: Swift.Int {
+    @objc get
+  }
+  @objc public func cuePoints(afterTime time: CoreMedia.CMTime) -> BrightcovePlayerSDK.BCOVCuePointCollection
+  @objc public func cuePoints(beforeTime time: CoreMedia.CMTime) -> BrightcovePlayerSDK.BCOVCuePointCollection
+  @objc public func cuePoints(atTime time: CoreMedia.CMTime) -> BrightcovePlayerSDK.BCOVCuePointCollection
+  @objc public func cuePoints(atOrAfterTime time: CoreMedia.CMTime) -> BrightcovePlayerSDK.BCOVCuePointCollection
+  @objc public func cuePoints(atOrBeforeTime time: CoreMedia.CMTime) -> BrightcovePlayerSDK.BCOVCuePointCollection
+  @objc public func cuePoints(afterTime lowerBound: CoreMedia.CMTime, beforeTime upperBound: CoreMedia.CMTime) -> BrightcovePlayerSDK.BCOVCuePointCollection
+  @objc public func cuePoints(afterTime lowerBound: CoreMedia.CMTime, atOrBeforeTime upperBound: CoreMedia.CMTime) -> BrightcovePlayerSDK.BCOVCuePointCollection?
+  @objc public func cuePoints(atOrAfterTime lowerBound: CoreMedia.CMTime, beforeTime upperBound: CoreMedia.CMTime) -> BrightcovePlayerSDK.BCOVCuePointCollection
+  @objc public func cuePoints(atOrAfterTime lowerBound: CoreMedia.CMTime, atOrBeforeTime upperBound: CoreMedia.CMTime) -> BrightcovePlayerSDK.BCOVCuePointCollection
+  @objc public func cuePoints(ofType type: Swift.String) -> BrightcovePlayerSDK.BCOVCuePointCollection
+  @objc public func isEqual(toCollection collection: BrightcovePlayerSDK.BCOVCuePointCollection?) -> Swift.Bool
+  @objc public func object(atIndexedSubscript index: Swift.Int) -> BrightcovePlayerSDK.BCOVCuePoint?
+  @objc public var ignoreCuePoints: Swift.Bool
+  @objc public class func collection(withArray cuePoints: [BrightcovePlayerSDK.BCOVCuePoint]) -> BrightcovePlayerSDK.BCOVCuePointCollection
+  @objc public class func emptyCollection() -> BrightcovePlayerSDK.BCOVCuePointCollection
+}
+extension BrightcovePlayerSDK.BCOVCuePointCollection {
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public var hash: Swift.Int {
+    @objc get
+  }
+}
+extension BrightcovePlayerSDK.BCOVCuePointCollection : Foundation.NSCopying {
+  @objc dynamic public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+}
+extension BrightcovePlayerSDK.BCOVCuePointCollection {
+  @objc override dynamic public func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change: [Foundation.NSKeyValueChangeKey : Any]?, context: Swift.UnsafeMutableRawPointer?)
+}
 @objc public enum BCOVFPSAuthProxyErrorCode : Swift.Int {
   case ApplicationCertificateRequestFailed = 69401
   case ContentKeyRequestFailed = 69402
@@ -634,12 +1065,26 @@ extension BrightcovePlayerSDK.BCOVFPSBrightcoveAuthProxy {
   @objc dynamic public func contentIdentifier(fromKeyRequest keyRequest: AVFoundation.AVContentKeyRequest?) -> Foundation.Data?
   @objc dynamic public func encryptedContentKey(forContentKeyIdentifier contentKeyIdentifier: Swift.String, contentKeyRequest keyRequest: Foundation.Data?, source: BrightcovePlayerSDK.BCOVSource?, options: [Swift.AnyHashable : Any]? = nil, completionHandler: @escaping (Foundation.URLResponse?, Foundation.Data?, Foundation.Date?, (any Swift.Error)?) -> Swift.Void)
 }
+@objc @_inheritsConvenienceInitializers @objcMembers public class BCOVInteractivityProject : ObjectiveC.NSObject {
+  @objc public class func projectWithJSON(_ json: [Swift.AnyHashable : Any]) -> BrightcovePlayerSDK.BCOVInteractivityProject?
+  @objc public var projectId: Swift.String?
+  @objc public var sessionId: Swift.String?
+  @objc public var title: Swift.String?
+  @objc public var annotations: [BrightcovePlayerSDK.BCOVInteractivityAnnotation]?
+  @objc weak public var handler: BrightcovePlayerSDK.BCOVInteractivityHandler?
+  @objc public func annotations(atTime time: Foundation.TimeInterval) -> [BrightcovePlayerSDK.BCOVInteractivityAnnotation]?
+  @objc override dynamic public init()
+  @objc deinit
+}
 extension BrightcovePlayerSDK.BCOVPlayerSDKManager {
   @objc dynamic public func createFairPlayPlaybackController(withAuthorizationProxy proxy: any BrightcovePlayerSDK.BCOVFPSAuthorizationProxy) -> any BrightcovePlayerSDK.BCOVPlaybackController
   @objc dynamic public func createFairPlaySessionProvider(withAuthorizationProxy proxy: any BrightcovePlayerSDK.BCOVFPSAuthorizationProxy, upstreamSessionProvider provider: (any BrightcovePlayerSDK.BCOVPlaybackSessionProvider)?) -> any BrightcovePlayerSDK.BCOVPlaybackSessionProvider
   @objc dynamic public func createFairPlayPlaybackController(withApplicationCertificate appCert: Foundation.Data?, authorizationProxy proxy: any BrightcovePlayerSDK.BCOVFPSAuthorizationProxy, viewStrategy: BrightcovePlayerSDK.BCOVPlaybackControllerViewStrategy?) -> any BrightcovePlayerSDK.BCOVPlaybackController
   @objc dynamic public func createFairPlaySessionProvider(withApplicationCertificate appCert: Foundation.Data?, authorizationProxy proxy: any BrightcovePlayerSDK.BCOVFPSAuthorizationProxy, upstreamSessionProvider provider: (any BrightcovePlayerSDK.BCOVPlaybackSessionProvider)?) -> any BrightcovePlayerSDK.BCOVPlaybackSessionProvider
 }
+extension BrightcovePlayerSDK.BCOVOfflineVideoManagerErrorCode : Swift.Equatable {}
+extension BrightcovePlayerSDK.BCOVOfflineVideoManagerErrorCode : Swift.Hashable {}
+extension BrightcovePlayerSDK.BCOVOfflineVideoManagerErrorCode : Swift.RawRepresentable {}
 extension BrightcovePlayerSDK.BCOVPlaybackServiceErrorCode : Swift.Equatable {}
 extension BrightcovePlayerSDK.BCOVPlaybackServiceErrorCode : Swift.Hashable {}
 extension BrightcovePlayerSDK.BCOVPlaybackServiceErrorCode : Swift.RawRepresentable {}
