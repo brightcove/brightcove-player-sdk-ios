@@ -1,3 +1,13 @@
+## Release 7.0.3
+
+#### 01 Apr 2025
+
+### FreeWheel Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue where the player would incorrectly send videoView events to FreeWheel during a preroll.
+
 ## Release 7.0.2
 
 #### 6 Mar 2025
