@@ -1,3 +1,13 @@
+## Release 7.0.4
+
+#### 07 May 2025
+
+### FreeWheel Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes an issue with FreeWheel ads - prevent non-preroll ads with timePosition=0 from being perceived as preroll.
+
 ## Release 7.0.3
 
 #### 01 Apr 2025
