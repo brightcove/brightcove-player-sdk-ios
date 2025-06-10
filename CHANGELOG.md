@@ -1,3 +1,11 @@
+## Release 7.0.5
+
+#### 09 June 2025
+
+### Brightcove Player SDK for iOS (Core)
+
+* Fixes an issue where a custom `BCOVFPSAuthorizationProxy` implementation would be quickly replaced with the default proxy.
+
 ## Release 7.0.4
 
 #### 07 May 2025
