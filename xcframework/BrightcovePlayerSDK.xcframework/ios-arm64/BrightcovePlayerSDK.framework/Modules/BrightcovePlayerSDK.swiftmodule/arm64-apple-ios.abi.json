@@ -42272,49 +42272,49 @@
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/Offline\/BCOVOfflineVideoManager.swift",
       "kind": "StringLiteral",
-      "offset": 148467,
+      "offset": 148556,
       "length": 21,
       "value": "\"marked_for_deletion\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/Offline\/BCOVOfflineVideoManager.swift",
       "kind": "StringLiteral",
-      "offset": 148533,
+      "offset": 148622,
       "length": 17,
       "value": "\"offline_enabled\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/Offline\/BCOVOfflineVideoManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 157529,
+      "offset": 157618,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/Offline\/BCOVOfflineVideoManager.swift",
       "kind": "StringLiteral",
-      "offset": 157597,
+      "offset": 157686,
       "length": 12,
       "value": "\"brightcove\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/Offline\/BCOVOfflineVideoManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 157624,
+      "offset": 157713,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/Offline\/BCOVOfflineVideoManager.swift",
       "kind": "StringLiteral",
-      "offset": 157706,
+      "offset": 157795,
       "length": 55,
       "value": "\"Error finding application support directory: \""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/Offline\/BCOVOfflineVideoManager.swift",
       "kind": "StringLiteral",
-      "offset": 157760,
+      "offset": 157849,
       "length": 2,
       "value": "\"\""
     },
@@ -44234,7 +44234,7 @@
       "kind": "StringLiteral",
       "offset": 18955,
       "length": 10,
-      "value": "\"7.0.5.17\""
+      "value": "\"7.0.6.18\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUISlider.swift",
@@ -45179,7 +45179,7 @@
       "kind": "StringLiteral",
       "offset": 7240,
       "length": 10,
-      "value": "\"7.0.5.17\""
+      "value": "\"7.0.6.18\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUIButton.swift",
@@ -45249,7 +45249,7 @@
       "kind": "StringLiteral",
       "offset": 447,
       "length": 10,
-      "value": "\"7.0.5.17\""
+      "value": "\"7.0.6.18\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/FairPlay\/BCOVFPSBrightcoveAuthProxy.swift",
@@ -45361,7 +45361,7 @@
       "kind": "StringLiteral",
       "offset": 5458,
       "length": 10,
-      "value": "\"7.0.5.17\""
+      "value": "\"7.0.6.18\""
     }
   ]
 }

@@ -1,3 +1,12 @@
+## Release 7.0.6
+
+#### 25 June 2025
+
+### Brightcove Player SDK for iOS (Core)
+
+* Fixes an issue where FairPlay license renewal requests where not being issued after the initial request.
+* Fixes an issue where the preferred bitrate was not being respected for Offline Downloads, causing videos to always been downloaded at the highest possible bitrate.
+
 ## Release 7.0.5
 
 #### 09 June 2025
