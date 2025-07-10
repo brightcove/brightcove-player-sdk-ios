@@ -134,8 +134,8 @@ func playbackController(_ controller: BCOVPlaybackController,
 
     if kBCOVPlaybackSessionLifecycleEventError == lifecycleEvent.eventType {
     
-    guard let error = lifecycleEvent.properties[kBCOVPlaybackSessionEventKeyError] as? NSError else { return }
-    
+        guard let error = lifecycleEvent.properties[kBCOVPlaybackSessionEventKeyError] as? NSError else { return }
+        
         if let underlyingError = error.userInfo[NSUnderlyingErrorKey] as? NSError {
             
             if let responseData = underlyingError.userInfo["kBCOVFPSAuthProxyResponseData"] as? Data {
@@ -153,7 +153,7 @@ func playbackController(_ controller: BCOVPlaybackController,
         } else {
             // Fallback if there is no underlying error.
             print("License Server Error: An unknown error occurred.")
-        }
+        }  
     }
 
 }
