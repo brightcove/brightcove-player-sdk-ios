@@ -43833,133 +43833,133 @@
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "BooleanLiteral",
-      "offset": 11908,
+      "offset": 11913,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "FloatLiteral",
-      "offset": 11915,
+      "offset": 11920,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "Array",
-      "offset": 12284,
+      "offset": 12289,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "FloatLiteral",
-      "offset": 12501,
+      "offset": 12506,
       "length": 3,
       "value": "2.0"
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "FloatLiteral",
-      "offset": 12534,
+      "offset": 12539,
       "length": 3,
       "value": "2.0"
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "StringLiteral",
-      "offset": 12852,
+      "offset": 12857,
       "length": 30,
       "value": "\"bcovpui_action_touchDidDown:\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "StringLiteral",
-      "offset": 12945,
+      "offset": 12950,
       "length": 36,
       "value": "\"bcovpui_action_touchDidDownRepeat:\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "StringLiteral",
-      "offset": 13044,
+      "offset": 13049,
       "length": 36,
       "value": "\"bcovpui_action_touchDidDragInside:\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "StringLiteral",
-      "offset": 13144,
+      "offset": 13149,
       "length": 37,
       "value": "\"bcovpui_action_touchDidDragOutside:\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "StringLiteral",
-      "offset": 13243,
+      "offset": 13248,
       "length": 35,
       "value": "\"bcovpui_action_touchDidDragEnter:\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "StringLiteral",
-      "offset": 13339,
+      "offset": 13344,
       "length": 34,
       "value": "\"bcovpui_action_touchDidDragExit:\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "StringLiteral",
-      "offset": 13434,
+      "offset": 13439,
       "length": 34,
       "value": "\"bcovpui_action_touchDidUpInside:\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "StringLiteral",
-      "offset": 13530,
+      "offset": 13535,
       "length": 35,
       "value": "\"bcovpui_action_touchDidUpOutside:\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "StringLiteral",
-      "offset": 13624,
+      "offset": 13629,
       "length": 32,
       "value": "\"bcovpui_action_touchDidCancel:\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "StringLiteral",
-      "offset": 13716,
+      "offset": 13721,
       "length": 32,
       "value": "\"bcovpui_action_valueDidChange:\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "StringLiteral",
-      "offset": 13807,
+      "offset": 13812,
       "length": 32,
       "value": "\"bcovpui_callback_touchDidDown:\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "StringLiteral",
-      "offset": 13901,
+      "offset": 13906,
       "length": 36,
       "value": "\"bcovpui_callback_touchDidUpInside:\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "StringLiteral",
-      "offset": 14000,
+      "offset": 14005,
       "length": 37,
       "value": "\"bcovpui_callback_touchDidUpOutside:\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUICommon.swift",
       "kind": "StringLiteral",
-      "offset": 14098,
+      "offset": 14103,
       "length": 34,
       "value": "\"bcovpui_callback_valueDidChange:\""
     },
@@ -44234,7 +44234,7 @@
       "kind": "StringLiteral",
       "offset": 18955,
       "length": 10,
-      "value": "\"7.0.6.18\""
+      "value": "\"7.0.7.19\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUISlider.swift",
@@ -45179,7 +45179,7 @@
       "kind": "StringLiteral",
       "offset": 7240,
       "length": 10,
-      "value": "\"7.0.6.18\""
+      "value": "\"7.0.7.19\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/PlayerUI\/BCOVPUIButton.swift",
@@ -45249,7 +45249,7 @@
       "kind": "StringLiteral",
       "offset": 447,
       "length": 10,
-      "value": "\"7.0.6.18\""
+      "value": "\"7.0.7.19\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_BuildAll_master\/src\/core\/Source\/FairPlay\/BCOVFPSBrightcoveAuthProxy.swift",
@@ -45361,7 +45361,7 @@
       "kind": "StringLiteral",
       "offset": 5458,
       "length": 10,
-      "value": "\"7.0.6.18\""
+      "value": "\"7.0.7.19\""
     }
   ]
 }

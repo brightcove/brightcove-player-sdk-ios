@@ -1,3 +1,11 @@
+## Release 7.0.7
+
+#### 08 August 2025
+
+### Brightcove Player SDK for iOS (Core)
+
+* Fixes hour time format in the player display.
+
 ## Release 7.0.6
 
 #### 25 June 2025

@@ -1,4 +1,4 @@
-# Using FairPlay With The Brightcove Player SDK for iOS, version 7.0.6.18
+# Using FairPlay With The Brightcove Player SDK for iOS, version 7.0.7.19
 
 ## Quick Start
 
@@ -133,27 +133,25 @@ func playbackController(_ controller: BCOVPlaybackController,
                         didReceive lifecycleEvent: BCOVPlaybackSessionLifecycleEvent) {
 
     if kBCOVPlaybackSessionLifecycleEventError == lifecycleEvent.eventType {
-    
-        guard let error = lifecycleEvent.properties[kBCOVPlaybackSessionEventKeyError] as? NSError else { return }
-        
-        if let underlyingError = error.userInfo[NSUnderlyingErrorKey] as? NSError {
-            
-            if let responseData = underlyingError.userInfo["kBCOVFPSAuthProxyResponseData"] as? Data {
-                
-                let decodedMessage = String(data: responseData, encoding: .utf8)
-                
-                if let message = decodedMessage {
-                    print("License Server Error: \(message)")
-                } else {
-                    print("License Server Error: The error key was not found or error decoding failed.")
+
+        if let error = lifecycleEvent.properties[kBCOVPlaybackSessionEventKeyError] as? NSError {
+
+            if let responseData = error.userInfo[BCOVFPSBrightcoveAuthProxy.ResponseData] as? Data,
+               let responseString = String(data: responseData, encoding: .utf8) {
+
+                print("License Server Error: \(responseString)")
+
+            } else {
+                print("Error: \(error.localizedDescription)")
+
+                // Some errors may contain an underlying NSError
+                if let underlyingError = error.userInfo[NSUnderlyingErrorKey] as? NSError {
+                    print("Underlying Error: \(underlyingError.localizedDescription)")
                 }
-                
             }
-            
-        } else {
-            // Fallback if there is no underlying error.
-            print("License Server Error: An unknown error occurred.")
-        }  
+
+        }
+
     }
 
 }
