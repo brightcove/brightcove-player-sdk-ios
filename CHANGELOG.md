@@ -1,6 +1,22 @@
+## Release 7.0.8
+
+#### 25 Aug 2025
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Exposes tvOS track selection buttons for customization. Customers can now access and customize the text track (closed captions) and audio track selection buttons through the new `BCOVTVTrackSelectionButton` class and public properties `textTrackButton` and `audioTrackButton` on `BCOVTVControlsView`. This enables customization of button icons, colors, fonts, and focus states.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* The google-cast-sdk has been updated from 4.8.1 to 4.8.3 to fix a possible build error (`Multiple commands produce PrivacyInfo.xcprivacy`)
+
 ## Release 7.0.7
 
-#### 08 August 2025
+#### 08 Aug 2025
 
 ### Brightcove Player SDK for iOS (Core)
 

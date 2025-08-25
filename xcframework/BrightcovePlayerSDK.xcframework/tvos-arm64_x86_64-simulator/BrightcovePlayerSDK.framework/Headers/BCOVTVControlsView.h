@@ -8,7 +8,7 @@
 
 #import <BrightcovePlayerSDK/BCOVPlaybackController.h>
 
-@class BCOVTVProgressView, BCOVTVInfoViewController;
+@class BCOVTVProgressView, BCOVTVInfoViewController, BCOVTVTrackSelectionButton;
 
 /**
  * View that holds all the playback controls
@@ -73,6 +73,20 @@
  * UILabel that displays the name of the video
  */
 @property (nonatomic, strong, readonly) UILabel *videoNameLabel;
+
+/**
+ * Button for selecting text tracks (closed captions/subtitles).
+ * Customize the iconLabel.text property to change the displayed icon.
+ * Customize colors, fonts, and effects through the button's sub-properties.
+ */
+@property (nonatomic, weak, readonly) BCOVTVTrackSelectionButton *textTrackButton;
+
+/**
+ * Button for selecting audio tracks.
+ * Customize the iconLabel.text property to change the displayed icon.
+ * Customize colors, fonts, and effects through the button's sub-properties.
+ */
+@property (nonatomic, weak, readonly) BCOVTVTrackSelectionButton *audioTrackButton;
 
 /*
  * Use this property to provide tabs for client-specific content in the playback UI.

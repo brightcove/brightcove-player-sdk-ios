@@ -38,6 +38,7 @@
 #import <BrightcovePlayerSDK/BCOVTVControlsView.h>
 #import <BrightcovePlayerSDK/BCOVTVPlayerView.h>
 #import <BrightcovePlayerSDK/BCOVTVProgressView.h>
+#import <BrightcovePlayerSDK/BCOVTVTrackSelectionButton.h>
 #endif
 
 // Interactivity
