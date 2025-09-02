@@ -6,9 +6,9 @@
 	<array>
 		<dict>
 			<key>BinaryPath</key>
-			<string>BrightcovePlayerSDK.framework/BrightcovePlayerSDK</string>
+			<string>BrightcovePlayerSDK.framework/Versions/A/BrightcovePlayerSDK</string>
 			<key>LibraryIdentifier</key>
-			<string>ios-arm64_x86_64-simulator</string>
+			<string>ios-arm64_x86_64-maccatalyst</string>
 			<key>LibraryPath</key>
 			<string>BrightcovePlayerSDK.framework</string>
 			<key>SupportedArchitectures</key>
@@ -19,13 +19,13 @@
 			<key>SupportedPlatform</key>
 			<string>ios</string>
 			<key>SupportedPlatformVariant</key>
-			<string>simulator</string>
+			<string>maccatalyst</string>
 		</dict>
 		<dict>
 			<key>BinaryPath</key>
 			<string>BrightcovePlayerSDK.framework/BrightcovePlayerSDK</string>
 			<key>LibraryIdentifier</key>
-			<string>ios-arm64</string>
+			<string>tvos-arm64</string>
 			<key>LibraryPath</key>
 			<string>BrightcovePlayerSDK.framework</string>
 			<key>SupportedArchitectures</key>
@@ -33,7 +33,7 @@
 				<string>arm64</string>
 			</array>
 			<key>SupportedPlatform</key>
-			<string>ios</string>
+			<string>tvos</string>
 		</dict>
 		<dict>
 			<key>BinaryPath</key>
@@ -56,7 +56,7 @@
 			<key>BinaryPath</key>
 			<string>BrightcovePlayerSDK.framework/BrightcovePlayerSDK</string>
 			<key>LibraryIdentifier</key>
-			<string>tvos-arm64</string>
+			<string>ios-arm64</string>
 			<key>LibraryPath</key>
 			<string>BrightcovePlayerSDK.framework</string>
 			<key>SupportedArchitectures</key>
@@ -64,13 +64,13 @@
 				<string>arm64</string>
 			</array>
 			<key>SupportedPlatform</key>
-			<string>tvos</string>
+			<string>ios</string>
 		</dict>
 		<dict>
 			<key>BinaryPath</key>
-			<string>BrightcovePlayerSDK.framework/Versions/A/BrightcovePlayerSDK</string>
+			<string>BrightcovePlayerSDK.framework/BrightcovePlayerSDK</string>
 			<key>LibraryIdentifier</key>
-			<string>ios-arm64_x86_64-maccatalyst</string>
+			<string>ios-arm64_x86_64-simulator</string>
 			<key>LibraryPath</key>
 			<string>BrightcovePlayerSDK.framework</string>
 			<key>SupportedArchitectures</key>
@@ -81,7 +81,7 @@
 			<key>SupportedPlatform</key>
 			<string>ios</string>
 			<key>SupportedPlatformVariant</key>
-			<string>maccatalyst</string>
+			<string>simulator</string>
 		</dict>
 	</array>
 	<key>CFBundlePackageType</key>
