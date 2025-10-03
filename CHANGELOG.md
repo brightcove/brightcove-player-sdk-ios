@@ -1,3 +1,11 @@
+## Release 7.0.10
+
+#### 03 Oct 2025
+
+### Brightcove Player SDK for iOS (Core)
+
+* Fixes audio track desynchronization during AirPlay transitions.
+
 ## Release 7.0.9
 
 #### 05 Sep 2025
