@@ -1,3 +1,11 @@
+## Release 7.0.11
+
+#### 10 Nov 2025
+
+### Brightcove Player SDK for iOS (Core)
+
+* Internal refactoring and improved release process.
+
 ## Release 7.0.10
 
 #### 03 Oct 2025
