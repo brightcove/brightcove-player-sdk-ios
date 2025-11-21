@@ -1,4 +1,4 @@
-# Using Interactivity With The Brightcove Player SDK for iOS, version 7.0.11.5
+# Using Interactivity With The Brightcove Player SDK for iOS, version 7.1.0.7
 
 The Brightcove Player SDK currently supports Interactivity in a limited capacity.
 

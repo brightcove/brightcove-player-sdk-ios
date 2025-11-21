@@ -27,6 +27,7 @@
 #import <BrightcovePlayerSDK/BCOVPUIAdControlView.h>
 #import <BrightcovePlayerSDK/BCOVPUIBasicControlView.h>
 #import <BrightcovePlayerSDK/BCOVPUIPlayerView.h>
+#import <BrightcovePlayerSDK/BCOVPUIPlayerViewController.h>
 
 // Offline Video Management
 #import <BrightcovePlayerSDK/BCOVOfflineVideoManagerTypes.h>

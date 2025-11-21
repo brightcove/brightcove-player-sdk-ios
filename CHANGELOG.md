@@ -1,3 +1,21 @@
+## Release 7.1.0
+
+#### 21 Nov 2025
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Added `BCOVPUIPlayerViewController`, a new `UIViewController` wrapper for `BCOVPUIPlayerView` designed for SwiftUI integration. This view controller provides proper view controller hierarchy for IMA ads and other features that require a presenting view controller. It automatically sets itself as the presenting view controller and forwards all `BCOVPUIPlayerViewDelegate` methods. This is the recommended approach for SwiftUI apps using IMA ads. For UIKit apps, `BCOVPUIPlayerView` continues to work as before.
+* Added `contentOverlayView` convenience property to `BCOVPUIPlayerViewController` for easy access to the ad container view used by IMA ads.
+* Added new metrics for analytics - replay, audio and captions tracks selection
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes crash when VAST ad response contains blank Open Measurement verification resources.
+
 ## Release 7.0.11
 
 #### 10 Nov 2025
