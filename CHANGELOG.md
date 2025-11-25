@@ -1,3 +1,19 @@
+## Release 7.2.0
+
+#### 25 Nov 2025
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports Google Ads IMA SDK 3.27.4 for iOS and 4.15.1 for tvOS.
+
+### DAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Supports Google Ads IMA SDK 3.27.4 for iOS and 4.15.1 for tvOS.
+
 ## Release 7.1.0
 
 #### 21 Nov 2025
