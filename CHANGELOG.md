@@ -1,3 +1,19 @@
+## Release 7.2.1
+
+#### 02 Dec 2025
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Downgrades Google Ads IMA SDK for iOS to 3.26.1 to address a memory leak in 3.27.4 that prevented proper view controller deallocation, causing audio to continue playing after navigating away from the player view. tvOS remains at 4.15.1.
+
+### DAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Downgrades Google Ads IMA SDK for iOS to 3.26.1 to address a memory leak in 3.27.4 that prevented proper view controller deallocation, causing audio to continue playing after navigating away from the player view. tvOS remains at 4.15.1.
+
 ## Release 7.2.0
 
 #### 25 Nov 2025
