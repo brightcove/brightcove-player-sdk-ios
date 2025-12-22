@@ -1,3 +1,19 @@
+## Release 7.2.2
+
+#### 22 Dec 2025
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes fullscreen transition not working when using `BCOVPUIPlayerViewController` in SwiftUI apps.
+
+### Brightcove Player SDK for tvOS (Core)
+
+#### Additions and Improvements
+
+* Fixes crash on tvOS 18+ when opening the Closed Captions or Audio track selection menu with 10 or more items.
+
 ## Release 7.2.1
 
 #### 02 Dec 2025

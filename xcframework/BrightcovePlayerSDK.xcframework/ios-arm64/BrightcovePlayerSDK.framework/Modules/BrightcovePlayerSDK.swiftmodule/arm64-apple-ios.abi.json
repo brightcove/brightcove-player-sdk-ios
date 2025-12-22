@@ -44232,9 +44232,9 @@
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/BCOVPlayerSDKManager.swift",
       "kind": "StringLiteral",
-      "offset": 18954,
-      "length": 9,
-      "value": "\"7.2.1.9\""
+      "offset": 18955,
+      "length": 10,
+      "value": "\"7.2.2.10\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/PlayerUI\/BCOVPUISlider.swift",
@@ -45178,8 +45178,8 @@
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/SidecarSubtitles\/BCOVSSComponent.swift",
       "kind": "StringLiteral",
       "offset": 7240,
-      "length": 9,
-      "value": "\"7.2.1.9\""
+      "length": 10,
+      "value": "\"7.2.2.10\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/PlayerUI\/BCOVPUIButton.swift",
@@ -45255,8 +45255,8 @@
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/Interactivity\/BCOVInteractivityComponent.swift",
       "kind": "StringLiteral",
       "offset": 447,
-      "length": 9,
-      "value": "\"7.2.1.9\""
+      "length": 10,
+      "value": "\"7.2.2.10\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/FairPlay\/BCOVFPSBrightcoveAuthProxy.swift",
@@ -45367,8 +45367,8 @@
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/FairPlay\/BCOVFPSComponent.swift",
       "kind": "StringLiteral",
       "offset": 5458,
-      "length": 9,
-      "value": "\"7.2.1.9\""
+      "length": 10,
+      "value": "\"7.2.2.10\""
     }
   ]
 }
