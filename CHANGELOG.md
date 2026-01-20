@@ -1,3 +1,14 @@
+## Release 7.2.3
+
+#### 20 Jan 2026
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Improves fullscreen behavior when using `BCOVPUIPlayerViewController` in SwiftUI apps. Fullscreen now uses modal presentation with a custom expand/shrink animation that properly handles orientation changes.
+* Fixes `UIViewControllerHierarchyInconsistency` crash when using IMA ads with `BCOVPUIPlayerViewController` in SwiftUI apps.
+
 ## Release 7.2.2
 
 #### 22 Dec 2025
