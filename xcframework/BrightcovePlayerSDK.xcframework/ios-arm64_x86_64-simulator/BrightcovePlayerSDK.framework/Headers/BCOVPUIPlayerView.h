@@ -516,6 +516,16 @@ typedef NS_ENUM(NSUInteger, BCOVPUIVideo360NavigationMethod) {
 @property (nonatomic, readonly) BCOVPUIAdControlView *adControlsView;
 
 /**
+ * Returns the view controller that should currently be used for presenting
+ * content on behalf of the player view.
+ *
+ * When in fullscreen mode via modal presentation, this returns the fullscreen
+ * modal view controller. Otherwise, it returns the presentingViewController
+ * from the player view options.
+ */
+@property (nonatomic, weak, readonly) UIViewController *currentPresentingViewController;
+
+/**
  * Video 360 Settings
  * The method for controlling the view orientation
  * of a 360 video in the player view.

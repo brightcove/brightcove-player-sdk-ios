@@ -1,3 +1,26 @@
+## Release 7.2.4
+
+#### 17 Feb 2026
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes `preloadFairPlayLicense` hanging when called sequentially (e.g. batch downloading multiple FairPlay-protected videos). The completion handler now fires reliably for each video in the queue.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Fixes the IMA "Learn More" button not working during fullscreen in SwiftUI apps. The ad container and link opener presenting view controllers are now updated when entering and exiting fullscreen.
+* Fixes ad not resuming after closing the in-app browser opened via "Learn More" click-through.
+
+### DAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds fullscreen and "Learn More" click-through support for DAI ads in SwiftUI apps. The ad container and link opener presenting view controllers are now updated when entering and exiting fullscreen, matching the behavior of the IMA plugin.
+
 ## Release 7.2.3
 
 #### 20 Jan 2026
