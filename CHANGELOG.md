@@ -1,3 +1,17 @@
+## Release 7.2.5
+
+#### 20 Feb 2026
+
+### DAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds `dai_replaceAdTagParameters:` method to dynamically update ad targeting parameters during live DAI streams without restarting the stream.
+
+#### Bug Fixes
+
+* Fixes `dai_play` and `dai_pause` methods on `BCOVSessionProviderExtension` which were declared but had no implementation, causing a crash when called.
+
 ## Release 7.2.4
 
 #### 17 Feb 2026
