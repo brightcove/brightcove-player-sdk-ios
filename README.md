@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 7.2.5.15
+# Brightcove Player SDK for iOS, version 7.2.6.25
 
 
 ## Table of Contents
@@ -563,7 +563,7 @@ The Brightcove Native Player SDK includes built-in controls for playback in tvOS
 
 ## AirPlay
 
-Enable AirPlay functionality by setting the `setAllowsExternalPlayback` property on your `BCOVPlaybackController` to `true`. The AirPlay button will be displayed in the playback controls if AirPlay devices are found on your network.
+Enable AirPlay functionality by setting the `allowsExternalPlayback` property on your `BCOVPlaybackController` to `true`. The AirPlay button will be displayed in the playback controls if AirPlay devices are found on your network.
 
 Currently, IMA is the only ad plugin that supports AirPlay and only when using pre-roll and/or post-roll ads. Using AirPlay with the Pulse, SSAI or FreeWheel ad plugins may result in unexpected behavior.
 

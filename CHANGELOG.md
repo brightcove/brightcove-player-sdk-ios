@@ -1,6 +1,16 @@
-## Release 7.2.5
+## Release 7.2.6
 
-#### 20 Feb 2026
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes caption and subtitle track selection reverting to OFF during AirPlay sessions. The existing audio track workaround for AirPlay state transitions now also preserves legible (caption/subtitle) track selections.
+
+### Brightcove Player SDK for tvOS (Core)
+
+#### Additions and Improvements
+
+* Fixes caption and subtitle track selection reverting to OFF during AirPlay sessions. The existing audio track workaround for AirPlay state transitions now also preserves legible (caption/subtitle) track selections.
 
 ### DAI Plugin for Brightcove Player SDK for iOS
 
