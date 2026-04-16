@@ -1,3 +1,19 @@
+## Release 7.2.7
+
+#### 16 Apr 2026
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Fixes "Auto" caption selection reverting to "Off" during AirPlay. The SDK now tracks legible media selection intent (Off/Auto/Manual) explicitly, replacing the previous heuristic that inferred intent from AVPlayer state. This ensures all caption selection modes survive AirPlay transitions correctly.
+
+### Brightcove Player SDK for tvOS (Core)
+
+#### Additions and Improvements
+
+* Fixes "Auto" caption selection reverting to "Off" during AirPlay. The SDK now tracks legible media selection intent (Off/Auto/Manual) explicitly, replacing the previous heuristic that inferred intent from AVPlayer state. This ensures all caption selection modes survive AirPlay transitions correctly.
+
 ## Release 7.2.6
 
 ### Brightcove Player SDK for iOS (Core)
