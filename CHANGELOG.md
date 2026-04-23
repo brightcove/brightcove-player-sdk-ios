@@ -1,3 +1,25 @@
+## Release 7.2.8
+
+#### 23 Apr 2026
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Adds a private `sessionProviderRequestsReloadForRecovery` hook on `BCOVBasicSessionProviderHelperDelegate` that lets a session provider ask the playback controller to re-issue its current video list. Used by the DAI plugin's new automatic recovery mechanism; no impact on apps that don't use DAI.
+
+### Brightcove Player SDK for tvOS (Core)
+
+#### Additions and Improvements
+
+* Adds a private `sessionProviderRequestsReloadForRecovery` hook on `BCOVBasicSessionProviderHelperDelegate` that lets a session provider ask the playback controller to re-issue its current video list. Used by the DAI plugin's new automatic recovery mechanism; no impact on apps that don't use DAI.
+
+### DAI Plugin for Brightcove Player SDK for iOS
+
+#### Bug Fixes
+
+* Fixes black-screen / frozen-playback after the app is backgrounded during an ad break and later returned to the foreground (e.g. the device woke from sleep). Particularly relevant for Live DAI, where stitched ad URLs have a short TTL and become unplayable after long periods of inactivity. The DAI session provider now detects terminal playback failures (`AVPlayerItemFailedToPlayToEndTimeNotification`, `AVPlayerItem.status == .failed`), AVAudioSession media-services resets, and long-background foreground transitions, and rebuilds its internal `IMAAdsLoader`, `IMAAdDisplayContainer`, `IMAAdsRenderingSettings`, and the shared `AVPlayer` before re-issuing the session chain. Recovery is gated on network reachability (`NWPathMonitor`) and a short cooldown. Enabled by default; to disable, pass `kBCOVDAIOptionAutomaticRecoveryEnabledKey: @NO` in the `options:` dictionary of `-[BCOVPlayerSDKManager createDAISessionProviderWithSettings:adsRenderingSettings:adsRequestPolicy:adContainer:viewController:companionSlots:upstreamSessionProvider:options:]`. See `BCOVDAIComponent.h` for the full list of DAI options.
+
 ## Release 7.2.7
 
 #### 16 Apr 2026
