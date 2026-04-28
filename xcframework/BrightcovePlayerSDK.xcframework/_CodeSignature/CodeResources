@@ -10,7 +10,7 @@
 		</data>
 		<key>ios-arm64/BrightcovePlayerSDK.framework/BrightcovePlayerSDK</key>
 		<data>
-		NJOmrZZJGMO3Bf0vGoLx4sVpgdg=
+		qqu9sm7mu3sjSd8vg3YAItnEN2A=
 		</data>
 		<key>ios-arm64/BrightcovePlayerSDK.framework/Headers/BCOVAttributions.h</key>
 		<data>
@@ -78,11 +78,11 @@
 		</data>
 		<key>ios-arm64/BrightcovePlayerSDK.framework/Info.plist</key>
 		<data>
-		IKZGFXkzHUbINAsAZPIPas8vk2o=
+		N1K6zI73QxzcUaal7vlDm1Lao+g=
 		</data>
 		<key>ios-arm64/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		pKuE3suFb2R4mmyCgYD33gbNQpM=
+		JphCRh1tEXS1J4xzjqBgxr5Qneg=
 		</data>
 		<key>ios-arm64/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
@@ -187,7 +187,7 @@
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/BrightcovePlayerSDK.framework/Versions/A/BrightcovePlayerSDK</key>
 		<data>
-		ixZAY/ocftoj5+M3KsPc/A2rGPY=
+		XgGaEl+7+3Qh+ReRLyVkAIQN3eQ=
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/BrightcovePlayerSDK.framework/Versions/A/Headers/BCOVAttributions.h</key>
 		<data>
@@ -255,7 +255,7 @@
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/BrightcovePlayerSDK.framework/Versions/A/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-ios-macabi.abi.json</key>
 		<data>
-		pKuE3suFb2R4mmyCgYD33gbNQpM=
+		JphCRh1tEXS1J4xzjqBgxr5Qneg=
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/BrightcovePlayerSDK.framework/Versions/A/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-ios-macabi.private.swiftinterface</key>
 		<data>
@@ -271,7 +271,7 @@
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/BrightcovePlayerSDK.framework/Versions/A/Modules/BrightcovePlayerSDK.swiftmodule/x86_64-apple-ios-macabi.abi.json</key>
 		<data>
-		pKuE3suFb2R4mmyCgYD33gbNQpM=
+		JphCRh1tEXS1J4xzjqBgxr5Qneg=
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/BrightcovePlayerSDK.framework/Versions/A/Modules/BrightcovePlayerSDK.swiftmodule/x86_64-apple-ios-macabi.private.swiftinterface</key>
 		<data>
@@ -295,7 +295,7 @@
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/BrightcovePlayerSDK.framework/Versions/A/Resources/Info.plist</key>
 		<data>
-		RsVsr7usNf7URmSakHhGWJ7EVGY=
+		yI8U3c42UVQZySUnw+7IlcmcXWI=
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/BrightcovePlayerSDK.framework/Versions/A/Resources/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -388,7 +388,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/BrightcovePlayerSDK</key>
 		<data>
-		TQfL8lQp/g0TNP8XbHZA5LjhubY=
+		wpPcu9/E0qkJDkH8RWO7AGcR24o=
 		</data>
 		<key>ios-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Headers/BCOVAttributions.h</key>
 		<data>
@@ -456,11 +456,11 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Info.plist</key>
 		<data>
-		xZm3AT1PMXYzMCj6I9Fn7LHqMWQ=
+		yhneivbCNKgywdUAJf1oWoMkg+E=
 		</data>
 		<key>ios-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		pKuE3suFb2R4mmyCgYD33gbNQpM=
+		JphCRh1tEXS1J4xzjqBgxr5Qneg=
 		</data>
 		<key>ios-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -476,7 +476,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		pKuE3suFb2R4mmyCgYD33gbNQpM=
+		JphCRh1tEXS1J4xzjqBgxr5Qneg=
 		</data>
 		<key>ios-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -585,7 +585,7 @@
 		</data>
 		<key>tvos-arm64/BrightcovePlayerSDK.framework/BrightcovePlayerSDK</key>
 		<data>
-		iLqFN2MSKguGblXhpOB6lAtJID0=
+		tlsdsHAvLwarcbGMR4jLdEOdCW0=
 		</data>
 		<key>tvos-arm64/BrightcovePlayerSDK.framework/Headers/BCOVAttributions.h</key>
 		<data>
@@ -649,11 +649,11 @@
 		</data>
 		<key>tvos-arm64/BrightcovePlayerSDK.framework/Info.plist</key>
 		<data>
-		mRfOlitvTvnIgzKWv2FwUET9ZYc=
+		WX+HQtwjaxqInCnYD9Ug/eNZ7ps=
 		</data>
 		<key>tvos-arm64/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-tvos.abi.json</key>
 		<data>
-		X2TCbAWkpy1kDFP1PQK3xSKv1fk=
+		H+CrbP4qxwCLLNkEroL0A8nBF/Q=
 		</data>
 		<key>tvos-arm64/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-tvos.private.swiftinterface</key>
 		<data>
@@ -762,7 +762,7 @@
 		</data>
 		<key>tvos-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/BrightcovePlayerSDK</key>
 		<data>
-		oFgLYBWiS0lcv/psQ1bUlb3d1qs=
+		4s9W8OGW9/EoKRKuRzIce/wacrQ=
 		</data>
 		<key>tvos-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Headers/BCOVAttributions.h</key>
 		<data>
@@ -826,11 +826,11 @@
 		</data>
 		<key>tvos-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Info.plist</key>
 		<data>
-		5Setk1UYuMPLP/r3hpkc+CzNfCo=
+		YkZ9Ajm3hYG4YzN/2CJPvmCBavA=
 		</data>
 		<key>tvos-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-tvos-simulator.abi.json</key>
 		<data>
-		X2TCbAWkpy1kDFP1PQK3xSKv1fk=
+		H+CrbP4qxwCLLNkEroL0A8nBF/Q=
 		</data>
 		<key>tvos-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-tvos-simulator.private.swiftinterface</key>
 		<data>
@@ -846,7 +846,7 @@
 		</data>
 		<key>tvos-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/x86_64-apple-tvos-simulator.abi.json</key>
 		<data>
-		X2TCbAWkpy1kDFP1PQK3xSKv1fk=
+		H+CrbP4qxwCLLNkEroL0A8nBF/Q=
 		</data>
 		<key>tvos-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/x86_64-apple-tvos-simulator.private.swiftinterface</key>
 		<data>
@@ -967,11 +967,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			NJOmrZZJGMO3Bf0vGoLx4sVpgdg=
+			qqu9sm7mu3sjSd8vg3YAItnEN2A=
 			</data>
 			<key>hash2</key>
 			<data>
-			t4g6ABWlWMv0c3D+TUCX2Q9Sx9deFEwx3w/j7jERfQA=
+			hZS8Arm9FvTFUvYwqNRPcRf4ab5Dum/wb7ycS0Xml1Y=
 			</data>
 		</dict>
 		<key>ios-arm64/BrightcovePlayerSDK.framework/Headers/BCOVAttributions.h</key>
@@ -1154,22 +1154,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			IKZGFXkzHUbINAsAZPIPas8vk2o=
+			N1K6zI73QxzcUaal7vlDm1Lao+g=
 			</data>
 			<key>hash2</key>
 			<data>
-			2rqsQSWf/uEw5Mkrgy/9NRRUbVtB/n3n6eftBXAzClc=
+			tvhoIZc9vfJDpQiYmd6TNVFQYKRf6hQTL56mpOGOqKM=
 			</data>
 		</dict>
 		<key>ios-arm64/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			pKuE3suFb2R4mmyCgYD33gbNQpM=
+			JphCRh1tEXS1J4xzjqBgxr5Qneg=
 			</data>
 			<key>hash2</key>
 			<data>
-			Uma+N+eOopm2IZyXen1PKFGSymckZp3Vjs+KHOL9EHs=
+			V0hC0ydk2IrYSg1ws/aHkqfLKRC30E2qpDVwi9Xry/g=
 			</data>
 		</dict>
 		<key>ios-arm64/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
@@ -1368,11 +1368,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ixZAY/ocftoj5+M3KsPc/A2rGPY=
+			XgGaEl+7+3Qh+ReRLyVkAIQN3eQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			4bp3N9TIry4uB++eCz5ZULwtn9jfrWYVpULsfH31z3s=
+			kNLeI6uzTBiDjlp2JcUxkxQVhsiG1u2f9RX1fuW704Q=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/BrightcovePlayerSDK.framework/Versions/A/Headers/BCOVAttributions.h</key>
@@ -1555,11 +1555,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			pKuE3suFb2R4mmyCgYD33gbNQpM=
+			JphCRh1tEXS1J4xzjqBgxr5Qneg=
 			</data>
 			<key>hash2</key>
 			<data>
-			Uma+N+eOopm2IZyXen1PKFGSymckZp3Vjs+KHOL9EHs=
+			V0hC0ydk2IrYSg1ws/aHkqfLKRC30E2qpDVwi9Xry/g=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/BrightcovePlayerSDK.framework/Versions/A/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-ios-macabi.private.swiftinterface</key>
@@ -1599,11 +1599,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			pKuE3suFb2R4mmyCgYD33gbNQpM=
+			JphCRh1tEXS1J4xzjqBgxr5Qneg=
 			</data>
 			<key>hash2</key>
 			<data>
-			Uma+N+eOopm2IZyXen1PKFGSymckZp3Vjs+KHOL9EHs=
+			V0hC0ydk2IrYSg1ws/aHkqfLKRC30E2qpDVwi9Xry/g=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/BrightcovePlayerSDK.framework/Versions/A/Modules/BrightcovePlayerSDK.swiftmodule/x86_64-apple-ios-macabi.private.swiftinterface</key>
@@ -1665,11 +1665,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			RsVsr7usNf7URmSakHhGWJ7EVGY=
+			yI8U3c42UVQZySUnw+7IlcmcXWI=
 			</data>
 			<key>hash2</key>
 			<data>
-			ro3yMntEN/5xA0nqbTDcQHiLocgEJ4A0fJ+FoP6xkj4=
+			bJ8hpIaATrWMVhWHqYiztZzkiVeOoXqYRJDUy5DG10g=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/BrightcovePlayerSDK.framework/Versions/A/Resources/PrivacyInfo.xcprivacy</key>
@@ -1820,11 +1820,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			TQfL8lQp/g0TNP8XbHZA5LjhubY=
+			wpPcu9/E0qkJDkH8RWO7AGcR24o=
 			</data>
 			<key>hash2</key>
 			<data>
-			NDdJSCVlOVhzghK0E2p09ttwfO/UNubt7LlPb4ODn1g=
+			egvs+2C3jKGoIO4F32XAFaVj5lXBuPck+NqKlMcSjTo=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Headers/BCOVAttributions.h</key>
@@ -2007,22 +2007,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xZm3AT1PMXYzMCj6I9Fn7LHqMWQ=
+			yhneivbCNKgywdUAJf1oWoMkg+E=
 			</data>
 			<key>hash2</key>
 			<data>
-			cLs5SCuBvve0GKgRgDB6/9vdNVIH7ssFNRnmOuQBmsU=
+			l1RFKxqb82O9KwM8/ev5Vfy01mokIznTsIo/xpZfosM=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			pKuE3suFb2R4mmyCgYD33gbNQpM=
+			JphCRh1tEXS1J4xzjqBgxr5Qneg=
 			</data>
 			<key>hash2</key>
 			<data>
-			Uma+N+eOopm2IZyXen1PKFGSymckZp3Vjs+KHOL9EHs=
+			V0hC0ydk2IrYSg1ws/aHkqfLKRC30E2qpDVwi9Xry/g=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -2062,11 +2062,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			pKuE3suFb2R4mmyCgYD33gbNQpM=
+			JphCRh1tEXS1J4xzjqBgxr5Qneg=
 			</data>
 			<key>hash2</key>
 			<data>
-			Uma+N+eOopm2IZyXen1PKFGSymckZp3Vjs+KHOL9EHs=
+			V0hC0ydk2IrYSg1ws/aHkqfLKRC30E2qpDVwi9Xry/g=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -2256,11 +2256,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			iLqFN2MSKguGblXhpOB6lAtJID0=
+			tlsdsHAvLwarcbGMR4jLdEOdCW0=
 			</data>
 			<key>hash2</key>
 			<data>
-			3KF+eVMLDJ9thn3z1ekfiip/AMsb7JssDhW+3nmLc80=
+			dh5fpwNVtkOW5lOx+RWd7edVDDrLEyhrhTgnyw4kvB4=
 			</data>
 		</dict>
 		<key>tvos-arm64/BrightcovePlayerSDK.framework/Headers/BCOVAttributions.h</key>
@@ -2432,22 +2432,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mRfOlitvTvnIgzKWv2FwUET9ZYc=
+			WX+HQtwjaxqInCnYD9Ug/eNZ7ps=
 			</data>
 			<key>hash2</key>
 			<data>
-			PybomTo4hnjbSD/v1pXl07o256324wgM3vmkFGw84B8=
+			s33plYAnb/ZnAQfcARI5/+cNo7XFUlb5qBFv2OirGfU=
 			</data>
 		</dict>
 		<key>tvos-arm64/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-tvos.abi.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			X2TCbAWkpy1kDFP1PQK3xSKv1fk=
+			H+CrbP4qxwCLLNkEroL0A8nBF/Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			bALZHrq9W5vh5D0EIbvVumN3m/gBYCcvd+qcdJQzEmI=
+			MiTpVwePo5Kk38kPAlFU1Axf2ilLL8eeymCI39R6JXE=
 			</data>
 		</dict>
 		<key>tvos-arm64/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-tvos.private.swiftinterface</key>
@@ -2637,11 +2637,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			oFgLYBWiS0lcv/psQ1bUlb3d1qs=
+			4s9W8OGW9/EoKRKuRzIce/wacrQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			axvvcEaNd4wHO0DxKmV6TGYbk9p/ExPYsPXmIdZw/Tw=
+			fLsdH3UMUGU/Ss1xlZZjPeJv35UfwGhqRsfZnPF6vNI=
 			</data>
 		</dict>
 		<key>tvos-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Headers/BCOVAttributions.h</key>
@@ -2813,22 +2813,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5Setk1UYuMPLP/r3hpkc+CzNfCo=
+			YkZ9Ajm3hYG4YzN/2CJPvmCBavA=
 			</data>
 			<key>hash2</key>
 			<data>
-			qrsCQFdCI+91T3LlLtEcKT0m3h0V5HGCv8hmTGg7diM=
+			hvAZp7R5SPYuuxgKuV7mgVUQWxmgUWjfvJ8RsZqnlPU=
 			</data>
 		</dict>
 		<key>tvos-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-tvos-simulator.abi.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			X2TCbAWkpy1kDFP1PQK3xSKv1fk=
+			H+CrbP4qxwCLLNkEroL0A8nBF/Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			bALZHrq9W5vh5D0EIbvVumN3m/gBYCcvd+qcdJQzEmI=
+			MiTpVwePo5Kk38kPAlFU1Axf2ilLL8eeymCI39R6JXE=
 			</data>
 		</dict>
 		<key>tvos-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/arm64-apple-tvos-simulator.private.swiftinterface</key>
@@ -2868,11 +2868,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			X2TCbAWkpy1kDFP1PQK3xSKv1fk=
+			H+CrbP4qxwCLLNkEroL0A8nBF/Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			bALZHrq9W5vh5D0EIbvVumN3m/gBYCcvd+qcdJQzEmI=
+			MiTpVwePo5Kk38kPAlFU1Axf2ilLL8eeymCI39R6JXE=
 			</data>
 		</dict>
 		<key>tvos-arm64_x86_64-simulator/BrightcovePlayerSDK.framework/Modules/BrightcovePlayerSDK.swiftmodule/x86_64-apple-tvos-simulator.private.swiftinterface</key>

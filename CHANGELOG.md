@@ -1,3 +1,21 @@
+## Release 7.2.9
+
+#### 28 Apr 2026
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Bug Fixes
+
+* Fixes content playing briefly at the new position before a missed midroll fires when the user scrubs forward across an ad cuepoint. `BCOVIMASession` now intercepts `seekToTime:…` and, when the seek crosses an ad break (detected from `IMAAdsManager.adCuePoints` for VMAP, or `BCOVCuePoint` ad slots filtered to `kBCOVIMACuePointTypeAd` for VAST), pauses AVPlayer and gates `play` until `adsManagerDidRequestContentPause:` fires. The content layer is hidden for the duration of the gate so the user does not see the paused frame at the seek target while IMA is loading the ad. A 2-second watchdog (armed once the seek lands, so long-distance seeks are not cut short by buffering) clears the gate if no ad fires — e.g. the break was already consumed via `playAdsAfterTime`. Backwards seeks, seek-without-ads, first-play, and mid-ad seeks are forwarded unchanged.
+* Fixes IMA ads staying paused after the app is backgrounded and returned to the foreground. On `UIApplicationDidBecomeActiveNotification`, if an ad is in progress and was not manually paused via `-pauseAd`, the session calls `-resumeAd`. Skipped when `IMASettings.enableBackgroundPlayback` is enabled (IMA handles that path itself).
+
+### IMA Plugin for Brightcove Player SDK for tvOS
+
+#### Bug Fixes
+
+* Fixes content playing briefly at the new position before a missed midroll fires when the user scrubs forward across an ad cuepoint. `BCOVIMASession` now intercepts `seekToTime:…` and, when the seek crosses an ad break (detected from `IMAAdsManager.adCuePoints` for VMAP, or `BCOVCuePoint` ad slots filtered to `kBCOVIMACuePointTypeAd` for VAST), pauses AVPlayer and gates `play` until `adsManagerDidRequestContentPause:` fires. The content layer is hidden for the duration of the gate so the user does not see the paused frame at the seek target while IMA is loading the ad. A 2-second watchdog (armed once the seek lands, so long-distance seeks are not cut short by buffering) clears the gate if no ad fires — e.g. the break was already consumed via `playAdsAfterTime`. Backwards seeks, seek-without-ads, first-play, and mid-ad seeks are forwarded unchanged.
+* Fixes IMA ads staying paused after the app is backgrounded and returned to the foreground. On `UIApplicationDidBecomeActiveNotification`, if an ad is in progress and was not manually paused via `-pauseAd`, the session calls `-resumeAd`. Skipped when `IMASettings.enableBackgroundPlayback` is enabled (IMA handles that path itself).
+
 ## Release 7.2.8
 
 #### 23 Apr 2026
