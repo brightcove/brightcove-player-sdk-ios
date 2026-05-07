@@ -1,3 +1,26 @@
+## Release 7.2.10
+
+#### 07 May 2026
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Bug Fixes
+
+* Fixes content audio continuing under an IMA ad when the user scrubs forward across an ad break. `BCOVIMASession.play` now ignores external `play` calls while an ad is on screen, so the player view's slider touch-up handler can no longer resume the content AVPlayer underneath the ad.
+* Fixes the first frame of content, the player control bar, and an audio click briefly appearing before an IMA pre-roll on slower pipelines (notably the iOS Simulator). The content layer, the BCOV control overlay, and the player's audio output are now suppressed from the moment a pre-roll request is in flight until the ad starts or fails to load. Applies to both VMAP and VAST pre-rolls.
+
+### IMA Plugin for Brightcove Player SDK for tvOS
+
+#### Additions and Improvements
+
+* Updates Google Ads IMA SDK for tvOS to 4.16.0. Minimum tvOS deployment target is now 15.0.
+
+### DAI Plugin for Brightcove Player SDK for tvOS
+
+#### Additions and Improvements
+
+* Updates Google Ads IMA SDK for tvOS to 4.16.0. Minimum tvOS deployment target is now 15.0.
+
 ## Release 7.2.9
 
 #### 28 Apr 2026
