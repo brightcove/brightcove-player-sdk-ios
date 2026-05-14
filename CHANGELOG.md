@@ -1,3 +1,13 @@
+## Release 7.2.11
+
+#### 14 May 2026
+
+### DAI Plugin for Brightcove Player SDK for tvOS
+
+#### Additions and Improvements
+
+* Adds `kBCOVDAIOptionTVOS26AdBreakFreezeWorkaroundEnabledKey`, an opt-in workaround for an AVPlayer regression on tvOS 26.x that freezes video and audio at HLS discontinuities (ad-pod boundaries) when a closed-caption track is engaged. When enabled, the legible track is briefly deselected around each upcoming discontinuity and restored after the boundary is crossed; captions disappear for roughly 4-5 seconds per boundary. The option has no effect on tvOS versions older than 26.0 or on iOS. Default is `NO`; consumers are expected to opt in only on the affected tvOS versions, e.g. `if (@available(tvOS 26.0, *)) { options[kBCOVDAIOptionTVOS26AdBreakFreezeWorkaroundEnabledKey] = @YES; }`. Tighten the gate with an upper bound once Apple ships a fix.
+
 ## Release 7.2.10
 
 #### 07 May 2026
