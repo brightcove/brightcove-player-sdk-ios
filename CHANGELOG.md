@@ -1,3 +1,21 @@
+## Release 7.2.12
+
+#### 21 May 2026
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Bug Fixes
+
+* Fixes an IMA ad replaying its audio over content audio when the app is foregrounded after a mid-roll cuepoint was reached during backgrounding. The foreground auto-resume added in 7.2.10 now requires the ad to have actually started playing (`kIMAAdEvent_STARTED`) before the app resigned active, rather than merely being loaded — so an ad that IMA loaded while the app was backgrounded is no longer force-resumed on foreground.
+* Fixes the IMA ad creative not appearing inline when `IMASettings.enableBackgroundPlayback = YES` (the shared-AVPlayer configuration required for PiP and AirPlay continuity across ads). The pre-roll content-layer hide added in 7.2.11 was hiding the shared `AVPlayerLayer` for the entire ad break — in shared-player mode the ad renders through that same layer, so only the IMA UI overlays (countdown, Learn More) were visible while audio played. The hide is now restored as soon as the ad's `kIMAAdEvent_STARTED` fires in shared-player mode; non-shared mode is unchanged.
+* Fixes the iOS Picture-in-Picture overlay exposing seek / fast-forward / rewind controls during IMA ad breaks when `IMASettings.enableBackgroundPlayback = YES`. The PiP scrubber operates on the same `AVPlayer` that's playing the ad — letting the viewer scrub inside an ad break, which IAB SRG forbids. `BCOVIMASession` now sets `AVPictureInPictureController.requiresLinearPlayback = YES` for the duration of each ad break (also re-applied when the PiP controller is lazy-created during a pre-roll, so the seek UI is hidden even on the first ad of the session). Requires iOS 14+; no-op on earlier versions. Play/pause from the PiP overlay remains available per IAB SRG.
+
+### IMA Plugin for Brightcove Player SDK for tvOS
+
+#### Bug Fixes
+
+* Fixes an IMA ad replaying its audio over content audio when the app is foregrounded after a mid-roll cuepoint was reached during backgrounding. The foreground auto-resume added in 7.2.10 now requires the ad to have actually started playing (`kIMAAdEvent_STARTED`) before the app resigned active, rather than merely being loaded — so an ad that IMA loaded while the app was backgrounded is no longer force-resumed on foreground.
+
 ## Release 7.2.11
 
 #### 14 May 2026
