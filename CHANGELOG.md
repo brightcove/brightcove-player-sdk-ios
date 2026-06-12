@@ -1,3 +1,13 @@
+## Release 7.2.13
+
+#### 10 Jun 2026
+
+### Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Removes the legacy fat-framework distribution. The XCFramework variant has been the default since 7.0.0 and is now the only option across Core, DAI, FreeWheel, GoogleCast, IMA, Omniture, Pulse, and SSAI. Replace `pod 'Brightcove-Player-X/Framework'` with `pod 'Brightcove-Player-X'`. Projects that did not append `/Framework` to their pod names are unaffected. The `EXCLUDED_ARCHS[sdk=*simulator*] = arm64` workaround that the fat-framework variant required is no longer set, and any matching `post_install` hook in your Podfile that stripped it can be removed.
+
 ## Release 7.2.12
 
 #### 21 May 2026

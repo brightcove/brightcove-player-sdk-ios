@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 7.2.12.34
+# Brightcove Player SDK for iOS, version 7.2.13.35
 
 
 ## Table of Contents
@@ -75,49 +75,19 @@ The Core SDK is localized for Arabic (ar), English (en), French (fr), German (de
 
 All SDK components - the core and plugin frameworks - are released with the same version number. When upgrading any single component, upgrade all components to the same version.
 
-### Running on Apple Silicon M1 Simulators with Universal Frameworks
+### CocoaPods Podspec names
 
-For projects using Xcode 12 on Apple Silicon M1 and Universal Frameworks (.framework) a build error is returned when building the project for the arm64 simulator.
-
-```
-*ld: building for iOS Simulator, but linking in dylib built for iOS, file for architecture arm64*
-```
-
-To build for an arm64 simulator, ensure that `arm64` has been added to your "Excluded Architectures" build setting for `Any iOS Simulator SDK` in the "Build Settings" tab of your application target.
-
-### CocoaPods Podspec XCFramework Subspecs (since release 7.0.0)
-
-Release 6.10.0 of the Brightcove Player SDK adds subspecs for core and each plugin to support XCFrameworks. The default value for each subspec is `/XCFramework`.
-
-<br/>
-
-| Podspec Name | Subspec Names |
-|---|---|
-| Brightcove-Player-Core | Brightcove-Player-Core/Framework<br>Brightcove-Player-Core/XCFramework |
-| Brightcove-Player-DAI | Brightcove-Player-DAI/Framework<br>Brightcove-Player-DAI/XCFramework |
-| Brightcove-Player-FreeWheel | Brightcove-Player-FreeWheel/Framework<br>Brightcove-Player-FreeWheel/XCFramework |
-| Brightcove-Player-GoogleCast | Brightcove-Player-GoogleCast/Framework<br>Brightcove-Player-GoogleCast/XCFramework |
-| Brightcove-Player-IMA | Brightcove-Player-IMA/Framework<br>Brightcove-Player-IMA/XCFramework |
-| Brightcove-Player-Omniture | Brightcove-Player-Omniture/Framework<br>Brightcove-Player-Omniture/XCFramework |
-| Brightcove-Player-Pulse | Brightcove-Player-Pulse/Framework<br>Brightcove-Player-Pulse/XCFramework |
-| Brightcove-Player-SSAI | Brightcove-Player-SSAI/Framework<br>Brightcove-Player-SSAI/XCFramework |
-| Brightcove-Player-OpenMeasurement | - |
-
-#### CocoaPods Podspec names (since release 7.0.0)
-
-Release 6.12.0 of the Brightcove Player SDK updates the `Brightcove-Player-FreeWheel` and `Brightcove-Player-Omniture` podspecs to install the dynamic version of `BrightcovePlayerSDK`.
-
-Podspec Name  |  Framework Type  |  Dependency
-------------- | ------------- | -------------
-Brightcove-Player-Core | dynamic | -
-Brightcove-Player-DAI (available since 6.12.7) | dynamic | Brightcove-Player-Core
-Brightcove-Player-FreeWheel | dynamic | Brightcove-Player-Core for iOS,<br/>Brightcove-Player-Core for tvOS
-Brightcove-Player-GoogleCast | static | Brightcove-Player-Core
-Brightcove-Player-IMA | dynamic | Brightcove-Player-Core
-Brightcove-Player-Omniture | dynamic | Brightcove-Player-Core
-Brightcove-Player-Pulse | dynamic | Brightcove-Player-Core
-Brightcove-Player-SSAI | dynamic | Brightcove-Player-Core,<br/>Brightcove-Player-OpenMeasurement (only for Open Measurement)
-Brightcove-Player-OpenMeasurement (available since 6.10.0) | dynamic | -
+Podspec Name  |  Dependency
+------------- | -------------
+Brightcove-Player-Core | -
+Brightcove-Player-DAI | Brightcove-Player-Core
+Brightcove-Player-FreeWheel | Brightcove-Player-Core
+Brightcove-Player-GoogleCast | Brightcove-Player-Core
+Brightcove-Player-IMA | Brightcove-Player-Core
+Brightcove-Player-Omniture | Brightcove-Player-Core
+Brightcove-Player-Pulse | Brightcove-Player-Core
+Brightcove-Player-SSAI | Brightcove-Player-Core,<br/>Brightcove-Player-OpenMeasurement (only for Open Measurement)
+Brightcove-Player-OpenMeasurement | -
 
 
 ## FairPlay
@@ -136,17 +106,13 @@ Since release 6.0.0, the Brightcove Native Player SDK allows you to download HLS
 
 ## Installation
 
-The Brightcove Player SDK provides installation packages for iOS and tvOS as dynamic libraries packaged as Frameworks and XCFrameworks. Deployment is supported on iOS 12.0 and above.
+The Brightcove Player SDK is distributed as a dynamic XCFramework for iOS and tvOS. Deployment is supported on iOS 12.0 and above.
 
 ### CocoaPods
 
 You can use [CocoaPods][cocoapods] to add the Brightcove Player SDK to your project. You can find the latest `Brightcove-Player-Core` podspec [here][podspecs]. The podspec supports both iOS and tvOS.
 
 When using Brightcove CocoaPods in your project, add `source 'https://github.com/brightcove/BrightcoveSpecs.git'` to the start of your Podfile.
-
-name.
-
-#### XCFramework example:
 
 ```bash
 source 'https://github.com/CocoaPods/Specs'
@@ -160,22 +126,6 @@ target 'MyVideoPlayer' do
 end
 ```
 
-#### Dynamic Framework example:
-
-The Framework can be installed by appending the `/Framework` subspec to the pod.
-
-```bash
-source 'https://github.com/CocoaPods/Specs'
-source 'https://github.com/brightcove/BrightcoveSpecs.git'
-
-platform :ios, '12.0'
-use_frameworks!
-
-target 'MyVideoPlayer' do
-  pod 'Brightcove-Player-Core/Framework'
-end
-```
-
 When updating your installation, it's a good idea to refresh the local copy of your BrightcoveSpecs repository so that you have the latest podspecs locally, just as you would update your CococaPods master repository. Typically if you run `pod update` in Terminal this will happen automatically, or alternatively you can update explicitly with `pod repo update`.
 
 ### Manual Installation
@@ -183,14 +133,9 @@ When updating your installation, it's a good idea to refresh the local copy of y
 To add the Brightcove Player SDK to your project manually:
 
 1. Download the latest zipped release from our [tags page][tags].
-1. Add `BrightcovePlayerSDK.framework` or `BrightcovePlayerSDK.xcframework` to your project. Be sure to use the version corresponding to your target, iOS or tvOS.
+1. Add `BrightcovePlayerSDK.xcframework` to your project.
 1. On the "Build Settings" tab of your application target, ensure that the "Framework Search Paths" include the path to the framework. This should have been done automatically unless the framework is stored under a different root directory than your project.
-1. On the "General" tab of your application target, add the following to the "Frameworks, Libraries, Embedded Content" section:
-    * `BrightcovePlayerSDK.framework`  / `BrightcovePlayerSDK.xcframework`
-1. On the "General" tab of your application target, add 'BrightcovePlayerSDK.framework' or 'BrightcovePlayerSDK.xcframework' to the "Embedded Binaries" section.
-1. (**Universal Framework** only) On the "Build Phases" tab, add a "Run Script" phase with the command `bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/BrightcovePlayerSDK.framework/strip-frameworks.sh`. Check "Run script only when installing". This will remove unneeded architectures from the build, which is important for App Store submission.
-1. (**Apple Silicon with Universal Framework** only) On the "Build Settings" tab of your application target:
-    * Ensure that `arm64` has been added to your "Excluded Architectures" build setting for `Any iOS Simulator SDK`.
+1. On the "General" tab of your application target, add `BrightcovePlayerSDK.xcframework` to the "Frameworks, Libraries, Embedded Content" section.
 
 For reference, here are all the SDK components and corresponding URLs to help you locate and download the latest releases:
 
