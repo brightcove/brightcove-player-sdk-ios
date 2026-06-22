@@ -1,3 +1,13 @@
+## Release 7.2.14
+
+#### 17 Jun 2026
+
+### DAI Plugin for Brightcove Player SDK for tvOS
+
+#### Additions and Improvements
+
+* Removes `kBCOVDAIOptionTVOS26AdBreakFreezeWorkaroundEnabledKey`. Apple has shipped a tvOS update that resolves the underlying AVPlayer regression at HLS discontinuities, so the opt-in workaround added in 7.2.11 is no longer needed. Apps that were setting the key should remove the option from their `createDAISessionProvider…options:` dictionary.
+
 ## Release 7.2.13
 
 #### 10 Jun 2026
