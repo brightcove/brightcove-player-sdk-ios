@@ -1,3 +1,15 @@
+## Release 7.2.15
+
+#### 23 Jun 2026
+
+### Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Launches a unified Swift Package Manager package at https://github.com/brightcove/brightcove-player-sdk-ios that exposes one library product per plugin (`BrightcovePlayerSDK`, `BrightcoveIMA`, `BrightcoveDAI`, `BrightcoveFW`, `BrightcoveGoogleCast`, `BrightcoveAMC`, `BrightcovePulse`, `BrightcoveSSAI`, `OMSDK_Brightcove`). Adding any plugin product now automatically pulls in Core, so a single package dependency replaces the previous per-plugin packages. Consumers resolving this version at the same URL inherit the new product shape with no migration required. The unified package requires a minimum deployment target of iOS 14 or tvOS 15.
+* The seven per-plugin Swift Package Manager package URLs (`brightcove-player-sdk-ios-ima`, `-dai`, `-fw`, `-googlecast`, `-omniture`, `-pulse`, `-ssai`) are deprecated in favor of the unified package. Resolving any of them now surfaces a Swift compile-time warning pointing at the unified package. Builds continue to succeed, and the warning fires on each clean build until you migrate.
+* CocoaPods distribution of the Brightcove Player SDK is deprecated in favor of the unified Swift Package Manager package. The eight public pods (`Brightcove-Player-Core` and the seven plugin pods) are now marked deprecated, so `pod install` and `pod update` report the deprecation, and each pod also surfaces a compile-time message pointing at the unified package. Builds continue to succeed.
+
 ## Release 7.2.14
 
 #### 17 Jun 2026
