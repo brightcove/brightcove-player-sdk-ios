@@ -1,3 +1,14 @@
+## Release 7.2.16
+
+#### 25 Jun 2026
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* The unified Swift Package Manager package now resolves its third-party dependencies automatically. Adding `BrightcoveIMA`, `BrightcoveDAI`, or `BrightcoveGoogleCast` resolves the matching Google IMA or Google Cast Swift Package, so it is no longer a separate package dependency you add yourself; if you added one manually for a previous release, you can remove it. Adding `BrightcoveAMC` or `BrightcoveFW` auto-links the system libraries and frameworks those plugins require, so no manual Build Phases step is needed.
+* The unified Swift Package Manager package now declares a `swift-tools-version` of 5.9, so Xcode 15 or later is required to resolve it.
+
 ## Release 7.2.15
 
 #### 23 Jun 2026
