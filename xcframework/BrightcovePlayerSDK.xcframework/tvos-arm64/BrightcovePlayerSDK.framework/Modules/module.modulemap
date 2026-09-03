@@ -14,5 +14,4 @@ framework module BrightcovePlayerSDK {
 
 module BrightcovePlayerSDK.Swift {
   header "BrightcovePlayerSDK-Swift.h"
-  requires objc
 }

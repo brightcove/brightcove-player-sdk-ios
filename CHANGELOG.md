@@ -1,3 +1,13 @@
+## Release 7.2.17
+
+#### 2 Sep 2026
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Bug Fixes
+
+* Fixes authToken mismanagement on FairPlay license renewal in BCOVOfflineVideoManager
+
 ## Release 7.2.16
 
 #### 25 Jun 2026

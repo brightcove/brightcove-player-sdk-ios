@@ -1,4 +1,4 @@
-# Brightcove Player SDK for iOS, version 7.2.16.38
+# Brightcove Player SDK for iOS, version 7.2.17.40
 
 
 ## Table of Contents
@@ -1347,7 +1347,7 @@ Note that SSAI's `AVPlayerViewController` compatibility is specific to tvOS due 
 
 ### Sample Projects
 
-We have sample projects demonstrating the use of AVPlayerViewController with the Brightcove iOS SDK.  You can find the [iOS sample project here](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/NativeControls) and the [tvOS sample project here](https://github.com/BrightcoveOS/ios-player-samples/tree/master/IMA/NativeControlsIMAPlayer_tvOS).
+We have sample projects demonstrating the use of AVPlayerViewController with the Brightcove iOS SDK.  You can find the [iOS sample project here](https://github.com/BrightcoveOS/ios-player-samples/tree/master/Player/NativeControls) and the [tvOS sample project here](https://github.com/BrightcoveOS/ios-player-samples/tree/master/IMA/NativeControlsIMAPlayer-tvOS).
 
 ### Limitations to Using the AVPlayerViewController
 
