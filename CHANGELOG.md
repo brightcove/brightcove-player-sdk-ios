@@ -1,3 +1,13 @@
+## Release 7.2.19
+
+#### 04 Sep 2026
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Bug Fixes
+
+* Fixes the `complete` ad tracking beacon never being sent for NextGen Live (Cloud Playout 2.0) SSAI streams. The beacon is due at the end of an ad, but an ad stops matching the playhead at exactly that point, so the playhead update that left the ad found nothing to fire against and the beacon was dropped. Every other timed beacon — `impression`, `start`, `firstQuartile`, `midpoint` and `thirdQuartile` — was sent normally, so this affected only completed-view reporting. The end of an ad is now detected as a crossing between two playhead positions, matching how the Android SDK triggers the same beacon.
+
 ## Release 7.2.18
 
 #### 04 Sep 2026
