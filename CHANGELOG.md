@@ -1,3 +1,23 @@
+## Release 7.2.18
+
+#### 04 Sep 2026
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds support for NextGen Live (Cloud Playout 2.0) SSAI streams. These streams are detected automatically and play through the SSAI session provider, with the countdown overlay, Learn More clickthrough, companion slots and ad tracking beacons working as they do for Legacy Live SSAI. Previously they fell back to plain playback with no ad features. Ad timing is correlated using `EXT-X-PROGRAM-DATE-TIME`, which the stream's manifest must carry. Open Measurement is supported for these streams on iOS when the session provider is created with an `omidPartner`: the `adVerifications` carried in the ad tracking payload open an OM ad session directly, with no VAST document involved.
+
+* Adds `-[BCOVPlayerSDKManager createSSAISessionProviderWithUpstreamSessionProvider:options:]`, which accepts a `BCOVOUXSessionProviderOptions`. This is the only way to reach the session provider's options; the existing factory methods pass none.
+
+* Adds `BCOVOUXSessionProviderOptions.live2AdsParams`, ad targeting parameters sent in the `adsParams` field of the NextGen Live session initialization request. The SSAI server uses them to replace macros in the ad tag URL.
+
+* NextGen Live session initialization failures now fall back to content-only playback rather than failing the session. The original stream plays without ad features, and no error is surfaced to the viewer.
+
+* NextGen Live errors are now reported with a typed code — `NETWORK_ERROR`, `INVALID_SESSION`, `TIMEOUT_ERROR`, `PARSE_ERROR`, `SESSION_ERROR` or `TRACKING_ERROR` — matching the taxonomy the Android SDK reports for the same failures. Each error carries a code, message, timestamp and context, and bridges to an `NSError` in the `BCOVSSAILive2ErrorDomain` domain.
+
+* NextGen Live ad tracking beacons are now retried when a send fails. Each beacon uses a 5 second timeout and is retried up to three times, after 1, 2 and 4 seconds. A beacon rejected by the server — an HTTP 4xx other than 408 or 429 — is not retried, since the outcome cannot change. A beacon still undelivered after the final attempt is logged and dropped. Previously a beacon was sent once with no completion handler, so a send lost to a momentary network failure was neither retried nor reported.
+
 ## Release 7.2.17
 
 #### 2 Sep 2026
