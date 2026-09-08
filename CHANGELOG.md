@@ -1,3 +1,13 @@
+## Release 7.2.20
+
+#### 08 Sep 2026
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Bug Fixes
+
+* Fixes a crash that could occur during online FairPlay playback when the player was dismissed while a license request — including a mid-playback license renewal — was still in flight. The license response is now safely ignored once the playback session has been released.
+
 ## Release 7.2.19
 
 #### 04 Sep 2026
