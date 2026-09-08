@@ -1,3 +1,13 @@
+## Release 7.2.21
+
+#### 08 Sep 2026
+
+### Brightcove Player SDK for iOS
+
+#### Bug Fixes
+
+* Fixes `pod 'Brightcove-Player-X/XCFramework'` installing 7.2.12 rather than the latest release. Release 7.2.13 removed the `Framework` subspec from the eight public pods and inlined the XCFramework configuration at the top level, which removed the `XCFramework` subspec name along with it. CocoaPods resolves a dependency on a subspec a version does not declare by falling back to the newest version that does, so a Podfile that spelled the subspec out explicitly kept resolving to 7.2.12 with no error at `pod install` — and, since 7.2.12 predates the CocoaPods deprecation added in 7.2.15, without the deprecation notice either. `XCFramework` is restored as an alias of the pod itself across Core, DAI, FreeWheel, GoogleCast, IMA, Omniture, Pulse and SSAI, so `pod 'Brightcove-Player-X/XCFramework'` and `pod 'Brightcove-Player-X'` install the same XCFramework. Affected projects need no Podfile change to move forward again, but dropping the subspec suffix is still recommended: the pods are deprecated in favor of the unified Swift Package at https://github.com/brightcove/brightcove-player-sdk-ios, and CocoaPods Trunk goes read-only on 02 Dec 2026.
+
 ## Release 7.2.20
 
 #### 08 Sep 2026
@@ -89,7 +99,7 @@
 
 #### Additions and Improvements
 
-* Removes the legacy fat-framework distribution. The XCFramework variant has been the default since 7.0.0 and is now the only option across Core, DAI, FreeWheel, GoogleCast, IMA, Omniture, Pulse, and SSAI. Replace `pod 'Brightcove-Player-X/Framework'` with `pod 'Brightcove-Player-X'`. Projects that did not append `/Framework` to their pod names are unaffected. The `EXCLUDED_ARCHS[sdk=*simulator*] = arm64` workaround that the fat-framework variant required is no longer set, and any matching `post_install` hook in your Podfile that stripped it can be removed.
+* Removes the legacy fat-framework distribution. The XCFramework variant has been the default since 7.0.0 and is now the only option across Core, DAI, FreeWheel, GoogleCast, IMA, Omniture, Pulse, and SSAI. Replace `pod 'Brightcove-Player-X/Framework'` with `pod 'Brightcove-Player-X'`. Projects that did not name a subspec in their Podfile are unaffected. (Correction: this release also dropped the `XCFramework` subspec name, which left Podfiles using `pod 'Brightcove-Player-X/XCFramework'` resolving to 7.2.12. Restored in 7.2.21.) The `EXCLUDED_ARCHS[sdk=*simulator*] = arm64` workaround that the fat-framework variant required is no longer set, and any matching `post_install` hook in your Podfile that stripped it can be removed.
 
 ## Release 7.2.12
 
