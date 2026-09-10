@@ -180,6 +180,17 @@ extern NSString * const kBCOVPlaybackSessionLifecycleEventAdSequenceEnter;
 extern NSString * const kBCOVPlaybackSessionLifecycleEventAdSequenceExit;
 
 /**
+ * The ads in the ad sequence currently playing have changed. Server-side ad
+ * insertion can list a break's ads incrementally while the break is already on
+ * screen, so the sequence delivered with the AdSequenceEnter event may grow.
+ * The event properties carry the updated BCOVAdSequence under
+ * kBCOVPlaybackSessionLifecycleEventPropertiesKeyAdSequence. The break itself
+ * is unchanged: no further AdSequenceEnter is sent, and the single
+ * AdSequenceExit that closes it carries the final sequence.
+ */
+extern NSString * const kBCOVPlaybackSessionLifecycleEventAdSequenceUpdate;
+
+/**
  * The video has entered an ad.
  */
 extern NSString * const kBCOVPlaybackSessionLifecycleEventAdEnter;

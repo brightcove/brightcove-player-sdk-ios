@@ -1,3 +1,35 @@
+## Release 7.2.22
+
+#### TBD
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Bug Fixes
+
+* Fixes the ad countdown disappearing a few seconds into a multi-ad break on NextGen Live (Cloud Playout 2.0) SSAI streams. MediaTailor lists a pod's ads incrementally as each one is stitched, and the plugin re-sent `kBCOVPlaybackSessionLifecycleEventAdSequenceEnter` for every growth, which reset the PlayerUI's ad index without an ad boundary to restore it, so every following `AdProgress` was dropped. The break is now entered once; growth is delivered through the new `kBCOVPlaybackSessionLifecycleEventAdSequenceUpdate` event, which the PlayerUI (iOS and tvOS) applies without disturbing the ad in progress. Single-ad breaks were unaffected.
+
+* Fixes a NextGen Live break closing and reopening between two ads of the same pod. MediaTailor's per-ad `adProgramDateTime` does not always abut the previous ad's — a second ad has been observed dated a few seconds after the first one's end while their `startTimeInSeconds` were exactly contiguous — and matching the playhead against each ad's own dates left that gap unmatched. The playhead is now resolved through the avail: inside a break the current ad is the latest one that has started, so the overlay no longer drops and comes back mid-pod. The same change lets slate be placed on the wallclock timeline, so a break stays open across an unfilled remainder instead of closing early.
+
+* Fixes a NextGen Live stream staying frozen after a fatal `AVPlayerItem` error. A stitched ad segment that AVFoundation cannot open ends with `kBCOVPlaybackSessionLifecycleEventFailedToPlayToEndTime`, after which the player sat paused on the failed item indefinitely. The stitched manifest is now reloaded at the live edge — keeping the MediaTailor session and its ad tracking — up to three times with 1 s, 2 s and 4 s back-off; if the stream still fails, the error is left to the application as before and the cached session is dropped so the next load establishes a fresh one. The failure event itself is still delivered every time.
+
+* Fixes `-[BCOVPlaybackController resumeVideoAtTime:withAutoPlay:]` being refused on a NextGen Live stream. The requested time was mapped through the VMAP timeline, which NextGen Live never builds, and came back invalid. The time is now passed through unchanged, so the recovery the SDK's own `FailedToPlayToEndTime` error suggests works on these streams.
+
+* Fixes a black, frozen picture with the ad overlay still up after returning from a long Learn More visit on a NextGen Live stream. A playhead paused for longer than the live playlist window ends up behind the oldest segment still served, and AVPlayer does not rejoin the live edge from there on its own. Resuming an ad now rejoins the live edge first when the paused position has left the seekable window, or when the ad was paused for more than 20 seconds and the seekable window is not yet known again — which is the state AVPlayer reports for a moment after the app returns to the foreground.
+
+### Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds `kBCOVPlaybackSessionLifecycleEventAdSequenceUpdate`, sent when the ads in the ad sequence currently playing change — server-side ad insertion can list a break's ads incrementally while the break is on screen. The event carries the updated `BCOVAdSequence` under `kBCOVPlaybackSessionLifecycleEventPropertiesKeyAdSequence`. `AdSequenceEnter` and `AdSequenceExit` are still sent once each per break.
+
+#### Bug Fixes
+
+* Fixes the PlayerUI ad countdown dropping its remaining-time part on multi-ad breaks, showing only `Ad (1 of 3)` while single-ad breaks showed `Your video will resume in N seconds`. `BCOVPUIAdControlView` had pinned its three Live SSAI client-option flags since 7.x — `showAdBreakRemainingTime` was forced off and the other two forced on regardless of what the ad sequence carried. The setters now honour the value, so `Ad (1 of 3): Your video will resume in N seconds` (or `Ad (1 of 3): Ns` when space is short) renders for a pod, and a VMAP `clientOptions` document that turns one of them off is respected. Applies to Legacy Live SSAI and NextGen Live alike.
+
+* Fixes the PlayerUI play/pause button showing the paused glyph while content plays after an ad ends. `didExitAd` set the paused glyph unconditionally; on a live stream the current-time updates that normally re-sync it are skipped, so the button stayed wrong until the viewer tapped it — most visibly when an ad ended while the viewer was away in the Learn More browser. The glyph now follows the player's rate.
+
+* Fixes an ad resuming with no sound, and the play/pause control showing paused while the ad played, after returning from the Learn More external browser. The PlayerUI resumed the ad on `UIApplicationWillEnterForegroundNotification`, while the app was still inactive and its audio session could not yet be activated. The ad is now resumed on `UIApplicationDidBecomeActiveNotification`.
+
 ## Release 7.2.21
 
 #### 08 Sep 2026
