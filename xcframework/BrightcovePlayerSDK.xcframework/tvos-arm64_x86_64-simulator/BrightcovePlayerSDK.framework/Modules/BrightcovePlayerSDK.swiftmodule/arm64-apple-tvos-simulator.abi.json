@@ -13685,6 +13685,168 @@
         "children": [
           {
             "kind": "Var",
+            "name": "PropertyKeyBreakDuration",
+            "printedName": "PropertyKeyBreakDuration",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@BrightcovePlayerSDK@objc(cs)BCOVAdSequence(cpy)PropertyKeyBreakDuration",
+            "mangledName": "$s19BrightcovePlayerSDK14BCOVAdSequenceC24PropertyKeyBreakDurationSSvpZ",
+            "moduleName": "BrightcovePlayerSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BrightcovePlayerSDK@objc(cs)BCOVAdSequence(cm)PropertyKeyBreakDuration",
+                "mangledName": "$s19BrightcovePlayerSDK14BCOVAdSequenceC24PropertyKeyBreakDurationSSvgZ",
+                "moduleName": "BrightcovePlayerSDK",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "PropertyKeyAdCountIsProvisional",
+            "printedName": "PropertyKeyAdCountIsProvisional",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@BrightcovePlayerSDK@objc(cs)BCOVAdSequence(cpy)PropertyKeyAdCountIsProvisional",
+            "mangledName": "$s19BrightcovePlayerSDK14BCOVAdSequenceC31PropertyKeyAdCountIsProvisionalSSvpZ",
+            "moduleName": "BrightcovePlayerSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BrightcovePlayerSDK@objc(cs)BCOVAdSequence(cm)PropertyKeyAdCountIsProvisional",
+                "mangledName": "$s19BrightcovePlayerSDK14BCOVAdSequenceC31PropertyKeyAdCountIsProvisionalSSvgZ",
+                "moduleName": "BrightcovePlayerSDK",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "PropertyKeyBreakBeginTime",
+            "printedName": "PropertyKeyBreakBeginTime",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@BrightcovePlayerSDK@objc(cs)BCOVAdSequence(cpy)PropertyKeyBreakBeginTime",
+            "mangledName": "$s19BrightcovePlayerSDK14BCOVAdSequenceC25PropertyKeyBreakBeginTimeSSvpZ",
+            "moduleName": "BrightcovePlayerSDK",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BrightcovePlayerSDK@objc(cs)BCOVAdSequence(cm)PropertyKeyBreakBeginTime",
+                "mangledName": "$s19BrightcovePlayerSDK14BCOVAdSequenceC25PropertyKeyBreakBeginTimeSSvgZ",
+                "moduleName": "BrightcovePlayerSDK",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "beginTime",
             "printedName": "beginTime",
             "children": [
@@ -32553,7 +32715,7 @@
       "kind": "StringLiteral",
       "offset": 18956,
       "length": 11,
-      "value": "\"7.2.22.46\""
+      "value": "\"7.2.23.47\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/BCOVPlaybackSession.swift",
@@ -32861,7 +33023,7 @@
       "kind": "StringLiteral",
       "offset": 5458,
       "length": 11,
-      "value": "\"7.2.22.46\""
+      "value": "\"7.2.23.47\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/BCOVFPSAuthorizationProxy.swift",
@@ -33292,64 +33454,85 @@
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/BCOVAdvertising.swift",
+      "kind": "StringLiteral",
+      "offset": 906,
+      "length": 41,
+      "value": "\"kBCOVAdSequencePropertyKeyBreakDuration\""
+    },
+    {
+      "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/BCOVAdvertising.swift",
+      "kind": "StringLiteral",
+      "offset": 1261,
+      "length": 48,
+      "value": "\"kBCOVAdSequencePropertyKeyAdCountIsProvisional\""
+    },
+    {
+      "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/BCOVAdvertising.swift",
+      "kind": "StringLiteral",
+      "offset": 1687,
+      "length": 42,
+      "value": "\"kBCOVAdSequencePropertyKeyBreakBeginTime\""
+    },
+    {
+      "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/BCOVAdvertising.swift",
       "kind": "IntegerLiteral",
-      "offset": 3316,
+      "offset": 4655,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/BCOVAdvertising.swift",
       "kind": "IntegerLiteral",
-      "offset": 3338,
+      "offset": 4677,
       "length": 2,
       "value": "31"
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/BCOVAdvertising.swift",
       "kind": "StringLiteral",
-      "offset": 3925,
+      "offset": 5264,
       "length": 29,
       "value": "\"kBCOVAdPropertyKeySkippable\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/BCOVAdvertising.swift",
       "kind": "StringLiteral",
-      "offset": 4130,
+      "offset": 5469,
       "length": 28,
       "value": "\"kBCOVAdPropertyKeySkipTime\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/BCOVAdvertising.swift",
       "kind": "StringLiteral",
-      "offset": 4270,
+      "offset": 5609,
       "length": 36,
       "value": "\"kBCOVAdPropertyKeyClickthroughURLs\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/BCOVAdvertising.swift",
       "kind": "StringLiteral",
-      "offset": 4410,
+      "offset": 5749,
       "length": 32,
       "value": "\"kBCOVAdPropertyKeyTrackingURLs\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/BCOVAdvertising.swift",
       "kind": "IntegerLiteral",
-      "offset": 7334,
+      "offset": 8673,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/BCOVAdvertising.swift",
       "kind": "IntegerLiteral",
-      "offset": 7356,
+      "offset": 8695,
       "length": 2,
       "value": "31"
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/BCOVAdvertising.swift",
       "kind": "BooleanLiteral",
-      "offset": 7880,
+      "offset": 9219,
       "length": 5,
       "value": "false"
     },
@@ -33680,7 +33863,7 @@
       "kind": "StringLiteral",
       "offset": 7240,
       "length": 11,
-      "value": "\"7.2.22.46\""
+      "value": "\"7.2.23.47\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/FairPlay\/BCOVFPSBrightcoveAuthProxy.swift",
@@ -34296,7 +34479,7 @@
       "kind": "StringLiteral",
       "offset": 447,
       "length": 11,
-      "value": "\"7.2.22.46\""
+      "value": "\"7.2.23.47\""
     },
     {
       "filePath": "\/Users\/ec2-user\/workspace\/videocloud_agave_Release_master\/src\/core\/Source\/BCOVBasicSessionProvider.swift",

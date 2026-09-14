@@ -345,6 +345,9 @@ extension BrightcovePlayerSDK.BCOVInteractivityHandler : BrightcovePlayerSDK.BCO
   @objc optional func annotationWasTriggered(_ annotation: BrightcovePlayerSDK.BCOVInteractivityAnnotation)
 }
 @objc @objcMembers public class BCOVAdSequence : ObjectiveC.NSObject {
+  @objc public static let PropertyKeyBreakDuration: Swift.String
+  @objc public static let PropertyKeyAdCountIsProvisional: Swift.String
+  @objc public static let PropertyKeyBreakBeginTime: Swift.String
   @objc public var beginTime: CoreMedia.CMTime {
     @objc get
   }

@@ -1,6 +1,28 @@
+## Release 7.2.23
+
+#### 10 Sep 2026
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* The ad countdown on a NextGen Live (Cloud Playout 2.0) multi-ad break no longer jumps as MediaTailor stitches the pod. MediaTailor lists a pod's ads one at a time, each as it is inserted into the manifest, and reports no break length of its own, so the countdown was recomputed from the ads listed so far and read, for a 90 second pod, `Your video will resume in 24 seconds` → `Ad (1 of 2): 48s` → `Ad (2 of 2): 25s` → `Ad (2 of 3): 52s`. The break's planned length is now taken from the stream's SCTE-35 `EXT-X-DATERANGE` marker, or from the ad-marker duration in MediaTailor's tracking data when it carries one, and published on the ad sequence as `BCOVAdSequence.PropertyKeyBreakDuration`, so the countdown runs from the whole break from its first second; and the sequence carries `BCOVAdSequence.PropertyKeyAdCountIsProvisional` until the listed ads fill the break, so the PlayerUI shows `Ad 2: Your video will resume in 58 seconds` rather than a total that is about to change. The break itself still opens and closes on MediaTailor's tracking data. The planned length is only available when the cue-out `EXT-X-DATERANGE` reaches the player: MediaTailor drops the origin's markers from the segments it replaces with ads unless ad marker passthrough is enabled on its playback configuration, in which case the countdown keeps following the listed ads as before while the ad count still stays unnumbered until it is final. Applications with their own ad UI receive both properties on `AdSequenceEnter` and `AdSequenceUpdate`.
+
+* Adds `BCOVSSAISessionProviderOptions.live2SlateCountdown`. When set, a NextGen Live (Cloud Playout 2.0) ad break that MediaTailor filled entirely with slate — because the ad server returned no ads, or its creatives had not been transcoded yet — shows the `Your video will resume in N seconds` countdown, as the Brightcove web player does. MediaTailor omits such breaks from its tracking data, so they are inferred from the stream's SCTE-35 `EXT-X-DATERANGE` markers. The break is delivered as an ad sequence holding one ad whose properties carry `kBCOVSSAIAdPropertiesKeySlate`; it has no clickthrough, sends no tracking beacons and opens no Open Measurement session. On by default; set it to NO to keep the previous behaviour of showing no ad chrome over slate.
+
+#### Bug Fixes
+
+* Fixes the ad overlay outliving its ad after a Learn More visit, or a pause, of roughly the length of the live playlist window on a NextGen Live (Cloud Playout 2.0) stream. Resuming an ad rejoined the live edge only when the seekable window already showed the playhead outside it, or when the window was unknown after a pause of more than 20 seconds. A paused AVPlayer keeps the playlist it had when it stopped, so after a 20–30 second pause on a channel with a 30 second window the stale window still contained the paused position, the ad was resumed in place, and the playhead was left to AVPlayer to move once it refreshed the playlist — with content on screen while the ad chrome counted down the rest of the ad from the tracking data. The decision now also accounts for how far the playhead stood from the start of the window when it was paused: a pause that has used that distance up rejoins the live edge first, as does a pause of more than 20 seconds on a channel whose seekable window is too short to measure. If the resumed playhead still turns out to be outside the window when the playlist next refreshes, the live edge is rejoined at that point. A visit longer than the playlist itself (more than 60 seconds, and more than twice the window when it can be measured) now reloads the stitched manifest at the live edge straight away rather than first attempting a seek on the stale item and falling through to the failure-recovery reload and its back-off; and the rejoin starts on `UIApplicationWillEnterForegroundNotification`, with playback still resuming on `UIApplicationDidBecomeActiveNotification`, so the network round trips overlap the app's return to the foreground.
+
+### Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds `BCOVAdSequence.PropertyKeyBreakDuration`, `BCOVAdSequence.PropertyKeyBreakBeginTime` and `BCOVAdSequence.PropertyKeyAdCountIsProvisional`, optional entries in an ad sequence's `properties` for sources that learn a break's ads incrementally. When a break duration is present, `BCOVPUIAdControlView` counts the break down from it instead of from the sum of the listed ads' durations, placing the current ad within the break by its `beginTime` when the break's begin time is given so that slate before or between the listed ads is counted. While the ad count is flagged provisional, the PlayerUI names the current ad by its ordinal alone — `Ad 2: Your video will resume in 58 seconds` — instead of `Ad (2 of 3)`, and the tvOS controls show `Advertisement 2` instead of `Advertisement (2 of 3)`. `BCOVPUIAdControlView` exposes the flag as `adPodCountIsProvisional`. Sequences without these properties behave as before.
+
 ## Release 7.2.22
 
-#### TBD
+#### 10 Sep 2026
 
 ### SSAI Plugin for Brightcove Player SDK for iOS
 

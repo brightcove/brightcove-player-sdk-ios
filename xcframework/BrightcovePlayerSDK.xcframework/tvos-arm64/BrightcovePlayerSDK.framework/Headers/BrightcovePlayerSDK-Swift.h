@@ -436,6 +436,25 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 /// at the same point in the video.
 SWIFT_CLASS("_TtC19BrightcovePlayerSDK14BCOVAdSequence")
 @interface BCOVAdSequence : NSObject
+/// Key for an NSNumber of seconds in <code>properties</code>: the planned length of the
+/// whole ad break, when the source signalled one independently of the ads
+/// listed so far. Server-side ad insertion on a live stream lists a pod’s ads
+/// one at a time as they are stitched, so the sum of the ads’ durations
+/// understates the break until the last ad appears. The PlayerUI counts the
+/// break down from this value instead when it is present.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull PropertyKeyBreakDuration;)
++ (NSString * _Nonnull)PropertyKeyBreakDuration SWIFT_WARN_UNUSED_RESULT;
+/// Key for a boolean NSNumber in <code>properties</code>: YES while more ads may still be
+/// added to the sequence, so <code>ads.count</code> is not yet the break’s final ad count.
+/// The PlayerUI shows the current ad’s ordinal without a total while this is set.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull PropertyKeyAdCountIsProvisional;)
++ (NSString * _Nonnull)PropertyKeyAdCountIsProvisional SWIFT_WARN_UNUSED_RESULT;
+/// Key for an NSNumber of seconds in <code>properties</code>: when the break began, on
+/// the same timeline as the ads’ <code>beginTime</code>. With <code>PropertyKeyBreakDuration</code>
+/// it lets the PlayerUI place the current ad within the break, so time spent
+/// in slate before or between the listed ads counts towards the countdown.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull PropertyKeyBreakBeginTime;)
++ (NSString * _Nonnull)PropertyKeyBreakBeginTime SWIFT_WARN_UNUSED_RESULT;
 /// The begin time of the sequence.
 @property (nonatomic, readonly) CMTime beginTime;
 /// The duration of the sequence.

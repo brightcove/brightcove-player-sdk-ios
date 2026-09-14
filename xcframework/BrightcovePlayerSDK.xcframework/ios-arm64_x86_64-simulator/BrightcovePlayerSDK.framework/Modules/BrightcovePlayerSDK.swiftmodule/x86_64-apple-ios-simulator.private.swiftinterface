@@ -126,6 +126,9 @@ extension BrightcovePlayerSDK.BCOVOfflineVideoManager : AVFoundation.AVAssetDown
   @objc deinit
 }
 @objc @objcMembers public class BCOVAdSequence : ObjectiveC.NSObject {
+  @objc public static let PropertyKeyBreakDuration: Swift.String
+  @objc public static let PropertyKeyAdCountIsProvisional: Swift.String
+  @objc public static let PropertyKeyBreakBeginTime: Swift.String
   @objc public var beginTime: CoreMedia.CMTime {
     @objc get
   }

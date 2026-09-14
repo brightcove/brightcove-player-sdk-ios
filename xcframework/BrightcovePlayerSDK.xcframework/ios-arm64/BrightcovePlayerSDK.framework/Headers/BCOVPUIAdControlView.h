@@ -26,6 +26,8 @@
 @property (nonatomic) int adPodCount;
 @property (nonatomic) float adPodRemaining;
 @property (nonatomic) int adPodIndex;
+/** YES while more ads may still be added to the pod, so `adPodCount` is not its final total; the countdown then names the current ad by its ordinal alone. */
+@property (nonatomic) BOOL adPodCountIsProvisional;
 @property (nonatomic) float adDuration;
 @property (nonatomic) float adCurrentTime;
 @property (nonatomic) BOOL adIsSkippable;
