@@ -1,3 +1,13 @@
+## Release 7.2.24
+
+#### 23 Sep 2026
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Bug Fixes
+
+* The ad countdown now shrinks the resume notice to fit the ad controls before it gives up on it. Translations longer than the English string — French `Votre vidéo va reprendre dans 14 secondes`, for one — no longer collapse to `14s` on a phone in portrait. A notice that is still too wide at the smallest size falls back to the seconds remaining as before.
+
 ## Release 7.2.23
 
 #### 10 Sep 2026
