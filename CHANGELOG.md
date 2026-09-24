@@ -1,3 +1,13 @@
+## Release 7.2.25
+
+#### 24 Sep 2026
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Additions and Improvements
+
+* Adds `BCOVReceiverAppConfig.language`. The sender now tells the Brightcove CAF receiver which language to render its UI in, so the ad countdown on the TV follows the viewer instead of always appearing in English. The device's preferred language is sent by default, and takes precedence over any language configured on the receiver's web player; set this property to send something else. Takes effect with a receiver that reads the value.
+
 ## Release 7.2.24
 
 #### 23 Sep 2026
