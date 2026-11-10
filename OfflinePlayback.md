@@ -1,5 +1,5 @@
 
-# iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 7.2.25.9
+# iOS App Developer's Guide to Video Downloading and Offline Playback with HLS in the Brightcove Player SDK for iOS, version 7.2.26.10
 
 
 The Brightcove Native Player SDK allows you to download and play back HLS videos, including those protected with FairPlay encryption. Downloaded videos can be played back with or without a network connection.
@@ -52,7 +52,9 @@ If you want to change the `BCOVOfflineVideoManager.AllowsCellularDownloadKey` va
 
 ## Check Whether a Video Can Be Downloaded
 
-In your user interface, you should indicate if a video is eligible for download. To do this,  examine the `BCOVVideo.canBeDownloaded` property. This Boolean property checks the status of the video's `offline_enabled` flag that is settable through the [Brightcove CMS API](https://sdks.support.brightcove.com/features/offline-playback-native-player-sdks.html#Download_management).
+In your user interface, you should indicate if a video is eligible for download. To do this, examine the `BCOVVideo.canBeDownloaded` property. This Boolean property checks the status of the video's `offline_enabled` flag that is settable through the [Brightcove CMS API](https://sdks.support.brightcove.com/features/offline-playback-native-player-sdks.html#Download_management), and requires at least one HLS source that can be played offline.
+
+HLSe (HLS encrypted with AES-128) videos cannot be played offline: AVFoundation downloads the media, but does not store the AES key with the downloaded asset, so playback still needs the key URI to be reachable. `canBeDownloaded` therefore returns `false` for an HLSe video, and `BCOVOfflineVideoManager` refuses to download one. Use `BCOVSource.isHLSe` to identify an HLSe source; clear HLS and FairPlay sources are unaffected.
 
 ## Download a Video
 

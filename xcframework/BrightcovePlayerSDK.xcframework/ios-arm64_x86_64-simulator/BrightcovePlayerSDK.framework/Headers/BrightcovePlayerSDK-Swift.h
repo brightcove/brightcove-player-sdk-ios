@@ -1685,6 +1685,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @property (nonatomic, readonly, copy) NSString * _Nullable deliveryMethod;
 @property (nonatomic, readonly, copy) NSDictionary * _Nonnull properties;
 - (BCOVSource * _Nonnull)update:(SWIFT_NOESCAPE void (^ _Nonnull)(BCOVMutableSource * _Nonnull))updateBlock SWIFT_WARN_UNUSED_RESULT;
+/// Returns <code>true</code> if this source is HLS encrypted with AES-128 (“HLSe”).
+/// An HLSe video cannot be played offline: AVFoundation does not store the
+/// AES key with a downloaded asset.
+@property (nonatomic, readonly) BOOL isHLSe;
 @end
 
 /// Sub-class of BCOVSource, used only in its <code>-update</code> method.
@@ -1792,7 +1796,19 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @property (nonatomic, readonly, copy) NSArray<BCOVSource *> * _Nonnull sources;
 @property (nonatomic, readonly, copy) NSURL * _Nullable thumbnailVTTURL;
 @property (nonatomic) enum BCOVEconomics economics;
-/// Returns <code>true</code> if this video object can be downloaded for offline playback
+/// Returns <code>true</code> if this video object can be downloaded for offline playback.
+/// This requires both:
+/// <ul>
+///   <li>
+///     the account’s <code>offline_enabled</code> flag, and
+///   </li>
+///   <li>
+///     at least one HLS source with a URL that can actually be played offline.
+///   </li>
+/// </ul>
+/// HLSe (HLS AES-128) sources are excluded: AVFoundation does not persist the
+/// AES key with the downloaded asset, so an HLSe download succeeds but cannot
+/// be played without network access. See <code>BCOVSource/isHLSe</code>.
 @property (nonatomic, readonly) BOOL canBeDownloaded;
 /// Returns YES if this video object has a source using FairPlay encryption
 /// This applies to videos retrieved from Dynamic Delivery accounts only.
@@ -5546,6 +5562,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @property (nonatomic, readonly, copy) NSString * _Nullable deliveryMethod;
 @property (nonatomic, readonly, copy) NSDictionary * _Nonnull properties;
 - (BCOVSource * _Nonnull)update:(SWIFT_NOESCAPE void (^ _Nonnull)(BCOVMutableSource * _Nonnull))updateBlock SWIFT_WARN_UNUSED_RESULT;
+/// Returns <code>true</code> if this source is HLS encrypted with AES-128 (“HLSe”).
+/// An HLSe video cannot be played offline: AVFoundation does not store the
+/// AES key with a downloaded asset.
+@property (nonatomic, readonly) BOOL isHLSe;
 @end
 
 /// Sub-class of BCOVSource, used only in its <code>-update</code> method.
@@ -5653,7 +5673,19 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @property (nonatomic, readonly, copy) NSArray<BCOVSource *> * _Nonnull sources;
 @property (nonatomic, readonly, copy) NSURL * _Nullable thumbnailVTTURL;
 @property (nonatomic) enum BCOVEconomics economics;
-/// Returns <code>true</code> if this video object can be downloaded for offline playback
+/// Returns <code>true</code> if this video object can be downloaded for offline playback.
+/// This requires both:
+/// <ul>
+///   <li>
+///     the account’s <code>offline_enabled</code> flag, and
+///   </li>
+///   <li>
+///     at least one HLS source with a URL that can actually be played offline.
+///   </li>
+/// </ul>
+/// HLSe (HLS AES-128) sources are excluded: AVFoundation does not persist the
+/// AES key with the downloaded asset, so an HLSe download succeeds but cannot
+/// be played without network access. See <code>BCOVSource/isHLSe</code>.
 @property (nonatomic, readonly) BOOL canBeDownloaded;
 /// Returns YES if this video object has a source using FairPlay encryption
 /// This applies to videos retrieved from Dynamic Delivery accounts only.

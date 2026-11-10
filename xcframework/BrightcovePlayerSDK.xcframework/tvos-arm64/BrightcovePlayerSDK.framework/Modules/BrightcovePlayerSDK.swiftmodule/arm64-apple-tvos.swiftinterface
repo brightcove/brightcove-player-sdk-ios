@@ -765,6 +765,9 @@ extension BrightcovePlayerSDK.BCOVCuePointCollection {
     @objc get
   }
   @objc public func update(_ updateBlock: (BrightcovePlayerSDK.BCOVMutableSource) -> Swift.Void) -> BrightcovePlayerSDK.BCOVSource
+  @objc public var isHLSe: Swift.Bool {
+    @objc get
+  }
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc public class BCOVMutableSource : BrightcovePlayerSDK.BCOVSource {

@@ -1,3 +1,53 @@
+## Release 7.2.27
+
+#### 09 Nov 2026
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Additions and Improvements
+
+* Adds `BCOVSource.isHLSe`, which reports whether a source is HLS encrypted with AES-128.
+
+#### Bug Fixes
+
+* `BCOVVideo.canBeDownloaded` now returns `false` for HLSe (HLS AES-128) videos, and for videos without an HLS source that can be played offline. Clear HLS and FairPlay videos are unchanged.
+
+* Fixes FairPlay videos that sometimes failed to start, or stalled before `Ready`, on the first play after launch. The SDK now retrieves the application certificate before it loads the video.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Bug Fixes
+
+* Fixes SSAI seeks that cross or end on an ad break: the post rolls no longer restart playback from 0, each seek completes once, and a refused seek no longer replaces the accepted seek's completion.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Bug Fixes
+
+* Fixes the PlayerUI controls returning already faded after an IMA ad break. 
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Bug Fixes
+
+* Fixes the receiver restarting the video when the sender joins or resumes a Cast session.
+
+## Release 7.2.26
+
+#### 24 Sep 2026
+
+### Brightcove Player SDK for iOS
+
+#### Bug Fixes
+
+* The PlayerUI and TV PlayerUI ad countdown derive the time elapsed in a break from the ad that was actually entered rather than from the ad pod entry at the current index. The two differ when a plugin enters an ad that is not part of the published pod, which NextGen Live (Cloud Playout 2.0) now does for slate. No change for ad sequences without `BCOVAdSequence.PropertyKeyBreakBeginTime`.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Bug Fixes
+
+* Fixes the NextGen Live (Cloud Playout 2.0) ad countdown freezing, and the previous ad's Learn More button staying on screen, over the slate that pads a break MediaTailor filled only partly with ads — one 15 second creative in a 30 second cue, for example. 7.2.23 kept the break open for its planned length but presented slate only when the break held no ad at all, so once the last creative ended nothing drove the countdown. Slate before, between or after the listed creatives is now presented the same way as a slate-only break when `BCOVSSAISessionProviderOptions.live2SlateCountdown` is on: the countdown keeps running, no per-ad chrome is shown, and the segment reports the pod slot of the ad it follows so the ordinal does not advance over it. Those segments arrive as ads carrying `kBCOVSSAIAdPropertiesKeySlate`, as slate-only breaks already did.
+
 ## Release 7.2.25
 
 #### 24 Sep 2026
@@ -26,7 +76,7 @@
 
 #### Additions and Improvements
 
-* The ad countdown on a NextGen Live (Cloud Playout 2.0) multi-ad break no longer jumps as MediaTailor stitches the pod. MediaTailor lists a pod's ads one at a time, each as it is inserted into the manifest, and reports no break length of its own, so the countdown was recomputed from the ads listed so far and read, for a 90 second pod, `Your video will resume in 24 seconds` → `Ad (1 of 2): 48s` → `Ad (2 of 2): 25s` → `Ad (2 of 3): 52s`. The break's planned length is now taken from the stream's SCTE-35 `EXT-X-DATERANGE` marker, or from the ad-marker duration in MediaTailor's tracking data when it carries one, and published on the ad sequence as `BCOVAdSequence.PropertyKeyBreakDuration`, so the countdown runs from the whole break from its first second; and the sequence carries `BCOVAdSequence.PropertyKeyAdCountIsProvisional` until the listed ads fill the break, so the PlayerUI shows `Ad 2: Your video will resume in 58 seconds` rather than a total that is about to change. The break itself still opens and closes on MediaTailor's tracking data. The planned length is only available when the cue-out `EXT-X-DATERANGE` reaches the player: MediaTailor drops the origin's markers from the segments it replaces with ads unless ad marker passthrough is enabled on its playback configuration, in which case the countdown keeps following the listed ads as before while the ad count still stays unnumbered until it is final. Applications with their own ad UI receive both properties on `AdSequenceEnter` and `AdSequenceUpdate`.
+* The ad countdown on a NextGen Live (Cloud Playout 2.0) multi-ad break no longer jumps as MediaTailor stitches the pod. MediaTailor lists a pod's ads one at a time, each as it is inserted into the manifest, and reports no break length of its own, so the countdown was recomputed from the ads listed so far and read, for a 90 second pod, `Your video will resume in 24 seconds` → `Ad (1 of 2): 48s` → `Ad (2 of 2): 25s` → `Ad (2 of 3): 52s`. The break's planned length is now taken from the stream's SCTE-35 `EXT-X-DATERANGE` marker, or from the ad-marker duration in MediaTailor's tracking data when it carries one, and published on the ad sequence as `BCOVAdSequence.PropertyKeyBreakDuration`, so the countdown runs from the whole break from its first second; and the sequence carries `BCOVAdSequence.PropertyKeyAdCountIsProvisional` until the listed ads fill the break, so the PlayerUI shows `Ad 2: Your video will resume in 58 seconds` rather than a total that is about to change. The break itself still opens and closes on MediaTailor's tracking data. For a break signalled by a cue point MediaTailor reports the requested length as the avail's `adMarkerDuration`, so the planned length is known even though the stitched playlist carries no cue-out `EXT-X-DATERANGE`; the pre-roll pod MediaTailor inserts at session start has no cue and no length, so there the count stays unnumbered and the countdown follows the listed ads as before. Applications with their own ad UI receive both properties on `AdSequenceEnter` and `AdSequenceUpdate`.
 
 * Adds `BCOVSSAISessionProviderOptions.live2SlateCountdown`. When set, a NextGen Live (Cloud Playout 2.0) ad break that MediaTailor filled entirely with slate — because the ad server returned no ads, or its creatives had not been transcoded yet — shows the `Your video will resume in N seconds` countdown, as the Brightcove web player does. MediaTailor omits such breaks from its tracking data, so they are inferred from the stream's SCTE-35 `EXT-X-DATERANGE` markers. The break is delivered as an ad sequence holding one ad whose properties carry `kBCOVSSAIAdPropertiesKeySlate`; it has no clickthrough, sends no tracking beacons and opens no Open Measurement session. On by default; set it to NO to keep the previous behaviour of showing no ad chrome over slate.
 
