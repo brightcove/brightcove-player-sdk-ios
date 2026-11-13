@@ -32760,7 +32760,7 @@
       "kind": "StringLiteral",
       "offset": 18956,
       "length": 11,
-      "value": "\"7.2.26.10\""
+      "value": "\"7.2.27.11\""
     },
     {
       "filePath": "\/Users\/runner\/work\/videocloud_agave\/videocloud_agave\/src\/core\/Source\/BCOVPlaybackSession.swift",
@@ -33068,7 +33068,7 @@
       "kind": "StringLiteral",
       "offset": 5458,
       "length": 11,
-      "value": "\"7.2.26.10\""
+      "value": "\"7.2.27.11\""
     },
     {
       "filePath": "\/Users\/runner\/work\/videocloud_agave\/videocloud_agave\/src\/core\/Source\/BCOVFPSAuthorizationProxy.swift",
@@ -33908,7 +33908,7 @@
       "kind": "StringLiteral",
       "offset": 7240,
       "length": 11,
-      "value": "\"7.2.26.10\""
+      "value": "\"7.2.27.11\""
     },
     {
       "filePath": "\/Users\/runner\/work\/videocloud_agave\/videocloud_agave\/src\/core\/Source\/FairPlay\/BCOVFPSBrightcoveAuthProxy.swift",
@@ -34531,7 +34531,7 @@
       "kind": "StringLiteral",
       "offset": 447,
       "length": 11,
-      "value": "\"7.2.26.10\""
+      "value": "\"7.2.27.11\""
     },
     {
       "filePath": "\/Users\/runner\/work\/videocloud_agave\/videocloud_agave\/src\/core\/Source\/BCOVBasicSessionProvider.swift",

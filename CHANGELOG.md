@@ -1,6 +1,22 @@
 ## Release 7.2.27
 
-#### 09 Nov 2026
+#### 13 Nov 2026
+
+### Brightcove Player SDK for iOS (Core)
+
+#### Other Improvements
+
+* Corrects the 7.2.26 release notes: the fixes previously listed under 7.2.27 shipped in 7.2.26.
+
+### SSAI Plugin for Brightcove Player SDK for iOS
+
+#### Other Improvements
+
+* Documents the SSAI content time and encode URL variable values in the README.
+
+## Release 7.2.26
+
+#### 10 Nov 2026
 
 ### Brightcove Player SDK for iOS (Core)
 
@@ -14,39 +30,27 @@
 
 * Fixes FairPlay videos that sometimes failed to start, or stalled before `Ready`, on the first play after launch. The SDK now retrieves the application certificate before it loads the video.
 
-### SSAI Plugin for Brightcove Player SDK for iOS
-
-#### Bug Fixes
-
-* Fixes SSAI seeks that cross or end on an ad break: the post rolls no longer restart playback from 0, each seek completes once, and a refused seek no longer replaces the accepted seek's completion.
-
-### IMA Plugin for Brightcove Player SDK for iOS
-
-#### Bug Fixes
-
-* Fixes the PlayerUI controls returning already faded after an IMA ad break. 
-
-### Google Cast Plugin for Brightcove Player SDK for iOS
-
-#### Bug Fixes
-
-* Fixes the receiver restarting the video when the sender joins or resumes a Cast session.
-
-## Release 7.2.26
-
-#### 24 Sep 2026
-
-### Brightcove Player SDK for iOS
-
-#### Bug Fixes
-
 * The PlayerUI and TV PlayerUI ad countdown derive the time elapsed in a break from the ad that was actually entered rather than from the ad pod entry at the current index. The two differ when a plugin enters an ad that is not part of the published pod, which NextGen Live (Cloud Playout 2.0) now does for slate. No change for ad sequences without `BCOVAdSequence.PropertyKeyBreakBeginTime`.
 
 ### SSAI Plugin for Brightcove Player SDK for iOS
 
 #### Bug Fixes
 
+* Fixes SSAI seeks that cross or end on an ad break: the post rolls no longer restart playback from 0, each seek completes once, and a refused seek no longer replaces the accepted seek's completion.
+
 * Fixes the NextGen Live (Cloud Playout 2.0) ad countdown freezing, and the previous ad's Learn More button staying on screen, over the slate that pads a break MediaTailor filled only partly with ads — one 15 second creative in a 30 second cue, for example. 7.2.23 kept the break open for its planned length but presented slate only when the break held no ad at all, so once the last creative ended nothing drove the countdown. Slate before, between or after the listed creatives is now presented the same way as a slate-only break when `BCOVSSAISessionProviderOptions.live2SlateCountdown` is on: the countdown keeps running, no per-ad chrome is shown, and the segment reports the pod slot of the ad it follows so the ordinal does not advance over it. Those segments arrive as ads carrying `kBCOVSSAIAdPropertiesKeySlate`, as slate-only breaks already did.
+
+### IMA Plugin for Brightcove Player SDK for iOS
+
+#### Bug Fixes
+
+* Fixes the PlayerUI controls returning already faded after an IMA ad break.
+
+### Google Cast Plugin for Brightcove Player SDK for iOS
+
+#### Bug Fixes
+
+* Fixes the receiver restarting the video when the sender joins or resumes a Cast session.
 
 ## Release 7.2.25
 
